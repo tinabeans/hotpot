@@ -29,10 +29,7 @@ recipes = db.recipes
 
 @app.route('/')
 def index():
-	if 'email' in flask.session:
-		return "heeeey"
-	else:
-		return "why don't you <a href='login'>login</a>?"
+	return flask.render_template('home.html')
 
 @app.route('/generateCode')
 def showGenerateCodeForm():
