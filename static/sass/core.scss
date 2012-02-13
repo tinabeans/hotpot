@@ -1,0 +1,294 @@
+@import "compass/reset";
+@import "compass/css3";
+
+/* TYPOGRAPHY */
+
+$sans: "proxima-nova",sans-serif;
+$serif: "rooney-web",sans-serif;
+
+/* COLORS */
+
+/* TAG REDEFINITIONS */
+
+html {
+	height:100%;
+}
+
+body {
+	margin:0px;
+	padding:0px;
+	font-family:$serif;
+	font-weight: 300;
+	font-size:13px;
+	height:100%;
+}
+
+a {
+	text-decoration:none;
+	font-weight:teal;
+	color:orange;
+}
+
+/* div, section {
+	border:1px solid #eee;
+	background:#fff; 
+}*/
+
+
+p {
+	line-height:1.4em;
+}
+
+/**********************************************************/
+/* CHROME */
+
+
+#container {
+	height:95%;
+	width:95%;
+	margin:0px auto;
+	padding: 20px 0px;
+	@include box-sizing(border-box);
+}
+
+header {
+	width:100%;
+	height:5%;
+	background: #222;
+	color:#fff;
+	@include box-sizing(border-box);
+	
+	h1 {
+		font-size:20px;
+		width:95%;
+		margin:0 auto;
+		padding:10px 0;
+	}
+}
+
+
+/**********************************************************/
+/* RECIPE */
+
+#recipeContainer {
+	position: relative;
+	float:left;
+	width:360px;
+	padding:40px 10px 50px 10px;
+	@include box-sizing(border-box);
+	background:#eee;
+	height:100%;
+}
+
+#recipeNav {
+	float:left;
+	width:60px;
+}
+	
+#stepTabs li a {
+	display:block;
+	border-right:0px;
+	padding:7px;
+	margin:0px 0px 3px 0px;
+	font-family: $sans;
+	font-weight: bold;
+	font-size:1.2em;
+	@include border-top-left-radius(5px);
+	@include border-bottom-left-radius(5px);
+}
+
+#stepsNav {
+	position: absolute;
+	bottom:20px;
+	left:80px;
+}
+
+#ingredientsButton {
+	display: block;
+	width:45px;
+	background:#ddd;
+	padding:5px;
+	margin-bottom:5px;
+	@include border-radius(5px);
+	overflow: hidden;
+}
+
+#recipe {
+	height: 100%;
+	margin-left: 60px;
+}
+
+#recipeTitle {
+	position: absolute;
+	top:15px;
+	left:0;
+	width:100%;
+	text-align: center;
+	font-size:13px;
+	text-transform: uppercase;
+	letter-spacing:.15em;
+}
+
+#ingredients {
+	position: absolute;
+	left: 80px;
+	top: 40px;
+	width: 220px;
+	padding: 20px;
+	background:#fff;
+	@include box-shadow(0px 2px 5px rgba(0,0,0,.2));
+	font-size:16px;
+	
+	li {
+		margin:10px 0px;
+		cursor: pointer;
+	}
+	
+	.crossedOut {
+		text-decoration: line-through;
+	}
+	
+	.closeButton {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+	}
+}
+
+#steps {
+	@include box-sizing(border-box);
+	height:100%;
+	padding:30px;
+	overflow: auto;
+	background:#fff;
+	font-size:1.75em;
+	
+	li ul {
+		margin-left:20px;
+		
+		li {
+			font-size:18px;
+			margin:10px 0px;
+			list-style-type:circle;
+		}
+	}
+}
+
+.currentStep a {
+	background:#fff;
+}
+
+.protip, .foodnote {
+	font-size:.7em;
+	margin:30px 0px;
+	
+	h1 {
+		font-size:.8em;
+		text-transform: uppercase;
+		letter-spacing: .2em;
+		margin-bottom: 10px;
+		font-family: $sans;
+	}
+	
+	textarea {
+		border:1px solid #ccc;
+		margin-top:10px;
+		width:100%;
+		height:25px;
+		padding:5px;
+		resize: none;
+	}
+	
+	textarea:focus {
+		outline:none;
+		height:80px;
+	}
+}
+
+.step {
+	display:none;
+}
+
+
+/**********************************************************/
+/* VIDEOS */
+
+#videoContainer {
+	margin-left: 385px;
+	height:70%;
+	@include box-sizing(border-box);
+	position: relative;
+}
+	
+#videoContainer.fullsize {
+	height:100%;
+}
+
+#videos {
+	padding:20px;
+	height:100%;
+	@include box-sizing(border-box);
+	background: #eee;
+}
+
+#myInfo {
+	position: absolute;
+}
+
+#chatBoxButton {
+	position: absolute;
+	top:10px;
+	right:10px;
+}
+
+
+/**********************************************************/
+/* CHAT BOX */
+
+#chatContainer {
+	margin-left: 385px;
+	height:30%;
+	padding-top:25px;
+	@include box-sizing(border-box);
+	position: relative;
+}
+
+#chatBox {
+	@include box-sizing(border-box);
+	border:1px solid #ccc;
+	height: 100%;
+	font-family: $sans;
+}
+
+#messages {
+	padding:20px;
+	
+	.message {
+		margin: 5px 0px;
+	}
+	
+	.name {
+		font-weight: bold;
+	}
+}
+
+#messageInput {
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	border:1px solid #ccc;
+	width:100%;
+	@include box-sizing(border-box);
+	
+	input {
+		display: block;
+		width:100%;
+		padding:5px;
+		border:0px;
+	}
+	
+	input:focus {
+		outline:none;
+		border:none;
+	}
+}
