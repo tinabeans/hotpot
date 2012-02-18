@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+	/****************************************************************************************/
+	// RECIPE NAVIGATION
+
 
 	// Clicking on a recipe step switches the view to that step
 	$('#stepTabs li a').click(function(e) {
@@ -64,16 +67,7 @@ $(document).ready(function() {
 		$(this).toggleClass('crossedOut');
 	});
 	
-	// toggles chatbox visbility
-	$('#chatBoxButton').click(function(e){
-		e.preventDefault();
-		$('#chatContainer').toggle();
-		$('#videoContainer').toggleClass('fullsize')
-	});
-	
-	
 	/****************************************************************************************/
-	
 	// SOCKET.IO STUFF!!!
 	
 	// start a new connection when you enter the room
@@ -108,6 +102,21 @@ $(document).ready(function() {
 		$formElement.hide();
 	});
 	
+	// used as callback in socket.on('message')
+	var updateUserNotes = function(data){
+		$('.snippet[data-id=' + data.snippetId + ']').append('<div class="usernote" data-id"' + data.noteId + '">' + data.text + '<div class="postedBy">Posted by ' + data.username + '</div></div>');
+	};
+	
+	/****************************************************************************************/
+	// CHAT BOX STUFF
+	
+	// toggles chatbox visbility
+	$('#chatBoxButton').click(function(e){
+		e.preventDefault();
+		$('#chatContainer').toggle();
+		$('#videoContainer').toggleClass('fullsize')
+	});
+	
 	// submits a chat message
 	$('#chatInputForm').submit(function(e){
 		e.preventDefault();
@@ -130,27 +139,32 @@ $(document).ready(function() {
 		$(this).children('[name=chatMessage]').val('');
 	});
 	
+	// used as callback in socket.on('message')
+	var updateChatMessages = function(data){
+		var $chatMessages = $('#chatMessages');
+		
+		$chatMessages.append('<div class="chatMessage"><span class="chatMessageAuthor">' + data.userId + '</span>: <span class="chatMessageBody">' + data.chatMessage + '</span></div>');
+		
+		// scroll chat messages to bottom
+		$chatMessages.scrollTop($chatMessages.scrollTop()+9001);
+	};
+	
+	/****************************************************************************************/
+	// SOCKET IO STUFF
+	
 	// handles socket messages received from backend
 	socket.on('message', function(message){
-		console.log("got message back from socket:" + message);
 	    var messageJSON = JSON.parse(message);
 	    var data = messageJSON.data;
 		
 		if(messageJSON['type'] == "userNote") {
-			// update the view to show posted text
-			$('.snippet[data-id=' + data.snippetId + ']').append('<div class="usernote" data-id"' + data.noteId + '">' + data.text + '<div class="postedBy">Posted by ' + data.username + '</div></div>');
+			updateUserNotes(data);
 		}
 		
 		if(messageJSON['type'] == 'chat') {
-			var $chatMessages = $('#chatMessages');
-		
-			$chatMessages.append('<div class="chatMessage"><span class="chatMessageAuthor">' + data.userId + '</span>: <span class="chatMessageBody">' + data.chatMessage + '</span></div>');
-			
-			// scroll chat messages to bottom
-			$chatMessages.scrollTop($chatMessages.scrollTop()+9001);
+			updateChatMessages(data);
 		}
 		
 	});
-	
 	
 });
