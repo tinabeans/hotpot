@@ -2,7 +2,18 @@ $(document).ready(function() {
 
 	/****************************************************************************************/
 	// RECIPE NAVIGATION
-
+	
+	var sendCurrentStep = function(){
+		var currentStepNumber = $('#stebTabs .currentStep a').attr('id').split('-')[1];
+		
+		var socketMessage = JSON.stringify({
+			'type' : 'recipeStep',
+			'data' : {
+				'stepNumber' : currentStepNumber
+			},
+			'userId' :  $('#userId').text()
+		});
+	};
 
 	// Clicking on a recipe step switches the view to that step
 	$('#stepTabs li a').click(function(e) {
@@ -12,19 +23,20 @@ $(document).ready(function() {
 		var stepNumber = $(this).attr('id').split('-')[1];
 		$('#step-' + stepNumber).show();
 		$(this).parent().addClass('currentStep');
+		
+		sendCurrentStep();
 	});
-	
 	
 	// Using arrow keys to go to the next/previous step
 	
 	var goToPrevStep = function() {
 		$('#stepTabs .currentStep').prev().find('a').click();
-		// sendRecipeStep();
+		sendCurrentStep();
 	};
 	
 	var goToNextStep = function() {
 		$('#stepTabs .currentStep').next().find('a').click();
-		// sendRecipeStep();
+		sendCurrentStep();
 	};
 	
 	$(document.documentElement).keydown(function(e){
@@ -50,6 +62,10 @@ $(document).ready(function() {
 		goToNextStep();
 	});
 	
+	
+	/****************************************************************************************/
+	// INGREDIENTS PANE
+	
 	// closes the ingredients pane
 	$('.closeButton').click(function(e){
 		e.preventDefault();
@@ -66,6 +82,7 @@ $(document).ready(function() {
 	$('#ingredients li').click(function(e){
 		$(this).toggleClass('crossedOut');
 	});
+	
 	
 	/****************************************************************************************/
 	// SOCKET.IO STUFF!!!
@@ -94,7 +111,7 @@ $(document).ready(function() {
 				'snippet_id': $(this).closest('.snippet').attr('data-id'),
 				'recipe_id': $('#recipe').attr('data-id')
 			},
-			'user_id': $('#userId').text()
+			'userId': $('#userId').text()
 		});
 		
 		socket.send(socketMessage);
@@ -106,6 +123,7 @@ $(document).ready(function() {
 	var updateUserNotes = function(data){
 		$('.snippet[data-id=' + data.snippetId + ']').append('<div class="usernote" data-id"' + data.noteId + '">' + data.text + '<div class="postedBy">Posted by ' + data.username + '</div></div>');
 	};
+	
 	
 	/****************************************************************************************/
 	// CHAT BOX STUFF

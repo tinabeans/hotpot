@@ -241,11 +241,16 @@ def doStuffWithStuffFromTornado():
 	requestJSON = flask.request.json
 	data = requestJSON['data']
 	
+	userInfo = None
+	# if message is coming from a user, get user database entry based on userId
+	if 'userId' in requestJSON:
+		userInfo = users.find_one({ 'email' : requestJSON['userId'] })
+	
 	if requestJSON['type'] == 'userNote':
 	
 		# put together the new user note to store in the database!
 		newUserNote = {
-			"user_id": requestJSON['user_id'], # users are uniquely identified by their email
+			"user_id": requestJSON['userId'], # users are uniquely identified by their email
 			"recipe_id": ObjectId(data['recipe_id']),
 			"snippet_id": ObjectId(data['snippet_id']),
 			"text": data['text']
@@ -255,10 +260,6 @@ def doStuffWithStuffFromTornado():
 		newUserNoteId = userNotes.insert(newUserNote);
 		
 		# now put together some data to send back to the template...
-		
-		# get user database entry based on email address
-		userInfo = users.find_one({ 'email' : requestJSON['user_id'] })
-		
 		dataForResponse = {
 			'type' : requestJSON['type'],
 			'data' : {
@@ -268,14 +269,8 @@ def doStuffWithStuffFromTornado():
 				"text": data['text']
 			}
 		}
-		
-		# use json.dumps() instead of str() because on the other end we need a well-formatted JSON string with double-quotes
-		return json.dumps(dataForResponse)
 	
 	elif requestJSON['type'] == 'chat':
-		print requestJSON
-		
-		userInfo = users.find_one({'email' : requestJSON['userId']})
 		
 		dataForResponse = {
 			'type' : requestJSON['type'],
@@ -285,8 +280,18 @@ def doStuffWithStuffFromTornado():
 			}
 		}
 		
-		return json.dumps(dataForResponse)
-
+	elif requestJSON['type'] == 'recipeStep':
+		
+		dataForResponse = {
+			'type' : requestJSON['type'],
+			'data' : {
+				'userId' : userInfo['name'],
+				'chatMessage' : data['chatMessage']
+			}
+		}
+	
+	# use json.dumps() instead of str() because on the other end we need a well-formatted JSON string with double-quotes
+	return json.dumps(dataForResponse)
 
 
 ##############################################################################
