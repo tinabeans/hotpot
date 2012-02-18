@@ -37,7 +37,7 @@ class SocketHandler(tornadio.SocketConnection):
 		# and then on the Flask end, we set up an @route thingy to handle the request
 		
 		# have to create a request object. the body is just the data being sent from the front end as a socket message
-		request = tornado.httpclient.HTTPRequest(url="http://localhost:7777/endpointForTornado", method="POST", headers={'Content-Type':'application/json'}, body=message)
+		request = tornado.httpclient.HTTPRequest(url="http://localhost:7777/socketMessageHandler", method="POST", headers={'Content-Type':'application/json'}, body=message)
 		
 		# then actually execute the request
 		# when the response comes back containing stuff Flask wants to send back out to the front-end,

@@ -8,6 +8,15 @@ $serif: "rooney-web",sans-serif;
 
 /* COLORS */
 
+
+/* MIXINS */
+@mixin outerContainer {
+	width: 90%;
+	margin:0px auto;
+	position: relative;
+}
+
+
 /* TAG REDEFINITIONS */
 
 html {
@@ -39,19 +48,150 @@ p {
 	line-height:1.4em;
 }
 
+
 /**********************************************************/
-/* CHROME */
+/* HOME */
+
+#mainHeader, #homeIntro, #featuredMeals, #mainFooter {
+	@include outerContainer;
+}
+
+#home #mainHeader {
+	padding-top:30px;
+
+	h1 {
+		text-align: center;
+		margin:30px;
+		
+		img {
+			width:300px;
+		}
+	}
+}
+
+#topNav {
+	position: absolute;
+	top: 0;
+	right:0;
+	padding:20px 0px;
+	
+	a {
+		margin:0px 20px;
+		display:inline-block;
+		font-family: $sans;
+		text-transform: uppercase;
+		letter-spacing:.1em;
+	}
+}
+
+#introBlurb {
+	text-align: center;
+	font-size:42px;
+	padding-bottom:10px;
+}
+
+#featuredRecipes {
+	clear:both;
+}
+
+#joinUs {
+	text-align: center;
+	margin:30px;
+	
+	a {
+		width:180px;
+		display:inline-block;
+		background: #666;
+		@include border-radius(10px);
+		font-size:26px;
+		color:#fff;
+		text-align: center;
+		padding:14px;
+		font-style:italic;
+		margin:5px;
+		
+		.small {
+			margin-top:7px;
+			display:block;
+			font-family:$sans;
+			font-weight: normal;
+			font-size:11px;
+			text-transform: uppercase;
+			letter-spacing:.1em;
+			font-style: normal;
+		}
+	}
+}
+	
+
+
+#joinUs a:hover {
+	background: #777;
+}
+
+#featuredMealsContainer {
+	background:#eee;
+	margin:60px 0px;
+}
+
+#featuredMeals {
+	padding: 30px 0px;
+	
+	h1 {
+		font-family: $sans;
+		margin-bottom:30px;
+		text-transform: uppercase;
+		letter-spacing: .1em;
+		font-size:18px;
+		text-align: center;
+	}
+
+	.mealList {
+		li {
+			position: relative;
+			display:inline-block;
+			width:30%;
+			margin-right:4%;
+			
+			h2 {
+				position: absolute;
+				top: 28px;
+				left:10px;
+				background:rgba(0,0,0,.6);
+				color:#fff;
+				padding:7px 10px 10px 10px;
+				font-size:20px;
+			}
+			
+			img {
+				border:10px solid #fff;
+				width:100%;
+				@include box-sizing(border-box);
+			}
+		}
+		
+		li.last {
+			margin-right:0%;
+		}
+	}
+}
+
+/**********************************************************/
+/* ROOM */
 
 
 #container {
-	height:95%;
 	width:95%;
 	margin:0px auto;
-	padding: 20px 0px;
 	@include box-sizing(border-box);
 }
 
-header {
+#room #container {
+	height:95%;
+	padding: 20px 0px;
+}
+
+#room header {
 	width:100%;
 	height:5%;
 	background: #222;
@@ -194,14 +334,9 @@ header {
 		border:1px solid #ccc;
 		margin-top:10px;
 		width:100%;
-		height:25px;
+		height:50px;
 		padding:5px;
 		resize: none;
-	}
-	
-	textarea:focus {
-		outline:none;
-		height:80px;
 	}
 }
 
@@ -245,7 +380,7 @@ header {
 /**********************************************************/
 /* CHAT BOX */
 
-#chatContainer {
+#chatBoxContainer {
 	margin-left: 385px;
 	height:30%;
 	padding-top:25px;
@@ -258,21 +393,25 @@ header {
 	border:1px solid #ccc;
 	height: 100%;
 	font-family: $sans;
+	padding-bottom:27px;
 }
 
-#messages {
-	padding:20px;
+#chatMessages {
+	height:100%;
+	@include box-sizing(border-box);
+	padding:10px 15px;
+	overflow: auto;
 	
-	.message {
+	.chatMessage {
 		margin: 5px 0px;
 	}
 	
-	.name {
+	.chatMessageAuthor {
 		font-weight: bold;
 	}
 }
 
-#messageInput {
+#chatInputContainer {
 	position: absolute;
 	bottom:0px;
 	left:0px;
@@ -283,8 +422,9 @@ header {
 	input {
 		display: block;
 		width:100%;
-		padding:5px;
+		padding:7px 10px;
 		border:0px;
+		margin:0px;
 	}
 	
 	input:focus {

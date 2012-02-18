@@ -1,7 +1,7 @@
 # IMPORT STUFF!!
 
 # python standard libraries
-import hashlib, random
+import hashlib, random, json
 
 # nice 3rd party stuff
 import flask
@@ -201,10 +201,9 @@ def showRoom(recipe, id):
 			
 			print recipe
 		
-		return flask.render_template('room.html', recipe=recipe)
+		return flask.render_template('room.html', recipe=recipe, user_id=flask.session['email'])
 
 
-@app.route('/postFoodnote', methods=['POST'])
 def postFoodnote():
 	data = flask.request.json
 	
@@ -233,6 +232,63 @@ def postFoodnote():
 	return str(dataForResponse)
 
 
+
+##############################################################################
+# SOCKET.IO ENDPOINT for IN-ROOM COMMUNICATIONINGS
+
+@app.route('/socketMessageHandler', methods=['POST'])
+def doStuffWithStuffFromTornado():
+	requestJSON = flask.request.json
+	data = requestJSON['data']
+	
+	if requestJSON['type'] == 'userNote':
+	
+		# put together the new user note to store in the database!
+		newUserNote = {
+			"user_id": requestJSON['user_id'], # users are uniquely identified by their email
+			"recipe_id": ObjectId(data['recipe_id']),
+			"snippet_id": ObjectId(data['snippet_id']),
+			"text": data['text']
+		}
+		
+		# now insert the data, and store the id
+		newUserNoteId = userNotes.insert(newUserNote);
+		
+		# now put together some data to send back to the template...
+		
+		# get user database entry based on email address
+		userInfo = users.find_one({ 'email' : requestJSON['user_id'] })
+		
+		dataForResponse = {
+			'type' : requestJSON['type'],
+			'data' : {
+				"snippetId": data['snippet_id'],
+				'noteId' : str(newUserNoteId),
+				'username' : userInfo['name'],
+				"text": data['text']
+			}
+		}
+		
+		# use json.dumps() instead of str() because on the other end we need a well-formatted JSON string with double-quotes
+		return json.dumps(dataForResponse)
+	
+	elif requestJSON['type'] == 'chat':
+		print requestJSON
+		
+		userInfo = users.find_one({'email' : requestJSON['userId']})
+		
+		dataForResponse = {
+			'type' : requestJSON['type'],
+			'data' : {
+				'userId' : userInfo['name'],
+				'chatMessage' : data['chatMessage']
+			}
+		}
+		
+		return json.dumps(dataForResponse)
+
+
+
 ##############################################################################
 # UTILS for a Tina
 
@@ -240,8 +296,7 @@ def postFoodnote():
 def saveStuffFunction():
 	saveStuff.start(db)
 	return "database being populated. omgscary"
-
-
+	
 
 
 if __name__ == '__main__':

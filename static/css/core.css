@@ -65,13 +65,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* TYPOGRAPHY */
 /* COLORS */
+/* MIXINS */
 /* TAG REDEFINITIONS */
-/* line 13, ../sass/core.scss */
+/* line 22, ../sass/core.scss */
 html {
   height: 100%;
 }
 
-/* line 17, ../sass/core.scss */
+/* line 26, ../sass/core.scss */
 body {
   margin: 0px;
   padding: 0px;
@@ -81,7 +82,7 @@ body {
   height: 100%;
 }
 
-/* line 26, ../sass/core.scss */
+/* line 35, ../sass/core.scss */
 a {
   text-decoration: none;
   font-weight: teal;
@@ -92,27 +93,172 @@ a {
 	border:1px solid #eee;
 	background:#fff; 
 }*/
-/* line 38, ../sass/core.scss */
+/* line 47, ../sass/core.scss */
 p {
   line-height: 1.4em;
 }
 
 /**********************************************************/
-/* CHROME */
-/* line 46, ../sass/core.scss */
+/* HOME */
+/* line 55, ../sass/core.scss */
+#mainHeader, #homeIntro, #featuredMeals, #mainFooter {
+  width: 90%;
+  margin: 0px auto;
+  position: relative;
+}
+
+/* line 59, ../sass/core.scss */
+#home #mainHeader {
+  padding-top: 30px;
+}
+/* line 62, ../sass/core.scss */
+#home #mainHeader h1 {
+  text-align: center;
+  margin: 30px;
+}
+/* line 66, ../sass/core.scss */
+#home #mainHeader h1 img {
+  width: 300px;
+}
+
+/* line 72, ../sass/core.scss */
+#topNav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px 0px;
+}
+/* line 78, ../sass/core.scss */
+#topNav a {
+  margin: 0px 20px;
+  display: inline-block;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+/* line 87, ../sass/core.scss */
+#introBlurb {
+  text-align: center;
+  font-size: 42px;
+  padding-bottom: 10px;
+}
+
+/* line 93, ../sass/core.scss */
+#featuredRecipes {
+  clear: both;
+}
+
+/* line 97, ../sass/core.scss */
+#joinUs {
+  text-align: center;
+  margin: 30px;
+}
+/* line 101, ../sass/core.scss */
+#joinUs a {
+  width: 180px;
+  display: inline-block;
+  background: #666;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  font-size: 26px;
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+  font-style: italic;
+  margin: 5px;
+}
+/* line 113, ../sass/core.scss */
+#joinUs a .small {
+  margin-top: 7px;
+  display: block;
+  font-family: "proxima-nova", sans-serif;
+  font-weight: normal;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-style: normal;
+}
+
+/* line 128, ../sass/core.scss */
+#joinUs a:hover {
+  background: #777;
+}
+
+/* line 132, ../sass/core.scss */
+#featuredMealsContainer {
+  background: #eee;
+  margin: 60px 0px;
+}
+
+/* line 137, ../sass/core.scss */
+#featuredMeals {
+  padding: 30px 0px;
+}
+/* line 140, ../sass/core.scss */
+#featuredMeals h1 {
+  font-family: "proxima-nova", sans-serif;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 18px;
+  text-align: center;
+}
+/* line 150, ../sass/core.scss */
+#featuredMeals .mealList li {
+  position: relative;
+  display: inline-block;
+  width: 30%;
+  margin-right: 4%;
+}
+/* line 156, ../sass/core.scss */
+#featuredMeals .mealList li h2 {
+  position: absolute;
+  top: 28px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 7px 10px 10px 10px;
+  font-size: 20px;
+}
+/* line 166, ../sass/core.scss */
+#featuredMeals .mealList li img {
+  border: 10px solid #fff;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 173, ../sass/core.scss */
+#featuredMeals .mealList li.last {
+  margin-right: 0%;
+}
+
+/**********************************************************/
+/* ROOM */
+/* line 183, ../sass/core.scss */
 #container {
-  height: 95%;
   width: 95%;
   margin: 0px auto;
-  padding: 20px 0px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 54, ../sass/core.scss */
-header {
+/* line 189, ../sass/core.scss */
+#room #container {
+  height: 95%;
+  padding: 20px 0px;
+}
+
+/* line 194, ../sass/core.scss */
+#room header {
   width: 100%;
   height: 5%;
   background: #222;
@@ -122,8 +268,8 @@ header {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 61, ../sass/core.scss */
-header h1 {
+/* line 201, ../sass/core.scss */
+#room header h1 {
   font-size: 20px;
   width: 95%;
   margin: 0 auto;
@@ -132,7 +278,7 @@ header h1 {
 
 /**********************************************************/
 /* RECIPE */
-/* line 73, ../sass/core.scss */
+/* line 213, ../sass/core.scss */
 #recipeContainer {
   position: relative;
   float: left;
@@ -146,13 +292,13 @@ header h1 {
   height: 100%;
 }
 
-/* line 83, ../sass/core.scss */
+/* line 223, ../sass/core.scss */
 #recipeNav {
   float: left;
   width: 60px;
 }
 
-/* line 88, ../sass/core.scss */
+/* line 228, ../sass/core.scss */
 #stepTabs li a {
   display: block;
   border-right: 0px;
@@ -175,14 +321,14 @@ header h1 {
   border-bottom-left-radius: 5px;
 }
 
-/* line 100, ../sass/core.scss */
+/* line 240, ../sass/core.scss */
 #stepsNav {
   position: absolute;
   bottom: 20px;
   left: 80px;
 }
 
-/* line 106, ../sass/core.scss */
+/* line 246, ../sass/core.scss */
 #ingredientsButton {
   display: block;
   width: 45px;
@@ -198,13 +344,13 @@ header h1 {
   overflow: hidden;
 }
 
-/* line 116, ../sass/core.scss */
+/* line 256, ../sass/core.scss */
 #recipe {
   height: 100%;
   margin-left: 60px;
 }
 
-/* line 121, ../sass/core.scss */
+/* line 261, ../sass/core.scss */
 #recipeTitle {
   position: absolute;
   top: 15px;
@@ -216,7 +362,7 @@ header h1 {
   letter-spacing: .15em;
 }
 
-/* line 132, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #ingredients {
   position: absolute;
   left: 80px;
@@ -230,23 +376,23 @@ header h1 {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   font-size: 16px;
 }
-/* line 142, ../sass/core.scss */
+/* line 282, ../sass/core.scss */
 #ingredients li {
   margin: 10px 0px;
   cursor: pointer;
 }
-/* line 147, ../sass/core.scss */
+/* line 287, ../sass/core.scss */
 #ingredients .crossedOut {
   text-decoration: line-through;
 }
-/* line 151, ../sass/core.scss */
+/* line 291, ../sass/core.scss */
 #ingredients .closeButton {
   position: absolute;
   right: 10px;
   top: 10px;
 }
 
-/* line 158, ../sass/core.scss */
+/* line 298, ../sass/core.scss */
 #steps {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -258,28 +404,28 @@ header h1 {
   background: #fff;
   font-size: 1.75em;
 }
-/* line 166, ../sass/core.scss */
+/* line 306, ../sass/core.scss */
 #steps li ul {
   margin-left: 20px;
 }
-/* line 169, ../sass/core.scss */
+/* line 309, ../sass/core.scss */
 #steps li ul li {
   font-size: 18px;
   margin: 10px 0px;
   list-style-type: circle;
 }
 
-/* line 177, ../sass/core.scss */
+/* line 317, ../sass/core.scss */
 .currentStep a {
   background: #fff;
 }
 
-/* line 181, ../sass/core.scss */
+/* line 321, ../sass/core.scss */
 .protip, .foodnote {
   font-size: .7em;
   margin: 30px 0px;
 }
-/* line 185, ../sass/core.scss */
+/* line 325, ../sass/core.scss */
 .protip h1, .foodnote h1 {
   font-size: .8em;
   text-transform: uppercase;
@@ -287,29 +433,24 @@ header h1 {
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 193, ../sass/core.scss */
+/* line 333, ../sass/core.scss */
 .protip textarea, .foodnote textarea {
   border: 1px solid #ccc;
   margin-top: 10px;
   width: 100%;
-  height: 25px;
+  height: 50px;
   padding: 5px;
   resize: none;
 }
-/* line 202, ../sass/core.scss */
-.protip textarea:focus, .foodnote textarea:focus {
-  outline: none;
-  height: 80px;
-}
 
-/* line 208, ../sass/core.scss */
+/* line 343, ../sass/core.scss */
 .step {
   display: none;
 }
 
 /**********************************************************/
 /* VIDEOS */
-/* line 216, ../sass/core.scss */
+/* line 351, ../sass/core.scss */
 #videoContainer {
   margin-left: 385px;
   height: 70%;
@@ -320,12 +461,12 @@ header h1 {
   position: relative;
 }
 
-/* line 223, ../sass/core.scss */
+/* line 358, ../sass/core.scss */
 #videoContainer.fullsize {
   height: 100%;
 }
 
-/* line 227, ../sass/core.scss */
+/* line 362, ../sass/core.scss */
 #videos {
   padding: 20px;
   height: 100%;
@@ -336,12 +477,12 @@ header h1 {
   background: #eee;
 }
 
-/* line 234, ../sass/core.scss */
+/* line 369, ../sass/core.scss */
 #myInfo {
   position: absolute;
 }
 
-/* line 238, ../sass/core.scss */
+/* line 373, ../sass/core.scss */
 #chatBoxButton {
   position: absolute;
   top: 10px;
@@ -350,8 +491,8 @@ header h1 {
 
 /**********************************************************/
 /* CHAT BOX */
-/* line 248, ../sass/core.scss */
-#chatContainer {
+/* line 383, ../sass/core.scss */
+#chatBoxContainer {
   margin-left: 385px;
   height: 30%;
   padding-top: 25px;
@@ -362,7 +503,7 @@ header h1 {
   position: relative;
 }
 
-/* line 256, ../sass/core.scss */
+/* line 391, ../sass/core.scss */
 #chatBox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -371,23 +512,30 @@ header h1 {
   border: 1px solid #ccc;
   height: 100%;
   font-family: "proxima-nova", sans-serif;
+  padding-bottom: 27px;
 }
 
-/* line 263, ../sass/core.scss */
-#messages {
-  padding: 20px;
+/* line 399, ../sass/core.scss */
+#chatMessages {
+  height: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  overflow: auto;
 }
-/* line 266, ../sass/core.scss */
-#messages .message {
+/* line 405, ../sass/core.scss */
+#chatMessages .chatMessage {
   margin: 5px 0px;
 }
-/* line 270, ../sass/core.scss */
-#messages .name {
+/* line 409, ../sass/core.scss */
+#chatMessages .chatMessageAuthor {
   font-weight: bold;
 }
 
-/* line 275, ../sass/core.scss */
-#messageInput {
+/* line 414, ../sass/core.scss */
+#chatInputContainer {
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -398,15 +546,16 @@ header h1 {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 283, ../sass/core.scss */
-#messageInput input {
+/* line 422, ../sass/core.scss */
+#chatInputContainer input {
   display: block;
   width: 100%;
-  padding: 5px;
+  padding: 7px 10px;
   border: 0px;
+  margin: 0px;
 }
-/* line 290, ../sass/core.scss */
-#messageInput input:focus {
+/* line 430, ../sass/core.scss */
+#chatInputContainer input:focus {
   outline: none;
   border: none;
 }

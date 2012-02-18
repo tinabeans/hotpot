@@ -13,6 +13,9 @@
 <!--script src="http://staging.tokbox.com/v0.91/js/TB.min.js" type="text/javascript"></script-->
 <!--script src="/static/js/opentok.js" type="text/javascript"></script-->
 
+<!-- Socket IO -->
+<script src="/static/js/socket.io.min.js" type="text/javascript"></script>
+
 <!-- my scripts -->
 <script src="/static/js/room.js" type="text/javascript"></script>
 
@@ -24,6 +27,7 @@
 
 <header id="cookingHeader">
 	<h1>Hotpot</h1>
+	Logged in as <span id="userId">{{ user_id }}</span>
 </header>
 
 <div id="container">
@@ -83,7 +87,10 @@
 									
 									{% if snippet.notes is defined %}
 										{% for note in snippet.notes %}
-											{{ note.text }} - {{ note.name }}
+										<div class="usernote" data-id"' + data.noteId + '">
+											{{ note.text }}
+											<div class="postedBy">Posted by {{ note.name }}</div>
+										</div>
 										{% endfor %}
 									{% endif %}
 									
@@ -114,32 +121,16 @@
 		</div>
 	</div>
 	
-	<div id="chatContainer">
+	<div id="chatBoxContainer">
 		<div id="chatBox">
-			<div id="messages">
-			
-				<div class="message">
-					<span class="name">
-						Annie
-					</span>
-					<span class="messageBody">
-						This is a chat message.
-					</span>
-				</div>
-				
-				<div class="message">
-					<span class="name">
-						Annie
-					</span>
-					<span class="messageBody">
-						This is a chat message.
-					</span>
-				</div>
-				
+			<div id="chatMessages">
+				<!-- CHAT MESSAGES APPEAR HERE -->
 			</div><!-- #messages -->			
 				
-			<div id="messageInput">
-				<input type="text" />
+			<div id="chatInputContainer">
+				<form id="chatInputForm">
+					<input type="text" name="chatMessage" />
+				</form>
 			</div>
 			
 		</div><!-- #chatBox -->

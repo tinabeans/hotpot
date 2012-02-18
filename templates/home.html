@@ -19,7 +19,7 @@
 <body id="home">
 
 <header id="mainHeader">
-	<h1>Hotpot</h1>
+	<h1><img src="/static/images/HotpotLogo_Alpha.png" /></h1>
 	<nav id="topNav">
 		<a href="">Login</a>
 		<a href="">FAQ</a>
@@ -29,49 +29,51 @@
 
 <div id="homeIntro">
 
-	<p>Hotpot brings people together to cook in real time. Explore different cuisines, make new friends (or hang out with old ones), and unlock your culinary skills!</p>
+	<p id="introBlurb">Cook a great meal with friends in real-time. <!--span class="small">Explore different cuisines, make new friends (or hang out with old ones), and unlock your culinary skills!</span--></p>
 	
 	<div id="joinUs">
 		<a href="" id="registerButton">Let's Cook! <span class="small">Create an Account</span></a>
-		<a href="" id="loginButton">Already joined? Log in</a>
+		<a href="" id="loginButton">Got Account? <span class="small">Log In Here</span></a>
 	</div><!-- #joinUs -->
 	
 </div><!-- #homeIntro -->
 
-<section id="featuredRecipes">
-	<h1>What's Cooking?</h1>
-	<ul>
-		<li>
-			<h2>Salmon Teriyaki</h2>
-			<img src="/static/recipe_images/SalmonTeriyaki.jpg">
-			<h3>Recently Cooked By:</h3>
-			<ul>
-				<li><a href=""><img src="" /> <span class="name">Tina Y.</span></a></li>
-				<li><a href=""><img src="" /> <span class="name">Yang Y.</span></a></li>
-			</ul>
-		</li>
-		
-		<li>
-			<h2>Lemon Garlic Kale Pasta</h2>
-			<img src="/static/recipe_images/SalmonTeriyaki.jpg">
-			<h3>Recently Cooked By:</h3>
-			<ul>
-				<li><a href=""><img src="" /> <span class="name">Tina Y.</span></a></li>
-				<li><a href=""><img src="" /> <span class="name">Yang Y.</span></a></li>
-			</ul>
-		</li>
-		
-		<li>
-			<h2>Apple Cheddar Quiche</h2>
-			<img src="/static/recipe_images/SalmonTeriyaki.jpg">
-			<h3>Recently Cooked By:</h3>
-			<ul>
-				<li><a href=""><img src="" /> <span class="name">Tina Y.</span></a></li>
-				<li><a href=""><img src="" /> <span class="name">Yang Y.</span></a></li>
-			</ul>
-		</li>
-	</ul>
-</section><!-- #featuredRecipes -->
+<div id="featuredMealsContainer">
+	<section id="featuredMeals">
+		<h1>What's Cooking?</h1>
+		<ul class="mealList">
+			<li>
+				<h2>Salmon Teriyaki</h2>
+				<img src="/static/recipe_images/SalmonTeriyaki.jpg">
+				<h3>Recently Cooked By:</h3>
+				<ul>
+					<li><a href=""><img src="" /> <span class="name">Tina Y.</span></a></li>
+					<li><a href=""><img src="" /> <span class="name">Yang Y.</span></a></li>
+				</ul>
+			</li>
+			
+			<li>
+				<h2>Lemon Garlic Kale Pasta</h2>
+				<img src="/static/recipe_images/SalmonTeriyaki.jpg">
+				<h3>Recently Cooked By:</h3>
+				<ul>
+					<li><a href=""><img src="" /> <span class="name">Tina Y.</span></a></li>
+					<li><a href=""><img src="" /> <span class="name">Yang Y.</span></a></li>
+				</ul>
+			</li>
+			
+			<li class="last">
+				<h2>Apple Cheddar Quiche</h2>
+				<img src="/static/recipe_images/SalmonTeriyaki.jpg">
+				<h3>Recently Cooked By:</h3>
+				<ul>
+					<li><a href=""><img src="" /> <span class="name">Tina Y.</span></a></li>
+					<li><a href=""><img src="" /> <span class="name">Yang Y.</span></a></li>
+				</ul>
+			</li>
+		</ul>
+	</section><!-- #featuredMeals -->
+</div><!-- #featuredMealsContainer -->
 
 <footer id="mainFooter">
 	<p>Hotpot is created by Tina Ye for her Master's Thesis in Interaction Design at SVA. Read more about the project <a href="http://thesis.tinabeans.com/">here</a>.</p>

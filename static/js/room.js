@@ -25,6 +25,7 @@ $(document).ready(function() {
 	};
 	
 	$(document.documentElement).keydown(function(e){
+	
 		// left or up key
 		if(e.keyCode === 37 || e.keyCode === 38)	{
 			goToPrevStep();
@@ -73,7 +74,7 @@ $(document).ready(function() {
 	
 	/****************************************************************************************/
 	
-	// SOCKET.IO STUFF
+	// SOCKET.IO STUFF!!!
 	
 	// start a new connection when you enter the room
 	socket = new io.Socket('letsgohotpot.com', {'port' : 7778});
@@ -88,7 +89,7 @@ $(document).ready(function() {
 		var $formElement = $(this);
 		var noteText = $formElement.children('.note').val();
 		
-		// send he data directly through sockets instead of AJAX because it's more convenient given my server structure
+		// send the data directly through sockets instead of AJAX because it's more convenient given my server structure
 		// (if we used AJAX, Flask would have needed to initiate the Flask-to-Tornado communication,
 		// and I would need to write Tornado code to handle that communication)
 		
@@ -104,40 +105,49 @@ $(document).ready(function() {
 		
 		socket.send(socketMessage);
 		
-		// ajax query to send the data
-		/* 
-		$.ajax({
-			type: "POST",
-			url: "/postFoodnote",
-			data: JSON.stringify({
-				'text': noteText,
-				'snippet_id': $(this).closest('.snippet').attr('data-id'),
-				'recipe_id': $('#recipe').attr('data-id')
-			}),
-			contentType: 'application/json',
-			success: function(data) {
-				var data = JSON.parse(data);
-			
-				// update the view to show posted text
-				$formElement.after('<div class="usernote" data-id"' + data.noteId + '">' + noteText + '<div class="postedBy">Posted by ' + data.username + '</div></div>');
-				$formElement.hide();
-				alert("success!");
-			}
-		}); */
-		
 		$formElement.hide();
 	});
 	
-	socket.on('message', function(data){
-	    var message = JSON.parse(data);
+	// submits a chat message
+	$('#chatInputForm').submit(function(e){
+		e.preventDefault();
 		
-		if(message['type'] == "userNote") {
-			// update the view to show posted text
-			$('.snippet[data-id=' + message.data['snippetId'] + ']').append('<div class="usernote" data-id"' + message.data['noteId'] + '">' + message.data['text'] + '<div class="postedBy">Posted by ' + message.data['username'] + '</div></div>');
+		var chatMessage = $(this).children('[name=chatMessage]').val();
+		
+		if(chatMessage !== ''){			
+			var socketMessage = JSON.stringify({
+				'type' : 'chat',
+				'data': {
+					'chatMessage' : chatMessage
+				},
+				'userId' : $('#userId').text()
+			});
+			
+			socket.send(socketMessage);
 		}
 		
-		if(message['type'] == 'chat') {
+		// clear the input field
+		$(this).children('[name=chatMessage]').val('');
+	});
+	
+	// handles socket messages received from backend
+	socket.on('message', function(message){
+		console.log("got message back from socket:" + message);
+	    var messageJSON = JSON.parse(message);
+	    var data = messageJSON.data;
 		
+		if(messageJSON['type'] == "userNote") {
+			// update the view to show posted text
+			$('.snippet[data-id=' + data.snippetId + ']').append('<div class="usernote" data-id"' + data.noteId + '">' + data.text + '<div class="postedBy">Posted by ' + data.username + '</div></div>');
+		}
+		
+		if(messageJSON['type'] == 'chat') {
+			var $chatMessages = $('#chatMessages');
+		
+			$chatMessages.append('<div class="chatMessage"><span class="chatMessageAuthor">' + data.userId + '</span>: <span class="chatMessageBody">' + data.chatMessage + '</span></div>');
+			
+			// scroll chat messages to bottom
+			$chatMessages.scrollTop($chatMessages.scrollTop()+9001);
 		}
 		
 	});
