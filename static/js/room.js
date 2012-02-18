@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
 	// Clicking on a recipe step switches the view to that step
 	$('#stepTabs li a').click(function(e) {
 		e.preventDefault();
@@ -69,6 +70,16 @@ $(document).ready(function() {
 		$('#videoContainer').toggleClass('fullsize')
 	});
 	
+	
+	/****************************************************************************************/
+	
+	// SOCKET.IO STUFF
+	
+	// start a new connection when you enter the room
+	socket = new io.Socket('letsgohotpot.com', {'port' : 7778});
+	socket.connect();
+	
+	
 	// submits the foodnote
 	$('.foodnoteForm').submit(function(e){
 		e.preventDefault();
@@ -77,7 +88,24 @@ $(document).ready(function() {
 		var $formElement = $(this);
 		var noteText = $formElement.children('.note').val();
 		
+		// send he data directly through sockets instead of AJAX because it's more convenient given my server structure
+		// (if we used AJAX, Flask would have needed to initiate the Flask-to-Tornado communication,
+		// and I would need to write Tornado code to handle that communication)
+		
+		var socketMessage = JSON.stringify({
+			'type': 'userNote',
+			'data': {
+				'text' : noteText,
+				'snippet_id': $(this).closest('.snippet').attr('data-id'),
+				'recipe_id': $('#recipe').attr('data-id')
+			},
+			'user_id': $('#userId').text()
+		});
+		
+		socket.send(socketMessage);
+		
 		// ajax query to send the data
+		/* 
 		$.ajax({
 			type: "POST",
 			url: "/postFoodnote",
@@ -95,7 +123,24 @@ $(document).ready(function() {
 				$formElement.hide();
 				alert("success!");
 			}
-		});
+		}); */
+		
+		$formElement.hide();
 	});
-
+	
+	socket.on('message', function(data){
+	    var message = JSON.parse(data);
+		
+		if(message['type'] == "userNote") {
+			// update the view to show posted text
+			$('.snippet[data-id=' + message.data['snippetId'] + ']').append('<div class="usernote" data-id"' + message.data['noteId'] + '">' + message.data['text'] + '<div class="postedBy">Posted by ' + message.data['username'] + '</div></div>');
+		}
+		
+		if(message['type'] == 'chat') {
+		
+		}
+		
+	});
+	
+	
 });
