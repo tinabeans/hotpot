@@ -23,7 +23,6 @@ db = connection.hotpot
 
 codes = db.inviteCodes
 users = db.users
-userNotes = db.userNotes
 snippets = db.snippets
 recipes = db.recipes
 
@@ -156,52 +155,42 @@ def logout():
 ##############################################################################
 # ROOM
 
-@app.route('/<recipe>/room/<id>')
-def showRoom(recipe, id):
+@app.route('/<recipe>/room/<roomId>')
+def showRoom(recipe, roomId):
 	# check to see if the person's logged in
 	if 'email' not in flask.session:
 		return flask.render_template('login.html') 
 	else:
-		room = db.rooms.find_one({'_id' : ObjectId(id)})
-		print str(room)
+		room = db.rooms.find_one({'_id' : ObjectId(roomId)})
 		recipe = recipes.find_one({'slug' : recipe})
+		
+		# grab all the foodNotes in the database from this room
+		foodNotesInThisRoom = list(db.foodNotes.find({'roomId' : ObjectId(roomId)}))
 		
 		for step in recipe['steps']:
 			snippetsToInsert = []
+			stepId = step['id'];
 			
-			#so im looping through the steps, then im looping through the snippets in the steps, then if the snippet is a foodnote, query the database for a list of notes that match the snippet id, then loop through that to determine which ones are relevant to the users in the current room, and finally send that to the template
+			# now grab all the badges, foodNotes etc. that are related to this step
 			
-			for snippetId in step.get('snippets', []): # get is a magical fail-safe method for checking if a key exists!
-				snippet = snippets.find_one({'_id' : snippetId })
+			# crazy Python list comprehension magic to grab only the foodnotes related to this room & step
+			# the first 'note' represents what gets returned by the filtered list
+			# the second 'note' represents the list item that is being 'comprehended' (in this case filtered by the if)
+			# I hope these comments still make sense in 2 weeks
+			for foodNote in (note for note in foodNotesInThisRoom if note['stepId'] == stepId):
+				snippet = {}
+				snippet['type'] = 'foodNote'
 				
-				# also find snippet responses
-				if (snippet['type'] == 'foodnote'):
-					
-					notes = []
-					
-					# iterate through all the notes for a particular snippet
-					for userNote in userNotes.find({'snippet_id' : snippetId}):
-						
-						# match the notes against each user of the room
-						for userEmail in room['users']:
-							
-							# if there's a match, then add that snippet to a dictionary
-							if userNote['user_id'] == userEmail:
-								notes.append({
-									'text' : userNote['text'],
-									'name' : users.find_one({'email' : userNote['user_id']})['name']
-								})
-								
-					# saves dictionary to send to template
-					snippet['notes'] = notes
+				userInfo = db.users.find_one({'email' : foodNote['userId']})
+				snippet['username'] = userInfo['name']
+				snippet['_id'] = foodNote['_id']
+				snippet['text'] = foodNote['text']
 				
 				snippetsToInsert.append(snippet)
 			
 			step['snippets'] = snippetsToInsert
-			
-			print recipe
-		
-		return flask.render_template('room.html', recipe=recipe, user_id=flask.session['email'])
+					
+		return flask.render_template('room.html', recipe=recipe, userId=flask.session['email'], roomId=roomId )
 
 
 def postFoodnote():
@@ -246,6 +235,7 @@ def doStuffWithStuffFromTornado():
 	if 'userId' in requestJSON:
 		userInfo = users.find_one({ 'email' : requestJSON['userId'] })
 	
+	'''
 	if requestJSON['type'] == 'userNote':
 	
 		# put together the new user note to store in the database!
@@ -265,6 +255,31 @@ def doStuffWithStuffFromTornado():
 			'data' : {
 				"snippetId": data['snippet_id'],
 				'noteId' : str(newUserNoteId),
+				'username' : userInfo['name'],
+				"text": data['text']
+			}
+		}
+	'''
+	
+	if requestJSON['type'] == 'foodNote':
+	
+		# put together the new user note to store in the database!
+		newFoodNote = {
+			"userId": requestJSON['userId'], # users are uniquely identified by their email
+			"roomId": ObjectId(data['roomId']),
+			"stepId": data['stepId'],
+			"text": data['text']
+		}
+		
+		# now insert the data, and store the id
+		newFoodNoteId = db.foodNotes.insert(newFoodNote);
+		
+		# now put together some data to send back to the template...
+		dataForResponse = {
+			'type' : requestJSON['type'],
+			'data' : {
+				"stepId": data['stepId'],
+				'noteId' : str(newFoodNoteId),
 				'username' : userInfo['name'],
 				"text": data['text']
 			}

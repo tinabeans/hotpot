@@ -315,7 +315,7 @@ p {
 
 .step {	
 	@include box-sizing(border-box);
-	padding:30px;
+	padding:30px 30px 50px 30px;
 	height: 100%;
 	overflow-y: auto;
 
@@ -334,9 +334,8 @@ p {
 	background:#fff;
 }
 
-
-.snippet, .extra {
-	font-size:.7em;
+.extra {
+	font-size:16px;
 	margin:30px 0px;
 	
 	h1 {
@@ -346,14 +345,24 @@ p {
 		margin-bottom: 10px;
 		font-family: $sans;
 	}
+}
+
+.snippet {
+	margin:30px 0px;
+	font-size:14px;
+	font-family: $sans;
 	
-	textarea {
-		border:1px solid #ccc;
+	p {
+		line-height:1.25em;
+	}
+}
+
+.foodNote {
+	.postedBy {
+		display: block;
 		margin-top:10px;
-		width:100%;
-		height:50px;
-		padding:5px;
-		resize: none;
+		font-size:10px;
+		text-transform: uppercase;
 	}
 }
 
@@ -375,6 +384,17 @@ p {
 	padding: 20px;
 	font-size:14px;
 	display:none;
+}
+
+.notepad {
+	textarea {
+		border:1px solid #ccc;
+		margin-top:10px;
+		width:100%;
+		height:150px;
+		padding:5px;
+		resize: none;
+	}
 }
 
 .widgetNav {

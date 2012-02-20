@@ -23,11 +23,11 @@
 
 </head>
  
-<body id="room">
+<body id="room" data-id="{{ roomId }}">
 
 <header id="cookingHeader">
 	<h1>Hotpot</h1>
-	Logged in as <span id="userId">{{ user_id }}</span>
+	Logged in as <span id="userId">{{ userId }}</span>
 </header>
 
 <div id="container">
@@ -76,38 +76,25 @@
 						{% endif %}
 						
 						{% if step.extra is defined %}
-						<section class="extra">
+						<div class="extra">
 							<h1>Protip!</h1>
 							{{ step.extra|safe }}
-						</section>
+						</div>
 						{% endif %}
 						
-						<div class="widgets">
-							<nav class="widgetNav">
-								<a href="" class="badgePickerButton widgetButton">Badges</a>
-								<a href="" class="notepadButton widgetButton">Cooking Notes</a>
-							</nav>
+
+						{% if step.snippets is defined %}
+							{% for snippet in step.snippets %}
+							<div class="{{ snippet.type }} snippet" data-id="{{ snippet._id }}">
+								{% if snippet.type == "foodNote" %}
+									<p>{{ snippet.text }}</p>
+									<div class="postedBy">Posted by {{ snippet.username }}</div>
+								{% endif %}
+							</div>
+							{% endfor %}
 							
-							<div class="badgePicker widget">
-								<a href="" class="closeButton">Close</a>
-								<p>Click on a badge to award it to your cooking buddy.</p>
-								<ul>
-									<li><a href="">OCD</a></li>
-									<li><a href="">Picasso</a></li>
-									<li><a href="">Samurai Ninja</a></li>
-								</ul>
-							</div><!-- #badgePicker -->
-							
-							<div class="notepad widget">
-								<a href="" class="closeButton">Close</a>
-								<p>Use this space to jot down impressions, surprises, questions and answers.</p>
-								<form>
-									<textarea></textarea>
-									<input type="submit" />
-								</form>
-							</div><!-- #notepad -->
-						
-						</div><!-- #widgets -->
+						{% endif %}
+
 						
 						<!--
 						{% if step.snippets is defined %}
@@ -138,6 +125,35 @@
 							
 						{% endif %}
 						-->
+						
+						<div class="widgets">
+							<nav class="widgetNav">
+								<a href="" class="badgePickerButton widgetButton">Badges</a>
+								<a href="" class="notepadButton widgetButton">Cooking Notes</a>
+							</nav>
+							
+							<div class="badgePicker widget">
+								<a href="" class="closeButton">Close</a>
+								<p>Click on a badge to award it to your cooking buddy.</p>
+								<ul>
+									<li><a href="">OCD</a></li>
+									<li><a href="">Picasso</a></li>
+									<li><a href="">Samurai Ninja</a></li>
+								</ul>
+							</div><!-- #badgePicker -->
+							
+							<div class="notepad widget">
+								<a href="" class="closeButton">Close</a>
+								<p>Use this space to jot down impressions, surprises, questions and answers.</p>
+								<form class="foodnoteForm">
+									<textarea name="note" class="note"></textarea>
+									<input type="submit" />
+								</form>
+							</div><!-- #notepad -->
+						
+						</div><!-- #widgets -->
+						
+						
 					</li>
 					{% endfor %}				
 				</ol>

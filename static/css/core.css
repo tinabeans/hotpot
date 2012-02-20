@@ -420,7 +420,7 @@ p {
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 30px;
+  padding: 30px 30px 50px 30px;
   height: 100%;
   overflow-y: auto;
 }
@@ -440,37 +440,47 @@ p {
   background: #fff;
 }
 
-/* line 338, ../sass/core.scss */
-.snippet, .extra {
-  font-size: .7em;
+/* line 337, ../sass/core.scss */
+.extra {
+  font-size: 16px;
   margin: 30px 0px;
 }
-/* line 342, ../sass/core.scss */
-.snippet h1, .extra h1 {
+/* line 341, ../sass/core.scss */
+.extra h1 {
   font-size: .8em;
   text-transform: uppercase;
   letter-spacing: .2em;
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
+
 /* line 350, ../sass/core.scss */
-.snippet textarea, .extra textarea {
-  border: 1px solid #ccc;
-  margin-top: 10px;
-  width: 100%;
-  height: 50px;
-  padding: 5px;
-  resize: none;
+.snippet {
+  margin: 30px 0px;
+  font-size: 14px;
+  font-family: "proxima-nova", sans-serif;
+}
+/* line 355, ../sass/core.scss */
+.snippet p {
+  line-height: 1.25em;
 }
 
-/* line 360, ../sass/core.scss */
+/* line 361, ../sass/core.scss */
+.foodNote .postedBy {
+  display: block;
+  margin-top: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+/* line 369, ../sass/core.scss */
 .step {
   display: none;
 }
 
 /**********************************************************/
 /* WIDGETS */
-/* line 367, ../sass/core.scss */
+/* line 376, ../sass/core.scss */
 .badgePicker, .notepad {
   border: 1px solid #666;
   background: #fff;
@@ -487,7 +497,17 @@ p {
   display: none;
 }
 
-/* line 380, ../sass/core.scss */
+/* line 390, ../sass/core.scss */
+.notepad textarea {
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  width: 100%;
+  height: 150px;
+  padding: 5px;
+  resize: none;
+}
+
+/* line 400, ../sass/core.scss */
 .widgetNav {
   position: absolute;
   bottom: 0;
@@ -498,7 +518,7 @@ p {
   font-size: 16px;
   background: #fff;
 }
-/* line 390, ../sass/core.scss */
+/* line 410, ../sass/core.scss */
 .widgetNav a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -508,7 +528,7 @@ p {
   padding: 5px 7px;
   margin: 1px;
 }
-/* line 397, ../sass/core.scss */
+/* line 417, ../sass/core.scss */
 .widgetNav a.active {
   background: #fff;
   border: 1px solid #666;
@@ -520,7 +540,7 @@ p {
 
 /**********************************************************/
 /* VIDEOS */
-/* line 410, ../sass/core.scss */
+/* line 430, ../sass/core.scss */
 #videoContainer {
   margin-left: 385px;
   height: 70%;
@@ -531,12 +551,12 @@ p {
   position: relative;
 }
 
-/* line 417, ../sass/core.scss */
+/* line 437, ../sass/core.scss */
 #videoContainer.fullsize {
   height: 100%;
 }
 
-/* line 421, ../sass/core.scss */
+/* line 441, ../sass/core.scss */
 #videos {
   padding: 20px;
   height: 100%;
@@ -547,12 +567,12 @@ p {
   background: #eee;
 }
 
-/* line 428, ../sass/core.scss */
+/* line 448, ../sass/core.scss */
 #myInfo {
   position: absolute;
 }
 
-/* line 432, ../sass/core.scss */
+/* line 452, ../sass/core.scss */
 #chatBoxButton {
   position: absolute;
   top: 10px;
@@ -561,7 +581,7 @@ p {
 
 /**********************************************************/
 /* CHAT BOX */
-/* line 442, ../sass/core.scss */
+/* line 462, ../sass/core.scss */
 #chatBoxContainer {
   margin-left: 385px;
   height: 30%;
@@ -573,7 +593,7 @@ p {
   position: relative;
 }
 
-/* line 450, ../sass/core.scss */
+/* line 470, ../sass/core.scss */
 #chatBox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -585,7 +605,7 @@ p {
   padding-bottom: 27px;
 }
 
-/* line 458, ../sass/core.scss */
+/* line 478, ../sass/core.scss */
 #chatMessages {
   height: 100%;
   -moz-box-sizing: border-box;
@@ -595,16 +615,16 @@ p {
   padding: 10px 15px;
   overflow: auto;
 }
-/* line 464, ../sass/core.scss */
+/* line 484, ../sass/core.scss */
 #chatMessages .chatMessage {
   margin: 5px 0px;
 }
-/* line 468, ../sass/core.scss */
+/* line 488, ../sass/core.scss */
 #chatMessages .chatMessageAuthor {
   font-weight: bold;
 }
 
-/* line 473, ../sass/core.scss */
+/* line 493, ../sass/core.scss */
 #chatInputContainer {
   position: absolute;
   bottom: 0px;
@@ -616,7 +636,7 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 481, ../sass/core.scss */
+/* line 501, ../sass/core.scss */
 #chatInputContainer input {
   display: block;
   width: 100%;
@@ -624,7 +644,7 @@ p {
   border: 0px;
   margin: 0px;
 }
-/* line 489, ../sass/core.scss */
+/* line 509, ../sass/core.scss */
 #chatInputContainer input:focus {
   outline: none;
   border: none;

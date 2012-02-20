@@ -1,60 +1,21 @@
 from pymongo.objectid import ObjectId
 
 def start(db):
+
+	db.badges.save({
+		"name" : "",
+		"description" : ""
+	})
+	
+
 	'''
 	db.rooms.save({
 		"recipe_id" : "4f3352569685aa28d5000008",
 		"users" : [ "t@tinabeans.com", "nanotone@gmail.com"]
 	})
 	
-	'''
-	db.snippets.remove()
+	
 	db.recipes.remove()
-
-	'''
-	snippet1 = {
-		"type": "protip",
-		"text": """<p>Bust out the kitchen scissors! Fold those leaves in half and scissor off the stems. Easy.</p>"""
-	}
-	
-	snippet2 = {
-		"type": "foodnote",
-		"text": """<p>This recipe doesn't use the kale stems, but they're full of possibility. How do you plan to use them later?</p>"""
-	}
-	
-	snippet3 = {
-		"type": "foodnote",
-		"text": """<p>Zesting is a lot of work, but it's almost always worth it. What do you think of the smell of fresh lemon zest?</p>"""
-	}
-	
-	snippet4 = {
-		"type": "protip",
-		"text": """<p>Starting off the garlic in cold oil is a cool trick (no pun intended). It helps "infuse" the oil with the garlic flavor as it heats up.</p>"""
-	}
-	
-	snippet5 = {
-		"type": "foodnote",
-		"text": """<p>Go ahead, take a bite of the kale, we won't tell. How does it taste?</p>"""
-	}
-	
-	snippet6 = {
-		"type": "foodnote",
-		"text": """<p>Short of breaking the pasta in half, what's your trick for getting long pasta to fit into the pot?</p>"""
-	}
-	
-	snippet7 = {
-		"type": "foodnote",
-		"text": """<p>Resist the urge to stick your finger in the oil and lick it off; your finger will burn to a crisp. However take a whiff. What you think?</p>"""
-	}
-	
-	snippet8 = {
-		"type": "protip",
-		"text": """<p>Die-hard pasta nerds say you should always cook noodles to "al dente," which is how the Italians traditionally do it. This just means the pasta is still a tad bit hard, and has a nice chewy resistance to the tooth. Now that you know this, go off and cook pasta the way <em>you</em> like it.</p>"""
-	}
-	
-	for index in range(1,9):
-		db.snippets.save(locals()["snippet%d" % index])
-	'''
 
 	recipe = {
 		"_id" : ObjectId("4f3352569685aa28d5000008"),
@@ -115,10 +76,7 @@ def start(db):
 			{
 				"id": "5",
 				"type": "rest",
-				"text": """<p>You're done with the prep stage. Take a break and...</p>
-						<a href="">Award a Badge</a>
-						<a href="">Add Cooking Notes</a>""",
-				"widget": """badges"""
+				"text": """<p>You're done with the prep stage. Take a break and rate your partner's chopping:</p>"""
 			},
 			{
 				"id": "6",
@@ -200,3 +158,5 @@ def start(db):
 	}
 	
 	db.recipes.save(recipe)
+	
+	'''

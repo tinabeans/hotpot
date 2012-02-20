@@ -157,23 +157,34 @@ $(document).ready(function() {
 		// and I would need to write Tornado code to handle that communication)
 		
 		var socketMessage = JSON.stringify({
-			'type': 'userNote',
+			'type': 'foodNote',
 			'data': {
 				'text' : noteText,
-				'snippet_id': $(this).closest('.snippet').attr('data-id'),
-				'recipe_id': $('#recipe').attr('data-id')
+				'roomId' : $('body').attr('data-id'),
+				'stepId' : $('#steps li:visible').attr('id').split('-')[1]
 			},
 			'userId': currentUserId
 		});
 		
 		socket.send(socketMessage);
 		
-		$formElement.hide();
+		$formElement.siblings('.closeButton').click();
 	});
 	
 	// used as callback in socket.on('message')
-	var updateUserNotes = function(data){
-		$('.snippet[data-id=' + data.snippetId + ']').append('<div class="usernote" data-id"' + data.noteId + '">' + data.text + '<div class="postedBy">Posted by ' + data.username + '</div></div>');
+	var updateFoodNotes = function(data){
+	
+		var $elementToAddFoodNoteTo = $('#step-' + data.stepId);
+	
+		// add the newly posted foodNote to the DOM
+		$elementToAddFoodNoteTo.append('<div class="foodNote snippet" data-id="' + data.noteId + '">' + data.text + '<div class="postedBy">Posted by ' + data.username + '</div></div>');
+		
+		// grab reference to the newly posted foodNote…
+		var $newFoodNote = $(".snippet[data-id='" + data.noteId + "']");
+		
+		// scroll to it! oooo
+		var distanceFromTop = $newFoodNote.position().top;
+		$elementToAddFoodNoteTo.animate({scrollTop : distanceFromTop});
 	};
 	
 	
@@ -227,8 +238,8 @@ $(document).ready(function() {
 	    var messageJSON = JSON.parse(message);
 	    var data = messageJSON.data;
 		
-		if(messageJSON['type'] == "userNote") {
-			updateUserNotes(data);
+		if(messageJSON['type'] == "foodNote") {
+			updateFoodNotes(data);
 		}
 		
 		else if(messageJSON['type'] == 'chat') {
