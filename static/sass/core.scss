@@ -34,8 +34,7 @@ body {
 
 a {
 	text-decoration:none;
-	font-weight:teal;
-	color:orange;
+	color:blue;
 }
 
 /* div, section {
@@ -373,7 +372,7 @@ p {
 /**********************************************************/
 /* WIDGETS */
 
-.badgePicker, .notepad {
+#badgePicker, #notepad {
 	border:1px solid #666;
 	background:#fff;
 	position: absolute;
@@ -386,7 +385,7 @@ p {
 	display:none;
 }
 
-.notepad {
+#notepad {
 	textarea {
 		border:1px solid #ccc;
 		margin-top:10px;
@@ -397,7 +396,7 @@ p {
 	}
 }
 
-.widgetNav {
+#widgetNav {
 	position: absolute;
 	bottom:0;
 	left:25px;

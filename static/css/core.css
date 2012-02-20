@@ -85,50 +85,49 @@ body {
 /* line 35, ../sass/core.scss */
 a {
   text-decoration: none;
-  font-weight: teal;
-  color: orange;
+  color: blue;
 }
 
 /* div, section {
 	border:1px solid #eee;
 	background:#fff; 
 }*/
-/* line 47, ../sass/core.scss */
+/* line 46, ../sass/core.scss */
 p {
   line-height: 1.4em;
 }
 
 /**********************************************************/
 /* HOME */
-/* line 55, ../sass/core.scss */
+/* line 54, ../sass/core.scss */
 #mainHeader, #homeIntro, #featuredMeals, #mainFooter {
   width: 90%;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 59, ../sass/core.scss */
+/* line 58, ../sass/core.scss */
 #home #mainHeader {
   padding-top: 30px;
 }
-/* line 62, ../sass/core.scss */
+/* line 61, ../sass/core.scss */
 #home #mainHeader h1 {
   text-align: center;
   margin: 30px;
 }
-/* line 66, ../sass/core.scss */
+/* line 65, ../sass/core.scss */
 #home #mainHeader h1 img {
   width: 300px;
 }
 
-/* line 72, ../sass/core.scss */
+/* line 71, ../sass/core.scss */
 #topNav {
   position: absolute;
   top: 0;
   right: 0;
   padding: 20px 0px;
 }
-/* line 78, ../sass/core.scss */
+/* line 77, ../sass/core.scss */
 #topNav a {
   margin: 0px 20px;
   display: inline-block;
@@ -137,24 +136,24 @@ p {
   letter-spacing: .1em;
 }
 
-/* line 87, ../sass/core.scss */
+/* line 86, ../sass/core.scss */
 #introBlurb {
   text-align: center;
   font-size: 42px;
   padding-bottom: 10px;
 }
 
-/* line 93, ../sass/core.scss */
+/* line 92, ../sass/core.scss */
 #featuredRecipes {
   clear: both;
 }
 
-/* line 97, ../sass/core.scss */
+/* line 96, ../sass/core.scss */
 #joinUs {
   text-align: center;
   margin: 30px;
 }
-/* line 101, ../sass/core.scss */
+/* line 100, ../sass/core.scss */
 #joinUs a {
   width: 180px;
   display: inline-block;
@@ -172,7 +171,7 @@ p {
   font-style: italic;
   margin: 5px;
 }
-/* line 113, ../sass/core.scss */
+/* line 112, ../sass/core.scss */
 #joinUs a .small {
   margin-top: 7px;
   display: block;
@@ -184,22 +183,22 @@ p {
   font-style: normal;
 }
 
-/* line 128, ../sass/core.scss */
+/* line 127, ../sass/core.scss */
 #joinUs a:hover {
   background: #777;
 }
 
-/* line 132, ../sass/core.scss */
+/* line 131, ../sass/core.scss */
 #featuredMealsContainer {
   background: #eee;
   margin: 60px 0px;
 }
 
-/* line 137, ../sass/core.scss */
+/* line 136, ../sass/core.scss */
 #featuredMeals {
   padding: 30px 0px;
 }
-/* line 140, ../sass/core.scss */
+/* line 139, ../sass/core.scss */
 #featuredMeals h1 {
   font-family: "proxima-nova", sans-serif;
   margin-bottom: 30px;
@@ -208,14 +207,14 @@ p {
   font-size: 18px;
   text-align: center;
 }
-/* line 150, ../sass/core.scss */
+/* line 149, ../sass/core.scss */
 #featuredMeals .mealList li {
   position: relative;
   display: inline-block;
   width: 30%;
   margin-right: 4%;
 }
-/* line 156, ../sass/core.scss */
+/* line 155, ../sass/core.scss */
 #featuredMeals .mealList li h2 {
   position: absolute;
   top: 28px;
@@ -225,7 +224,7 @@ p {
   padding: 7px 10px 10px 10px;
   font-size: 20px;
 }
-/* line 166, ../sass/core.scss */
+/* line 165, ../sass/core.scss */
 #featuredMeals .mealList li img {
   border: 10px solid #fff;
   width: 100%;
@@ -234,14 +233,14 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 173, ../sass/core.scss */
+/* line 172, ../sass/core.scss */
 #featuredMeals .mealList li.last {
   margin-right: 0%;
 }
 
 /**********************************************************/
 /* ROOM */
-/* line 183, ../sass/core.scss */
+/* line 182, ../sass/core.scss */
 #container {
   width: 95%;
   margin: 0px auto;
@@ -251,13 +250,13 @@ p {
   box-sizing: border-box;
 }
 
-/* line 189, ../sass/core.scss */
+/* line 188, ../sass/core.scss */
 #room #container {
   height: 95%;
   padding: 20px 0px;
 }
 
-/* line 194, ../sass/core.scss */
+/* line 193, ../sass/core.scss */
 #room header {
   width: 100%;
   height: 5%;
@@ -268,7 +267,7 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 201, ../sass/core.scss */
+/* line 200, ../sass/core.scss */
 #room header h1 {
   font-size: 20px;
   width: 95%;
@@ -278,7 +277,7 @@ p {
 
 /**********************************************************/
 /* RECIPE */
-/* line 213, ../sass/core.scss */
+/* line 212, ../sass/core.scss */
 #recipeContainer {
   position: relative;
   float: left;
@@ -292,23 +291,23 @@ p {
   height: 100%;
 }
 
-/* line 223, ../sass/core.scss */
+/* line 222, ../sass/core.scss */
 #recipeNav {
   float: left;
   width: 60px;
 }
 
-/* line 228, ../sass/core.scss */
+/* line 227, ../sass/core.scss */
 #stepTabs li {
   position: relative;
 }
-/* line 231, ../sass/core.scss */
+/* line 230, ../sass/core.scss */
 #stepTabs li .positionMarker {
   position: absolute;
   top: 0;
   left: 30px;
 }
-/* line 237, ../sass/core.scss */
+/* line 236, ../sass/core.scss */
 #stepTabs li a {
   display: block;
   border-right: 0px;
@@ -331,14 +330,14 @@ p {
   border-bottom-left-radius: 5px;
 }
 
-/* line 250, ../sass/core.scss */
+/* line 249, ../sass/core.scss */
 #stepsNav {
   position: absolute;
   bottom: 20px;
   left: 80px;
 }
 
-/* line 256, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #ingredientsButton {
   display: block;
   width: 45px;
@@ -354,12 +353,12 @@ p {
   overflow: hidden;
 }
 
-/* line 266, ../sass/core.scss */
+/* line 265, ../sass/core.scss */
 #recipe {
   height: 100%;
 }
 
-/* line 270, ../sass/core.scss */
+/* line 269, ../sass/core.scss */
 #recipeTitle {
   position: absolute;
   top: 15px;
@@ -371,7 +370,7 @@ p {
   letter-spacing: .15em;
 }
 
-/* line 281, ../sass/core.scss */
+/* line 280, ../sass/core.scss */
 #ingredients {
   position: absolute;
   left: 80px;
@@ -385,23 +384,23 @@ p {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   font-size: 16px;
 }
-/* line 291, ../sass/core.scss */
+/* line 290, ../sass/core.scss */
 #ingredients li {
   margin: 10px 0px;
   cursor: pointer;
 }
-/* line 296, ../sass/core.scss */
+/* line 295, ../sass/core.scss */
 #ingredients .crossedOut {
   text-decoration: line-through;
 }
-/* line 300, ../sass/core.scss */
+/* line 299, ../sass/core.scss */
 #ingredients .closeButton {
   position: absolute;
   right: 10px;
   top: 10px;
 }
 
-/* line 307, ../sass/core.scss */
+/* line 306, ../sass/core.scss */
 #steps {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -414,7 +413,7 @@ p {
   font-size: 1.75em;
 }
 
-/* line 316, ../sass/core.scss */
+/* line 315, ../sass/core.scss */
 .step {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -424,28 +423,28 @@ p {
   height: 100%;
   overflow-y: auto;
 }
-/* line 322, ../sass/core.scss */
+/* line 321, ../sass/core.scss */
 .step ul {
   margin-left: 20px;
 }
-/* line 325, ../sass/core.scss */
+/* line 324, ../sass/core.scss */
 .step ul li {
   font-size: 18px;
   margin: 10px 0px;
   list-style-type: circle;
 }
 
-/* line 333, ../sass/core.scss */
+/* line 332, ../sass/core.scss */
 .currentStep a {
   background: #fff;
 }
 
-/* line 337, ../sass/core.scss */
+/* line 336, ../sass/core.scss */
 .extra {
   font-size: 16px;
   margin: 30px 0px;
 }
-/* line 341, ../sass/core.scss */
+/* line 340, ../sass/core.scss */
 .extra h1 {
   font-size: .8em;
   text-transform: uppercase;
@@ -454,18 +453,18 @@ p {
   font-family: "proxima-nova", sans-serif;
 }
 
-/* line 350, ../sass/core.scss */
+/* line 349, ../sass/core.scss */
 .snippet {
   margin: 30px 0px;
   font-size: 14px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 355, ../sass/core.scss */
+/* line 354, ../sass/core.scss */
 .snippet p {
   line-height: 1.25em;
 }
 
-/* line 361, ../sass/core.scss */
+/* line 360, ../sass/core.scss */
 .foodNote .postedBy {
   display: block;
   margin-top: 10px;
@@ -473,15 +472,15 @@ p {
   text-transform: uppercase;
 }
 
-/* line 369, ../sass/core.scss */
+/* line 368, ../sass/core.scss */
 .step {
   display: none;
 }
 
 /**********************************************************/
 /* WIDGETS */
-/* line 376, ../sass/core.scss */
-.badgePicker, .notepad {
+/* line 375, ../sass/core.scss */
+#badgePicker, #notepad {
   border: 1px solid #666;
   background: #fff;
   position: absolute;
@@ -497,8 +496,8 @@ p {
   display: none;
 }
 
-/* line 390, ../sass/core.scss */
-.notepad textarea {
+/* line 389, ../sass/core.scss */
+#notepad textarea {
   border: 1px solid #ccc;
   margin-top: 10px;
   width: 100%;
@@ -507,8 +506,8 @@ p {
   resize: none;
 }
 
-/* line 400, ../sass/core.scss */
-.widgetNav {
+/* line 399, ../sass/core.scss */
+#widgetNav {
   position: absolute;
   bottom: 0;
   left: 25px;
@@ -518,8 +517,8 @@ p {
   font-size: 16px;
   background: #fff;
 }
-/* line 410, ../sass/core.scss */
-.widgetNav a {
+/* line 409, ../sass/core.scss */
+#widgetNav a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -528,8 +527,8 @@ p {
   padding: 5px 7px;
   margin: 1px;
 }
-/* line 417, ../sass/core.scss */
-.widgetNav a.active {
+/* line 416, ../sass/core.scss */
+#widgetNav a.active {
   background: #fff;
   border: 1px solid #666;
   border-top: 1px solid #fff;
@@ -540,7 +539,7 @@ p {
 
 /**********************************************************/
 /* VIDEOS */
-/* line 430, ../sass/core.scss */
+/* line 429, ../sass/core.scss */
 #videoContainer {
   margin-left: 385px;
   height: 70%;
@@ -551,12 +550,12 @@ p {
   position: relative;
 }
 
-/* line 437, ../sass/core.scss */
+/* line 436, ../sass/core.scss */
 #videoContainer.fullsize {
   height: 100%;
 }
 
-/* line 441, ../sass/core.scss */
+/* line 440, ../sass/core.scss */
 #videos {
   padding: 20px;
   height: 100%;
@@ -567,12 +566,12 @@ p {
   background: #eee;
 }
 
-/* line 448, ../sass/core.scss */
+/* line 447, ../sass/core.scss */
 #myInfo {
   position: absolute;
 }
 
-/* line 452, ../sass/core.scss */
+/* line 451, ../sass/core.scss */
 #chatBoxButton {
   position: absolute;
   top: 10px;
@@ -581,7 +580,7 @@ p {
 
 /**********************************************************/
 /* CHAT BOX */
-/* line 462, ../sass/core.scss */
+/* line 461, ../sass/core.scss */
 #chatBoxContainer {
   margin-left: 385px;
   height: 30%;
@@ -593,7 +592,7 @@ p {
   position: relative;
 }
 
-/* line 470, ../sass/core.scss */
+/* line 469, ../sass/core.scss */
 #chatBox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -605,7 +604,7 @@ p {
   padding-bottom: 27px;
 }
 
-/* line 478, ../sass/core.scss */
+/* line 477, ../sass/core.scss */
 #chatMessages {
   height: 100%;
   -moz-box-sizing: border-box;
@@ -615,16 +614,16 @@ p {
   padding: 10px 15px;
   overflow: auto;
 }
-/* line 484, ../sass/core.scss */
+/* line 483, ../sass/core.scss */
 #chatMessages .chatMessage {
   margin: 5px 0px;
 }
-/* line 488, ../sass/core.scss */
+/* line 487, ../sass/core.scss */
 #chatMessages .chatMessageAuthor {
   font-weight: bold;
 }
 
-/* line 493, ../sass/core.scss */
+/* line 492, ../sass/core.scss */
 #chatInputContainer {
   position: absolute;
   bottom: 0px;
@@ -636,7 +635,7 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 501, ../sass/core.scss */
+/* line 500, ../sass/core.scss */
 #chatInputContainer input {
   display: block;
   width: 100%;
@@ -644,7 +643,7 @@ p {
   border: 0px;
   margin: 0px;
 }
-/* line 509, ../sass/core.scss */
+/* line 508, ../sass/core.scss */
 #chatInputContainer input:focus {
   outline: none;
   border: none;

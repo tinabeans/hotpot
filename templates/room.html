@@ -126,37 +126,37 @@
 						{% endif %}
 						-->
 						
-						<div class="widgets">
-							<nav class="widgetNav">
-								<a href="" class="badgePickerButton widgetButton">Badges</a>
-								<a href="" class="notepadButton widgetButton">Cooking Notes</a>
-							</nav>
-							
-							<div class="badgePicker widget">
-								<a href="" class="closeButton">Close</a>
-								<p>Click on a badge to award it to your cooking buddy.</p>
-								<ul>
-									<li><a href="">OCD</a></li>
-									<li><a href="">Picasso</a></li>
-									<li><a href="">Samurai Ninja</a></li>
-								</ul>
-							</div><!-- #badgePicker -->
-							
-							<div class="notepad widget">
-								<a href="" class="closeButton">Close</a>
-								<p>Use this space to jot down impressions, surprises, questions and answers.</p>
-								<form class="foodnoteForm">
-									<textarea name="note" class="note"></textarea>
-									<input type="submit" />
-								</form>
-							</div><!-- #notepad -->
-						
-						</div><!-- #widgets -->
-						
-						
 					</li>
 					{% endfor %}				
 				</ol>
+						
+				<div id="widgets">
+					<nav id="widgetNav">
+						<a href="" id="badgePickerButton" class="widgetButton">Badges</a>
+						<a href="" id="notepadButton" class="widgetButton">Cooking Notes</a>
+					</nav>
+					
+					<div id="badgePicker" class="widget">
+						<a href="" class="closeButton">Close</a>
+						<p>Click on a badge to award it to your cooking buddy.</p>
+						<ul>
+							<li><a href="">OCD</a></li>
+							<li><a href="">Picasso</a></li>
+							<li><a href="">Samurai Ninja</a></li>
+						</ul>
+					</div><!-- #badgePicker -->
+					
+					<div id="notepad" class="widget">
+						<a href="" class="closeButton">Close</a>
+						<p>Use this space to jot down impressions, surprises, questions and answers.</p>
+						<form id="foodnoteForm">
+							<textarea name="note" class="note"></textarea>
+							<input type="submit" />
+						</form>
+					</div><!-- #notepad -->
+				
+				</div><!-- #widgets -->
+				
 			</section><!-- #steps -->
 			
 		</section><!-- #recipe -->

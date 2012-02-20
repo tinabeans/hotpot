@@ -116,7 +116,7 @@ $(document).ready(function() {
 	// WIDGETS
 	
 	var toggleWidget = function($button, widgetSelector){
-		var $widget = $button.closest('.widgets').children(widgetSelector);
+		var $widget = $(widgetSelector);
 		
 		$widget.siblings('.widget').hide();
 		$widget.toggle();
@@ -125,19 +125,19 @@ $(document).ready(function() {
 		$button.toggleClass('active');
 	};
 	
-	$('.widgetNav a').click(function(e){
+	$('#widgetNav a').click(function(e){
 		e.preventDefault();
 		
-		// second argument is the class of the button minus the "Button" part, used as a selector for the panel to show/hide
-		toggleWidget($(this), '.' + $(this).attr('class').split('Button')[0]);
+		// second argument is the id of the button minus the "Button" part, used as a selector for the panel to show/hide
+		toggleWidget($(this), '#' + $(this).attr('id').split('Button')[0]);
 	});
 	
-	$('.widgets .closeButton').click(function(e){
+	$('#widgets .closeButton').click(function(e){
 		e.preventDefault();
 		$(this).parent().hide();
 		
 		// remove .active class from the widget's button too
-		$(this).closest('.widgets').children('.widgetNav').children().removeClass('active');
+		$('#widgetNav').children().removeClass('active');
 	});
 	
 	
@@ -145,7 +145,7 @@ $(document).ready(function() {
 	// FOODNOTES
 	
 	// submits the foodnote
-	$('.foodnoteForm').submit(function(e){
+	$('#foodnoteForm').submit(function(e){
 		e.preventDefault();
 		
 		// "this" is the form element
