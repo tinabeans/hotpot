@@ -285,12 +285,14 @@ def doStuffWithStuffFromTornado():
 		dataForResponse = {
 			'type' : requestJSON['type'],
 			'data' : {
-				'userId' : userInfo['name'],
-				'chatMessage' : data['chatMessage']
+				'username' : userInfo['name'],
+				'stepNumber' : data['stepNumber'],
+				'userId' : requestJSON['userId']
 			}
 		}
 	
 	# use json.dumps() instead of str() because on the other end we need a well-formatted JSON string with double-quotes
+	print dataForResponse
 	return json.dumps(dataForResponse)
 
 

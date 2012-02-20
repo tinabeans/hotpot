@@ -33,45 +33,83 @@
 <div id="container">
 	
 	<div id="recipeContainer">
-	
-		<nav id="recipeNav">
-			<a href="" id="ingredientsButton">Ingredients</a>
-	
-			<ul id="stepTabs">
-			{% for step in recipe.steps %}
-				<li {% if loop.first %}class="currentStep"{% endif %}>
-					<a href="" id="stepTab-{{ loop.index }}">{{ loop.index }}</a>
-				</li>
-			{% endfor %}
-			</ul>
-			
-			<div id="stepsNav">
-				<a href="#" id="startButton">Start</a>
-				<a href="#" id="prevButton">Previous</a>
-				<a href="#" id="nextButton">Next</a>
-			</div>
-		</nav><!-- #timeline -->
 		
 		<section id="recipe" data-id="{{ recipe._id }}">
 		
-			<h1 id="recipeTitle">{{ recipe.title }}</h1>	
-		
-			<section id="ingredients" style="display:none;">
-				<a href="" class="closeButton">Close</a>
-				<ul>
-				{% for ingredient in recipe.ingredients %}
-					<li>{{ ingredient.name }} {% if ingredient.amount is defined %}({{ ingredient.amount }}){% endif %}</li>
+			<h1 id="recipeTitle">{{ recipe.title }}</h1>
+			
+			<nav id="recipeNav">
+				<ul id="stepTabs">
+				{% set stepCounter = 1 %}
+				{% for step in recipe.steps %}
+					<li class="{{ step.type }} {% if loop.first %}currentStep{% endif %}">
+						{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
+							{% set stepNumber = stepCounter %}
+							{% set stepCounter = stepCounter + 1 %}
+						{% else %}
+							{% set stepNumber = step.type %}
+						{% endif %}
+						<a href="" id="stepTab-{{ step.id }}">{{ stepNumber }}</a>
+					</li>
 				{% endfor %}
 				</ul>
-			</section><!-- #ingredients -->
-			
+				
+				<div id="stepsNav">
+					<a href="#" id="startButton">Start</a>
+					<a href="#" id="prevButton">Previous</a>
+					<a href="#" id="nextButton">Next</a>
+				</div>
+			</nav><!-- #recipeNav -->
 			
 			<section id="steps">
 				<ol>
 					{% for step in recipe.steps %}
-					<li id="step-{{ loop.index }}" class="step {{ step.type }}" {% if loop.first %}style="display:block;"{% endif %}>
+					<li id="step-{{ step.id }}" class="step {{ step.type }}" {% if loop.first %}style="display:block;"{% endif %}>
 						{{ step.text|safe }}
 						
+						{% if step.type == "ingredients" %}
+						<ul>
+						{% for ingredient in recipe.ingredients %}
+							<li>{{ ingredient.name }} {% if ingredient.amount is defined %}({{ ingredient.amount }}){% endif %}</li>
+						{% endfor %}
+						</ul>
+						{% endif %}
+						
+						{% if step.extra is defined %}
+						<section class="extra">
+							<h1>Protip!</h1>
+							{{ step.extra|safe }}
+						</section>
+						{% endif %}
+						
+						<div class="widgets">
+							<nav class="widgetNav">
+								<a href="" class="badgePickerButton widgetButton">Badges</a>
+								<a href="" class="notepadButton widgetButton">Cooking Notes</a>
+							</nav>
+							
+							<div class="badgePicker widget">
+								<a href="" class="closeButton">Close</a>
+								<p>Click on a badge to award it to your cooking buddy.</p>
+								<ul>
+									<li><a href="">OCD</a></li>
+									<li><a href="">Picasso</a></li>
+									<li><a href="">Samurai Ninja</a></li>
+								</ul>
+							</div><!-- #badgePicker -->
+							
+							<div class="notepad widget">
+								<a href="" class="closeButton">Close</a>
+								<p>Use this space to jot down impressions, surprises, questions and answers.</p>
+								<form>
+									<textarea></textarea>
+									<input type="submit" />
+								</form>
+							</div><!-- #notepad -->
+						
+						</div><!-- #widgets -->
+						
+						<!--
 						{% if step.snippets is defined %}
 							{% for snippet in step.snippets %}
 							<section class="snippet {{ snippet.type }}" data-id="{{ snippet._id }}">
@@ -99,6 +137,7 @@
 							{% endfor %}
 							
 						{% endif %}
+						-->
 					</li>
 					{% endfor %}				
 				</ol>

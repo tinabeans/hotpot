@@ -225,16 +225,26 @@ p {
 	width:60px;
 }
 	
-#stepTabs li a {
-	display:block;
-	border-right:0px;
-	padding:7px;
-	margin:0px 0px 3px 0px;
-	font-family: $sans;
-	font-weight: bold;
-	font-size:1.2em;
-	@include border-top-left-radius(5px);
-	@include border-bottom-left-radius(5px);
+#stepTabs li {
+	position:relative;
+
+	.positionMarker {
+		position: absolute;
+		top: 0;
+		left: 30px;
+	}
+	
+	a {
+		display:block;
+		border-right:0px;
+		padding:7px;
+		margin:0px 0px 3px 0px;
+		font-family: $sans;
+		font-weight: bold;
+		font-size:1.2em;
+		@include border-top-left-radius(5px);
+		@include border-bottom-left-radius(5px);
+	}
 }
 
 #stepsNav {
@@ -255,7 +265,6 @@ p {
 
 #recipe {
 	height: 100%;
-	margin-left: 60px;
 }
 
 #recipeTitle {
@@ -297,13 +306,20 @@ p {
 
 #steps {
 	@include box-sizing(border-box);
+	position: relative;
 	height:100%;
-	padding:30px;
-	overflow: auto;
+	overflow: hidden;
 	background:#fff;
 	font-size:1.75em;
-	
-	li ul {
+}
+
+.step {	
+	@include box-sizing(border-box);
+	padding:30px;
+	height: 100%;
+	overflow-y: auto;
+
+	ul {
 		margin-left:20px;
 		
 		li {
@@ -318,7 +334,8 @@ p {
 	background:#fff;
 }
 
-.protip, .foodnote {
+
+.snippet, .extra {
 	font-size:.7em;
 	margin:30px 0px;
 	
@@ -344,6 +361,48 @@ p {
 	display:none;
 }
 
+/**********************************************************/
+/* WIDGETS */
+
+.badgePicker, .notepad {
+	border:1px solid #666;
+	background:#fff;
+	position: absolute;
+	left:25px;
+	bottom: 37px;
+	width:230px;
+	@include box-sizing(border-box);
+	padding: 20px;
+	font-size:14px;
+	display:none;
+}
+
+.widgetNav {
+	position: absolute;
+	bottom:0;
+	left:25px;
+	width:230px;
+	text-align: right;
+	padding:10px 0px;
+	font-size:16px;
+	background:#fff;
+	
+	a {
+		@include box-sizing(border-box);
+		display: inline-block;
+		padding:5px 7px;
+		margin:1px;
+	}
+	
+	a.active {
+		background: #fff;
+		border:1px solid #666;
+		border-top:1px solid #fff;
+		position: relative;
+		margin:0;
+		z-index: 999;
+	}
+}
 
 /**********************************************************/
 /* VIDEOS */

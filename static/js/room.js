@@ -1,22 +1,51 @@
 $(document).ready(function() {
+	
+	/****************************************************************************************/
+	// INITIALIZATION STUFF
+	
+	// start a new connection when you enter the room
+	socket = new io.Socket('letsgohotpot.com', {'port' : 7778});
+	socket.connect();
+	
+	// useful variables
+	var currentUserId = $('#userId').text();
+	
 
 	/****************************************************************************************/
 	// RECIPE NAVIGATION
 	
 	var sendCurrentStep = function(){
-		var currentStepNumber = $('#stebTabs .currentStep a').attr('id').split('-')[1];
+		console.log('sending');
+		var currentStepNumber = $('#stepTabs .currentStep a').attr('id').split('-')[1];
 		
 		var socketMessage = JSON.stringify({
 			'type' : 'recipeStep',
 			'data' : {
 				'stepNumber' : currentStepNumber
 			},
-			'userId' :  $('#userId').text()
+			'userId' :  currentUserId
 		});
+		
+		socket.send(socketMessage);
+	};
+	
+	// callback for socket.on('message')
+	var updateRecipeStepPositions = function(data) {
+		console.log(data);
+		
+		// no need to update step position markers for yourself
+		if (data.userId !== currentUserId) {
+		
+			// remove existing user position marker for this user
+			$('.positionMarker[data-id="' + data.userId + '"]').remove();
+			$stepTabToAddMarkerTo = $('#stepTab-' + data.stepNumber).parent();
+			$stepTabToAddMarkerTo.append('<div class="positionMarker" data-id=' + data.userId + '>' + data.username + '</div>');
+		}
 	};
 
 	// Clicking on a recipe step switches the view to that step
 	$('#stepTabs li a').click(function(e) {
+		console.log('click');
 		e.preventDefault();
 		$('.step').hide();
 		$('#stepTabs .currentStep').removeClass('currentStep');
@@ -31,22 +60,22 @@ $(document).ready(function() {
 	
 	var goToPrevStep = function() {
 		$('#stepTabs .currentStep').prev().find('a').click();
-		sendCurrentStep();
 	};
 	
 	var goToNextStep = function() {
 		$('#stepTabs .currentStep').next().find('a').click();
-		sendCurrentStep();
 	};
 	
 	$(document.documentElement).keydown(function(e){
-	
+		console.log('key');
 		// left or up key
 		if(e.keyCode === 37 || e.keyCode === 38)	{
+			console.log('prev');
 			goToPrevStep();
 		}
 		// right or down key
 		else if (e.keyCode === 39 || e.keyCode === 40) {
+			console.log('next');
 			goToNextStep();
 		}
 	});
@@ -83,14 +112,37 @@ $(document).ready(function() {
 		$(this).toggleClass('crossedOut');
 	});
 	
+	/****************************************************************************************/
+	// WIDGETS
+	
+	var toggleWidget = function($button, widgetSelector){
+		var $widget = $button.closest('.widgets').children(widgetSelector);
+		
+		$widget.siblings('.widget').hide();
+		$widget.toggle();
+		
+		$button.siblings().removeClass('active');
+		$button.toggleClass('active');
+	};
+	
+	$('.widgetNav a').click(function(e){
+		e.preventDefault();
+		
+		// second argument is the class of the button minus the "Button" part, used as a selector for the panel to show/hide
+		toggleWidget($(this), '.' + $(this).attr('class').split('Button')[0]);
+	});
+	
+	$('.widgets .closeButton').click(function(e){
+		e.preventDefault();
+		$(this).parent().hide();
+		
+		// remove .active class from the widget's button too
+		$(this).closest('.widgets').children('.widgetNav').children().removeClass('active');
+	});
+	
 	
 	/****************************************************************************************/
-	// SOCKET.IO STUFF!!!
-	
-	// start a new connection when you enter the room
-	socket = new io.Socket('letsgohotpot.com', {'port' : 7778});
-	socket.connect();
-	
+	// FOODNOTES
 	
 	// submits the foodnote
 	$('.foodnoteForm').submit(function(e){
@@ -111,7 +163,7 @@ $(document).ready(function() {
 				'snippet_id': $(this).closest('.snippet').attr('data-id'),
 				'recipe_id': $('#recipe').attr('data-id')
 			},
-			'userId': $('#userId').text()
+			'userId': currentUserId
 		});
 		
 		socket.send(socketMessage);
@@ -147,7 +199,7 @@ $(document).ready(function() {
 				'data': {
 					'chatMessage' : chatMessage
 				},
-				'userId' : $('#userId').text()
+				'userId' : currentUserId
 			});
 			
 			socket.send(socketMessage);
@@ -179,8 +231,12 @@ $(document).ready(function() {
 			updateUserNotes(data);
 		}
 		
-		if(messageJSON['type'] == 'chat') {
+		else if(messageJSON['type'] == 'chat') {
 			updateChatMessages(data);
+		}
+		
+		else if(messageJSON['type'] == 'recipeStep') {
+			updateRecipeStepPositions(data);
 		}
 		
 	});
