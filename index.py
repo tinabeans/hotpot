@@ -153,6 +153,28 @@ def logout():
 
 
 ##############################################################################
+# RECIPE
+
+@app.route('/meals/<recipe>')
+def showRecipe(recipe):
+	
+	recipe = db.recipes.find_one({ 'slug' : recipe })
+	
+	return flask.render_template( 'recipe.html', recipe=recipe )
+
+
+##############################################################################
+# LOGIN
+
+@app.route('/invite/<recipe>')
+def showInviteForm(recipe):
+	
+	recipe = db.recipes.find_one({ 'slug' : recipe })
+	
+	return flask.render_template('invite.html', recipe=recipe)
+
+
+##############################################################################
 # ROOM
 
 @app.route('/<recipe>/room/<roomId>')
@@ -164,14 +186,16 @@ def showRoom(recipe, roomId):
 		room = db.rooms.find_one({'_id' : ObjectId(roomId)})
 		recipe = recipes.find_one({'slug' : recipe})
 		
-		# grab all the foodNotes in the database from this room
+		# grab all the foodNotes related to this room
 		foodNotesInThisRoom = list(db.foodNotes.find({'roomId' : ObjectId(roomId)}))
 		
+		# and insert them into the recipe object
 		for step in recipe['steps']:
+		
 			snippetsToInsert = []
 			stepId = step['id'];
 			
-			# now grab all the badges, foodNotes etc. that are related to this step
+			# the for-loop below is for grabbing just the foodNotes related to this step
 			
 			# crazy Python list comprehension magic to grab only the foodnotes related to this room & step
 			# the first 'note' represents what gets returned by the filtered list
@@ -189,8 +213,11 @@ def showRoom(recipe, roomId):
 				snippetsToInsert.append(snippet)
 			
 			step['snippets'] = snippetsToInsert
-					
-		return flask.render_template('room.html', recipe=recipe, userId=flask.session['email'], roomId=roomId )
+		
+		# grab all the badges too
+		badges = list(db.badges.find())
+			
+		return flask.render_template('room.html', recipe=recipe, userId=flask.session['email'], roomId=roomId, badges=badges )
 
 
 def postFoodnote():
@@ -235,32 +262,7 @@ def doStuffWithStuffFromTornado():
 	if 'userId' in requestJSON:
 		userInfo = users.find_one({ 'email' : requestJSON['userId'] })
 	
-	'''
-	if requestJSON['type'] == 'userNote':
-	
-		# put together the new user note to store in the database!
-		newUserNote = {
-			"user_id": requestJSON['userId'], # users are uniquely identified by their email
-			"recipe_id": ObjectId(data['recipe_id']),
-			"snippet_id": ObjectId(data['snippet_id']),
-			"text": data['text']
-		}
-		
-		# now insert the data, and store the id
-		newUserNoteId = userNotes.insert(newUserNote);
-		
-		# now put together some data to send back to the template...
-		dataForResponse = {
-			'type' : requestJSON['type'],
-			'data' : {
-				"snippetId": data['snippet_id'],
-				'noteId' : str(newUserNoteId),
-				'username' : userInfo['name'],
-				"text": data['text']
-			}
-		}
-	'''
-	
+	# do different things depending on what the socket message says...
 	if requestJSON['type'] == 'foodNote':
 	
 		# put together the new user note to store in the database!
@@ -306,6 +308,17 @@ def doStuffWithStuffFromTornado():
 			}
 		}
 	
+	elif requestJSON['type'] == 'focus':
+		
+		dataForResponse = {
+			'type' : requestJSON['type'],
+			'data' : {
+				'username' : userInfo['name'],
+				'userId' : requestJSON['userId'],
+				'focus' : data['focus']
+			}
+		}
+				
 	# use json.dumps() instead of str() because on the other end we need a well-formatted JSON string with double-quotes
 	print dataForResponse
 	return json.dumps(dataForResponse)

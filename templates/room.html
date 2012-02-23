@@ -140,9 +140,12 @@
 						<a href="" class="closeButton">Close</a>
 						<p>Click on a badge to award it to your cooking buddy.</p>
 						<ul>
-							<li><a href="">OCD</a></li>
-							<li><a href="">Picasso</a></li>
-							<li><a href="">Samurai Ninja</a></li>
+						{% for badge in badges %}
+							<li class="badge">
+								<a href="" id="{{ badge.slug }}">{{ badge.name }}</a>
+								<span class="description">{{ badge.description }}</span>
+							</li>
+						{% endfor %}
 						</ul>
 					</div><!-- #badgePicker -->
 					
@@ -168,6 +171,8 @@
 		<div id="videos">
 			<!-- OpenTok adds video elements here -->
 		</div>
+		<div id="partnerStatus"></div>
+		<div id="myStatus"></div>
 	</div>
 	
 	<div id="myInfo">

@@ -63,16 +63,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
+/**********************************************************/
 /* TYPOGRAPHY */
+/**********************************************************/
 /* COLORS */
+/**********************************************************/
 /* MIXINS */
+/**********************************************************/
 /* TAG REDEFINITIONS */
-/* line 22, ../sass/core.scss */
+/* line 57, ../sass/core.scss */
 html {
   height: 100%;
 }
 
-/* line 26, ../sass/core.scss */
+/* line 61, ../sass/core.scss */
 body {
   margin: 0px;
   padding: 0px;
@@ -82,52 +86,97 @@ body {
   height: 100%;
 }
 
-/* line 35, ../sass/core.scss */
+/* line 70, ../sass/core.scss */
 a {
   text-decoration: none;
   color: blue;
 }
 
+/* line 76, ../sass/core.scss */
+p {
+  line-height: 1.4em;
+  margin: 0px 0px 15px 0px;
+}
+
+/**********************************************************/
+/* COMMON */
 /* div, section {
 	border:1px solid #eee;
 	background:#fff; 
 }*/
-/* line 46, ../sass/core.scss */
-p {
-  line-height: 1.4em;
-}
-
-/**********************************************************/
-/* HOME */
-/* line 54, ../sass/core.scss */
+/* line 90, ../sass/core.scss */
 #mainHeader, #homeIntro, #featuredMeals, #mainFooter {
   width: 90%;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 58, ../sass/core.scss */
+/* line 94, ../sass/core.scss */
+#mainHeader {
+  padding: 20px 0px 0px 0px;
+  margin-bottom: 30px;
+}
+
+/* line 99, ../sass/core.scss */
+#mainFooter {
+  text-align: center;
+  clear: both;
+  color: #666;
+  padding: 60px 0px 30px 0px;
+}
+
+/* line 106, ../sass/core.scss */
+#logo img {
+  width: 180px;
+}
+
+/* line 110, ../sass/core.scss */
+#mainContainer {
+  width: 90%;
+  margin: 0px auto;
+}
+
+/* line 115, ../sass/core.scss */
+#title {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+/* line 120, ../sass/core.scss */
+.intro {
+  font-size: 1.4em;
+}
+
+/**********************************************************/
+/* CSS for different page types */
+/**********************************************************/
+/* HOME */
+/* line 5, ../sass/_home.scss */
+#home #mainContainer {
+  width: 100%;
+}
+/* line 9, ../sass/_home.scss */
 #home #mainHeader {
   padding-top: 30px;
 }
-/* line 61, ../sass/core.scss */
+/* line 12, ../sass/_home.scss */
 #home #mainHeader h1 {
   text-align: center;
   margin: 30px;
 }
-/* line 65, ../sass/core.scss */
+/* line 16, ../sass/_home.scss */
 #home #mainHeader h1 img {
   width: 300px;
 }
 
-/* line 71, ../sass/core.scss */
+/* line 23, ../sass/_home.scss */
 #topNav {
   position: absolute;
   top: 0;
   right: 0;
   padding: 20px 0px;
 }
-/* line 77, ../sass/core.scss */
+/* line 29, ../sass/_home.scss */
 #topNav a {
   margin: 0px 20px;
   display: inline-block;
@@ -136,24 +185,24 @@ p {
   letter-spacing: .1em;
 }
 
-/* line 86, ../sass/core.scss */
+/* line 38, ../sass/_home.scss */
 #introBlurb {
   text-align: center;
   font-size: 42px;
   padding-bottom: 10px;
 }
 
-/* line 92, ../sass/core.scss */
+/* line 44, ../sass/_home.scss */
 #featuredRecipes {
   clear: both;
 }
 
-/* line 96, ../sass/core.scss */
+/* line 48, ../sass/_home.scss */
 #joinUs {
   text-align: center;
   margin: 30px;
 }
-/* line 100, ../sass/core.scss */
+/* line 52, ../sass/_home.scss */
 #joinUs a {
   width: 180px;
   display: inline-block;
@@ -171,7 +220,7 @@ p {
   font-style: italic;
   margin: 5px;
 }
-/* line 112, ../sass/core.scss */
+/* line 42, ../sass/core.scss */
 #joinUs a .small {
   margin-top: 7px;
   display: block;
@@ -183,22 +232,22 @@ p {
   font-style: normal;
 }
 
-/* line 127, ../sass/core.scss */
+/* line 59, ../sass/_home.scss */
 #joinUs a:hover {
   background: #777;
 }
 
-/* line 131, ../sass/core.scss */
+/* line 63, ../sass/_home.scss */
 #featuredMealsContainer {
   background: #eee;
   margin: 60px 0px;
 }
 
-/* line 136, ../sass/core.scss */
+/* line 68, ../sass/_home.scss */
 #featuredMeals {
   padding: 30px 0px;
 }
-/* line 139, ../sass/core.scss */
+/* line 71, ../sass/_home.scss */
 #featuredMeals h1 {
   font-family: "proxima-nova", sans-serif;
   margin-bottom: 30px;
@@ -207,14 +256,14 @@ p {
   font-size: 18px;
   text-align: center;
 }
-/* line 149, ../sass/core.scss */
+/* line 81, ../sass/_home.scss */
 #featuredMeals .mealList li {
   position: relative;
   display: inline-block;
   width: 30%;
   margin-right: 4%;
 }
-/* line 155, ../sass/core.scss */
+/* line 87, ../sass/_home.scss */
 #featuredMeals .mealList li h2 {
   position: absolute;
   top: 28px;
@@ -224,7 +273,7 @@ p {
   padding: 7px 10px 10px 10px;
   font-size: 20px;
 }
-/* line 165, ../sass/core.scss */
+/* line 97, ../sass/_home.scss */
 #featuredMeals .mealList li img {
   border: 10px solid #fff;
   width: 100%;
@@ -233,14 +282,14 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 172, ../sass/core.scss */
+/* line 104, ../sass/_home.scss */
 #featuredMeals .mealList li.last {
   margin-right: 0%;
 }
 
 /**********************************************************/
-/* ROOM */
-/* line 182, ../sass/core.scss */
+/* COOKING ROOM */
+/* line 5, ../sass/_room.scss */
 #container {
   width: 95%;
   margin: 0px auto;
@@ -250,13 +299,13 @@ p {
   box-sizing: border-box;
 }
 
-/* line 188, ../sass/core.scss */
+/* line 11, ../sass/_room.scss */
 #room #container {
   height: 95%;
   padding: 20px 0px;
 }
 
-/* line 193, ../sass/core.scss */
+/* line 16, ../sass/_room.scss */
 #room header {
   width: 100%;
   height: 5%;
@@ -267,7 +316,7 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 200, ../sass/core.scss */
+/* line 23, ../sass/_room.scss */
 #room header h1 {
   font-size: 20px;
   width: 95%;
@@ -276,8 +325,8 @@ p {
 }
 
 /**********************************************************/
-/* RECIPE */
-/* line 212, ../sass/core.scss */
+/* COOKING ROOM: RECIPE */
+/* line 35, ../sass/_room.scss */
 #recipeContainer {
   position: relative;
   float: left;
@@ -291,23 +340,23 @@ p {
   height: 100%;
 }
 
-/* line 222, ../sass/core.scss */
+/* line 45, ../sass/_room.scss */
 #recipeNav {
   float: left;
   width: 60px;
 }
 
-/* line 227, ../sass/core.scss */
+/* line 50, ../sass/_room.scss */
 #stepTabs li {
   position: relative;
 }
-/* line 230, ../sass/core.scss */
+/* line 53, ../sass/_room.scss */
 #stepTabs li .positionMarker {
   position: absolute;
   top: 0;
   left: 30px;
 }
-/* line 236, ../sass/core.scss */
+/* line 59, ../sass/_room.scss */
 #stepTabs li a {
   display: block;
   border-right: 0px;
@@ -330,14 +379,14 @@ p {
   border-bottom-left-radius: 5px;
 }
 
-/* line 249, ../sass/core.scss */
+/* line 72, ../sass/_room.scss */
 #stepsNav {
   position: absolute;
   bottom: 20px;
   left: 80px;
 }
 
-/* line 255, ../sass/core.scss */
+/* line 78, ../sass/_room.scss */
 #ingredientsButton {
   display: block;
   width: 45px;
@@ -353,13 +402,13 @@ p {
   overflow: hidden;
 }
 
-/* line 265, ../sass/core.scss */
+/* line 88, ../sass/_room.scss */
 #recipe {
   height: 100%;
 }
 
-/* line 269, ../sass/core.scss */
-#recipeTitle {
+/* line 94, ../sass/_room.scss */
+#room #recipeTitle {
   position: absolute;
   top: 15px;
   left: 0;
@@ -370,7 +419,7 @@ p {
   letter-spacing: .15em;
 }
 
-/* line 280, ../sass/core.scss */
+/* line 107, ../sass/_room.scss */
 #ingredients {
   position: absolute;
   left: 80px;
@@ -384,23 +433,23 @@ p {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   font-size: 16px;
 }
-/* line 290, ../sass/core.scss */
+/* line 117, ../sass/_room.scss */
 #ingredients li {
   margin: 10px 0px;
   cursor: pointer;
 }
-/* line 295, ../sass/core.scss */
+/* line 122, ../sass/_room.scss */
 #ingredients .crossedOut {
   text-decoration: line-through;
 }
-/* line 299, ../sass/core.scss */
+/* line 126, ../sass/_room.scss */
 #ingredients .closeButton {
   position: absolute;
   right: 10px;
   top: 10px;
 }
 
-/* line 306, ../sass/core.scss */
+/* line 133, ../sass/_room.scss */
 #steps {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -413,7 +462,7 @@ p {
   font-size: 1.75em;
 }
 
-/* line 315, ../sass/core.scss */
+/* line 142, ../sass/_room.scss */
 .step {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -423,48 +472,48 @@ p {
   height: 100%;
   overflow-y: auto;
 }
-/* line 321, ../sass/core.scss */
+/* line 148, ../sass/_room.scss */
 .step ul {
   margin-left: 20px;
 }
-/* line 324, ../sass/core.scss */
+/* line 151, ../sass/_room.scss */
 .step ul li {
   font-size: 18px;
   margin: 10px 0px;
   list-style-type: circle;
 }
 
-/* line 332, ../sass/core.scss */
+/* line 159, ../sass/_room.scss */
 .currentStep a {
   background: #fff;
 }
 
-/* line 336, ../sass/core.scss */
+/* line 163, ../sass/_room.scss */
 .extra {
   font-size: 16px;
   margin: 30px 0px;
 }
-/* line 340, ../sass/core.scss */
+/* line 167, ../sass/_room.scss */
 .extra h1 {
-  font-size: .8em;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: .2em;
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
 
-/* line 349, ../sass/core.scss */
+/* line 172, ../sass/_room.scss */
 .snippet {
   margin: 30px 0px;
   font-size: 14px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 354, ../sass/core.scss */
+/* line 177, ../sass/_room.scss */
 .snippet p {
   line-height: 1.25em;
 }
 
-/* line 360, ../sass/core.scss */
+/* line 183, ../sass/_room.scss */
 .foodNote .postedBy {
   display: block;
   margin-top: 10px;
@@ -472,15 +521,15 @@ p {
   text-transform: uppercase;
 }
 
-/* line 368, ../sass/core.scss */
+/* line 191, ../sass/_room.scss */
 .step {
   display: none;
 }
 
 /**********************************************************/
 /* WIDGETS */
-/* line 375, ../sass/core.scss */
-#badgePicker, #notepad {
+/* line 198, ../sass/_room.scss */
+.widget {
   border: 1px solid #666;
   background: #fff;
   position: absolute;
@@ -495,8 +544,14 @@ p {
   font-size: 14px;
   display: none;
 }
+/* line 210, ../sass/_room.scss */
+.widget .closeButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
 
-/* line 389, ../sass/core.scss */
+/* line 218, ../sass/_room.scss */
 #notepad textarea {
   border: 1px solid #ccc;
   margin-top: 10px;
@@ -506,7 +561,19 @@ p {
   resize: none;
 }
 
-/* line 399, ../sass/core.scss */
+/* line 228, ../sass/_room.scss */
+.badge {
+  font-family: "proxima-nova", sans-serif;
+  margin: 10px 0px;
+}
+/* line 232, ../sass/_room.scss */
+.badge .description {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+/* line 239, ../sass/_room.scss */
 #widgetNav {
   position: absolute;
   bottom: 0;
@@ -517,7 +584,7 @@ p {
   font-size: 16px;
   background: #fff;
 }
-/* line 409, ../sass/core.scss */
+/* line 249, ../sass/_room.scss */
 #widgetNav a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -527,7 +594,7 @@ p {
   padding: 5px 7px;
   margin: 1px;
 }
-/* line 416, ../sass/core.scss */
+/* line 256, ../sass/_room.scss */
 #widgetNav a.active {
   background: #fff;
   border: 1px solid #666;
@@ -539,7 +606,7 @@ p {
 
 /**********************************************************/
 /* VIDEOS */
-/* line 429, ../sass/core.scss */
+/* line 269, ../sass/_room.scss */
 #videoContainer {
   margin-left: 385px;
   height: 70%;
@@ -550,12 +617,12 @@ p {
   position: relative;
 }
 
-/* line 436, ../sass/core.scss */
+/* line 276, ../sass/_room.scss */
 #videoContainer.fullsize {
   height: 100%;
 }
 
-/* line 440, ../sass/core.scss */
+/* line 280, ../sass/_room.scss */
 #videos {
   padding: 20px;
   height: 100%;
@@ -566,12 +633,12 @@ p {
   background: #eee;
 }
 
-/* line 447, ../sass/core.scss */
+/* line 287, ../sass/_room.scss */
 #myInfo {
   position: absolute;
 }
 
-/* line 451, ../sass/core.scss */
+/* line 291, ../sass/_room.scss */
 #chatBoxButton {
   position: absolute;
   top: 10px;
@@ -580,7 +647,7 @@ p {
 
 /**********************************************************/
 /* CHAT BOX */
-/* line 461, ../sass/core.scss */
+/* line 301, ../sass/_room.scss */
 #chatBoxContainer {
   margin-left: 385px;
   height: 30%;
@@ -592,7 +659,7 @@ p {
   position: relative;
 }
 
-/* line 469, ../sass/core.scss */
+/* line 309, ../sass/_room.scss */
 #chatBox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -604,7 +671,7 @@ p {
   padding-bottom: 27px;
 }
 
-/* line 477, ../sass/core.scss */
+/* line 317, ../sass/_room.scss */
 #chatMessages {
   height: 100%;
   -moz-box-sizing: border-box;
@@ -614,16 +681,16 @@ p {
   padding: 10px 15px;
   overflow: auto;
 }
-/* line 483, ../sass/core.scss */
+/* line 323, ../sass/_room.scss */
 #chatMessages .chatMessage {
   margin: 5px 0px;
 }
-/* line 487, ../sass/core.scss */
+/* line 327, ../sass/_room.scss */
 #chatMessages .chatMessageAuthor {
   font-weight: bold;
 }
 
-/* line 492, ../sass/core.scss */
+/* line 332, ../sass/_room.scss */
 #chatInputContainer {
   position: absolute;
   bottom: 0px;
@@ -635,7 +702,7 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 500, ../sass/core.scss */
+/* line 340, ../sass/_room.scss */
 #chatInputContainer input {
   display: block;
   width: 100%;
@@ -643,8 +710,419 @@ p {
   border: 0px;
   margin: 0px;
 }
-/* line 508, ../sass/core.scss */
+/* line 348, ../sass/_room.scss */
 #chatInputContainer input:focus {
   outline: none;
   border: none;
+}
+
+/**********************************************************/
+/* RECIPE PAGE */
+/* line 4, ../sass/_recipe.scss */
+#bigImage {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px;
+}
+/* line 10, ../sass/_recipe.scss */
+#bigImage img {
+  position: absolute;
+  top: -70%;
+  width: 100%;
+}
+
+/* line 17, ../sass/_recipe.scss */
+#descriptionContainer {
+  float: left;
+  font-size: 16px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: 30px;
+  width: 43%;
+}
+
+/* line 25, ../sass/_recipe.scss */
+#summary {
+  line-height: 1.5em;
+}
+
+/* line 29, ../sass/_recipe.scss */
+#credit {
+  font-size: .8em;
+  font-style: italic;
+}
+
+/* line 34, ../sass/_recipe.scss */
+#shoppingListContainer {
+  float: left;
+  width: 33%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: 30px;
+}
+
+/* line 41, ../sass/_recipe.scss */
+#shoppingList {
+  padding: 20px;
+  background: #eee;
+}
+/* line 45, ../sass/_recipe.scss */
+#shoppingList h1 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
+  font-family: "proxima-nova", sans-serif;
+  text-align: center;
+  font-family: "rooney-web", sans-serif;
+  margin-bottom: 15px;
+}
+/* line 52, ../sass/_recipe.scss */
+#shoppingList li {
+  font-size: 16px;
+  font-family: "proxima-nova", sans-serif;
+  padding: 10px 0px;
+  border-top: 1px dashed #ccc;
+}
+/* line 58, ../sass/_recipe.scss */
+#shoppingList li .amount {
+  float: right;
+  padding-left: 6px;
+  font-weight: bold;
+  font-size: .8em;
+}
+
+/* line 67, ../sass/_recipe.scss */
+#actions {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-left: 76%;
+  width: 24%;
+}
+/* line 71, ../sass/_recipe.scss */
+#actions h1 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
+  font-family: "proxima-nova", sans-serif;
+}
+
+/* line 76, ../sass/_recipe.scss */
+#inviteButton {
+  width: 180px;
+  display: inline-block;
+  background: #666;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  font-size: 26px;
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+  font-style: italic;
+  margin: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+/* line 42, ../sass/core.scss */
+#inviteButton .small {
+  margin-top: 7px;
+  display: block;
+  font-family: "proxima-nova", sans-serif;
+  font-weight: normal;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-style: normal;
+}
+
+/**********************************************************/
+/* INVITE PAGE */
+/* line 10, ../sass/_invite.scss */
+#inviteForm {
+  float: left;
+  width: 40%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: 30px;
+}
+/* line 16, ../sass/_invite.scss */
+#inviteForm .formItem {
+  margin-bottom: 30px;
+}
+/* line 20, ../sass/_invite.scss */
+#inviteForm label {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
+  font-family: "proxima-nova", sans-serif;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+/* line 25, ../sass/_invite.scss */
+#inviteForm input, #inviteForm textarea {
+  border: 1px solid #aaa;
+  padding: 5px;
+  margin: 0px;
+  width: 100%;
+  font-size: 14px;
+}
+/* line 33, ../sass/_invite.scss */
+#inviteForm textarea {
+  height: 100px;
+  resize: vertical;
+}
+/* line 38, ../sass/_invite.scss */
+#inviteForm .note {
+  margin-top: 5px;
+  font-style: italic;
+  font-size: 12px;
+}
+/* line 44, ../sass/_invite.scss */
+#inviteForm #chosenRecipe {
+  height: 70px;
+  padding: 15px;
+  background: #eee;
+}
+/* line 50, ../sass/_invite.scss */
+#inviteForm #recipeThumbnail {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  margin-right: 15px;
+}
+/* line 58, ../sass/_invite.scss */
+#inviteForm #recipeThumbnail img {
+  height: 100%;
+  position: absolute;
+  left: -20%;
+}
+/* line 65, ../sass/_invite.scss */
+#inviteForm #recipeTitle {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+/* line 70, ../sass/_invite.scss */
+#inviteForm #sendInviteButton {
+  width: 180px;
+  display: inline-block;
+  background: #666;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  font-size: 26px;
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+  font-style: italic;
+  margin: 5px;
+  margin: 0px;
+}
+/* line 42, ../sass/core.scss */
+#inviteForm #sendInviteButton .small {
+  margin-top: 7px;
+  display: block;
+  font-family: "proxima-nova", sans-serif;
+  font-weight: normal;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-style: normal;
+}
+
+/* line 76, ../sass/_invite.scss */
+#invitePreviewContainer {
+  margin-left: 40%;
+}
+/* line 79, ../sass/_invite.scss */
+#invitePreviewContainer h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
+  font-family: "proxima-nova", sans-serif;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+/* line 85, ../sass/_invite.scss */
+#invitePreview {
+  margin-top: 15px;
+  border: 1px solid #aaa;
+  padding: 30px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+}
+/* line 91, ../sass/_invite.scss */
+#invitePreview h1, #invitePreview h2 {
+  font-size: 36px;
+  text-align: center;
+}
+/* line 96, ../sass/_invite.scss */
+#invitePreview h1 {
+  margin: 15px;
+  font-size: 44px;
+  font-style: italic;
+}
+/* line 102, ../sass/_invite.scss */
+#invitePreview h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
+  font-family: "proxima-nova", sans-serif;
+  font-family: "rooney-web", sans-serif;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+/* line 110, ../sass/_invite.scss */
+#invitePreview #inviteMessage {
+  margin: 50px 15px;
+}
+/* line 113, ../sass/_invite.scss */
+#invitePreview #inviteMessage p {
+  font-size: 20px;
+}
+/* line 117, ../sass/_invite.scss */
+#invitePreview #inviteMessage #greeting {
+  text-align: left;
+}
+/* line 121, ../sass/_invite.scss */
+#invitePreview #inviteMessage #signature {
+  text-align: right;
+}
+/* line 126, ../sass/_invite.scss */
+#invitePreview #image {
+  position: relative;
+  margin-bottom: 30px;
+  border: 10px solid #fff;
+  height: 200px;
+  overflow: hidden;
+  -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+/* line 134, ../sass/_invite.scss */
+#invitePreview #image #caption {
+  position: absolute;
+  top: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+}
+/* line 143, ../sass/_invite.scss */
+#invitePreview #image img {
+  width: 100%;
+}
+/* line 148, ../sass/_invite.scss */
+#invitePreview #shoppingList {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 40%;
+  float: left;
+}
+/* line 153, ../sass/_invite.scss */
+#invitePreview #shoppingList h1 {
+  font-size: 13px;
+  margin: 0px 0px 15px 0px;
+  font-style: normal;
+}
+/* line 160, ../sass/_invite.scss */
+#invitePreview #detailsContainer {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-left: 40%;
+  padding-left: 30px;
+}
+/* line 168, ../sass/_invite.scss */
+#invitePreview #details dt {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
+  font-family: "proxima-nova", sans-serif;
+  padding-top: 15px;
+}
+/* line 173, ../sass/_invite.scss */
+#invitePreview #details dd {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+/* line 179, ../sass/_invite.scss */
+#invitePreview #RSVPButton {
+  width: 180px;
+  display: inline-block;
+  background: #666;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  font-size: 26px;
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+  font-style: italic;
+  margin: 5px;
+  width: 100px;
+  margin: 15px 0px 0px 0px;
+}
+/* line 42, ../sass/core.scss */
+#invitePreview #RSVPButton .small {
+  margin-top: 7px;
+  display: block;
+  font-family: "proxima-nova", sans-serif;
+  font-weight: normal;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-style: normal;
+}
+/* line 185, ../sass/_invite.scss */
+#invitePreview #howItWorks {
+  clear: both;
+  padding-top: 30px;
+}
+/* line 189, ../sass/_invite.scss */
+#invitePreview #howItWorks p {
+  font-family: "proxima-nova", sans-serif;
+  font-size: 14px;
 }

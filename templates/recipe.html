@@ -1,0 +1,40 @@
+{% extends "base/common.html" %}
+
+{% block title %}Recipe{% endblock %}
+{% block bodyId %}recipe{% endblock %}
+{% block bodyClass %}secondary{% endblock %}
+
+{% block main %}
+
+<a href="">Return to all Meals</a>
+<h1 id="title">{{ recipe.title }}</h1>
+
+<div id="bigImage"><img src="/static/images/food/{{ recipe.slug }}.jpg" /></div>
+
+<div id="descriptionContainer">
+	<p id="description" class="intro">{{ recipe.description|safe }}</p>
+	<p id="summary">{{ recipe.summary|safe }}</p>
+	<p id="credit">Many thanks to <a href="{{recipe.creditURL}}" target="_blank">{{ recipe.credit }}</a> for the original recipe and photography.</p>
+</div><!--#descriptionContainer -->
+
+<div id="shoppingListContainer">
+<section id="shoppingList">
+	<h1>Shopping List</h1>	
+	<ul>
+	{% for ingredient in recipe.ingredients %}
+		<li><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
+	{% endfor %}
+	</ul>
+</section><!--#shoppingList -->
+</div><!--#shopplingListContainer-->
+
+<aside id="actions">
+	<a href="" id="inviteButton">Invite a Friend to Cook</a>
+	
+	<section id="recentlyCookedBy">
+		<h1>Recently Cooked By</h1>
+		[ insert avatars here ]
+	</section>
+</aside><!-- #actions -->
+
+{% endblock main %}

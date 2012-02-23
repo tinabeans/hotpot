@@ -1,0 +1,195 @@
+/**********************************************************/
+/* INVITE PAGE */
+
+@mixin labelType {
+	@include smallHeading;
+	font-size:12px;
+	margin-bottom:5px;
+}
+
+#inviteForm {
+	float:left;
+	width:40%;
+	@include box-sizing(border-box);
+	padding-right:30px;
+	
+	.formItem {
+		margin-bottom:30px;
+	}
+	
+	label {
+		display:block;
+		@include labelType;
+	}
+	
+	input, textarea {
+		border:1px solid #aaa;
+		padding:5px;
+		margin:0px;
+		width:100%;
+		font-size:14px;
+	}
+	
+	textarea {
+		height:100px;
+		resize: vertical;
+	}
+	
+	.note {
+		margin-top:5px;
+		font-style:italic;
+		font-size:12px;
+	}
+	
+	#chosenRecipe {
+		height:70px;
+		padding:15px;
+		background:#eee;
+	}
+	
+	#recipeThumbnail {
+		width:70px;
+		height:70px;
+		overflow: hidden;
+		position: relative;
+		float:left;
+		margin-right:15px;
+	
+		img {
+			height:100%;
+			position: absolute;
+			left:-20%;
+		}
+	}
+	
+	#recipeTitle {
+		font-size:18px;
+		margin-bottom:5px;
+	}
+	
+	#sendInviteButton {
+		@include bigButton;
+		margin:0px;
+	}
+}
+
+#invitePreviewContainer {
+	margin-left:40%;
+	
+	h3 {
+		@include labelType;
+	}
+	
+}
+
+#invitePreview {
+	margin-top:15px;
+	border:1px solid #aaa;
+	padding:30px;
+	@include border-radius(15px);
+	
+	h1, h2 {
+		font-size:36px;
+		text-align: center;
+	}
+	
+	h1 {
+		margin:15px;
+		font-size:44px;
+		font-style: italic;
+	}
+	
+	h2 {
+		@include smallHeading;
+		font-family: $serif;
+		font-size: 16px;
+		text-align: center;
+		margin-bottom:15px;
+	}
+
+	#inviteMessage {
+		margin:50px 15px;
+	
+		p {
+			font-size:20px;
+		}
+		
+		#greeting {
+			text-align:left;
+		}
+		
+		#signature {
+			text-align: right;
+		}
+	}
+	
+	#image {
+		position: relative;
+		margin-bottom:30px;
+		border:10px solid #fff;
+		height:200px;
+		overflow:hidden;
+		@include box-shadow(0px 2px 4px rgba(0,0,0,.3));
+		
+		#caption {
+			position: absolute;
+			top:20px;
+			background:rgba(0,0,0,.5);
+			padding:10px;
+			font-size:20px;
+			color:#fff;
+		}
+		
+		img {
+			width:100%;
+		}
+	}
+
+	#shoppingList {
+		@include box-sizing(border-box);
+		width: 40%;
+		float:left;
+	
+		h1 {
+			font-size: 13px;
+			margin:0px 0px 15px 0px;
+			font-style: normal;
+		}
+	}
+	
+	#detailsContainer {
+		@include box-sizing(border-box);
+		margin-left: 40%;
+		padding-left:30px;
+	}
+	
+	#details {
+		
+		dt {
+			@include smallHeading;
+			padding-top:15px;
+		}
+		
+		dd {
+			font-size:22px;
+			margin-bottom:15px;
+		}
+	}
+	
+	#RSVPButton {
+		@include bigButton;
+		width:100px;
+		margin: 15px 0px 0px 0px;
+	}
+
+	#howItWorks {
+		clear:both;
+		padding-top:30px;
+		
+		p {
+			font-family:$sans;
+			font-size:14px;
+		}
+	}
+}
+

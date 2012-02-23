@@ -15,6 +15,7 @@ $(document).ready(function() {
 	// RECIPE NAVIGATION
 	
 	var sendCurrentStep = function(){
+		$('#widgets .closeButton').click();
 		console.log('sending');
 		var currentStepNumber = $('#stepTabs .currentStep a').attr('id').split('-')[1];
 		
@@ -148,27 +149,33 @@ $(document).ready(function() {
 	$('#foodnoteForm').submit(function(e){
 		e.preventDefault();
 		
-		// "this" is the form element
-		var $formElement = $(this);
-		var noteText = $formElement.children('.note').val();
+		// "this" is the form
+		var $form = $(this);
+		var noteText = $form.children('.note').val();
 		
-		// send the data directly through sockets instead of AJAX because it's more convenient given my server structure
-		// (if we used AJAX, Flask would have needed to initiate the Flask-to-Tornado communication,
-		// and I would need to write Tornado code to handle that communication)
+		if(noteText !== "") {
 		
-		var socketMessage = JSON.stringify({
-			'type': 'foodNote',
-			'data': {
-				'text' : noteText,
-				'roomId' : $('body').attr('data-id'),
-				'stepId' : $('#steps li:visible').attr('id').split('-')[1]
-			},
-			'userId': currentUserId
-		});
-		
-		socket.send(socketMessage);
-		
-		$formElement.siblings('.closeButton').click();
+			// send the data directly through sockets instead of AJAX because it's more convenient given my server structure
+			// (if we used AJAX, Flask would have needed to initiate the Flask-to-Tornado communication,
+			// and I would need to write Tornado code to handle that communication)
+			
+			var socketMessage = JSON.stringify({
+				'type': 'foodNote',
+				'data': {
+					'text' : noteText,
+					'roomId' : $('body').attr('data-id'),
+					'stepId' : $('#steps li:visible').attr('id').split('-')[1]
+				},
+				'userId': currentUserId
+			});
+			
+			socket.send(socketMessage);
+			
+			// clear the field
+			var noteText = $form.children('.note').val('');
+			
+			$form.siblings('.closeButton').click();
+		}
 	});
 	
 	// used as callback in socket.on('message')
@@ -186,6 +193,31 @@ $(document).ready(function() {
 		var distanceFromTop = $newFoodNote.position().top;
 		$elementToAddFoodNoteTo.animate({scrollTop : distanceFromTop});
 	};
+	
+	
+	/****************************************************************************************/
+	// BADGES
+	
+	$('#badgePicker .badge a').click(function(e){
+		e.preventDefault();
+		
+		var badgeSlug = $(this).attr('id');
+		
+		var socketMessage = JSON.stringify({
+			'type' : 'badge',
+			'data' : {
+				"giverId": currentUserId,
+				"receiverId": "t@tinabeans.com", // THIS IS DONE HARDCODINGLY! FIX LATER
+				"badgeSlug": badgeSlug,
+				"roomId": $(body).attr('data-id'),
+				"stepId": $('#steps li:visible').attr('id').split('-')[1]
+			}
+		});
+		
+		socket.send(socketMessage);
+		
+		$form.siblings('.closeButton').click();
+	});
 	
 	
 	/****************************************************************************************/
@@ -231,10 +263,57 @@ $(document).ready(function() {
 	};
 	
 	/****************************************************************************************/
+	// WINDOW FOCUS DETECTION
+	// for letting the other party know whether your attention is focused on another window
+	
+	var onBlur = function() {
+		console.log('blur');
+		socket.send(JSON.stringify({
+			'type' : 'focus',
+			'data' : {
+				'focus' : false
+			},
+			'userId' : currentUserId
+		}));
+	};
+	
+	var onFocus = function(){
+		console.log('focus');
+		socket.send(JSON.stringify({
+			'type' : 'focus',
+			'data' : {
+				'focus' : true
+			},
+			'userId' : currentUserId
+		}));
+	};
+	
+	if (/*@cc_on!@*/false) { // if Internet Explorer
+		document.onfocusin = onFocus;
+		document.onfocusout = onBlur;
+	}
+	else {
+		window.onfocus = onFocus;
+		window.onblur = onBlur;
+	}
+	
+	// called inside socket.on('message')
+	var updateUserFocus = function(data) {
+		if (data.userId === currentUserId) {
+			$('#myStatus').html('my focus is ' + data.focus);
+		}
+		else {
+			$('#partnerStatus').html(data.username + '\'s focus is ' + data.focus);
+		}
+	}
+	
+	
+	/****************************************************************************************/
 	// SOCKET IO STUFF
 	
 	// handles socket messages received from backend
 	socket.on('message', function(message){
+		console.log(message)
 	    var messageJSON = JSON.parse(message);
 	    var data = messageJSON.data;
 		
@@ -248,6 +327,10 @@ $(document).ready(function() {
 		
 		else if(messageJSON['type'] == 'recipeStep') {
 			updateRecipeStepPositions(data);
+		}
+		
+		else if(messageJSON['type'] == 'focus') {
+			updateUserFocus(data);
 		}
 		
 	});

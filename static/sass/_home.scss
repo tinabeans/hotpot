@@ -1,0 +1,108 @@
+/**********************************************************/
+/* HOME */
+
+#home {
+	#mainContainer {
+		width:100%;
+	}
+
+	#mainHeader {
+		padding-top:30px;
+	
+		h1 {
+			text-align: center;
+			margin:30px;
+			
+			img {
+				width:300px;
+			}
+		}
+	}
+}
+
+#topNav {
+	position: absolute;
+	top: 0;
+	right:0;
+	padding:20px 0px;
+	
+	a {
+		margin:0px 20px;
+		display:inline-block;
+		font-family: $sans;
+		text-transform: uppercase;
+		letter-spacing:.1em;
+	}
+}
+
+#introBlurb {
+	text-align: center;
+	font-size:42px;
+	padding-bottom:10px;
+}
+
+#featuredRecipes {
+	clear:both;
+}
+
+#joinUs {
+	text-align: center;
+	margin:30px;
+	
+	a {
+		@include bigButton;
+	}
+}
+	
+
+
+#joinUs a:hover {
+	background: #777;
+}
+
+#featuredMealsContainer {
+	background:#eee;
+	margin:60px 0px;
+}
+
+#featuredMeals {
+	padding: 30px 0px;
+	
+	h1 {
+		font-family: $sans;
+		margin-bottom:30px;
+		text-transform: uppercase;
+		letter-spacing: .1em;
+		font-size:18px;
+		text-align: center;
+	}
+
+	.mealList {
+		li {
+			position: relative;
+			display:inline-block;
+			width:30%;
+			margin-right:4%;
+			
+			h2 {
+				position: absolute;
+				top: 28px;
+				left:10px;
+				background:rgba(0,0,0,.6);
+				color:#fff;
+				padding:7px 10px 10px 10px;
+				font-size:20px;
+			}
+			
+			img {
+				border:10px solid #fff;
+				width:100%;
+				@include box-sizing(border-box);
+			}
+		}
+		
+		li.last {
+			margin-right:0%;
+		}
+	}
+}

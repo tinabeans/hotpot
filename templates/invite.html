@@ -1,0 +1,136 @@
+{% extends "base/common.html" %}
+
+{% block title %}Invite a Friend{% endblock %}
+
+{% block customJS %}{% endblock %}
+
+{% block bodyId %}invite{% endblock %}
+
+{% block main %}
+
+<h1 id="title">Invite a Friend to Cook</h1>
+
+<div id="inviteFormContainer">
+
+	<form id="inviteForm">
+		
+		<div class="formItem">
+			<label>Selected Meal</label>
+			<input type="hidden" value="{{ recipe.slug }}" />
+			<div id="chosenRecipe">
+				<div id="recipeThumbnail"><img src="/static/images/food/{{ recipe.slug }}.jpg" /></div>
+				<div id="recipeTitle">{{ recipe.title }}</div>
+				<a href="">Change meal</a>
+			</div>
+		</div>
+		
+		<div class="formItem">
+			<label>Friend's Email Address</label>
+			<input type="text" />
+			<p class="note">Just one email address, please. We're working on cooking with multiple friends soon!</p>
+		</div>
+		
+		<div class="formItem">
+			<label>Friend's Name</label>
+			<input type="text" />
+		</div>
+		
+		<div class="formItem">
+			<label>Short Personalized Message</label>
+			<textarea>Let's cook together on Hotpot!</textarea>
+		</div>
+		
+		<div class="formItem">
+			<label>Date</label>
+			[insert datepicker widget]
+		</div>
+		
+		<div class="formItem">
+			<label>Time</label>
+			<select>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+			</select>
+			:
+			<select>
+				<option>00</option>
+				<option>15</option>
+				<option>30</option>
+				<option>45</option>
+			</select>
+			<select>
+				<option>AM</option>
+				<option>PM</option>
+			</select>
+		</div>
+				
+		<a href="" id="sendInviteButton">Send Invitation</a>
+	</form>
+	
+</div><!-- #inviteFormContainer -->
+
+<div id="invitePreviewContainer">
+
+	<h3>Invitation Preview</h1>
+	
+	<section id="invitePreview">
+		<h1>Let's Cook!</h1>
+		
+		<div id="inviteMessage">
+			<p id="greeting">Hi <span id="friendName">[friend name]</span>,</p>
+			<div class="messageBody">
+				<p>Let's cook together on Hotpot! </p>
+			</div>
+			<p id="signature">- [username]</p>
+		</div>
+				
+		<h2>The Tasty Details:</h2>
+		
+		<div id="image">
+			<img src="/static/images/food/{{ recipe.slug }}.jpg" />
+			<span id="caption">We'll Be Making: {{ recipe.title }}</span>
+		</div>
+		
+		<section id="shoppingList">
+			<h1>Shopping List</h1>	
+			<ul>
+			{% for ingredient in recipe.ingredients %}
+				<li><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
+			{% endfor %}
+			</ul>
+		</section><!--#shoppingList -->
+		
+		<div id="detailsContainer">
+			<dl id="details">
+				<dt>Date</dt>
+				<dd>[date from datepicker]</dd>
+				
+				<dt>Time</dt>
+				<dd>[time]</dd>
+				
+				<dt>Place</dt>
+				<dd>Our kitchens, via Hotpot</dd>
+			</dl>
+			
+			<a href="" id="RSVPButton">RSVP</a>
+		</div>
+		
+		<div id="howItWorks">
+			<h2>How It Works</h3>
+			<p>Hotpot is a website that lets friends cook together in real time. Upon accepting this invitation, you'll get a unique link to an online cooking room where we can meet and make this meal together. If you're still confused, check out the website at <a href="http://letsgohotpot.com">LetsGoHotpot.com</a></p>
+		</div>
+	
+	</section>
+</div><!-- #invitePreviewContainer -->
+
+{% endblock main %}

@@ -1,26 +1,52 @@
 from pymongo.objectid import ObjectId
 
 def start(db):
+	'''
+	db.badges.remove()
 
 	db.badges.save({
-		"name" : "",
-		"description" : ""
+		"name" : "Stoveside Hero",
+		"slug" : "StovesideHero",
+		"description" : "You help people survive, nay, thrive in the kitchen jungle."
+	})
+	
+	db.badges.save({
+		"name" : "Kitchen Buddy",
+		"slug" : "KitchenBuddy",
+		"description" : "With you around, even waiting for water to boil is fun."
+	})
+	
+	db.badges.save({
+		"name" : "Fearless Fryer",
+		"slug" : "FearlessFryer",
+		"description" : "Boldly going where no cook has gone before..."
 	})
 	
 
-	'''
+	
 	db.rooms.save({
 		"recipe_id" : "4f3352569685aa28d5000008",
 		"users" : [ "t@tinabeans.com", "nanotone@gmail.com"]
 	})
 	
+	'''
 	
 	db.recipes.remove()
 
 	recipe = {
 		"_id" : ObjectId("4f3352569685aa28d5000008"),
-		"slug": "LemonGarlicKalePasta",
-		"title": "Lemon Garlic Pasta with Kale",
+		"slug" : "LemonGarlicKalePasta",
+		
+		"description" : """Kale is a hearty leafy green commonly found at farmer's vegetables in the late fall through early winter. Here, the nutty flavor of saut&eacute;ed kale is paired with a bright splash of lemon&mdash;a fragrant reminder that spring is not too far off!""",
+		
+		"summary" : """This pasta dish comes together quickly with just a few ingredients. The kale is saut&eacute;ed in garlic, while lemons and more garlic infuse gently into a fragrant olive oil "sauce." Because of it's so easy to prepare, it's great for a low-key and healthy weeknight supper. It's also vegetarian, making it an ideal candidate for Meatless Mondays.""",
+		
+		"title" : "Lemon Garlic Pasta with Kale",
+		
+		"credit" : "The Cilantropist",
+		
+		"creditURL" : "http://cilantropist.blogspot.com/2011/01/easy-lemon-garlic-kale-pasta.html",
+		
 		"ingredients": [
 			{
 				"name" : "kale",
@@ -158,5 +184,3 @@ def start(db):
 	}
 	
 	db.recipes.save(recipe)
-	
-	'''
