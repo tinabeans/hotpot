@@ -5,6 +5,7 @@ import hashlib, random, json
 
 # nice 3rd party stuff
 import flask
+from flaskext.mail import Mail, Message
 import pymongo
 from pymongo.objectid import ObjectId
 
@@ -13,6 +14,10 @@ import saveStuff
 
 # creating new Flask instance
 app = flask.Flask(__name__)
+app.config.from_pyfile('config.cfg')
+
+# start up mail object to send messages via SMTP
+mail = Mail(app)
 
 # really secret secret key! used for Flask sessions...
 app.secret_key = '''nTi!"2Oq#j2WdnUsQziTn52y8xGfZl:"MH*H|`yVClNLA4UG'GIvq1qc%Gk}vu<'''
@@ -164,14 +169,36 @@ def showRecipe(recipe):
 
 
 ##############################################################################
-# LOGIN
+# INVITE
 
 @app.route('/invite/<recipe>')
 def showInviteForm(recipe):
 	
 	recipe = db.recipes.find_one({ 'slug' : recipe })
 	
+	print flask.render_template('invite.html', recipe=recipe)
+	
 	return flask.render_template('invite.html', recipe=recipe)
+
+
+@app.route('/inviteEmail/<recipe>')
+def sendEmail(recipe):
+	'''
+	print app.config['MAIL_PORT'], app.config['DEFAULT_MAIL_SENDER']
+
+	msg = Message("Hello", recipients=["nanotone@gmail.com"])
+	
+	msg.body = "NUBPLANT"
+	msg.html = "<b>NUBPLANT</b>"
+	
+	mail.send(msg)
+	
+	return "hi"
+	'''
+	
+	recipe = db.recipes.find_one({ 'slug' : recipe })
+	
+	return flask.render_template('inviteEmail.html', recipe=recipe)
 
 
 ##############################################################################
