@@ -855,7 +855,7 @@ p {
 
 /**********************************************************/
 /* INVITE PAGE */
-/* line 10, ../sass/_invite.scss */
+/* line 11, ../sass/_invite.scss */
 #inviteForm {
   float: left;
   width: 40%;
@@ -865,11 +865,11 @@ p {
   box-sizing: border-box;
   padding-right: 30px;
 }
-/* line 16, ../sass/_invite.scss */
+/* line 17, ../sass/_invite.scss */
 #inviteForm .formItem {
   margin-bottom: 30px;
 }
-/* line 20, ../sass/_invite.scss */
+/* line 21, ../sass/_invite.scss */
 #inviteForm label {
   display: block;
   font-size: 13px;
@@ -880,7 +880,7 @@ p {
   font-size: 12px;
   margin-bottom: 5px;
 }
-/* line 25, ../sass/_invite.scss */
+/* line 26, ../sass/_invite.scss */
 #inviteForm input, #inviteForm textarea {
   border: 1px solid #aaa;
   padding: 5px;
@@ -888,24 +888,24 @@ p {
   width: 100%;
   font-size: 14px;
 }
-/* line 33, ../sass/_invite.scss */
+/* line 34, ../sass/_invite.scss */
 #inviteForm textarea {
   height: 100px;
   resize: vertical;
 }
-/* line 38, ../sass/_invite.scss */
+/* line 39, ../sass/_invite.scss */
 #inviteForm .note {
   margin-top: 5px;
   font-style: italic;
   font-size: 12px;
 }
-/* line 44, ../sass/_invite.scss */
+/* line 45, ../sass/_invite.scss */
 #inviteForm #chosenRecipe {
   height: 70px;
   padding: 15px;
   background: #eee;
 }
-/* line 50, ../sass/_invite.scss */
+/* line 51, ../sass/_invite.scss */
 #inviteForm #recipeThumbnail {
   width: 70px;
   height: 70px;
@@ -914,18 +914,18 @@ p {
   float: left;
   margin-right: 15px;
 }
-/* line 58, ../sass/_invite.scss */
+/* line 59, ../sass/_invite.scss */
 #inviteForm #recipeThumbnail img {
   height: 100%;
   position: absolute;
   left: -20%;
 }
-/* line 65, ../sass/_invite.scss */
+/* line 66, ../sass/_invite.scss */
 #inviteForm #recipeTitle {
   font-size: 18px;
   margin-bottom: 5px;
 }
-/* line 70, ../sass/_invite.scss */
+/* line 71, ../sass/_invite.scss */
 #inviteForm #sendInviteButton {
   width: 180px;
   display: inline-block;
@@ -943,6 +943,10 @@ p {
   font-style: italic;
   margin: 5px;
   margin: 0px;
+  font-family: "rooney-web", sans-serif;
+  border: 0;
+  width: auto;
+  font-weight: normal;
 }
 /* line 42, ../sass/core.scss */
 #inviteForm #sendInviteButton .small {
@@ -956,11 +960,11 @@ p {
   font-style: normal;
 }
 
-/* line 76, ../sass/_invite.scss */
+/* line 81, ../sass/_invite.scss */
 #invitePreviewContainer {
   margin-left: 40%;
 }
-/* line 79, ../sass/_invite.scss */
+/* line 84, ../sass/_invite.scss */
 #invitePreviewContainer h3 {
   font-size: 13px;
   text-transform: uppercase;
@@ -971,31 +975,31 @@ p {
   margin-bottom: 5px;
 }
 
-/* line 85, ../sass/_invite.scss */
+/* line 90, ../sass/_invite.scss */
 #invitePreview {
-  margin-top: 15px;
+  background: #eee;
+  padding: 20px;
+}
+
+/* line 95, ../sass/_invite.scss */
+#invitation {
+  background: #fff;
   border: 1px solid #aaa;
   padding: 30px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -o-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -khtml-border-radius: 15px;
-  border-radius: 15px;
 }
-/* line 91, ../sass/_invite.scss */
-#invitePreview h1, #invitePreview h2 {
+/* line 100, ../sass/_invite.scss */
+#invitation h1, #invitation h2 {
   font-size: 36px;
   text-align: center;
 }
-/* line 96, ../sass/_invite.scss */
-#invitePreview h1 {
+/* line 105, ../sass/_invite.scss */
+#invitation h1 {
   margin: 15px;
   font-size: 44px;
   font-style: italic;
 }
-/* line 102, ../sass/_invite.scss */
-#invitePreview h2 {
+/* line 111, ../sass/_invite.scss */
+#invitation h2 {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: .2em;
@@ -1006,22 +1010,22 @@ p {
   text-align: center;
   margin-bottom: 15px;
 }
-/* line 110, ../sass/_invite.scss */
-#invitePreview #inviteMessage {
+/* line 119, ../sass/_invite.scss */
+#invitation #inviteMessage {
   margin: 50px 15px;
   font-family: "proxima-nova", sans-serif;
   font-size: 18px;
 }
-/* line 115, ../sass/_invite.scss */
-#invitePreview #inviteMessage #greeting {
+/* line 124, ../sass/_invite.scss */
+#invitation #inviteMessage #greeting {
   text-align: left;
 }
-/* line 119, ../sass/_invite.scss */
-#invitePreview #inviteMessage #signature {
+/* line 128, ../sass/_invite.scss */
+#invitation #inviteMessage #signature {
   text-align: right;
 }
-/* line 124, ../sass/_invite.scss */
-#invitePreview #image {
+/* line 133, ../sass/_invite.scss */
+#invitation #image {
   position: relative;
   margin-bottom: 30px;
   border: 10px solid #fff;
@@ -1032,8 +1036,8 @@ p {
   -o-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
-/* line 132, ../sass/_invite.scss */
-#invitePreview #image #caption {
+/* line 141, ../sass/_invite.scss */
+#invitation #image #caption {
   display: block;
   position: absolute;
   top: 20px;
@@ -1042,17 +1046,17 @@ p {
   font-size: 20px;
   color: #fff;
 }
-/* line 141, ../sass/_invite.scss */
-#invitePreview #image #caption .subtitle {
+/* line 150, ../sass/_invite.scss */
+#invitation #image #caption .subtitle {
   font-style: italic;
   font-size: 14px;
 }
-/* line 147, ../sass/_invite.scss */
-#invitePreview #image img {
+/* line 156, ../sass/_invite.scss */
+#invitation #image img {
   width: 100%;
 }
-/* line 152, ../sass/_invite.scss */
-#invitePreview #shoppingList {
+/* line 161, ../sass/_invite.scss */
+#invitation #shoppingList {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -1060,14 +1064,14 @@ p {
   width: 40%;
   float: left;
 }
-/* line 157, ../sass/_invite.scss */
-#invitePreview #shoppingList h1 {
+/* line 166, ../sass/_invite.scss */
+#invitation #shoppingList h1 {
   font-size: 13px;
   margin: 0px 0px 15px 0px;
   font-style: normal;
 }
-/* line 164, ../sass/_invite.scss */
-#invitePreview #detailsContainer {
+/* line 173, ../sass/_invite.scss */
+#invitation #detailsContainer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -1075,8 +1079,8 @@ p {
   margin-left: 40%;
   padding-left: 30px;
 }
-/* line 172, ../sass/_invite.scss */
-#invitePreview #details dt {
+/* line 181, ../sass/_invite.scss */
+#invitation #details dt {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: .2em;
@@ -1084,13 +1088,13 @@ p {
   font-family: "proxima-nova", sans-serif;
   padding-top: 15px;
 }
-/* line 177, ../sass/_invite.scss */
-#invitePreview #details dd {
+/* line 186, ../sass/_invite.scss */
+#invitation #details dd {
   font-size: 22px;
   margin-bottom: 15px;
 }
-/* line 183, ../sass/_invite.scss */
-#invitePreview #RSVPButton {
+/* line 192, ../sass/_invite.scss */
+#invitation #RSVPButton {
   width: 180px;
   display: inline-block;
   background: #666;
@@ -1110,7 +1114,7 @@ p {
   margin: 15px 0px 0px 0px;
 }
 /* line 42, ../sass/core.scss */
-#invitePreview #RSVPButton .small {
+#invitation #RSVPButton .small {
   margin-top: 7px;
   display: block;
   font-family: "proxima-nova", sans-serif;
@@ -1120,20 +1124,20 @@ p {
   letter-spacing: .1em;
   font-style: normal;
 }
-/* line 189, ../sass/_invite.scss */
-#invitePreview #howItWorks {
+/* line 198, ../sass/_invite.scss */
+#invitation #howItWorks {
   clear: both;
   padding-top: 30px;
 }
-/* line 193, ../sass/_invite.scss */
-#invitePreview #howItWorks p {
+/* line 202, ../sass/_invite.scss */
+#invitation #howItWorks p {
   font-family: "proxima-nova", sans-serif;
   font-size: 14px;
 }
 
 /**********************************************************/
 /* DATE PICKER PLUGIN */
-/* line 203, ../sass/_invite.scss */
+/* line 212, ../sass/_invite.scss */
 #datePicker {
   width: 300px;
   margin-top: 10px;
@@ -1141,7 +1145,7 @@ p {
   padding: 10px;
   position: relative;
 }
-/* line 210, ../sass/_invite.scss */
+/* line 219, ../sass/_invite.scss */
 #datePicker h2 {
   text-align: center;
   font-size: 14px;
@@ -1153,24 +1157,24 @@ p {
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 218, ../sass/_invite.scss */
+/* line 227, ../sass/_invite.scss */
 #datePicker .dp-nav-prev {
   position: absolute;
   left: 10px;
   top: 10px;
 }
-/* line 224, ../sass/_invite.scss */
+/* line 233, ../sass/_invite.scss */
 #datePicker .dp-nav-next {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-/* line 230, ../sass/_invite.scss */
+/* line 239, ../sass/_invite.scss */
 #datePicker .dp-nav-prev .disabled {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 234, ../sass/_invite.scss */
+/* line 243, ../sass/_invite.scss */
 #datePicker .dp-nav-prev-year, #datePicker .dp-nav-next-year, #datePicker .dp-nav-prev-month, #datePicker .dp-nav-next-month {
   display: inline-block;
   background: #fff;
@@ -1185,24 +1189,24 @@ p {
   color: #000;
   font-weight: bold;
 }
-/* line 244, ../sass/_invite.scss */
+/* line 253, ../sass/_invite.scss */
 #datePicker .dp-nav-prev-year:hover, #datePicker .dp-nav-next-year:hover, #datePicker .dp-nav-prev-month:hover, #datePicker .dp-nav-next-month:hover {
   background: #eee;
 }
-/* line 248, ../sass/_invite.scss */
+/* line 257, ../sass/_invite.scss */
 #datePicker .dp-nav-next-year {
   float: right;
 }
-/* line 252, ../sass/_invite.scss */
+/* line 261, ../sass/_invite.scss */
 #datePicker .dp-nav-prev-year, #datePicker .dp-nav-prev-month {
   margin-right: 5px;
 }
-/* line 256, ../sass/_invite.scss */
+/* line 265, ../sass/_invite.scss */
 #datePicker .dp-nav-next-year, #datePicker .dp-nav-next-month {
   margin-left: 5px;
 }
 
-/* line 261, ../sass/_invite.scss */
+/* line 270, ../sass/_invite.scss */
 table.jCalendar {
   width: 300px;
   border: 1px solid #aaa;
@@ -1212,11 +1216,11 @@ table.jCalendar {
   border-spacing: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 270, ../sass/_invite.scss */
+/* line 279, ../sass/_invite.scss */
 table.jCalendar th {
   padding: 5px 8px;
 }
-/* line 274, ../sass/_invite.scss */
+/* line 283, ../sass/_invite.scss */
 table.jCalendar td {
   color: #aaa;
   padding: 3px 5px;
@@ -1228,51 +1232,51 @@ table.jCalendar td {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 281, ../sass/_invite.scss */
+/* line 290, ../sass/_invite.scss */
 table.jCalendar td.current-month {
   background: #eee;
   color: #000;
 }
-/* line 286, ../sass/_invite.scss */
+/* line 295, ../sass/_invite.scss */
 table.jCalendar td.today {
   font-weight: bold;
 }
-/* line 291, ../sass/_invite.scss */
+/* line 300, ../sass/_invite.scss */
 table.jCalendar td.selected,
 table.jCalendar td.selected.dp-hover {
   background: #f66;
   color: #fff;
 }
-/* line 296, ../sass/_invite.scss */
+/* line 305, ../sass/_invite.scss */
 table.jCalendar td.dp-hover, table.jCalendar tr.activeWeekHover td {
   background: #ddd;
   color: #000;
   cursor: pointer;
 }
-/* line 302, ../sass/_invite.scss */
+/* line 311, ../sass/_invite.scss */
 table.jCalendar tr.selectedWeek td {
   background: #f66;
   color: #fff;
 }
-/* line 307, ../sass/_invite.scss */
+/* line 316, ../sass/_invite.scss */
 table.jCalendar td.disabled {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   cursor: default;
 }
-/* line 312, ../sass/_invite.scss */
+/* line 321, ../sass/_invite.scss */
 table.jCalendar td.disabled.dp-hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   background: #eee;
   color: #000;
 }
-/* line 318, ../sass/_invite.scss */
+/* line 327, ../sass/_invite.scss */
 table.jCalendar td.disabled.other-month.dp-hover {
   background: #eee;
   color: #aaa;
 }
-/* line 325, ../sass/_invite.scss */
+/* line 334, ../sass/_invite.scss */
 table.jCalendar td.unselectable,
 table.jCalendar td.unselectable:hover,
 table.jCalendar td.unselectable.dp-hover {

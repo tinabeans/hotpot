@@ -202,6 +202,12 @@ def sendEmail(recipe):
 	
 	return flask.render_template('inviteEmail.html', recipe=recipe)
 
+@app.route('/sendInvite', methods=['POST'])
+def sendInvite():
+	
+
+	return str(flask.request.form);
+
 
 ##############################################################################
 # ROOM
@@ -275,7 +281,6 @@ def postFoodnote():
 	}
 	
 	return str(dataForResponse)
-
 
 
 ##############################################################################

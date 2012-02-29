@@ -16,37 +16,38 @@
 
 <div id="inviteFormContainer">
 
-	<form id="inviteForm">
+	<form id="inviteForm" method="POST" action="/sendInvite">
 		
 		<div class="formItem">
 			<label>Selected Meal</label>
-			<input type="hidden" value="{{ recipe.slug }}" />
 			<div id="chosenRecipe">
 				<div id="recipeThumbnail"><img src="/static/images/food/{{ recipe.slug }}.jpg" /></div>
 				<div id="recipeTitle">{{ recipe.title }}</div>
 				<a href="">Change meal</a>
 			</div>
+			<input type="hidden" value="{{ recipe.slug }}" name="recipe" />
 		</div>
 		
 		<div class="formItem">
 			<label>Friend's Email Address</label>
-			<input type="text" />
+			<input type="text" name="to" />
 			<p class="note">Just one email address, please. We're working on cooking with multiple friends soon!</p>
 		</div>
 		
 		<div class="formItem">
 			<label>Friend's Name</label>
-			<input type="text" id="friendNameInput" />
+			<input type="text" name="friendName" id="friendNameInput" />
 		</div>
 		
 		<div class="formItem">
 			<label>Short Personalized Message</label>
-			<textarea id="messageBodyInput">Let&rsquo;s cook together on Hotpot!</textarea>
+			<textarea id="messageBodyInput" name="message">Let&rsquo;s cook together on Hotpot!</textarea>
 		</div>
 		
 		<div class="formItem">
 			<label>Date</label>
 			<div id="datePicker"></div>
+			<input type="hidden" id="selectedDateInput" />
 		</div>
 		
 		<div class="formItem">
@@ -77,64 +78,70 @@
 				<option selected>PM</option>
 			</select>
 		</div>
+		
+		<input type="hidden" id="datetimeInput" name="datetime" value="0" />
+		
+		<input type="hidden" name="from" value="{{ user.email }}" />
 				
-		<a href="" id="sendInviteButton">Send Invitation</a>
+		<button type="submit" id="sendInviteButton">Send Invitation</button>
 	</form>
 	
 </div><!-- #inviteFormContainer -->
 
 <div id="invitePreviewContainer">
-
+	
 	<h3>Invitation Preview</h1>
 	
-	<section id="invitePreview">
-		<h1>Let&rsquo;s Cook!</h1>
-		
-		<div id="inviteMessage">
-			<p id="greeting">Hi <span id="friendName">John Smith</span>,</p>
-			<div id="messageBody">
-				<p>Let's make {{ recipe.title }} together on Hotpot.</p>
-			</div>
-			<p id="signature">Cheers,<br/>{{ user.name }}</p>
-		</div>
-				
-		<h2>The Tasty Details</h2>
-		
-		<div id="image">
-			<img src="/static/images/food/{{ recipe.slug }}.jpg" />
-			<span id="caption"><span class="subtitle">Let's Make:</span> {{ recipe.title }}</span>
-		</div>
-		
-		<section id="shoppingList">
-			<h1>Shopping List</h1>	
-			<ul>
-			{% for ingredient in recipe.ingredients %}
-				<li><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
-			{% endfor %}
-			</ul>
-		</section><!--#shoppingList -->
-		
-		<div id="detailsContainer">
-			<dl id="details">
-				<dt>Date</dt>
-				<dd id="selectedDate">[date from datepicker]</dd>
-				
-				<dt>Time</dt>
-				<dd id="selectedTime"><span id="selectedHour">0</span>:<span id="selectedMinute"></span> <span id="selectedAMPM"></span></dd>
-				
-				<dt>Place</dt>
-				<dd>Our kitchens, via Hotpot</dd>
-			</dl>
+	<div id="invitePreview">
+		<section id="invitation">
+			<h1>Let&rsquo;s Cook!</h1>
 			
-			<a href="#" id="RSVPButton">RSVP</a>
-		</div>
+			<div id="inviteMessage">
+				<p id="greeting">Hi <span id="friendName">John Smith</span>,</p>
+				<div id="messageBody">
+					<p>Let's make {{ recipe.title }} together on Hotpot.</p>
+				</div>
+				<p id="signature">Cheers,<br/>{{ user.name }}</p>
+			</div>
+					
+			<h2>The Tasty Details</h2>
+			
+			<div id="image">
+				<img src="/static/images/food/{{ recipe.slug }}.jpg" />
+				<span id="caption"><span class="subtitle">Let's Make:</span> {{ recipe.title }}</span>
+			</div>
+			
+			<section id="shoppingList">
+				<h1>Shopping List</h1>	
+				<ul>
+				{% for ingredient in recipe.ingredients %}
+					<li><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
+				{% endfor %}
+				</ul>
+			</section><!--#shoppingList -->
+			
+			<div id="detailsContainer">
+				<dl id="details">
+					<dt>Date</dt>
+					<dd id="selectedDate">[DATE FROM DATEPICKER]</dd>
+					
+					<dt>Time</dt>
+					<dd id="selectedTime"><span id="selectedHour">0</span>:<span id="selectedMinute"></span> <span id="selectedAMPM"></span></dd>
+					
+					<dt>Place</dt>
+					<dd>Our kitchens, via Hotpot</dd>
+				</dl>
+				
+				<a href="#" id="RSVPButton">RSVP</a>
+			</div>
+			
+			<div id="howItWorks">
+				<h2>How It Works</h3>
+				<p>Hotpot is a website that lets friends cook together in real time. Upon accepting this invitation, you'll get a unique link to an online cooking room where we can meet and make this meal together. If you're still confused, check out the website at <a href="http://letsgohotpot.com">LetsGoHotpot.com</a></p>
+			</div>
 		
-		<div id="howItWorks">
-			<h2>How It Works</h3>
-			<p>Hotpot is a website that lets friends cook together in real time. Upon accepting this invitation, you'll get a unique link to an online cooking room where we can meet and make this meal together. If you're still confused, check out the website at <a href="http://letsgohotpot.com">LetsGoHotpot.com</a></p>
-		</div>
-	
-	</section>
+		</section><!-- #invitation -->
+	</div><!-- #invitePreview -->
 </div><!-- #invitePreviewContainer -->
 
 {% endblock main %}

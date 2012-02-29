@@ -1,6 +1,7 @@
 /**********************************************************/
 /* INVITE PAGE */
 
+
 @mixin labelType {
 	@include smallHeading;
 	font-size:12px;
@@ -70,6 +71,10 @@
 	#sendInviteButton {
 		@include bigButton;
 		margin:0px;
+		font-family: $serif;
+		border:0;
+		width:auto;
+		font-weight: normal;
 	}
 }
 
@@ -83,10 +88,14 @@
 }
 
 #invitePreview {
-	margin-top:15px;
+	background:#eee;
+	padding:20px;
+}
+
+#invitation {
+	background:#fff;
 	border:1px solid #aaa;
 	padding:30px;
-	@include border-radius(15px);
 	
 	h1, h2 {
 		font-size:36px;

@@ -116,6 +116,8 @@ $(document).ready(function(){
 	/****************************************************************************************/
 	// DATE PICKER
 	
+	var datetime = new Date();
+	
 	// create the date picker
 	$('#datePicker').datePicker({
 		inline:true
@@ -123,13 +125,17 @@ $(document).ready(function(){
 	
 	// when a date is clicked...
 	$('#datePicker').bind( 'dateSelected', function(e, selectedDate, $td) {
-		console.log('You selected ' + selectedDate);
-		var month = selectedDate.getMonth();
-		var date = selectedDate.getDate();
-		var weekday = selectedDate.getDay();
-		var year = selectedDate.getFullYear();
+		console.log(selectedDate);
 		
-		switch(month){
+		datetime.setMonth(selectedDate.getMonth());
+		datetime.setDate(selectedDate.getDate());
+		datetime.setFullYear(selectedDate.getFullYear());
+		
+		console.log(datetime);
+		
+		var month, weekday;
+		
+		switch(selectedDate.getMonth()){
 			case 0: month = "January"; break;
 			case 1: month = "February"; break;
 			case 2: month = "March"; break;
@@ -144,7 +150,7 @@ $(document).ready(function(){
 			case 11: month = "December";
 		}
 		
-		switch(weekday){
+		switch(selectedDate.getDay()){
 			case 0: weekday = "Sunday"; break;
 			case 1: weekday = "Monday"; break;
 			case 2: weekday = "Tuesday"; break;
@@ -155,7 +161,7 @@ $(document).ready(function(){
 		}
 		
 		// display selected date on invite preview
-		$('#selectedDate').html(weekday + ", " + month + " " + date + ", " + year)
+		$('#selectedDate').html(weekday + ", " + month + " " + selectedDate.getDate() + ", " + selectedDate.getFullYear())
 		
 	});
 	
@@ -177,8 +183,35 @@ $(document).ready(function(){
 		$('#selectedAMPM').html($(this).val());
 	});
 	
+	// set the default time on invite preview
 	$('#timePickerHour').change();
 	$('#timePickerMinute').change();
 	$('#timePickerAMPM').change();
+	
+	/****************************************************************************************/
+	// INVITE FORM SUBMISSION
+	
+	$('#inviteForm').submit(function(e){
+		
+		// need to convert from AM/PM to military-style time
+		var hour = $('#timePickerHour').val();
+		
+		if (hour === "12" && $('#timePickerAMPM').val() === 'AM') {
+			hour = 0;
+		}
+		else if (hour === "12" && $('#timePickerAMPM').val() === 'PM') {
+			hour = 12;
+		}
+		else if ($('#timePickerAMPM').val() === "PM" ) {
+			hour = Number(hour) + 12;
+		}
+		
+		// finish populating the date object out of all the bits n pieces from the form
+		datetime.setHours(hour);
+		datetime.setMinutes($('#timePickerMinute').val());
+		
+		// set hidden field to unix time for passing to backend
+		$('#datetimeInput').val(datetime.getTime());
+	});
 	
 });
