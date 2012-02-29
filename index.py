@@ -176,9 +176,11 @@ def showInviteForm(recipe):
 	
 	recipe = db.recipes.find_one({ 'slug' : recipe })
 	
-	print flask.render_template('invite.html', recipe=recipe)
-	
-	return flask.render_template('invite.html', recipe=recipe)
+	if 'email' not in flask.session:
+		return flask.redirect('/login')
+	else:
+		user = db.users.find_one({'email' : flask.session['email']})
+		return flask.render_template('invite.html', recipe=recipe, user=user )
 
 
 @app.route('/inviteEmail/<recipe>')

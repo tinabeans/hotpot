@@ -2,7 +2,11 @@
 
 {% block title %}Invite a Friend{% endblock %}
 
-{% block customJS %}{% endblock %}
+{% block customJS %}
+<script src="/static/js/lib/date.js" type="text/javascript"></script>
+<script src="/static/js/lib/jquery.datePicker.js" type="text/javascript"></script>
+<script src="/static/js/invite.js" type="text/javascript"></script>
+{% endblock %}
 
 {% block bodyId %}invite{% endblock %}
 
@@ -32,29 +36,29 @@
 		
 		<div class="formItem">
 			<label>Friend's Name</label>
-			<input type="text" />
+			<input type="text" id="friendNameInput" />
 		</div>
 		
 		<div class="formItem">
 			<label>Short Personalized Message</label>
-			<textarea>Let&rsquo;s cook together on Hotpot!</textarea>
+			<textarea id="messageBodyInput">Let&rsquo;s cook together on Hotpot!</textarea>
 		</div>
 		
 		<div class="formItem">
 			<label>Date</label>
-			[insert datepicker widget]
+			<div id="datePicker"></div>
 		</div>
 		
 		<div class="formItem">
 			<label>Time</label>
-			<select>
+			<select id="timePickerHour">
 				<option>1</option>
 				<option>2</option>
 				<option>3</option>
 				<option>4</option>
 				<option>5</option>
 				<option>6</option>
-				<option>7</option>
+				<option selected>7</option>
 				<option>8</option>
 				<option>9</option>
 				<option>10</option>
@@ -62,15 +66,15 @@
 				<option>12</option>
 			</select>
 			:
-			<select>
+			<select id="timePickerMinute">
 				<option>00</option>
 				<option>15</option>
 				<option>30</option>
 				<option>45</option>
 			</select>
-			<select>
+			<select id="timePickerAMPM">
 				<option>AM</option>
-				<option>PM</option>
+				<option selected>PM</option>
 			</select>
 		</div>
 				
@@ -87,18 +91,18 @@
 		<h1>Let&rsquo;s Cook!</h1>
 		
 		<div id="inviteMessage">
-			<p id="greeting">Hi <span id="friendName">[friend name]</span>,</p>
-			<div class="messageBody">
-				<p>Let's cook together on Hotpot! </p>
+			<p id="greeting">Hi <span id="friendName">John Smith</span>,</p>
+			<div id="messageBody">
+				<p>Let's make {{ recipe.title }} together on Hotpot.</p>
 			</div>
-			<p id="signature">- [username]</p>
+			<p id="signature">Cheers,<br/>{{ user.name }}</p>
 		</div>
 				
-		<h2>The Tasty Details:</h2>
+		<h2>The Tasty Details</h2>
 		
 		<div id="image">
 			<img src="/static/images/food/{{ recipe.slug }}.jpg" />
-			<span id="caption">We'll Be Making: {{ recipe.title }}</span>
+			<span id="caption"><span class="subtitle">Let's Make:</span> {{ recipe.title }}</span>
 		</div>
 		
 		<section id="shoppingList">
@@ -113,16 +117,16 @@
 		<div id="detailsContainer">
 			<dl id="details">
 				<dt>Date</dt>
-				<dd>[date from datepicker]</dd>
+				<dd id="selectedDate">[date from datepicker]</dd>
 				
 				<dt>Time</dt>
-				<dd>[time]</dd>
+				<dd id="selectedTime"><span id="selectedHour">0</span>:<span id="selectedMinute"></span> <span id="selectedAMPM"></span></dd>
 				
 				<dt>Place</dt>
 				<dd>Our kitchens, via Hotpot</dd>
 			</dl>
 			
-			<a href="" id="RSVPButton">RSVP</a>
+			<a href="#" id="RSVPButton">RSVP</a>
 		</div>
 		
 		<div id="howItWorks">
