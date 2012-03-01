@@ -55,7 +55,7 @@ A BADGE GIVEN = {
 
 AN INVITE = {
 	"_id" : "4123bac0132...",
-	"status" : "waiting for reply",
+	"status" : "new",
 	"from" : "t@tinabeans.com",
 	"to" : "nanotone@gmail.com",
 	"datetime" : 1330483597,

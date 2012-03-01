@@ -1,8 +1,6 @@
-<html>
+<table width="100%" bgcolor="#eee" cellpadding="20" cellspacing="0" border="0"><tr><td align="center">
 
-<body bgcolor="#eeeeee">
-
-<table cellpadding="0" cellspacing="0" border="0" width="660" bgcolor="#ffffff">
+<table cellpadding="0" cellspacing="0" width="660" bgcolor="#ffffff" style="border:1px solid #aaa">
 	<tr>
 		<td width="30"></td> <!-- left padding -->
 		<td>
@@ -10,37 +8,38 @@
 			<table cellpadding="0" cellspacing="0" border="0">
 				<tr><td height="50"></td></tr> <!-- vertical spacing -->
 				<tr>
-					<td align="center"><img src="http://test.letsgohotpot.com/static/images/email/email_letsCook.png" alt="Let's Cook!" /></td>
+					<td align="center"><img src="http://test.letsgohotpot.com/static/images/email/email_letsCook.png" alt="Let's Cook!"></td>
 				</tr>
 				<tr><td height="50"></td></tr>  <!-- vertical spacing -->
 				<tr>
-					<td style="font-family:Georgia, Times, serif; font-size:20px;">
-						<p id="greeting">Hi <span id="friendName">[friend name]</span>,</p>
+					<td style="font-family:Helvetica, Arial, serif; font-size:17px; line-height:1.5em; font-weight:100;">
+						<p id="greeting">Hi <span id="friendName">{{ invite.friendName }}</span>,</p>
 						<div class="messageBody">
-							<p>Let's cook together on Hotpot! </p>
+							{{ invite.message|safe }}
 						</div>
-						<p style="text-align:right">- [username]</p>
+						<p style="text-align:right">Cheers,<br>{{ invite.fromName }}</p>
 					</td>
 				</tr>
 				<tr><td height="50"></td></tr>  <!-- vertical spacing -->
 				<tr>
 					<td align="center">
-						<img src="http://test.letsgohotpot.com/static/images/email/email_details.png" alt="The Tasty Details" />
+						<img src="http://test.letsgohotpot.com/static/images/email/email_details.png" alt="The Tasty Details">
 					</td>
 				</tr>
 				<tr><td height="15"></td></tr>  <!-- vertical spacing -->
 				<tr>
 					<td>
-						<table cellspacing="0" cellpadding="0" border="0" width="100%" height="200" style="background-image:url(/static/images/food/{{ recipe.slug }}_email.jpg);">
+						<table cellspacing="0" cellpadding="0" border="0" width="100%" style="background-image:url('http://test.letsgohotpot.com/static/images/food/{{ recipe.slug }}_email.jpg');">
 							<tr>
 								<td height="30"></td>
 							</tr>
 							<tr>
-								<td valign="top">
-									<table cellpadding:="10" cellspacing="0" border="0" height="40">
-											<td width="15" height="40" style="background-image:url(/static/images/email/bg_black_50.png);"></td></td>
-											<td style="background-image:url(/static/images/email/bg_black_50.png); color:#ffffff; font-size:22px; line-height:1.5em;">We'll Be Making: {{ recipe.title }}</td>
-											<td width="15" height="40" style="background-image:url(/static/images/email/bg_black_50.png);"></td></td>
+								<td valign="top" height="170">
+									<table cellpadding="0" cellspacing="0" border="0" height="40">
+										<tr>
+											<td width="15" height="40" style="background-image:url('http://test.letsgohotpot.com/static/images/email/bg_black_50.png');"></td>
+											<td style="background-image:url('http://test.letsgohotpot.com/static/images/email/bg_black_50.png'); color:#ffffff; font-size:22px; line-height:1.5em;"><span style="font-size:14px; font-style:italic;">Let's Make:</span> {{ recipe.title }}</td>
+											<td width="15" height="40" style="background-image:url('http://test.letsgohotpot.com/static/images/email/bg_black_50.png');"></td>
 										</tr>
 									</table>
 								</td>
@@ -61,9 +60,10 @@
 												<table cellpadding="0" cellspacing="0" border="0" width="230" style="font-family:Helvetica, Arial, sans-serif; font-size:14px; color:#333;">
 													<tr><td height="15"></td></tr>
 													<tr>
-														<td colspan="2" align="center"><img src="http://test.letsgohotpot.com/static/images/email/email_shoppingList.png" alt="Shopping List" /></td>
+														<td colspan="2" align="center"><img src="http://test.letsgohotpot.com/static/images/email/email_shoppingList.png" alt="Shopping List"></td>
 													</tr>
-													<tr><td height="15"></td></tr>
+													<tr>
+														<td height="15"></td>
 													</tr>
 													{% for ingredient in recipe.ingredients %}
 													<tr>
@@ -81,7 +81,7 @@
 								<td width="30"></td> <!-- horizontal spacing -->
 								<td valign="top">
 									<div style="line-height:2.8em;font-family:Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px;">Date</div>
-									<div style="font-size:22px; font-family:Georgia, serif;">[date from datepicker]</div>
+									<div style="font-size:22px; font-family:Georgia, serif;"></div>
 									<p></p>
 									<div style="line-height:2.8em;font-family:Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px;">Time</div>
 									<div style="font-size:22px; font-family:Georgia, serif;">[time]</div>
@@ -89,7 +89,7 @@
 									<div style="line-height:2.8em;font-family:Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px;">Place</div>
 									<div style="font-size:22px; font-family:Georgia, serif;">Our kitchens, via Hotpot</div>
 									<br>
-									<p><a href="" id="RSVPButton"><img src="http://test.letsgohotpot.com/static/images/email/email_RSVP.png" alt="RSVP" /></a></p>
+									<p><a href="" id="RSVPButton"><img src="http://test.letsgohotpot.com/static/images/email/email_RSVP.png" alt="RSVP"></a></p>
 								</td>
 							</tr>
 						</table>
@@ -98,8 +98,8 @@
 				<tr><td height="40"></td></tr>  <!-- vertical spacing -->
 				<tr>
 					<td>
-						<div style="text-align:center"><img src="http://test.letsgohotpot.com/static/images/email/email_howItWorks.png" alt="How It Works" /></div>
-						<p style="font-family:Helvetica, Arial, sans-serif; font-size:13px; color:#333; line-height:1.4em;">Hotpot is a website that lets friends cook together in real time. Upon accepting this invitation, you'll get a unique link to an online cooking room where we can meet and make this meal together. If you're still confused, check out the website at <a href="http://letsgohotpot.com">LetsGoHotpot.com</a></p>
+						<div style="text-align:center"><img src="http://test.letsgohotpot.com/static/images/email/email_howItWorks.png" alt="How It Works"></div>
+						<p style="font-family:Helvetica, Arial, sans-serif; font-size:13px; color:#333; line-height:1.4em;">Hotpot is a website that lets friends cook together in real time. Upon accepting this invitation, you'll get a unique link to an online cooking room where we can meet and make this meal together. If you're still confused, check out the website at <a href="http://test.letsgohotpot.com">LetsGoHotpot.com</a></p>
 					</td>
 				</tr>
 				<tr><td height="30"></td></tr>  <!-- vertical spacing -->
@@ -110,6 +110,4 @@
 	</tr>
 </table>
 
-
-</body>
-</html>
+</td></tr></table>

@@ -41,7 +41,8 @@
 		
 		<div class="formItem">
 			<label>Short Personalized Message</label>
-			<textarea id="messageBodyInput" name="message">Let&rsquo;s cook together on Hotpot!</textarea>
+			<textarea id="messageBodyInput">Let&rsquo;s cook together on Hotpot!</textarea>
+			<input type="hidden" id="messageBodyInputHTML" name="message">
 		</div>
 		
 		<div class="formItem">
@@ -80,8 +81,8 @@
 		</div>
 		
 		<input type="hidden" id="datetimeInput" name="datetime" value="0" />
-		
 		<input type="hidden" name="from" value="{{ user.email }}" />
+		<input type="hidden" name="fromName" value="{{ user.name }}" />
 				
 		<button type="submit" id="sendInviteButton">Send Invitation</button>
 	</form>

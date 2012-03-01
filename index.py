@@ -205,8 +205,26 @@ def sendEmail(recipe):
 @app.route('/sendInvite', methods=['POST'])
 def sendInvite():
 	
+	# put incoming values in a dictionary
+	newInvite = {}
+	for key in ['to', 'from', 'message', 'recipe', 'datetime', 'friendName', 'fromName']:
+		newInvite[key] = flask.request.form[key]
+	
+	# store new invite dictionary in database
+	newInvite['status'] = "new"
+	newInvite['datetime'] = int(newInvite['datetime']) # convert from string to int
+	db.invites.insert(newInvite)
+	
+	# retrieve recipe based on slug
+	recipe = db.recipes.find_one({'slug' : newInvite['recipe']})
+	
+	# compose email to send
+	msg = Message("Hotpot Invite Test", recipients=[newInvite['to']])
+	msg.body = "test..."
+	msg.html = flask.render_template('inviteEmail.html', recipe=recipe, invite=newInvite)
+	mail.send(msg)
 
-	return str(flask.request.form);
+	return flask.render_template('inviteEmail.html', recipe=recipe, invite=newInvite)
 
 
 ##############################################################################

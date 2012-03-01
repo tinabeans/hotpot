@@ -211,7 +211,10 @@ $(document).ready(function(){
 		datetime.setMinutes($('#timePickerMinute').val());
 		
 		// set hidden field to unix time for passing to backend
-		$('#datetimeInput').val(datetime.getTime());
+		$('#datetimeInput').val(Math.floor(datetime.getTime()/1000)); // divide by 1000 b/c the # is in milliseconds
+		
+		// set hidden field for HTML-ified message, too
+		$('#messageBodyInputHTML').val($('#messageBody').html().trim());
 	});
 	
 });
