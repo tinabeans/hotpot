@@ -185,18 +185,6 @@ def showInviteForm(recipe):
 
 @app.route('/inviteEmail/<recipe>')
 def sendEmail(recipe):
-	'''
-	print app.config['MAIL_PORT'], app.config['DEFAULT_MAIL_SENDER']
-
-	msg = Message("Hello", recipients=["nanotone@gmail.com"])
-	
-	msg.body = "NUBPLANT"
-	msg.html = "<b>NUBPLANT</b>"
-	
-	mail.send(msg)
-	
-	return "hi"
-	'''
 	
 	recipe = db.recipes.find_one({ 'slug' : recipe })
 	
@@ -207,7 +195,7 @@ def sendInvite():
 	
 	# put incoming values in a dictionary
 	newInvite = {}
-	for key in ['to', 'from', 'message', 'recipe', 'datetime', 'friendName', 'fromName']:
+	for key in ['to', 'from', 'message', 'recipe', 'datetime', 'friendName', 'fromName', 'readableDate', 'readableTime']:
 		newInvite[key] = flask.request.form[key]
 	
 	# store new invite dictionary in database

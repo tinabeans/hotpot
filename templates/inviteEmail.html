@@ -81,10 +81,10 @@
 								<td width="30"></td> <!-- horizontal spacing -->
 								<td valign="top">
 									<div style="line-height:2.8em;font-family:Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px;">Date</div>
-									<div style="font-size:22px; font-family:Georgia, serif;"></div>
+									<div style="font-size:22px; font-family:Georgia, serif;">{{ invite.readableDate|safe }}</div>
 									<p></p>
 									<div style="line-height:2.8em;font-family:Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px;">Time</div>
-									<div style="font-size:22px; font-family:Georgia, serif;">[time]</div>
+									<div style="font-size:22px; font-family:Georgia, serif;">{{ invite.readableTime|safe }}</div>
 									<p></p>
 									<div style="line-height:2.8em;font-family:Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px;">Place</div>
 									<div style="font-size:22px; font-family:Georgia, serif;">Our kitchens, via Hotpot</div>
