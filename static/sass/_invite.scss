@@ -8,6 +8,21 @@
 	margin-bottom:5px;
 }
 
+@mixin smallFormalHeading {
+	@include smallHeading;
+	font-family: $serif;
+	font-size: 16px;
+	text-align: center;
+	margin-bottom:15px;
+}
+
+@mixin bigFormalHeading {
+	margin:15px;
+	font-size:44px;
+	font-style: italic;
+	text-align: center;
+}
+
 #inviteForm {
 	float:left;
 	width:40%;
@@ -102,18 +117,12 @@
 		text-align: center;
 	}
 	
-	h1 {
-		margin:15px;
-		font-size:44px;
-		font-style: italic;
+	h2 {
+		@include smallFormalHeading;
 	}
 	
-	h2 {
-		@include smallHeading;
-		font-family: $serif;
-		font-size: 16px;
-		text-align: center;
-		margin-bottom:15px;
+	h1 {
+		@include bigFormalHeading;
 	}
 
 	#inviteMessage {
@@ -205,6 +214,7 @@
 		}
 	}
 }
+
 
 /**********************************************************/
 /* DATE PICKER PLUGIN */
@@ -334,5 +344,161 @@ table.jCalendar {
 	td.unselectable.dp-hover {
 		@include opacity(.5);
 		cursor:default;
+	}
+}
+
+/**********************************************************/
+/* DATE PICKER PLUGIN */
+
+#reply {
+	h1#title {
+		@include bigFormalHeading;
+	}
+	
+	h2 {
+		@include smallFormalHeading;
+		margin-top:30px;
+	}
+}
+
+#inviteInfoContainer {
+	padding:20px;
+	background:#eee;
+}
+
+#inviteInfo {
+	padding:30px;
+	border:1px solid #aaa;
+	background:#fff;
+	@include clearfix;
+	
+	h1 {
+		font-size:28px;
+		margin-bottom:30px;
+	}
+	
+	#recipeImage {
+		float:left;
+		margin-right:30px;
+		border:10px solid #fff;
+		@include box-shadow(0px 2px 4px rgba(0,0,0,.3));
+	}
+	
+	#details {
+		margin-left:250px;
+		
+		dt {
+			@include smallHeading;
+			padding-top:15px;
+		}
+		
+		dd {
+			font-size:22px;
+			margin-bottom:15px;
+		}
+	}
+}
+
+#replyForm {
+	width:700px;
+	margin:0px auto;
+	text-align: center;
+
+	.checkbox {
+		margin:0px 0px 15px 0px;
+	}
+
+	.checkboxLabel {
+		text-transform: none;
+		font-size:18px;
+		display: inline;
+		letter-spacing: normal;
+		font-style: normal;
+		font-family: $serif;
+	}
+	
+	label {
+		display: block;
+		margin-bottom:5px;
+		font-size:14px;
+	}
+	
+	.extraInput {
+		margin:15px 20px;
+	}
+	
+	input[type=text] {
+		border:1px solid #aaa;
+		padding:5px;
+		margin:0px;
+		width:100%;
+		font-size:14px;
+	}
+	
+	textarea {
+		width:100%;
+		height:100px;
+		resize: vertical;
+	}
+	
+	button {
+		@include bigButton;
+	}
+}
+	
+#replyButtons {
+	text-align: center;
+	a {
+		@include bigButton;
+		color:#000;
+	}
+	
+	#answerYes, #answerMaybe {
+		background:#DAEDC7;
+		color:#3F8000;
+	}
+	
+	#answerYes:hover, #answerMaybe:hover {
+		background:#C9E6AC;
+	}
+	
+	#answerYes.selected, #answerMaybe.selected {
+		background:#7AB342;
+		color:#fff;
+	}
+	
+	#answerNo {
+		background:#F7DDCB;
+		color:#962D00;
+	}
+	
+	#answerNo:hover {
+		background:#F2D3BD;
+	}
+	
+	#answerNo.selected {
+		background:#EB6931;
+		color:#fff;
+	}
+}
+
+#replyReasons {
+	background:#eee;
+	padding:30px 30px 20px 30px;
+	margin:30px 0px 0px 0px;
+	font-family: $sans;
+	border-bottom:1px solid #fff;
+	text-align: left;
+}
+
+#replyMessage {
+	background:#eee;
+	padding:30px;
+	text-align: left;
+	margin:30px 0px;
+	
+	label {
+		@include labelType;
+		font-style: normal;
 	}
 }

@@ -1,0 +1,60 @@
+{% extends "base/common.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block customJS %}{% endblock %}
+
+{% block bodyId %}{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+<h1 id="title">Invitations to Cook</h1>
+
+<nav class="filterTags">
+	Filter by Status:
+	<a href="" class="selected">View All</a>
+	<a href="">Awaiting Reply</a>
+	<a href="">It's on!</a>	
+	<a href="">Change needed</a>
+	<a href="">Declined</a>
+</nav>
+
+<table id="invitesTable">
+	<thead>
+		<tr>
+			<th>With</th>
+			<th>Cooking</th>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Status</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for invite in invites %}
+		<tr>
+			<td>{{ invite.friendName }}</td>
+			<td>{{ invite.recipe }}</td>
+			<td>{{ invite.readableDate }}</td>
+			<td>{{ invite.readableTime|safe }}</td>
+			<td>
+			{% if invite.reply %}
+				{% if invite.reply.mainReply == "yes" %}
+					It's on!
+				{% elif invite.reply.mainReply == "maybe" %}
+					Change needed
+				{% elif invite.reply.mainReply == "no" %}
+					Declined
+				{% endif %}
+			{% else %}
+				Awaiting reply
+			{% endif %}
+			</td>
+			<td><a href="/invites/{{ invite._id }}">view</a></td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+{% endblock main %}

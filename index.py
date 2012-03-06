@@ -154,7 +154,7 @@ def login():
 @app.route('/logout')
 def logout():
 	flask.session.pop('email', None)
-	return "omg you logged out!"
+	return """omg you logged out! <a href="/login">Log back in!</a>"""
 
 
 ##############################################################################
@@ -185,6 +185,18 @@ def showInviteForm(recipe):
 
 @app.route('/inviteEmail/<recipe>')
 def sendEmail(recipe):
+	'''
+	print app.config['MAIL_PORT'], app.config['DEFAULT_MAIL_SENDER']
+
+	msg = Message("Hello", recipients=["nanotone@gmail.com"])
+	
+	msg.body = "NUBPLANT"
+	msg.html = "<b>NUBPLANT</b>"
+	
+	mail.send(msg)
+	
+	return "hi"
+	'''
 	
 	recipe = db.recipes.find_one({ 'slug' : recipe })
 	
@@ -195,7 +207,7 @@ def sendInvite():
 	
 	# put incoming values in a dictionary
 	newInvite = {}
-	for key in ['to', 'from', 'message', 'recipe', 'datetime', 'friendName', 'fromName', 'readableDate', 'readableTime']:
+	for key in ['to', 'from', 'message', 'recipe', 'datetime', 'friendName', 'fromName', 'readableTime', 'readableDate']:
 		newInvite[key] = flask.request.form[key]
 	
 	# store new invite dictionary in database
@@ -207,12 +219,77 @@ def sendInvite():
 	recipe = db.recipes.find_one({'slug' : newInvite['recipe']})
 	
 	# compose email to send
-	msg = Message("Hotpot Invite Test", recipients=[newInvite['to']])
-	msg.body = "test..."
-	msg.html = flask.render_template('inviteEmail.html', recipe=recipe, invite=newInvite)
-	mail.send(msg)
+	email = Message("Hotpot Invite Test", recipients=[newInvite['to']])
+	email.html = flask.render_template('inviteEmail.html', recipe=recipe, invite=newInvite)
+	mail.send(email)
 
 	return flask.render_template('inviteEmail.html', recipe=recipe, invite=newInvite)
+
+@app.route('/reply/<inviteId>')
+def showReplyForm(inviteId):
+	
+	invite = db.invites.find_one({'_id' : ObjectId(inviteId)})
+	
+	# decide whether to show login form
+	if 'email' not in flask.session:
+		return flask.render_template('login.html')
+		
+	# decide whether this invite landed in the wrong hands. oops!
+	elif invite['to'] != flask.session['email']:
+		return """hmm... that invitation doesn't seem to be for you. <a href="/logout">logout</a> and try again."""
+	
+	# ok! looks like the user can actually respond to the invite now.
+	else:
+		recipe = db.recipes.find_one({'slug' : invite['recipe']})
+		
+		return flask.render_template('reply.html', invite=invite, showLogin=showLogin, recipe=recipe)
+
+@app.route('/sendReply', methods=['POST'])
+def sendReply():
+	data = flask.request.form
+	
+	invite = db.invites.find_one({'_id' : ObjectId(data['inviteId'])})
+	
+	# compose and send email
+	email = Message("Hotpot Invite RSVP", recipients=[invite['from']])
+	email.html = flask.render_template('replyEmail.html', reply=data)
+	mail.send(email)
+	
+	# store reply in database
+	reply = {
+		"mainReply" : data['mainReply'],
+		"message" : data['message'],
+		"altTimes" : data['altTimes'],
+		"altMeals" : data['altMeals']
+	}
+	
+	db.invites.update({ '_id' : ObjectId(data['inviteId']) }, {'$set' : { 'reply' : reply }})
+	
+	return flask.render_template('replyEmail.html', reply=data, invite=invite)
+
+
+@app.route('/invites')
+def showInvites():
+	
+	invites = list(db.invites.find({'from' : flask.session['email']}))
+	
+	print db.invites.find_one({'from' : flask.session['email']})
+	
+	return flask.render_template('invitesList.html', invites=invites)
+
+
+@app.route('/invites/<inviteId>')
+def showInvitation(inviteId):
+	
+	invite = db.invites.find_one({'_id' : ObjectId(inviteId)})
+	
+	user = db.users.find_one({'email' : flask.session['email']})
+	userInfoForTemplate = {
+		'name' : user['name'],
+		'email' : user['email']
+	}
+	
+	return flask.render_template('invitation.html', invite=invite, user=userInfoForTemplate)
 
 
 ##############################################################################

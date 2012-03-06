@@ -1,0 +1,65 @@
+{% extends "base/common.html" %}
+
+{% block title %}Invitation{% endblock %}
+
+{% block customJS %}{% endblock %}
+
+{% block bodyId %}{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+{% if invite.from == user.email %}
+	<h2>You have invited {{ invite.friendName }} to cook:</h2>
+{% else %}
+	<h2>{{ invite.fromName }} has invited you to cook:</h2>
+{% endif %}
+
+<div id="inviteInfoContainer">
+	<div id="inviteInfo">
+		<img id="recipeImage" src="/static/images/food/{{ invite.recipe }}.jpg" width="300" />
+		<h1>{{ invite.recipe }}</h1>
+		
+		<dl id="details">
+			<dt>Date</dt>
+			<dd id="selectedDate">{{ invite.readableDate|safe }}</dd>
+			
+			<dt>Time</dt>
+			<dd id="selectedTime">{{ invite.readableTime|safe }}</dd>
+		</dl>
+	</div>
+</div>
+
+{% if invite.reply %}
+
+	{% if invite.from == user.email %}
+		<h2>{{ invite.friendName }} replied:</h2>
+	{% else %}
+		<h2>You replied:</h2>
+	{% endif %}
+	
+	{% if invite.reply.mainReply == "yes" %}
+		<p>Yes! the cooking party is on!</p>
+		
+	{% elif invite.reply.mainReply == 'maybe' %}
+		<p>Yes, but...</p>
+	
+		{% if invite.reply.altTimes != "" %}
+			<p>the time doesn't work; suggested alternate times: {{ invite.reply.altTimes }}</p>
+		{% endif %}
+			
+		{% if invite.reply.altMeals != "" %}
+			<p>the selected meal doesn't work; other food ideas: {{ invite.reply.altMeals }}</p>
+		{% endif %}
+	
+	{% elif invite.reply.mainReply == "no" %}
+		<p>no. awww.</p>
+	{% endif %}	
+		
+	{% if invite.reply.message != "" %}
+		<p>Message: {{ invite.reply.message }}</p>
+	{% endif %}
+
+{% endif %}
+
+{% endblock main %}

@@ -56,12 +56,21 @@ A BADGE GIVEN = {
 AN INVITE = {
 	"_id" : "4123bac0132...",
 	"status" : "new",
-	"from" : "t@tinabeans.com",
+	"from" : "t@tinabeans.com", // need to change these to say host and invitee
 	"to" : "nanotone@gmail.com",
 	"datetime" : 1330483597,
 	"recipe" : "LemonGarlicKalePasta",
 	"friendName" : "Yang",
-	"message" : "Let's make Lemon Garlic Pasta with Kale together on Hotpot."
+	"fromName" : "Tina",
+	"readableTime": "7:00 PM",
+	"readableDate": "Wednesday, March 12, 2012"
+	"message" : "Let's make Lemon Garlic Pasta with Kale together on Hotpot.",
+	"reply" : {
+		"mainReply" : "maybe",
+		"message" : "I would love to cook with you!",
+		"altTimes" : "7pm Tuesday",
+		"altMeals" : "Bacon!"
+	}
 }
 
 

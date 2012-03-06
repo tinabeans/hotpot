@@ -1,5 +1,6 @@
 @import "compass/reset";
 @import "compass/css3";
+@import "compass/utilities";
 
 /**********************************************************/
 /* TYPOGRAPHY */
@@ -28,14 +29,15 @@ $serif: "rooney-web",sans-serif;
 }
 
 @mixin bigButton {
-	width:180px;
+	font-family: $serif;
 	display:inline-block;
+	border:0px;
 	background: #666;
 	@include border-radius(10px);
 	font-size:26px;
 	color:#fff;
 	text-align: center;
-	padding:14px;
+	padding:14px 25px;
 	font-style:italic;
 	margin:5px;
 	
@@ -128,3 +130,4 @@ p {
 @import "room";
 @import "recipe";
 @import "invite";
+@import "history";

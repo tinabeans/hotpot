@@ -1,0 +1,78 @@
+{% extends "base/common.html" %}
+
+{% block title %}Reply{% endblock %}
+
+{% block customJS %}<script type="text/javascript" src="/static/js/reply.js"></script>{% endblock %}
+
+{% block bodyId %}reply{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+
+<h1 id="title">Reply to an Invitation</h1>
+
+<h2>{{ invite.fromName }} has invited you to cook:</h2>
+
+<div id="inviteInfoContainer">
+	<div id="inviteInfo">
+		<img id="recipeImage" src="/static/images/food/{{ recipe.slug }}.jpg" width="300" />
+		<h1>{{ recipe.title }}</h1>
+		
+		<dl id="details">
+			<dt>Date</dt>
+			<dd id="selectedDate">{{ invite.readableDate|safe }}</dd>
+			
+			<dt>Time</dt>
+			<dd id="selectedTime">{{ invite.readableTime|safe }}</dd>
+		</dl>
+	</div>
+</div>
+
+<h2>Your reply:</h2>
+
+<form id="replyForm" action="/sendReply" method="POST">
+
+	<input type="hidden" name="inviteId" value="{{ invite._id }}" />
+
+	<div id="replyButtons">
+		<a href="" id="answerYes" data-value="yes">Yes!</a>
+		<a href="" id="answerMaybe" data-value="maybe">Sure, but...</a>
+		<a href="" id="answerNo" data-value="no">No</a>
+	</div>
+	
+	<input type="hidden" id="mainReply" name="mainReply" />
+	
+	<div id="theRestOfTheReplyForm" style="display:none;">
+		<div id="replyReasons" style="display:none;">
+			<div class="checkbox">
+				<input type="checkbox" name="reason" value="time" /> <label class="checkboxLabel">The date/time doesn't work for me.</label>
+			</div>
+			
+			<div id="altTimesContainer" class="extraInput" style="display:none;">
+				<label>Suggest some alternative times:</label>
+				<input type="text" name="altTimes"></textarea>
+			</div>
+			
+			<div class="checkbox">
+				<input type="checkbox" name="reason" value="meal" /> <label class="checkboxLabel">I don't want to make {{ recipe.title }}.</label>
+			</div>
+			
+			<div id="altMealsContainer" class="extraInput" style="display:none;">
+				<label>Suggest some good alternatives (<a href="">See what the choices are</a>):</label>
+				<input type="text" name="altMeals"></textarea>
+			</div>
+		</div>
+		
+		<div id="replyMessage">
+			<label>Add a message to your reply:</label>
+			<textarea name="message"></textarea>
+		</div>
+		
+		<button type="submit">
+			Send Reply
+		</button>
+	</div><!-- #theRestOfTheReplyForm -->
+</form>
+
+{% endblock main %}
