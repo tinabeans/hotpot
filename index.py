@@ -31,6 +31,9 @@ users = db.users
 snippets = db.snippets
 recipes = db.recipes
 
+##############################################################################
+# INVITE CODES (NOT NEEDED)
+'''
 @app.route('/')
 def index():
 	return flask.render_template('home.html')
@@ -103,6 +106,7 @@ def viewProfile():
 	data = flask.request.form
 			
 	return flask.render_template('profile.html', data=data)
+'''
 
 
 ##############################################################################
@@ -116,15 +120,16 @@ def showRegistration():
 def register():
 	data = flask.request.form
 	
-	# create the user's db entry
-	users.insert({
+	# create the user's db entry; it returns an ObjectId we can use to log the user in
+	userId = users.insert({
 		'email' : data['email'],
 		'name' : data['name'],
 		'password' : data['password']
 	})
 	
-	# be nice and log the user in too
-	flask.session['email'] = data['email']
+	# log the user in by setting a variable in the session object
+	# (i've decided to use the stringified ObjectId to identify the user everywhere, including in sessions & the front end)
+	flask.session['userId'] = str(userId)
 		
 	return "okay you're registered!"
 
@@ -144,7 +149,7 @@ def login():
 	userDocument = users.find_one({'email' : data['email'], 'password' : data['password']})
 	
 	if userDocument is not None:
-		flask.session['email'] = data['email']
+		flask.session['userId'] = str(userDocument['_id'])
 	
 		return 'omg you logged in!'
 	else:
@@ -153,8 +158,22 @@ def login():
 
 @app.route('/logout')
 def logout():
+	flask.session.pop('userId', None)
 	flask.session.pop('email', None)
 	return """omg you logged out! <a href="/login">Log back in!</a>"""
+
+
+
+##############################################################################
+# USER PROFILE
+
+@app.route('/mystuff')
+def showMyStuff():
+	
+	if 'userId' in flask.session:
+		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+
+	return str(user['name'])
 
 
 ##############################################################################
@@ -176,31 +195,19 @@ def showInviteForm(recipe):
 	
 	recipe = db.recipes.find_one({ 'slug' : recipe })
 	
-	if 'email' not in flask.session:
+	if 'userId' not in flask.session:
 		return flask.redirect('/login')
 	else:
-		user = db.users.find_one({'email' : flask.session['email']})
+		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 		return flask.render_template('invite.html', recipe=recipe, user=user )
 
 
 @app.route('/inviteEmail/<recipe>')
 def sendEmail(recipe):
-	'''
-	print app.config['MAIL_PORT'], app.config['DEFAULT_MAIL_SENDER']
-
-	msg = Message("Hello", recipients=["nanotone@gmail.com"])
-	
-	msg.body = "NUBPLANT"
-	msg.html = "<b>NUBPLANT</b>"
-	
-	mail.send(msg)
-	
-	return "hi"
-	'''
-	
 	recipe = db.recipes.find_one({ 'slug' : recipe })
 	
 	return flask.render_template('inviteEmail.html', recipe=recipe)
+	
 
 @app.route('/sendInvite', methods=['POST'])
 def sendInvite():
@@ -225,18 +232,31 @@ def sendInvite():
 
 	return flask.render_template('inviteEmail.html', recipe=recipe, invite=newInvite)
 
+
+##############################################################################
+# REPLY
+
 @app.route('/reply/<inviteId>')
 def showReplyForm(inviteId):
 	
 	invite = db.invites.find_one({'_id' : ObjectId(inviteId)})
 	
-	# decide whether to show login form
-	if 'email' not in flask.session:
+	# does the respondant already have an account?
+	respondant = db.users.find_one({ 'email' : invite['to']})
+	if respondant is None:
+		return flask.render_template('registration.html')
+	
+	# ok so that user has an account, but are they logged in?
+	elif 'userId' not in flask.session:
 		return flask.render_template('login.html')
 		
-	# decide whether this invite landed in the wrong hands. oops!
-	elif invite['to'] != flask.session['email']:
-		return """hmm... that invitation doesn't seem to be for you. <a href="/logout">logout</a> and try again."""
+	# ok they are logged in, but somehow did they login as the right person?
+	elif str(respondant['_id']) != flask.session['userId']:
+		return """hmm... that invitation is for %s %s. <a href="/logout">logout</a> and try again.""" % (flask.session['userId'], str(respondant['_id']))
+	
+	# wait, check if the invite has already been replied to
+	elif 'reply' in invite:
+		return """you already replied to that. <a href="/invites/%s">see your response here</a>""" % invite['_id']
 	
 	# ok! looks like the user can actually respond to the invite now.
 	else:
@@ -271,9 +291,12 @@ def sendReply():
 @app.route('/invites')
 def showInvites():
 	
-	invites = list(db.invites.find({'from' : flask.session['email']}))
+	# grab email address of logged in user
+	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 	
-	print db.invites.find_one({'from' : flask.session['email']})
+	invites = list(db.invites.find({'from' : user['email']}))
+	
+	print db.invites.find_one({'from' : user['email']})
 	
 	return flask.render_template('invitesList.html', invites=invites)
 
@@ -298,7 +321,7 @@ def showInvitation(inviteId):
 @app.route('/<recipe>/room/<roomId>')
 def showRoom(recipe, roomId):
 	# check to see if the person's logged in
-	if 'email' not in flask.session:
+	if 'userId' not in flask.session:
 		return flask.render_template('login.html') 
 	else:
 		room = db.rooms.find_one({'_id' : ObjectId(roomId)})
@@ -323,7 +346,7 @@ def showRoom(recipe, roomId):
 				snippet = {}
 				snippet['type'] = 'foodNote'
 				
-				userInfo = db.users.find_one({'email' : foodNote['userId']})
+				userInfo = db.users.find_one({'_id' : ObjectId(foodNote['userId'])})
 				snippet['username'] = userInfo['name']
 				snippet['_id'] = foodNote['_id']
 				snippet['text'] = foodNote['text']
@@ -335,7 +358,7 @@ def showRoom(recipe, roomId):
 		# grab all the badges too
 		badges = list(db.badges.find())
 			
-		return flask.render_template('room.html', recipe=recipe, userId=flask.session['email'], roomId=roomId, badges=badges )
+		return flask.render_template('room.html', recipe=recipe, userId=flask.session['userId'], roomId=roomId, badges=badges )
 
 
 def postFoodnote():
@@ -343,7 +366,7 @@ def postFoodnote():
 	
 	# put together the new user note to send to the database!
 	newUserNote = {
-		"user_id": flask.session['email'], # users are uniquely identified by their email
+		"user_id": flask.session['userId'],
 		"recipe_id": ObjectId(data['recipe_id']),
 		"snippet_id": ObjectId(data['snippet_id']),
 		"text": data['text']
@@ -353,9 +376,7 @@ def postFoodnote():
 	newUserNoteId = userNotes.insert(newUserNote);
 	
 	# now put together some data to send back to the template...
-	
-	# get user name based on email
-	userInfo = users.find_one({ 'email' : flask.session['email'] })
+	userInfo = users.find_one({ '_id' : ObjectId(flask.session['userId']) })
 	
 	# HEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLPPPPPPPPPPPPPPPPPPPPPPP SINGLE QUOTES!!?
 	dataForResponse = {
@@ -375,16 +396,17 @@ def doStuffWithStuffFromTornado():
 	data = requestJSON['data']
 	
 	userInfo = None
+	
 	# if message is coming from a user, get user database entry based on userId
 	if 'userId' in requestJSON:
-		userInfo = users.find_one({ 'email' : requestJSON['userId'] })
+		userInfo = users.find_one({ '_id' : ObjectId(requestJSON['userId']) })
 	
 	# do different things depending on what the socket message says...
 	if requestJSON['type'] == 'foodNote':
 	
 		# put together the new user note to store in the database!
 		newFoodNote = {
-			"userId": requestJSON['userId'], # users are uniquely identified by their email
+			"userId": requestJSON['userId'],
 			"roomId": ObjectId(data['roomId']),
 			"stepId": data['stepId'],
 			"text": data['text']
