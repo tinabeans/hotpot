@@ -1,4 +1,4 @@
-/* line 17, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, /Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,46 +20,47 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, /Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, /Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, /Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, /Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, /Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, /Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, /Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 114, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+/* line 115, /Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
@@ -68,56 +69,54 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /**********************************************************/
 /* COLORS */
 /**********************************************************/
-/* MIXINS */
-/**********************************************************/
 /* TAG REDEFINITIONS */
-/* line 59, ../sass/core.scss */
+/* line 25, ../sass/core.scss */
 html {
   height: 100%;
 }
 
-/* line 63, ../sass/core.scss */
+/* line 29, ../sass/core.scss */
 body {
   margin: 0px;
   padding: 0px;
-  font-family: "rooney-web", sans-serif;
+  font-family: "rooney-web", Georgia, serif;
   font-weight: 300;
   font-size: 13px;
   height: 100%;
+  color: #5c5850;
+  background: white;
 }
 
-/* line 72, ../sass/core.scss */
+/* line 40, ../sass/core.scss */
 a {
   text-decoration: none;
-  color: blue;
+  color: #908d86;
+  font-weight: bold;
 }
 
-/* line 78, ../sass/core.scss */
+/* line 46, ../sass/core.scss */
+a:hover {
+  color: #ff5513;
+}
+
+/* line 51, ../sass/core.scss */
 p {
   line-height: 1.4em;
   margin: 0px 0px 15px 0px;
 }
 
 /**********************************************************/
+/* GLOBAL MIXINS */
+/**********************************************************/
 /* COMMON */
-/* div, section {
-	border:1px solid #eee;
-	background:#fff; 
-}*/
-/* line 92, ../sass/core.scss */
-#mainHeader, #homeIntro, #featuredMeals, #mainFooter {
-  width: 90%;
+/* line 129, ../sass/core.scss */
+#mainHeader, #homeIntro, #mainContainer, #featuredMeals, #mainFooter {
+  width: 88%;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 96, ../sass/core.scss */
-#mainHeader {
-  padding: 20px 0px 0px 0px;
-  margin-bottom: 30px;
-}
-
-/* line 101, ../sass/core.scss */
+/* line 133, ../sass/core.scss */
 #mainFooter {
   text-align: center;
   clear: both;
@@ -125,103 +124,227 @@ p {
   padding: 60px 0px 30px 0px;
 }
 
-/* line 108, ../sass/core.scss */
+/* line 140, ../sass/core.scss */
 #logo img {
   width: 180px;
 }
 
-/* line 112, ../sass/core.scss */
+/* line 144, ../sass/core.scss */
 #mainContainer {
-  width: 90%;
+  padding: 50px 0px;
   margin: 0px auto;
 }
 
-/* line 117, ../sass/core.scss */
+/* line 149, ../sass/core.scss */
 #title {
   font-size: 36px;
   margin-bottom: 30px;
 }
 
-/* line 122, ../sass/core.scss */
+/* line 154, ../sass/core.scss */
 .intro {
   font-size: 1.4em;
+}
+
+/**********************************************************/
+/* HEADER */
+/* line 161, ../sass/core.scss */
+#mainHeaderContainer {
+  background: #ededec url(/static/images/lightWood.jpg);
+  -moz-box-shadow: rgba(0, 0, 0, 0.15) -3px 0px 10px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) -3px 0px 10px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.15) -3px 0px 10px inset;
+  box-shadow: rgba(0, 0, 0, 0.15) -3px 0px 10px inset;
+}
+
+/* line 166, ../sass/core.scss */
+#mainHeader {
+  padding: 10px 0px 10px 0px;
+  border-bottom: 1px solid #d8d7d5;
+}
+/* line 172, ../sass/core.scss */
+#mainHeader h1 img {
+  width: 140px;
+}
+
+/* line 178, ../sass/core.scss */
+#mainNav {
+  position: absolute;
+  top: 0;
+  left: 160px;
+  height: 81px;
+  border-left: 1px solid #d8d7d5;
+  z-index: 1;
+}
+/* line 186, ../sass/core.scss */
+#mainNav a {
+  font-style: italic;
+  font-size: 24px;
+  height: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 27px 22px 0px 22px;
+  float: left;
+  display: block;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 0.5)));
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  background: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  background: -o-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  background: -ms-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  border-right: 1px solid #d8d7d5;
+  border-bottom: 1px solid #d8d7d5;
+  cursor: pointer;
+}
+/* line 199, ../sass/core.scss */
+#mainNav a .small {
+  font-style: normal;
+  font-family: "proxima-nova", sans-serif;
+  font-size: 12px;
+  display: block;
+  font-weight: normal;
+}
+/* line 208, ../sass/core.scss */
+#mainNav a.selected {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.3)), color-stop(100%, #ffffff));
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), #ffffff);
+  background: -moz-linear-gradient(rgba(255, 255, 255, 0.3), #ffffff);
+  background: -o-linear-gradient(rgba(255, 255, 255, 0.3), #ffffff);
+  background: -ms-linear-gradient(rgba(255, 255, 255, 0.3), #ffffff);
+  background: linear-gradient(rgba(255, 255, 255, 0.3), #ffffff);
+  border-bottom: 1px solid white;
+}
+
+/* line 215, ../sass/core.scss */
+#serviceNav {
+  position: absolute;
+  top: 30;
+  right: 0;
+  padding: 20px 0px;
+}
+/* line 221, ../sass/core.scss */
+#serviceNav a {
+  font-family: "proxima-nova", sans-serif;
+  margin: 0px 20px;
+  display: inline-block;
+}
+
+/**********************************************************/
+/* FORMS */
+/* line 232, ../sass/core.scss */
+.formItem {
+  margin-bottom: 15px;
+}
+
+/* line 236, ../sass/core.scss */
+.buttons {
+  text-align: center;
+}
+
+/* line 240, ../sass/core.scss */
+label {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
+  font-family: "proxima-nova", sans-serif;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+/* line 245, ../sass/core.scss */
+input, textarea {
+  border: 1px solid #aaa;
+  padding: 5px;
+  margin: 0px;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* line 253, ../sass/core.scss */
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+/* line 258, ../sass/core.scss */
+.note {
+  margin-top: 5px;
+  font-style: italic;
+  font-size: 12px;
+}
+
+/* line 264, ../sass/core.scss */
+input[type=submit] {
+  display: inline-block;
+  border: 0px;
+  background: #666;
+  color: #fff;
+  font-family: "rooney-web", Georgia, serif;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  text-align: center;
+  font-style: italic;
+  padding: 10px 18px;
+  font-size: 20px;
+  width: auto;
 }
 
 /**********************************************************/
 /* CSS for different page types */
 /**********************************************************/
 /* HOME */
-/* line 5, ../sass/_home.scss */
+/* line 5, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #home #mainContainer {
   width: 100%;
 }
-/* line 9, ../sass/_home.scss */
-#home #mainHeader {
-  padding-top: 30px;
-}
-/* line 12, ../sass/_home.scss */
-#home #mainHeader h1 {
-  text-align: center;
-  margin: 30px;
-}
-/* line 16, ../sass/_home.scss */
-#home #mainHeader h1 img {
-  width: 300px;
-}
 
-/* line 23, ../sass/_home.scss */
-#topNav {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 20px 0px;
-}
-/* line 29, ../sass/_home.scss */
-#topNav a {
-  margin: 0px 20px;
-  display: inline-block;
-  font-family: "proxima-nova", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-}
-
-/* line 38, ../sass/_home.scss */
+/* line 10, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #introBlurb {
   text-align: center;
   font-size: 42px;
   padding-bottom: 10px;
 }
 
-/* line 44, ../sass/_home.scss */
+/* line 16, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #featuredRecipes {
   clear: both;
 }
 
-/* line 48, ../sass/_home.scss */
+/* line 20, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #joinUs {
   text-align: center;
   margin: 30px;
 }
-/* line 52, ../sass/_home.scss */
+/* line 24, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #joinUs a {
-  font-family: "rooney-web", sans-serif;
   display: inline-block;
   border: 0px;
   background: #666;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  font-size: 26px;
   color: #fff;
+  font-family: "rooney-web", Georgia, serif;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
   text-align: center;
-  padding: 14px 25px;
   font-style: italic;
+  padding: 10px 18px;
+  font-size: 20px;
+  font-size: 26px;
+  padding: 14px 25px;
   margin: 5px;
 }
-/* line 44, ../sass/core.scss */
+/* line 86, ../sass/core.scss */
 #joinUs a .small {
   margin-top: 7px;
   display: block;
@@ -233,22 +356,22 @@ p {
   font-style: normal;
 }
 
-/* line 59, ../sass/_home.scss */
+/* line 31, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #joinUs a:hover {
   background: #777;
 }
 
-/* line 63, ../sass/_home.scss */
+/* line 35, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #featuredMealsContainer {
-  background: #eee;
+  background: #ededec;
   margin: 60px 0px;
 }
 
-/* line 68, ../sass/_home.scss */
+/* line 40, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #featuredMeals {
   padding: 30px 0px;
 }
-/* line 71, ../sass/_home.scss */
+/* line 43, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #featuredMeals h1 {
   font-family: "proxima-nova", sans-serif;
   margin-bottom: 30px;
@@ -257,14 +380,14 @@ p {
   font-size: 18px;
   text-align: center;
 }
-/* line 81, ../sass/_home.scss */
+/* line 53, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #featuredMeals .mealList li {
   position: relative;
   display: inline-block;
   width: 30%;
   margin-right: 4%;
 }
-/* line 87, ../sass/_home.scss */
+/* line 59, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #featuredMeals .mealList li h2 {
   position: absolute;
   top: 28px;
@@ -274,7 +397,7 @@ p {
   padding: 7px 10px 10px 10px;
   font-size: 20px;
 }
-/* line 97, ../sass/_home.scss */
+/* line 69, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #featuredMeals .mealList li img {
   border: 10px solid #fff;
   width: 100%;
@@ -283,14 +406,14 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 104, ../sass/_home.scss */
+/* line 76, /Users/tina/Sites/hotpot/static/sass/_home.scss */
 #featuredMeals .mealList li.last {
   margin-right: 0%;
 }
 
 /**********************************************************/
 /* COOKING ROOM */
-/* line 5, ../sass/_room.scss */
+/* line 5, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #container {
   width: 95%;
   margin: 0px auto;
@@ -300,13 +423,13 @@ p {
   box-sizing: border-box;
 }
 
-/* line 11, ../sass/_room.scss */
+/* line 11, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #room #container {
   height: 95%;
   padding: 20px 0px;
 }
 
-/* line 16, ../sass/_room.scss */
+/* line 16, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #room header {
   width: 100%;
   height: 5%;
@@ -317,7 +440,7 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 23, ../sass/_room.scss */
+/* line 23, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #room header h1 {
   font-size: 20px;
   width: 95%;
@@ -327,7 +450,7 @@ p {
 
 /**********************************************************/
 /* COOKING ROOM: RECIPE */
-/* line 35, ../sass/_room.scss */
+/* line 35, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #recipeContainer {
   position: relative;
   float: left;
@@ -337,27 +460,27 @@ p {
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  background: #eee;
+  background: #ededec;
   height: 100%;
 }
 
-/* line 45, ../sass/_room.scss */
+/* line 45, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #recipeNav {
   float: left;
   width: 60px;
 }
 
-/* line 50, ../sass/_room.scss */
+/* line 50, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #stepTabs li {
   position: relative;
 }
-/* line 53, ../sass/_room.scss */
+/* line 53, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #stepTabs li .positionMarker {
   position: absolute;
   top: 0;
   left: 30px;
 }
-/* line 59, ../sass/_room.scss */
+/* line 59, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #stepTabs li a {
   display: block;
   border-right: 0px;
@@ -380,14 +503,14 @@ p {
   border-bottom-left-radius: 5px;
 }
 
-/* line 72, ../sass/_room.scss */
+/* line 72, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #stepsNav {
   position: absolute;
   bottom: 20px;
   left: 80px;
 }
 
-/* line 78, ../sass/_room.scss */
+/* line 78, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #ingredientsButton {
   display: block;
   width: 45px;
@@ -403,12 +526,12 @@ p {
   overflow: hidden;
 }
 
-/* line 88, ../sass/_room.scss */
+/* line 88, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #recipe {
   height: 100%;
 }
 
-/* line 94, ../sass/_room.scss */
+/* line 94, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #room #recipeTitle {
   position: absolute;
   top: 15px;
@@ -420,7 +543,7 @@ p {
   letter-spacing: .15em;
 }
 
-/* line 107, ../sass/_room.scss */
+/* line 107, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #ingredients {
   position: absolute;
   left: 80px;
@@ -434,23 +557,23 @@ p {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   font-size: 16px;
 }
-/* line 117, ../sass/_room.scss */
+/* line 117, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #ingredients li {
   margin: 10px 0px;
   cursor: pointer;
 }
-/* line 122, ../sass/_room.scss */
+/* line 122, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #ingredients .crossedOut {
   text-decoration: line-through;
 }
-/* line 126, ../sass/_room.scss */
+/* line 126, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #ingredients .closeButton {
   position: absolute;
   right: 10px;
   top: 10px;
 }
 
-/* line 133, ../sass/_room.scss */
+/* line 133, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #steps {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -463,7 +586,7 @@ p {
   font-size: 1.75em;
 }
 
-/* line 142, ../sass/_room.scss */
+/* line 142, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .step {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -473,28 +596,28 @@ p {
   height: 100%;
   overflow-y: auto;
 }
-/* line 148, ../sass/_room.scss */
+/* line 148, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .step ul {
   margin-left: 20px;
 }
-/* line 151, ../sass/_room.scss */
+/* line 151, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .step ul li {
   font-size: 18px;
   margin: 10px 0px;
   list-style-type: circle;
 }
 
-/* line 159, ../sass/_room.scss */
+/* line 159, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .currentStep a {
   background: #fff;
 }
 
-/* line 163, ../sass/_room.scss */
+/* line 163, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .extra {
   font-size: 16px;
   margin: 30px 0px;
 }
-/* line 167, ../sass/_room.scss */
+/* line 167, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .extra h1 {
   font-size: 13px;
   text-transform: uppercase;
@@ -503,18 +626,18 @@ p {
   font-family: "proxima-nova", sans-serif;
 }
 
-/* line 172, ../sass/_room.scss */
+/* line 172, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .snippet {
   margin: 30px 0px;
   font-size: 14px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 177, ../sass/_room.scss */
+/* line 177, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .snippet p {
   line-height: 1.25em;
 }
 
-/* line 183, ../sass/_room.scss */
+/* line 183, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .foodNote .postedBy {
   display: block;
   margin-top: 10px;
@@ -522,14 +645,14 @@ p {
   text-transform: uppercase;
 }
 
-/* line 191, ../sass/_room.scss */
+/* line 191, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .step {
   display: none;
 }
 
 /**********************************************************/
 /* WIDGETS */
-/* line 198, ../sass/_room.scss */
+/* line 198, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .widget {
   border: 1px solid #666;
   background: #fff;
@@ -545,14 +668,14 @@ p {
   font-size: 14px;
   display: none;
 }
-/* line 210, ../sass/_room.scss */
+/* line 210, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .widget .closeButton {
   position: absolute;
   top: 5px;
   right: 5px;
 }
 
-/* line 218, ../sass/_room.scss */
+/* line 218, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #notepad textarea {
   border: 1px solid #ccc;
   margin-top: 10px;
@@ -562,19 +685,19 @@ p {
   resize: none;
 }
 
-/* line 228, ../sass/_room.scss */
+/* line 228, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .badge {
   font-family: "proxima-nova", sans-serif;
   margin: 10px 0px;
 }
-/* line 232, ../sass/_room.scss */
+/* line 232, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 .badge .description {
   display: block;
   margin-top: 5px;
   font-size: 12px;
 }
 
-/* line 239, ../sass/_room.scss */
+/* line 239, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #widgetNav {
   position: absolute;
   bottom: 0;
@@ -585,7 +708,7 @@ p {
   font-size: 16px;
   background: #fff;
 }
-/* line 249, ../sass/_room.scss */
+/* line 249, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #widgetNav a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -595,7 +718,7 @@ p {
   padding: 5px 7px;
   margin: 1px;
 }
-/* line 256, ../sass/_room.scss */
+/* line 256, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #widgetNav a.active {
   background: #fff;
   border: 1px solid #666;
@@ -607,7 +730,7 @@ p {
 
 /**********************************************************/
 /* VIDEOS */
-/* line 269, ../sass/_room.scss */
+/* line 269, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #videoContainer {
   margin-left: 385px;
   height: 70%;
@@ -618,12 +741,12 @@ p {
   position: relative;
 }
 
-/* line 276, ../sass/_room.scss */
+/* line 276, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #videoContainer.fullsize {
   height: 100%;
 }
 
-/* line 280, ../sass/_room.scss */
+/* line 280, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #videos {
   padding: 20px;
   height: 100%;
@@ -631,15 +754,15 @@ p {
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  background: #eee;
+  background: #ededec;
 }
 
-/* line 287, ../sass/_room.scss */
+/* line 287, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #myInfo {
   position: absolute;
 }
 
-/* line 291, ../sass/_room.scss */
+/* line 291, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #chatBoxButton {
   position: absolute;
   top: 10px;
@@ -648,7 +771,7 @@ p {
 
 /**********************************************************/
 /* CHAT BOX */
-/* line 301, ../sass/_room.scss */
+/* line 301, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #chatBoxContainer {
   margin-left: 385px;
   height: 30%;
@@ -660,7 +783,7 @@ p {
   position: relative;
 }
 
-/* line 309, ../sass/_room.scss */
+/* line 309, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #chatBox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -672,7 +795,7 @@ p {
   padding-bottom: 27px;
 }
 
-/* line 317, ../sass/_room.scss */
+/* line 317, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #chatMessages {
   height: 100%;
   -moz-box-sizing: border-box;
@@ -682,16 +805,16 @@ p {
   padding: 10px 15px;
   overflow: auto;
 }
-/* line 323, ../sass/_room.scss */
+/* line 323, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #chatMessages .chatMessage {
   margin: 5px 0px;
 }
-/* line 327, ../sass/_room.scss */
+/* line 327, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #chatMessages .chatMessageAuthor {
   font-weight: bold;
 }
 
-/* line 332, ../sass/_room.scss */
+/* line 332, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #chatInputContainer {
   position: absolute;
   bottom: 0px;
@@ -703,7 +826,7 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 340, ../sass/_room.scss */
+/* line 340, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #chatInputContainer input {
   display: block;
   width: 100%;
@@ -711,7 +834,7 @@ p {
   border: 0px;
   margin: 0px;
 }
-/* line 348, ../sass/_room.scss */
+/* line 348, /Users/tina/Sites/hotpot/static/sass/_room.scss */
 #chatInputContainer input:focus {
   outline: none;
   border: none;
@@ -719,21 +842,21 @@ p {
 
 /**********************************************************/
 /* RECIPE PAGE */
-/* line 4, ../sass/_recipe.scss */
+/* line 4, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #bigImage {
   height: 300px;
   overflow: hidden;
   position: relative;
   margin-bottom: 30px;
 }
-/* line 10, ../sass/_recipe.scss */
+/* line 10, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #bigImage img {
   position: absolute;
   top: -70%;
   width: 100%;
 }
 
-/* line 17, ../sass/_recipe.scss */
+/* line 17, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #descriptionContainer {
   float: left;
   font-size: 16px;
@@ -745,18 +868,18 @@ p {
   width: 43%;
 }
 
-/* line 25, ../sass/_recipe.scss */
+/* line 25, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #summary {
   line-height: 1.5em;
 }
 
-/* line 29, ../sass/_recipe.scss */
+/* line 29, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #credit {
   font-size: .8em;
   font-style: italic;
 }
 
-/* line 34, ../sass/_recipe.scss */
+/* line 34, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #shoppingListContainer {
   float: left;
   width: 33%;
@@ -767,12 +890,12 @@ p {
   padding-right: 30px;
 }
 
-/* line 41, ../sass/_recipe.scss */
+/* line 41, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #shoppingList {
   padding: 20px;
-  background: #eee;
+  background: #ededec;
 }
-/* line 45, ../sass/_recipe.scss */
+/* line 45, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #shoppingList h1 {
   font-size: 13px;
   text-transform: uppercase;
@@ -780,17 +903,17 @@ p {
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
   text-align: center;
-  font-family: "rooney-web", sans-serif;
+  font-family: "rooney-web", Georgia, serif;
   margin-bottom: 15px;
 }
-/* line 52, ../sass/_recipe.scss */
+/* line 52, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #shoppingList li {
   font-size: 16px;
   font-family: "proxima-nova", sans-serif;
   padding: 10px 0px;
   border-top: 1px dashed #ccc;
 }
-/* line 58, ../sass/_recipe.scss */
+/* line 58, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #shoppingList li .amount {
   float: right;
   padding-left: 6px;
@@ -798,7 +921,7 @@ p {
   font-size: .8em;
 }
 
-/* line 67, ../sass/_recipe.scss */
+/* line 67, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #actions {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -807,7 +930,7 @@ p {
   margin-left: 76%;
   width: 24%;
 }
-/* line 71, ../sass/_recipe.scss */
+/* line 71, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #actions h1 {
   font-size: 13px;
   text-transform: uppercase;
@@ -816,23 +939,25 @@ p {
   font-family: "proxima-nova", sans-serif;
 }
 
-/* line 76, ../sass/_recipe.scss */
+/* line 76, /Users/tina/Sites/hotpot/static/sass/_recipe.scss */
 #inviteButton {
-  font-family: "rooney-web", sans-serif;
   display: inline-block;
   border: 0px;
   background: #666;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  font-size: 26px;
   color: #fff;
+  font-family: "rooney-web", Georgia, serif;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
   text-align: center;
-  padding: 14px 25px;
   font-style: italic;
+  padding: 10px 18px;
+  font-size: 20px;
+  font-size: 26px;
+  padding: 14px 25px;
   margin: 5px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -843,7 +968,7 @@ p {
   font-size: 18px;
   margin-bottom: 30px;
 }
-/* line 44, ../sass/core.scss */
+/* line 86, ../sass/core.scss */
 #inviteButton .small {
   margin-top: 7px;
   display: block;
@@ -857,7 +982,7 @@ p {
 
 /**********************************************************/
 /* INVITE PAGE */
-/* line 26, ../sass/_invite.scss */
+/* line 4, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteForm {
   float: left;
   width: 40%;
@@ -867,47 +992,17 @@ p {
   box-sizing: border-box;
   padding-right: 30px;
 }
-/* line 32, ../sass/_invite.scss */
+/* line 10, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteForm .formItem {
   margin-bottom: 30px;
 }
-/* line 36, ../sass/_invite.scss */
-#inviteForm label {
-  display: block;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-  margin-bottom: 10px;
-  font-family: "proxima-nova", sans-serif;
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-/* line 41, ../sass/_invite.scss */
-#inviteForm input, #inviteForm textarea {
-  border: 1px solid #aaa;
-  padding: 5px;
-  margin: 0px;
-  width: 100%;
-  font-size: 14px;
-}
-/* line 49, ../sass/_invite.scss */
-#inviteForm textarea {
-  height: 100px;
-  resize: vertical;
-}
-/* line 54, ../sass/_invite.scss */
-#inviteForm .note {
-  margin-top: 5px;
-  font-style: italic;
-  font-size: 12px;
-}
-/* line 60, ../sass/_invite.scss */
+/* line 14, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteForm #chosenRecipe {
   height: 70px;
   padding: 15px;
-  background: #eee;
+  background: #ededec;
 }
-/* line 66, ../sass/_invite.scss */
+/* line 20, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteForm #recipeThumbnail {
   width: 70px;
   height: 70px;
@@ -916,42 +1011,44 @@ p {
   float: left;
   margin-right: 15px;
 }
-/* line 74, ../sass/_invite.scss */
+/* line 28, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteForm #recipeThumbnail img {
   height: 100%;
   position: absolute;
   left: -20%;
 }
-/* line 81, ../sass/_invite.scss */
+/* line 35, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteForm #recipeTitle {
   font-size: 18px;
   margin-bottom: 5px;
 }
-/* line 86, ../sass/_invite.scss */
+/* line 40, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteForm #sendInviteButton {
-  font-family: "rooney-web", sans-serif;
   display: inline-block;
   border: 0px;
   background: #666;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  font-size: 26px;
   color: #fff;
+  font-family: "rooney-web", Georgia, serif;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
   text-align: center;
-  padding: 14px 25px;
   font-style: italic;
+  padding: 10px 18px;
+  font-size: 20px;
+  font-size: 26px;
+  padding: 14px 25px;
   margin: 5px;
   margin: 0px;
-  font-family: "rooney-web", sans-serif;
+  font-family: "rooney-web", Georgia, serif;
   border: 0;
   width: auto;
   font-weight: normal;
 }
-/* line 44, ../sass/core.scss */
+/* line 86, ../sass/core.scss */
 #inviteForm #sendInviteButton .small {
   margin-top: 7px;
   display: block;
@@ -963,11 +1060,11 @@ p {
   font-style: normal;
 }
 
-/* line 96, ../sass/_invite.scss */
+/* line 50, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitePreviewContainer {
   margin-left: 40%;
 }
-/* line 99, ../sass/_invite.scss */
+/* line 53, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitePreviewContainer h3 {
   font-size: 13px;
   text-transform: uppercase;
@@ -978,57 +1075,57 @@ p {
   margin-bottom: 5px;
 }
 
-/* line 105, ../sass/_invite.scss */
+/* line 59, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitePreview {
-  background: #eee;
+  background: #ededec;
   padding: 20px;
 }
 
-/* line 110, ../sass/_invite.scss */
+/* line 64, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation {
   background: #fff;
   border: 1px solid #aaa;
   padding: 30px;
 }
-/* line 115, ../sass/_invite.scss */
+/* line 69, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation h1, #invitation h2 {
   font-size: 36px;
   text-align: center;
 }
-/* line 120, ../sass/_invite.scss */
+/* line 74, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation h2 {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: .2em;
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
-  font-family: "rooney-web", sans-serif;
+  font-family: "rooney-web", Georgia, serif;
   font-size: 16px;
   text-align: center;
   margin-bottom: 15px;
 }
-/* line 124, ../sass/_invite.scss */
+/* line 78, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation h1 {
   margin: 15px;
   font-size: 44px;
   font-style: italic;
   text-align: center;
 }
-/* line 128, ../sass/_invite.scss */
+/* line 82, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #inviteMessage {
   margin: 50px 15px;
   font-family: "proxima-nova", sans-serif;
   font-size: 18px;
 }
-/* line 133, ../sass/_invite.scss */
+/* line 87, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #inviteMessage #greeting {
   text-align: left;
 }
-/* line 137, ../sass/_invite.scss */
+/* line 91, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #inviteMessage #signature {
   text-align: right;
 }
-/* line 142, ../sass/_invite.scss */
+/* line 96, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #image {
   position: relative;
   margin-bottom: 30px;
@@ -1040,7 +1137,7 @@ p {
   -o-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
-/* line 150, ../sass/_invite.scss */
+/* line 104, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #image #caption {
   display: block;
   position: absolute;
@@ -1050,16 +1147,16 @@ p {
   font-size: 20px;
   color: #fff;
 }
-/* line 159, ../sass/_invite.scss */
+/* line 113, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #image #caption .subtitle {
   font-style: italic;
   font-size: 14px;
 }
-/* line 165, ../sass/_invite.scss */
+/* line 119, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #image img {
   width: 100%;
 }
-/* line 170, ../sass/_invite.scss */
+/* line 124, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #shoppingList {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1068,13 +1165,13 @@ p {
   width: 40%;
   float: left;
 }
-/* line 175, ../sass/_invite.scss */
+/* line 129, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #shoppingList h1 {
   font-size: 13px;
   margin: 0px 0px 15px 0px;
   font-style: normal;
 }
-/* line 182, ../sass/_invite.scss */
+/* line 136, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #detailsContainer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1083,7 +1180,7 @@ p {
   margin-left: 40%;
   padding-left: 30px;
 }
-/* line 190, ../sass/_invite.scss */
+/* line 144, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #details dt {
   font-size: 13px;
   text-transform: uppercase;
@@ -1092,33 +1189,35 @@ p {
   font-family: "proxima-nova", sans-serif;
   padding-top: 15px;
 }
-/* line 195, ../sass/_invite.scss */
+/* line 149, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #details dd {
   font-size: 22px;
   margin-bottom: 15px;
 }
-/* line 201, ../sass/_invite.scss */
+/* line 155, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #RSVPButton {
-  font-family: "rooney-web", sans-serif;
   display: inline-block;
   border: 0px;
   background: #666;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  font-size: 26px;
   color: #fff;
+  font-family: "rooney-web", Georgia, serif;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
   text-align: center;
-  padding: 14px 25px;
   font-style: italic;
+  padding: 10px 18px;
+  font-size: 20px;
+  font-size: 26px;
+  padding: 14px 25px;
   margin: 5px;
   width: 100px;
   margin: 15px 0px 0px 0px;
 }
-/* line 44, ../sass/core.scss */
+/* line 86, ../sass/core.scss */
 #invitation #RSVPButton .small {
   margin-top: 7px;
   display: block;
@@ -1129,12 +1228,12 @@ p {
   letter-spacing: .1em;
   font-style: normal;
 }
-/* line 207, ../sass/_invite.scss */
+/* line 161, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #howItWorks {
   clear: both;
   padding-top: 30px;
 }
-/* line 211, ../sass/_invite.scss */
+/* line 165, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #invitation #howItWorks p {
   font-family: "proxima-nova", sans-serif;
   font-size: 14px;
@@ -1142,15 +1241,15 @@ p {
 
 /**********************************************************/
 /* DATE PICKER PLUGIN */
-/* line 222, ../sass/_invite.scss */
+/* line 176, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #datePicker {
   width: 300px;
   margin-top: 10px;
-  background: #eee;
+  background: #ededec;
   padding: 10px;
   position: relative;
 }
-/* line 229, ../sass/_invite.scss */
+/* line 183, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #datePicker h2 {
   text-align: center;
   font-size: 14px;
@@ -1162,24 +1261,25 @@ p {
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 237, ../sass/_invite.scss */
+/* line 191, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #datePicker .dp-nav-prev {
   position: absolute;
   left: 10px;
   top: 10px;
 }
-/* line 243, ../sass/_invite.scss */
+/* line 197, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #datePicker .dp-nav-next {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-/* line 249, ../sass/_invite.scss */
+/* line 203, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #datePicker .dp-nav-prev .disabled {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 253, ../sass/_invite.scss */
+/* line 207, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #datePicker .dp-nav-prev-year, #datePicker .dp-nav-next-year, #datePicker .dp-nav-prev-month, #datePicker .dp-nav-next-month {
   display: inline-block;
   background: #fff;
@@ -1194,24 +1294,24 @@ p {
   color: #000;
   font-weight: bold;
 }
-/* line 263, ../sass/_invite.scss */
+/* line 217, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #datePicker .dp-nav-prev-year:hover, #datePicker .dp-nav-next-year:hover, #datePicker .dp-nav-prev-month:hover, #datePicker .dp-nav-next-month:hover {
-  background: #eee;
+  background: #ededec;
 }
-/* line 267, ../sass/_invite.scss */
+/* line 221, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #datePicker .dp-nav-next-year {
   float: right;
 }
-/* line 271, ../sass/_invite.scss */
+/* line 225, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #datePicker .dp-nav-prev-year, #datePicker .dp-nav-prev-month {
   margin-right: 5px;
 }
-/* line 275, ../sass/_invite.scss */
+/* line 229, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #datePicker .dp-nav-next-year, #datePicker .dp-nav-next-month {
   margin-left: 5px;
 }
 
-/* line 280, ../sass/_invite.scss */
+/* line 234, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar {
   width: 300px;
   border: 1px solid #aaa;
@@ -1221,11 +1321,11 @@ table.jCalendar {
   border-spacing: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 289, ../sass/_invite.scss */
+/* line 243, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar th {
   padding: 5px 8px;
 }
-/* line 293, ../sass/_invite.scss */
+/* line 247, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar td {
   color: #aaa;
   padding: 3px 5px;
@@ -1237,54 +1337,57 @@ table.jCalendar td {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 300, ../sass/_invite.scss */
+/* line 254, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar td.current-month {
-  background: #eee;
+  background: #ededec;
   color: #000;
 }
-/* line 305, ../sass/_invite.scss */
+/* line 259, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar td.today {
   font-weight: bold;
 }
-/* line 310, ../sass/_invite.scss */
+/* line 264, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar td.selected,
 table.jCalendar td.selected.dp-hover {
   background: #f66;
   color: #fff;
 }
-/* line 315, ../sass/_invite.scss */
+/* line 269, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar td.dp-hover, table.jCalendar tr.activeWeekHover td {
   background: #ddd;
   color: #000;
   cursor: pointer;
 }
-/* line 321, ../sass/_invite.scss */
+/* line 275, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar tr.selectedWeek td {
   background: #f66;
   color: #fff;
 }
-/* line 326, ../sass/_invite.scss */
+/* line 280, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar td.disabled {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   cursor: default;
 }
-/* line 331, ../sass/_invite.scss */
+/* line 285, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar td.disabled.dp-hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
-  background: #eee;
+  background: #ededec;
   color: #000;
 }
-/* line 337, ../sass/_invite.scss */
+/* line 291, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar td.disabled.other-month.dp-hover {
-  background: #eee;
+  background: #ededec;
   color: #aaa;
 }
-/* line 344, ../sass/_invite.scss */
+/* line 298, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 table.jCalendar td.unselectable,
 table.jCalendar td.unselectable:hover,
 table.jCalendar td.unselectable.dp-hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
   cursor: default;
@@ -1292,34 +1395,34 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* DATE PICKER PLUGIN */
-/* line 354, ../sass/_invite.scss */
+/* line 308, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #reply h1#title {
   margin: 15px;
   font-size: 44px;
   font-style: italic;
   text-align: center;
 }
-/* line 358, ../sass/_invite.scss */
+/* line 312, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #reply h2 {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: .2em;
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
-  font-family: "rooney-web", sans-serif;
+  font-family: "rooney-web", Georgia, serif;
   font-size: 16px;
   text-align: center;
   margin-bottom: 15px;
   margin-top: 30px;
 }
 
-/* line 364, ../sass/_invite.scss */
+/* line 318, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteInfoContainer {
   padding: 20px;
-  background: #eee;
+  background: #ededec;
 }
 
-/* line 369, ../sass/_invite.scss */
+/* line 323, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteInfo {
   padding: 30px;
   border: 1px solid #aaa;
@@ -1327,12 +1430,12 @@ table.jCalendar td.unselectable.dp-hover {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 375, ../sass/_invite.scss */
+/* line 329, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteInfo h1 {
   font-size: 28px;
   margin-bottom: 30px;
 }
-/* line 380, ../sass/_invite.scss */
+/* line 334, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteInfo #recipeImage {
   float: left;
   margin-right: 30px;
@@ -1342,11 +1445,11 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
-/* line 387, ../sass/_invite.scss */
+/* line 341, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteInfo #details {
   margin-left: 250px;
 }
-/* line 390, ../sass/_invite.scss */
+/* line 344, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteInfo #details dt {
   font-size: 13px;
   text-transform: uppercase;
@@ -1355,42 +1458,42 @@ table.jCalendar td.unselectable.dp-hover {
   font-family: "proxima-nova", sans-serif;
   padding-top: 15px;
 }
-/* line 395, ../sass/_invite.scss */
+/* line 349, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #inviteInfo #details dd {
   font-size: 22px;
   margin-bottom: 15px;
 }
 
-/* line 402, ../sass/_invite.scss */
+/* line 356, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyForm {
   width: 700px;
   margin: 0px auto;
   text-align: center;
 }
-/* line 407, ../sass/_invite.scss */
+/* line 361, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyForm .checkbox {
   margin: 0px 0px 15px 0px;
 }
-/* line 411, ../sass/_invite.scss */
+/* line 365, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyForm .checkboxLabel {
   text-transform: none;
   font-size: 18px;
   display: inline;
   letter-spacing: normal;
   font-style: normal;
-  font-family: "rooney-web", sans-serif;
+  font-family: "rooney-web", Georgia, serif;
 }
-/* line 420, ../sass/_invite.scss */
+/* line 374, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyForm label {
   display: block;
   margin-bottom: 5px;
   font-size: 14px;
 }
-/* line 426, ../sass/_invite.scss */
+/* line 380, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyForm .extraInput {
   margin: 15px 20px;
 }
-/* line 430, ../sass/_invite.scss */
+/* line 384, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyForm input[type=text] {
   border: 1px solid #aaa;
   padding: 5px;
@@ -1398,32 +1501,34 @@ table.jCalendar td.unselectable.dp-hover {
   width: 100%;
   font-size: 14px;
 }
-/* line 438, ../sass/_invite.scss */
+/* line 392, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyForm textarea {
   width: 100%;
   height: 100px;
   resize: vertical;
 }
-/* line 444, ../sass/_invite.scss */
+/* line 398, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyForm button {
-  font-family: "rooney-web", sans-serif;
   display: inline-block;
   border: 0px;
   background: #666;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  font-size: 26px;
   color: #fff;
+  font-family: "rooney-web", Georgia, serif;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
   text-align: center;
-  padding: 14px 25px;
   font-style: italic;
+  padding: 10px 18px;
+  font-size: 20px;
+  font-size: 26px;
+  padding: 14px 25px;
   margin: 5px;
 }
-/* line 44, ../sass/core.scss */
+/* line 86, ../sass/core.scss */
 #replyForm button .small {
   margin-top: 7px;
   display: block;
@@ -1435,31 +1540,33 @@ table.jCalendar td.unselectable.dp-hover {
   font-style: normal;
 }
 
-/* line 449, ../sass/_invite.scss */
+/* line 403, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyButtons {
   text-align: center;
 }
-/* line 451, ../sass/_invite.scss */
+/* line 405, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyButtons a {
-  font-family: "rooney-web", sans-serif;
   display: inline-block;
   border: 0px;
   background: #666;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  font-size: 26px;
   color: #fff;
+  font-family: "rooney-web", Georgia, serif;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
   text-align: center;
-  padding: 14px 25px;
   font-style: italic;
+  padding: 10px 18px;
+  font-size: 20px;
+  font-size: 26px;
+  padding: 14px 25px;
   margin: 5px;
   color: #000;
 }
-/* line 44, ../sass/core.scss */
+/* line 86, ../sass/core.scss */
 #replyButtons a .small {
   margin-top: 7px;
   display: block;
@@ -1470,38 +1577,38 @@ table.jCalendar td.unselectable.dp-hover {
   letter-spacing: .1em;
   font-style: normal;
 }
-/* line 456, ../sass/_invite.scss */
+/* line 410, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyButtons #answerYes, #replyButtons #answerMaybe {
   background: #DAEDC7;
   color: #3F8000;
 }
-/* line 461, ../sass/_invite.scss */
+/* line 415, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyButtons #answerYes:hover, #replyButtons #answerMaybe:hover {
   background: #C9E6AC;
 }
-/* line 465, ../sass/_invite.scss */
+/* line 419, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyButtons #answerYes.selected, #replyButtons #answerMaybe.selected {
   background: #7AB342;
   color: #fff;
 }
-/* line 470, ../sass/_invite.scss */
+/* line 424, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyButtons #answerNo {
   background: #F7DDCB;
   color: #962D00;
 }
-/* line 475, ../sass/_invite.scss */
+/* line 429, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyButtons #answerNo:hover {
   background: #F2D3BD;
 }
-/* line 479, ../sass/_invite.scss */
+/* line 433, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyButtons #answerNo.selected {
   background: #EB6931;
   color: #fff;
 }
 
-/* line 485, ../sass/_invite.scss */
+/* line 439, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyReasons {
-  background: #eee;
+  background: #ededec;
   padding: 30px 30px 20px 30px;
   margin: 30px 0px 0px 0px;
   font-family: "proxima-nova", sans-serif;
@@ -1509,14 +1616,14 @@ table.jCalendar td.unselectable.dp-hover {
   text-align: left;
 }
 
-/* line 494, ../sass/_invite.scss */
+/* line 448, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyMessage {
-  background: #eee;
+  background: #ededec;
   padding: 30px;
   text-align: left;
   margin: 30px 0px;
 }
-/* line 500, ../sass/_invite.scss */
+/* line 454, /Users/tina/Sites/hotpot/static/sass/_invite.scss */
 #replyMessage label {
   font-size: 13px;
   text-transform: uppercase;
@@ -1528,15 +1635,15 @@ table.jCalendar td.unselectable.dp-hover {
   font-style: normal;
 }
 
-/* line 1, ../sass/_history.scss */
+/* line 1, /Users/tina/Sites/hotpot/static/sass/_history.scss */
 .filterTags {
   font-family: "proxima-nova", sans-serif;
 }
-/* line 4, ../sass/_history.scss */
+/* line 4, /Users/tina/Sites/hotpot/static/sass/_history.scss */
 .filterTags a {
   font-weight: bold;
   display: inline-block;
-  background: #eee;
+  background: #ededec;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -1549,18 +1656,18 @@ table.jCalendar td.unselectable.dp-hover {
   width: 100px;
   text-align: center;
 }
-/* line 16, ../sass/_history.scss */
+/* line 16, /Users/tina/Sites/hotpot/static/sass/_history.scss */
 .filterTags a.selected {
   color: #fff;
   background: #aaa;
 }
 
-/* line 22, ../sass/_history.scss */
+/* line 22, /Users/tina/Sites/hotpot/static/sass/_history.scss */
 #invitesTable {
   margin: 30px 0px;
   width: 100%;
 }
-/* line 26, ../sass/_history.scss */
+/* line 26, /Users/tina/Sites/hotpot/static/sass/_history.scss */
 #invitesTable th {
   font-size: 13px;
   text-transform: uppercase;
@@ -1568,8 +1675,21 @@ table.jCalendar td.unselectable.dp-hover {
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 30, ../sass/_history.scss */
+/* line 30, /Users/tina/Sites/hotpot/static/sass/_history.scss */
 #invitesTable td, #invitesTable th {
   border-bottom: 1px solid #aaa;
   padding: 10px;
+}
+
+/**********************************************************/
+/* REGISTRATION PAGE */
+/* line 4, /Users/tina/Sites/hotpot/static/sass/_account.scss */
+#registrationFormContainer, #loginFormContainer {
+  width: 300px;
+  margin: 0px auto;
+}
+
+/* line 10, /Users/tina/Sites/hotpot/static/sass/_account.scss */
+#registration #title, #login #title {
+  text-align: center;
 }

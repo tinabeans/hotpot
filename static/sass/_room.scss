@@ -38,7 +38,7 @@
 	width:360px;
 	padding:40px 10px 50px 10px;
 	@include box-sizing(border-box);
-	background:#eee;
+	background:$subtleColor;
 	height:100%;
 }
 
@@ -281,7 +281,7 @@
 	padding:20px;
 	height:100%;
 	@include box-sizing(border-box);
-	background: #eee;
+	background: $subtleColor;
 }
 
 #myInfo {

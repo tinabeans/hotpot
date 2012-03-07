@@ -31,13 +31,14 @@ users = db.users
 snippets = db.snippets
 recipes = db.recipes
 
-##############################################################################
-# INVITE CODES (NOT NEEDED)
-'''
+
 @app.route('/')
 def index():
 	return flask.render_template('home.html')
 
+##############################################################################
+# INVITE CODES (NOT NEEDED)
+'''
 @app.route('/generateCode')
 def showGenerateCodeForm():
 	return flask.render_template('generateCode.html')

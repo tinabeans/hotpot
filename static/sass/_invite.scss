@@ -1,66 +1,20 @@
 /**********************************************************/
 /* INVITE PAGE */
 
-
-@mixin labelType {
-	@include smallHeading;
-	font-size:12px;
-	margin-bottom:5px;
-}
-
-@mixin smallFormalHeading {
-	@include smallHeading;
-	font-family: $serif;
-	font-size: 16px;
-	text-align: center;
-	margin-bottom:15px;
-}
-
-@mixin bigFormalHeading {
-	margin:15px;
-	font-size:44px;
-	font-style: italic;
-	text-align: center;
-}
-
 #inviteForm {
 	float:left;
 	width:40%;
 	@include box-sizing(border-box);
 	padding-right:30px;
-	
+
 	.formItem {
 		margin-bottom:30px;
-	}
-	
-	label {
-		display:block;
-		@include labelType;
-	}
-	
-	input, textarea {
-		border:1px solid #aaa;
-		padding:5px;
-		margin:0px;
-		width:100%;
-		font-size:14px;
-	}
-	
-	textarea {
-		height:100px;
-		resize: vertical;
-	}
-	
-	.note {
-		margin-top:5px;
-		font-style:italic;
-		font-size:12px;
 	}
 	
 	#chosenRecipe {
 		height:70px;
 		padding:15px;
-		background:#eee;
+		background:$subtleColor;
 	}
 	
 	#recipeThumbnail {
@@ -103,7 +57,7 @@
 }
 
 #invitePreview {
-	background:#eee;
+	background:$subtleColor;
 	padding:20px;
 }
 
@@ -222,7 +176,7 @@
 #datePicker {
 	width:300px;
 	margin-top:10px;
-    background: #eee;
+    background: $subtleColor;
     padding:10px;
     position: relative;
     
@@ -261,7 +215,7 @@
 	}
 	
 	.dp-nav-prev-year:hover, .dp-nav-next-year:hover, .dp-nav-prev-month:hover, .dp-nav-next-month:hover {
-		background:#eee;
+		background:$subtleColor;
 	}
 	
 	.dp-nav-next-year {
@@ -298,7 +252,7 @@ table.jCalendar {
     }
     
     td.current-month {
-		background: #eee;
+		background: $subtleColor;
 		color: #000;
 	}
 	
@@ -330,12 +284,12 @@ table.jCalendar {
 	
 	td.disabled.dp-hover {
 		@include opacity(.3);
-		background:#eee;
+		background:$subtleColor;
 		color:#000;
 	}
 	
 	td.disabled.other-month.dp-hover {
-		background:#eee;
+		background:$subtleColor;
 		color:#aaa;
 	}
 	
@@ -363,7 +317,7 @@ table.jCalendar {
 
 #inviteInfoContainer {
 	padding:20px;
-	background:#eee;
+	background:$subtleColor;
 }
 
 #inviteInfo {
@@ -483,7 +437,7 @@ table.jCalendar {
 }
 
 #replyReasons {
-	background:#eee;
+	background:$subtleColor;
 	padding:30px 30px 20px 30px;
 	margin:30px 0px 0px 0px;
 	font-family: $sans;
@@ -492,7 +446,7 @@ table.jCalendar {
 }
 
 #replyMessage {
-	background:#eee;
+	background:$subtleColor;
 	padding:30px;
 	text-align: left;
 	margin:30px 0px;

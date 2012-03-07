@@ -40,7 +40,7 @@
 
 #shoppingList {
 	padding:20px;
-	background:#eee;
+	background:$subtleColor;
 	
 	h1 {
 		@include smallHeading;

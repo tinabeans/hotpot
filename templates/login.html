@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends "base/common.html" %}
 
-	<meta charset="utf-8">
-	<title>login form</title>
-	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+{% block title %}Join Hotpot{% endblock %}
+
+{% block customJS %}
 	<script src="/static/js/lib/jquery.sha1.js" type="text/javascript"></script>
 	
 	<script type="text/javascript">
@@ -22,17 +19,36 @@
 	
 	</script>
 	
-</head>
+	</script>
 
-<body>
+{% endblock %}
 
+{% block bodyId %}login{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+<h1 id="title">Log In</h1>
+
+<div id="loginFormContainer">
 <form id="loginForm" action="/loginAction" method="POST">
-	<label>email:</label> <input type="text" name="email" />
-	<label>password:</label> <input type="password" id="passwordField" />
+	<div class="formItem">
+		<label>email:</label>
+		<input type="text" name="email" />
+	</div>
+	
+	<div class="formItem">
+		<label>password:</label>
+		<input type="password" id="passwordField" />
+	</div>
+	
 	<input type="hidden" name="password" id="encryptedPassword" />
 	
-	<input type="submit" />
+	<div class="buttons">
+		<input type="submit" />
+	</div>
 </form>
+</div><!-- #loginFormContainer -->
 
-</body>
-</html>
+
+{% endblock main %}

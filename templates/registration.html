@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends "base/common.html" %}
 
-	<meta charset="utf-8">
-	<title>registration form</title>
-	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+{% block title %}Join Hotpot{% endblock %}
+
+{% block customJS %}
 	<script src="static/js/lib/jquery.sha1.js" type="text/javascript"></script>
 	
 	<script type="text/javascript">
@@ -21,19 +18,40 @@
 	});
 	
 	</script>
-	
-</head>
 
-<body>
+{% endblock %}
 
+{% block bodyId %}registration{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+<h1 id="title">Join Hotpot</h1>
+
+<div id="registrationFormContainer">
 <form id="registrationForm" action="registerAction" method="POST">
-	<label>email:</label> <input type="text" name="email" />
-	<label>name:</label> <input type="text" name="name" />
-	<label>password:</label> <input type="password" id="passwordField" />
+	<div class="formItem">
+		<label>email:</label>
+		<input type="text" name="email" />
+	</div>
+	
+	<div class="formItem">
+		<label>name:</label>
+		<input type="text" name="name" />
+	</div>
+	
+	<div class="formItem">
+		<label>password:</label>
+		<input type="password" id="passwordField" />
+	</div>
+	
 	<input type="hidden" name="password" id="encryptedPassword" />
 	
-	<input type="submit" />
+	<div class="buttons">
+		<input type="submit" />
+	</div>
 </form>
+</div><!-- #registrationFormContainer -->
 
-</body>
-</html>
+
+{% endblock main %}

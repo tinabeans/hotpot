@@ -4,7 +4,7 @@
 	a {
 		font-weight: bold;
 		display:inline-block;
-		background:#eee;
+		background:$subtleColor;
 		@include border-radius(5px);
 		padding:5px 8px;
 		color:#666;

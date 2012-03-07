@@ -5,53 +5,19 @@
 /**********************************************************/
 /* TYPOGRAPHY */
 
-$sans: "proxima-nova",sans-serif;
-$serif: "rooney-web",sans-serif;
+$sans: "proxima-nova", sans-serif;
+$serif: "rooney-web", Georgia, serif;
 
 /**********************************************************/
 /* COLORS */
 
-
-/**********************************************************/
-/* MIXINS */
-@mixin outerContainer {
-	width: 90%;
-	margin:0px auto;
-	position: relative;
-}
-
-@mixin smallHeading {
-	font-size:13px;
-	text-transform: uppercase;
-	letter-spacing: .2em;
-	margin-bottom: 10px;
-	font-family: $sans;
-}
-
-@mixin bigButton {
-	font-family: $serif;
-	display:inline-block;
-	border:0px;
-	background: #666;
-	@include border-radius(10px);
-	font-size:26px;
-	color:#fff;
-	text-align: center;
-	padding:14px 25px;
-	font-style:italic;
-	margin:5px;
-	
-	.small {
-		margin-top:7px;
-		display:block;
-		font-family:$sans;
-		font-weight: normal;
-		font-size:11px;
-		text-transform: uppercase;
-		letter-spacing:.1em;
-		font-style: normal;
-	}
-}
+$textColor: #5c5850;
+$orange: #ff5513;
+$accentColor: #bedf62;
+$subtleColor: #ededec;
+$mediumColor: #d8d7d5;
+$darkColor: #908d86;
+$bgColor: #fff;
 
 /**********************************************************/
 /* TAG REDEFINITIONS */
@@ -67,11 +33,18 @@ body {
 	font-weight: 300;
 	font-size:13px;
 	height:100%;
+	color:$textColor;
+	background:$bgColor;
 }
 
 a {
 	text-decoration:none;
-	color:blue;
+	color:$darkColor;
+	font-weight: bold;
+}
+
+a:hover {
+	color:$orange;
 }
 
 
@@ -80,22 +53,81 @@ p {
 	margin:0px 0px 15px 0px;
 }
 
+/**********************************************************/
+/* GLOBAL MIXINS */
+
+@mixin smallHeading {
+	font-size:13px;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	margin-bottom: 10px;
+	font-family: $sans;
+}
+
+@mixin button {
+	display:inline-block;
+	border:0px;
+	background: #666;
+	color:#fff;
+	font-family: $serif;
+	@include border-radius(20px);
+	text-align: center;
+	font-style:italic;
+	padding:10px 18px;
+	font-size:20px;
+}
+
+@mixin bigButton {
+	@include button;
+	font-size:26px;
+	padding:14px 25px;
+	margin:5px;
+	
+	.small {
+		margin-top:7px;
+		display:block;
+		font-family:$sans;
+		font-weight: normal;
+		font-size:11px;
+		text-transform: uppercase;
+		letter-spacing:.1em;
+		font-style: normal;
+	}
+}
+
+@mixin labelType {
+	@include smallHeading;
+	font-size:12px;
+	margin-bottom:5px;
+}
+
+@mixin smallFormalHeading {
+	@include smallHeading;
+	font-family: $serif;
+	font-size: 16px;
+	text-align: center;
+	margin-bottom:15px;
+}
+
+@mixin bigFormalHeading {
+	margin:15px;
+	font-size:44px;
+	font-style: italic;
+	text-align: center;
+}
+
 
 /**********************************************************/
 /* COMMON */
 
-/* div, section {
-	border:1px solid #eee;
-	background:#fff; 
-}*/
-
-#mainHeader, #homeIntro, #featuredMeals, #mainFooter {
-	@include outerContainer;
+@mixin outerContainer {
+	width: 88%;
+	margin:0px auto;
+	position: relative;
 }
 
-#mainHeader {
-	padding: 20px 0px 0px 0px;
-	margin-bottom:30px;
+#mainHeader, #homeIntro, #mainContainer, #featuredMeals, #mainFooter {
+	@include outerContainer;
 }
 
 #mainFooter {
@@ -110,7 +142,7 @@ p {
 }
 
 #mainContainer {
-	width:90%;
+	padding:50px 0px;
 	margin:0px auto;
 }
 
@@ -124,6 +156,118 @@ p {
 }
 
 /**********************************************************/
+/* HEADER */
+
+#mainHeaderContainer {
+	background:$subtleColor url(/static/images/lightWood.jpg);
+	@include box-shadow(rgba(0,0,0,.15) -3px 0px 10px inset);
+}
+
+#mainHeader {
+	padding:10px 0px 10px 0px;
+	border-bottom:1px solid $mediumColor;
+	
+	h1 {
+		
+		img {
+			width:140px;
+		}
+	}
+}
+
+#mainNav {
+	position: absolute;
+	top: 0;
+	left:160px;
+	height: 81px;
+	border-left:1px solid $mediumColor;
+	z-index:+1;
+	
+	a {
+		font-style: italic;
+		font-size:24px;
+		height:100%;
+		@include box-sizing(border-box);
+		padding:27px 22px 0px 22px;
+		float:left;
+		display: block;
+		@include background(linear-gradient(rgba($bgColor, 0), rgba($bgColor, .5)));
+		border-right:1px solid $mediumColor;
+		border-bottom:1px solid $mediumColor;
+		cursor: pointer;
+		
+		.small {
+			font-style: normal;
+			font-family: $sans;
+			font-size:12px;
+			display: block;
+			font-weight: normal;
+		}
+	}
+	
+	a.selected {
+		@include background(linear-gradient(rgba($bgColor, .3), rgba($bgColor, 1)));
+		border-bottom:1px solid $bgColor;
+	}
+}
+
+
+#serviceNav {
+	position: absolute;
+	top: 30;
+	right:0;
+	padding:20px 0px;
+	
+	a {
+		font-family:$sans;
+		margin:0px 20px;
+		display:inline-block;
+	}
+}
+
+/**********************************************************/
+/* FORMS */
+
+	
+.formItem {
+	margin-bottom:15px;
+}
+
+.buttons {
+	text-align: center;
+}
+
+label {
+	display:block;
+	@include labelType;
+}
+
+input, textarea {
+	border:1px solid #aaa;
+	padding:5px;
+	margin:0px;
+	width:100%;
+	font-size:14px;
+}
+
+textarea {
+	height:100px;
+	resize: vertical;
+}
+
+.note {
+	margin-top:5px;
+	font-style:italic;
+	font-size:12px;
+}
+
+input[type=submit] {
+	@include button;
+	width:auto;
+}
+
+
+/**********************************************************/
 /* CSS for different page types */
 
 @import "home";
@@ -131,3 +275,4 @@ p {
 @import "recipe";
 @import "invite";
 @import "history";
+@import "account";
