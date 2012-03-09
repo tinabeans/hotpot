@@ -26,10 +26,6 @@ app.secret_key = '''nTi!"2Oq#j2WdnUsQziTn52y8xGfZl:"MH*H|`yVClNLA4UG'GIvq1qc%Gk}
 connection = pymongo.Connection()
 db = connection.hotpot
 
-codes = db.inviteCodes
-users = db.users
-snippets = db.snippets
-recipes = db.recipes
 
 
 @app.route('/')
@@ -122,7 +118,7 @@ def showLogin():
 def login():
 	data = flask.request.form
 	
-	userDocument = users.find_one({'email' : data['email'], 'password' : data['password']})
+	userDocument = db.users.find_one({'email' : data['email'], 'password' : data['password']})
 	
 	if userDocument is not None:
 		flask.session['userId'] = str(userDocument['_id'])
@@ -152,7 +148,7 @@ def register():
 	data = flask.request.form
 	
 	# create the user's db entry; it returns an ObjectId we can use to log the user in
-	userId = users.insert({
+	userId = db.users.insert({
 		'email' : data['email'],
 		'name' : data['name'],
 		'password' : data['password']
@@ -336,7 +332,7 @@ def showRoom(recipe, roomId):
 		return flask.render_template('login.html') 
 	else:
 		room = db.rooms.find_one({'_id' : ObjectId(roomId)})
-		recipe = recipes.find_one({'slug' : recipe})
+		recipe = db.recipes.find_one({'slug' : recipe})
 		
 		# grab all the foodNotes related to this room
 		foodNotesInThisRoom = list(db.foodNotes.find({'roomId' : ObjectId(roomId)}))
@@ -387,7 +383,7 @@ def postFoodnote():
 	newUserNoteId = userNotes.insert(newUserNote);
 	
 	# now put together some data to send back to the template...
-	userInfo = users.find_one({ '_id' : ObjectId(flask.session['userId']) })
+	userInfo = db.users.find_one({ '_id' : ObjectId(flask.session['userId']) })
 	
 	# HEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLPPPPPPPPPPPPPPPPPPPPPPP SINGLE QUOTES!!?
 	dataForResponse = {
@@ -410,7 +406,7 @@ def doStuffWithStuffFromTornado():
 	
 	# if message is coming from a user, get user database entry based on userId
 	if 'userId' in requestJSON:
-		userInfo = users.find_one({ '_id' : ObjectId(requestJSON['userId']) })
+		userInfo = db.users.find_one({ '_id' : ObjectId(requestJSON['userId']) })
 	
 	# do different things depending on what the socket message says...
 	if requestJSON['type'] == 'foodNote':
