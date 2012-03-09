@@ -130,17 +130,6 @@ p {
 	@include outerContainer;
 }
 
-#mainFooter {
-	text-align: center;
-	clear:both;
-	color:#666;
-	padding:60px 0px 30px 0px;
-}
-
-#logo img {
-	width:180px;
-}
-
 #mainContainer {
 	padding:50px 0px;
 	margin:0px auto;
@@ -160,13 +149,12 @@ p {
 
 #mainHeaderContainer {
 	background:$subtleColor url(/static/images/lightWood.jpg);
-	@include box-shadow(rgba(0,0,0,.15) -3px 0px 10px inset);
+	@include box-shadow(rgba(0,0,0,.2) -3px 0px 10px inset);
+	border-bottom: 1px solid $mediumColor;
 }
 
 #mainHeader {
 	padding:10px 0px 10px 0px;
-	border-bottom:1px solid $mediumColor;
-	
 	h1 {
 		
 		img {
@@ -180,21 +168,16 @@ p {
 	top: 0;
 	left:160px;
 	height: 81px;
-	border-left:1px solid $mediumColor;
 	z-index:+1;
 	
 	a {
-		font-style: italic;
-		font-size:24px;
 		height:100%;
 		@include box-sizing(border-box);
-		padding:27px 22px 0px 22px;
+		padding:30px 22px 0px 22px;
 		float:left;
 		display: block;
-		@include background(linear-gradient(rgba($bgColor, 0), rgba($bgColor, .5)));
-		border-right:1px solid $mediumColor;
-		border-bottom:1px solid $mediumColor;
-		cursor: pointer;
+		font-family: $sans;
+		font-size:24px;
 		
 		.small {
 			font-style: normal;
@@ -206,11 +189,13 @@ p {
 	}
 	
 	a.selected {
-		@include background(linear-gradient(rgba($bgColor, .3), rgba($bgColor, 1)));
+		@include box-shadow(rgba(0,0,0,.15) 0px -10px 8px);
+		@include background(linear-gradient(rgba($bgColor, .0), rgba($bgColor, 1)));
+		border:1px solid $mediumColor;
+		border-top:none;
 		border-bottom:1px solid $bgColor;
 	}
 }
-
 
 #serviceNav {
 	position: absolute;
@@ -220,8 +205,32 @@ p {
 	
 	a {
 		font-family:$sans;
-		margin:0px 20px;
+		margin:0px 10px;
 		display:inline-block;
+	}
+}
+
+/**********************************************************/
+/* FOOTER */
+
+#mainFooter {
+	text-align: center;
+	clear:both;
+	color:#666;
+	padding:60px 0px 30px 0px;
+	
+	p {
+		font-style: italic;
+	}
+}
+
+#footerNav {
+	margin:15px 0px;
+
+	a {
+		display:inline-block;
+		padding:0px 10px;
+		font-family: $sans;
 	}
 }
 

@@ -111,31 +111,6 @@ def viewProfile():
 
 
 ##############################################################################
-# REGISTRATION
-
-@app.route('/register')
-def showRegistration():
-	return flask.render_template('registration.html')
-
-@app.route('/registerAction', methods=['POST'])
-def register():
-	data = flask.request.form
-	
-	# create the user's db entry; it returns an ObjectId we can use to log the user in
-	userId = users.insert({
-		'email' : data['email'],
-		'name' : data['name'],
-		'password' : data['password']
-	})
-	
-	# log the user in by setting a variable in the session object
-	# (i've decided to use the stringified ObjectId to identify the user everywhere, including in sessions & the front end)
-	flask.session['userId'] = str(userId)
-		
-	return "okay you're registered!"
-
-
-##############################################################################
 # LOGIN
 
 @app.route('/login')
@@ -162,19 +137,53 @@ def logout():
 	flask.session.pop('userId', None)
 	flask.session.pop('email', None)
 	return """omg you logged out! <a href="/login">Log back in!</a>"""
+	
+
+
+##############################################################################
+# REGISTRATION
+
+@app.route('/register')
+def showRegistration():
+	return flask.render_template('registration.html')
+
+@app.route('/registerAction', methods=['POST'])
+def register():
+	data = flask.request.form
+	
+	# create the user's db entry; it returns an ObjectId we can use to log the user in
+	userId = users.insert({
+		'email' : data['email'],
+		'name' : data['name'],
+		'password' : data['password']
+	})
+	
+	# log the user in by setting a variable in the session object
+	# (i've decided to use the stringified ObjectId to identify the user everywhere, including in sessions & the front end)
+	flask.session['userId'] = str(userId)
+		
+	return "okay you're registered!"
 
 
 
 ##############################################################################
-# USER PROFILE
+# USER ACCOUNT STUFF
 
-@app.route('/mystuff')
+@app.route('/myprofile')
+def showMyProfile():
+	
+	if 'userId' in flask.session:
+		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+
+	return flask.render_template('profile.html')
+
+@app.route('/accountinfo')
 def showMyStuff():
 	
 	if 'userId' in flask.session:
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 
-	return str(user['name'])
+	return flask.render_template('account.html')
 
 
 ##############################################################################
@@ -203,11 +212,12 @@ def showInviteForm(recipe):
 		return flask.render_template('invite.html', recipe=recipe, user=user )
 
 
-@app.route('/inviteEmail/<recipe>')
+@app.route('/viewInvitation/<recipe>')
 def sendEmail(recipe):
 	recipe = db.recipes.find_one({ 'slug' : recipe })
+	invite = db.invites.find_one();
 	
-	return flask.render_template('inviteEmail.html', recipe=recipe)
+	return flask.render_template('email/invitation.html', recipe=recipe, invite=invite)
 	
 
 @app.route('/sendInvite', methods=['POST'])
@@ -228,10 +238,10 @@ def sendInvite():
 	
 	# compose email to send
 	email = Message("Hotpot Invite Test", recipients=[newInvite['to']])
-	email.html = flask.render_template('inviteEmail.html', recipe=recipe, invite=newInvite)
+	email.html = flask.render_template('/email/invitation.html', recipe=recipe, invite=newInvite)
 	mail.send(email)
 
-	return flask.render_template('inviteEmail.html', recipe=recipe, invite=newInvite)
+	return flask.render_template('/email/invitation.html', recipe=recipe, invite=newInvite)
 
 
 ##############################################################################
@@ -273,7 +283,7 @@ def sendReply():
 	
 	# compose and send email
 	email = Message("Hotpot Invite RSVP", recipients=[invite['from']])
-	email.html = flask.render_template('replyEmail.html', reply=data)
+	email.html = flask.render_template('email/replyToHost.html', reply=data)
 	mail.send(email)
 	
 	# store reply in database
@@ -286,7 +296,7 @@ def sendReply():
 	
 	db.invites.update({ '_id' : ObjectId(data['inviteId']) }, {'$set' : { 'reply' : reply }})
 	
-	return flask.render_template('replyEmail.html', reply=data, invite=invite)
+	return flask.render_template('email/replyToHost.html', reply=data, invite=invite)
 
 
 @app.route('/invites')

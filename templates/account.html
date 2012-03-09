@@ -1,0 +1,45 @@
+{% extends "base/common.html" %}
+
+{% block title %}My Account{% endblock %}
+
+{% block customJS %}{% endblock %}
+
+{% block bodyId %}account{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+<h1 id="title">Update Account Information</h1>
+
+<div id="accountInfoFormContainer">
+<form id="accountInfoForm">
+	<fieldset>
+		<h2>Change Password</h2>
+		<div class="formItem">
+			<label>Password</label>
+			<input type="password" />
+		</div>
+		
+		<div class="formItem">
+			<label>Password Again</label>
+			<input type="text" />
+		</div>
+	</fieldset>
+	
+	<fieldset>
+		<h2>Change Email Address</h2>
+		
+		<div class="formItem">
+			<label>Email Address</label>
+			<input type="text" />
+		</div>
+		
+		<div class="buttons">
+			<input type="submit" value="Update" />
+		</div>
+	</fieldset>
+	
+</form>
+</div><!-- #accountInfoFormContainer -->
+
+{% endblock main %}
