@@ -13,11 +13,11 @@
 				<tr><td height="50"></td></tr>  <!-- vertical spacing -->
 				<tr>
 					<td style="font-family:Helvetica, Arial, serif; font-size:17px; line-height:1.5em; font-weight:100;">
-						<p id="greeting">Hi <span id="friendName">{{ invite.friendName }}</span>,</p>
+						<p id="greeting">Hi <span id="friendName">{{ invitation.friendName }}</span>,</p>
 						<div class="messageBody">
-							{{ invite.message|safe }}
+							{{ invitation.message|safe }}
 						</div>
-						<p style="text-align:right">Cheers,<br>{{ invite.fromName }}</p>
+						<p style="text-align:right">Cheers,<br>{{ invitation.fromName }}</p>
 					</td>
 				</tr>
 				<tr><td height="50"></td></tr>  <!-- vertical spacing -->
@@ -81,15 +81,15 @@
 								<td width="30"></td> <!-- horizontal spacing -->
 								<td valign="top">
 									<div style="line-height:2.8em;font-family:Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px;">Date</div>
-									<div style="font-size:22px; font-family:Georgia, serif;">{{ invite.readableDate|safe }}</div>
+									<div style="font-size:22px; font-family:Georgia, serif;">{{ invitation.readableDate|safe }}</div>
 									<p></p>
 									<div style="line-height:2.8em;font-family:Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px;">Time</div>
-									<div style="font-size:22px; font-family:Georgia, serif;">{{ invite.readableTime|safe }}</div>
+									<div style="font-size:22px; font-family:Georgia, serif;">{{ invitation.readableTime|safe }}</div>
 									<p></p>
 									<div style="line-height:2.8em;font-family:Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:.1em; font-size:12px;">Place</div>
 									<div style="font-size:22px; font-family:Georgia, serif;">Our kitchens, via Hotpot</div>
 									<br>
-									<p><a href="http://test.letsgohotpot.com/reply/{{ invite._id }}" id="RSVPButton"><img src="http://test.letsgohotpot.com/static/images/email/email_RSVP.png" alt="RSVP"></a></p>
+									<p><a href="http://test.letsgohotpot.com/reply/{{ invitation._id }}" id="RSVPButton"><img src="http://test.letsgohotpot.com/static/images/email/email_RSVP.png" alt="RSVP"></a></p>
 								</td>
 							</tr>
 						</table>

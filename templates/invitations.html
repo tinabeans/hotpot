@@ -9,7 +9,7 @@
 
 {% block main %}
 
-<h1 id="title">Invitations to Cook</h1>
+<h1 id="title">Invitations</h1>
 
 <nav class="filterTags">
 	Filter by Status:
@@ -20,7 +20,7 @@
 	<a href="">Declined</a>
 </nav>
 
-<table id="invitesTable">
+<table id="invitationsTable">
 	<thead>
 		<tr>
 			<th>With</th>
@@ -32,26 +32,26 @@
 		</tr>
 	</thead>
 	<tbody>
-	{% for invite in invites %}
+	{% for invitation in invitations %}
 		<tr>
-			<td>{{ invite.friendName }}</td>
-			<td>{{ invite.recipe }}</td>
-			<td>{{ invite.readableDate }}</td>
-			<td>{{ invite.readableTime|safe }}</td>
+			<td>{{ invitation.friendName }}</td>
+			<td>{{ invitation.recipe }}</td>
+			<td>{{ invitation.readableDate }}</td>
+			<td>{{ invitation.readableTime|safe }}</td>
 			<td>
-			{% if invite.reply %}
-				{% if invite.reply.mainReply == "yes" %}
+			{% if invitation.reply %}
+				{% if invitation.reply.mainReply == "yes" %}
 					It's on!
-				{% elif invite.reply.mainReply == "maybe" %}
+				{% elif invitation.reply.mainReply == "maybe" %}
 					Change needed
-				{% elif invite.reply.mainReply == "no" %}
+				{% elif invitation.reply.mainReply == "no" %}
 					Declined
 				{% endif %}
 			{% else %}
 				Awaiting reply
 			{% endif %}
 			</td>
-			<td><a href="/invites/{{ invite._id }}">view</a></td>
+			<td><a href="/invitations/{{ invitation._id }}">view</a></td>
 		</tr>
 	{% endfor %}
 	</tbody>

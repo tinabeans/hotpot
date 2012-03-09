@@ -12,19 +12,19 @@
 
 <h1 id="title">Reply to an Invitation</h1>
 
-<h2>{{ invite.fromName }} has invited you to cook:</h2>
+<h2>{{ invitation.fromName }} has invited you to cook:</h2>
 
-<div id="inviteInfoContainer">
-	<div id="inviteInfo">
+<div id="invitationInfoContainer">
+	<div id="invitationInfo">
 		<img id="recipeImage" src="/static/images/food/{{ recipe.slug }}.jpg" width="300" />
 		<h1>{{ recipe.title }}</h1>
 		
 		<dl id="details">
 			<dt>Date</dt>
-			<dd id="selectedDate">{{ invite.readableDate|safe }}</dd>
+			<dd id="selectedDate">{{ invitation.readableDate|safe }}</dd>
 			
 			<dt>Time</dt>
-			<dd id="selectedTime">{{ invite.readableTime|safe }}</dd>
+			<dd id="selectedTime">{{ invitation.readableTime|safe }}</dd>
 		</dl>
 	</div>
 </div>
@@ -33,7 +33,7 @@
 
 <form id="replyForm" action="/sendReply" method="POST">
 
-	<input type="hidden" name="inviteId" value="{{ invite._id }}" />
+	<input type="hidden" name="id" value="{{ invitation._id }}" />
 
 	<div id="replyButtons">
 		<a href="" id="answerYes" data-value="yes">Yes!</a>

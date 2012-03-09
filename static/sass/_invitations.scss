@@ -37,7 +37,7 @@
 		margin-bottom:5px;
 	}
 	
-	#sendInviteButton {
+	#sendInvitationButton {
 		@include bigButton;
 		margin:0px;
 		font-family: $serif;
@@ -47,7 +47,7 @@
 	}
 }
 
-#invitePreviewContainer {
+#invitationPreviewContainer {
 	margin-left:40%;
 	
 	h3 {
@@ -56,7 +56,7 @@
 	
 }
 
-#invitePreview {
+#invitationPreview {
 	background:$subtleColor;
 	padding:20px;
 }
@@ -79,7 +79,7 @@
 		@include bigFormalHeading;
 	}
 
-	#inviteMessage {
+	#invitationMessage {
 		margin:50px 15px;
 		font-family: $sans;
 		font-size:18px;
@@ -302,7 +302,7 @@ table.jCalendar {
 }
 
 /**********************************************************/
-/* DATE PICKER PLUGIN */
+/* RSVP PAGE */
 
 #reply {
 	h1#title {
@@ -315,12 +315,12 @@ table.jCalendar {
 	}
 }
 
-#inviteInfoContainer {
+#invitationInfoContainer {
 	padding:20px;
 	background:$subtleColor;
 }
 
-#inviteInfo {
+#invitationInfo {
 	padding:30px;
 	border:1px solid #aaa;
 	background:#fff;
@@ -454,5 +454,43 @@ table.jCalendar {
 	label {
 		@include labelType;
 		font-style: normal;
+	}
+}
+
+/**********************************************************/
+/* INVITATIONS LIST */
+
+.filterTags {
+	font-family:$sans;
+	
+	a {
+		font-weight: bold;
+		display:inline-block;
+		background:$subtleColor;
+		@include border-radius(5px);
+		padding:5px 8px;
+		color:#666;
+		margin-left:10px;
+		width:100px;
+		text-align: center;
+	}
+	
+	a.selected {
+		color:#fff;
+		background:#aaa;
+	}
+}
+
+#invitationsTable {
+	margin: 30px 0px;
+	width:100%;
+
+	th {
+		@include smallHeading;
+	}
+
+	td, th {
+		border-bottom:1px solid #aaa;
+		padding:10px;
 	}
 }

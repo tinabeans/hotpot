@@ -194,7 +194,7 @@ def showRecipe(recipe):
 
 
 ##############################################################################
-# INVITE
+# INVITATIONS
 
 @app.route('/invite/<recipe>')
 def showInviteForm(recipe):
@@ -211,45 +211,45 @@ def showInviteForm(recipe):
 @app.route('/viewInvitation/<recipe>')
 def sendEmail(recipe):
 	recipe = db.recipes.find_one({ 'slug' : recipe })
-	invite = db.invites.find_one();
+	invitation = db.invitations.find_one();
 	
-	return flask.render_template('email/invitation.html', recipe=recipe, invite=invite)
+	return flask.render_template('email/invitation.html', recipe=recipe, invitation=invitation)
 	
 
-@app.route('/sendInvite', methods=['POST'])
-def sendInvite():
+@app.route('/sendInvitation', methods=['POST'])
+def sendInvitation():
 	
 	# put incoming values in a dictionary
-	newInvite = {}
+	newInvitation = {}
 	for key in ['to', 'from', 'message', 'recipe', 'datetime', 'friendName', 'fromName', 'readableTime', 'readableDate']:
-		newInvite[key] = flask.request.form[key]
+		newInvitation[key] = flask.request.form[key]
 	
-	# store new invite dictionary in database
-	newInvite['status'] = "new"
-	newInvite['datetime'] = int(newInvite['datetime']) # convert from string to int
-	db.invites.insert(newInvite)
+	# store new invitation dictionary in database
+	newInvitation['status'] = "new"
+	newInvitation['datetime'] = int(newInvitation['datetime']) # convert from string to int
+	db.invitations.insert(newInvitation)
 	
 	# retrieve recipe based on slug
-	recipe = db.recipes.find_one({'slug' : newInvite['recipe']})
+	recipe = db.recipes.find_one({'slug' : newInvitation['recipe']})
 	
 	# compose email to send
-	email = Message("Hotpot Invite Test", recipients=[newInvite['to']])
-	email.html = flask.render_template('/email/invitation.html', recipe=recipe, invite=newInvite)
+	email = Message("Hotpot Invitation Test", recipients=[newInvitation['to']])
+	email.html = flask.render_template('email/invitation.html', recipe=recipe, invitation=newInvitation)
 	mail.send(email)
 
-	return flask.render_template('/email/invitation.html', recipe=recipe, invite=newInvite)
+	return flask.render_template('email/invitation.html', recipe=recipe, invitation=newInvitation)
 
 
 ##############################################################################
 # REPLY
 
-@app.route('/reply/<inviteId>')
-def showReplyForm(inviteId):
+@app.route('/reply/<id>')
+def showReplyForm(id):
 	
-	invite = db.invites.find_one({'_id' : ObjectId(inviteId)})
+	invitation = db.invitations.find_one({'_id' : ObjectId(id)})
 	
 	# does the respondant already have an account?
-	respondant = db.users.find_one({ 'email' : invite['to']})
+	respondant = db.users.find_one({ 'email' : invitation['to']})
 	if respondant is None:
 		return flask.render_template('registration.html')
 	
@@ -261,24 +261,24 @@ def showReplyForm(inviteId):
 	elif str(respondant['_id']) != flask.session['userId']:
 		return """hmm... that invitation is for %s %s. <a href="/logout">logout</a> and try again.""" % (flask.session['userId'], str(respondant['_id']))
 	
-	# wait, check if the invite has already been replied to
-	elif 'reply' in invite:
-		return """you already replied to that. <a href="/invites/%s">see your response here</a>""" % invite['_id']
+	# wait, check if the invitation has already been replied to
+	elif 'reply' in invitation:
+		return """you already replied to that. <a href="/invitations/%s">see your response here</a>""" % invitation['_id']
 	
-	# ok! looks like the user can actually respond to the invite now.
+	# ok! looks like the user can actually respond to the invitation now.
 	else:
-		recipe = db.recipes.find_one({'slug' : invite['recipe']})
+		recipe = db.recipes.find_one({'slug' : invitation['recipe']})
 		
-		return flask.render_template('reply.html', invite=invite, showLogin=showLogin, recipe=recipe)
+		return flask.render_template('reply.html', invitation=invitation, showLogin=showLogin, recipe=recipe)
 
 @app.route('/sendReply', methods=['POST'])
 def sendReply():
 	data = flask.request.form
 	
-	invite = db.invites.find_one({'_id' : ObjectId(data['inviteId'])})
+	invitation = db.invitations.find_one({'_id' : ObjectId(data['id'])})
 	
 	# compose and send email
-	email = Message("Hotpot Invite RSVP", recipients=[invite['from']])
+	email = Message("Hotpot Invitation RSVP", recipients=[invitation['from']])
 	email.html = flask.render_template('email/replyToHost.html', reply=data)
 	mail.send(email)
 	
@@ -290,28 +290,28 @@ def sendReply():
 		"altMeals" : data['altMeals']
 	}
 	
-	db.invites.update({ '_id' : ObjectId(data['inviteId']) }, {'$set' : { 'reply' : reply }})
+	db.invitations.update({ '_id' : ObjectId(data['id']) }, {'$set' : { 'reply' : reply }})
 	
-	return flask.render_template('email/replyToHost.html', reply=data, invite=invite)
+	return flask.render_template('email/replyToHost.html', reply=data, invitation=invitation)
 
 
-@app.route('/invites')
-def showInvites():
+@app.route('/invitations')
+def showInvitations():
 	
 	# grab email address of logged in user
 	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 	
-	invites = list(db.invites.find({'from' : user['email']}))
+	invitations = list(db.invitations.find({'from' : user['email']}))
 	
-	print db.invites.find_one({'from' : user['email']})
+	print db.invitations.find_one({'from' : user['email']})
 	
-	return flask.render_template('invitesList.html', invites=invites)
+	return flask.render_template('invitations.html', invitations=invitations)
 
 
-@app.route('/invites/<inviteId>')
-def showInvitation(inviteId):
+@app.route('/invitations/<id>')
+def showInvitation(id):
 	
-	invite = db.invites.find_one({'_id' : ObjectId(inviteId)})
+	invitation = db.invitations.find_one({'_id' : ObjectId(id)})
 	
 	user = db.users.find_one({'email' : flask.session['email']})
 	userInfoForTemplate = {
@@ -319,7 +319,7 @@ def showInvitation(inviteId):
 		'email' : user['email']
 	}
 	
-	return flask.render_template('invitation.html', invite=invite, user=userInfoForTemplate)
+	return flask.render_template('invitation.html', invitation=invitation, user=userInfoForTemplate)
 
 
 ##############################################################################

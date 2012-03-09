@@ -16,7 +16,7 @@
 
 <div id="inviteFormContainer">
 
-	<form id="inviteForm" method="POST" action="/sendInvite">
+	<form id="inviteForm" method="POST" action="/sendInvitation">
 		
 		<div class="formItem">
 			<label>Selected Meal</label>
@@ -86,20 +86,20 @@
 		<input type="hidden" id="readableDate" name="readableDate" />
 		<input type="hidden" id="readableTime" name="readableTime" />
 				
-		<button type="submit" id="sendInviteButton">Send Invitation</button>
+		<button type="submit" id="sendInvitationButton">Send Invitation</button>
 	</form>
 	
 </div><!-- #inviteFormContainer -->
 
-<div id="invitePreviewContainer">
+<div id="invitationPreviewContainer">
 	
 	<h3>Invitation Preview</h1>
 	
-	<div id="invitePreview">
+	<div id="invitationPreview">
 		<section id="invitation">
 			<h1>Let&rsquo;s Cook!</h1>
 			
-			<div id="inviteMessage">
+			<div id="invitationMessage">
 				<p id="greeting">Hi <span id="friendName">John Smith</span>,</p>
 				<div id="messageBody">
 					<p>Let's make {{ recipe.title }} together on Hotpot.</p>
