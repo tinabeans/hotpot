@@ -45,7 +45,7 @@ db = connection.hotpot
 
 @app.route('/')
 def index():
-	return flask.render_template('home.html')
+	return render_template('home.html')
 
 
 ##############################################################################
@@ -127,7 +127,7 @@ def viewProfile():
 
 @app.route('/login')
 def showLogin():
-	return flask.render_template('login.html')
+	return render_template('login.html')
 
 
 @app.route('/loginAction', methods=['POST'])
@@ -139,17 +139,31 @@ def login():
 	if userDocument is not None:
 		flask.session['userId'] = str(userDocument['_id'])
 	
-		return 'omg you logged in!'
+		flask.flash("Logged in. Welcome!")
+		return flask.redirect(flask.url_for('index'))
 	else:
-		return 'login info is wrongfaced'
+		flask.flash("Login info was incorrect.")
+		return flask.redirect(flask.url_for('showLogin'))
 
 
 @app.route('/logout')
 def logout():
 	flask.session.pop('userId', None)
 	flask.session.pop('email', None)
-	return """omg you logged out! <a href="/login">Log back in!</a>"""
 	
+	flask.flash("logged out")
+	return flask.redirect(flask.url_for('index'))
+
+
+# custom render_template function that also adds a boolean "isLoggedIn" to let template know whether user is logged in
+def render_template(template, **kwargs):
+	# decide if i'm logged in or not
+	if 'userId' in flask.session:
+		isLoggedIn = True
+	else:
+		isLoggedIn = False
+	
+	return flask.render_template(template, isLoggedIn=isLoggedIn, **kwargs)
 
 
 ##############################################################################
@@ -157,7 +171,7 @@ def logout():
 
 @app.route('/register')
 def showRegistration():
-	return flask.render_template('registration.html')
+	return render_template('registration.html')
 
 @app.route('/registerAction', methods=['POST'])
 def register():
@@ -188,7 +202,7 @@ def showMyStuff():
 	if 'userId' in flask.session:
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 
-	return flask.render_template('account.html')
+	return render_template('account.html')
 
 
 
@@ -214,7 +228,7 @@ def showMyProfile(id):
 	if 'userId' in flask.session:
 		user = db.users.find_one({'_id' : ObjectId(id)})
 
-	return flask.render_template('profile.html', user=user, isMyProfile=isMyProfile)
+	return render_template('profile.html', user=user, isMyProfile=isMyProfile)
 
 
 @app.route('/editProfile')
@@ -222,7 +236,7 @@ def showEditProfileForm():
 	
 	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 	
-	return flask.render_template('editProfile.html', user=user)
+	return render_template('editProfile.html', user=user)
 
 
 @app.route('/saveProfile', methods=['POST'])
@@ -276,7 +290,7 @@ def showMenus():
 	featuredMenu = db.recipes.find_one()
 	menus = list(db.recipes.find())
 	
-	return flask.render_template('menus.html', featured=featuredMenu, menus=menus)
+	return render_template('menus.html', featured=featuredMenu, menus=menus)
 
 
 @app.route('/menus/<slug>')
@@ -284,7 +298,7 @@ def showRecipe(slug):
 	
 	recipe = db.recipes.find_one({ 'slug' : slug })
 	
-	return flask.render_template( 'recipe.html', recipe=recipe )
+	return render_template( 'recipe.html', recipe=recipe )
 
 
 ##############################################################################
@@ -299,7 +313,7 @@ def showInviteForm(recipe):
 		return flask.redirect('/login')
 	else:
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
-		return flask.render_template('invite.html', recipe=recipe, user=user )
+		return render_template('invite.html', recipe=recipe, user=user )
 
 
 @app.route('/viewInvitation/<recipe>')
@@ -307,7 +321,7 @@ def sendEmail(recipe):
 	recipe = db.recipes.find_one({ 'slug' : recipe })
 	invitation = db.invitations.find_one();
 	
-	return flask.render_template('email/invitation.html', recipe=recipe, invitation=invitation)
+	return render_template('email/invitation.html', recipe=recipe, invitation=invitation)
 	
 
 @app.route('/sendInvitation', methods=['POST'])
@@ -328,10 +342,10 @@ def sendInvitation():
 	
 	# compose email to send
 	email = Message("Hotpot Invitation Test", recipients=[newInvitation['to']])
-	email.html = flask.render_template('email/invitation.html', recipe=recipe, invitation=newInvitation)
+	email.html = render_template('email/invitation.html', recipe=recipe, invitation=newInvitation)
 	mail.send(email)
 
-	return flask.render_template('email/invitation.html', recipe=recipe, invitation=newInvitation)
+	return render_template('email/invitation.html', recipe=recipe, invitation=newInvitation)
 
 
 ##############################################################################
@@ -345,11 +359,11 @@ def showReplyForm(id):
 	# does the respondant already have an account?
 	respondant = db.users.find_one({ 'email' : invitation['to']})
 	if respondant is None:
-		return flask.render_template('registration.html')
+		return render_template('registration.html')
 	
 	# ok so that user has an account, but are they logged in?
 	elif 'userId' not in flask.session:
-		return flask.render_template('login.html')
+		return render_template('login.html')
 		
 	# ok they are logged in, but somehow did they login as the right person?
 	elif str(respondant['_id']) != flask.session['userId']:
@@ -363,7 +377,7 @@ def showReplyForm(id):
 	else:
 		recipe = db.recipes.find_one({'slug' : invitation['recipe']})
 		
-		return flask.render_template('reply.html', invitation=invitation, showLogin=showLogin, recipe=recipe)
+		return render_template('reply.html', invitation=invitation, showLogin=showLogin, recipe=recipe)
 
 @app.route('/sendReply', methods=['POST'])
 def sendReply():
@@ -373,7 +387,7 @@ def sendReply():
 	
 	# compose and send email
 	email = Message("Hotpot Invitation RSVP", recipients=[invitation['from']])
-	email.html = flask.render_template('email/replyToHost.html', reply=data)
+	email.html = render_template('email/replyToHost.html', reply=data)
 	mail.send(email)
 	
 	# store reply in database
@@ -386,7 +400,7 @@ def sendReply():
 	
 	db.invitations.update({ '_id' : ObjectId(data['id']) }, {'$set' : { 'reply' : reply }})
 	
-	return flask.render_template('email/replyToHost.html', reply=data, invitation=invitation)
+	return render_template('email/replyToHost.html', reply=data, invitation=invitation)
 
 
 @app.route('/invitations')
@@ -399,7 +413,7 @@ def showInvitations():
 	
 	print db.invitations.find_one({'from' : user['email']})
 	
-	return flask.render_template('invitations.html', invitations=invitations)
+	return render_template('invitations.html', invitations=invitations)
 
 
 @app.route('/invitations/<id>')
@@ -413,7 +427,7 @@ def showInvitation(id):
 		'email' : user['email']
 	}
 	
-	return flask.render_template('invitation.html', invitation=invitation, user=userInfoForTemplate)
+	return render_template('invitation.html', invitation=invitation, user=userInfoForTemplate)
 
 
 ##############################################################################
@@ -423,7 +437,7 @@ def showInvitation(id):
 def showRoom(recipe, roomId):
 	# check to see if the person's logged in
 	if 'userId' not in flask.session:
-		return flask.render_template('login.html') 
+		return render_template('login.html') 
 	else:
 		room = db.rooms.find_one({'_id' : ObjectId(roomId)})
 		recipe = db.recipes.find_one({'slug' : recipe})
@@ -459,7 +473,7 @@ def showRoom(recipe, roomId):
 		# grab all the badges too
 		badges = list(db.badges.find())
 			
-		return flask.render_template('room.html', recipe=recipe, userId=flask.session['userId'], roomId=roomId, badges=badges )
+		return render_template('room.html', recipe=recipe, userId=flask.session['userId'], roomId=roomId, badges=badges )
 
 
 def postFoodnote():

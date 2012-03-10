@@ -5,6 +5,18 @@
 
 {% block main %}
 
+
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="systemMessage">
+			{{ message }}
+		</div>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+
+
 <div id="homeIntro">
 
 	<p id="introBlurb">Cook a great meal with friends in real-time. <!--span class="small">Explore different cuisines, make new friends (or hang out with old ones), and unlock your culinary skills!</span--></p>

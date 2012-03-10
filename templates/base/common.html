@@ -30,12 +30,16 @@
 	</nav>
 	
 	<nav id="serviceNav">
-		<!--<a href="">Login</a>
-		<a href="">Register</a>-->
-		<a href="/invitations">Invitations</a>
-		<a href="/history">Cooking History</a>
-		<a href="/profile">My Profile</a>
-		<a href="/accountinfo">Account Information</a>
+		{% if not isLoggedIn %}
+			<a href="/login">Login</a>
+			<a href="/register">Register</a>
+		{% else %}
+			<a href="/invitations">Invitations</a>
+			<a href="/history">Cooking History</a>
+			<a href="/profile/me">My Profile</a>
+			<a href="/accountinfo">Account Information</a>
+			<a href="/logout">Log Out</a>
+		{% endif %}
 	</nav>
 </header>
 </div><!-- #mainHeaderContainer -->

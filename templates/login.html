@@ -31,6 +31,17 @@
 <h1 id="title">Log In</h1>
 
 <div id="loginFormContainer">
+
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+			<div class="systemMessage">
+				{{ message }}
+			</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+
 <form id="loginForm" action="/loginAction" method="POST">
 	<div class="formItem">
 		<label>email:</label>
