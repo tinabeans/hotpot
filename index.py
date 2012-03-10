@@ -268,7 +268,16 @@ def updateMyProfile():
 	
 	
 ##############################################################################
-# A HOTPOT MENU
+# MENUS!
+
+@app.route('/menus')
+def showMenus():
+	
+	featuredMenu = db.recipes.find_one()
+	menus = list(db.recipes.find())
+	
+	return flask.render_template('menus.html', featured=featuredMenu, menus=menus)
+
 
 @app.route('/menus/<slug>')
 def showRecipe(slug):
