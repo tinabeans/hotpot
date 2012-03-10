@@ -1,0 +1,44 @@
+{% extends "base/common.html" %}
+
+{% block title %}Edit My Profile{% endblock %}
+
+{% block customJS %}{% endblock %}
+
+{% block bodyId %}profile{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+<h1 id="title">Edit My Profile</h1>
+
+<div id="accountInfoFormContainer">
+<form id="accountInfoForm" method="POST" action="/saveProfile" enctype="multipart/form-data">
+
+	<fieldset>
+		<h2>Basic Info</h2>
+		<div class="formItem">
+			<label>Name</label>
+			<p class="note">Your real name is recommended.</p>
+			<input type="text" name="name" value="{{ user.name }}" />
+		</div>
+		
+		<div class="formItem">
+			<label>Location</label>
+			<p class="note">e.g. "New York City" or "Beijing, China"</p>
+			<input type="text" name="location" value="{% if user.location %}{{ user.location }}{% endif %}" />
+		</div>
+		
+		<div class="formItem">
+			<label>Picture</label>
+			<p class="note">Upload a photo so new friends can see your lovely face.</p>
+			<input type="file" name="userpic" />
+			{% if user.userpic %}<img src="static/uploads/userpics/{{ user.userpic }}" width="80" />{% endif %}
+		</div>
+	</fieldset>
+	
+	<input type="submit" value="Save" />
+	
+</form>
+</div><!-- #accountInfoFormContainer -->
+
+{% endblock main %}

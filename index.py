@@ -1,7 +1,7 @@
 # IMPORT STUFF!!
 
 # python standard libraries
-import hashlib, random, json
+import hashlib, random, json, os
 
 # nice 3rd party stuff
 import flask
@@ -12,9 +12,18 @@ from pymongo.objectid import ObjectId
 # used to put stuff in the db
 import saveStuff
 
+
+##############################################################################
+# GLOBAL VARIABLES & CONFIG
+
+USERPIC_FOLDER = 'static/uploads/userpics'
+ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
+
+
 # creating new Flask instance
 app = flask.Flask(__name__)
 app.config.from_pyfile('config.cfg')
+
 
 # start up mail object to send messages via SMTP
 mail = Mail(app)
@@ -22,15 +31,22 @@ mail = Mail(app)
 # really secret secret key! used for Flask sessions...
 app.secret_key = '''nTi!"2Oq#j2WdnUsQziTn52y8xGfZl:"MH*H|`yVClNLA4UG'GIvq1qc%Gk}vu<'''
 
+
+##############################################################################
+# DB SETUP
+
 # open database connection!
 connection = pymongo.Connection()
 db = connection.hotpot
 
 
+##############################################################################
+# HOMEPAGE
 
 @app.route('/')
 def index():
 	return flask.render_template('home.html')
+
 
 ##############################################################################
 # INVITE CODES (NOT NEEDED)
@@ -163,15 +179,7 @@ def register():
 
 
 ##############################################################################
-# USER ACCOUNT STUFF
-
-@app.route('/myprofile')
-def showMyProfile():
-	
-	if 'userId' in flask.session:
-		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
-
-	return flask.render_template('profile.html')
+# USER ACCOUNT SETTINGS
 
 @app.route('/accountinfo')
 def showMyStuff():
@@ -182,13 +190,87 @@ def showMyStuff():
 	return flask.render_template('account.html')
 
 
-##############################################################################
-# RECIPE
 
-@app.route('/meals/<recipe>')
-def showRecipe(recipe):
+##############################################################################
+# USER PROFILE
+
+
+def isFileExtensionAllowed(filename):
+	return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+
+@app.route('/profile/<id>')
+def showMyProfile(id):
 	
-	recipe = db.recipes.find_one({ 'slug' : recipe })
+	if id == "me":
+		id = flask.session['userId']
+		
+	if id == flask.session['userId']:
+		isMyProfile = True
+	else:
+		isMyProfile = False
+	
+	if 'userId' in flask.session:
+		user = db.users.find_one({'_id' : ObjectId(id)})
+
+	return flask.render_template('profile.html', user=user, isMyProfile=isMyProfile)
+
+
+@app.route('/editProfile')
+def showEditProfileForm():
+	
+	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+	
+	return flask.render_template('editProfile.html', user=user)
+
+
+@app.route('/saveProfile', methods=['POST'])
+def updateMyProfile():
+	
+	# load incoming request data into some convenient variables
+	data = flask.request.form
+	userpic = flask.request.files['userpic']
+	
+	# get existing user data
+	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+	
+	# update form fields with new info
+	db.users.update({'_id' : ObjectId(flask.session['userId'])}, {'$set' : { 'name' : data['name'] } })
+	db.users.update({'_id' : ObjectId(flask.session['userId'])}, {'$set' : { 'location' : data['location'] } })
+	
+	# upload the userpic, if any
+	if userpic and isFileExtensionAllowed(userpic.filename):
+		# rename the file after the user's ID + a random number
+		# random num is to prevent caching & displaying the old pic when uploading a new pic w/ same extension
+		userpicFilename = str(user['_id']) + '_' + str(random.random()) + '.' + userpic.filename.rsplit('.', 1)[1]
+		
+		# delete older user pic, if it's around
+		try:
+			os.remove(os.path.join(USERPIC_FOLDER, user['userpic']))
+			print "baleted"
+		except:
+			print "oh. i guess that file didn't exist after all. oh well."
+		
+		# save to the right folder on the server
+		userpic.save(os.path.join(USERPIC_FOLDER, userpicFilename))
+		
+		# update database so we now know there's a picture for this user
+		db.users.update({'_id' : ObjectId(flask.session['userId'])}, {'$set' : { 'userpic' : userpicFilename } })
+		
+	# retrieve updated user data
+	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+	
+	return flask.redirect('/profile/me')
+	
+	
+	
+##############################################################################
+# A HOTPOT MENU
+
+@app.route('/menus/<slug>')
+def showRecipe(slug):
+	
+	recipe = db.recipes.find_one({ 'slug' : slug })
 	
 	return flask.render_template( 'recipe.html', recipe=recipe )
 
