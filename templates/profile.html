@@ -9,6 +9,16 @@
 
 {% block main %}
 
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div id="welcomeMessage" class="systemMessage">
+			{{ message }}
+		</div>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+
 <h1 id="title">{{ user.name }}</h1>
 
 {% if user.location %}<h2>{{ user.location }}</h2>{% endif %}

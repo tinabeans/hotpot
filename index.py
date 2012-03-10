@@ -173,8 +173,9 @@ def register():
 	# log the user in by setting a variable in the session object
 	# (i've decided to use the stringified ObjectId to identify the user everywhere, including in sessions & the front end)
 	flask.session['userId'] = str(userId)
-		
-	return "okay you're registered!"
+	
+	flask.flash("""Welcome to Hotpot!""")
+	return flask.redirect(flask.url_for('showEditProfileForm'))
 
 
 
@@ -260,6 +261,8 @@ def updateMyProfile():
 	# retrieve updated user data
 	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 	
+	
+	flask.flash("Changes saved.")
 	return flask.redirect('/profile/me')
 	
 	
