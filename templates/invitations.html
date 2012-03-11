@@ -20,7 +20,9 @@
 	<a href="">Declined</a>
 </nav>
 
-<table id="invitationsTable">
+<h2>Sent</h2>
+
+<table class="invitationsTable">
 	<thead>
 		<tr>
 			<th>With</th>
@@ -47,8 +49,57 @@
 			<td>{{ invitation.readableDate }}</td>
 			<td>{{ invitation.readableTime|safe }}</td>
 			<td>
-			{% if invitation.reply %}
-				{% for reply in invitation.reply %}
+			{% if invitation.replies %}
+				{% for reply in invitation.replies %}
+					{% if reply.mainReply == "yes" %}
+						It's on!
+					{% elif reply.mainReply == "maybe" %}
+						Change needed
+					{% elif reply.mainReply == "no" %}
+						Declined
+					{% endif %}
+				{% endfor %}
+			{% else %}
+				Awaiting reply
+			{% endif %}
+			</td>
+			<td><a href="/invitations/{{ invitation._id }}">view</a></td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+<h2>Received</h2>
+
+<table class="invitationsTable">
+	<thead>
+		<tr>
+			<th>With</th>
+			<th>Cooking</th>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Status</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for invitation in invitations %}
+		<tr>
+			<td>
+				{% for invitee in invitation.inviteesInfo %}
+					{% if invitee.userpic %}
+						<img src="/static/uploads/userpics/{{ invitee.userpic }}" width="50" height="50" title="{{ invitee.name }}" />
+					{% else %}
+						{{ invitee.name }}
+					{% endif %}
+				{% endfor %}
+			</td>
+			<td>{{ invitation.meal }}</td>
+			<td>{{ invitation.readableDate }}</td>
+			<td>{{ invitation.readableTime|safe }}</td>
+			<td>
+			{% if invitation.replies %}
+				{% for reply in invitation.replies %}
 					{% if reply.mainReply == "yes" %}
 						It's on!
 					{% elif reply.mainReply == "maybe" %}

@@ -489,10 +489,7 @@ def sendReply():
 	
 	invitation = db.invitations.find_one({'_id' : ObjectId(data['id'])})
 	
-	# add some new infos to the database entry!
-	if 'reply' not in invitation:
-		invitation['reply'] = []
-	
+	# grab all the form data and stuff it into a dictionary
 	replyInfo = {
 		"userId" : flask.session['userId'],
 		"mainReply" : data['mainReply'],
@@ -501,7 +498,27 @@ def sendReply():
 		"altMeals" : data['altMeals']
 	}
 	
-	invitation['reply'].append(replyInfo)
+	# if there aren't any replies stored yet, make an array to store them!
+	if 'replies' not in invitation:
+		invitation['replies'] = []
+		
+		invitation['replies'].append(replyInfo)
+	
+	# else, there are replies! so check if there already is one from this user for this invitation
+	else:
+		replyFoundAt = -1
+	
+		for (index, reply) in enumerate(invitation['reply']):
+			if reply['userId'] == flask.session['userId']:
+				replyFoundAt = index
+		
+		if replyFoundAt != -1:
+			print 'overwriting reply'
+			invitation['replies'][replyFoundAt] = replyInfo
+		else:
+			print 'appending reply'
+			invitation['replies'].append(replyInfo)
+	
 	
 	# store updated invitation entry back in database
 	db.invitations.save(invitation)
@@ -527,10 +544,10 @@ def sendReply():
 @app.route('/invitations')
 def showInvitations():
 	
-	invitations = list(db.invitations.find({'hostId' : flask.session['userId']}))
+	invitationsSent = list(db.invitations.find({'hostId' : flask.session['userId']}))
 	
 	# fetch and include full invitee info for template
-	for invitation in invitations:
+	for invitation in invitationsSent:
 		
 		invitation['inviteesInfo'] = []
 		
@@ -556,7 +573,9 @@ def showInvitations():
 		
 		invitation.pop('inviteeIds', None)
 	
-	return render_template('invitations.html', invitations=invitations)
+	# TODO: invitationsReceived = list(db.invitations.find({'hostId' : flask.session['userId']}))
+	
+	return render_template('invitations.html', invitations=invitationsSent)
 
 
 @app.route('/invitations/<id>')
