@@ -34,19 +34,29 @@
 	<tbody>
 	{% for invitation in invitations %}
 		<tr>
-			<td>{{ invitation.friendName }}</td>
-			<td>{{ invitation.recipe }}</td>
+			<td>
+				{% for invitee in invitation.inviteesInfo %}
+					{% if invitee.userpic %}
+						<img src="/static/uploads/userpics/{{ invitee.userpic }}" width="50" height="50" title="{{ invitee.name }}" />
+					{% else %}
+						{{ invitee.name }}
+					{% endif %}
+				{% endfor %}
+			</td>
+			<td>{{ invitation.meal }}</td>
 			<td>{{ invitation.readableDate }}</td>
 			<td>{{ invitation.readableTime|safe }}</td>
 			<td>
 			{% if invitation.reply %}
-				{% if invitation.reply.mainReply == "yes" %}
-					It's on!
-				{% elif invitation.reply.mainReply == "maybe" %}
-					Change needed
-				{% elif invitation.reply.mainReply == "no" %}
-					Declined
-				{% endif %}
+				{% for reply in invitation.reply %}
+					{% if reply.mainReply == "yes" %}
+						It's on!
+					{% elif reply.mainReply == "maybe" %}
+						Change needed
+					{% elif reply.mainReply == "no" %}
+						Declined
+					{% endif %}
+				{% endfor %}
 			{% else %}
 				Awaiting reply
 			{% endif %}

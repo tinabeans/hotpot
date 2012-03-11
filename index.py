@@ -302,7 +302,7 @@ def showRecipe(slug):
 
 
 ##############################################################################
-# INVITATIONS
+# INVITING SOMEONE TO COOK
 
 @app.route('/invite/<recipe>')
 def showInviteForm(recipe):
@@ -314,14 +314,6 @@ def showInviteForm(recipe):
 	else:
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 		return render_template('invite.html', recipe=recipe, user=user )
-
-
-@app.route('/viewInvitation/<recipe>')
-def sendEmail(recipe):
-	recipe = db.recipes.find_one({ 'slug' : recipe })
-	invitation = db.invitations.find_one();
-	
-	return render_template('email/invitation.html', recipe=recipe, invitation=invitation)
 	
 
 @app.route('/sendInvitation', methods=['POST'])
@@ -372,7 +364,7 @@ def sendInvitation():
 
 
 ##############################################################################
-# REPLY
+# REPLYING TO AN INVITATION
 
 @app.route('/reply/<id>')
 def showReplyForm(id):
@@ -418,31 +410,7 @@ def showReplyForm(id):
 	recipe = db.recipes.find_one({'slug' : invitation['meal']})
 	hostName = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})['name']
 			
-	return render_template('reply.html', show=show, invitation=invitation, recipe=recipe, inviteeId=inviteeId, hostName=hostName, loggedInName=loggedInName)		
-		
-
-@app.route('/sendReply', methods=['POST'])
-def sendReply():
-	data = flask.request.form
-	
-	invitation = db.invitations.find_one({'_id' : ObjectId(data['id'])})
-	
-	# compose and send email
-	email = Message("Hotpot Invitation RSVP", recipients=[invitation['from']])
-	email.html = render_template('email/replyToHost.html', reply=data)
-	mail.send(email)
-	
-	# store reply in database
-	reply = {
-		"mainReply" : data['mainReply'],
-		"message" : data['message'],
-		"altTimes" : data['altTimes'],
-		"altMeals" : data['altMeals']
-	}
-	
-	db.invitations.update({ '_id' : ObjectId(data['id']) }, {'$set' : { 'reply' : reply }})
-	
-	return render_template('email/replyToHost.html', reply=data, invitation=invitation)
+	return render_template('reply.html', show=show, invitation=invitation, recipe=recipe, inviteeId=inviteeId, hostName=hostName, loggedInName=loggedInName)
 
 
 @app.route('/loginToReply', methods=['POST'])
@@ -514,17 +482,79 @@ def registerToReply():
 	
 	
 	return flask.redirect('/reply/' + invitationId + '?invitee=' + flask.session['userId'])
+
+@app.route('/sendReply', methods=['POST'])
+def sendReply():
+	data = flask.request.form
 	
+	invitation = db.invitations.find_one({'_id' : ObjectId(data['id'])})
+	
+	# add some new infos to the database entry!
+	if 'reply' not in invitation:
+		invitation['reply'] = []
+	
+	replyInfo = {
+		"userId" : flask.session['userId'],
+		"mainReply" : data['mainReply'],
+		"message" : data['message'],
+		"altTimes" : data['altTimes'],
+		"altMeals" : data['altMeals']
+	}
+	
+	invitation['reply'].append(replyInfo)
+	
+	# store updated invitation entry back in database
+	db.invitations.save(invitation)
+	
+	# grab host email address
+	hostEmail = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})['email']
+	
+	# grab invitee name
+	inviteeName = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})['name']
+	
+	# compose and send email
+	email = Message("Hotpot Invitation RSVP", recipients=[hostEmail])
+	email.html = render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName)
+	mail.send(email)
+	
+	
+	return render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName)
+
+
+##############################################################################
+# VIEWING INVITATIONS
 
 @app.route('/invitations')
 def showInvitations():
 	
-	# grab email address of logged in user
-	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+	invitations = list(db.invitations.find({'hostId' : flask.session['userId']}))
 	
-	invitations = list(db.invitations.find({'from' : user['email']}))
-	
-	print db.invitations.find_one({'from' : user['email']})
+	# fetch and include full invitee info for template
+	for invitation in invitations:
+		
+		invitation['inviteesInfo'] = []
+		
+		for inviteeId in invitation['inviteeIds']:
+			if '@' not in inviteeId:
+				invitee = db.users.find_one({'_id' : ObjectId(inviteeId)})
+			
+				inviteeInfo = {
+					'name' : invitee['name'],
+					'_id' : str(invitee['_id'])
+				}
+				
+				if 'userpic' in invitee:
+					inviteeInfo['userpic'] = invitee['userpic']
+			
+			else:
+				inviteeInfo = {
+					'name' : inviteeId,
+					'_id' : None
+				}
+			
+			invitation['inviteesInfo'].append(inviteeInfo)
+		
+		invitation.pop('inviteeIds', None)
 	
 	return render_template('invitations.html', invitations=invitations)
 
@@ -534,17 +564,36 @@ def showInvitation(id):
 	
 	invitation = db.invitations.find_one({'_id' : ObjectId(id)})
 	
-	user = db.users.find_one({'email' : flask.session['email']})
-	userInfoForTemplate = {
-		'name' : user['name'],
-		'email' : user['email']
-	}
+	# fetch and include full invitee info for template	
+	invitation['inviteesInfo'] = []
 	
-	return render_template('invitation.html', invitation=invitation, user=userInfoForTemplate)
+	for inviteeId in invitation['inviteeIds']:
+		if '@' not in inviteeId:
+			invitee = db.users.find_one({'_id' : ObjectId(inviteeId)})
+		
+			inviteeInfo = {
+				'name' : invitee['name'],
+				'_id' : str(invitee['_id'])
+			}
+			
+			if 'userpic' in invitee:
+				inviteeInfo['userpic'] = invitee['userpic']
+		
+		else:
+			inviteeInfo = {
+				'name' : inviteeId,
+				'_id' : None
+			}
+		
+		invitation['inviteesInfo'].append(inviteeInfo)
+	
+	invitation.pop('inviteeIds', None)
+	
+	return render_template('invitation.html', invitation=invitation)
 
 
 ##############################################################################
-# ROOM
+# HOTPOT ROOM
 
 @app.route('/<recipe>/room/<roomId>')
 def showRoom(recipe, roomId):

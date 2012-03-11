@@ -9,16 +9,10 @@
 
 {% block main %}
 
-{% if invitation.from == user.email %}
-	<h2>You have invited {{ invitation.friendName }} to cook:</h2>
-{% else %}
-	<h2>{{ invitation.fromName }} has invited you to cook:</h2>
-{% endif %}
-
 <div id="invitationInfoContainer">
 	<div id="invitationInfo">
-		<img id="recipeImage" src="/static/images/food/{{ invitation.recipe }}.jpg" width="300" />
-		<h1>{{ invitation.recipe }}</h1>
+		<img id="recipeImage" src="/static/images/food/{{ invitation.meal }}.jpg" width="300" />
+		<h1>{{ invitation.meal }}</h1>
 		
 		<dl id="details">
 			<dt>Date</dt>
@@ -26,6 +20,17 @@
 			
 			<dt>Time</dt>
 			<dd id="selectedTime">{{ invitation.readableTime|safe }}</dd>
+			
+			<dt>With</dt>
+			<dd id="invitees">
+				{% for invitee in invitation.inviteesInfo %}
+					{% if invitee.userpic %}
+						<img src="/static/uploads/userpics/{{ invitee.userpic }}" width="50" height="50" title="{{ invitee.name }}" />
+					{% else %}
+						{{ invitee.name }}
+					{% endif %}
+				{% endfor %}
+			</dd>
 		</dl>
 	</div>
 </div>

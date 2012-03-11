@@ -1,13 +1,13 @@
 <h1>Reply</h1>
 
 {% if reply.mainReply == "yes" %}
-	<p>yay! they said yes! the cooking party is on!</p>
+	<p>yay! {{ inviteeName }} said yes! the cooking party is on!</p>
 	
 	<h2>Add to Calendar:</h2>
 	<p>Links for adding to your calendar: ical! google calendar! etc.</p>
 	
 {% elif reply.mainReply == 'maybe' %}
-	<p>they said yes, but...</p>
+	<p>{{ inviteeName }} said yes, but...</p>
 
 	{% if reply.altTimes != "" %}
 		<p>the time doesn't work for them; they suggested these alternate times: {{ reply.altTimes }}</p>
@@ -18,11 +18,11 @@
 	{% endif %}
 
 {% elif reply.mainReply == "no" %}
-	<p>awww, they said no.</p>
+	<p>awww, {{ inviteeName }} said no.</p>
 {% endif %}	
 	
 {% if reply.message != "" %}
-	<p>they added this message: {{ reply.message }}</p>
+	<p>{{ inviteeName }} added this message: {{ reply.message }}</p>
 {% endif %}
 
 <h1>Info</h1>

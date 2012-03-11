@@ -68,7 +68,7 @@ AN INVITATION = {
 	"readableDate": "Wednesday, March 12, 2012",
 	"message" : "Let's make Lemon Garlic Pasta with Kale together on Hotpot.",
 	"replies" : {[
-		"inviteeId" : "4123bac0132...",
+		"userId" : "4123bac0132...",
 		"mainReply" : "maybe",
 		"message" : "I would love to cook with you!",
 		"altTimes" : "7pm Tuesday",
