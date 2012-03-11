@@ -2,77 +2,174 @@
 
 {% block title %}Reply{% endblock %}
 
-{% block customJS %}<script type="text/javascript" src="/static/js/reply.js"></script>{% endblock %}
+{% block customJS %}
+	<script type="text/javascript" src="/static/js/reply.js"></script>
+	<script src="/static/js/lib/jquery.sha1.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$('#loginForm, #registrationForm').submit(function(e){
+			// we're not sending passwords in the clear, yay!
+			// although yang says in a perfect world i would be using https...
+			// hmph.
+			var encryptedPassword = $.sha1($('#passwordField').val());
+			$('#encryptedPassword').val(encryptedPassword);
+		});
+	});
+	
+	</script>	
+{% endblock %}
 
 {% block bodyId %}reply{% endblock %}
 {% block bodyClass %}{% endblock %}
 
 {% block main %}
 
-
 <h1 id="title">Reply to an Invitation</h1>
 
-<h2>{{ invitation.fromName }} has invited you to cook:</h2>
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="message">
+			{{ message }}
+		</div>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
 
-<div id="invitationInfoContainer">
-	<div id="invitationInfo">
-		<img id="recipeImage" src="/static/images/food/{{ recipe.slug }}.jpg" width="300" />
-		<h1>{{ recipe.title }}</h1>
-		
-		<dl id="details">
-			<dt>Date</dt>
-			<dd id="selectedDate">{{ invitation.readableDate|safe }}</dd>
-			
-			<dt>Time</dt>
-			<dd id="selectedTime">{{ invitation.readableTime|safe }}</dd>
-		</dl>
-	</div>
-</div>
+{% if show == "registration" %}
+	<p class="message">First, please create a Hotpot account.</p>
 
-<h2>Your reply:</h2>
-
-<form id="replyForm" action="/sendReply" method="POST">
-
-	<input type="hidden" name="id" value="{{ invitation._id }}" />
-
-	<div id="replyButtons">
-		<a href="" id="answerYes" data-value="yes">Yes!</a>
-		<a href="" id="answerMaybe" data-value="maybe">Sure, but...</a>
-		<a href="" id="answerNo" data-value="no">No</a>
-	</div>
-	
-	<input type="hidden" id="mainReply" name="mainReply" />
-	
-	<div id="theRestOfTheReplyForm" style="display:none;">
-		<div id="replyReasons" style="display:none;">
-			<div class="checkbox">
-				<input type="checkbox" name="reason" value="time" /> <label class="checkboxLabel">The date/time doesn't work for me.</label>
-			</div>
-			
-			<div id="altTimesContainer" class="extraInput" style="display:none;">
-				<label>Suggest some alternative times:</label>
-				<input type="text" name="altTimes"></textarea>
-			</div>
-			
-			<div class="checkbox">
-				<input type="checkbox" name="reason" value="meal" /> <label class="checkboxLabel">I don't want to make {{ recipe.title }}.</label>
-			</div>
-			
-			<div id="altMealsContainer" class="extraInput" style="display:none;">
-				<label>Suggest some good alternatives (<a href="">See what the choices are</a>):</label>
-				<input type="text" name="altMeals"></textarea>
-			</div>
+	<div id="registrationFormContainer">
+	<form id="registrationForm" action="/registerToReply" method="POST">
+		<div class="formItem">
+			<label>email:</label>
+			<input type="text" name="email" value="{{ inviteeId }}" />
 		</div>
 		
-		<div id="replyMessage">
-			<label>Add a message to your reply:</label>
-			<textarea name="message"></textarea>
+		<div class="formItem">
+			<label>name:</label>
+			<input type="text" name="name" />
 		</div>
 		
-		<button type="submit">
-			Send Reply
-		</button>
-	</div><!-- #theRestOfTheReplyForm -->
-</form>
+		<div class="formItem">
+			<label>password:</label>
+			<input type="password" id="passwordField" />
+		</div>
+		
+		<input type="hidden" name="password" id="encryptedPassword" />
+		<input type="hidden" name="invitationId" value="{{ invitation._id }}" />
+		<input type="hidden" name="inviteeId" value="{{ inviteeId }}" />
+		
+		<div class="buttons">
+			<input type="submit" value="Continue to Invitation" />
+		</div>
+	</form>
+	</div><!-- #registrationFormContainer -->
+	
+{% elif show == "login" %}
+
+	<div id="loginFormContainer">
+	<form id="loginForm" action="/loginToReply" method="POST">
+		<div class="formItem">
+			<label>email:</label>
+			<input type="text" name="email" />
+		</div>
+		
+		<div class="formItem">
+			<label>password:</label>
+			<input type="password" id="passwordField" />
+		</div>
+		
+		<input type="hidden" name="password" id="encryptedPassword" />
+		<input type="hidden" name="invitationId" value="{{ invitation._id }}" />
+		<input type="hidden" name="inviteeId" value="{{ inviteeId }}" />
+		
+		<div class="buttons">
+			<input type="submit" />
+		</div>
+	</form>
+	</div><!-- #loginFormContainer -->
+
+	
+{% elif show == "replied" %}
+	<p>You've already replied! Check it out: <a href="/invitations/{{ invitation._id }}">here</a></p>
+	
+{% elif show == "confirm" %}
+	<p class="message">You're logged in as {{ loggedInName }}. Is this correct?</p>
+	<a href="/continueToReply?invitationId={{ invitation._id }}&inviteeId={{ inviteeId }}">Yup, that's me! - Continue</a><br />
+	<a href="/logoutToReply?invitationId={{ invitation._id }}&inviteeId={{ inviteeId }}">That's not me! I want my own account</a>
+	
+{% elif show == "wrongperson" %}
+	<p>Looks like this invite isn't for you! <a href="/logoutToReply?invitationId={{ invitation._id }}&inviteeId={{ inviteeId }}">Switch accounts?</a></p>
+	
+{% else %}
+<div id="replyFormContainer">
+	<h2>{{ hostName }} has invited you to cook:</h2>
+	
+	<div id="invitationInfoContainer">
+		<div id="invitationInfo">
+			<img id="recipeImage" src="/static/images/food/{{ recipe.slug }}.jpg" width="300" />
+			<h1>{{ recipe.title }}</h1>
+			
+			<dl id="details">
+				<dt>Date</dt>
+				<dd id="selectedDate">{{ invitation.readableDate|safe }}</dd>
+				
+				<dt>Time</dt>
+				<dd id="selectedTime">{{ invitation.readableTime|safe }}</dd>
+			</dl>
+		</div>
+	</div>
+	
+	<h2>Your reply:</h2>
+	
+	<form id="replyForm" action="/sendReply" method="POST">
+	
+		<input type="hidden" name="id" value="{{ invitation._id }}" />
+	
+		<div id="replyButtons">
+			<a href="" id="answerYes" data-value="yes">Yes!</a>
+			<a href="" id="answerMaybe" data-value="maybe">Sure, but...</a>
+			<a href="" id="answerNo" data-value="no">No</a>
+		</div>
+		
+		<input type="hidden" id="mainReply" name="mainReply" />
+		
+		<div id="theRestOfTheReplyForm" style="display:none;">
+			<div id="replyReasons" style="display:none;">
+				<div class="checkbox">
+					<input type="checkbox" name="reason" value="time" /> <label class="checkboxLabel">The date/time doesn't work for me.</label>
+				</div>
+				
+				<div id="altTimesContainer" class="extraInput" style="display:none;">
+					<label>Suggest some alternative times:</label>
+					<input type="text" name="altTimes"></textarea>
+				</div>
+				
+				<div class="checkbox">
+					<input type="checkbox" name="reason" value="meal" /> <label class="checkboxLabel">I don't want to make {{ recipe.title }}.</label>
+				</div>
+				
+				<div id="altMealsContainer" class="extraInput" style="display:none;">
+					<label>Suggest some good alternatives (<a href="">See what the choices are</a>):</label>
+					<input type="text" name="altMeals"></textarea>
+				</div>
+			</div>
+			
+			<div id="replyMessage">
+				<label>Add a message to your reply:</label>
+				<textarea name="message"></textarea>
+			</div>
+			
+			<button type="submit">
+				Send Reply
+			</button>
+		</div><!-- #theRestOfTheReplyForm -->
+	</form>
+
+</div><!-- #replyFormContainer -->
+{% endif %}
 
 {% endblock main %}

@@ -1,7 +1,7 @@
 # IMPORT STUFF!!
 
 # python standard libraries
-import hashlib, random, json, os
+import hashlib, random, json, os, time
 
 # nice 3rd party stuff
 import flask
@@ -326,26 +326,49 @@ def sendEmail(recipe):
 
 @app.route('/sendInvitation', methods=['POST'])
 def sendInvitation():
+	data = flask.request.form
 	
-	# put incoming values in a dictionary
-	newInvitation = {}
-	for key in ['to', 'from', 'message', 'recipe', 'datetime', 'friendName', 'fromName', 'readableTime', 'readableDate']:
-		newInvitation[key] = flask.request.form[key]
+	# look up whether invited friend already exists as a user
+	invitee = db.users.find_one({'email' : data['inviteeEmail']})
 	
-	# store new invitation dictionary in database
-	newInvitation['status'] = "new"
-	newInvitation['datetime'] = int(newInvitation['datetime']) # convert from string to int
+	# if user exists, then use their ID code as identifier; otherwise use their name + email address
+	# NOTE: throughout the system, lack of userId indicates that user is not registered
+	if invitee is not None:
+		inviteeId = str(invitee['_id'])
+	else:
+		inviteeId = data['inviteeEmail']
+	
+	# construct new invitation document based on incoming form data and info above
+	newInvitation = {
+		"status" : "new",
+		"hostId" : flask.session['userId'],
+		"inviteeIds" : [inviteeId], # this is an array!
+		"datetime" : int(data['datetime']),
+		"sendDate" : time.time(),
+		"meal" : data['meal'],
+		"readableTime": data['readableTime'],
+		"readableDate": data['readableDate'],
+		"message" : data['message']
+	}
+	
+	# insert into database
 	db.invitations.insert(newInvitation)
 	
-	# retrieve recipe based on slug
-	recipe = db.recipes.find_one({'slug' : newInvitation['recipe']})
+	# add some extra info that's needed by the email template, but which we don't need stored in the database
+	# NOTE: assuming for now there is only one friend! (even though the document has an array for 'friendIds')
+	newInvitation['hostName'] = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})['name']
+	newInvitation['inviteeName'] = data['inviteeName']
+	newInvitation['inviteeId'] = inviteeId
+	
+	# other stuff that's needed by the template
+	meal = db.recipes.find_one({'slug' : newInvitation['meal']})
 	
 	# compose email to send
-	email = Message("Hotpot Invitation Test", recipients=[newInvitation['to']])
-	email.html = render_template('email/invitation.html', recipe=recipe, invitation=newInvitation)
+	email = Message("Hotpot Invitation Test", recipients=[data['inviteeEmail']])
+	email.html = render_template('email/invitation.html', meal=meal, invitation=newInvitation)
 	mail.send(email)
-
-	return render_template('email/invitation.html', recipe=recipe, invitation=newInvitation)
+	
+	return render_template('email/invitation.html', meal=meal, invitation=newInvitation)
 
 
 ##############################################################################
@@ -355,29 +378,48 @@ def sendInvitation():
 def showReplyForm(id):
 	
 	invitation = db.invitations.find_one({'_id' : ObjectId(id)})
+	inviteeId = flask.request.args.get('invitee', '')
 	
-	# does the respondant already have an account?
-	respondant = db.users.find_one({ 'email' : invitation['to']})
-	if respondant is None:
-		return render_template('registration.html')
+	# first check if this person has already replied to this invite
+	if 'replies' in invitation:
+		for reply in invitation['replies']:
+			if reply['friendId'] == inviteeId:
+				show = 'replied'
 	
-	# ok so that user has an account, but are they logged in?
+	# if person is not logged in, determine if they're an existing user or not
 	elif 'userId' not in flask.session:
-		return render_template('login.html')
+		loggedInName = ""
+	
+		# not an existing user based on their email address; prompt them to register OR login
+		# (could be registered under different email address)
+		if '@' in inviteeId:
+			show = 'registration' # used by template to determine what to show
+		else:
+			flask.flash("""Please log in to reply.""")
+			show = 'login'
 		
-	# ok they are logged in, but somehow did they login as the right person?
-	elif str(respondant['_id']) != flask.session['userId']:
-		return """hmm... that invitation is for %s %s. <a href="/logout">logout</a> and try again.""" % (flask.session['userId'], str(respondant['_id']))
-	
-	# wait, check if the invitation has already been replied to
-	elif 'reply' in invitation:
-		return """you already replied to that. <a href="/invitations/%s">see your response here</a>""" % invitation['_id']
-	
-	# ok! looks like the user can actually respond to the invitation now.
+		# TODO: still need to go through the checks below once person IS logged in, for max fool-proof-ness
+		
+	# if someone is logged in already, check if they are logged in as the right person
 	else:
-		recipe = db.recipes.find_one({'slug' : invitation['recipe']})
+		loggedInName = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})['name']
+	
+		# same person, different email?
+		if '@' in inviteeId:
+			show = 'confirm'
 		
-		return render_template('reply.html', invitation=invitation, showLogin=showLogin, recipe=recipe)
+		# oops, the person you logged in as doesn't match the intended invitee
+		elif inviteeId != flask.session['userId']:
+			show = 'wrongperson'
+			
+		else:
+			show = 'reply'
+		
+	recipe = db.recipes.find_one({'slug' : invitation['meal']})
+	hostName = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})['name']
+			
+	return render_template('reply.html', show=show, invitation=invitation, recipe=recipe, inviteeId=inviteeId, hostName=hostName, loggedInName=loggedInName)		
+		
 
 @app.route('/sendReply', methods=['POST'])
 def sendReply():
@@ -402,6 +444,77 @@ def sendReply():
 	
 	return render_template('email/replyToHost.html', reply=data, invitation=invitation)
 
+
+@app.route('/loginToReply', methods=['POST'])
+def loginToReply():
+	data = flask.request.form
+	
+	userDocument = db.users.find_one({'email' : data['email'], 'password' : data['password']})
+	
+	if userDocument is not None:
+		flask.session['userId'] = str(userDocument['_id'])
+		return flask.redirect('/reply/' + data['invitationId'] + '?invitee=' + data['inviteeId'])
+	else:
+		flask.flash("Login info was incorrect.")
+		return flask.redirect('/reply/' + data['invitationId'] + '?invitee=' + data['inviteeId'])
+
+
+@app.route('/logoutToReply')
+def logoutToReply():
+	invitationId = flask.request.args.get('invitationId', '')
+	inviteeId = flask.request.args.get('inviteeId', '')
+	
+	# logout current person
+	flask.session.pop('userId', None)
+	
+	return flask.redirect('/reply/' + invitationId + '?invitee=' + inviteeId)
+
+
+@app.route('/continueToReply')
+def continueToReply():
+	invitationId = flask.request.args.get('invitationId', '')
+	inviteeId = flask.request.args.get('inviteeId', '')
+	
+	# replace the email address in the database with this person's userId
+	invitation = db.invitations.find_one({'_id' : ObjectId(invitationId)})
+	
+	for (index, invitee) in enumerate(invitation['inviteeIds']):
+		if invitee == inviteeId:
+			invitation['inviteeIds'][index] = flask.session['userId']
+			
+	db.invitations.save(invitation)
+	
+	return flask.redirect('/reply/' + invitationId + '?invitee=' + flask.session['userId'])
+	
+
+@app.route('/registerToReply', methods=['POST'])
+def registerToReply():
+	data = flask.request.form
+	invitationId = data['invitationId']
+	inviteeId = data['inviteeId']
+	
+	# create the user's db entry
+	userId = db.users.insert({
+		'email' : data['email'],
+		'name' : data['name'],
+		'password' : data['password']
+	})
+	
+	# log the user in
+	flask.session['userId'] = str(userId)
+	
+	# replace email addr in invitation db entry with newly created userId
+	invitation = db.invitations.find_one({'_id' : ObjectId(invitationId)})
+	
+	for (index, invitee) in enumerate(invitation['inviteeIds']):
+		if invitee == inviteeId:
+			invitation['inviteeIds'][index] = flask.session['userId']
+			
+	db.invitations.save(invitation)
+	
+	
+	return flask.redirect('/reply/' + invitationId + '?invitee=' + flask.session['userId'])
+	
 
 @app.route('/invitations')
 def showInvitations():

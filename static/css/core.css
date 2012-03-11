@@ -133,9 +133,17 @@ p {
   font-size: 1.4em;
 }
 
+/* line 147, ../sass/core.scss */
+.message {
+  text-align: center;
+  margin: 30px;
+  font-family: "proxima-nova", sans-serif;
+  color: red;
+}
+
 /**********************************************************/
 /* HEADER */
-/* line 150, ../sass/core.scss */
+/* line 157, ../sass/core.scss */
 #mainHeaderContainer {
   background: #ededec url(/static/images/lightWood.jpg);
   -moz-box-shadow: rgba(0, 0, 0, 0.2) -3px 0px 10px inset;
@@ -145,16 +153,16 @@ p {
   border-bottom: 1px solid #d8d7d5;
 }
 
-/* line 156, ../sass/core.scss */
+/* line 163, ../sass/core.scss */
 #mainHeader {
   padding: 10px 0px 10px 0px;
 }
-/* line 160, ../sass/core.scss */
+/* line 167, ../sass/core.scss */
 #mainHeader h1 img {
   width: 140px;
 }
 
-/* line 166, ../sass/core.scss */
+/* line 173, ../sass/core.scss */
 #mainNav {
   position: absolute;
   top: 0;
@@ -162,7 +170,7 @@ p {
   height: 81px;
   z-index: 1;
 }
-/* line 173, ../sass/core.scss */
+/* line 180, ../sass/core.scss */
 #mainNav a {
   height: 100%;
   -moz-box-sizing: border-box;
@@ -175,7 +183,7 @@ p {
   font-family: "proxima-nova", sans-serif;
   font-size: 24px;
 }
-/* line 182, ../sass/core.scss */
+/* line 189, ../sass/core.scss */
 #mainNav a .small {
   font-style: normal;
   font-family: "proxima-nova", sans-serif;
@@ -183,7 +191,7 @@ p {
   display: block;
   font-weight: normal;
 }
-/* line 191, ../sass/core.scss */
+/* line 198, ../sass/core.scss */
 #mainNav a.selected {
   -moz-box-shadow: rgba(0, 0, 0, 0.15) 0px -10px 8px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px -10px 8px;
@@ -200,14 +208,14 @@ p {
   border-bottom: 1px solid white;
 }
 
-/* line 200, ../sass/core.scss */
+/* line 207, ../sass/core.scss */
 #serviceNav {
   position: absolute;
   top: 30;
   right: 0;
   padding: 20px 0px;
 }
-/* line 206, ../sass/core.scss */
+/* line 213, ../sass/core.scss */
 #serviceNav a {
   font-family: "proxima-nova", sans-serif;
   margin: 0px 10px;
@@ -216,23 +224,23 @@ p {
 
 /**********************************************************/
 /* FOOTER */
-/* line 216, ../sass/core.scss */
+/* line 223, ../sass/core.scss */
 #mainFooter {
   text-align: center;
   clear: both;
   color: #666;
   padding: 60px 0px 30px 0px;
 }
-/* line 222, ../sass/core.scss */
+/* line 229, ../sass/core.scss */
 #mainFooter p {
   font-style: italic;
 }
 
-/* line 227, ../sass/core.scss */
+/* line 234, ../sass/core.scss */
 #footerNav {
   margin: 15px 0px;
 }
-/* line 230, ../sass/core.scss */
+/* line 237, ../sass/core.scss */
 #footerNav a {
   display: inline-block;
   padding: 0px 10px;
@@ -241,17 +249,17 @@ p {
 
 /**********************************************************/
 /* FORMS */
-/* line 241, ../sass/core.scss */
+/* line 248, ../sass/core.scss */
 .formItem {
   margin-bottom: 15px;
 }
 
-/* line 245, ../sass/core.scss */
+/* line 252, ../sass/core.scss */
 .buttons {
   text-align: center;
 }
 
-/* line 249, ../sass/core.scss */
+/* line 256, ../sass/core.scss */
 label {
   display: block;
   font-size: 13px;
@@ -263,7 +271,7 @@ label {
   margin-bottom: 5px;
 }
 
-/* line 254, ../sass/core.scss */
+/* line 261, ../sass/core.scss */
 input, textarea {
   border: 1px solid #aaa;
   padding: 5px;
@@ -272,20 +280,20 @@ input, textarea {
   font-size: 14px;
 }
 
-/* line 262, ../sass/core.scss */
+/* line 269, ../sass/core.scss */
 textarea {
   height: 100px;
   resize: vertical;
 }
 
-/* line 267, ../sass/core.scss */
+/* line 274, ../sass/core.scss */
 .note {
   margin-top: 5px;
   font-style: italic;
   font-size: 12px;
 }
 
-/* line 273, ../sass/core.scss */
+/* line 280, ../sass/core.scss */
 input[type=submit] {
   display: inline-block;
   border: 0px;

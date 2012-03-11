@@ -23,20 +23,20 @@
 			<div id="chosenRecipe">
 				<div id="recipeThumbnail"><img src="/static/images/food/{{ recipe.slug }}.jpg" /></div>
 				<div id="recipeTitle">{{ recipe.title }}</div>
-				<a href="">Change meal</a>
+				<a href="">Change Meal</a>
 			</div>
-			<input type="hidden" value="{{ recipe.slug }}" name="recipe" />
+			<input type="hidden" value="{{ recipe.slug }}" name="meal" />
 		</div>
 		
 		<div class="formItem">
 			<label>Friend's Email Address</label>
-			<input type="text" name="to" />
+			<input type="text" name="inviteeEmail" />
 			<p class="note">Just one email address, please. We're working on cooking with multiple friends soon!</p>
 		</div>
 		
 		<div class="formItem">
 			<label>Friend's Name</label>
-			<input type="text" name="friendName" id="friendNameInput" />
+			<input type="text" name="inviteeName" id="friendNameInput" />
 		</div>
 		
 		<div class="formItem">
@@ -81,8 +81,6 @@
 		</div>
 		
 		<input type="hidden" id="datetimeInput" name="datetime" value="0" />
-		<input type="hidden" name="from" value="{{ user.email }}" />
-		<input type="hidden" name="fromName" value="{{ user.name }}" />
 		<input type="hidden" id="readableDate" name="readableDate" />
 		<input type="hidden" id="readableTime" name="readableTime" />
 				
