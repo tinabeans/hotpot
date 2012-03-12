@@ -648,38 +648,40 @@ def showRoom(inviteId):
 		except:
 			return "room not found. oops. quick, go back before you get eaten by a grue!"
 		
+		# grab the meal info (for displaying recipe steps, etc.)
 		meal = db.meals.find_one({'slug' : roomInfo['meal']})
 		
 		# grab all the foodNotes related to this room
-		# TODO: all this needs to be rewritten to adhere to new db schema
-		'''foodNotesInThisRoom = list(db.foodNotes.find({'inviteId' : inviteId}))
+		notesInThisRoom = list(db.notes.find({'inviteId' : inviteId}))
 		
-		# and insert them into the recipe object
+		# and insert them into the recipe object at the appropriate step
 		for step in meal['steps']:
 		
-			snippetsToInsert = []
-			stepId = step['id'];
+			notesToInsert = []
+			currentStepId = step['id'];
 			
 			# the for-loop below is for grabbing just the foodNotes related to this step
-			
-			# crazy Python list comprehension magic to grab only the foodnotes related to this room & step
-			# the first 'note' represents what gets returned by the filtered list
-			# the second 'note' represents the list item that is being 'comprehended' (in this case filtered by the if)
-			# I hope these comments still make sense in 2 weeks
-			for foodNote in (note for note in foodNotesInThisRoom if note['stepId'] == stepId):
-				snippet = {}
-				snippet['type'] = 'foodNote'
+			for note in notesInThisRoom:
 				
-				userInfo = db.users.find_one({'_id' : ObjectId(foodNote['userId'])})
+				if note['stepId'] != currentStepId:
+					continue # this skips the rest of the stuff in the loop and starts the next iteration
+				
+				noteAuthor = db.users.find_one({'_id' : ObjectId(note['userId'])})
+				
+				noteInfo = {
+					'type' : note['type'],
+					'_id' : str(note['_id']),
+					'content' : note['content'],
+					
+				}
+				noteInfo['type'] = 'note'
+				
+				
 				snippet['username'] = userInfo['name']
-				snippet['_id'] = foodNote['_id']
-				snippet['text'] = foodNote['text']
 				
 				snippetsToInsert.append(snippet)
 			
 			step['snippets'] = snippetsToInsert
-		
-		'''
 		
 		# grab all the badges too
 		badges = list(db.badges.find())

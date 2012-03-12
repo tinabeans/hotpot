@@ -1,6 +1,26 @@
 from pymongo.objectid import ObjectId
 
 def start(db):
+	db.notes.remove()
+	
+	db.notes.save({
+		"userId": "4f2e0b279685aa1618000001",
+		"invitationId": "4f5c4b0d9017513e91000000",
+		"stepId" : "9",
+		"type": "note",
+		"content": "hallo, this kale is delicious",
+		"timestamp": 1331448589.306249
+	})
+	
+	db.notes.save({
+		"userId": "4f2e0b279685aa1618000001",
+		"invitationId": "4f5c4b0d9017513e91000000",
+		"stepId" : "1",
+		"type": "note",
+		"content": "here is another note",
+		"timestamp": 1331448589.306249
+	})
+
 	'''
 	db.badges.remove()
 
@@ -29,7 +49,7 @@ def start(db):
 		"users" : [ "t@tinabeans.com", "nanotone@gmail.com"]
 	})
 	
-	'''
+	
 	
 	db.recipes.remove()
 
@@ -184,3 +204,4 @@ def start(db):
 	}
 	
 	db.recipes.save(recipe)
+'''

@@ -18,10 +18,11 @@ a meal = {
 	],
 }
 
-a cookingNote = {
+// notes are the badges given/thoughts jotted down inside a room while cooking
+a note = {
 	"_id": ObjectId("234234lkas897"),
 	"userId": "4123bac0132...",
-	"invitationId": "4123bac0132...", // invitation referrs to the cooking room where this note was posted
+	"invitationId": "4123bac0132...", // invitation here referrs to the cooking room where this note was posted
 	"stepId" : "9",
 	"type": "note", // or badge, etc.
 	"content": "hallo, this kale is delicious",
