@@ -247,6 +247,17 @@ p {
 	
 .formItem {
 	margin-bottom:15px;
+	position: relative;
+}
+
+.formItemError {
+	position: absolute;
+	right:-193px;
+	width:165px;
+	background:lighten(yellow, 42%);
+	font-family: $sans;
+	top: 19px;
+	padding:5px 10px;
 }
 
 .buttons {

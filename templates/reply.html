@@ -110,8 +110,8 @@
 	
 	<div id="invitationInfoContainer">
 		<div id="invitationInfo">
-			<img id="recipeImage" src="/static/images/food/{{ recipe.slug }}.jpg" width="300" />
-			<h1>{{ recipe.title }}</h1>
+			<img id="recipeImage" src="/static/images/food/{{ meal.slug }}.jpg" width="300" />
+			<h1>{{ meal.title }}</h1>
 			
 			<dl id="details">
 				<dt>Date</dt>
@@ -149,7 +149,7 @@
 				</div>
 				
 				<div class="checkbox">
-					<input type="checkbox" name="reason" value="meal" /> <label class="checkboxLabel">I don't want to make {{ recipe.title }}.</label>
+					<input type="checkbox" name="reason" value="meal" /> <label class="checkboxLabel">I don't want to make {{ meal.title }}.</label>
 				</div>
 				
 				<div id="altMealsContainer" class="extraInput" style="display:none;">

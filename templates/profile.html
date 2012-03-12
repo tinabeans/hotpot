@@ -19,7 +19,7 @@
 	{% endif %}
 {% endwith %}
 
-<h1 id="title">{{ user.name }}</h1>
+<h1 id="title">{{ user.name }}{% if user.lastname %} {{ user.lastname }}{% endif %}</h1>
 
 {% if user.location %}<h2>{{ user.location }}</h2>{% endif %}
 

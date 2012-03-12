@@ -20,7 +20,7 @@ $(document).ready(function() {
 		var currentStepNumber = $('#stepTabs .currentStep a').attr('id').split('-')[1];
 		
 		var socketMessage = JSON.stringify({
-			'type' : 'recipeStep',
+			'type' : 'change step',
 			'data' : {
 				'stepNumber' : currentStepNumber
 			},
@@ -31,7 +31,7 @@ $(document).ready(function() {
 	};
 	
 	// callback for socket.on('message')
-	var updateRecipeStepPositions = function(data) {
+	var updateStepPositions = function(data) {
 		console.log(data);
 		
 		// no need to update step position markers for yourself
@@ -325,8 +325,8 @@ $(document).ready(function() {
 			updateChatMessages(data);
 		}
 		
-		else if(messageJSON['type'] == 'recipeStep') {
-			updateRecipeStepPositions(data);
+		else if(messageJSON['type'] == 'change step') {
+			updateStepPositions(data);
 		}
 		
 		else if(messageJSON['type'] == 'focus') {

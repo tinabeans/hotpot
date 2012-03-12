@@ -7,21 +7,21 @@
 {% block main %}
 
 <a href="">Return to all Meals</a>
-<h1 id="title">{{ recipe.title }}</h1>
+<h1 id="title">{{ meal.title }}</h1>
 
-<div id="bigImage"><img src="/static/images/food/{{ recipe.slug }}.jpg" /></div>
+<div id="bigImage"><img src="/static/images/food/{{ meal.slug }}.jpg" /></div>
 
 <div id="descriptionContainer">
-	<p id="description" class="intro">{{ recipe.description|safe }}</p>
-	<p id="summary">{{ recipe.summary|safe }}</p>
-	<p id="credit">Many thanks to <a href="{{recipe.creditURL}}" target="_blank">{{ recipe.credit }}</a> for the original recipe and photography.</p>
+	<p id="description" class="intro">{{ meal.description|safe }}</p>
+	<p id="summary">{{ meal.summary|safe }}</p>
+	<p id="credit">Many thanks to <a href="{{meal.creditURL}}" target="_blank">{{ meal.credit }}</a> for the original recipe and photography.</p>
 </div><!--#descriptionContainer -->
 
 <div id="shoppingListContainer">
 <section id="shoppingList">
 	<h1>Shopping List</h1>	
 	<ul>
-	{% for ingredient in recipe.ingredients %}
+	{% for ingredient in meal.ingredients %}
 		<li><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
 	{% endfor %}
 	</ul>
@@ -29,7 +29,7 @@
 </div><!--#shopplingListContainer-->
 
 <aside id="actions">
-	<a href="/invite/{{ recipe.slug }}" id="inviteButton">Invite a Friend to Cook</a>
+	<a href="/invite/{{ meal.slug }}" id="inviteButton">Invite a Friend to Cook</a>
 	
 	<section id="recentlyCookedBy">
 		<h1>Recently Cooked By</h1>

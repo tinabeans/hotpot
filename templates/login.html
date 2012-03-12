@@ -4,7 +4,6 @@
 
 {% block customJS %}
 	<script src="/static/js/lib/jquery.sha1.js" type="text/javascript"></script>
-	
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
@@ -16,8 +15,9 @@
 			$('#encryptedPassword').val(encryptedPassword);
 		});
 	});
-	
 	</script>
+	
+	<script src="/static/js/validation.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block bodyId %}login{% endblock %}
@@ -27,30 +27,34 @@
 
 <h1 id="title">Log In</h1>
 
-<div id="loginFormContainer">
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="message">
+			{{ message }}
+		</div>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
 
-	{% with messages = get_flashed_messages() %}
-		{% if messages %}
-			{% for message in messages %}
-			<div class="systemMessage">
-				{{ message }}
-			</div>
-			{% endfor %}
-		{% endif %}
-	{% endwith %}
+<div id="loginFormContainer">
 
 <form id="loginForm" action="/loginAction" method="POST">
 	<div class="formItem">
 		<label>email:</label>
-		<input type="text" name="email" />
+		<input type="text" name="email" class="required emailInput" />
 	</div>
 	
 	<div class="formItem">
 		<label>password:</label>
-		<input type="password" id="passwordField" />
+		<input type="password" id="passwordField" class="required" />
 	</div>
 	
 	<input type="hidden" name="password" id="encryptedPassword" />
+	
+	{% if redirectURL %}
+		<input type="hidden" name="redirectURL" value="{{ redirectURL }}" />
+	{% endif %}
 	
 	<div class="buttons">
 		<input type="submit" />

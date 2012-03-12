@@ -1,7 +1,7 @@
 # IMPORT STUFF!!
 
 # python standard libraries
-import hashlib, random, json, os, time
+import hashlib, random, json, os, time, urllib
 
 # nice 3rd party stuff
 import flask
@@ -127,7 +127,12 @@ def viewProfile():
 
 @app.route('/login')
 def showLogin():
-	return render_template('login.html')
+	redirectURL = flask.request.args.get('redirectURL', '')
+	
+	if redirectURL != '':
+		return render_template('login.html', redirectURL=redirectURL)
+	else:
+		return render_template('login.html')
 
 
 @app.route('/loginAction', methods=['POST'])
@@ -137,10 +142,15 @@ def login():
 	userDocument = db.users.find_one({'email' : data['email'], 'password' : data['password']})
 	
 	if userDocument is not None:
+		# log the user in by setting a session variable
 		flask.session['userId'] = str(userDocument['_id'])
-	
-		flask.flash("Logged in. Welcome!")
-		return flask.redirect(flask.url_for('index'))
+		
+		# redirect to the place you were gonna go... if there were such a place
+		if 'redirectURL' in data:
+			return flask.redirect(data['redirectURL'])
+		else:
+			flask.flash("Logged in. Welcome!")
+			return flask.redirect(flask.url_for('index'))
 	else:
 		flask.flash("Login info was incorrect.")
 		return flask.redirect(flask.url_for('showLogin'))
@@ -177,10 +187,16 @@ def showRegistration():
 def register():
 	data = flask.request.form
 	
+	# check if email addr is already registered
+	if db.users.find_one({'email' : data['email']}) is not None:
+		flask.flash('Looks like that email address is already registered. Try logging in instead!')
+		return flask.redirect('login')
+	
 	# create the user's db entry; it returns an ObjectId we can use to log the user in
 	userId = db.users.insert({
-		'email' : data['email'],
 		'name' : data['name'],
+		'lastname' : data['lastname'],
+		'email' : data['email'],
 		'password' : data['password']
 	})
 	
@@ -250,8 +266,9 @@ def updateMyProfile():
 	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 	
 	# update form fields with new info
-	db.users.update({'_id' : ObjectId(flask.session['userId'])}, {'$set' : { 'name' : data['name'] } })
-	db.users.update({'_id' : ObjectId(flask.session['userId'])}, {'$set' : { 'location' : data['location'] } })
+	user['name'] = data['name']
+	user['lastname'] = data['lastname']
+	user['location'] = data['location']
 	
 	# upload the userpic, if any
 	if userpic and isFileExtensionAllowed(userpic.filename):
@@ -282,38 +299,38 @@ def updateMyProfile():
 	
 	
 ##############################################################################
-# MENUS!
+# MEALS!
 
-@app.route('/menus')
-def showMenus():
+@app.route('/meals')
+def showMeals():
 	
-	featuredMenu = db.recipes.find_one()
-	menus = list(db.recipes.find())
+	featuredMeal = db.meals.find_one()
+	meals = list(db.meals.find())
 	
-	return render_template('menus.html', featured=featuredMenu, menus=menus)
+	return render_template('meals.html', featured=featuredMeal, meals=meals)
 
 
-@app.route('/menus/<slug>')
-def showRecipe(slug):
+@app.route('/meals/<slug>')
+def showMeal(slug):
 	
-	recipe = db.recipes.find_one({ 'slug' : slug })
+	meal = db.meals.find_one({ 'slug' : slug })
 	
-	return render_template( 'recipe.html', recipe=recipe )
+	return render_template( 'meal.html', meal=meal )
 
 
 ##############################################################################
 # INVITING SOMEONE TO COOK
 
-@app.route('/invite/<recipe>')
-def showInviteForm(recipe):
+@app.route('/invite/<meal>')
+def showInviteForm(meal):
 	
-	recipe = db.recipes.find_one({ 'slug' : recipe })
+	meal = db.meals.find_one({ 'slug' : meal })
 	
 	if 'userId' not in flask.session:
 		return flask.redirect('/login')
 	else:
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
-		return render_template('invite.html', recipe=recipe, user=user )
+		return render_template('invite.html', meal=meal, user=user )
 	
 
 @app.route('/sendInvitation', methods=['POST'])
@@ -353,7 +370,7 @@ def sendInvitation():
 	newInvitation['inviteeId'] = inviteeId
 	
 	# other stuff that's needed by the template
-	meal = db.recipes.find_one({'slug' : newInvitation['meal']})
+	meal = db.meals.find_one({'slug' : newInvitation['meal']})
 	
 	# compose email to send
 	email = Message("Hotpot Invitation Test", recipients=[data['inviteeEmail']])
@@ -407,10 +424,10 @@ def showReplyForm(id):
 		else:
 			show = 'reply'
 		
-	recipe = db.recipes.find_one({'slug' : invitation['meal']})
+	meal = db.meals.find_one({'slug' : invitation['meal']})
 	hostName = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})['name']
 			
-	return render_template('reply.html', show=show, invitation=invitation, recipe=recipe, inviteeId=inviteeId, hostName=hostName, loggedInName=loggedInName)
+	return render_template('reply.html', show=show, invitation=invitation, meal=meal, inviteeId=inviteeId, hostName=hostName, loggedInName=loggedInName)
 
 
 @app.route('/loginToReply', methods=['POST'])
@@ -614,20 +631,31 @@ def showInvitation(id):
 ##############################################################################
 # HOTPOT ROOM
 
-@app.route('/<recipe>/room/<roomId>')
-def showRoom(recipe, roomId):
-	# check to see if the person's logged in
+@app.route('/rooms/<inviteId>')
+def showRoom(inviteId):
+	# if the user's not logged in, redirect them to the login page
 	if 'userId' not in flask.session:
-		return render_template('login.html') 
+		flask.flash('Log in to start cooking!')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/rooms/' + roomId}))
+	
+	# if logged in, then show the room
 	else:
-		room = db.rooms.find_one({'_id' : ObjectId(roomId)})
-		recipe = db.recipes.find_one({'slug' : recipe})
+		
+		# this is to prevent people from seeing a server error if for some reason the URL is wrong
+		try:
+			roomInfo = db.invitations.find_one({'_id' : ObjectId(inviteId)})
+			assert roomInfo is not None
+		except:
+			return "room not found. oops. quick, go back before you get eaten by a grue!"
+		
+		meal = db.meals.find_one({'slug' : roomInfo['meal']})
 		
 		# grab all the foodNotes related to this room
-		foodNotesInThisRoom = list(db.foodNotes.find({'roomId' : ObjectId(roomId)}))
+		# TODO: all this needs to be rewritten to adhere to new db schema
+		'''foodNotesInThisRoom = list(db.foodNotes.find({'inviteId' : inviteId}))
 		
 		# and insert them into the recipe object
-		for step in recipe['steps']:
+		for step in meal['steps']:
 		
 			snippetsToInsert = []
 			stepId = step['id'];
@@ -651,10 +679,12 @@ def showRoom(recipe, roomId):
 			
 			step['snippets'] = snippetsToInsert
 		
+		'''
+		
 		# grab all the badges too
 		badges = list(db.badges.find())
-			
-		return render_template('room.html', recipe=recipe, userId=flask.session['userId'], roomId=roomId, badges=badges )
+		
+		return render_template('room.html', meal=meal, userId=flask.session['userId'], inviteId=inviteId, badges=badges )
 
 
 def postFoodnote():
@@ -663,7 +693,7 @@ def postFoodnote():
 	# put together the new user note to send to the database!
 	newUserNote = {
 		"user_id": flask.session['userId'],
-		"recipe_id": ObjectId(data['recipe_id']),
+		"meal_id": ObjectId(data['meal_id']),
 		"snippet_id": ObjectId(data['snippet_id']),
 		"text": data['text']
 	}
@@ -732,7 +762,7 @@ def doStuffWithStuffFromTornado():
 			}
 		}
 		
-	elif requestJSON['type'] == 'recipeStep':
+	elif requestJSON['type'] == 'change step':
 		
 		dataForResponse = {
 			'type' : requestJSON['type'],

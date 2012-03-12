@@ -3,8 +3,8 @@
 <title>HotPot prototype! yeah!!</title>
 
 <!-- Typekit JS -->
-<script type="text/javascript" src="http://use.typekit.com/qje5yme.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<!--<script type="text/javascript" src="http://use.typekit.com/qje5yme.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
 
 <!-- jQuery library -->
 <script src="http://code.jquery.com/jquery-1.6.4.min.js" type="text/javascript"></script>
@@ -23,7 +23,7 @@
 
 </head>
  
-<body id="room" data-id="{{ roomId }}">
+<body id="room" data-id="{{ inviteId }}">
 
 <header id="cookingHeader">
 	<h1>Hotpot</h1>
@@ -34,14 +34,14 @@
 	
 	<div id="recipeContainer">
 		
-		<section id="recipe" data-id="{{ recipe._id }}">
+		<section id="recipe" data-id="{{ meal._id }}">
 		
-			<h1 id="recipeTitle">{{ recipe.title }}</h1>
+			<h1 id="recipeTitle">{{ meal.title }}</h1>
 			
 			<nav id="recipeNav">
 				<ul id="stepTabs">
 				{% set stepCounter = 1 %}
-				{% for step in recipe.steps %}
+				{% for step in meal.steps %}
 					<li class="{{ step.type }} {% if loop.first %}currentStep{% endif %}">
 						{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
 							{% set stepNumber = stepCounter %}
@@ -63,13 +63,13 @@
 			
 			<section id="steps">
 				<ol>
-					{% for step in recipe.steps %}
+					{% for step in meal.steps %}
 					<li id="step-{{ step.id }}" class="step {{ step.type }}" {% if loop.first %}style="display:block;"{% endif %}>
 						{{ step.text|safe }}
 						
 						{% if step.type == "ingredients" %}
 						<ul>
-						{% for ingredient in recipe.ingredients %}
+						{% for ingredient in meal.ingredients %}
 							<li>{{ ingredient.name }} {% if ingredient.amount is defined %}({{ ingredient.amount }}){% endif %}</li>
 						{% endfor %}
 						</ul>

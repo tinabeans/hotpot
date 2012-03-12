@@ -2,7 +2,9 @@
 
 {% block title %}My Account{% endblock %}
 
-{% block customJS %}{% endblock %}
+{% block customJS %}
+	<script src="static/js/validation.js" type="text/javascript"></script>
+{% endblock %}
 
 {% block bodyId %}account{% endblock %}
 {% block bodyClass %}{% endblock %}
@@ -31,7 +33,7 @@
 		
 		<div class="formItem">
 			<label>Email Address</label>
-			<input type="text" />
+			<input type="text" class="required emailInput" />
 		</div>
 		
 		<div class="buttons">

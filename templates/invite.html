@@ -21,11 +21,11 @@
 		<div class="formItem">
 			<label>Selected Meal</label>
 			<div id="chosenRecipe">
-				<div id="recipeThumbnail"><img src="/static/images/food/{{ recipe.slug }}.jpg" /></div>
-				<div id="recipeTitle">{{ recipe.title }}</div>
+				<div id="recipeThumbnail"><img src="/static/images/food/{{ meal.slug }}.jpg" /></div>
+				<div id="recipeTitle">{{ meal.title }}</div>
 				<a href="">Change Meal</a>
 			</div>
-			<input type="hidden" value="{{ recipe.slug }}" name="meal" />
+			<input type="hidden" value="{{ meal.slug }}" name="meal" />
 		</div>
 		
 		<div class="formItem">
@@ -100,7 +100,7 @@
 			<div id="invitationMessage">
 				<p id="greeting">Hi <span id="friendName">John Smith</span>,</p>
 				<div id="messageBody">
-					<p>Let's make {{ recipe.title }} together on Hotpot.</p>
+					<p>Let's make {{ meal.title }} together on Hotpot.</p>
 				</div>
 				<p id="signature">Cheers,<br/>{{ user.name }}</p>
 			</div>
@@ -108,14 +108,14 @@
 			<h2>The Tasty Details</h2>
 			
 			<div id="image">
-				<img src="/static/images/food/{{ recipe.slug }}.jpg" />
-				<span id="caption"><span class="subtitle">Let's Make:</span> {{ recipe.title }}</span>
+				<img src="/static/images/food/{{ meal.slug }}.jpg" />
+				<span id="caption"><span class="subtitle">Let's Make:</span> {{ meal.title }}</span>
 			</div>
 			
 			<section id="shoppingList">
 				<h1>Shopping List</h1>	
 				<ul>
-				{% for ingredient in recipe.ingredients %}
+				{% for ingredient in meal.ingredients %}
 					<li><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
 				{% endfor %}
 				</ul>
