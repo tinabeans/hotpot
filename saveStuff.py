@@ -1,26 +1,73 @@
 from pymongo.objectid import ObjectId
 
 def start(db):
-	db.notes.remove()
-	
-	db.notes.save({
-		"userId": "4f2e0b279685aa1618000001",
-		"invitationId": "4f5c4b0d9017513e91000000",
-		"stepId" : "9",
-		"type": "note",
-		"content": "hallo, this kale is delicious",
-		"timestamp": 1331448589.306249
+	db.stamps.remove();
+
+	db.stamps.save({
+		'slug' : 'Awesomeness',
+		'description' : 'Whatever that was, it was totally awesome.',
+		'name' : 'Awesomeness'
 	})
 	
-	db.notes.save({
-		"userId": "4f2e0b279685aa1618000001",
-		"invitationId": "4f5c4b0d9017513e91000000",
-		"stepId" : "1",
-		"type": "note",
-		"content": "here is another note",
-		"timestamp": 1331448589.306249
+	db.stamps.save({
+		'slug' : 'aromatherapy',
+		'description' : 'Oh my. What is this wonderful smell?',
+		'name' : 'Aromatherapy'
+	})
+	
+	db.stamps.save({
+		'slug' : 'bonfire',
+		'description' : 'Quick! Get the fire extinguisher!',
+		'name' : 'Bonfire'
 	})
 
+	''' db.stamps.save({
+		'slug' : 'kaboom',
+		'description' : """Oh man! It's everywhere!!!""",
+		'name' : 'Kaboom!'
+	})'''
+	
+	db.stamps.save({
+		'slug' : 'madScientist',
+		'description' : 'Getting a little creative here...',
+		'name' : 'Mad Scientist'
+	})
+	
+	db.stamps.save({
+		'slug' : 'trueLove',
+		'description' : """I... I think I'm in love.""",
+		'name' : 'True Love'
+	})
+	
+	'''
+	db.stamps.save({
+		'slug' : 'Surprise',
+		'description' : """Well that was unexpected.""",
+		'name' : 'Surprise!'
+	})
+	'''
+	
+	db.stamps.save({
+		'slug' : 'happyAccident',
+		'description' : """Nice! That actually worked!""",
+		'name' : 'Happy Accident'
+	})
+	
+	'''
+	db.stamps.save({
+		'slug' : 'SecretIngredient',
+		'description' : """Shhh... don't tell anyone.""",
+		'name' : 'Secret Ingredient'
+	})
+	
+	
+	db.stamps.save({
+		'slug' : 'Superstar',
+		'description' : '',
+		'name' : 'Superstar'
+	})
+	'''
+	
 	'''
 	db.badges.remove()
 
