@@ -153,7 +153,7 @@ def login():
 			return flask.redirect(flask.url_for('index'))
 	else:
 		flask.flash("Login info was incorrect.")
-		return flask.redirect(flask.url_for('showLogin'))
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : data['redirectURL']}))
 
 
 @app.route('/logout')
@@ -392,7 +392,7 @@ def showReplyForm(id):
 	# first check if this person has already replied to this invite
 	if 'replies' in invitation:
 		for reply in invitation['replies']:
-			if reply['friendId'] == inviteeId:
+			if reply['userId'] == inviteeId:
 				show = 'replied'
 	
 	# if person is not logged in, determine if they're an existing user or not
@@ -631,19 +631,19 @@ def showInvitation(id):
 ##############################################################################
 # HOTPOT ROOM
 
-@app.route('/rooms/<inviteId>')
-def showRoom(inviteId):
+@app.route('/rooms/<invitationId>')
+def showRoom(invitationId):
 	# if the user's not logged in, redirect them to the login page
 	if 'userId' not in flask.session:
 		flask.flash('Log in to start cooking!')
-		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/rooms/' + roomId}))
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/rooms/' + invitationId}))
 	
 	# if logged in, then show the room
 	else:
 		
 		# this is to prevent people from seeing a server error if for some reason the URL is wrong
 		try:
-			roomInfo = db.invitations.find_one({'_id' : ObjectId(inviteId)})
+			roomInfo = db.invitations.find_one({'_id' : ObjectId(invitationId)})
 			assert roomInfo is not None
 		except:
 			return "room not found. oops. quick, go back before you get eaten by a grue!"
@@ -652,13 +652,15 @@ def showRoom(inviteId):
 		meal = db.meals.find_one({'slug' : roomInfo['meal']})
 		
 		# grab all the foodNotes related to this room
-		notesInThisRoom = list(db.notes.find({'inviteId' : inviteId}))
+		notesInThisRoom = list(db.notes.find({'invitationId' : invitationId}))
 		
-		# and insert them into the recipe object at the appropriate step
+		print invitationId
+		
+		# and insert them into the recipe object at the appropriate step, one step at a time
 		for step in meal['steps']:
 		
 			notesToInsert = []
-			currentStepId = step['id'];
+			currentStepId = step['id']
 			
 			# the for-loop below is for grabbing just the foodNotes related to this step
 			for note in notesInThisRoom:
@@ -666,29 +668,30 @@ def showRoom(inviteId):
 				if note['stepId'] != currentStepId:
 					continue # this skips the rest of the stuff in the loop and starts the next iteration
 				
+				# get the note author's name from their id
 				noteAuthor = db.users.find_one({'_id' : ObjectId(note['userId'])})
 				
+				# grab just the info we wamt to send to the template
 				noteInfo = {
+					'timestamp' : note['timestamp'],
 					'type' : note['type'],
 					'_id' : str(note['_id']),
 					'content' : note['content'],
-					
+					'noteAuthorName' : noteAuthor['name']
 				}
-				noteInfo['type'] = 'note'
 				
+				notesToInsert.append(noteInfo)
 				
-				snippet['username'] = userInfo['name']
-				
-				snippetsToInsert.append(snippet)
 			
-			step['snippets'] = snippetsToInsert
+			if len(notesToInsert) != 0:
+				step['notes'] = notesToInsert
 		
 		# grab all the badges too
 		badges = list(db.badges.find())
 		
-		return render_template('room.html', meal=meal, userId=flask.session['userId'], inviteId=inviteId, badges=badges )
+		return render_template('room.html', meal=meal, userId=flask.session['userId'], invitationId=invitationId, badges=badges )
 
-
+'''
 def postFoodnote():
 	data = flask.request.json
 	
@@ -713,7 +716,7 @@ def postFoodnote():
 	}
 	
 	return str(dataForResponse)
-
+'''
 
 ##############################################################################
 # SOCKET.IO ENDPOINT for IN-ROOM COMMUNICATIONINGS
@@ -731,7 +734,7 @@ def doStuffWithStuffFromTornado():
 	
 	# do different things depending on what the socket message says...
 	if requestJSON['type'] == 'foodNote':
-	
+		
 		# put together the new user note to store in the database!
 		newFoodNote = {
 			"userId": requestJSON['userId'],

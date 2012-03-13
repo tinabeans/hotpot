@@ -23,7 +23,7 @@
 
 </head>
  
-<body id="room" data-id="{{ inviteId }}">
+<body id="room" data-id="{{ invitationId }}">
 
 <header id="cookingHeader">
 	<h1>Hotpot</h1>
@@ -82,17 +82,16 @@
 						</div>
 						{% endif %}
 						
-
-						{% if step.snippets is defined %}
-							{% for snippet in step.snippets %}
-							<div class="{{ snippet.type }} snippet" data-id="{{ snippet._id }}">
-								{% if snippet.type == "foodNote" %}
-									<p>{{ snippet.text }}</p>
-									<div class="postedBy">Posted by {{ snippet.username }}</div>
+						<!-- Cooking Notes! wheeeee -->
+						{% if step.notes is defined %}
+							{% for note in step.notes %}
+							<div class="{{ note.type }} cookingNote" data-id="{{ note._id }}">
+								{% if note.type == "note" %}
+									<p>{{ note.content }}</p>
+									<div class="postedBy">Posted by {{ note.noteAuthorName }}</div>
 								{% endif %}
 							</div>
 							{% endfor %}
-							
 						{% endif %}
 
 						
