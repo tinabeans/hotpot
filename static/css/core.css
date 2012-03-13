@@ -623,29 +623,30 @@ input[type=submit] {
   padding: 30px 30px 50px 30px;
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
-/* line 148, ../sass/_room.scss */
+/* line 149, ../sass/_room.scss */
 .step ul {
   margin-left: 20px;
 }
-/* line 151, ../sass/_room.scss */
+/* line 152, ../sass/_room.scss */
 .step ul li {
   font-size: 18px;
   margin: 10px 0px;
   list-style-type: circle;
 }
 
-/* line 159, ../sass/_room.scss */
+/* line 160, ../sass/_room.scss */
 .currentStep a {
   background: #fff;
 }
 
-/* line 163, ../sass/_room.scss */
+/* line 164, ../sass/_room.scss */
 .extra {
   font-size: 16px;
   margin: 30px 0px;
 }
-/* line 167, ../sass/_room.scss */
+/* line 168, ../sass/_room.scss */
 .extra h1 {
   font-size: 13px;
   text-transform: uppercase;
@@ -654,33 +655,60 @@ input[type=submit] {
   font-family: "proxima-nova", sans-serif;
 }
 
-/* line 172, ../sass/_room.scss */
+/* line 173, ../sass/_room.scss */
 .snippet {
   margin: 30px 0px;
   font-size: 14px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 177, ../sass/_room.scss */
+/* line 178, ../sass/_room.scss */
 .snippet p {
   line-height: 1.25em;
 }
 
 /* line 183, ../sass/_room.scss */
-.foodNote .postedBy {
+.notesContainer {
+  margin: 30px 0px;
+}
+
+/* line 187, ../sass/_room.scss */
+.cookingNote {
+  font-family: "proxima-nova", sans-serif;
+  margin: 15px 0px;
+}
+/* line 191, ../sass/_room.scss */
+.cookingNote p {
+  font-style: normal;
+}
+/* line 195, ../sass/_room.scss */
+.cookingNote .userpic {
+  width: 30px;
+  float: left;
+}
+/* line 200, ../sass/_room.scss */
+.cookingNote .noteContent {
+  margin-left: 40px;
+  background: #ededec;
+  padding: 10px;
+  font-size: 12px;
+}
+/* line 207, ../sass/_room.scss */
+.cookingNote .postedBy {
+  font-style: normal;
   display: block;
   margin-top: 10px;
   font-size: 10px;
   text-transform: uppercase;
 }
 
-/* line 191, ../sass/_room.scss */
+/* line 216, ../sass/_room.scss */
 .step {
   display: none;
 }
 
 /**********************************************************/
 /* WIDGETS */
-/* line 198, ../sass/_room.scss */
+/* line 223, ../sass/_room.scss */
 .widget {
   border: 1px solid #666;
   background: #fff;
@@ -696,14 +724,14 @@ input[type=submit] {
   font-size: 14px;
   display: none;
 }
-/* line 210, ../sass/_room.scss */
+/* line 235, ../sass/_room.scss */
 .widget .closeButton {
   position: absolute;
   top: 5px;
   right: 5px;
 }
 
-/* line 218, ../sass/_room.scss */
+/* line 243, ../sass/_room.scss */
 #notepad textarea {
   border: 1px solid #ccc;
   margin-top: 10px;
@@ -713,19 +741,19 @@ input[type=submit] {
   resize: none;
 }
 
-/* line 228, ../sass/_room.scss */
+/* line 253, ../sass/_room.scss */
 .badge {
   font-family: "proxima-nova", sans-serif;
   margin: 10px 0px;
 }
-/* line 232, ../sass/_room.scss */
+/* line 257, ../sass/_room.scss */
 .badge .description {
   display: block;
   margin-top: 5px;
   font-size: 12px;
 }
 
-/* line 239, ../sass/_room.scss */
+/* line 264, ../sass/_room.scss */
 #widgetNav {
   position: absolute;
   bottom: 0;
@@ -736,7 +764,7 @@ input[type=submit] {
   font-size: 16px;
   background: #fff;
 }
-/* line 249, ../sass/_room.scss */
+/* line 274, ../sass/_room.scss */
 #widgetNav a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -746,7 +774,7 @@ input[type=submit] {
   padding: 5px 7px;
   margin: 1px;
 }
-/* line 256, ../sass/_room.scss */
+/* line 281, ../sass/_room.scss */
 #widgetNav a.active {
   background: #fff;
   border: 1px solid #666;
@@ -758,7 +786,7 @@ input[type=submit] {
 
 /**********************************************************/
 /* VIDEOS */
-/* line 269, ../sass/_room.scss */
+/* line 294, ../sass/_room.scss */
 #videoContainer {
   margin-left: 385px;
   height: 70%;
@@ -769,12 +797,12 @@ input[type=submit] {
   position: relative;
 }
 
-/* line 276, ../sass/_room.scss */
+/* line 301, ../sass/_room.scss */
 #videoContainer.fullsize {
   height: 100%;
 }
 
-/* line 280, ../sass/_room.scss */
+/* line 305, ../sass/_room.scss */
 #videos {
   padding: 20px;
   height: 100%;
@@ -785,12 +813,12 @@ input[type=submit] {
   background: #ededec;
 }
 
-/* line 287, ../sass/_room.scss */
+/* line 312, ../sass/_room.scss */
 #myInfo {
   position: absolute;
 }
 
-/* line 291, ../sass/_room.scss */
+/* line 316, ../sass/_room.scss */
 #chatBoxButton {
   position: absolute;
   top: 10px;
@@ -799,7 +827,7 @@ input[type=submit] {
 
 /**********************************************************/
 /* CHAT BOX */
-/* line 301, ../sass/_room.scss */
+/* line 326, ../sass/_room.scss */
 #chatBoxContainer {
   margin-left: 385px;
   height: 30%;
@@ -811,7 +839,7 @@ input[type=submit] {
   position: relative;
 }
 
-/* line 309, ../sass/_room.scss */
+/* line 334, ../sass/_room.scss */
 #chatBox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -823,7 +851,7 @@ input[type=submit] {
   padding-bottom: 27px;
 }
 
-/* line 317, ../sass/_room.scss */
+/* line 342, ../sass/_room.scss */
 #chatMessages {
   height: 100%;
   -moz-box-sizing: border-box;
@@ -833,16 +861,16 @@ input[type=submit] {
   padding: 10px 15px;
   overflow: auto;
 }
-/* line 323, ../sass/_room.scss */
+/* line 348, ../sass/_room.scss */
 #chatMessages .chatMessage {
   margin: 5px 0px;
 }
-/* line 327, ../sass/_room.scss */
+/* line 352, ../sass/_room.scss */
 #chatMessages .chatMessageAuthor {
   font-weight: bold;
 }
 
-/* line 332, ../sass/_room.scss */
+/* line 357, ../sass/_room.scss */
 #chatInputContainer {
   position: absolute;
   bottom: 0px;
@@ -854,7 +882,7 @@ input[type=submit] {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 340, ../sass/_room.scss */
+/* line 365, ../sass/_room.scss */
 #chatInputContainer input {
   display: block;
   width: 100%;
@@ -862,7 +890,7 @@ input[type=submit] {
   border: 0px;
   margin: 0px;
 }
-/* line 348, ../sass/_room.scss */
+/* line 373, ../sass/_room.scss */
 #chatInputContainer input:focus {
   outline: none;
   border: none;

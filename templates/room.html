@@ -1,4 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
 <head>
 <title>HotPot prototype! yeah!!</title>
 
@@ -83,17 +84,28 @@
 						{% endif %}
 						
 						<!-- Cooking Notes! wheeeee -->
+						<div class="notesContainer">
 						{% if step.notes is defined %}
 							{% for note in step.notes %}
-							<div class="{{ note.type }} cookingNote" data-id="{{ note._id }}">
+							<div class="cookingNote" data-id="{{ note._id }}">
+								<img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" class="userpic" />
+								
 								{% if note.type == "note" %}
+								<div class="{{ note.type }} noteContent">
 									<p>{{ note.content }}</p>
-									<div class="postedBy">Posted by {{ note.noteAuthorName }}</div>
+									<div class="postedBy">Posted by {{ note.noteAuthor.name }}</div>
+								</div>
+								{% endif %}
+								
+								{% if note.type == "badge" %}
+								<div class="{{ note.type }} noteContent">
+									<p>{{ note.noteAuthor.name }}</p>
+								</div>
 								{% endif %}
 							</div>
 							{% endfor %}
 						{% endif %}
-
+						</div><!-- .notesContainer -->
 						
 						<!--
 						{% if step.snippets is defined %}
@@ -131,7 +143,7 @@
 						
 				<div id="widgets">
 					<nav id="widgetNav">
-						<a href="" id="badgePickerButton" class="widgetButton">Badges</a>
+						<a href="" id="badgePickerButton" class="widgetButton">Stamps</a>
 						<a href="" id="notepadButton" class="widgetButton">Cooking Notes</a>
 					</nav>
 					
@@ -151,7 +163,7 @@
 					<div id="notepad" class="widget">
 						<a href="" class="closeButton">Close</a>
 						<p>Use this space to jot down impressions, surprises, questions and answers.</p>
-						<form id="foodnoteForm">
+						<form id="noteForm">
 							<textarea name="note" class="note"></textarea>
 							<input type="submit" />
 						</form>

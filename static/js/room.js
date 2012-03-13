@@ -4,7 +4,7 @@ $(document).ready(function() {
 	// INITIALIZATION STUFF
 	
 	// start a new connection when you enter the room
-	socket = new io.Socket('letsgohotpot.com', {'port' : 7778});
+	socket = new io.Socket(window.location.hostname, {'port' : 7778});
 	socket.connect();
 	
 	// useful variables
@@ -143,10 +143,10 @@ $(document).ready(function() {
 	
 	
 	/****************************************************************************************/
-	// FOODNOTES
+	// NOTES (badges, etc.)
 	
-	// submits the foodnote
-	$('#foodnoteForm').submit(function(e){
+	// submits the note
+	$('#noteForm').submit(function(e){
 		e.preventDefault();
 		
 		// "this" is the form
@@ -159,12 +159,16 @@ $(document).ready(function() {
 			// (if we used AJAX, Flask would have needed to initiate the Flask-to-Tornado communication,
 			// and I would need to write Tornado code to handle that communication)
 			
+			// get current timestamp
+			timestamp = new Date();
+			
 			var socketMessage = JSON.stringify({
-				'type': 'foodNote',
+				'type': 'note',
 				'data': {
-					'text' : noteText,
-					'roomId' : $('body').attr('data-id'),
-					'stepId' : $('#steps li:visible').attr('id').split('-')[1]
+					'content' : noteText,
+					'invitationId' : $('body').attr('data-id'),
+					'stepId' : $('#steps li:visible').attr('id').split('-')[1],
+					'timestamp' : timestamp.getTime()/1000
 				},
 				'userId': currentUserId
 			});
@@ -174,24 +178,28 @@ $(document).ready(function() {
 			// clear the field
 			var noteText = $form.children('.note').val('');
 			
+			// close the tab
 			$form.siblings('.closeButton').click();
 		}
 	});
 	
 	// used as callback in socket.on('message')
-	var updateFoodNotes = function(data){
+	var updateNotes = function(data){
+		console.log('hi');
 	
-		var $elementToAddFoodNoteTo = $('#step-' + data.stepId);
+		var $elementToAddNoteTo = $('#step-' + data.stepId).children('.notesContainer');
+		console.log($elementToAddNoteTo);
 	
-		// add the newly posted foodNote to the DOM
-		$elementToAddFoodNoteTo.append('<div class="foodNote snippet" data-id="' + data.noteId + '">' + data.text + '<div class="postedBy">Posted by ' + data.username + '</div></div>');
+		// add the newly posted note to the DOM
+		$elementToAddNoteTo.append('<div class="cookingNote" data-id="' + data.noteId + '"><img src="/static/uploads/userpics/' + data.noteAuthor.userpic + '" class="userpic" /><div class="' + data.type + ' noteContent"><p>' + data.content + '</p><div class="postedBy">Posted by ' + data.noteAuthor.name + '</div></div></div>');
 		
-		// grab reference to the newly posted foodNote…
-		var $newFoodNote = $(".snippet[data-id='" + data.noteId + "']");
+		// grab reference to the newly posted note…
+		var $newNote = $(".cookingNote[data-id='" + data.noteId + "']");
 		
 		// scroll to it! oooo
-		var distanceFromTop = $newFoodNote.position().top;
-		$elementToAddFoodNoteTo.animate({scrollTop : distanceFromTop});
+		var distanceFromTop = $newNote.position().top;
+		
+		$('#step-' + data.stepId).animate({scrollTop : distanceFromTop});
 	};
 	
 	
@@ -313,12 +321,12 @@ $(document).ready(function() {
 	
 	// handles socket messages received from backend
 	socket.on('message', function(message){
-		console.log(message)
+		console.log(message);
 	    var messageJSON = JSON.parse(message);
 	    var data = messageJSON.data;
 		
-		if(messageJSON['type'] == "foodNote") {
-			updateFoodNotes(data);
+		if(messageJSON['type'] == "note") {
+			updateNotes(data);
 		}
 		
 		else if(messageJSON['type'] == 'chat') {

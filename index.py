@@ -654,10 +654,12 @@ def showRoom(invitationId):
 		# grab all the foodNotes related to this room
 		notesInThisRoom = list(db.notes.find({'invitationId' : invitationId}))
 		
-		print invitationId
+		print notesInThisRoom
 		
 		# and insert them into the recipe object at the appropriate step, one step at a time
 		for step in meal['steps']:
+		
+			print 'step: ' + step['id']
 		
 			notesToInsert = []
 			currentStepId = step['id']
@@ -668,6 +670,8 @@ def showRoom(invitationId):
 				if note['stepId'] != currentStepId:
 					continue # this skips the rest of the stuff in the loop and starts the next iteration
 				
+				print note
+				
 				# get the note author's name from their id
 				noteAuthor = db.users.find_one({'_id' : ObjectId(note['userId'])})
 				
@@ -677,7 +681,10 @@ def showRoom(invitationId):
 					'type' : note['type'],
 					'_id' : str(note['_id']),
 					'content' : note['content'],
-					'noteAuthorName' : noteAuthor['name']
+					'noteAuthor' : {
+						'name' : noteAuthor['name'],
+						'userpic' : noteAuthor['userpic']
+					}
 				}
 				
 				notesToInsert.append(noteInfo)
@@ -733,27 +740,33 @@ def doStuffWithStuffFromTornado():
 		userInfo = db.users.find_one({ '_id' : ObjectId(requestJSON['userId']) })
 	
 	# do different things depending on what the socket message says...
-	if requestJSON['type'] == 'foodNote':
+	if requestJSON['type'] == 'note':
 		
 		# put together the new user note to store in the database!
-		newFoodNote = {
+		newNote = {
+			'type' : requestJSON['type'],
 			"userId": requestJSON['userId'],
-			"roomId": ObjectId(data['roomId']),
+			"invitationId": data['invitationId'],
 			"stepId": data['stepId'],
-			"text": data['text']
+			"content": data['content'],
+			"timestamp" : data['timestamp']
 		}
 		
 		# now insert the data, and store the id
-		newFoodNoteId = db.foodNotes.insert(newFoodNote);
+		newNoteId = db.notes.insert(newNote);
 		
 		# now put together some data to send back to the template...
 		dataForResponse = {
 			'type' : requestJSON['type'],
 			'data' : {
 				"stepId": data['stepId'],
-				'noteId' : str(newFoodNoteId),
-				'username' : userInfo['name'],
-				"text": data['text']
+				'noteId' : str(newNoteId),
+				'noteAuthor' : {
+					'name' : userInfo['name'],
+					'userpic' : userInfo['userpic']
+				},
+				'content': data['content'],
+				'timestamp' : data['timestamp']
 			}
 		}
 	
@@ -790,6 +803,7 @@ def doStuffWithStuffFromTornado():
 		}
 				
 	# use json.dumps() instead of str() because on the other end we need a well-formatted JSON string with double-quotes
+	print requestJSON
 	print dataForResponse
 	return json.dumps(dataForResponse)
 
