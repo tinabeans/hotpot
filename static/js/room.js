@@ -114,7 +114,7 @@ $(document).ready(function() {
 	});
 	
 	/****************************************************************************************/
-	// WIDGETS
+	// NOTE-ADDING PANES
 	
 	var toggleWidget = function($button, widgetSelector){
 		var $widget = $(widgetSelector);
@@ -165,6 +165,7 @@ $(document).ready(function() {
 			var socketMessage = JSON.stringify({
 				'type': 'note',
 				'data': {
+					'type' : 'note',
 					'content' : noteText,
 					'invitationId' : $('body').attr('data-id'),
 					'stepId' : $('#steps li:visible').attr('id').split('-')[1],
@@ -185,7 +186,6 @@ $(document).ready(function() {
 	
 	// used as callback in socket.on('message')
 	var updateNotes = function(data){
-		console.log('hi');
 	
 		var $elementToAddNoteTo = $('#step-' + data.stepId).children('.notesContainer');
 		console.log($elementToAddNoteTo);
@@ -204,27 +204,43 @@ $(document).ready(function() {
 	
 	
 	/****************************************************************************************/
-	// BADGES
+	// STAMPS
 	
-	$('#badgePicker .badge a').click(function(e){
+	// show info on the stamp currently hovered over
+	$('.stampButton').hover(function(){
+		$('#stampInfoDisplay').show();
+		$('#stampInstructions').hide();
+		$('#stampInfoDisplay').html($(this).next().html());
+	}, function(){
+		$('#stampInfoDisplay').hide();
+		$('#stampInstructions').show();
+	});
+	
+	
+	// add stamp to timeline once it's clicked
+	$('#stampPicker .stamp a').click(function(e){
 		e.preventDefault();
 		
-		var badgeSlug = $(this).attr('id');
+		var stampSlug = $(this).attr('id');
+		
+		// get current timestamp
+		timestamp = new Date();
 		
 		var socketMessage = JSON.stringify({
-			'type' : 'badge',
-			'data' : {
-				"giverId": currentUserId,
-				"receiverId": "t@tinabeans.com", // THIS IS DONE HARDCODINGLY! FIX LATER
-				"badgeSlug": badgeSlug,
-				"roomId": $(body).attr('data-id'),
-				"stepId": $('#steps li:visible').attr('id').split('-')[1]
-			}
-		});
+				'type': 'note',
+				'data': {
+					'type' : 'stamp',
+					'content' : stampSlug,
+					'invitationId' : $('body').attr('data-id'),
+					'stepId' : $('#steps li:visible').attr('id').split('-')[1],
+					'timestamp' : timestamp.getTime()/1000
+				},
+				'userId': currentUserId
+			});
 		
 		socket.send(socketMessage);
 		
-		$form.siblings('.closeButton').click();
+		$('#stampPicker .closeButton').click();
 	});
 	
 	

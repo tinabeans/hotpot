@@ -187,6 +187,7 @@
 .cookingNote {
 	font-family: $sans;
 	margin:15px 0px;
+	position: relative;
 	
 	p {
 		font-style: normal;
@@ -198,18 +199,56 @@
 	}
 	
 	.noteContent {
-		margin-left:40px;
-		background:$subtleColor;
-		padding:10px;
 		font-size:12px;
 	}
 
-	.postedBy {
+	.timestamp {
+		text-align: right;
 		font-style: normal;
 		display: block;
-		margin-top:10px;
+		margin-bottom:5px;
 		font-size:10px;
 		text-transform: uppercase;
+	}
+}
+
+.cookingNote.note {
+	.noteContent {
+		margin-left:40px;
+		background:$subtleColor;
+		padding:10px;
+		@include border-radius(5px);
+	}
+	
+	.userpic {
+		margin-top:15px;
+	}
+}
+
+.cookingNote.stamp {
+
+	.noteContent {
+		height: 40px;
+	
+		p {
+			position: absolute;
+			background:#ff0000;
+			left:60px;
+			top:21px;
+			padding:2px 4px;
+			color:#fff;
+			text-transform: uppercase;
+			letter-spacing:.1em;
+			font-weight: bold;
+			font-size:10px;
+		}
+	
+		img {
+			width:40px;
+			position: absolute;
+			top: 10px;
+			left:22px;
+		}
 	}
 }
 
@@ -250,14 +289,51 @@
 	}
 }
 
-.badge {
+#stampPicker ul {
+	padding:10px 0px 0px 0px;
+}
+
+#stampPicker .stamp {
 	font-family: $sans;
-	margin: 10px 0px;
+	float:left;
 	
-	.description {
-		display: block;
+	.stampButton {
+		display:block;
+		height:40px;
+		width:40px;
+		padding:10px;
+	}
+	
+	.stampInfo {
+		display: none;
 		margin-top:5px;
 		font-size:12px;
+	}
+}
+
+#stampInfoDisplay, #stampInstructions {
+	margin:15px 0px 0px 0px;
+	padding:10px;
+	background:$subtleColor;
+	font-family: $sans;
+	height:32px;
+	
+	p {
+		font-size:12px;
+		line-height:14px;
+	}
+}
+
+#stampInfoDisplay {
+	h3 {
+		font-weight: bold;
+		margin-bottom:4px;
+	}
+}
+
+#stampInstructions {
+	p {
+		font-style: italic;
 	}
 }
 

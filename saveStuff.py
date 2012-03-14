@@ -4,20 +4,20 @@ def start(db):
 	db.stamps.remove();
 
 	db.stamps.save({
-		'slug' : 'Awesomeness',
-		'description' : 'Whatever that was, it was totally awesome.',
+		'slug' : 'awesomeness',
+		'description' : 'That was amazing!',
 		'name' : 'Awesomeness'
 	})
 	
 	db.stamps.save({
 		'slug' : 'aromatherapy',
-		'description' : 'Oh my. What is this wonderful smell?',
+		'description' : 'What a wonderful smell...',
 		'name' : 'Aromatherapy'
 	})
 	
 	db.stamps.save({
 		'slug' : 'bonfire',
-		'description' : 'Quick! Get the fire extinguisher!',
+		'description' : 'Eep! Get the fire extinguisher!',
 		'name' : 'Bonfire'
 	})
 
@@ -49,7 +49,7 @@ def start(db):
 	
 	db.stamps.save({
 		'slug' : 'happyAccident',
-		'description' : """Nice! That actually worked!""",
+		'description' : """Yay, that actually worked!""",
 		'name' : 'Happy Accident'
 	})
 	

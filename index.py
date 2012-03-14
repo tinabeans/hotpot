@@ -687,16 +687,25 @@ def showRoom(invitationId):
 					}
 				}
 				
+				# if it's a stamp, add in some additional info...
+				if note['type'] == 'stamp':
+					stampInfo = db.stamps.find_one({'slug' : note['content']})
+					
+					noteInfo['content'] = {
+						'stampName' : stampInfo['name'],
+						'stampSlug' : stampInfo['slug']
+					}
+				
 				notesToInsert.append(noteInfo)
 				
 			
 			if len(notesToInsert) != 0:
 				step['notes'] = notesToInsert
 		
-		# grab all the badges too
-		badges = list(db.badges.find())
+		# grab all the stamps too
+		stamps = list(db.stamps.find())
 		
-		return render_template('room.html', meal=meal, userId=flask.session['userId'], invitationId=invitationId, badges=badges )
+		return render_template('room.html', meal=meal, userId=flask.session['userId'], invitationId=invitationId, stamps=stamps )
 
 '''
 def postFoodnote():
@@ -744,7 +753,7 @@ def doStuffWithStuffFromTornado():
 		
 		# put together the new user note to store in the database!
 		newNote = {
-			'type' : requestJSON['type'],
+			'type' : data['type'],
 			"userId": requestJSON['userId'],
 			"invitationId": data['invitationId'],
 			"stepId": data['stepId'],
@@ -752,23 +761,36 @@ def doStuffWithStuffFromTornado():
 			"timestamp" : data['timestamp']
 		}
 		
-		# now insert the data, and store the id
+		# insert the new note into the database, and store the id in a variable for use later
 		newNoteId = db.notes.insert(newNote);
 		
-		# now put together some data to send back to the template...
+		# put together socket response containing info needed by the template...
 		dataForResponse = {
 			'type' : requestJSON['type'],
 			'data' : {
-				"stepId": data['stepId'],
+				'type' : data['type'],
+				'stepId': data['stepId'],
 				'noteId' : str(newNoteId),
+				'content': data['content'],
+				'timestamp' : data['timestamp'],
 				'noteAuthor' : {
 					'name' : userInfo['name'],
 					'userpic' : userInfo['userpic']
-				},
-				'content': data['content'],
-				'timestamp' : data['timestamp']
+				}
 			}
 		}
+		
+		# if it's a stamp, add in some additional info...
+		if data['type'] == 'stamp':
+			stampInfo = db.stamps.find_one({'slug' : data['content']})
+		
+			dataForResponse['data']['content'] = {
+				'stampName' : stampInfo['name'],
+				'stampSlug' : stampInfo['slug']
+			}
+		
+		print dataForResponse
+			
 	
 	elif requestJSON['type'] == 'chat':
 		

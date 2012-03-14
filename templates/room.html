@@ -87,21 +87,17 @@
 						<div class="notesContainer">
 						{% if step.notes is defined %}
 							{% for note in step.notes %}
-							<div class="cookingNote" data-id="{{ note._id }}">
-								<img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" class="userpic" />
+							<div class="cookingNote {{ note.type }}" data-id="{{ note._id }}"><img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" class="userpic" />			
+								<div class="timestamp">{{ note.timestamp }}</div>
 								
-								{% if note.type == "note" %}
-								<div class="{{ note.type }} noteContent">
-									<p>{{ note.content }}</p>
-									<div class="postedBy">Posted by {{ note.noteAuthor.name }}</div>
+								<div class="noteContent">
+									{% if note.type == "note" %}
+										<p>{{ note.content }}</p>
+									{% elif note.type == "stamp" %}
+										<img src="/static/images/stamps/{{ note.content.stampSlug }}.png" />
+										<p>{{ note.content.stampName }}</p>
+									{% endif %}
 								</div>
-								{% endif %}
-								
-								{% if note.type == "badge" %}
-								<div class="{{ note.type }} noteContent">
-									<p>{{ note.noteAuthor.name }}</p>
-								</div>
-								{% endif %}
 							</div>
 							{% endfor %}
 						{% endif %}
@@ -143,22 +139,33 @@
 						
 				<div id="widgets">
 					<nav id="widgetNav">
-						<a href="" id="badgePickerButton" class="widgetButton">Stamps</a>
+						<a href="" id="stampPickerButton" class="widgetButton">Stamps</a>
 						<a href="" id="notepadButton" class="widgetButton">Cooking Notes</a>
 					</nav>
 					
-					<div id="badgePicker" class="widget">
+					<div id="stampPicker" class="widget">
 						<a href="" class="closeButton">Close</a>
-						<p>Click on a badge to award it to your cooking buddy.</p>
+						
+						<div id="stampInfoDisplay" style="display:none;">
+						</div>
+						
+						<div id="stampInstructions">
+							<p>Click on a stamp to add it to the cooking timeline.</p>
+						</div>
+						
 						<ul>
-						{% for badge in badges %}
-							<li class="badge">
-								<a href="" id="{{ badge.slug }}">{{ badge.name }}</a>
-								<span class="description">{{ badge.description }}</span>
+						{% for stamp in stamps %}
+							<li class="stamp">
+								<a href="" id="{{ stamp.slug }}" class="stampButton"><img src="/static/images/stamps/{{ stamp.slug }}.png" width="40" /></a>
+								<div class="stampInfo">
+									<h3>{{ stamp.name }}</h3>
+									<p class="description">{{ stamp.description }}</p>
+								</div>
 							</li>
 						{% endfor %}
 						</ul>
-					</div><!-- #badgePicker -->
+						
+					</div><!-- #stampPicker -->
 					
 					<div id="notepad" class="widget">
 						<a href="" class="closeButton">Close</a>
