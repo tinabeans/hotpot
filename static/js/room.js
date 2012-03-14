@@ -191,7 +191,16 @@ $(document).ready(function() {
 		console.log($elementToAddNoteTo);
 	
 		// add the newly posted note to the DOM
-		$elementToAddNoteTo.append('<div class="cookingNote" data-id="' + data.noteId + '"><img src="/static/uploads/userpics/' + data.noteAuthor.userpic + '" class="userpic" /><div class="' + data.type + ' noteContent"><p>' + data.content + '</p><div class="postedBy">Posted by ' + data.noteAuthor.name + '</div></div></div>');
+		var noteContent;
+		
+		if (data.type === 'note') {
+			noteContent = '<p>' + data.content + '</p>';
+		}
+		else if (data.type === 'stamp') {
+			noteContent = '<img src="/static/images/stamps/' + data.content.stampSlug + '.png" /><p>' + data.content.stampName + '!</p>';
+		}
+		
+		$elementToAddNoteTo.append('<div class="cookingNote ' + data.type + '" data-id="' + data.noteId + '"><img src="/static/uploads/userpics/' + data.noteAuthor.userpic + '" class="userpic" /><div class="timestamp">' + data.timestamp + '</div><div class="noteContent">' + noteContent + '</div></div>');
 		
 		// grab reference to the newly posted note…
 		var $newNote = $(".cookingNote[data-id='" + data.noteId + "']");

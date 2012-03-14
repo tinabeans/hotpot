@@ -95,43 +95,13 @@
 										<p>{{ note.content }}</p>
 									{% elif note.type == "stamp" %}
 										<img src="/static/images/stamps/{{ note.content.stampSlug }}.png" />
-										<p>{{ note.content.stampName }}</p>
+										<p>{{ note.content.stampName }}!</p>
 									{% endif %}
 								</div>
 							</div>
 							{% endfor %}
 						{% endif %}
 						</div><!-- .notesContainer -->
-						
-						<!--
-						{% if step.snippets is defined %}
-							{% for snippet in step.snippets %}
-							<section class="snippet {{ snippet.type }}" data-id="{{ snippet._id }}">
-							
-								<h1>{{ snippet.type|capitalize }}</h1>
-								{{ snippet.text|safe }}
-								
-								{% if snippet.type == "foodnote" %}
-									<form class="foodnoteForm">
-										<textarea name="note" class="note"></textarea>
-										<input type="submit" />
-									</form>
-									
-									{% if snippet.notes is defined %}
-										{% for note in snippet.notes %}
-										<div class="usernote" data-id"' + data.noteId + '">
-											{{ note.text }}
-											<div class="postedBy">Posted by {{ note.name }}</div>
-										</div>
-										{% endfor %}
-									{% endif %}
-									
-								{% endif %}
-							</section>
-							{% endfor %}
-							
-						{% endif %}
-						-->
 						
 					</li>
 					{% endfor %}				
