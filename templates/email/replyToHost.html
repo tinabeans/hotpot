@@ -3,6 +3,12 @@
 {% if reply.mainReply == "yes" %}
 	<p>yay! {{ inviteeName }} said yes! the cooking party is on!</p>
 	
+	<p><a href="http://localhost:7777/rooms/{{ invitationId }}">cooking room is here</a></p>
+	
+	<h1>Info</h1>
+
+	<p>insert info about the Hotpot event</p>
+	
 	<h2>Add to Calendar:</h2>
 	<p>Links for adding to your calendar: ical! google calendar! etc.</p>
 	
@@ -24,7 +30,3 @@
 {% if reply.message != "" %}
 	<p>{{ inviteeName }} added this message: {{ reply.message }}</p>
 {% endif %}
-
-<h1>Info</h1>
-
-<p>insert info about the Hotpot event</p>

@@ -391,6 +391,8 @@ def showReplyForm(id):
 	
 	# first check if this person has already replied to this invite
 	if 'replies' in invitation:
+		loggedInName = ""
+	
 		for reply in invitation['replies']:
 			if reply['userId'] == inviteeId:
 				show = 'replied'
@@ -548,11 +550,11 @@ def sendReply():
 	
 	# compose and send email
 	email = Message("Hotpot Invitation RSVP", recipients=[hostEmail])
-	email.html = render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName)
+	email.html = render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName, invitationId=invitation['_id'])
 	mail.send(email)
 	
 	
-	return render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName)
+	return render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName, invitationId=invitation['_id'])
 
 
 ##############################################################################
