@@ -1,0 +1,27 @@
+<h1>We're cooking... tomorrow!</h1>
+
+<h2>Info:</h2>
+<p>Cooking: {{ meal.title }}</p>
+<p>Date: Tomorrow, {{ invitation.readableDate }}</p>
+<p>Time: {{ invitation.readableTime|safe }}</p>
+<p><a href="http://localhost:7777/rooms/{{ invitationId }}">cooking room is here!</a></p>
+
+<h2>Shopping List</h2>
+<table>
+	{% for ingredient in meal.ingredients %}
+	<tr>
+		<td style="border-top:1px dashed #ccc; line-height:2em;">{{ ingredient.name }}</td>
+		<td align="right" style="border-top:1px dashed #ccc; font-weight:bold; font-size:12px;">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+<h2>Attendees:</h2>
+<ul>
+	{% for attendee in attendees %}
+	<li>
+		<img src="http://test.letsgohotpot.com/static/uploads/userpics/{{ attendee.userpic }}" width="40" />
+		{{ attendee.name }}
+	</li>
+	{% endfor %}
+</ul>

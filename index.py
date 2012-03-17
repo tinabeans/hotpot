@@ -1,7 +1,7 @@
 # IMPORT STUFF!!
 
 # python standard libraries
-import hashlib, random, json, os, time, urllib
+import hashlib, random, json, os, time, urllib, threading, datetime, urllib2
 
 # nice 3rd party stuff
 import flask
@@ -18,6 +18,7 @@ import saveStuff
 
 USERPIC_FOLDER = 'static/uploads/userpics'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
+BASE_URL = 'http://localhost:7777'
 
 
 # creating new Flask instance
@@ -532,12 +533,16 @@ def sendReply():
 				replyFoundAt = index
 		
 		if replyFoundAt != -1:
-			print 'overwriting reply'
+			# overwriting reply
 			invitation['replies'][replyFoundAt] = replyInfo
 		else:
-			print 'appending reply'
+			# appending reply
 			invitation['replies'].append(replyInfo)
 	
+	# if the reply was a yes, set a flag in the database to indicate that the cooking's happening!
+	# [insert Carrie voice: "It's HAPPENING!"
+	if replyInfo['mainReply'] == "yes":
+		invitation['itsHappening'] = True
 	
 	# store updated invitation entry back in database
 	db.invitations.save(invitation)
@@ -552,7 +557,6 @@ def sendReply():
 	email = Message("Hotpot Invitation RSVP", recipients=[hostEmail])
 	email.html = render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName, invitationId=invitation['_id'])
 	mail.send(email)
-	
 	
 	return render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName, invitationId=invitation['_id'])
 
@@ -628,6 +632,123 @@ def showInvitation(id):
 	invitation.pop('inviteeIds', None)
 	
 	return render_template('invitation.html', invitation=invitation)
+
+
+##############################################################################
+# SENDING A COOKING REMINDER
+
+timeToSendReminders = 6
+checkFor6AMInterval = 300 # 5min
+
+# determine whether it's 6am yet...
+def checkForSixAM():
+	currentTime = time.time()
+	
+	# find out the currentTime's hour
+	currentHour = datetime.datetime.fromtimestamp(currentTime).hour
+	
+	if currentHour == timeToSendReminders:
+		print 'start checking for upcoming cooking'
+		startCheckingForUpcomingCooking()
+		checkForSixAMTimer.cancel()
+
+checkForSixAMTimer = threading.Timer(checkFor6AMInterval, checkForSixAM)
+checkForSixAMTimer.daemon = True
+checkForSixAMTimer.start()
+
+# sets a timer for every 24 hours to run the check below...
+def startCheckingForUpcomingCooking():
+	checkForUpcomingCooking()
+	
+	checkForUpcomingCookingTimer = threading.Timer(86400, checkForUpcomingCooking)
+	checkForUpcomingCookingTimer.daemon = True
+	checkForUpcomingCookingTimer.start()
+
+# actually check for whether there are any upcoming cookings
+def checkForUpcomingCooking():
+
+	currentTime = time.time()
+	
+	# grab a list of all the invitations that were accepted
+	cookings = list(db.invitations.find({'itsHappening' : True}))
+	
+	upcomingCooking = []
+	
+	for cooking in cookings:
+		# 86400 is 24 hours in seconds
+		if currentTime+86400*2 >= cooking['datetime'] and currentTime+8640 <= cooking['datetime']:
+			upcomingCooking.append(cooking)
+	
+	for cooking in upcomingCooking:
+		if 'reminderSent' not in cooking:
+			# sendCookingReminder(str(cooking['_id']))
+			urllib2.urlopen(BASE_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id'])).read()
+		
+		# set a flag in the DB for reminder sent
+		cooking['reminderSent'] = True
+		
+		db.invitations.save(cooking)
+	
+	return str(upcomingCooking)
+
+# called by checkForUpcomingCooking() above if the cooking is within the next 48 hours
+@app.route('/sendCookingReminder')
+def sendCookingReminder():
+	
+	invitationId = flask.request.args.get('invitationId', '')
+	
+	if invitationId == '':
+		return "invitation not found"
+	
+	invitation = db.invitations.find_one({'_id' : ObjectId(invitationId)})
+	
+	# grab info about attendees
+	attendees = []
+	
+	# also store attendee addresses in its own array for mailing purposes
+	attendeeEmails = []
+	
+	# first add host info... because a host is an attendee, too!
+	host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
+	hostInfo = {
+		'userpic' : host['userpic'],
+		'name' : host['name']
+	}
+	
+	attendees.append(hostInfo);
+	attendeeEmails.append(host['email'])
+	
+	# grab all the infos of the people who said yes...
+	for reply in invitation['replies']:
+		print reply['mainReply']
+	
+		if reply['mainReply'] != "yes":
+			continue
+		
+		attendee = db.users.find_one({'_id' : ObjectId(reply['userId'])})
+		attendeeInfo = {
+			'userpic' : attendee['userpic'],
+			'name' : attendee['name']
+		}
+		
+		attendees.append(attendeeInfo)
+		attendeeEmails.append(attendee['email'])
+	
+	invitation['attendees'] = attendees
+	
+	# grab recipe ingredients to send along
+	meal = db.meals.find_one({'slug' : invitation['meal']})
+	mealInfo = {
+		'ingredients' : meal['ingredients'],
+		'title' : meal['title']
+	}
+	
+	# compose and send email for every attendee
+	email = Message("Get Ready to Cook!", recipients=attendeeEmails)
+	email.html = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal)
+	mail.send(email)
+	
+	return "sent!"
 
 
 ##############################################################################
