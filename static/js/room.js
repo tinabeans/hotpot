@@ -7,6 +7,13 @@ $(document).ready(function() {
 	socket = new io.Socket(window.location.hostname, {'port' : 7778});
 	socket.connect();
 	
+	// as soon as a connection is made, send a message to the back-end so it knows which 'room' you are in
+	var socketConnectMessage = JSON.stringify({
+		'type' : 'socket connect',
+		'roomId' : $('body').attr('data-id')
+	});
+	socket.send(socketConnectMessage);
+	
 	// useful variables
 	var currentUserId = $('#userId').text();
 	
