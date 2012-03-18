@@ -198,7 +198,8 @@ def register():
 		'name' : data['name'],
 		'lastname' : data['lastname'],
 		'email' : data['email'],
-		'password' : data['password']
+		'password' : data['password'],
+		'userpic' : 'none'
 	})
 	
 	# log the user in by setting a variable in the session object
@@ -520,18 +521,24 @@ def sendReply():
 	
 	# if there aren't any replies stored yet, make an array to store them!
 	if 'replies' not in invitation:
+		print 'no replies yet'
 		invitation['replies'] = []
 		
 		invitation['replies'].append(replyInfo)
 	
 	# else, there are replies! so check if there already is one from this user for this invitation
+	# TODO: there is a little inconsistency here... when accessing the RSVP form, it won't let you reply if you already did,
+	# but the code below also handles the case in which you overwrite an existing reply. must fix someday.
 	else:
 		replyFoundAt = -1
-	
-		for (index, reply) in enumerate(invitation['reply']):
+		
+		# search for invitee's own reply, if it exists
+		for (index, reply) in enumerate(invitation['replies']):
 			if reply['userId'] == flask.session['userId']:
 				replyFoundAt = index
 		
+		# this means invitee's own reply was found
+		# in that case, instead of creating a new entry, we should overwrite it
 		if replyFoundAt != -1:
 			# overwriting reply
 			invitation['replies'][replyFoundAt] = replyInfo
@@ -553,10 +560,18 @@ def sendReply():
 	# grab invitee name
 	inviteeName = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})['name']
 	
-	# compose and send email
-	email = Message("Hotpot Invitation RSVP", recipients=[hostEmail])
+	# compose and send email back to host
+	email = Message("Hotpot RSVP", recipients=[hostEmail])
 	email.html = render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName, invitationId=invitation['_id'])
 	mail.send(email)
+	
+	# if reply was a yes, also send the invitee a confirmation
+	if replyInfo['mainReply'] == "yes":
+		inviteeEmail = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})['email']
+	
+		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail])
+		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, inviteeName=inviteeName, invitationId=invitation['_id'])
+		mail.send(email)
 	
 	return render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName, invitationId=invitation['_id'])
 
@@ -637,59 +652,62 @@ def showInvitation(id):
 ##############################################################################
 # SENDING A COOKING REMINDER
 
-timeToSendReminders = 6
-checkFor6AMInterval = 300 # 5min
+hourToSendReminders = 4
+checkForReminderTimeInterval = 300 # 5min
 
-# determine whether it's 6am yet...
-def checkForSixAM():
+# check at short intervals whether it's time to send out reminder emails yet
+def checkWhetherItsTimeToSendOutReminderEmails():
+
+	# perform the check right away...
 	currentTime = time.time()
 	
 	# find out the currentTime's hour
 	currentHour = datetime.datetime.fromtimestamp(currentTime).hour
 	
-	if currentHour == timeToSendReminders:
-		print 'start checking for upcoming cooking'
-		startCheckingForUpcomingCooking()
-		checkForSixAMTimer.cancel()
-
-checkForSixAMTimer = threading.Timer(checkFor6AMInterval, checkForSixAM)
-checkForSixAMTimer.daemon = True
-checkForSixAMTimer.start()
-
-# sets a timer for every 24 hours to run the check below...
-def startCheckingForUpcomingCooking():
-	checkForUpcomingCooking()
+	# if current time matches the designated reminder-sending time...
+	# then start the 2nd timer which actually sends out reminders... and repeats every 24 hours
+	if currentHour == hourToSendReminders:
+		# ... then see which reminders to send out
+		checkWhichCookingsAreComingUp()
 	
-	checkForUpcomingCookingTimer = threading.Timer(86400, checkForUpcomingCooking)
-	checkForUpcomingCookingTimer.daemon = True
-	checkForUpcomingCookingTimer.start()
+	else:
+		timer = threading.Timer(checkForReminderTimeInterval, checkWhetherItsTimeToSendOutReminderEmails)
+		timer.daemon = True
+		timer.start()
 
-# actually check for whether there are any upcoming cookings
-def checkForUpcomingCooking():
 
-	currentTime = time.time()
+def checkWhichCookingsAreComingUp():
 	
-	# grab a list of all the invitations that were accepted
+	# grab a list of ALL the invitations that were accepted
 	cookings = list(db.invitations.find({'itsHappening' : True}))
 	
-	upcomingCooking = []
+	# for filtering only the invitations that are coming up
+	upcomingCookings = []
+	
+	# get the current time for filtering purposes
+	currentTime = time.time()
 	
 	for cooking in cookings:
-		# 86400 is 24 hours in seconds
+		# if the cooking event is happening "tomorrow"...
 		if currentTime+86400*2 >= cooking['datetime'] and currentTime+8640 <= cooking['datetime']:
-			upcomingCooking.append(cooking)
+			# add it to the upcoming cookings array!
+			upcomingCookings.append(cooking)
 	
-	for cooking in upcomingCooking:
+	# send remindsers for all the upcoming cookings
+	for cooking in upcomingCookings:
 		if 'reminderSent' not in cooking:
-			# sendCookingReminder(str(cooking['_id']))
+			
 			urllib2.urlopen(BASE_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id'])).read()
 		
-		# set a flag in the DB for reminder sent
+		# just in case: set a flag in the DB for reminder sent, so it doesn't get sent multiple times by accident
 		cooking['reminderSent'] = True
-		
 		db.invitations.save(cooking)
 	
-	return str(upcomingCooking)
+	# repeat every 24 hours
+	timer = threading.Timer(86400, checkWhichCookingsAreComingUp)
+	timer.daemon = True
+	timer.start()
+
 
 # called by checkForUpcomingCooking() above if the cooking is within the next 48 hours
 @app.route('/sendCookingReminder')
@@ -749,6 +767,12 @@ def sendCookingReminder():
 	mail.send(email)
 	
 	return "sent!"
+
+# start checking a few moments after the server starts
+# the delay is to give the server some time to boot up..?
+timer = threading.Timer(5, checkWhetherItsTimeToSendOutReminderEmails)
+timer.daemon = True
+timer.start()
 
 
 ##############################################################################
