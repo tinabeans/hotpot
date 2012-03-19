@@ -1,6 +1,8 @@
 from pymongo.objectid import ObjectId
 
 def start(db):
+
+	'''
 	db.stamps.remove();
 
 	db.stamps.save({
@@ -20,12 +22,6 @@ def start(db):
 		'description' : 'Eep! Get the fire extinguisher!',
 		'name' : 'Bonfire'
 	})
-
-	''' db.stamps.save({
-		'slug' : 'kaboom',
-		'description' : """Oh man! It's everywhere!!!""",
-		'name' : 'Kaboom!'
-	})'''
 	
 	db.stamps.save({
 		'slug' : 'madScientist',
@@ -39,21 +35,28 @@ def start(db):
 		'name' : 'True Love'
 	})
 	
-	'''
-	db.stamps.save({
-		'slug' : 'Surprise',
-		'description' : """Well that was unexpected.""",
-		'name' : 'Surprise!'
-	})
-	'''
-	
 	db.stamps.save({
 		'slug' : 'happyAccident',
 		'description' : """Yay, that actually worked!""",
 		'name' : 'Happy Accident'
 	})
+	'''
 	
 	'''
+	# stamps we don't need yet...
+	
+	db.stamps.save({
+		'slug' : 'kaboom',
+		'description' : """Oh man! It's everywhere!!!""",
+		'name' : 'Kaboom!'
+	})
+	
+	db.stamps.save({
+		'slug' : 'Surprise',
+		'description' : """Well that was unexpected.""",
+		'name' : 'Surprise!'
+	})
+	
 	db.stamps.save({
 		'slug' : 'SecretIngredient',
 		'description' : """Shhh... don't tell anyone.""",
@@ -95,141 +98,139 @@ def start(db):
 		"recipe_id" : "4f3352569685aa28d5000008",
 		"users" : [ "t@tinabeans.com", "nanotone@gmail.com"]
 	})
+	'''
 	
-	
-	
-	db.recipes.remove()
-
-	recipe = {
-		"_id" : ObjectId("4f3352569685aa28d5000008"),
-		"slug" : "LemonGarlicKalePasta",
+	'''
+	meal1 = {
+		"_id": ObjectId('4f3352569685aa28d5000008'),
 		
-		"description" : """Kale is a hearty leafy green commonly found at farmer's vegetables in the late fall through early winter. Here, the nutty flavor of saut&eacute;ed kale is paired with a bright splash of lemon&mdash;a fragrant reminder that spring is not too far off!""",
+		"title":"Lemon Garlic Pasta with Kale",
 		
-		"summary" : """This pasta dish comes together quickly with just a few ingredients. The kale is saut&eacute;ed in garlic, while lemons and more garlic infuse gently into a fragrant olive oil "sauce." Because of it's so easy to prepare, it's great for a low-key and healthy weeknight supper. It's also vegetarian, making it an ideal candidate for Meatless Mondays.""",
+		"slug":"LemonGarlicKalePasta",
 		
-		"title" : "Lemon Garlic Pasta with Kale",
+		"credit":"The Cilantropist",
 		
-		"credit" : "The Cilantropist",
+		"creditURL":"http://cilantropist.blogspot.com/2011/01/easy-lemon-garlic-kale-pasta.html",
 		
-		"creditURL" : "http://cilantropist.blogspot.com/2011/01/easy-lemon-garlic-kale-pasta.html",
+		"description":"Kale is a hearty leafy green commonly found at farmer's vegetables in the late fall through early winter. Here, the nutty flavor of saut&eacute;ed kale is paired with a bright splash of lemon&mdash;a fragrant reminder that spring is not too far off!",
 		
-		"ingredients": [
+		"summary":"This pasta dish comes together quickly with just a few ingredients. The kale is saut&eacute;ed in garlic, while lemons and more garlic infuse gently into a fragrant olive oil \"sauce.\" Because of it's so easy to prepare, it's great for a low-key and healthy weeknight supper. It's also vegetarian, making it an ideal candidate for Meatless Mondays.",
+		
+		"ingredients":[
 			{
-				"name" : "kale",
-				"amount": "1 bunch"
+				"amount":"1 bunch",
+				"name":"kale"
 			},
 			{
-				"name" : "fettuccine",
-				"amount": "1/2 box"
+				"amount":"1/2 box",
+				"name":"fettuccine"
 			},
 			{
-				"name" : "lemons",
-				"amount": "2"
+				"amount":"2",
+				"name":"lemons"
 			},
 			{
-				"name" : "fresh garlic",
-				"amount": "3 cloves"
+				"amount":"3 cloves",
+				"name":"fresh garlic"
 			},
 			{
-				"name" : "pine nuts",
-				"amount": "1/4 cup"
+				"amount":"1/4 cup",
+				"name":"pine nuts"
 			},
 			{
-				"name" : "extra virgin olive oil"
+				"name":"extra virgin olive oil"
 			},
 			{
-				"name" : "salt & pepper"
+				"name":"salt & pepper"
 			}
 		],
-		"steps": [
+		
+		"steps":[
 			{
-				"id": "1",
-				"type": "ingredients",
-				"text": """<p>Gather the following ingredients:</p>"""
+				"text":"<p>Gather the following ingredients:</p>",
+				"type":"ingredients",
+				"id":"1"
 			},
 			{
-				"id": "2",
-				"type": "prep",
-				"text": """<p>Mince all 3 cloves of garlic.</p>""",
-				"extra": """<p>Ask your partner if they know a good trick for peeling garlic. (There are several.)</p>"""
+				"text":"<p>Mince all 3 cloves of garlic.</p>",
+				"type":"prep",
+				"id":"2",
+				"extra":"<p>Ask your partner if they know a good trick for peeling garlic. (There are several.)</p>"
 			},
 			{
-				"id": "3",
-				"type": "prep",
-				"text": """<p>Wash the kale, then separate the leaves from the stems. Cut leaves into ribbons.</p>""",
-				"extra": """<p>If you have kitchen scissors, here's a good chance to use them. Maybe even cut some paper doll chains!</p>"""
+				"text":"<p>Wash the kale, then separate the leaves from the stems. Cut leaves into ribbons.</p>",
+				"type":"prep",
+				"id":"3",
+				"extra":"<p>If you have kitchen scissors, here's a good chance to use them. Maybe even cut some paper doll chains!</p>"
 			},
 			{
-				"id": "4",
-				"type": "prep",
-				"text": """<p>Wash the lemons. Take one and slice into thin half-rounds. Take the other and zest it, then cut in half and juice it.</p>""",
-				"extra": """<p>If you've never zested a lemon, your nose is in for a treat. Don't know how? See who can find out first.</p>"""
+				"text":"<p>Wash the lemons. Take one and slice into thin half-rounds. Take the other and zest it, then cut in half and juice it.</p>",
+				"type":"prep",
+				"id":"4",
+				"extra":"<p>If you've never zested a lemon, your nose is in for a treat. Don't know how? See who can find out first.</p>"
 			},
 			{
-				"id": "5",
-				"type": "rest",
-				"text": """<p>You're done with the prep stage. Take a break and rate your partner's chopping:</p>"""
+				"text":"<p>You're done with the prep stage. Take a break and rate your partner's chopping:</p>",
+				"type":"rest",
+				"id":"5"
 			},
 			{
-				"id": "6",
-				"type": "heat",
-				"text": """<p>Now let's crank up the heat. Add to an empty skillet:</p>
+				"text":"<p>Now let's crank up the heat. Add to an empty skillet:</p>
 							<ul>
 								<li>a tablespoon of olive oil</li>
 								<li>a third of the minced garlic</li>
 							</ul>
-							<p>Turn on heat to medium and cook, stirring, until garlic sizzles.</p>""",
-				"extra": """<p>Starting off the garlic in cold oil is a cool trick (no pun intended). It helps "infuse" the oil with the garlic flavor as it heats up.</p>"""
+							<p>Turn on heat to medium and cook, stirring, until garlic sizzles.</p>",
+				"type":"heat",
+				"id":"6",
+				"extra":"<p>Starting off the garlic in cold oil is a cool trick (no pun intended). It helps \"infuse\" the oil with the garlic flavor as it heats up.</p>"
 			},
 			{
-				"id": "7",
-				"type": "heat",
-				"text": """<p>Now add to the skillet all the chopped kale leaves. Cook until kale is softened (5-8 minutes). Turn off the heat. Take kale out of the pan and set aside.</p>"""
+				"text":"<p>Now add to the skillet all the chopped kale leaves. Cook until kale is softened (5-8 minutes). Turn off the heat. Take kale out of the pan and set aside.</p>",
+				"type":"heat",
+				"id":"7"
 			},
 			{
-				"id": "8",
-				"type": "heat",
-				"text": """<p>Start cooking the pasta: bring a large pot of water to boil over high heat.</p>"""
+				"text":"<p>Start cooking the pasta: bring a large pot of water to boil over high heat.</p>",
+				"type":"heat",
+				"id":"8"
 			},
 			{
-				"id": "9",
-				"type": "heat",
-				"text": """<p>Start making the flavor-infused oil. Add to the skillet that you cooked the kale in:</p>
+				"text":"<p>Start making the flavor-infused oil. Add to the skillet that you cooked the kale in:</p>
 							<ul>
 								<li>1/4 cup of olive oil</li>
 								<li>the rest of the minced garlic</li>
 								<li>half of the lemon slices</li>
 							</ul>
-							<p>Turn on the heat to medium-low. Let everything cook gently in the hot oil.</p>"""
+							<p>Turn on the heat to medium-low. Let everything cook gently in the hot oil.</p>",
+				"type":"heat",
+				"id":"9"
 			},
 			{
-				"id": "10",
-				"type": "heat",
-				"text": """<p>When the water starts boiling, add in half the box of pasta. Reduce heat to medium. Let the pasta cook at a rolling boil, uncovered, for about 10 minutes.""",
-				"extra": """<p>What's your partner's best trick for getting long pasta to fit into the pot? (Breaking pasta doesn't count.)</p>"""
+				"text":"<p>When the water starts boiling, add in half the box of pasta. Reduce heat to medium. Let the pasta cook at a rolling boil, uncovered, for about 10 minutes.",
+				"type":"heat",
+				"id":"10",
+				"extra":"<p>What's your partner's best trick for getting long pasta to fit into the pot? (Breaking pasta doesn't count.)</p>"
 			},
 			{
-				"id": "11",
-				"type": "rest",
-				"text": """<p>You have a few minutes to relax while the pasta and oil are cooking, so why not sneak a taste of that kale?</p>""",
-				"widget": """flavors"""
+				"text":"<p>You have a few minutes to relax while the pasta and oil are cooking, so why not sneak a taste of that kale?</p>",
+				"widget":"flavors",
+				"type":"rest",
+				"id":"11"
 			},
 			{
-				"id": "12",
-				"type": "finish",
-				"text": """<p>After the pasta's been cooking for about 10 minutes, test for doneness. When the texture's to your liking, turn off the heat and drain.</p>""",
-				"extra": """<p>The traditional way to cook pasta is called "al dente," which is pasta that's still a tad hard in the center. It has a nice chewy resistance to the tooth. That said, how do you and your partner like your pasta?</p>"""
+				"text":"<p>After the pasta's been cooking for about 10 minutes, test for doneness. When the texture's to your liking, turn off the heat and drain.</p>",
+				"type":"finish",
+				"id":"12",
+				"extra":"<p>The traditional way to cook pasta is called \"al dente,\" which is pasta that's still a tad hard in the center. It has a nice chewy resistance to the tooth. That said, how do you and your partner like your pasta?</p>"
 			},
 			{
-				"id": "13",
-				"type": "finish",
-				"text": """<p>The oil should be finishing up too. Turn off the heat and fish out the cooked lemons&mdash;they're bitter.</p>"""
+				"text":"<p>The oil should be finishing up too. Turn off the heat and fish out the cooked lemons&mdash;they're bitter.</p>",
+				"type":"finish",
+				"id":"13"
 			},
 			{
-				"id": "14",
-				"type": "finish",
-				"text": """<p>Now for the grand finale. Put everything in the pot with the pasta:</p>
+				"text":"<p>Now for the grand finale. Put everything in the pot with the pasta:</p>
 							<ul>
 								<li>the cooked kale</li>
 								<li>the infused oil</li>
@@ -239,16 +240,360 @@ def start(db):
 								<li>1/4 cup of pine nuts</li>
 								<li>salt and pepper to taste</li>
 							</ul>
-							<p>Toss together and you're ready to eat!</p>""",
-				"extra": """<p>Undeniably the best way to mix any food is to put a lid on and shake. See who has the best pot-shaking dance. (Careful of hot parts!)</p>"""
+							<p>Toss together and you're ready to eat!</p>",
+				"type":"finish",
+				"id":"14",
+				"extra":"<p>Undeniably the best way to mix any food is to put a lid on and shake. See who has the best pot-shaking dance. (Careful of hot parts!)</p>"
 			},
 			{
-				"id": "15",
+				"text":"<p>The food's ready to eat!</p>",
+				"type":"eat",
+				"id":"15"
+			}
+		]
+	}
+
+	meal2 = {
+		"_id": ObjectId('4f666a6b4bf254343c000001'),
+	
+		"slug" : "ClassicChineseSteamedFish",
+		
+		"title" : "Classic Chinese Steamed Fish",
+		
+		"description" : """some description goes here""",
+		
+		"summary" : """Summary goes here""",
+		
+		"credit" : "Tinabeans",
+		
+		"creditURL" : "http://tinabeans.com",
+		
+		"ingredients": [
+			{
+				"name" : "white-fleshed fish, any kind",
+				"amount": "1 lb"
+			},
+			{
+				"name" : "scallions",
+				"amount": "3 stalks"
+			},
+			{
+				"name" : "fresh garlic",
+				"amount": "6 cloves"
+			},
+			{
+				"name" : "fresh ginger",
+				"amount": '1" knob'
+			},
+			{
+				"name" : "bok choy",
+				"amount": "1 lb"
+			},
+			{
+				"name" : "uncooked white rice",
+				"amount": "1 cup"
+			},
+			{
+				"name" : "soy sauce"
+			},
+			{
+				"name" : "salt"
+			},
+			{
+				"name" : "sugar"
+			},
+			{
+				"name" : "oil, any kind"
+			}
+		],
+		"steps": [
+			{
+				"id": "0",
+				"type": "ingredients",
+				"text": """<p>Gather the following ingredients:</p>"""
+			},
+			{
+				"id": "1",
+				"type": "prep",
+				"text": """<p>Prep the ingredients:</p>
+					<ul>
+						<li>Wash and cut <strong>3 stalks of scallions</strong> into 2" segments.</li>
+						<li>Wash and slice a <strong>1" knob of ginger</strong> into thin coins.</li>
+						<li>Peel <strong>6 cloves of garlic</strong>. Slice half thinly, and mince the other half.</li>
+					</ul>"""
+			},
+			{
+				"id": "2",
+				"type": "prep",
+				"text": """<p>Wash and cut the bok choy into 1" chunks. Also, take out the (hopefully defrosted) fish and pat dry with paper towels or napkins.</p>"""
+			},
+			{
+				"id": "3",
+				"type": "heat",
+				"text": """<p>Start the rice. Measure out:</p>
+					<ul>
+						<li>1 cup of rice</li>
+					</ul>
+					<p>Rinse the rice in cold water and drain. Then, if you have a rice cooker, use it. Otherwise add it to a pot, along with:</p>
+					<ul>
+						<li>1 3/4 cups water</li>
+					</ul>
+					<p>Turn the heat up to medium-high.</p>""",
+				"extra": """<p>If you use a heavy-bottom pot, you'll greatly reduce your changes of 'burning' the bottom of the rice. But if you only have a thin pot, just use extra vigilance and you should be fine.</p>"""
+			},
+			{
+				"id": "4",
+				"type": "rest",
+				"text": """<p>How did everyone's prepping go? While the rice is heating up, feel free to take a little break.</p>"""
+			},
+			{
+				"id": "5",
+				"type": "heat",
+				"text": """<p>When the rice starts to boil, put a lid on and reduce heat to low. Start a timer for 15 minutes.</p>"""
+			},
+			{
+				"id": "6",
+				"type": "heat",
+				"text": """<p>Heat 1 tsp of oil over high heat in a skillet, preferably nonstick. When the oil is hot, gently lay fish in the pan. Saut&eacute; about 1&ndash;2 minutes, then flip. Lightly browning the fish gives it a nicer flavor.</p>""",
+				'extra' : """<p>If the fish falls apart while you're trying to flip it, never fear. It will still taste excellent!</p>"""
+			},
+			{
+				"id": "7",
+				"type": "heat",
+				"text": """<p>Once the fish is nicely browned, quickly add to the pan:</p>
+					<ul>
+						<li>1/3 cup of water</li>
+						<li>the scallions</li>
+						<li>the ginger</li>
+						<li>the sliced garlic only</li>
+						<li>1 tbsp soy sauce</li>
+						<li>1/2 teaspoon sugar</li>
+					</ul>
+				<p>When the liquid starts simmering, put on a lid and turn the heat down to medium-low. Steam for 7-12 minutes, depending on the thickness of the fish.</p>"""
+			},
+			{
+				"id": "8",
+				"type": "rest",
+				"text": """<p>Your kitchen should start to smell pretty good soon! Why not take another break while the fish and rice are finishing up?</p>"""
+			},
+			{
+				"id": "9",
+				"type": "heat",
+				"text": """<p>If it's been 15 minutes for the rice, turn off the heat. Let it sit with the lid on until you are done cooking.</p>""",
+				"extra" : """<p>Resist the urge to uncover the pot. This allows the trapped steam to finish off the cooking, so you get perfectly cooked rice without burning the bottom.</p>"""
+			},
+			{
+				"id": "10",
+				"type": "heat",
+				"text": """<p>When the fish is finishing up, test for done-ness by flaking it with a fork. If it's cooked through, turn off the heat and move the entire contents of the skillet to a plate.</p>
+				<p>You're now ready to cook the final item: bok-choy!</p>"""
+			},
+			{
+				"id": "11",
+				"type": "heat",
+				"text": """<p>Dry off the skillet and heat 1 teaspoon of oil in it, over high heat. When the oil is very hot, add:</p>
+					<ul>
+						<li>the rest of the minced garlic</li>
+						<li>all the bok choy</li>
+					</ul>
+					<p>Toss around vigorously for a minute or two, then add:</p>
+					<ul>
+						<li>1/2 teaspoon of salt</li>
+						<li>1/2 teaspoon of sugar</li>
+					</ul>
+					<p>Toss for another couple of minutes or so.</p>""",
+				"extra" : """<p>Congrats, you've just mastered the mysterious ancient Chinese cooking technique known as stir-frying!</p>"""
+			},
+			{
+				"id": "12",
+				"type": "heat",
+				"text": """<p>Add a 1/4 cup of water to the pan, bring to a boil, and cover (you know the drill by now). Let it steam for 5-7 minutes.</p>""",
+				"extra" : """<p>The length of steaming depends on how crisp or tender you want your bok choy to be. That's completely a matter of personal taste.</p>"""
+			},
+			{
+				"id": "13",
+				"type": "heat",
+				"text": """<p>When the bok choy is to your liking, turn off the heat. Fluff the rice. Set the table with everything you just made... and you're ready to eat!</p>"""
+			},
+			{
+				"id": "14",
 				"type": "eat",
-				"text": """<p>The food's ready to eat!</p>"""
+				"text": """<p>How's it all taste?</p>"""
+			}
+		]
+	}'''
+	
+	meal3 = {
+		"_id": ObjectId('4f667da14bf254378f000000'),
+	
+		"slug" : "AppleCheddarQuiche",
+		
+		"title" : "Apple Cheddar Quiche",
+		
+		"description" : """some description goes here""",
+		
+		"summary" : """Summary goes here""",
+		
+		"credit" : "Closet Cooking",
+		
+		"creditURL" : "http://www.closetcooking.com/2010/12/apple-and-cheddar-quiche.html",
+		
+		"ingredients": [
+			{
+				"name" : "apples",
+				"amount": "2 medium"
+			},
+			{
+				"name" : """9" pie shell""",
+				"amount": "1"
+			},
+			{
+				"name" : "eggs",
+				"amount": "6"
+			},
+			{
+				"name" : "cheddar",
+				"amount": '1 lb block or shredded'
+			},
+			{
+				"name" : "half and half",
+				"amount": "1 cup"
+			},
+			{
+				"name" : "baby spinach",
+				"amount": "1 bag"
+			},
+			{
+				"name" : "walnuts",
+				"amount": "1/4 cup"
+			},
+			{
+				"name" : "dried cranberries",
+				"amount": "1/4 cup"
+			},
+			{
+				"name" : "garlic",
+				"amount" : "1 clove"
+			},
+			{
+				"name" : "dried rosemary"
+			},
+			{
+				"name" : "olive oil"
+			},
+			{
+				"name" : "balsamic vinegar"
+			},
+			{
+				"name" : "brown sugar"
+			},
+			{
+				"name" : "salt and pepper"
+			}
+		],
+		"steps": [
+			{
+				"id": "0",
+				"type": "ingredients",
+				"text": """<p>Gather the following ingredients:</p>"""
+			},
+			{
+				"id": "1",
+				"type": "prep",
+				"text": """<p>Preheat the oven to 375 degrees F.</p>"""
+			},
+			{
+				"id": "2",
+				"type": "prep",
+				"text": """<p>Prepare the quiche ingredients:</p>
+					<ul>
+						<li>Wash and dice the 2 apples</li>
+						<li>Grate about 1 cup of cheddar, if it's in a block</li>
+					</ul>"""
+			},
+			{
+				"id": "3",
+				"type": "prep",
+				"text": """<p>In a large bowl, beat together:</p>
+					<ul>
+						<li>6 eggs</li>
+						<li>1 cup of half and half</li>
+						<li>1/4 teaspoon of rosemary</li>
+					</ul>"""
+			},
+			{
+				"id": "4",
+				"type": "prep",
+				"text": """<p>Fill the pie shell: line the bottom with the diced apples, then pour in the egg-and-cream mixture. Finally, sprinkle cheddar cheese on top.</p>""",
+				"extra" : "<p>Too much filling? Save the remainder and make a mini breakfast scramble!</p>"
+			},
+			{
+				"id": "5",
+				"type": "heat",
+				"text": """<p>Pop the quiche in the oven, and set a timer for 35 minutes.</p>"""
+			},
+			{
+				"id": "6",
+				"type": "rest",
+				"text": """<p>Whew. Time to take a breather.</p>"""
+			},
+			{
+				"id": "7",
+				"type": "prep",
+				"text": """<p>Begin making the salad:</p>
+					<ul>
+						<li>finely mince a single clove of garlic</li>
+						<li>grate a small handful of cheddar cheese</li>
+					</ul>"""
+			},
+			{
+				"id": "8",
+				"type": "prep",
+				"text": """<p>Make the dressing! Pick a jar or small container with a tight-fitting lid, and put in the following:</p>
+					<ul>
+						<li>1/4 cup of olive oil</li>
+						<li>1 1/2 tbsp of balsamic vinegar</li>
+						<li>the minced garlic</li>
+						<li>1 teaspoon of brown sugar</li>
+						<li>a couple pinches of salt and pepper</li>
+					</ul>
+					<p>Put the lid on tightly and shake.</p>"""
+			},
+			{
+				"id": "9",
+				"type": "prep",
+				"text": """<p>Assemble the salad! Toss the following in a bowl:</p>
+					<ul>
+						<li>baby spinach</li>
+						<li>a handful of cranberries</li>
+						<li>a handful of walnuts (see Protip)</li>
+						<li>the grated cheddar</li>
+					</ul>""",
+				"extra" : """<p>If you have raw walnuts, toast them in the microwave! Lay them on a dish in a single layer and microwave on high for 1 minute. Be careful, they will be very hot!</p>"""
+			},
+			{
+				"id": "10",
+				"type": "rest",
+				"text": """<p>You'll probably have some time left while the quiche cooks, so take another break!</p>"""
+			},
+			{
+				"id": "11",
+				"type": "heat",
+				"text": """<p>When the quiche time is up, check for doneness by gently jiggling the pie pan in the oven. If the center moves, give it another 10 minutes. Otherwise, it's done!</p>""",
+				"extra" : """<p>Remember to turn off the oven.</p>"""
+			},
+			{
+				"id": "12",
+				"type": "finish",
+				"text": """<p>Give the quiche a few minutes to cool. Meanwhile, you can dress and toss the salad. Then cut a slice of quiche, set the table, and chow down!</p>""",
+				"extra" : """<p>Best way to ensure perfectly tossed salad is to put everything in a lidded container, and&mdashyou guessed it&mdashshake. Even a bowl and upturned plate work for this purpose.</p>"""
+			},
+			{
+				"id": "13",
+				"type": "eat",
+				"text": """<p>How's it all taste?</p>"""
 			}
 		]
 	}
 	
-	db.recipes.save(recipe)
-'''
+	db.meals.save(meal3)
