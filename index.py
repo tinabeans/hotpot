@@ -42,6 +42,25 @@ db = connection.hotpot
 
 
 ##############################################################################
+# TEMPLATE RENDERING
+
+# custom render_template function that also adds a boolean "isLoggedIn" to let template know whether user is logged in
+def render_template(template, **kwargs):
+	# decide if i'm logged in or not
+	if 'userId' in flask.session:
+		isLoggedIn = True
+		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+		userInfo = {
+			'name' : user['name'],
+			'userpic' : user['userpic']
+		}
+	else:
+		isLoggedIn = False
+	
+	return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, **kwargs)
+
+
+##############################################################################
 # HOMEPAGE
 
 @app.route('/')
@@ -166,17 +185,6 @@ def logout():
 	return flask.redirect(flask.url_for('index'))
 
 
-# custom render_template function that also adds a boolean "isLoggedIn" to let template know whether user is logged in
-def render_template(template, **kwargs):
-	# decide if i'm logged in or not
-	if 'userId' in flask.session:
-		isLoggedIn = True
-	else:
-		isLoggedIn = False
-	
-	return flask.render_template(template, isLoggedIn=isLoggedIn, **kwargs)
-
-
 ##############################################################################
 # REGISTRATION
 
@@ -246,7 +254,7 @@ def showMyProfile(id):
 	if 'userId' in flask.session:
 		user = db.users.find_one({'_id' : ObjectId(id)})
 
-	return render_template('profile.html', user=user, isMyProfile=isMyProfile)
+	return render_template('profile.html', isMyProfile=isMyProfile)
 
 
 @app.route('/editProfile')
@@ -254,7 +262,7 @@ def showEditProfileForm():
 	
 	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 	
-	return render_template('editProfile.html', user=user)
+	return render_template('editProfile.html')
 
 
 @app.route('/saveProfile', methods=['POST'])

@@ -6,18 +6,32 @@
 /* TYPOGRAPHY */
 
 $sans: "proxima-nova", sans-serif;
-$serif: "rooney-web", Georgia, serif;
+$serif: "jubilat", Georgia, serif;
+
+@mixin bigFatLetters {
+	font-family:$sans;
+	text-transform:uppercase;
+	font-weight:900;
+	letter-spacing: .1em;
+}
 
 /**********************************************************/
 /* COLORS */
 
-$textColor: #5c5850;
-$orange: #ff5513;
+$textColor: #4e565c;
+$orange: #ef5922;
 $accentColor: #bedf62;
 $subtleColor: #ededec;
 $mediumColor: #d8d7d5;
 $darkColor: #908d86;
 $bgColor: #fff;
+
+$lightBlue: #d1e0dd;
+$green: #a5c349;
+$darkBlue: #1c6770;
+$mediumBlue: #3797a2;
+$darkBrown: #736c5b;
+
 
 /**********************************************************/
 /* TAG REDEFINITIONS */
@@ -29,7 +43,7 @@ html {
 body {
 	margin:0px;
 	padding:0px;
-	font-family:$serif;
+	font-family:$sans;
 	font-weight: 300;
 	font-size:13px;
 	height:100%;
@@ -155,32 +169,175 @@ p {
 /* HEADER */
 
 
+$headerHeight: 96px;
+
 #mainHeader {
 	position: relative;
+	height: $headerHeight;
 
 	h1 {
 		background:url(/static/images/headerLeftEdge.png) right top no-repeat;
 		width:180px;
-		height:96px;
+		height:$headerHeight;
 		position: absolute;
 		top:0px;
 		left:6%;
 		z-index: +1;
 		
 		img {
+			margin-top:15px;
 			width:150px;
 		}
 	}
 }
 
-#headerNavs {
-	background:url(/static/images/headerBg.png) repeat-x;
-	height:96px;
-	width: 90%;
+#headerNavsContainer {
+	@include box-sizing(border-box);
+	width:94%;
 	position: absolute;
 	right:0;
+	padding-left: 179px;
 }
 
+#headerNavs {
+	background:url(/static/images/headerBg.png) repeat-x;
+	height:$headerHeight;
+}
+
+#serviceNavs {
+	position: absolute;
+	top:0;
+	right: 6%;
+}
+
+#bigInviteButton {
+	@include box-sizing(border-box);
+	display:block;
+	background:#a5c349;
+	color:#fff;
+	@include border-radius(100px);
+	width:108px;
+	height:108px;
+	text-align: center;
+	@include bigFatLetters;
+	padding-top:27px;
+	float:left;
+	position: relative;
+	top: 20px;
+	
+	.big {
+		font-size:19px;
+		display: block;
+	}
+	
+	em {
+		font-family:$serif;
+		font-style: italic;
+		font-weight: 500;
+		text-transform: lowercase;
+	}
+	
+	.small {
+		font-size:12px;
+		display: block;
+		position: relative;
+		top:1px
+	}
+}
+
+#userInfoContainer {
+	float:left;
+	height:10px;
+	margin-right:20px;
+	margin-top:26px;
+	min-width: 130px;
+}
+
+#userInfo {
+	padding: 6px 52px 5px 12px;
+	color:$darkBrown;
+	
+	.userpic {
+		@include border-radius(80px);
+		border:6px solid rgba($darkBrown,.15);
+		height:62px;
+		width:62px;
+		position: absolute;
+		right: 92px;
+		top: 9px;
+		z-index: +3;
+		
+		img {
+			@include border-radius(80px);
+			width:62px;
+		}
+	}
+	
+	h2 {
+		font-family: $serif;
+		font-style: italic;
+		font-size:12px;
+	}
+	
+	.greeting {
+		display: block;
+	}
+	
+	.username {
+		display: inline-block;
+		font-weight: bold;
+		font-family: $sans;
+		font-size:14px;
+		font-style:normal;
+		line-height:20px;
+		padding-right:13px;
+		background:url(/static/images/icon_downArrow_brown.png) right center no-repeat;
+	}
+}
+
+#userInfo:hover {
+	background-color: rgba($darkBrown,.15);
+	cursor: pointer;
+}
+
+#userInfo.active {
+	color:#fff;
+	background:$orange;
+	
+	.userpic {
+		border:6px solid $orange;
+	}
+	
+	.username {
+		background:url(/static/images/icon_downArrow_white.png) right center no-repeat;
+	}
+}
+
+#secondaryUserNav {
+	background:$lightBlue;
+	padding:8px 0px;
+	position: relative;
+	z-index: +2;
+	
+	a {
+		display:block;
+		color:#darkBrown;
+		text-align: left;
+		padding:4px 12px;
+		font-size:11px;
+		text-transform: uppercase;
+	}
+	
+	a:hover {
+		background:darken($lightBlue, 10);
+	}
+}
+
+#primaryUserNav {
+	float:left;
+}
+
+/*
 #mainNav {
 	position: absolute;
 	top: 0;
@@ -226,7 +383,7 @@ p {
 		margin:0px 10px;
 		display:inline-block;
 	}
-}
+}*/
 
 /**********************************************************/
 /* FOOTER */

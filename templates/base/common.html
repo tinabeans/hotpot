@@ -5,8 +5,8 @@
 <title>HOTPOT {% block title %}{% endblock %}</title>
 
 <!-- Typekit JS -->
-<!--<script type="text/javascript" src="http://use.typekit.com/qje5yme.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script> -->
+<script type="text/javascript" src="http://use.typekit.com/qje5yme.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 <!-- jQuery library -->
 <script src="/static/js/lib/jquery-1.7.1.min.js" type="text/javascript"></script>
@@ -25,6 +25,7 @@
 		<a href="/"><img src="/static/images/HotpotLogo_Alpha.png" /></a>
 	</h1>
 	
+	<div id="headerNavsContainer">
 	<div id="headerNavs">
 	
 		<nav id="mainNav">
@@ -32,30 +33,51 @@
 			<a href="/people"><span class="small">Meet</span> People</a>
 		</nav><!-- #mainNav -->
 		
-		{% if not isLoggedIn %}
-			<h2>Welcome to Hotpot!</h2>
-			<a href="" id="loginLink">Log In</a>
-			<a href="" id="registerLink">Join Hotpot</a>
-		{% else %}
-			<h2>Great to see you, <span class="username">{ user.name }</span>!</h2>
+		<div id="serviceNavs">
+			{% if not isLoggedIn %}
 			
-			<nav id="primaryUserNav">
-				<a href="/invitations">Invitations</a>
-				<a href="/history">Cooking History</a>
-			</nav><!-- #primaryUserNav -->
+				<h2>Welcome to Hotpot!</h2>
+				<a href="" id="loginLink">Log In</a>
+				<a href="" id="registerLink">Join Hotpot</a>
 			
-			<nav id="secondaryUserNav">
-				<a href="/profile/me">My Profile</a>
-				<a href="/accountinfo">Account Information</a>
-				<a href="/logout">Log Out</a>
-			</nav><!-- #secondaryUserNav -->
-		{% endif %}
+			{% else %}
+				
+				<nav id="primaryUserNav">
+					<a href="/invitations">Invitations</a>
+					<a href="/history">Cooking History</a>
+				</nav><!-- #primaryUserNav -->
+				
+				<div id="userInfoContainer">
+					<div id="userInfo">
+						<div class="userpic">
+							<img src="/static/uploads/userpics/{{ user.userpic }}" />
+						</div>
+						
+						<h2>
+							<span class="greeting">Great to see you,</span>
+							<span class="username">{{ user.name }}!</span>
+						</h2>
+					</div>
+					
+					<nav id="secondaryUserNav">
+						<a href="/profile/me">My Profile</a>
+						<a href="/accountinfo">Account Information</a>
+						<a href="/logout">Log Out</a>
+					</nav><!-- #secondaryUserNav -->
+				</div><!-- userInfoContainer -->
+				
+				
+			{% endif %}
 		
-		<a href="" id="bigInviteButton">
-			<span class="big">Invite</span> <span class="smallScripty">a</soan> <span class="small">Friend</span> <span class="smallScripy">to</span> <span class="big">Cook!</span>
-		</a>
+			<a href="" id="bigInviteButton">
+				<span class="big">Invite</span> 
+				<span class="small"><em>a</em> Friend <em>to</em></span> 
+				<span class="big">Cook!</span>
+			</a>
+		</div>
 		
 	</div><!-- #headerNav -->
+	</div><!-- #headerNavContainer -->
 	
 </header><!-- #mainHeader -->
 
