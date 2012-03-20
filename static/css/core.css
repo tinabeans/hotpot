@@ -1,4 +1,4 @@
-/* line 17, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,47 +20,46 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 115, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+/* line 114, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
@@ -84,7 +83,7 @@ body {
   font-size: 13px;
   height: 100%;
   color: #5c5850;
-  background: white;
+  background: white url(/static/images/bodyBg.jpg);
 }
 
 /* line 40, ../sass/core.scss */
@@ -110,7 +109,7 @@ p {
 /**********************************************************/
 /* COMMON */
 /* line 129, ../sass/core.scss */
-#mainHeader, #homeIntro, #mainContainer, #featuredMeals, #mainFooter {
+#homeIntro, #mainContainer, #featuredMeals, #mainFooter {
   width: 88%;
   margin: 0px auto;
   position: relative;
@@ -143,26 +142,35 @@ p {
 
 /**********************************************************/
 /* HEADER */
-/* line 157, ../sass/core.scss */
-#mainHeaderContainer {
-  background: #ededec url(/static/images/lightWood.jpg);
-  -moz-box-shadow: rgba(0, 0, 0, 0.2) -3px 0px 10px inset;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.2) -3px 0px 10px inset;
-  -o-box-shadow: rgba(0, 0, 0, 0.2) -3px 0px 10px inset;
-  box-shadow: rgba(0, 0, 0, 0.2) -3px 0px 10px inset;
-  border-bottom: 1px solid #d8d7d5;
-}
-
-/* line 163, ../sass/core.scss */
+/* line 158, ../sass/core.scss */
 #mainHeader {
-  padding: 10px 0px 10px 0px;
+  position: relative;
 }
-/* line 167, ../sass/core.scss */
+/* line 161, ../sass/core.scss */
+#mainHeader h1 {
+  background: url(/static/images/headerLeftEdge.png) right top no-repeat;
+  width: 180px;
+  height: 96px;
+  position: absolute;
+  top: 0px;
+  left: 6%;
+  z-index: 1;
+}
+/* line 170, ../sass/core.scss */
 #mainHeader h1 img {
-  width: 140px;
+  width: 150px;
 }
 
-/* line 173, ../sass/core.scss */
+/* line 176, ../sass/core.scss */
+#headerNavs {
+  background: url(/static/images/headerBg.png) repeat-x;
+  height: 96px;
+  width: 90%;
+  position: absolute;
+  right: 0;
+}
+
+/* line 184, ../sass/core.scss */
 #mainNav {
   position: absolute;
   top: 0;
@@ -170,7 +178,7 @@ p {
   height: 81px;
   z-index: 1;
 }
-/* line 180, ../sass/core.scss */
+/* line 191, ../sass/core.scss */
 #mainNav a {
   height: 100%;
   -moz-box-sizing: border-box;
@@ -183,7 +191,7 @@ p {
   font-family: "proxima-nova", sans-serif;
   font-size: 24px;
 }
-/* line 189, ../sass/core.scss */
+/* line 200, ../sass/core.scss */
 #mainNav a .small {
   font-style: normal;
   font-family: "proxima-nova", sans-serif;
@@ -191,7 +199,7 @@ p {
   display: block;
   font-weight: normal;
 }
-/* line 198, ../sass/core.scss */
+/* line 209, ../sass/core.scss */
 #mainNav a.selected {
   -moz-box-shadow: rgba(0, 0, 0, 0.15) 0px -10px 8px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px -10px 8px;
@@ -208,14 +216,14 @@ p {
   border-bottom: 1px solid white;
 }
 
-/* line 207, ../sass/core.scss */
+/* line 218, ../sass/core.scss */
 #serviceNav {
   position: absolute;
   top: 30;
   right: 0;
   padding: 20px 0px;
 }
-/* line 213, ../sass/core.scss */
+/* line 224, ../sass/core.scss */
 #serviceNav a {
   font-family: "proxima-nova", sans-serif;
   margin: 0px 10px;
@@ -224,23 +232,23 @@ p {
 
 /**********************************************************/
 /* FOOTER */
-/* line 223, ../sass/core.scss */
+/* line 234, ../sass/core.scss */
 #mainFooter {
   text-align: center;
   clear: both;
   color: #666;
   padding: 60px 0px 30px 0px;
 }
-/* line 229, ../sass/core.scss */
+/* line 240, ../sass/core.scss */
 #mainFooter p {
   font-style: italic;
 }
 
-/* line 234, ../sass/core.scss */
+/* line 245, ../sass/core.scss */
 #footerNav {
   margin: 15px 0px;
 }
-/* line 237, ../sass/core.scss */
+/* line 248, ../sass/core.scss */
 #footerNav a {
   display: inline-block;
   padding: 0px 10px;
@@ -249,13 +257,13 @@ p {
 
 /**********************************************************/
 /* FORMS */
-/* line 248, ../sass/core.scss */
+/* line 259, ../sass/core.scss */
 .formItem {
   margin-bottom: 15px;
   position: relative;
 }
 
-/* line 253, ../sass/core.scss */
+/* line 264, ../sass/core.scss */
 .formItemError {
   position: absolute;
   right: -193px;
@@ -266,12 +274,12 @@ p {
   padding: 5px 10px;
 }
 
-/* line 263, ../sass/core.scss */
+/* line 274, ../sass/core.scss */
 .buttons {
   text-align: center;
 }
 
-/* line 267, ../sass/core.scss */
+/* line 278, ../sass/core.scss */
 label {
   display: block;
   font-size: 13px;
@@ -283,7 +291,7 @@ label {
   margin-bottom: 5px;
 }
 
-/* line 272, ../sass/core.scss */
+/* line 283, ../sass/core.scss */
 input, textarea {
   border: 1px solid #aaa;
   padding: 5px;
@@ -292,20 +300,20 @@ input, textarea {
   font-size: 14px;
 }
 
-/* line 280, ../sass/core.scss */
+/* line 291, ../sass/core.scss */
 textarea {
   height: 100px;
   resize: vertical;
 }
 
-/* line 285, ../sass/core.scss */
+/* line 296, ../sass/core.scss */
 form .note {
   margin-top: 5px;
   font-style: italic;
   font-size: 12px;
 }
 
-/* line 291, ../sass/core.scss */
+/* line 302, ../sass/core.scss */
 input[type=submit] {
   display: inline-block;
   border: 0px;
@@ -1409,7 +1417,6 @@ input[type=submit] {
 }
 /* line 203, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev .disabled {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
@@ -1499,14 +1506,12 @@ table.jCalendar tr.selectedWeek td {
 }
 /* line 280, ../sass/_invitations.scss */
 table.jCalendar td.disabled {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   cursor: default;
 }
 /* line 285, ../sass/_invitations.scss */
 table.jCalendar td.disabled.dp-hover {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   background: #ededec;
@@ -1521,7 +1526,6 @@ table.jCalendar td.disabled.other-month.dp-hover {
 table.jCalendar td.unselectable,
 table.jCalendar td.unselectable:hover,
 table.jCalendar td.unselectable.dp-hover {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
   cursor: default;

@@ -34,7 +34,7 @@ body {
 	font-size:13px;
 	height:100%;
 	color:$textColor;
-	background:$bgColor;
+	background:$bgColor url(/static/images/bodyBg.jpg);
 }
 
 a {
@@ -126,7 +126,7 @@ p {
 	position: relative;
 }
 
-#mainHeader, #homeIntro, #mainContainer, #featuredMeals, #mainFooter {
+#homeIntro, #mainContainer, #featuredMeals, #mainFooter {
 	@include outerContainer;
 }
 
@@ -154,20 +154,31 @@ p {
 /**********************************************************/
 /* HEADER */
 
-#mainHeaderContainer {
-	background:$subtleColor url(/static/images/lightWood.jpg);
-	@include box-shadow(rgba(0,0,0,.2) -3px 0px 10px inset);
-	border-bottom: 1px solid $mediumColor;
-}
 
 #mainHeader {
-	padding:10px 0px 10px 0px;
+	position: relative;
+
 	h1 {
+		background:url(/static/images/headerLeftEdge.png) right top no-repeat;
+		width:180px;
+		height:96px;
+		position: absolute;
+		top:0px;
+		left:6%;
+		z-index: +1;
 		
 		img {
-			width:140px;
+			width:150px;
 		}
 	}
+}
+
+#headerNavs {
+	background:url(/static/images/headerBg.png) repeat-x;
+	height:96px;
+	width: 90%;
+	position: absolute;
+	right:0;
 }
 
 #mainNav {

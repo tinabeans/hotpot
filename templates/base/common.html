@@ -20,29 +20,44 @@
  
 <body id="{% block bodyId %}{% endblock %}" class="{% block bodyClass %}{% endblock %}">
 
-<div id="mainHeaderContainer">
 <header id="mainHeader">
-	<h1 id="logo"><a href="/"><img src="/static/images/HotpotLogo_Alpha.png" /></a></h1>
+	<h1 id="logo">
+		<a href="/"><img src="/static/images/HotpotLogo_Alpha.png" /></a>
+	</h1>
 	
-	<nav id="mainNav">
-		<a href="/menus"><span class="small">Browse</span> Menus</a>
-		<a href="/people"><span class="small">Meet</span> People</a>
-	</nav>
+	<div id="headerNavs">
 	
-	<nav id="serviceNav">
+		<nav id="mainNav">
+			<a href="/menus"><span class="small">Browse</span> Menus</a>
+			<a href="/people"><span class="small">Meet</span> People</a>
+		</nav><!-- #mainNav -->
+		
 		{% if not isLoggedIn %}
-			<a href="/login">Login</a>
-			<a href="/register">Register</a>
+			<h2>Welcome to Hotpot!</h2>
+			<a href="" id="loginLink">Log In</a>
+			<a href="" id="registerLink">Join Hotpot</a>
 		{% else %}
-			<a href="/invitations">Invitations</a>
-			<a href="/history">Cooking History</a>
-			<a href="/profile/me">My Profile</a>
-			<a href="/accountinfo">Account Information</a>
-			<a href="/logout">Log Out</a>
+			<h2>Great to see you, <span class="username">{ user.name }</span>!</h2>
+			
+			<nav id="primaryUserNav">
+				<a href="/invitations">Invitations</a>
+				<a href="/history">Cooking History</a>
+			</nav><!-- #primaryUserNav -->
+			
+			<nav id="secondaryUserNav">
+				<a href="/profile/me">My Profile</a>
+				<a href="/accountinfo">Account Information</a>
+				<a href="/logout">Log Out</a>
+			</nav><!-- #secondaryUserNav -->
 		{% endif %}
-	</nav>
-</header>
-</div><!-- #mainHeaderContainer -->
+		
+		<a href="" id="bigInviteButton">
+			<span class="big">Invite</span> <span class="smallScripty">a</soan> <span class="small">Friend</span> <span class="smallScripy">to</span> <span class="big">Cook!</span>
+		</a>
+		
+	</div><!-- #headerNav -->
+	
+</header><!-- #mainHeader -->
 
 <div id="mainContainer">
 {% block main %}{% endblock main %}

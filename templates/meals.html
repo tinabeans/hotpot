@@ -1,0 +1,38 @@
+{% extends "base/common.html" %}
+
+{% block title %}Menus{% endblock %}
+
+{% block customJS %}{% endblock %}
+
+{% block bodyId %}{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+<section id="featuredMenu">
+	<h1>Menu of the Week</h1>
+	<h2>{{ featured.title }}</h2>
+	
+	<a href="/menus/{{ featured.slug }}">
+		<img src="/static/images/food/{{ featured.slug }}.jpg" width="300">
+	</a>
+	
+	<a href="">Details</a>
+	<a href="">Invite a Friend to Cook</a>
+</section>
+
+<div id="menusContainer">
+	<ul class="mealList">
+	{% for menu in menus %}
+		<li>
+			<a href="/meals/{{ menu.slug }}">
+				<h2>{{ menu.title }}</h2>
+				<img src="/static/images/food/{{ menu.slug }}.jpg" width="200">
+			</a>
+		</li>
+	{% endfor %}
+	</ul>
+</div><!-- #featuredMealsContainer -->
+
+
+{% endblock main %}
