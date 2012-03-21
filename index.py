@@ -49,6 +49,7 @@ def render_template(template, **kwargs):
 	# decide if i'm logged in or not
 	if 'userId' in flask.session:
 		isLoggedIn = True
+		print 'hello'
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 		userInfo = {
 			'name' : user['name'],
@@ -58,7 +59,7 @@ def render_template(template, **kwargs):
 		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, **kwargs)
 	else:
 		isLoggedIn = False
-		
+		print 'helloooooooooooooooooooo'
 		return flask.render_template(template, isLoggedIn=isLoggedIn, **kwargs)
 
 
