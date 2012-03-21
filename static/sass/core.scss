@@ -3,19 +3,6 @@
 @import "compass/utilities";
 
 /**********************************************************/
-/* TYPOGRAPHY */
-
-$sans: "proxima-nova", sans-serif;
-$serif: "jubilat", Georgia, serif;
-
-@mixin bigFatLetters {
-	font-family:$sans;
-	text-transform:uppercase;
-	font-weight:900;
-	letter-spacing: .1em;
-}
-
-/**********************************************************/
 /* COLORS */
 
 $textColor: #4e565c;
@@ -30,45 +17,36 @@ $lightBlue: #d1e0dd;
 $green: #a5c349;
 $darkBlue: #1c6770;
 $mediumBlue: #3797a2;
+$lightBrown: #e9e7e0;
 $darkBrown: #736c5b;
 
 
 /**********************************************************/
-/* TAG REDEFINITIONS */
+/* TYPOGRAPHY */
 
-html {
-	height:100%;
+$sans: "proxima-nova", sans-serif;
+$serif: "jubilat", Georgia, serif;
+
+@mixin bigFatLetters {
+	font-family:$sans;
+	text-transform:uppercase;
+	font-weight:900;
 }
 
-body {
-	margin:0px;
-	padding:0px;
+@mixin bodyType {
 	font-family:$sans;
 	font-weight: 300;
 	font-size:13px;
-	height:100%;
 	color:$textColor;
-	background:$bgColor url(/static/images/bodyBg.jpg);
 }
 
-a {
-	text-decoration:none;
-	color:$darkColor;
-	font-weight: bold;
+@mixin decorativeType {
+	font-family:$serif;
+	font-style:italic;
+	text-transform: none;
+	font-weight: 500;
+	letter-spacing:0.05em;
 }
-
-a:hover {
-	color:$orange;
-}
-
-
-p {
-	line-height:1.4em;
-	margin:0px 0px 15px 0px;
-}
-
-/**********************************************************/
-/* GLOBAL MIXINS */
 
 @mixin smallHeading {
 	font-size:13px;
@@ -78,17 +56,49 @@ p {
 	font-family: $sans;
 }
 
+#pageTitle {
+	@include bigFatLetters;
+	margin-bottom:15px;
+	text-align: center;
+	color:$mediumBlue;
+	font-size:50px;
+	
+	.color2 {
+		color: darken($mediumBlue, 10);
+	}
+	
+	.color3 {
+		color: darken($mediumBlue, 5);
+	}
+	
+	.small em {
+		@include decorativeType;
+		font-size:21px;
+	}
+}
+
+.kern {
+	letter-spacing: -0.09em;
+}
+
+/**********************************************************/
+/* GLOBAL MIXINS */
+
+@mixin lightBrownBorder {
+	border:6px solid rgba($darkBrown,.15);
+}
+
 @mixin button {
 	display:inline-block;
 	border:0px;
-	background: #666;
+	background: $green;
 	color:#fff;
-	font-family: $serif;
-	@include border-radius(20px);
+	@include bigFatLetters;
+	@include border-radius(6px);
 	text-align: center;
-	font-style:italic;
-	padding:10px 18px;
-	font-size:20px;
+	padding:8px 16px;
+	font-size:16px;
+	@include box-shadow(0 4px 0 darken($green, 15));
 }
 
 @mixin bigButton {
@@ -132,6 +142,37 @@ p {
 
 
 /**********************************************************/
+/* TAG REDEFINITIONS */
+
+html {
+	height:100%;
+}
+
+body {
+	margin:0px;
+	padding:0px;
+	height:100%;
+	@include bodyType;
+	background:$bgColor url(/static/images/bodyBg.jpg);
+}
+
+a {
+	text-decoration:none;
+	color:$orange;
+}
+
+a:hover {
+	color:$orange;
+}
+
+
+p {
+	line-height:1.4em;
+	margin:0px 0px 15px 0px;
+}
+
+
+/**********************************************************/
 /* COMMON */
 
 @mixin outerContainer {
@@ -145,13 +186,8 @@ p {
 }
 
 #mainContainer {
-	padding:50px 0px;
+	padding:40px 0px;
 	margin:0px auto;
-}
-
-#title {
-	font-size:36px;
-	margin-bottom:30px;
 }
 
 .intro {
@@ -163,6 +199,20 @@ p {
 	margin:30px;
 	font-family: $sans;
 	color:red;
+}
+
+.button {
+	@include button;
+}
+
+.button:hover {
+	color:#fff;
+}
+
+.button:active {
+	@include box-shadow(0 2px 0 darken($green, 15));
+	position: relative;
+	top:2px;
 }
 
 /**********************************************************/
@@ -204,6 +254,39 @@ $headerHeight: 96px;
 	height:$headerHeight;
 }
 
+#mainNav {
+	padding: 26px 0px 0px 28px;
+
+	a {
+		display:inline-block;
+		margin-right:30px;
+		@include bigFatLetters;
+		font-size:23px;
+		letter-spacing:.05em;
+		@include opacity(.6);
+		color:$darkBrown;
+		
+		.small {
+			display:block;
+			font-size:.6em;
+			font-weight: 600;
+			
+			em {
+				font-family:$serif;
+				font-style: italic;
+				font-weight: 500;
+				text-transform: lowercase;
+				letter-spacing: normal;
+				font-size: 1.1em;
+			}
+		}
+	}
+	
+	a:hover {
+		@include opacity(1);
+	}
+}
+
 #serviceNavs {
 	position: absolute;
 	top:0;
@@ -213,7 +296,7 @@ $headerHeight: 96px;
 #bigInviteButton {
 	@include box-sizing(border-box);
 	display:block;
-	background:#a5c349;
+	background:#a5c349 url(/static/images/green_circle.png);
 	color:#fff;
 	@include border-radius(100px);
 	width:108px;
@@ -223,7 +306,8 @@ $headerHeight: 96px;
 	padding-top:27px;
 	float:left;
 	position: relative;
-	top: 20px;
+	top: 17px;
+	letter-spacing: .05em;
 	
 	.big {
 		font-size:19px;
@@ -250,21 +334,22 @@ $headerHeight: 96px;
 	height:10px;
 	margin-right:20px;
 	margin-top:26px;
-	min-width: 130px;
+	min-width: 155px;
 }
 
 #userInfo {
 	padding: 6px 52px 5px 12px;
 	color:$darkBrown;
+	cursor: pointer;
 	
 	.userpic {
 		@include border-radius(80px);
-		border:6px solid rgba($darkBrown,.15);
+		@include lightBrownBorder;
 		height:62px;
 		width:62px;
 		position: absolute;
 		right: 92px;
-		top: 9px;
+		top: 8px;
 		z-index: +3;
 		
 		img {
@@ -295,17 +380,12 @@ $headerHeight: 96px;
 	}
 }
 
-#userInfo:hover {
-	background-color: rgba($darkBrown,.15);
-	cursor: pointer;
-}
-
-#userInfo.active {
+#userInfo.hover {
 	color:#fff;
 	background:$orange;
 	
 	.userpic {
-		border:6px solid $orange;
+		border-color: $orange;
 	}
 	
 	.username {
@@ -314,6 +394,8 @@ $headerHeight: 96px;
 }
 
 #secondaryUserNav {
+	@include box-sizing(border-box);
+	display: none;
 	background:$lightBlue;
 	padding:8px 0px;
 	position: relative;
@@ -321,69 +403,67 @@ $headerHeight: 96px;
 	
 	a {
 		display:block;
-		color:#darkBrown;
+		font-weight: 700;
 		text-align: left;
 		padding:4px 12px;
 		font-size:11px;
 		text-transform: uppercase;
+		color:$darkBrown;
 	}
 	
 	a:hover {
 		background:darken($lightBlue, 10);
+		color:$darkBlue;
 	}
 }
+
+#primaryUserNav {
+	padding-top:31px;
+	margin-right:10px;
+
+	a {
+		float:left;
+		display:block;
+		width:32px;
+		height:32px;
+		background-color:rgba($darkBrown,.15);
+		background-repeat:no-repeat;
+		background-position: center center;
+		@include border-radius(100px);
+		margin:0px 0px 0px 16px;
+		position: relative;
+		text-align: center;
+		
+		.tooltip {
+			display: none;
+			position: absolute;
+			top:-20px;
+			color:$darkBrown;
+			font-size:13px;
+			font-weight: 600;
+			@include border-radius(20px);
+			white-space: nowrap;
+		}
+	}
+	
+	a:hover {
+		background-color:$darkBrown;
+		
+		.tooltip {
+			display:block;
+		}
+	}
+}
+
+#invitationsLink { background-image:url(/static/images/icon_envelope.png); }
+#historyLink { background-image:url(/static/images/icon_clock.png); }
+#invitationsLink:hover { background-image:url(/static/images/icon_envelope_white.png); }
+#historyLink:hover { background-image:url(/static/images/icon_clock_white.png); }
 
 #primaryUserNav {
 	float:left;
 }
 
-/*
-#mainNav {
-	position: absolute;
-	top: 0;
-	left:160px;
-	height: 81px;
-	z-index:+1;
-	
-	a {
-		height:100%;
-		@include box-sizing(border-box);
-		padding:30px 22px 0px 22px;
-		float:left;
-		display: block;
-		font-family: $sans;
-		font-size:24px;
-		
-		.small {
-			font-style: normal;
-			font-family: $sans;
-			font-size:12px;
-			display: block;
-			font-weight: normal;
-		}
-	}
-	
-	a.selected {
-		@include box-shadow(rgba(0,0,0,.15) 0px -10px 8px);
-		@include background(linear-gradient(rgba($bgColor, .0), rgba($bgColor, 1)));
-		border:1px solid $mediumColor;
-		border-top:none;
-		border-bottom:1px solid $bgColor;
-	}
-}
-
-#serviceNav {
-	position: absolute;
-	top: 30;
-	right:0;
-	padding:20px 0px;
-	
-	a {
-		font-family:$sans;
-		margin:0px 10px;
-		display:inline-block;
-	}
-}*/
 
 /**********************************************************/
 /* FOOTER */
@@ -467,7 +547,7 @@ input[type=submit] {
 
 @import "home";
 @import "room";
-@import "recipe";
+@import "meals";
 @import "invitations";
 @import "history";
 @import "account";

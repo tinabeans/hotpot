@@ -100,7 +100,7 @@ def start(db):
 	})
 	'''
 	
-	'''
+	
 	meal1 = {
 		"_id": ObjectId('4f3352569685aa28d5000008'),
 		
@@ -111,6 +111,16 @@ def start(db):
 		"credit":"The Cilantropist",
 		
 		"creditURL":"http://cilantropist.blogspot.com/2011/01/easy-lemon-garlic-kale-pasta.html",
+		
+		"shortDescription": """A light and lemony pasta dish that's reminiscent of spring, yet inspired by winter's bounty.""",
+		
+		"time" : "30 min - 1 hr",
+		
+		"type" : "vegan",
+		
+		"difficulty" : "easy-peasy",
+		
+		"flavors" : "tart, refreshing, light",
 		
 		"description":"Kale is a hearty leafy green commonly found at farmer's vegetables in the late fall through early winter. Here, the nutty flavor of saut&eacute;ed kale is paired with a bright splash of lemon&mdash;a fragrant reminder that spring is not too far off!",
 		
@@ -175,12 +185,12 @@ def start(db):
 				"id":"5"
 			},
 			{
-				"text":"<p>Now let's crank up the heat. Add to an empty skillet:</p>
+				"text":"""<p>Now let's crank up the heat. Add to an empty skillet:</p>
 							<ul>
 								<li>a tablespoon of olive oil</li>
 								<li>a third of the minced garlic</li>
 							</ul>
-							<p>Turn on heat to medium and cook, stirring, until garlic sizzles.</p>",
+							<p>Turn on heat to medium and cook, stirring, until garlic sizzles.</p>""",
 				"type":"heat",
 				"id":"6",
 				"extra":"<p>Starting off the garlic in cold oil is a cool trick (no pun intended). It helps \"infuse\" the oil with the garlic flavor as it heats up.</p>"
@@ -196,13 +206,13 @@ def start(db):
 				"id":"8"
 			},
 			{
-				"text":"<p>Start making the flavor-infused oil. Add to the skillet that you cooked the kale in:</p>
+				"text":"""<p>Start making the flavor-infused oil. Add to the skillet that you cooked the kale in:</p>
 							<ul>
 								<li>1/4 cup of olive oil</li>
 								<li>the rest of the minced garlic</li>
 								<li>half of the lemon slices</li>
 							</ul>
-							<p>Turn on the heat to medium-low. Let everything cook gently in the hot oil.</p>",
+							<p>Turn on the heat to medium-low. Let everything cook gently in the hot oil.</p>""",
 				"type":"heat",
 				"id":"9"
 			},
@@ -230,7 +240,7 @@ def start(db):
 				"id":"13"
 			},
 			{
-				"text":"<p>Now for the grand finale. Put everything in the pot with the pasta:</p>
+				"text":"""<p>Now for the grand finale. Put everything in the pot with the pasta:</p>
 							<ul>
 								<li>the cooked kale</li>
 								<li>the infused oil</li>
@@ -240,7 +250,7 @@ def start(db):
 								<li>1/4 cup of pine nuts</li>
 								<li>salt and pepper to taste</li>
 							</ul>
-							<p>Toss together and you're ready to eat!</p>",
+							<p>Toss together and you're ready to eat!</p>""",
 				"type":"finish",
 				"id":"14",
 				"extra":"<p>Undeniably the best way to mix any food is to put a lid on and shake. See who has the best pot-shaking dance. (Careful of hot parts!)</p>"
@@ -252,7 +262,7 @@ def start(db):
 			}
 		]
 	}
-
+	'''
 	meal2 = {
 		"_id": ObjectId('4f666a6b4bf254343c000001'),
 	
@@ -421,7 +431,7 @@ def start(db):
 				"text": """<p>How's it all taste?</p>"""
 			}
 		]
-	}'''
+	}
 	
 	meal3 = {
 		"_id": ObjectId('4f667da14bf254378f000000'),
@@ -595,5 +605,6 @@ def start(db):
 			}
 		]
 	}
+	'''
 	
-	db.meals.save(meal3)
+	db.meals.save(meal1)

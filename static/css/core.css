@@ -65,75 +65,101 @@ footer, header, hgroup, menu, nav, section {
 }
 
 /**********************************************************/
-/* TYPOGRAPHY */
-/**********************************************************/
 /* COLORS */
 /**********************************************************/
+/* TYPOGRAPHY */
+/* line 59, ../sass/core.scss */
+#pageTitle {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #3797a2;
+  font-size: 50px;
+}
+/* line 66, ../sass/core.scss */
+#pageTitle .color2 {
+  color: #2a747c;
+}
+/* line 70, ../sass/core.scss */
+#pageTitle .color3 {
+  color: #31858f;
+}
+/* line 74, ../sass/core.scss */
+#pageTitle .small em {
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  font-size: 21px;
+}
+
+/* line 80, ../sass/core.scss */
+.kern {
+  letter-spacing: -0.09em;
+}
+
+/**********************************************************/
+/* GLOBAL MIXINS */
+/**********************************************************/
 /* TAG REDEFINITIONS */
-/* line 39, ../sass/core.scss */
+/* line 147, ../sass/core.scss */
 html {
   height: 100%;
 }
 
-/* line 43, ../sass/core.scss */
+/* line 151, ../sass/core.scss */
 body {
   margin: 0px;
   padding: 0px;
+  height: 100%;
   font-family: "proxima-nova", sans-serif;
   font-weight: 300;
   font-size: 13px;
-  height: 100%;
   color: #4e565c;
   background: white url(/static/images/bodyBg.jpg);
 }
 
-/* line 54, ../sass/core.scss */
+/* line 159, ../sass/core.scss */
 a {
   text-decoration: none;
-  color: #908d86;
-  font-weight: bold;
+  color: #ef5922;
 }
 
-/* line 60, ../sass/core.scss */
+/* line 164, ../sass/core.scss */
 a:hover {
   color: #ef5922;
 }
 
-/* line 65, ../sass/core.scss */
+/* line 169, ../sass/core.scss */
 p {
   line-height: 1.4em;
   margin: 0px 0px 15px 0px;
 }
 
 /**********************************************************/
-/* GLOBAL MIXINS */
-/**********************************************************/
 /* COMMON */
-/* line 143, ../sass/core.scss */
+/* line 184, ../sass/core.scss */
 #homeIntro, #mainContainer, #featuredMeals, #mainFooter {
   width: 88%;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 147, ../sass/core.scss */
+/* line 188, ../sass/core.scss */
 #mainContainer {
-  padding: 50px 0px;
+  padding: 40px 0px;
   margin: 0px auto;
 }
 
-/* line 152, ../sass/core.scss */
-#title {
-  font-size: 36px;
-  margin-bottom: 30px;
-}
-
-/* line 157, ../sass/core.scss */
+/* line 193, ../sass/core.scss */
 .intro {
   font-size: 1.4em;
 }
 
-/* line 161, ../sass/core.scss */
+/* line 197, ../sass/core.scss */
 .message {
   text-align: center;
   margin: 30px;
@@ -141,14 +167,53 @@ p {
   color: red;
 }
 
+/* line 204, ../sass/core.scss */
+.button {
+  display: inline-block;
+  border: 0px;
+  background: #a5c349;
+  color: #fff;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 16px;
+  -moz-box-shadow: 0 4px 0 #78902f;
+  -webkit-box-shadow: 0 4px 0 #78902f;
+  -o-box-shadow: 0 4px 0 #78902f;
+  box-shadow: 0 4px 0 #78902f;
+}
+
+/* line 208, ../sass/core.scss */
+.button:hover {
+  color: #fff;
+}
+
+/* line 212, ../sass/core.scss */
+.button:active {
+  -moz-box-shadow: 0 2px 0 #78902f;
+  -webkit-box-shadow: 0 2px 0 #78902f;
+  -o-box-shadow: 0 2px 0 #78902f;
+  box-shadow: 0 2px 0 #78902f;
+  position: relative;
+  top: 2px;
+}
+
 /**********************************************************/
 /* HEADER */
-/* line 174, ../sass/core.scss */
+/* line 224, ../sass/core.scss */
 #mainHeader {
   position: relative;
   height: 96px;
 }
-/* line 178, ../sass/core.scss */
+/* line 228, ../sass/core.scss */
 #mainHeader h1 {
   background: url(/static/images/headerLeftEdge.png) right top no-repeat;
   width: 180px;
@@ -158,13 +223,13 @@ p {
   left: 6%;
   z-index: 1;
 }
-/* line 187, ../sass/core.scss */
+/* line 237, ../sass/core.scss */
 #mainHeader h1 img {
   margin-top: 15px;
   width: 150px;
 }
 
-/* line 194, ../sass/core.scss */
+/* line 244, ../sass/core.scss */
 #headerNavsContainer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -176,27 +241,67 @@ p {
   padding-left: 179px;
 }
 
-/* line 202, ../sass/core.scss */
+/* line 252, ../sass/core.scss */
 #headerNavs {
   background: url(/static/images/headerBg.png) repeat-x;
   height: 96px;
 }
 
-/* line 207, ../sass/core.scss */
+/* line 257, ../sass/core.scss */
+#mainNav {
+  padding: 26px 0px 0px 28px;
+}
+/* line 260, ../sass/core.scss */
+#mainNav a {
+  display: inline-block;
+  margin-right: 30px;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 23px;
+  letter-spacing: .05em;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+  color: #736c5b;
+}
+/* line 269, ../sass/core.scss */
+#mainNav a .small {
+  display: block;
+  font-size: .6em;
+  font-weight: 600;
+}
+/* line 274, ../sass/core.scss */
+#mainNav a .small em {
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: normal;
+  font-size: 1.1em;
+}
+/* line 285, ../sass/core.scss */
+#mainNav a:hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* line 290, ../sass/core.scss */
 #serviceNavs {
   position: absolute;
   top: 0;
   right: 6%;
 }
 
-/* line 213, ../sass/core.scss */
+/* line 296, ../sass/core.scss */
 #bigInviteButton {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   display: block;
-  background: #a5c349;
+  background: #a5c349 url(/static/images/green_circle.png);
   color: #fff;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
@@ -210,25 +315,25 @@ p {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
   font-weight: 900;
-  letter-spacing: .1em;
   padding-top: 27px;
   float: left;
   position: relative;
-  top: 20px;
+  top: 17px;
+  letter-spacing: .05em;
 }
-/* line 228, ../sass/core.scss */
+/* line 312, ../sass/core.scss */
 #bigInviteButton .big {
   font-size: 19px;
   display: block;
 }
-/* line 233, ../sass/core.scss */
+/* line 317, ../sass/core.scss */
 #bigInviteButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-weight: 500;
   text-transform: lowercase;
 }
-/* line 240, ../sass/core.scss */
+/* line 324, ../sass/core.scss */
 #bigInviteButton .small {
   font-size: 12px;
   display: block;
@@ -236,21 +341,22 @@ p {
   top: 1px;
 }
 
-/* line 248, ../sass/core.scss */
+/* line 332, ../sass/core.scss */
 #userInfoContainer {
   float: left;
   height: 10px;
   margin-right: 20px;
   margin-top: 26px;
-  min-width: 130px;
+  min-width: 155px;
 }
 
-/* line 256, ../sass/core.scss */
+/* line 340, ../sass/core.scss */
 #userInfo {
   padding: 6px 52px 5px 12px;
   color: #736c5b;
+  cursor: pointer;
 }
-/* line 260, ../sass/core.scss */
+/* line 345, ../sass/core.scss */
 #userInfo .userpic {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -263,10 +369,10 @@ p {
   width: 62px;
   position: absolute;
   right: 92px;
-  top: 9px;
+  top: 8px;
   z-index: 3;
 }
-/* line 270, ../sass/core.scss */
+/* line 355, ../sass/core.scss */
 #userInfo .userpic img {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -276,17 +382,17 @@ p {
   border-radius: 80px;
   width: 62px;
 }
-/* line 276, ../sass/core.scss */
+/* line 361, ../sass/core.scss */
 #userInfo h2 {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-size: 12px;
 }
-/* line 282, ../sass/core.scss */
+/* line 367, ../sass/core.scss */
 #userInfo .greeting {
   display: block;
 }
-/* line 286, ../sass/core.scss */
+/* line 371, ../sass/core.scss */
 #userInfo .username {
   display: inline-block;
   font-weight: bold;
@@ -298,118 +404,141 @@ p {
   background: url(/static/images/icon_downArrow_brown.png) right center no-repeat;
 }
 
-/* line 298, ../sass/core.scss */
-#userInfo:hover {
-  background-color: rgba(115, 108, 91, 0.15);
-  cursor: pointer;
-}
-
-/* line 303, ../sass/core.scss */
-#userInfo.active {
+/* line 383, ../sass/core.scss */
+#userInfo.hover {
   color: #fff;
   background: #ef5922;
 }
-/* line 307, ../sass/core.scss */
-#userInfo.active .userpic {
-  border: 6px solid #ef5922;
+/* line 387, ../sass/core.scss */
+#userInfo.hover .userpic {
+  border-color: #ef5922;
 }
-/* line 311, ../sass/core.scss */
-#userInfo.active .username {
+/* line 391, ../sass/core.scss */
+#userInfo.hover .username {
   background: url(/static/images/icon_downArrow_white.png) right center no-repeat;
 }
 
-/* line 316, ../sass/core.scss */
+/* line 396, ../sass/core.scss */
 #secondaryUserNav {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  display: none;
   background: #d1e0dd;
   padding: 8px 0px;
   position: relative;
   z-index: 2;
 }
-/* line 322, ../sass/core.scss */
+/* line 404, ../sass/core.scss */
 #secondaryUserNav a {
   display: block;
-  color: #darkBrown;
+  font-weight: 700;
   text-align: left;
   padding: 4px 12px;
   font-size: 11px;
   text-transform: uppercase;
+  color: #736c5b;
 }
-/* line 331, ../sass/core.scss */
+/* line 414, ../sass/core.scss */
 #secondaryUserNav a:hover {
   background: #b3cbc6;
+  color: #1c6770;
 }
 
-/* line 336, ../sass/core.scss */
+/* line 420, ../sass/core.scss */
+#primaryUserNav {
+  padding-top: 31px;
+  margin-right: 10px;
+}
+/* line 424, ../sass/core.scss */
+#primaryUserNav a {
+  float: left;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(115, 108, 91, 0.15);
+  background-repeat: no-repeat;
+  background-position: center center;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  margin: 0px 0px 0px 16px;
+  position: relative;
+  text-align: center;
+}
+/* line 437, ../sass/core.scss */
+#primaryUserNav a .tooltip {
+  display: none;
+  position: absolute;
+  top: -20px;
+  color: #736c5b;
+  font-size: 13px;
+  font-weight: 600;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+/* line 449, ../sass/core.scss */
+#primaryUserNav a:hover {
+  background-color: #736c5b;
+}
+/* line 452, ../sass/core.scss */
+#primaryUserNav a:hover .tooltip {
+  display: block;
+}
+
+/* line 458, ../sass/core.scss */
+#invitationsLink {
+  background-image: url(/static/images/icon_envelope.png);
+}
+
+/* line 459, ../sass/core.scss */
+#historyLink {
+  background-image: url(/static/images/icon_clock.png);
+}
+
+/* line 460, ../sass/core.scss */
+#invitationsLink:hover {
+  background-image: url(/static/images/icon_envelope_white.png);
+}
+
+/* line 461, ../sass/core.scss */
+#historyLink:hover {
+  background-image: url(/static/images/icon_clock_white.png);
+}
+
+/* line 463, ../sass/core.scss */
 #primaryUserNav {
   float: left;
 }
 
-/*
-#mainNav {
-	position: absolute;
-	top: 0;
-	left:160px;
-	height: 81px;
-	z-index:+1;
-	
-	a {
-		height:100%;
-		@include box-sizing(border-box);
-		padding:30px 22px 0px 22px;
-		float:left;
-		display: block;
-		font-family: $sans;
-		font-size:24px;
-		
-		.small {
-			font-style: normal;
-			font-family: $sans;
-			font-size:12px;
-			display: block;
-			font-weight: normal;
-		}
-	}
-	
-	a.selected {
-		@include box-shadow(rgba(0,0,0,.15) 0px -10px 8px);
-		@include background(linear-gradient(rgba($bgColor, .0), rgba($bgColor, 1)));
-		border:1px solid $mediumColor;
-		border-top:none;
-		border-bottom:1px solid $bgColor;
-	}
-}
-
-#serviceNav {
-	position: absolute;
-	top: 30;
-	right:0;
-	padding:20px 0px;
-	
-	a {
-		font-family:$sans;
-		margin:0px 10px;
-		display:inline-block;
-	}
-}*/
 /**********************************************************/
 /* FOOTER */
-/* line 391, ../sass/core.scss */
+/* line 471, ../sass/core.scss */
 #mainFooter {
   text-align: center;
   clear: both;
   color: #666;
   padding: 60px 0px 30px 0px;
 }
-/* line 397, ../sass/core.scss */
+/* line 477, ../sass/core.scss */
 #mainFooter p {
   font-style: italic;
 }
 
-/* line 402, ../sass/core.scss */
+/* line 482, ../sass/core.scss */
 #footerNav {
   margin: 15px 0px;
 }
-/* line 405, ../sass/core.scss */
+/* line 485, ../sass/core.scss */
 #footerNav a {
   display: inline-block;
   padding: 0px 10px;
@@ -418,13 +547,13 @@ p {
 
 /**********************************************************/
 /* FORMS */
-/* line 416, ../sass/core.scss */
+/* line 496, ../sass/core.scss */
 .formItem {
   margin-bottom: 15px;
   position: relative;
 }
 
-/* line 421, ../sass/core.scss */
+/* line 501, ../sass/core.scss */
 .formItemError {
   position: absolute;
   right: -193px;
@@ -435,12 +564,12 @@ p {
   padding: 5px 10px;
 }
 
-/* line 431, ../sass/core.scss */
+/* line 511, ../sass/core.scss */
 .buttons {
   text-align: center;
 }
 
-/* line 435, ../sass/core.scss */
+/* line 515, ../sass/core.scss */
 label {
   display: block;
   font-size: 13px;
@@ -452,7 +581,7 @@ label {
   margin-bottom: 5px;
 }
 
-/* line 440, ../sass/core.scss */
+/* line 520, ../sass/core.scss */
 input, textarea {
   border: 1px solid #aaa;
   padding: 5px;
@@ -461,36 +590,41 @@ input, textarea {
   font-size: 14px;
 }
 
-/* line 448, ../sass/core.scss */
+/* line 528, ../sass/core.scss */
 textarea {
   height: 100px;
   resize: vertical;
 }
 
-/* line 453, ../sass/core.scss */
+/* line 533, ../sass/core.scss */
 form .note {
   margin-top: 5px;
   font-style: italic;
   font-size: 12px;
 }
 
-/* line 459, ../sass/core.scss */
+/* line 539, ../sass/core.scss */
 input[type=submit] {
   display: inline-block;
   border: 0px;
-  background: #666;
+  background: #a5c349;
   color: #fff;
-  font-family: "jubilat", Georgia, serif;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
   text-align: center;
-  font-style: italic;
-  padding: 10px 18px;
-  font-size: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  -moz-box-shadow: 0 4px 0 #78902f;
+  -webkit-box-shadow: 0 4px 0 #78902f;
+  -o-box-shadow: 0 4px 0 #78902f;
+  box-shadow: 0 4px 0 #78902f;
   width: auto;
 }
 
@@ -524,24 +658,29 @@ input[type=submit] {
 #joinUs a {
   display: inline-block;
   border: 0px;
-  background: #666;
+  background: #a5c349;
   color: #fff;
-  font-family: "jubilat", Georgia, serif;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
   text-align: center;
-  font-style: italic;
-  padding: 10px 18px;
-  font-size: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  -moz-box-shadow: 0 4px 0 #78902f;
+  -webkit-box-shadow: 0 4px 0 #78902f;
+  -o-box-shadow: 0 4px 0 #78902f;
+  box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
   padding: 14px 25px;
   margin: 5px;
 }
-/* line 100, ../sass/core.scss */
+/* line 110, ../sass/core.scss */
 #joinUs a .small {
   margin-top: 7px;
   display: block;
@@ -1144,22 +1283,260 @@ input[type=submit] {
 }
 
 /**********************************************************/
-/* RECIPE PAGE */
-/* line 4, ../sass/_recipe.scss */
+/* MEALS PAGE */
+/* line 6, ../sass/_meals.scss */
+body#meals #pageTitle .small {
+  display: inline-block;
+  width: 59px;
+  line-height: 17px;
+}
+/* line 13, ../sass/_meals.scss */
+body#meals .intro {
+  text-align: center;
+  font-weight: 300;
+  font-size: 16px;
+}
+/* line 19, ../sass/_meals.scss */
+body#meals .meal {
+  border: 10px solid rgba(115, 108, 91, 0.1);
+  position: relative;
+}
+/* line 24, ../sass/_meals.scss */
+body#meals .mealImageLink {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #fff;
+  left: 0px;
+  top: 0px;
+}
+/* line 33, ../sass/_meals.scss */
+body#meals .mealInfo {
+  background: rgba(28, 103, 112, 0.9);
+  position: absolute;
+  display: none;
+  padding: 20px;
+}
+/* line 39, ../sass/_meals.scss */
+body#meals .mealInfo h2 {
+  font-weight: bold;
+  font-size: 26px;
+}
+/* line 43, ../sass/_meals.scss */
+body#meals .mealInfo h2 a {
+  color: #fff;
+}
+/* line 49, ../sass/_meals.scss */
+body#meals .cookedBy {
+  display: none;
+  position: absolute;
+}
+/* line 53, ../sass/_meals.scss */
+body#meals .cookedBy h3 {
+  color: #fff;
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+}
+/* line 59, ../sass/_meals.scss */
+body#meals .cookedBy ul {
+  margin-top: 5px;
+}
+/* line 63, ../sass/_meals.scss */
+body#meals .cookedBy li {
+  display: inline-block;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  border: 3px solid #e9e7e0;
+  -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background: #e9e7e0;
+  width: 32px;
+  height: 32px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #736c5b;
+  text-transform: uppercase;
+}
+/* line 77, ../sass/_meals.scss */
+body#meals .cookedBy img {
+  width: 32px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+/* line 83, ../sass/_meals.scss */
+body#meals .cookedBy .moreLink {
+  display: block;
+  padding-top: 5px;
+  color: #736c5b;
+}
+
+/* line 91, ../sass/_meals.scss */
+#featuredMeal {
+  margin: 30px 0px;
+}
+/* line 94, ../sass/_meals.scss */
+#featuredMeal h1 {
+  position: absolute;
+  left: -15px;
+  top: 25px;
+  z-index: 1;
+  color: #fff;
+  background: #ef5922;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 22px;
+  padding: 6px 16px;
+  letter-spacing: .05em;
+  font-weight: 800;
+}
+/* line 107, ../sass/_meals.scss */
+#featuredMeal h1 em {
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  letter-spacing: 0em;
+  font-weight: 400;
+  font-size: 18px;
+}
+/* line 115, ../sass/_meals.scss */
+#featuredMeal .mealImageLink {
+  height: 335px;
+}
+/* line 119, ../sass/_meals.scss */
+#featuredMeal .mealImage {
+  position: absolute;
+  top: -70%;
+  width: 100%;
+}
+/* line 125, ../sass/_meals.scss */
+#featuredMeal .mealInfo {
+  right: 20px;
+  top: 20px;
+  padding: 25px;
+  height: 250px;
+  width: 240px;
+  color: #fff;
+}
+/* line 133, ../sass/_meals.scss */
+#featuredMeal .mealInfo h2 {
+  margin-bottom: 15px;
+}
+/* line 137, ../sass/_meals.scss */
+#featuredMeal .mealInfo p {
+  font-size: 15px;
+}
+/* line 141, ../sass/_meals.scss */
+#featuredMeal .mealInfo ul {
+  margin-bottom: 15px;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 146, ../sass/_meals.scss */
+#featuredMeal .mealInfo li {
+  font-weight: 700;
+  font-size: 13px;
+  float: left;
+  width: 50%;
+  margin: 5px 0px;
+}
+/* line 155, ../sass/_meals.scss */
+#featuredMeal .cookedBy {
+  width: 38px;
+  left: 22px;
+  top: 100px;
+  text-align: center;
+}
+/* line 161, ../sass/_meals.scss */
+#featuredMeal .cookedBy li {
+  margin: 5px 0px;
+}
+
+/* line 167, ../sass/_meals.scss */
+.meal:hover {
+  border: 10px solid rgba(115, 108, 91, 0.2);
+}
+
+/* line 171, ../sass/_meals.scss */
+#mealsList .meal {
+  float: left;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 30%;
+  margin-right: 3%;
+}
+/* line 177, ../sass/_meals.scss */
+#mealsList .meal .mealImageLink {
+  height: 175px;
+}
+/* line 181, ../sass/_meals.scss */
+#mealsList .meal .mealImage {
+  width: 100%;
+}
+/* line 185, ../sass/_meals.scss */
+#mealsList .meal .mealInfo {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 3px solid #fff;
+}
+/* line 194, ../sass/_meals.scss */
+#mealsList .meal .cookedBy {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+/* line 199, ../sass/_meals.scss */
+#mealsList .meal .cookedBy li {
+  vertical-align: middle;
+  margin: 0px 10px 0px 0px;
+}
+/* line 204, ../sass/_meals.scss */
+#mealsList .meal .cookedBy .moreLink {
+  text-align: center;
+}
+
+/**********************************************************/
+/* SINGLE MEAL PAGE */
+/* line 214, ../sass/_meals.scss */
 #bigImage {
   height: 300px;
   overflow: hidden;
   position: relative;
   margin-bottom: 30px;
 }
-/* line 10, ../sass/_recipe.scss */
+/* line 220, ../sass/_meals.scss */
 #bigImage img {
   position: absolute;
   top: -70%;
   width: 100%;
 }
 
-/* line 17, ../sass/_recipe.scss */
+/* line 227, ../sass/_meals.scss */
 #descriptionContainer {
   float: left;
   font-size: 16px;
@@ -1171,18 +1548,18 @@ input[type=submit] {
   width: 43%;
 }
 
-/* line 25, ../sass/_recipe.scss */
+/* line 235, ../sass/_meals.scss */
 #summary {
   line-height: 1.5em;
 }
 
-/* line 29, ../sass/_recipe.scss */
+/* line 239, ../sass/_meals.scss */
 #credit {
   font-size: .8em;
   font-style: italic;
 }
 
-/* line 34, ../sass/_recipe.scss */
+/* line 244, ../sass/_meals.scss */
 #shoppingListContainer {
   float: left;
   width: 33%;
@@ -1193,12 +1570,12 @@ input[type=submit] {
   padding-right: 30px;
 }
 
-/* line 41, ../sass/_recipe.scss */
+/* line 251, ../sass/_meals.scss */
 #shoppingList {
   padding: 20px;
   background: #ededec;
 }
-/* line 45, ../sass/_recipe.scss */
+/* line 255, ../sass/_meals.scss */
 #shoppingList h1 {
   font-size: 13px;
   text-transform: uppercase;
@@ -1209,14 +1586,14 @@ input[type=submit] {
   font-family: "jubilat", Georgia, serif;
   margin-bottom: 15px;
 }
-/* line 52, ../sass/_recipe.scss */
+/* line 262, ../sass/_meals.scss */
 #shoppingList li {
   font-size: 16px;
   font-family: "proxima-nova", sans-serif;
   padding: 10px 0px;
   border-top: 1px dashed #ccc;
 }
-/* line 58, ../sass/_recipe.scss */
+/* line 268, ../sass/_meals.scss */
 #shoppingList li .amount {
   float: right;
   padding-left: 6px;
@@ -1224,7 +1601,7 @@ input[type=submit] {
   font-size: .8em;
 }
 
-/* line 67, ../sass/_recipe.scss */
+/* line 277, ../sass/_meals.scss */
 #actions {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1233,7 +1610,7 @@ input[type=submit] {
   margin-left: 76%;
   width: 24%;
 }
-/* line 71, ../sass/_recipe.scss */
+/* line 281, ../sass/_meals.scss */
 #actions h1 {
   font-size: 13px;
   text-transform: uppercase;
@@ -1242,23 +1619,28 @@ input[type=submit] {
   font-family: "proxima-nova", sans-serif;
 }
 
-/* line 76, ../sass/_recipe.scss */
+/* line 286, ../sass/_meals.scss */
 #inviteButton {
   display: inline-block;
   border: 0px;
-  background: #666;
+  background: #a5c349;
   color: #fff;
-  font-family: "jubilat", Georgia, serif;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
   text-align: center;
-  font-style: italic;
-  padding: 10px 18px;
-  font-size: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  -moz-box-shadow: 0 4px 0 #78902f;
+  -webkit-box-shadow: 0 4px 0 #78902f;
+  -o-box-shadow: 0 4px 0 #78902f;
+  box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
   padding: 14px 25px;
   margin: 5px;
@@ -1271,7 +1653,7 @@ input[type=submit] {
   font-size: 18px;
   margin-bottom: 30px;
 }
-/* line 100, ../sass/core.scss */
+/* line 110, ../sass/core.scss */
 #inviteButton .small {
   margin-top: 7px;
   display: block;
@@ -1329,19 +1711,24 @@ input[type=submit] {
 #inviteForm #sendInvitationButton {
   display: inline-block;
   border: 0px;
-  background: #666;
+  background: #a5c349;
   color: #fff;
-  font-family: "jubilat", Georgia, serif;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
   text-align: center;
-  font-style: italic;
-  padding: 10px 18px;
-  font-size: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  -moz-box-shadow: 0 4px 0 #78902f;
+  -webkit-box-shadow: 0 4px 0 #78902f;
+  -o-box-shadow: 0 4px 0 #78902f;
+  box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
   padding: 14px 25px;
   margin: 5px;
@@ -1351,7 +1738,7 @@ input[type=submit] {
   width: auto;
   font-weight: normal;
 }
-/* line 100, ../sass/core.scss */
+/* line 110, ../sass/core.scss */
 #inviteForm #sendInvitationButton .small {
   margin-top: 7px;
   display: block;
@@ -1501,26 +1888,31 @@ input[type=submit] {
 #invitation #RSVPButton {
   display: inline-block;
   border: 0px;
-  background: #666;
+  background: #a5c349;
   color: #fff;
-  font-family: "jubilat", Georgia, serif;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
   text-align: center;
-  font-style: italic;
-  padding: 10px 18px;
-  font-size: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  -moz-box-shadow: 0 4px 0 #78902f;
+  -webkit-box-shadow: 0 4px 0 #78902f;
+  -o-box-shadow: 0 4px 0 #78902f;
+  box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
   padding: 14px 25px;
   margin: 5px;
   width: 100px;
   margin: 15px 0px 0px 0px;
 }
-/* line 100, ../sass/core.scss */
+/* line 110, ../sass/core.scss */
 #invitation #RSVPButton .small {
   margin-top: 7px;
   display: block;
@@ -1814,24 +2206,29 @@ table.jCalendar td.unselectable.dp-hover {
 #replyForm button {
   display: inline-block;
   border: 0px;
-  background: #666;
+  background: #a5c349;
   color: #fff;
-  font-family: "jubilat", Georgia, serif;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
   text-align: center;
-  font-style: italic;
-  padding: 10px 18px;
-  font-size: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  -moz-box-shadow: 0 4px 0 #78902f;
+  -webkit-box-shadow: 0 4px 0 #78902f;
+  -o-box-shadow: 0 4px 0 #78902f;
+  box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
   padding: 14px 25px;
   margin: 5px;
 }
-/* line 100, ../sass/core.scss */
+/* line 110, ../sass/core.scss */
 #replyForm button .small {
   margin-top: 7px;
   display: block;
@@ -1851,25 +2248,30 @@ table.jCalendar td.unselectable.dp-hover {
 #replyButtons a {
   display: inline-block;
   border: 0px;
-  background: #666;
+  background: #a5c349;
   color: #fff;
-  font-family: "jubilat", Georgia, serif;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
   text-align: center;
-  font-style: italic;
-  padding: 10px 18px;
-  font-size: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  -moz-box-shadow: 0 4px 0 #78902f;
+  -webkit-box-shadow: 0 4px 0 #78902f;
+  -o-box-shadow: 0 4px 0 #78902f;
+  box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
   padding: 14px 25px;
   margin: 5px;
   color: #000;
 }
-/* line 100, ../sass/core.scss */
+/* line 110, ../sass/core.scss */
 #replyButtons a .small {
   margin-top: 7px;
   display: block;

@@ -1,34 +1,72 @@
 {% extends "base/common.html" %}
 
-{% block title %}Menus{% endblock %}
+{% block title %}Meals{% endblock %}
 
-{% block customJS %}{% endblock %}
+{% block customJS %}
+<script src="/static/js/meals.js" type="text/javascript"></script>
+{% endblock %}
 
-{% block bodyId %}{% endblock %}
+{% block bodyId %}meals{% endblock %}
 {% block bodyClass %}{% endblock %}
 
 {% block main %}
 
-<section id="featuredMenu">
-	<h1>Menu of the Week</h1>
-	<h2>{{ featured.title }}</h2>
+<h1 id="pageTitle"><span class="color2">W</span>h<span class="color2 kern">a</span>t<span class="small"><em>shall we</em></span><span class="color2">M</span>a<span class="color3">k</span><span class="color2">e</span><span class="color3">?</span></h1>
+
+<p class="intro">Choose a meal for you and your friend to cook together!<br />New meals are added regularly, plus <a href="mailto:hello@letsgohotpot.com">we’d love to hear your ideas</a> too.</p>
+
+<section id="featuredMeal" class="meal">
+	<h1>Meal <em>of the</em> Week</h1>
 	
-	<a href="/menus/{{ featured.slug }}">
-		<img src="/static/images/food/{{ featured.slug }}.jpg" width="300">
+	<a class="mealImageLink" href="/meals/{{ featured.slug }}">
+		<img class="mealImage" src="/static/images/food/{{ featured.slug }}.jpg">
 	</a>
 	
-	<a href="">Details</a>
-	<a href="">Invite a Friend to Cook</a>
+	<div class="mealInfo">
+		<h2><a href="/meals/{{ featured.slug }}">{{ featured.title }} &raquo;</a></h2>
+		<p>{{ featured.shortDescription }}</p>
+		
+		<ul>
+			<li>{{ featured.time }}</li>
+			<li>{{ featured.type }}</li>
+			<li>{{ featured.difficulty }}</li>
+			<li>{{ featured.flavors }}</li>
+		</ul>
+		
+		<a href="/invite/{{ featured.slug }}" class="button">Cook This!</a>
+	</div>
+	
+	<div class="cookedBy">
+		<h3>Cooked by:</h3>
+		<ul>
+			<li><a href=""><img src="/static/uploads/userpics/{{ user.userpic }}" /></a></li>
+			<li><a href=""><img src="/static/uploads/userpics/{{ user.userpic }}" /></a></li>
+			<li><a href=""><img src="/static/uploads/userpics/{{ user.userpic }}" /></a></li>
+			<li><a href="" class="moreLink">&amp; 12 more</a></li>
+		</ul>
+	</div>
 </section>
 
-<div id="menusContainer">
-	<ul class="mealList">
-	{% for menu in menus %}
-		<li>
-			<a href="/meals/{{ menu.slug }}">
-				<h2>{{ menu.title }}</h2>
-				<img src="/static/images/food/{{ menu.slug }}.jpg" width="200">
+<div id="mealsContainer">
+	<ul id="mealsList">
+	{% for meal in meals %}
+		<li class="meal">
+			<a href="/meals/{{ meal.slug }}" class="mealImageLink">
+				<img class="mealImage" src="/static/images/food/{{ meal.slug }}.jpg">
 			</a>
+				
+			<div class="mealInfo">
+				<h2><a href="/meals/{{ meal.slug }}">{{ meal.title }}</a></h2>
+			</div>
+			
+			<div class="cookedBy">
+				<h3>Cooked by:</h3>
+				<ul>
+					<li><a href=""><img src="/static/uploads/userpics/{{ user.userpic }}" /></a></li>
+					<li><a href=""><img src="/static/uploads/userpics/{{ user.userpic }}" /></a></li>
+					<li><a href="" class="moreLink">&amp; 12 more</a></li>
+				</ul>
+			</div>
 		</li>
 	{% endfor %}
 	</ul>

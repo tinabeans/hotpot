@@ -12,6 +12,7 @@
 <script src="/static/js/lib/jquery-1.7.1.min.js" type="text/javascript"></script>
 
 <!-- my scripts -->
+<script src="/static/js/common.js" type="text/javascript"></script>
 {% block customJS %}{% endblock %}
 
 <link rel="stylesheet" href="/static/css/core.css" type="text/css" />
@@ -29,22 +30,22 @@
 	<div id="headerNavs">
 	
 		<nav id="mainNav">
-			<a href="/menus"><span class="small">Browse</span> Menus</a>
-			<a href="/people"><span class="small">Meet</span> People</a>
+			<a href="/menus"><span class="small">Browse <em>the</em></span> Menus</a>
+			<a href="/people"><span class="small">Meet <em>friendly</em></span> People</a>
 		</nav><!-- #mainNav -->
 		
 		<div id="serviceNavs">
 			{% if not isLoggedIn %}
 			
 				<h2>Welcome to Hotpot!</h2>
-				<a href="" id="loginLink">Log In</a>
-				<a href="" id="registerLink">Join Hotpot</a>
+				<a href="/login" id="loginLink">Log In</a>
+				<a href="/register" id="registerLink">Join Hotpot</a>
 			
 			{% else %}
 				
 				<nav id="primaryUserNav">
-					<a href="/invitations">Invitations</a>
-					<a href="/history">Cooking History</a>
+					<a href="/invitations" id="invitationsLink"><span class="tooltip">Invitations</span></a>
+					<a href="/history" id="historyLink"><span class="tooltip">Cooking History</span></a>
 				</nav><!-- #primaryUserNav -->
 				
 				<div id="userInfoContainer">

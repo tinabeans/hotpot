@@ -54,10 +54,13 @@ def render_template(template, **kwargs):
 			'name' : user['name'],
 			'userpic' : user['userpic']
 		}
+		
+		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, **kwargs)
 	else:
 		isLoggedIn = False
-	
-	return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, **kwargs)
+		
+		return flask.render_template(template, isLoggedIn=isLoggedIn, **kwargs)
+
 
 
 ##############################################################################
@@ -314,7 +317,7 @@ def updateMyProfile():
 @app.route('/meals')
 def showMeals():
 	
-	featuredMeal = db.meals.find_one()
+	featuredMeal = db.meals.find_one({'_id' : ObjectId('4f3352569685aa28d5000008')})
 	meals = list(db.meals.find())
 	
 	return render_template('meals.html', featured=featuredMeal, meals=meals)
@@ -340,7 +343,7 @@ def showInviteForm(meal):
 		return flask.redirect('/login')
 	else:
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
-		return render_template('invite.html', meal=meal, user=user )
+		return render_template('invite.html', meal=meal )
 	
 
 @app.route('/sendInvitation', methods=['POST'])
