@@ -18,6 +18,7 @@ $green: #a5c349;
 $darkBlue: #1c6770;
 $mediumBlue: #3797a2;
 $lightBrown: #e9e7e0;
+$reallyLightBrown: #f0ece4;
 $darkBrown: #736c5b;
 
 
@@ -44,8 +45,14 @@ $serif: "jubilat", Georgia, serif;
 	font-family:$serif;
 	font-style:italic;
 	text-transform: none;
-	font-weight: 500;
+	font-weight: 400;
 	letter-spacing:0.05em;
+}
+
+@mixin sectionTitle {
+	@include bigFatLetters;
+	font-size:14px;
+	margin-bottom:15px;
 }
 
 @mixin smallHeading {
@@ -84,10 +91,6 @@ $serif: "jubilat", Georgia, serif;
 /**********************************************************/
 /* GLOBAL MIXINS */
 
-@mixin lightBrownBorder {
-	border:6px solid rgba($darkBrown,.15);
-}
-
 @mixin button {
 	display:inline-block;
 	border:0px;
@@ -99,23 +102,60 @@ $serif: "jubilat", Georgia, serif;
 	padding:8px 16px;
 	font-size:16px;
 	@include box-shadow(0 4px 0 darken($green, 15));
+	
+	&:hover {
+		background: darken($green, 4);
+		@include box-shadow(0 4px 0 darken($green, 20));
+	}
 }
 
 @mixin bigButton {
 	@include button;
 	font-size:26px;
-	padding:14px 25px;
+	padding:9px 17px;
 	margin:5px;
+	@include border-radius(15px);
+	@include box-shadow(0 7px 0 darken($green, 15));
+	
+	&:hover {
+		background: darken($green, 4);
+		@include box-shadow(0 7px 0 darken($green, 20));
+	}
 	
 	.small {
-		margin-top:7px;
-		display:block;
-		font-family:$sans;
-		font-weight: normal;
-		font-size:11px;
-		text-transform: uppercase;
-		letter-spacing:.1em;
-		font-style: normal;
+		margin:2px 0px;
+		font-size:.6em;
+		display: block;
+	}
+	
+	em {
+		@include decorativeType;
+	}
+}
+
+@mixin lightBrownBorder {
+	border:6px solid rgba($darkBrown,.15);
+}
+
+@mixin imageOuterBorder {
+	border: 10px solid rgba($darkBrown, .1);
+}
+
+@mixin imageInnerBorder {
+	border:3px solid #fff;
+}
+
+@mixin smallUserpic {
+	@include border-radius(100px);
+	border:3px solid $lightBrown;
+	@include box-shadow(0px 3px 5px rgba(0,0,0,.15));
+	background: $lightBrown;
+	width:32px;
+	height:32px;
+	
+	img {
+		width:100%;
+		@include border-radius(100px);
 	}
 }
 

@@ -7,6 +7,10 @@ body#meals {
 			display:inline-block;
 			width: 59px;
 			line-height:17px;
+			
+			em {
+				font-weight:500;
+			}
 		}
 	}
 		
@@ -17,7 +21,7 @@ body#meals {
 	}
 	
 	.meal {
-		border: 10px solid rgba($darkBrown, .1);
+		@include imageOuterBorder;
 		position: relative;
 	}
 	
@@ -25,7 +29,7 @@ body#meals {
 		display: block;
 		position: relative;
 		overflow: hidden;
-		border:3px solid #fff;
+		@include imageInnerBorder;
 		left:0px;
 		top:0px;
 	}
@@ -35,14 +39,14 @@ body#meals {
 		position: absolute;
 		display: none;
 		padding:20px;
+			
+		a {
+			color:#fff;
+		}
 		
 		h2 {
 			font-weight: bold;
 			font-size:26px;
-			
-			a {
-				color:#fff;
-			}
 		}
 	}
 	
@@ -62,12 +66,7 @@ body#meals {
 		
 		li {
 			display: inline-block;
-			@include border-radius(100px);
-			border:3px solid $lightBrown;
-			@include box-shadow(0px 3px 5px rgba(0,0,0,.15));
-			background: $lightBrown;
-			width:32px;
-			height:32px;
+			@include smallUserpic;
 			font-size:10px;
 			font-weight: 700;
 			color:$darkBrown;
@@ -75,8 +74,6 @@ body#meals {
 		}
 		
 		img {
-			width:32px;
-			@include border-radius(100px);
 			text-transform: uppercase;
 		}
 		
@@ -86,6 +83,10 @@ body#meals {
 			color:$darkBrown;
 		}
 	}
+}
+
+#featuredMeal.meal:hover, #mealsList .meal:hover {
+	border: 10px solid rgba($darkBrown, .2);
 }
 
 #featuredMeal {
@@ -161,18 +162,19 @@ body#meals {
 		li {
 			margin: 5px 0px;
 		}
+		
+		li:hover {
+			position: relative;
+			left:3px;
+		}
 	}
-}
-
-.meal:hover {
-	border: 10px solid rgba($darkBrown, .2);
 }
 
 #mealsList .meal {
 	float:left;
 	@include box-sizing(border-box);
 	width:30%;
-	margin-right:3%;
+	margin-right:5%;
 	
 	.mealImageLink {
 		height:175px;
@@ -188,7 +190,13 @@ body#meals {
 		height:100%;
 		top:0;
 		left:0;
-		border:3px solid #fff;
+		@include imageInnerBorder;
+		
+		a {
+			display: block;
+			height:100%;
+			width:100%;
+		}
 	}
 	
 	.cookedBy {
@@ -201,21 +209,58 @@ body#meals {
 			margin:0px 10px 0px 0px;
 		}
 		
+		li:hover {
+			position: relative;
+			top:-3px;
+		}
+		
 		.moreLink {
 			text-align: center;
 		}
 	}
 }
 
+#mealsList .meal.end {
+	margin-right:0;
+}
+
 
 /**********************************************************/
 /* SINGLE MEAL PAGE */
 
-#bigImage {
+$mealSidebarWidth:300px;
+$mealSidebarRightOffset:33px;
+
+#meal #returnLink {
+	float:left;
+	display: block;
+	width:70px;
+	height:70px;
+	@include bigFatLetters;
+	background:rgba($mediumBlue, .4) url(/static/images/textureSoft.png);
+	color:#fff;
+	text-align: center;
+	@include border-radius(100px);
+	@include box-sizing(border-box);
+	padding:18px 10px 10px 10px;
+	font-size:12px;
+	margin-left:8px;
+}
+
+#meal #returnLink:hover {
+	background:rgba($mediumBlue, .6) url(/static/images/textureSoft.png);
+}
+
+#mealImageContainer {
+	@include imageOuterBorder;
+	margin-bottom:30px;
+}
+
+#mealImage {
+	@include imageInnerBorder;
 	height:300px;
 	overflow: hidden;
 	position: relative;
-	margin-bottom:30px;
 	
 	img {
 		position: absolute;
@@ -224,46 +269,57 @@ body#meals {
 	}
 }
 
-#descriptionContainer {
-	float:left;
+#mealTitle {
+	margin-left:100px;
+	font-size:35px;
+	font-weight:700;
+	color:$darkBlue;
+	margin-bottom:10px;
+}
+
+#mealFacts {
 	font-size:16px;
-	@include box-sizing(border-box);
-	padding-right:30px;
-	width: 43%;
+	margin-left:100px;
+	margin-bottom:30px;
+	
+	li {
+		display:inline-block;
+		margin-right:20px;
+	}
 }
 
-#summary {
-	line-height: 1.5em;
-}
-
-#credit {
-	font-size:.8em;
-	font-style: italic;
-}
-
-#shoppingListContainer {
-	float:left;
-	width:33%;
-	@include box-sizing(border-box);
-	padding-right:30px;
+#mealSidebar {
+	float:right;
+	width:$mealSidebarWidth;
+	margin-right:$mealSidebarRightOffset;
+	position: relative;
+	z-index: +1;
+	margin-top:-300px;
+	
+	#importantStuff {
+		padding:10px;
+		background: $reallyLightBrown url(/static/images/textureStrong.png);
+		@include border-radius(5px);
+		@include box-shadow(0 1px 2px rgba(0,0,0,.35));
+	}
 }
 
 #shoppingList {
-	padding:20px;
-	background:$subtleColor;
+	padding:10px;
+	background: #fff url(/static/images/textureSoft.png);
 	
 	h1 {
-		@include smallHeading;
+		@include decorativeType;
+		color:$mediumBlue;
 		text-align: center;
-		font-family: $serif;
-		margin-bottom:15px;
+		margin:15px 0px 20px 0px;
+		font-size:24px;
 	}
 		
 	li {
 		font-size:16px;
 		font-family: $sans;
-		padding:10px 0px;
-		border-top:1px dashed #ccc;
+		padding:8px 10px;
 		
 		.amount {
 			float: right;
@@ -272,22 +328,91 @@ body#meals {
 			font-size:.8em;
 		}
 	}
+	
+	li.odd {
+		background:#f4f7f6 url(/static/images/textureSoft.png);
+	}
 }
 
-#actions {
-	@include box-sizing(border-box);
-	margin-left: 76%;
-	width: 24%;
+#cookedBy {
+	margin-top:30px;
+	padding:0px 0px 0px 10px;
+	
 	h1 {
-		@include smallHeading;
+		@include sectionTitle;
+		color:$orange;
+	}
+	
+	ul {
+		margin-right:-18px;
+	}
+
+	li {
+		@include smallUserpic;
+		width:40px;
+		height:40px;
+		display: inline-block;
+		margin:0px 10px 15px 0px;
+	}
+	
+	li:hover {
+		position: relative;
+		top:-3px;
 	}
 }
 
 #inviteButton {
 	@include bigButton;
 	@include box-sizing(border-box);
-	margin:0;
-	width:100%;
-	font-size:18px;
+	display: block;
+	margin:20px;
 	margin-bottom:30px;
+}
+
+#inviteButton:active {
+	@include box-shadow(0 3px 0 darken($green, 15));
+	position: relative;
+	top:4px;
+}
+
+#mealDescription {
+	margin-right: $mealSidebarRightOffset+$mealSidebarWidth+30;
+	font-size:22px;
+	
+	h1 {
+		@include sectionTitle;
+		color:$darkBlue;
+	}
+}
+
+#mealCredits {
+	margin-top:30px;
+	padding:20px;
+	background:rgba($green, .15);
+	font-size: 13px;
+	@include clearfix;
+	
+	h1 {
+		font-weight: 700;
+		text-transform: none;
+		font-size: 13px;
+		margin-bottom:5px;
+		color:$textColor;
+	}
+	
+	p {
+		margin:0;
+	}
+	
+	#submissionUser {
+		width:48px;
+		@include border-radius(100px);
+		float:left;
+		margin-right:15px;
+	}
+	
+	.stuff {
+		width: 50%;
+		float:left;
+	}
 }

@@ -68,7 +68,7 @@ footer, header, hgroup, menu, nav, section {
 /* COLORS */
 /**********************************************************/
 /* TYPOGRAPHY */
-/* line 59, ../sass/core.scss */
+/* line 66, ../sass/core.scss */
 #pageTitle {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -78,25 +78,25 @@ footer, header, hgroup, menu, nav, section {
   color: #3797a2;
   font-size: 50px;
 }
-/* line 66, ../sass/core.scss */
+/* line 73, ../sass/core.scss */
 #pageTitle .color2 {
   color: #2a747c;
 }
-/* line 70, ../sass/core.scss */
+/* line 77, ../sass/core.scss */
 #pageTitle .color3 {
   color: #31858f;
 }
-/* line 74, ../sass/core.scss */
+/* line 81, ../sass/core.scss */
 #pageTitle .small em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   text-transform: none;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.05em;
   font-size: 21px;
 }
 
-/* line 80, ../sass/core.scss */
+/* line 87, ../sass/core.scss */
 .kern {
   letter-spacing: -0.09em;
 }
@@ -105,12 +105,12 @@ footer, header, hgroup, menu, nav, section {
 /* GLOBAL MIXINS */
 /**********************************************************/
 /* TAG REDEFINITIONS */
-/* line 147, ../sass/core.scss */
+/* line 187, ../sass/core.scss */
 html {
   height: 100%;
 }
 
-/* line 151, ../sass/core.scss */
+/* line 191, ../sass/core.scss */
 body {
   margin: 0px;
   padding: 0px;
@@ -122,18 +122,18 @@ body {
   background: white url(/static/images/bodyBg.jpg);
 }
 
-/* line 159, ../sass/core.scss */
+/* line 199, ../sass/core.scss */
 a {
   text-decoration: none;
   color: #ef5922;
 }
 
-/* line 164, ../sass/core.scss */
+/* line 204, ../sass/core.scss */
 a:hover {
   color: #ef5922;
 }
 
-/* line 169, ../sass/core.scss */
+/* line 209, ../sass/core.scss */
 p {
   line-height: 1.4em;
   margin: 0px 0px 15px 0px;
@@ -141,25 +141,25 @@ p {
 
 /**********************************************************/
 /* COMMON */
-/* line 184, ../sass/core.scss */
+/* line 224, ../sass/core.scss */
 #homeIntro, #mainContainer, #featuredMeals, #mainFooter {
   width: 88%;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 188, ../sass/core.scss */
+/* line 228, ../sass/core.scss */
 #mainContainer {
   padding: 40px 0px;
   margin: 0px auto;
 }
 
-/* line 193, ../sass/core.scss */
+/* line 233, ../sass/core.scss */
 .intro {
   font-size: 1.4em;
 }
 
-/* line 197, ../sass/core.scss */
+/* line 237, ../sass/core.scss */
 .message {
   text-align: center;
   margin: 30px;
@@ -167,7 +167,7 @@ p {
   color: red;
 }
 
-/* line 204, ../sass/core.scss */
+/* line 244, ../sass/core.scss */
 .button {
   display: inline-block;
   border: 0px;
@@ -190,13 +190,21 @@ p {
   -o-box-shadow: 0 4px 0 #78902f;
   box-shadow: 0 4px 0 #78902f;
 }
+/* line 106, ../sass/core.scss */
+.button:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 4px 0 #687d29;
+  -webkit-box-shadow: 0 4px 0 #687d29;
+  -o-box-shadow: 0 4px 0 #687d29;
+  box-shadow: 0 4px 0 #687d29;
+}
 
-/* line 208, ../sass/core.scss */
+/* line 248, ../sass/core.scss */
 .button:hover {
   color: #fff;
 }
 
-/* line 212, ../sass/core.scss */
+/* line 252, ../sass/core.scss */
 .button:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -208,12 +216,12 @@ p {
 
 /**********************************************************/
 /* HEADER */
-/* line 224, ../sass/core.scss */
+/* line 264, ../sass/core.scss */
 #mainHeader {
   position: relative;
   height: 96px;
 }
-/* line 228, ../sass/core.scss */
+/* line 268, ../sass/core.scss */
 #mainHeader h1 {
   background: url(/static/images/headerLeftEdge.png) right top no-repeat;
   width: 180px;
@@ -223,13 +231,13 @@ p {
   left: 6%;
   z-index: 1;
 }
-/* line 237, ../sass/core.scss */
+/* line 277, ../sass/core.scss */
 #mainHeader h1 img {
   margin-top: 15px;
   width: 150px;
 }
 
-/* line 244, ../sass/core.scss */
+/* line 284, ../sass/core.scss */
 #headerNavsContainer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -241,17 +249,17 @@ p {
   padding-left: 179px;
 }
 
-/* line 252, ../sass/core.scss */
+/* line 292, ../sass/core.scss */
 #headerNavs {
   background: url(/static/images/headerBg.png) repeat-x;
   height: 96px;
 }
 
-/* line 257, ../sass/core.scss */
+/* line 297, ../sass/core.scss */
 #mainNav {
   padding: 26px 0px 0px 28px;
 }
-/* line 260, ../sass/core.scss */
+/* line 300, ../sass/core.scss */
 #mainNav a {
   display: inline-block;
   margin-right: 30px;
@@ -265,13 +273,13 @@ p {
   opacity: 0.6;
   color: #736c5b;
 }
-/* line 269, ../sass/core.scss */
+/* line 309, ../sass/core.scss */
 #mainNav a .small {
   display: block;
   font-size: .6em;
   font-weight: 600;
 }
-/* line 274, ../sass/core.scss */
+/* line 314, ../sass/core.scss */
 #mainNav a .small em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -280,21 +288,21 @@ p {
   letter-spacing: normal;
   font-size: 1.1em;
 }
-/* line 285, ../sass/core.scss */
+/* line 325, ../sass/core.scss */
 #mainNav a:hover {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
 
-/* line 290, ../sass/core.scss */
+/* line 330, ../sass/core.scss */
 #serviceNavs {
   position: absolute;
   top: 0;
   right: 6%;
 }
 
-/* line 296, ../sass/core.scss */
+/* line 336, ../sass/core.scss */
 #bigInviteButton {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -321,19 +329,19 @@ p {
   top: 17px;
   letter-spacing: .05em;
 }
-/* line 312, ../sass/core.scss */
+/* line 352, ../sass/core.scss */
 #bigInviteButton .big {
   font-size: 19px;
   display: block;
 }
-/* line 317, ../sass/core.scss */
+/* line 357, ../sass/core.scss */
 #bigInviteButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-weight: 500;
   text-transform: lowercase;
 }
-/* line 324, ../sass/core.scss */
+/* line 364, ../sass/core.scss */
 #bigInviteButton .small {
   font-size: 12px;
   display: block;
@@ -341,7 +349,7 @@ p {
   top: 1px;
 }
 
-/* line 332, ../sass/core.scss */
+/* line 372, ../sass/core.scss */
 #userInfoContainer {
   float: left;
   height: 10px;
@@ -350,13 +358,13 @@ p {
   min-width: 155px;
 }
 
-/* line 340, ../sass/core.scss */
+/* line 380, ../sass/core.scss */
 #userInfo {
   padding: 6px 52px 5px 12px;
   color: #736c5b;
   cursor: pointer;
 }
-/* line 345, ../sass/core.scss */
+/* line 385, ../sass/core.scss */
 #userInfo .userpic {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -372,7 +380,7 @@ p {
   top: 8px;
   z-index: 3;
 }
-/* line 355, ../sass/core.scss */
+/* line 395, ../sass/core.scss */
 #userInfo .userpic img {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -382,17 +390,17 @@ p {
   border-radius: 80px;
   width: 62px;
 }
-/* line 361, ../sass/core.scss */
+/* line 401, ../sass/core.scss */
 #userInfo h2 {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-size: 12px;
 }
-/* line 367, ../sass/core.scss */
+/* line 407, ../sass/core.scss */
 #userInfo .greeting {
   display: block;
 }
-/* line 371, ../sass/core.scss */
+/* line 411, ../sass/core.scss */
 #userInfo .username {
   display: inline-block;
   font-weight: bold;
@@ -404,21 +412,21 @@ p {
   background: url(/static/images/icon_downArrow_brown.png) right center no-repeat;
 }
 
-/* line 383, ../sass/core.scss */
+/* line 423, ../sass/core.scss */
 #userInfo.hover {
   color: #fff;
   background: #ef5922;
 }
-/* line 387, ../sass/core.scss */
+/* line 427, ../sass/core.scss */
 #userInfo.hover .userpic {
   border-color: #ef5922;
 }
-/* line 391, ../sass/core.scss */
+/* line 431, ../sass/core.scss */
 #userInfo.hover .username {
   background: url(/static/images/icon_downArrow_white.png) right center no-repeat;
 }
 
-/* line 396, ../sass/core.scss */
+/* line 436, ../sass/core.scss */
 #secondaryUserNav {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -430,7 +438,7 @@ p {
   position: relative;
   z-index: 2;
 }
-/* line 404, ../sass/core.scss */
+/* line 444, ../sass/core.scss */
 #secondaryUserNav a {
   display: block;
   font-weight: 700;
@@ -440,18 +448,18 @@ p {
   text-transform: uppercase;
   color: #736c5b;
 }
-/* line 414, ../sass/core.scss */
+/* line 454, ../sass/core.scss */
 #secondaryUserNav a:hover {
   background: #b3cbc6;
   color: #1c6770;
 }
 
-/* line 420, ../sass/core.scss */
+/* line 460, ../sass/core.scss */
 #primaryUserNav {
   padding-top: 31px;
   margin-right: 10px;
 }
-/* line 424, ../sass/core.scss */
+/* line 464, ../sass/core.scss */
 #primaryUserNav a {
   float: left;
   display: block;
@@ -470,7 +478,7 @@ p {
   position: relative;
   text-align: center;
 }
-/* line 437, ../sass/core.scss */
+/* line 477, ../sass/core.scss */
 #primaryUserNav a .tooltip {
   display: none;
   position: absolute;
@@ -486,59 +494,59 @@ p {
   border-radius: 20px;
   white-space: nowrap;
 }
-/* line 449, ../sass/core.scss */
+/* line 489, ../sass/core.scss */
 #primaryUserNav a:hover {
   background-color: #736c5b;
 }
-/* line 452, ../sass/core.scss */
+/* line 492, ../sass/core.scss */
 #primaryUserNav a:hover .tooltip {
   display: block;
 }
 
-/* line 458, ../sass/core.scss */
+/* line 498, ../sass/core.scss */
 #invitationsLink {
   background-image: url(/static/images/icon_envelope.png);
 }
 
-/* line 459, ../sass/core.scss */
+/* line 499, ../sass/core.scss */
 #historyLink {
   background-image: url(/static/images/icon_clock.png);
 }
 
-/* line 460, ../sass/core.scss */
+/* line 500, ../sass/core.scss */
 #invitationsLink:hover {
   background-image: url(/static/images/icon_envelope_white.png);
 }
 
-/* line 461, ../sass/core.scss */
+/* line 501, ../sass/core.scss */
 #historyLink:hover {
   background-image: url(/static/images/icon_clock_white.png);
 }
 
-/* line 463, ../sass/core.scss */
+/* line 503, ../sass/core.scss */
 #primaryUserNav {
   float: left;
 }
 
 /**********************************************************/
 /* FOOTER */
-/* line 471, ../sass/core.scss */
+/* line 511, ../sass/core.scss */
 #mainFooter {
   text-align: center;
   clear: both;
   color: #666;
   padding: 60px 0px 30px 0px;
 }
-/* line 477, ../sass/core.scss */
+/* line 517, ../sass/core.scss */
 #mainFooter p {
   font-style: italic;
 }
 
-/* line 482, ../sass/core.scss */
+/* line 522, ../sass/core.scss */
 #footerNav {
   margin: 15px 0px;
 }
-/* line 485, ../sass/core.scss */
+/* line 525, ../sass/core.scss */
 #footerNav a {
   display: inline-block;
   padding: 0px 10px;
@@ -547,13 +555,13 @@ p {
 
 /**********************************************************/
 /* FORMS */
-/* line 496, ../sass/core.scss */
+/* line 536, ../sass/core.scss */
 .formItem {
   margin-bottom: 15px;
   position: relative;
 }
 
-/* line 501, ../sass/core.scss */
+/* line 541, ../sass/core.scss */
 .formItemError {
   position: absolute;
   right: -193px;
@@ -564,12 +572,12 @@ p {
   padding: 5px 10px;
 }
 
-/* line 511, ../sass/core.scss */
+/* line 551, ../sass/core.scss */
 .buttons {
   text-align: center;
 }
 
-/* line 515, ../sass/core.scss */
+/* line 555, ../sass/core.scss */
 label {
   display: block;
   font-size: 13px;
@@ -581,7 +589,7 @@ label {
   margin-bottom: 5px;
 }
 
-/* line 520, ../sass/core.scss */
+/* line 560, ../sass/core.scss */
 input, textarea {
   border: 1px solid #aaa;
   padding: 5px;
@@ -590,20 +598,20 @@ input, textarea {
   font-size: 14px;
 }
 
-/* line 528, ../sass/core.scss */
+/* line 568, ../sass/core.scss */
 textarea {
   height: 100px;
   resize: vertical;
 }
 
-/* line 533, ../sass/core.scss */
+/* line 573, ../sass/core.scss */
 form .note {
   margin-top: 5px;
   font-style: italic;
   font-size: 12px;
 }
 
-/* line 539, ../sass/core.scss */
+/* line 579, ../sass/core.scss */
 input[type=submit] {
   display: inline-block;
   border: 0px;
@@ -626,6 +634,14 @@ input[type=submit] {
   -o-box-shadow: 0 4px 0 #78902f;
   box-shadow: 0 4px 0 #78902f;
   width: auto;
+}
+/* line 106, ../sass/core.scss */
+input[type=submit]:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 4px 0 #687d29;
+  -webkit-box-shadow: 0 4px 0 #687d29;
+  -o-box-shadow: 0 4px 0 #687d29;
+  box-shadow: 0 4px 0 #687d29;
 }
 
 /**********************************************************/
@@ -677,19 +693,48 @@ input[type=submit] {
   -o-box-shadow: 0 4px 0 #78902f;
   box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
-  padding: 14px 25px;
+  padding: 9px 17px;
   margin: 5px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: 0 7px 0 #78902f;
+  -webkit-box-shadow: 0 7px 0 #78902f;
+  -o-box-shadow: 0 7px 0 #78902f;
+  box-shadow: 0 7px 0 #78902f;
 }
-/* line 110, ../sass/core.scss */
+/* line 106, ../sass/core.scss */
+#joinUs a:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 4px 0 #687d29;
+  -webkit-box-shadow: 0 4px 0 #687d29;
+  -o-box-shadow: 0 4px 0 #687d29;
+  box-shadow: 0 4px 0 #687d29;
+}
+/* line 120, ../sass/core.scss */
+#joinUs a:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 7px 0 #687d29;
+  -webkit-box-shadow: 0 7px 0 #687d29;
+  -o-box-shadow: 0 7px 0 #687d29;
+  box-shadow: 0 7px 0 #687d29;
+}
+/* line 125, ../sass/core.scss */
 #joinUs a .small {
-  margin-top: 7px;
+  margin: 2px 0px;
+  font-size: .6em;
   display: block;
-  font-family: "proxima-nova", sans-serif;
-  font-weight: normal;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-style: normal;
+}
+/* line 131, ../sass/core.scss */
+#joinUs a em {
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
 
 /* line 31, ../sass/_home.scss */
@@ -1290,18 +1335,22 @@ body#meals #pageTitle .small {
   width: 59px;
   line-height: 17px;
 }
-/* line 13, ../sass/_meals.scss */
+/* line 11, ../sass/_meals.scss */
+body#meals #pageTitle .small em {
+  font-weight: 500;
+}
+/* line 17, ../sass/_meals.scss */
 body#meals .intro {
   text-align: center;
   font-weight: 300;
   font-size: 16px;
 }
-/* line 19, ../sass/_meals.scss */
+/* line 23, ../sass/_meals.scss */
 body#meals .meal {
   border: 10px solid rgba(115, 108, 91, 0.1);
   position: relative;
 }
-/* line 24, ../sass/_meals.scss */
+/* line 28, ../sass/_meals.scss */
 body#meals .mealImageLink {
   display: block;
   position: relative;
@@ -1310,42 +1359,42 @@ body#meals .mealImageLink {
   left: 0px;
   top: 0px;
 }
-/* line 33, ../sass/_meals.scss */
+/* line 37, ../sass/_meals.scss */
 body#meals .mealInfo {
   background: rgba(28, 103, 112, 0.9);
   position: absolute;
   display: none;
   padding: 20px;
 }
-/* line 39, ../sass/_meals.scss */
+/* line 43, ../sass/_meals.scss */
+body#meals .mealInfo a {
+  color: #fff;
+}
+/* line 47, ../sass/_meals.scss */
 body#meals .mealInfo h2 {
   font-weight: bold;
   font-size: 26px;
 }
-/* line 43, ../sass/_meals.scss */
-body#meals .mealInfo h2 a {
-  color: #fff;
-}
-/* line 49, ../sass/_meals.scss */
+/* line 53, ../sass/_meals.scss */
 body#meals .cookedBy {
   display: none;
   position: absolute;
 }
-/* line 53, ../sass/_meals.scss */
+/* line 57, ../sass/_meals.scss */
 body#meals .cookedBy h3 {
   color: #fff;
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   text-transform: none;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.05em;
   font-size: 12px;
 }
-/* line 59, ../sass/_meals.scss */
+/* line 63, ../sass/_meals.scss */
 body#meals .cookedBy ul {
   margin-top: 5px;
 }
-/* line 63, ../sass/_meals.scss */
+/* line 67, ../sass/_meals.scss */
 body#meals .cookedBy li {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -1367,29 +1416,37 @@ body#meals .cookedBy li {
   color: #736c5b;
   text-transform: uppercase;
 }
-/* line 77, ../sass/_meals.scss */
-body#meals .cookedBy img {
-  width: 32px;
+/* line 156, ../sass/core.scss */
+body#meals .cookedBy li img {
+  width: 100%;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
   -o-border-radius: 100px;
   -ms-border-radius: 100px;
   -khtml-border-radius: 100px;
   border-radius: 100px;
+}
+/* line 76, ../sass/_meals.scss */
+body#meals .cookedBy img {
   text-transform: uppercase;
 }
-/* line 83, ../sass/_meals.scss */
+/* line 80, ../sass/_meals.scss */
 body#meals .cookedBy .moreLink {
   display: block;
   padding-top: 5px;
   color: #736c5b;
 }
 
-/* line 91, ../sass/_meals.scss */
+/* line 88, ../sass/_meals.scss */
+#featuredMeal.meal:hover, #mealsList .meal:hover {
+  border: 10px solid rgba(115, 108, 91, 0.2);
+}
+
+/* line 92, ../sass/_meals.scss */
 #featuredMeal {
   margin: 30px 0px;
 }
-/* line 94, ../sass/_meals.scss */
+/* line 95, ../sass/_meals.scss */
 #featuredMeal h1 {
   position: absolute;
   left: -15px;
@@ -1405,28 +1462,28 @@ body#meals .cookedBy .moreLink {
   letter-spacing: .05em;
   font-weight: 800;
 }
-/* line 107, ../sass/_meals.scss */
+/* line 108, ../sass/_meals.scss */
 #featuredMeal h1 em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   text-transform: none;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.05em;
   letter-spacing: 0em;
   font-weight: 400;
   font-size: 18px;
 }
-/* line 115, ../sass/_meals.scss */
+/* line 116, ../sass/_meals.scss */
 #featuredMeal .mealImageLink {
   height: 335px;
 }
-/* line 119, ../sass/_meals.scss */
+/* line 120, ../sass/_meals.scss */
 #featuredMeal .mealImage {
   position: absolute;
   top: -70%;
   width: 100%;
 }
-/* line 125, ../sass/_meals.scss */
+/* line 126, ../sass/_meals.scss */
 #featuredMeal .mealInfo {
   right: 20px;
   top: 20px;
@@ -1435,21 +1492,21 @@ body#meals .cookedBy .moreLink {
   width: 240px;
   color: #fff;
 }
-/* line 133, ../sass/_meals.scss */
+/* line 134, ../sass/_meals.scss */
 #featuredMeal .mealInfo h2 {
   margin-bottom: 15px;
 }
-/* line 137, ../sass/_meals.scss */
+/* line 138, ../sass/_meals.scss */
 #featuredMeal .mealInfo p {
   font-size: 15px;
 }
-/* line 141, ../sass/_meals.scss */
+/* line 142, ../sass/_meals.scss */
 #featuredMeal .mealInfo ul {
   margin-bottom: 15px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 146, ../sass/_meals.scss */
+/* line 147, ../sass/_meals.scss */
 #featuredMeal .mealInfo li {
   font-weight: 700;
   font-size: 13px;
@@ -1457,24 +1514,24 @@ body#meals .cookedBy .moreLink {
   width: 50%;
   margin: 5px 0px;
 }
-/* line 155, ../sass/_meals.scss */
+/* line 156, ../sass/_meals.scss */
 #featuredMeal .cookedBy {
   width: 38px;
   left: 22px;
   top: 100px;
   text-align: center;
 }
-/* line 161, ../sass/_meals.scss */
+/* line 162, ../sass/_meals.scss */
 #featuredMeal .cookedBy li {
   margin: 5px 0px;
 }
-
-/* line 167, ../sass/_meals.scss */
-.meal:hover {
-  border: 10px solid rgba(115, 108, 91, 0.2);
+/* line 166, ../sass/_meals.scss */
+#featuredMeal .cookedBy li:hover {
+  position: relative;
+  left: 3px;
 }
 
-/* line 171, ../sass/_meals.scss */
+/* line 173, ../sass/_meals.scss */
 #mealsList .meal {
   float: left;
   -moz-box-sizing: border-box;
@@ -1482,17 +1539,17 @@ body#meals .cookedBy .moreLink {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   width: 30%;
-  margin-right: 3%;
+  margin-right: 5%;
 }
-/* line 177, ../sass/_meals.scss */
+/* line 179, ../sass/_meals.scss */
 #mealsList .meal .mealImageLink {
   height: 175px;
 }
-/* line 181, ../sass/_meals.scss */
+/* line 183, ../sass/_meals.scss */
 #mealsList .meal .mealImage {
   width: 100%;
 }
-/* line 185, ../sass/_meals.scss */
+/* line 187, ../sass/_meals.scss */
 #mealsList .meal .mealInfo {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1504,122 +1561,229 @@ body#meals .cookedBy .moreLink {
   left: 0;
   border: 3px solid #fff;
 }
-/* line 194, ../sass/_meals.scss */
+/* line 195, ../sass/_meals.scss */
+#mealsList .meal .mealInfo a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+/* line 202, ../sass/_meals.scss */
 #mealsList .meal .cookedBy {
   position: absolute;
   left: 20px;
   bottom: 20px;
 }
-/* line 199, ../sass/_meals.scss */
+/* line 207, ../sass/_meals.scss */
 #mealsList .meal .cookedBy li {
   vertical-align: middle;
   margin: 0px 10px 0px 0px;
 }
-/* line 204, ../sass/_meals.scss */
+/* line 212, ../sass/_meals.scss */
+#mealsList .meal .cookedBy li:hover {
+  position: relative;
+  top: -3px;
+}
+/* line 217, ../sass/_meals.scss */
 #mealsList .meal .cookedBy .moreLink {
   text-align: center;
 }
 
+/* line 223, ../sass/_meals.scss */
+#mealsList .meal.end {
+  margin-right: 0;
+}
+
 /**********************************************************/
 /* SINGLE MEAL PAGE */
-/* line 214, ../sass/_meals.scss */
-#bigImage {
+/* line 234, ../sass/_meals.scss */
+#meal #returnLink {
+  float: left;
+  display: block;
+  width: 70px;
+  height: 70px;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  background: rgba(55, 151, 162, 0.4) url(/static/images/textureSoft.png);
+  color: #fff;
+  text-align: center;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 18px 10px 10px 10px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+/* line 250, ../sass/_meals.scss */
+#meal #returnLink:hover {
+  background: rgba(55, 151, 162, 0.6) url(/static/images/textureSoft.png);
+}
+
+/* line 254, ../sass/_meals.scss */
+#mealImageContainer {
+  border: 10px solid rgba(115, 108, 91, 0.1);
+  margin-bottom: 30px;
+}
+
+/* line 259, ../sass/_meals.scss */
+#mealImage {
+  border: 3px solid #fff;
   height: 300px;
   overflow: hidden;
   position: relative;
-  margin-bottom: 30px;
 }
-/* line 220, ../sass/_meals.scss */
-#bigImage img {
+/* line 265, ../sass/_meals.scss */
+#mealImage img {
   position: absolute;
   top: -70%;
   width: 100%;
 }
 
-/* line 227, ../sass/_meals.scss */
-#descriptionContainer {
-  float: left;
-  font-size: 16px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  padding-right: 30px;
-  width: 43%;
-}
-
-/* line 235, ../sass/_meals.scss */
-#summary {
-  line-height: 1.5em;
-}
-
-/* line 239, ../sass/_meals.scss */
-#credit {
-  font-size: .8em;
-  font-style: italic;
-}
-
-/* line 244, ../sass/_meals.scss */
-#shoppingListContainer {
-  float: left;
-  width: 33%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  padding-right: 30px;
-}
-
-/* line 251, ../sass/_meals.scss */
-#shoppingList {
-  padding: 20px;
-  background: #ededec;
-}
-/* line 255, ../sass/_meals.scss */
-#shoppingList h1 {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: .2em;
+/* line 272, ../sass/_meals.scss */
+#mealTitle {
+  margin-left: 100px;
+  font-size: 35px;
+  font-weight: 700;
+  color: #1c6770;
   margin-bottom: 10px;
-  font-family: "proxima-nova", sans-serif;
-  text-align: center;
-  font-family: "jubilat", Georgia, serif;
-  margin-bottom: 15px;
 }
-/* line 262, ../sass/_meals.scss */
+
+/* line 280, ../sass/_meals.scss */
+#mealFacts {
+  font-size: 16px;
+  margin-left: 100px;
+  margin-bottom: 30px;
+}
+/* line 285, ../sass/_meals.scss */
+#mealFacts li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+/* line 291, ../sass/_meals.scss */
+#mealSidebar {
+  float: right;
+  width: 300px;
+  margin-right: 33px;
+  position: relative;
+  z-index: 1;
+  margin-top: -300px;
+}
+/* line 299, ../sass/_meals.scss */
+#mealSidebar #importantStuff {
+  padding: 10px;
+  background: #f0ece4 url(/static/images/textureStrong.png);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* line 307, ../sass/_meals.scss */
+#shoppingList {
+  padding: 10px;
+  background: white url(/static/images/textureSoft.png);
+}
+/* line 311, ../sass/_meals.scss */
+#shoppingList h1 {
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #3797a2;
+  text-align: center;
+  margin: 15px 0px 20px 0px;
+  font-size: 24px;
+}
+/* line 319, ../sass/_meals.scss */
 #shoppingList li {
   font-size: 16px;
   font-family: "proxima-nova", sans-serif;
-  padding: 10px 0px;
-  border-top: 1px dashed #ccc;
+  padding: 8px 10px;
 }
-/* line 268, ../sass/_meals.scss */
+/* line 324, ../sass/_meals.scss */
 #shoppingList li .amount {
   float: right;
   padding-left: 6px;
   font-weight: bold;
   font-size: .8em;
 }
-
-/* line 277, ../sass/_meals.scss */
-#actions {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  margin-left: 76%;
-  width: 24%;
+/* line 332, ../sass/_meals.scss */
+#shoppingList li.odd {
+  background: #f4f7f6 url(/static/images/textureSoft.png);
 }
-/* line 281, ../sass/_meals.scss */
-#actions h1 {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-  margin-bottom: 10px;
+
+/* line 337, ../sass/_meals.scss */
+#cookedBy {
+  margin-top: 30px;
+  padding: 0px 0px 0px 10px;
+}
+/* line 341, ../sass/_meals.scss */
+#cookedBy h1 {
   font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #ef5922;
+}
+/* line 346, ../sass/_meals.scss */
+#cookedBy ul {
+  margin-right: -18px;
+}
+/* line 350, ../sass/_meals.scss */
+#cookedBy li {
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  border: 3px solid #e9e7e0;
+  -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background: #e9e7e0;
+  width: 32px;
+  height: 32px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin: 0px 10px 15px 0px;
+}
+/* line 156, ../sass/core.scss */
+#cookedBy li img {
+  width: 100%;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+}
+/* line 358, ../sass/_meals.scss */
+#cookedBy li:hover {
+  position: relative;
+  top: -3px;
 }
 
-/* line 286, ../sass/_meals.scss */
+/* line 364, ../sass/_meals.scss */
 #inviteButton {
   display: inline-block;
   border: 0px;
@@ -1642,27 +1806,119 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 4px 0 #78902f;
   box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
-  padding: 14px 25px;
+  padding: 9px 17px;
   margin: 5px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: 0 7px 0 #78902f;
+  -webkit-box-shadow: 0 7px 0 #78902f;
+  -o-box-shadow: 0 7px 0 #78902f;
+  box-shadow: 0 7px 0 #78902f;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 0;
-  width: 100%;
-  font-size: 18px;
+  display: block;
+  margin: 20px;
   margin-bottom: 30px;
 }
-/* line 110, ../sass/core.scss */
+/* line 106, ../sass/core.scss */
+#inviteButton:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 4px 0 #687d29;
+  -webkit-box-shadow: 0 4px 0 #687d29;
+  -o-box-shadow: 0 4px 0 #687d29;
+  box-shadow: 0 4px 0 #687d29;
+}
+/* line 120, ../sass/core.scss */
+#inviteButton:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 7px 0 #687d29;
+  -webkit-box-shadow: 0 7px 0 #687d29;
+  -o-box-shadow: 0 7px 0 #687d29;
+  box-shadow: 0 7px 0 #687d29;
+}
+/* line 125, ../sass/core.scss */
 #inviteButton .small {
-  margin-top: 7px;
+  margin: 2px 0px;
+  font-size: .6em;
   display: block;
+}
+/* line 131, ../sass/core.scss */
+#inviteButton em {
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+/* line 372, ../sass/_meals.scss */
+#inviteButton:active {
+  -moz-box-shadow: 0 3px 0 #78902f;
+  -webkit-box-shadow: 0 3px 0 #78902f;
+  -o-box-shadow: 0 3px 0 #78902f;
+  box-shadow: 0 3px 0 #78902f;
+  position: relative;
+  top: 4px;
+}
+
+/* line 378, ../sass/_meals.scss */
+#mealDescription {
+  margin-right: 363px;
+  font-size: 22px;
+}
+/* line 382, ../sass/_meals.scss */
+#mealDescription h1 {
   font-family: "proxima-nova", sans-serif;
-  font-weight: normal;
-  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: .1em;
-  font-style: normal;
+  font-weight: 900;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #1c6770;
+}
+
+/* line 388, ../sass/_meals.scss */
+#mealCredits {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(165, 195, 73, 0.15);
+  font-size: 13px;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 395, ../sass/_meals.scss */
+#mealCredits h1 {
+  font-weight: 700;
+  text-transform: none;
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #4e565c;
+}
+/* line 403, ../sass/_meals.scss */
+#mealCredits p {
+  margin: 0;
+}
+/* line 407, ../sass/_meals.scss */
+#mealCredits #submissionUser {
+  width: 48px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  float: left;
+  margin-right: 15px;
+}
+/* line 414, ../sass/_meals.scss */
+#mealCredits .stuff {
+  width: 50%;
+  float: left;
 }
 
 /**********************************************************/
@@ -1730,24 +1986,53 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 4px 0 #78902f;
   box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
-  padding: 14px 25px;
+  padding: 9px 17px;
   margin: 5px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: 0 7px 0 #78902f;
+  -webkit-box-shadow: 0 7px 0 #78902f;
+  -o-box-shadow: 0 7px 0 #78902f;
+  box-shadow: 0 7px 0 #78902f;
   margin: 0px;
   font-family: "jubilat", Georgia, serif;
   border: 0;
   width: auto;
   font-weight: normal;
 }
-/* line 110, ../sass/core.scss */
+/* line 106, ../sass/core.scss */
+#inviteForm #sendInvitationButton:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 4px 0 #687d29;
+  -webkit-box-shadow: 0 4px 0 #687d29;
+  -o-box-shadow: 0 4px 0 #687d29;
+  box-shadow: 0 4px 0 #687d29;
+}
+/* line 120, ../sass/core.scss */
+#inviteForm #sendInvitationButton:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 7px 0 #687d29;
+  -webkit-box-shadow: 0 7px 0 #687d29;
+  -o-box-shadow: 0 7px 0 #687d29;
+  box-shadow: 0 7px 0 #687d29;
+}
+/* line 125, ../sass/core.scss */
 #inviteForm #sendInvitationButton .small {
-  margin-top: 7px;
+  margin: 2px 0px;
+  font-size: .6em;
   display: block;
-  font-family: "proxima-nova", sans-serif;
-  font-weight: normal;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-style: normal;
+}
+/* line 131, ../sass/core.scss */
+#inviteForm #sendInvitationButton em {
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
 
 /* line 50, ../sass/_invitations.scss */
@@ -1907,21 +2192,50 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 4px 0 #78902f;
   box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
-  padding: 14px 25px;
+  padding: 9px 17px;
   margin: 5px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: 0 7px 0 #78902f;
+  -webkit-box-shadow: 0 7px 0 #78902f;
+  -o-box-shadow: 0 7px 0 #78902f;
+  box-shadow: 0 7px 0 #78902f;
   width: 100px;
   margin: 15px 0px 0px 0px;
 }
-/* line 110, ../sass/core.scss */
+/* line 106, ../sass/core.scss */
+#invitation #RSVPButton:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 4px 0 #687d29;
+  -webkit-box-shadow: 0 4px 0 #687d29;
+  -o-box-shadow: 0 4px 0 #687d29;
+  box-shadow: 0 4px 0 #687d29;
+}
+/* line 120, ../sass/core.scss */
+#invitation #RSVPButton:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 7px 0 #687d29;
+  -webkit-box-shadow: 0 7px 0 #687d29;
+  -o-box-shadow: 0 7px 0 #687d29;
+  box-shadow: 0 7px 0 #687d29;
+}
+/* line 125, ../sass/core.scss */
 #invitation #RSVPButton .small {
-  margin-top: 7px;
+  margin: 2px 0px;
+  font-size: .6em;
   display: block;
-  font-family: "proxima-nova", sans-serif;
-  font-weight: normal;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-style: normal;
+}
+/* line 131, ../sass/core.scss */
+#invitation #RSVPButton em {
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
 /* line 161, ../sass/_invitations.scss */
 #invitation #howItWorks {
@@ -2225,19 +2539,48 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 4px 0 #78902f;
   box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
-  padding: 14px 25px;
+  padding: 9px 17px;
   margin: 5px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: 0 7px 0 #78902f;
+  -webkit-box-shadow: 0 7px 0 #78902f;
+  -o-box-shadow: 0 7px 0 #78902f;
+  box-shadow: 0 7px 0 #78902f;
 }
-/* line 110, ../sass/core.scss */
+/* line 106, ../sass/core.scss */
+#replyForm button:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 4px 0 #687d29;
+  -webkit-box-shadow: 0 4px 0 #687d29;
+  -o-box-shadow: 0 4px 0 #687d29;
+  box-shadow: 0 4px 0 #687d29;
+}
+/* line 120, ../sass/core.scss */
+#replyForm button:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 7px 0 #687d29;
+  -webkit-box-shadow: 0 7px 0 #687d29;
+  -o-box-shadow: 0 7px 0 #687d29;
+  box-shadow: 0 7px 0 #687d29;
+}
+/* line 125, ../sass/core.scss */
 #replyForm button .small {
-  margin-top: 7px;
+  margin: 2px 0px;
+  font-size: .6em;
   display: block;
-  font-family: "proxima-nova", sans-serif;
-  font-weight: normal;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-style: normal;
+}
+/* line 131, ../sass/core.scss */
+#replyForm button em {
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
 
 /* line 403, ../sass/_invitations.scss */
@@ -2267,20 +2610,49 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 4px 0 #78902f;
   box-shadow: 0 4px 0 #78902f;
   font-size: 26px;
-  padding: 14px 25px;
+  padding: 9px 17px;
   margin: 5px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: 0 7px 0 #78902f;
+  -webkit-box-shadow: 0 7px 0 #78902f;
+  -o-box-shadow: 0 7px 0 #78902f;
+  box-shadow: 0 7px 0 #78902f;
   color: #000;
 }
-/* line 110, ../sass/core.scss */
+/* line 106, ../sass/core.scss */
+#replyButtons a:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 4px 0 #687d29;
+  -webkit-box-shadow: 0 4px 0 #687d29;
+  -o-box-shadow: 0 4px 0 #687d29;
+  box-shadow: 0 4px 0 #687d29;
+}
+/* line 120, ../sass/core.scss */
+#replyButtons a:hover {
+  background: #9cba3d;
+  -moz-box-shadow: 0 7px 0 #687d29;
+  -webkit-box-shadow: 0 7px 0 #687d29;
+  -o-box-shadow: 0 7px 0 #687d29;
+  box-shadow: 0 7px 0 #687d29;
+}
+/* line 125, ../sass/core.scss */
 #replyButtons a .small {
-  margin-top: 7px;
+  margin: 2px 0px;
+  font-size: .6em;
   display: block;
-  font-family: "proxima-nova", sans-serif;
-  font-weight: normal;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-style: normal;
+}
+/* line 131, ../sass/core.scss */
+#replyButtons a em {
+  font-family: "jubilat", Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
 /* line 410, ../sass/_invitations.scss */
 #replyButtons #answerYes, #replyButtons #answerMaybe {

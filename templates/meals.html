@@ -26,7 +26,7 @@
 		<h2><a href="/meals/{{ featured.slug }}">{{ featured.title }} &raquo;</a></h2>
 		<p>{{ featured.shortDescription }}</p>
 		
-		<ul>
+		<ul class="mealFacts">
 			<li>{{ featured.time }}</li>
 			<li>{{ featured.type }}</li>
 			<li>{{ featured.difficulty }}</li>
@@ -50,13 +50,15 @@
 <div id="mealsContainer">
 	<ul id="mealsList">
 	{% for meal in meals %}
-		<li class="meal">
+		<li class="meal {{ loop.cycle('', '', 'end') }}">
 			<a href="/meals/{{ meal.slug }}" class="mealImageLink">
 				<img class="mealImage" src="/static/images/food/{{ meal.slug }}.jpg">
 			</a>
 				
 			<div class="mealInfo">
-				<h2><a href="/meals/{{ meal.slug }}">{{ meal.title }}</a></h2>
+				<a href="/meals/{{ meal.slug }}">
+					<h2>{{ meal.title }}</h2>
+				</a>
 			</div>
 			
 			<div class="cookedBy">
