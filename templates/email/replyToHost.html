@@ -1,32 +1,176 @@
-<h1>Reply</h1>
+<table width="100%" bgcolor="#e5e2da" style="background:url(/static/images/email/bg.png);" cellpadding="20" cellspacing="0" border="0"><tr><td align="center">
 
-{% if reply.mainReply == "yes" %}
-	<p>yay! {{ inviteeName }} said yes! the cooking party is on!</p>
-	
-	<p>The day before, we will send you a reminder containing the link to the cooking room.</p>
-	
-	<h1>Info</h1>
+<table cellpadding="0" cellspacing="0" width="620" bgcolor="#ffffff" style="background:url(/static/images/email/bg_Main.png);">
 
-	<p>insert info about the Hotpot event</p>
-	
-	<h2>Add to Calendar:</h2>
-	<p>Links for adding to your calendar: ical! google calendar! etc.</p>
-	
-{% elif reply.mainReply == 'maybe' %}
-	<p>{{ inviteeName }} said yes, but...</p>
+	<!-- EMAIL HEADER -->
 
-	{% if reply.altTimes != "" %}
-		<p>the time doesn't work for them; they suggested these alternate times: {{ reply.altTimes }}</p>
+	<tr>
+		<td colspan="3">
+			<img style="display:block;" src="/static/images/email/header.png" width="620" height="115" alt="Hotpot logo">
+		</td>
+	</tr>
+	
+	<!-- TEXT -->
+	
+	<tr>
+		<td width="50" style="background:url(/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url(/static/email/bg_Main.png)">
+			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:18px;">
+				Your friend <span style="font-weight:bold;">Jen Dary</span> just replied:
+			</p>
+		</td>
+		<td width="50" style="background:url(/static/images/email/bg_MainRight.png)"></td>
+	</tr>
+	
+	<!-- top of the personal message -->
+	
+	<tr>
+		<td colspan="3">
+			<img style="display:block;" src="/static/images/email/bg_messageAreaTop.png" width="620" height="70">
+		</td>
+	</tr>
+	
+	<!-- PERSONAL MESSAGE -->
+	
+	<tr>
+		<td width="50" style="background:url(/static/images/email/bg_messageAreaLeft.png)"></td>
+		<td width="520" style="background:url(/static/images/email/bg_messageArea.png);">
+			<table>
+				<tr>
+					<td width="125" valign="top">
+						<img src="/static/uploads/userpics/4f2e0b279685aa1618000001_0.235118283529.png" style="border:6px solid #ffffff;" width="109" height="113" alt="{{ inviteeName }}">
+					</td>
+					<td width="30"></td>
+					<td width="365" valign="top">
+					
+						<!-- MAIN REPLY -->
+					
+						<p style="font-family:'Courier New', monospace; font-size:30px; color:#4e565c;">
+							{% if reply.mainReply == "yes" %}
+								Yes!
+							{% elif reply.mainReply == "maybe" %}
+								Yes, but...
+							{% elif reply.mainReply == "no" %}
+								No, sorry!
+							{% endif %}
+						</p>
+						
+						<!-- ALTERNATIVE TIMES -->
+						
+						{% if reply.altTimes != "" %}
+							<p style="font-family:'Courier New', monospace; font-size:18px; line-height:1.4em; color:#4e565c;">The date/time doesn't work for me. Alternate times: {{ reply.altTimes }}</p>
+						{% endif %}
+						
+						<!-- ALTERNATIVE MEALS -->
+							
+						{% if reply.altMeals != "" %}
+							<p style="font-family:'Courier New', monospace; font-size:18px; line-height:1.4em; color:#4e565c;">I don't want to make {{ meal.title }}. Other suggestions: {{ reply.altMeals }}</p>
+						{% endif %}
+						
+						<!-- ADDITIONAL MESSAGE -->
+						
+						{% if reply.message != "" %}
+							<p style="font-family:'Courier New', monospace; font-size:18px; line-height:1.4em; color:#4e565c;">{{ reply.message }}</p>
+						{% endif %}
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td width="50" style="background:url(/static/images/email/bg_messageAreaRight.png)"></td>
+	</tr>
+	
+	<!-- bottom of the personal message -->
+	
+	<tr>
+		<td colspan="3">
+			<img style="display:block;" src="/static/images/email/bg_messageAreaBottom.png" width="620" height="80">
+		</td>
+	</tr>
+	
+	<!-- TEXT -->
+	
+	<tr>
+		<td width="50" style="background:url(/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url(/static/email/bg_Main.png)">
+			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:18px;">
+				{% if reply.mainReply == "yes" %}
+					<span style="font-size:24px;">Hooray!</span> That means you'll be cooking:
+				{% else %}
+					In reply to your invitation to cook:
+				{% endif %}
+			</p>
+			<h1 style="text-align:center; color:#1c6770; font-size:28px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; line-height:20px;">Lemon Garlic Kale Pasta</h2>
+			<p style="text-align:center; line-height:1em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:18px;">
+				<img src="/static/images/email/text_date.png" alt="Date"> &nbsp;Thursday, March 22, 2012 &nbsp; &nbsp;<img src="/static/images/email/text_time.png" alt="Time"> &nbsp;7 p.m. EST
+			</p>
+			<p style="text-align:center; line-height:5em;"><img src="/static/images/email/button_ViewInvitation.png" width="151" height="36">{% if reply.mainReply == "maybe" %} &nbsp; <img src="/static/images/email/button_ResendInvitation.png" width="171" height="36">{% endif %}</p>
+		</td>
+		<td width="50" style="background:url(/static/images/email/bg_MainRight.png)"></td>
+	</tr>
+
+	<!-- EXTRA INFO IF THE REPLY WAS A YES -->
+	
+	{% if reply.mainReply == "yes" %}
+	
+	<tr>
+		<td width="50" style="background:url(/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url(/static/email/bg_Main.png)">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td width="275" valign="top">
+					
+						<!-- SHOPPING LIST -->
+						
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							
+							<tr>
+								<td colspan="4"><img style="display:block;" src="/static/images/email/invitation_ShoppingList.png" alt="Shopping List" height="75" width="275"></td>
+							</tr>
+							
+							{% for ingredient in meal.ingredients %}
+							<tr>
+								<td width="20" style="background:url(/static/images/email/bg_ShoppingListLeft.png)"></td>
+								<td height="35" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px; {{ loop.cycle('background:url(/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">&nbsp; &nbsp;{{ ingredient.name }}</td>
+								<td align="right" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; {{ loop.cycle('background:url(/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}&nbsp; &nbsp;</td>
+								<td width="20" style="background:url(/static/images/email/bg_ShoppingListRight.png)"></td>
+							</tr>
+							{% endfor %}
+							
+							<tr>
+								<td colspan="4"><img style="display:block;" src="/static/images/email/invitation_ShoppingListBottom.png" height="21" width="275"></td>
+							</tr>
+						</table>
+					</td>
+					<td width="30" align="center"></td>
+					<td width="217" valign="top">
+					
+						<!-- ADD TO CALENDAR -->
+					
+						<img style="display:block;" src="/static/images/email/text_addToCalendar.png" width="160" height="13" alt="Add to Calendar">
+						
+						<p>adfadf</p>
+						
+						<br>
+						
+						<!-- ADD TO CALENDAR -->
+						<img style="display:block;" src="/static/images/email/text_WhatsNext.png" width="125" height="13" alt="What's Next?">
+						
+						<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">We’ll send both you and Jen a reminder the day before, containing a link to your Cooking Room. At the appointed time, simply click the link and cook away!</p>
+						<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">Meanwhile, why not go pick up some ingredients and get properly excited? :)</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td width="50" style="background:url(/static/images/email/bg_MainRight.png)"></td>
+	</tr>
+	
 	{% endif %}
-		
-	{% if reply.altMeals != "" %}
-		<p>they don't want to make the meal you suggested; other ideas: {{ reply.altMeals }}</p>
-	{% endif %}
 
-{% elif reply.mainReply == "no" %}
-	<p>awww, {{ inviteeName }} said no.</p>
-{% endif %}	
-	
-{% if reply.message != "" %}
-	<p>{{ inviteeName }} added this message: {{ reply.message }}</p>
-{% endif %}
+	<tr>
+		<td colspan="3">
+			<img style="display:block;" src="/static/images/email/footer.png" width="620" height="115" alt="Brought to you by Hotpot">
+		</td>
+	</tr>
+</table>
+
+</td></tr></table>
