@@ -2,11 +2,11 @@
 /* MEALS PAGE */
 
 body#meals {
-	#pageTitle {
+	#sectionTitle {
 		.small {
 			display:inline-block;
-			width: 59px;
-			line-height:17px;
+			width: 85px;
+			line-height:21px;
 			
 			em {
 				font-weight:500;
@@ -270,10 +270,8 @@ $mealSidebarRightOffset:33px;
 }
 
 #mealTitle {
+	@include bigHeading;
 	margin-left:100px;
-	font-size:35px;
-	font-weight:700;
-	color:$darkBlue;
 	margin-bottom:10px;
 }
 

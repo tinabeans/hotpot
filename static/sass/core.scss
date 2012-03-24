@@ -55,6 +55,13 @@ $serif: "jubilat", Georgia, serif;
 	margin-bottom:15px;
 }
 
+@mixin bigHeading {
+	font-family: $sans;
+	font-size:35px;
+	font-weight:700;
+	color:$darkBlue;
+}
+
 @mixin smallHeading {
 	font-size:13px;
 	text-transform: uppercase;
@@ -63,12 +70,12 @@ $serif: "jubilat", Georgia, serif;
 	font-family: $sans;
 }
 
-#pageTitle {
+#sectionTitle {
 	@include bigFatLetters;
 	margin-bottom:15px;
 	text-align: center;
 	color:$mediumBlue;
-	font-size:50px;
+	font-size:60px;
 	
 	.color2 {
 		color: darken($mediumBlue, 10);
@@ -80,8 +87,12 @@ $serif: "jubilat", Georgia, serif;
 	
 	.small em {
 		@include decorativeType;
-		font-size:21px;
+		font-size:28px;
 	}
+}
+
+#pageTitle {
+	@include bigHeading;
 }
 
 .kern {
