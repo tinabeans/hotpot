@@ -1,44 +1,44 @@
-<table width="100%" bgcolor="#e5e2da" style="background:url(/static/images/email/bg.png);" cellpadding="20" cellspacing="0" border="0"><tr><td align="center">
+<table width="100%" bgcolor="#e5e2da" style="background:url(http://test.letsgohotpot.com/static/images/email/bg.png);" cellpadding="20" cellspacing="0" border="0"><tr><td align="center">
 
-<table cellpadding="0" cellspacing="0" width="620" bgcolor="#ffffff" style="background:url(/static/images/email/bg_Main.png);">
+<table cellpadding="0" cellspacing="0" width="620" bgcolor="#ffffff" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_Main.png);">
 
 	<!-- EMAIL HEADER -->
 
 	<tr>
 		<td colspan="3">
-			<img style="display:block;" src="/static/images/email/header.png" width="620" height="115" alt="Hotpot logo">
+			<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/header.png" width="620" height="115" alt="Hotpot logo">
 		</td>
 	</tr>
 	
 	<!-- TEXT -->
 	
 	<tr>
-		<td width="50" style="background:url(/static/images/email/bg_MainLeft.png)"></td>
-		<td width="520" style="background:url(/static/email/bg_Main.png)">
+		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
 			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:18px;">
-				Your friend <span style="font-weight:bold;">Jen Dary</span> just replied:
+				Your friend <span style="font-weight:bold;">{{ invitee.name }}{% if invitee.lastname %} {{ invitee.lastname }}{% endif %}</span> just replied:
 			</p>
 		</td>
-		<td width="50" style="background:url(/static/images/email/bg_MainRight.png)"></td>
+		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
 	</tr>
 	
 	<!-- top of the personal message -->
 	
 	<tr>
 		<td colspan="3">
-			<img style="display:block;" src="/static/images/email/bg_messageAreaTop.png" width="620" height="70">
+			<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/bg_messageAreaTop.png" width="620" height="70">
 		</td>
 	</tr>
 	
 	<!-- PERSONAL MESSAGE -->
 	
 	<tr>
-		<td width="50" style="background:url(/static/images/email/bg_messageAreaLeft.png)"></td>
-		<td width="520" style="background:url(/static/images/email/bg_messageArea.png);">
+		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_messageAreaLeft.png)"></td>
+		<td width="520" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_messageArea.png);">
 			<table>
 				<tr>
 					<td width="125" valign="top">
-						<img src="/static/uploads/userpics/4f2e0b279685aa1618000001_0.235118283529.png" style="border:6px solid #ffffff;" width="109" height="113" alt="{{ inviteeName }}">
+						<img src="http://test.letsgohotpot.com/static/uploads/userpics/{{ invitee.userpic }}" style="border:6px solid #ffffff;" width="109" height="113" alt="{{ inviteeName }}">
 					</td>
 					<td width="30"></td>
 					<td width="365" valign="top">
@@ -55,19 +55,21 @@
 							{% endif %}
 						</p>
 						
-						<!-- ALTERNATIVE TIMES -->
-						
-						{% if reply.altTimes != "" %}
-							<p style="font-family:'Courier New', monospace; font-size:18px; line-height:1.4em; color:#4e565c;">The date/time doesn't work for me. Alternate times: {{ reply.altTimes }}</p>
-						{% endif %}
-						
-						<!-- ALTERNATIVE MEALS -->
+						{% if reply.mainReply == "maybe" %}
+							<!-- ALTERNATIVE TIMES -->
 							
-						{% if reply.altMeals != "" %}
-							<p style="font-family:'Courier New', monospace; font-size:18px; line-height:1.4em; color:#4e565c;">I don't want to make {{ meal.title }}. Other suggestions: {{ reply.altMeals }}</p>
+							{% if reply.altTimes != "" %}
+								<p style="font-family:'Courier New', monospace; font-size:18px; line-height:1.4em; color:#4e565c;">The date/time doesn't work for me. Alternate times: {{ reply.altTimes }}</p>
+							{% endif %}
+							
+							<!-- ALTERNATIVE MEALS -->
+								
+							{% if reply.altMeals != "" %}
+								<p style="font-family:'Courier New', monospace; font-size:18px; line-height:1.4em; color:#4e565c;">I don't want to make {{ meal.title }}. Other suggestions: {{ reply.altMeals }}</p>
+							{% endif %}
 						{% endif %}
 						
-						<!-- ADDITIONAL MESSAGE -->
+						<!-- MESSAGE -->
 						
 						{% if reply.message != "" %}
 							<p style="font-family:'Courier New', monospace; font-size:18px; line-height:1.4em; color:#4e565c;">{{ reply.message }}</p>
@@ -76,45 +78,58 @@
 				</tr>
 			</table>
 		</td>
-		<td width="50" style="background:url(/static/images/email/bg_messageAreaRight.png)"></td>
+		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_messageAreaRight.png)"></td>
 	</tr>
 	
 	<!-- bottom of the personal message -->
 	
 	<tr>
 		<td colspan="3">
-			<img style="display:block;" src="/static/images/email/bg_messageAreaBottom.png" width="620" height="80">
+			<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/bg_messageAreaBottom.png" width="620" height="80">
 		</td>
 	</tr>
 	
 	<!-- TEXT -->
 	
 	<tr>
-		<td width="50" style="background:url(/static/images/email/bg_MainLeft.png)"></td>
-		<td width="520" style="background:url(/static/email/bg_Main.png)">
+		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
 			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:18px;">
 				{% if reply.mainReply == "yes" %}
 					<span style="font-size:24px;">Hooray!</span> That means you'll be cooking:
 				{% else %}
-					In reply to your invitation to cook:
+					The original invitation was for:
 				{% endif %}
 			</p>
-			<h1 style="text-align:center; color:#1c6770; font-size:28px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; line-height:20px;">Lemon Garlic Kale Pasta</h2>
+			<h1 style="text-align:center; color:#1c6770; font-size:28px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; line-height:20px;">{{ meal.title }}</h1>
 			<p style="text-align:center; line-height:1em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:18px;">
-				<img src="/static/images/email/text_date.png" alt="Date"> &nbsp;Thursday, March 22, 2012 &nbsp; &nbsp;<img src="/static/images/email/text_time.png" alt="Time"> &nbsp;7 p.m. EST
+				<img src="http://test.letsgohotpot.com/static/images/email/text_date.png" alt="Date"> &nbsp;{{ invitation.readableTime|safe }} &nbsp; &nbsp;<img src="http://test.letsgohotpot.com/static/images/email/text_time.png" alt="Time"> &nbsp;{{ invitation.readableDate|safe }}
 			</p>
-			<p style="text-align:center; line-height:5em;"><img src="/static/images/email/button_ViewInvitation.png" width="151" height="36">{% if reply.mainReply == "maybe" %} &nbsp; <img src="/static/images/email/button_ResendInvitation.png" width="171" height="36">{% endif %}</p>
+			<p style="text-align:center; line-height:5em;"><a href="http://test.letsgohotpot.com/invitations/{{ invitation._id }}"><img src="http://test.letsgohotpot.com/static/images/email/button_ViewInvitation.png" width="151" height="36"></a>{% if reply.mainReply == "maybe" %} &nbsp; <a href="http://test.letsgohotpot.com/invite"><img src="http://test.letsgohotpot.com/static/images/email/button_ResendInvitation.png" width="171" height="36"></a>{% endif %}</p>
+			
+			{% if reply.mainReply == "maybe" %}
+				<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:14px;"><span style="font-weight:bold;">Hint:</span> Click 'Resend Invitation' above to invite your friend again, <br>taking the alternative suggestions into account.</p>
+			{% endif %}
 		</td>
-		<td width="50" style="background:url(/static/images/email/bg_MainRight.png)"></td>
+		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
 	</tr>
 
 	<!-- EXTRA INFO IF THE REPLY WAS A YES -->
 	
+	<!-- a small gap -->
+	
+	<tr>
+		<td width="50" height="36" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
+		</td>
+		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
+	</tr>
+	
 	{% if reply.mainReply == "yes" %}
 	
 	<tr>
-		<td width="50" style="background:url(/static/images/email/bg_MainLeft.png)"></td>
-		<td width="520" style="background:url(/static/email/bg_Main.png)">
+		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				<tr>
 					<td width="275" valign="top">
@@ -124,20 +139,20 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr>
-								<td colspan="4"><img style="display:block;" src="/static/images/email/invitation_ShoppingList.png" alt="Shopping List" height="75" width="275"></td>
+								<td colspan="4"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_shoppingList.png" alt="Shopping List" height="75" width="275"></td>
 							</tr>
 							
 							{% for ingredient in meal.ingredients %}
 							<tr>
-								<td width="20" style="background:url(/static/images/email/bg_ShoppingListLeft.png)"></td>
-								<td height="35" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px; {{ loop.cycle('background:url(/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">&nbsp; &nbsp;{{ ingredient.name }}</td>
-								<td align="right" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; {{ loop.cycle('background:url(/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}&nbsp; &nbsp;</td>
-								<td width="20" style="background:url(/static/images/email/bg_ShoppingListRight.png)"></td>
+								<td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListLeft.png)"></td>
+								<td height="35" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px; {{ loop.cycle('background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">&nbsp; &nbsp;{{ ingredient.name }}</td>
+								<td align="right" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; {{ loop.cycle('background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}&nbsp; &nbsp;</td>
+								<td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListRight.png)"></td>
 							</tr>
 							{% endfor %}
 							
 							<tr>
-								<td colspan="4"><img style="display:block;" src="/static/images/email/invitation_ShoppingListBottom.png" height="21" width="275"></td>
+								<td colspan="4"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/shoppingListBottom.png" height="21" width="275"></td>
 							</tr>
 						</table>
 					</td>
@@ -145,30 +160,30 @@
 					<td width="217" valign="top">
 					
 						<!-- ADD TO CALENDAR -->
-					
-						<img style="display:block;" src="/static/images/email/text_addToCalendar.png" width="160" height="13" alt="Add to Calendar">
+						<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_WhatsNext.png" width="125" height="13" alt="What's Next?">
 						
-						<p>adfadf</p>
+						<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">We’ll send both you and {{ invitee.name }} a reminder the day before, containing a link to your Cooking Room. At the appointed time, simply click the link and cook away!</p>
+						<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">Meanwhile, why not go pick up some ingredients and get properly excited? :)</p>
 						
 						<br>
 						
 						<!-- ADD TO CALENDAR -->
-						<img style="display:block;" src="/static/images/email/text_WhatsNext.png" width="125" height="13" alt="What's Next?">
+					
+						<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_addToCalendar.png" width="160" height="13" alt="Add to Calendar">
 						
-						<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">We’ll send both you and Jen a reminder the day before, containing a link to your Cooking Room. At the appointed time, simply click the link and cook away!</p>
-						<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">Meanwhile, why not go pick up some ingredients and get properly excited? :)</p>
+						<p>[ TODO: links go here ]</p>
 					</td>
 				</tr>
 			</table>
 		</td>
-		<td width="50" style="background:url(/static/images/email/bg_MainRight.png)"></td>
+		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
 	</tr>
 	
 	{% endif %}
 
 	<tr>
 		<td colspan="3">
-			<img style="display:block;" src="/static/images/email/footer.png" width="620" height="115" alt="Brought to you by Hotpot">
+			<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/footer.png" width="620" height="115" alt="Brought to you by Hotpot">
 		</td>
 	</tr>
 </table>

@@ -526,10 +526,16 @@ def sendReply():
 	replyInfo = {
 		"userId" : flask.session['userId'],
 		"mainReply" : data['mainReply'],
-		"message" : data['message'],
-		"altTimes" : data['altTimes'],
-		"altMeals" : data['altMeals']
+		"message" : data['message']
 	}
+	
+	# include extra info only if available
+	if data['mainReply'] == "maybe":
+		if data['altTimes'] != "":
+			replyInfo["altTimes"] = data['altTimes']
+		
+		if data['altMeals'] != "":
+			replyInfo["altMeals"] = data['altMeals']
 	
 	# if there aren't any replies stored yet, make an array to store them!
 	if 'replies' not in invitation:
@@ -539,8 +545,11 @@ def sendReply():
 		invitation['replies'].append(replyInfo)
 	
 	# else, there are replies! so check if there already is one from this user for this invitation
-	# TODO: there is a little inconsistency here... when accessing the RSVP form, it won't let you reply if you already did,
-	# but the code below also handles the case in which you overwrite an existing reply. must fix someday.
+	# TODO: there is a little inconsistency here... when accessing the RSVP form,
+	# it won't let you reply if you already did,
+	# but the code below also handles the case in which you overwrite an existing reply.
+	# ...must fix someday..........
+	
 	else:
 		replyFoundAt = -1
 		
@@ -569,23 +578,56 @@ def sendReply():
 	# grab host email address
 	hostEmail = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})['email']
 	
-	# grab invitee name
-	inviteeName = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})['name']
+	# grab invitee info
+	invitee = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+	
+	inviteeInfo = {
+		'name' : invitee['name'],
+		'userpic' : invitee['userpic'],
+		'email' : invitee['email']
+	}
+	
+	if 'lastname' in invitee:
+		inviteeInfo['lastname'] = invitee['lastname']
+	
+	# grab meal info
+	meal = db.meals.find_one({'slug' : invitation['meal']})
+	
+	mealInfo = {
+		'_id' : str(meal['_id']),
+		'title' : meal['title'],
+		'ingredients' : meal['ingredients'],
+		'slug' : meal['slug']
+	}
+	
+	# grab invitation info
+	invitationInfo = {
+		'_id' : invitation['_id'],
+		'readableDate' : invitation['readableDate'],
+		'readableTime' : invitation['readableTime']
+	}
 	
 	# compose and send email back to host
 	email = Message("Hotpot RSVP", recipients=[hostEmail])
-	email.html = render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName, invitationId=invitation['_id'])
+	email.html = render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
 	mail.send(email)
 	
 	# if reply was a yes, also send the invitee a confirmation
 	if replyInfo['mainReply'] == "yes":
 		inviteeEmail = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})['email']
+		
+		host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
+		
+		hostInfo = {
+			'name' : host['name'],
+			'userpic' : host['userpic']
+		}
 	
 		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail])
-		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, inviteeName=inviteeName, invitationId=invitation['_id'])
+		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=invitationInfo, meal=mealInfo)
 		mail.send(email)
 	
-	return render_template('email/replyToHost.html', reply=replyInfo, inviteeName=inviteeName, invitationId=invitation['_id'])
+	return render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
 
 
 ##############################################################################

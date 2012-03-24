@@ -308,11 +308,6 @@ table.jCalendar {
 	h1#title {
 		@include bigFormalHeading;
 	}
-	
-	h2 {
-		@include smallFormalHeading;
-		margin-top:30px;
-	}
 }
 
 #invitationInfoContainer {
