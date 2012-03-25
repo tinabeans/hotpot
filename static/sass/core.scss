@@ -93,7 +93,15 @@ $serif: "jubilat", Georgia, serif;
 }
 
 #pageTitle {
-	@include bigHeading;
+	@include bigFatLetters;
+	text-align: center;
+	font-size:38px;
+	color:$darkBlue;
+}
+
+#pageIntro {
+	text-align: center;
+	font-size:16px;
 }
 
 .kern {

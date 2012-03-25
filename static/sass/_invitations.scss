@@ -2,16 +2,9 @@
 /* INVITE PAGE */
 
 #invite {
-	#pageTitle {
-		@include bigFatLetters;
-		text-align: center;
-		font-size:38px;
-	}
-	
+
 	#pageIntro {
-		text-align: center;
 		margin-bottom: 50px;
-		font-size:16px;
 	}
 }
 

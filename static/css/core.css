@@ -99,18 +99,25 @@ footer, header, hgroup, menu, nav, section {
 /* line 95, ../sass/core.scss */
 #pageTitle {
   font-family: "proxima-nova", sans-serif;
-  font-size: 35px;
-  font-weight: 700;
+  text-transform: uppercase;
+  font-weight: 900;
+  text-align: center;
+  font-size: 38px;
   color: #1c6770;
-  margin-bottom: 10px;
 }
 
-/* line 99, ../sass/core.scss */
+/* line 102, ../sass/core.scss */
+#pageIntro {
+  text-align: center;
+  font-size: 16px;
+}
+
+/* line 107, ../sass/core.scss */
 .kern {
   letter-spacing: -0.09em;
 }
 
-/* line 103, ../sass/core.scss */
+/* line 111, ../sass/core.scss */
 .intro, #intro {
   font-size: 1.4em;
 }
@@ -119,12 +126,12 @@ footer, header, hgroup, menu, nav, section {
 /* GLOBAL MIXINS */
 /**********************************************************/
 /* TAG REDEFINITIONS */
-/* line 203, ../sass/core.scss */
+/* line 211, ../sass/core.scss */
 html {
   height: 100%;
 }
 
-/* line 207, ../sass/core.scss */
+/* line 215, ../sass/core.scss */
 body {
   margin: 0px;
   padding: 0px;
@@ -136,18 +143,18 @@ body {
   background: white url(/static/images/bodyBg.jpg);
 }
 
-/* line 215, ../sass/core.scss */
+/* line 223, ../sass/core.scss */
 a {
   text-decoration: none;
   color: #ef5922;
 }
 
-/* line 220, ../sass/core.scss */
+/* line 228, ../sass/core.scss */
 a:hover {
   color: #ef5922;
 }
 
-/* line 225, ../sass/core.scss */
+/* line 233, ../sass/core.scss */
 p {
   line-height: 1.4em;
   margin: 0px 0px 15px 0px;
@@ -155,20 +162,20 @@ p {
 
 /**********************************************************/
 /* COMMON */
-/* line 240, ../sass/core.scss */
+/* line 248, ../sass/core.scss */
 #homeIntro, #mainContainer, #featuredMeals, #mainFooter {
   width: 88%;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 244, ../sass/core.scss */
+/* line 252, ../sass/core.scss */
 #mainContainer {
   padding: 40px 0px;
   margin: 0px auto;
 }
 
-/* line 249, ../sass/core.scss */
+/* line 257, ../sass/core.scss */
 .message {
   text-align: center;
   margin: 30px;
@@ -176,7 +183,7 @@ p {
   color: red;
 }
 
-/* line 256, ../sass/core.scss */
+/* line 264, ../sass/core.scss */
 .button {
   display: inline-block;
   border: 0px;
@@ -199,7 +206,7 @@ p {
   -o-box-shadow: 0 4px 0 #78902f;
   box-shadow: 0 4px 0 #78902f;
 }
-/* line 122, ../sass/core.scss */
+/* line 130, ../sass/core.scss */
 .button:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -208,12 +215,12 @@ p {
   box-shadow: 0 4px 0 #687d29;
 }
 
-/* line 260, ../sass/core.scss */
+/* line 268, ../sass/core.scss */
 .button:hover {
   color: #fff;
 }
 
-/* line 264, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 .button:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -225,12 +232,12 @@ p {
 
 /**********************************************************/
 /* HEADER */
-/* line 276, ../sass/core.scss */
+/* line 284, ../sass/core.scss */
 #mainHeader {
   position: relative;
   height: 96px;
 }
-/* line 280, ../sass/core.scss */
+/* line 288, ../sass/core.scss */
 #mainHeader h1 {
   background: url(/static/images/headerLeftEdge.png) right top no-repeat;
   width: 180px;
@@ -240,13 +247,13 @@ p {
   left: 6%;
   z-index: 1;
 }
-/* line 289, ../sass/core.scss */
+/* line 297, ../sass/core.scss */
 #mainHeader h1 img {
   margin-top: 15px;
   width: 150px;
 }
 
-/* line 296, ../sass/core.scss */
+/* line 304, ../sass/core.scss */
 #headerNavsContainer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -258,17 +265,17 @@ p {
   padding-left: 179px;
 }
 
-/* line 304, ../sass/core.scss */
+/* line 312, ../sass/core.scss */
 #headerNavs {
   background: url(/static/images/headerBg.png) repeat-x;
   height: 96px;
 }
 
-/* line 309, ../sass/core.scss */
+/* line 317, ../sass/core.scss */
 #mainNav {
   padding: 26px 0px 0px 28px;
 }
-/* line 312, ../sass/core.scss */
+/* line 320, ../sass/core.scss */
 #mainNav a {
   display: inline-block;
   margin-right: 30px;
@@ -282,13 +289,13 @@ p {
   opacity: 0.6;
   color: #736c5b;
 }
-/* line 321, ../sass/core.scss */
+/* line 329, ../sass/core.scss */
 #mainNav a .small {
   display: block;
   font-size: .6em;
   font-weight: 600;
 }
-/* line 326, ../sass/core.scss */
+/* line 334, ../sass/core.scss */
 #mainNav a .small em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -297,21 +304,21 @@ p {
   letter-spacing: normal;
   font-size: 1.1em;
 }
-/* line 337, ../sass/core.scss */
+/* line 345, ../sass/core.scss */
 #mainNav a:hover {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
 
-/* line 342, ../sass/core.scss */
+/* line 350, ../sass/core.scss */
 #serviceNavs {
   position: absolute;
   top: 0;
   right: 6%;
 }
 
-/* line 348, ../sass/core.scss */
+/* line 356, ../sass/core.scss */
 #bigInviteButton {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -338,19 +345,19 @@ p {
   top: 17px;
   letter-spacing: .05em;
 }
-/* line 364, ../sass/core.scss */
+/* line 372, ../sass/core.scss */
 #bigInviteButton .big {
   font-size: 19px;
   display: block;
 }
-/* line 369, ../sass/core.scss */
+/* line 377, ../sass/core.scss */
 #bigInviteButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-weight: 500;
   text-transform: lowercase;
 }
-/* line 376, ../sass/core.scss */
+/* line 384, ../sass/core.scss */
 #bigInviteButton .small {
   font-size: 12px;
   display: block;
@@ -358,7 +365,7 @@ p {
   top: 1px;
 }
 
-/* line 384, ../sass/core.scss */
+/* line 392, ../sass/core.scss */
 #userInfoContainer {
   float: left;
   height: 10px;
@@ -367,13 +374,13 @@ p {
   min-width: 155px;
 }
 
-/* line 392, ../sass/core.scss */
+/* line 400, ../sass/core.scss */
 #userInfo {
   padding: 6px 52px 5px 12px;
   color: #736c5b;
   cursor: pointer;
 }
-/* line 397, ../sass/core.scss */
+/* line 405, ../sass/core.scss */
 #userInfo .userpic {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -389,7 +396,7 @@ p {
   top: 8px;
   z-index: 3;
 }
-/* line 407, ../sass/core.scss */
+/* line 415, ../sass/core.scss */
 #userInfo .userpic img {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -399,17 +406,17 @@ p {
   border-radius: 80px;
   width: 62px;
 }
-/* line 413, ../sass/core.scss */
+/* line 421, ../sass/core.scss */
 #userInfo h2 {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-size: 12px;
 }
-/* line 419, ../sass/core.scss */
+/* line 427, ../sass/core.scss */
 #userInfo .greeting {
   display: block;
 }
-/* line 423, ../sass/core.scss */
+/* line 431, ../sass/core.scss */
 #userInfo .username {
   display: inline-block;
   font-weight: bold;
@@ -421,21 +428,21 @@ p {
   background: url(/static/images/icon_downArrow_brown.png) right center no-repeat;
 }
 
-/* line 435, ../sass/core.scss */
+/* line 443, ../sass/core.scss */
 #userInfo.hover {
   color: #fff;
   background: #ef5922;
 }
-/* line 439, ../sass/core.scss */
+/* line 447, ../sass/core.scss */
 #userInfo.hover .userpic {
   border-color: #ef5922;
 }
-/* line 443, ../sass/core.scss */
+/* line 451, ../sass/core.scss */
 #userInfo.hover .username {
   background: url(/static/images/icon_downArrow_white.png) right center no-repeat;
 }
 
-/* line 448, ../sass/core.scss */
+/* line 456, ../sass/core.scss */
 #secondaryUserNav {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -447,7 +454,7 @@ p {
   position: relative;
   z-index: 2;
 }
-/* line 456, ../sass/core.scss */
+/* line 464, ../sass/core.scss */
 #secondaryUserNav a {
   display: block;
   font-weight: 700;
@@ -457,18 +464,18 @@ p {
   text-transform: uppercase;
   color: #736c5b;
 }
-/* line 466, ../sass/core.scss */
+/* line 474, ../sass/core.scss */
 #secondaryUserNav a:hover {
   background: #b3cbc6;
   color: #1c6770;
 }
 
-/* line 472, ../sass/core.scss */
+/* line 480, ../sass/core.scss */
 #primaryUserNav {
   padding-top: 31px;
   margin-right: 10px;
 }
-/* line 476, ../sass/core.scss */
+/* line 484, ../sass/core.scss */
 #primaryUserNav a {
   float: left;
   display: block;
@@ -487,7 +494,7 @@ p {
   position: relative;
   text-align: center;
 }
-/* line 489, ../sass/core.scss */
+/* line 497, ../sass/core.scss */
 #primaryUserNav a .tooltip {
   display: none;
   position: absolute;
@@ -503,59 +510,59 @@ p {
   border-radius: 20px;
   white-space: nowrap;
 }
-/* line 501, ../sass/core.scss */
+/* line 509, ../sass/core.scss */
 #primaryUserNav a:hover {
   background-color: #736c5b;
 }
-/* line 504, ../sass/core.scss */
+/* line 512, ../sass/core.scss */
 #primaryUserNav a:hover .tooltip {
   display: block;
 }
 
-/* line 510, ../sass/core.scss */
+/* line 518, ../sass/core.scss */
 #invitationsLink {
   background-image: url(/static/images/icon_envelope.png);
 }
 
-/* line 511, ../sass/core.scss */
+/* line 519, ../sass/core.scss */
 #historyLink {
   background-image: url(/static/images/icon_clock.png);
 }
 
-/* line 512, ../sass/core.scss */
+/* line 520, ../sass/core.scss */
 #invitationsLink:hover {
   background-image: url(/static/images/icon_envelope_white.png);
 }
 
-/* line 513, ../sass/core.scss */
+/* line 521, ../sass/core.scss */
 #historyLink:hover {
   background-image: url(/static/images/icon_clock_white.png);
 }
 
-/* line 515, ../sass/core.scss */
+/* line 523, ../sass/core.scss */
 #primaryUserNav {
   float: left;
 }
 
 /**********************************************************/
 /* FOOTER */
-/* line 523, ../sass/core.scss */
+/* line 531, ../sass/core.scss */
 #mainFooter {
   text-align: center;
   clear: both;
   color: #666;
   padding: 60px 0px 30px 0px;
 }
-/* line 529, ../sass/core.scss */
+/* line 537, ../sass/core.scss */
 #mainFooter p {
   font-style: italic;
 }
 
-/* line 534, ../sass/core.scss */
+/* line 542, ../sass/core.scss */
 #footerNav {
   margin: 15px 0px;
 }
-/* line 537, ../sass/core.scss */
+/* line 545, ../sass/core.scss */
 #footerNav a {
   display: inline-block;
   padding: 0px 10px;
@@ -564,13 +571,13 @@ p {
 
 /**********************************************************/
 /* FORMS */
-/* line 548, ../sass/core.scss */
+/* line 556, ../sass/core.scss */
 .formItem {
   margin-bottom: 15px;
   position: relative;
 }
 
-/* line 553, ../sass/core.scss */
+/* line 561, ../sass/core.scss */
 .formItemError {
   position: absolute;
   right: -193px;
@@ -581,17 +588,17 @@ p {
   padding: 5px 10px;
 }
 
-/* line 563, ../sass/core.scss */
+/* line 571, ../sass/core.scss */
 .buttons {
   text-align: center;
 }
 
-/* line 567, ../sass/core.scss */
+/* line 575, ../sass/core.scss */
 label {
   display: block;
 }
 
-/* line 571, ../sass/core.scss */
+/* line 579, ../sass/core.scss */
 input, textarea {
   border: 1px solid #aaa;
   padding: 5px;
@@ -601,21 +608,21 @@ input, textarea {
   color: #4e565c;
 }
 
-/* line 580, ../sass/core.scss */
+/* line 588, ../sass/core.scss */
 textarea {
   height: 100px;
   resize: vertical;
   padding: 10px;
 }
 
-/* line 586, ../sass/core.scss */
+/* line 594, ../sass/core.scss */
 form .note, .formNote {
   margin-top: 5px;
   font-style: italic;
   font-size: 12px;
 }
 
-/* line 592, ../sass/core.scss */
+/* line 600, ../sass/core.scss */
 input[type=submit] {
   display: inline-block;
   border: 0px;
@@ -639,7 +646,7 @@ input[type=submit] {
   box-shadow: 0 4px 0 #78902f;
   width: auto;
 }
-/* line 122, ../sass/core.scss */
+/* line 130, ../sass/core.scss */
 input[type=submit]:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -710,7 +717,7 @@ input[type=submit]:hover {
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
 }
-/* line 122, ../sass/core.scss */
+/* line 130, ../sass/core.scss */
 #joinUs a:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -718,7 +725,7 @@ input[type=submit]:hover {
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
 }
-/* line 136, ../sass/core.scss */
+/* line 144, ../sass/core.scss */
 #joinUs a:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -726,13 +733,13 @@ input[type=submit]:hover {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 141, ../sass/core.scss */
+/* line 149, ../sass/core.scss */
 #joinUs a .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 147, ../sass/core.scss */
+/* line 155, ../sass/core.scss */
 #joinUs a em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -1420,7 +1427,7 @@ body#meals .cookedBy li {
   color: #736c5b;
   text-transform: uppercase;
 }
-/* line 172, ../sass/core.scss */
+/* line 180, ../sass/core.scss */
 body#meals .cookedBy li img {
   width: 100%;
   -moz-border-radius: 100px;
@@ -1772,7 +1779,7 @@ body#meals .cookedBy .moreLink {
   display: inline-block;
   margin: 0px 10px 15px 0px;
 }
-/* line 172, ../sass/core.scss */
+/* line 180, ../sass/core.scss */
 #cookedBy li img {
   width: 100%;
   -moz-border-radius: 100px;
@@ -1831,7 +1838,7 @@ body#meals .cookedBy .moreLink {
   margin: 20px;
   margin-bottom: 30px;
 }
-/* line 122, ../sass/core.scss */
+/* line 130, ../sass/core.scss */
 #inviteButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -1839,7 +1846,7 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
 }
-/* line 136, ../sass/core.scss */
+/* line 144, ../sass/core.scss */
 #inviteButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -1847,13 +1854,13 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 141, ../sass/core.scss */
+/* line 149, ../sass/core.scss */
 #inviteButton .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 147, ../sass/core.scss */
+/* line 155, ../sass/core.scss */
 #inviteButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -1928,46 +1935,36 @@ body#meals .cookedBy .moreLink {
 
 /**********************************************************/
 /* INVITE PAGE */
-/* line 5, ../sass/_invitations.scss */
-#invite #pageTitle {
-  font-family: "proxima-nova", sans-serif;
-  text-transform: uppercase;
-  font-weight: 900;
-  text-align: center;
-  font-size: 38px;
-}
-/* line 11, ../sass/_invitations.scss */
+/* line 6, ../sass/_invitations.scss */
 #invite #pageIntro {
-  text-align: center;
   margin-bottom: 50px;
-  font-size: 16px;
 }
 
-/* line 18, ../sass/_invitations.scss */
+/* line 11, ../sass/_invitations.scss */
 #inviteFormContainer {
   margin-left: 680px;
 }
 
-/* line 22, ../sass/_invitations.scss */
+/* line 15, ../sass/_invitations.scss */
 #invitationPreviewContainer {
   float: left;
   width: 620px;
   padding: 20px 15px 10px 15px;
   background: url(/static/images/email/bg.png);
 }
-/* line 28, ../sass/_invitations.scss */
+/* line 21, ../sass/_invitations.scss */
 #invitationPreviewContainer p {
   margin: 15px 0px;
 }
 
-/* line 33, ../sass/_invitations.scss */
+/* line 26, ../sass/_invitations.scss */
 #inviteForm {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 36, ../sass/_invitations.scss */
+/* line 29, ../sass/_invitations.scss */
 #inviteForm h2 {
   font-weight: 700;
   text-transform: uppercase;
@@ -1975,27 +1972,27 @@ body#meals .cookedBy .moreLink {
   font-size: 16px;
   margin-bottom: 10px;
 }
-/* line 44, ../sass/_invitations.scss */
+/* line 37, ../sass/_invitations.scss */
 #inviteForm input, #inviteForm textarea {
   border: 0px;
 }
-/* line 48, ../sass/_invitations.scss */
+/* line 41, ../sass/_invitations.scss */
 #inviteForm p {
   font-size: 18px;
   margin: 30px 0px;
 }
-/* line 53, ../sass/_invitations.scss */
+/* line 46, ../sass/_invitations.scss */
 #inviteForm .formItem {
   margin-bottom: 15px;
 }
-/* line 57, ../sass/_invitations.scss */
+/* line 50, ../sass/_invitations.scss */
 #inviteForm label {
   font-weight: 700;
   font-size: 13px;
   color: #1c6770;
   margin-bottom: 5px;
 }
-/* line 64, ../sass/_invitations.scss */
+/* line 57, ../sass/_invitations.scss */
 #inviteForm fieldset {
   background: rgba(55, 151, 162, 0.1);
   padding: 15px;
@@ -2007,29 +2004,29 @@ body#meals .cookedBy .moreLink {
   border-radius: 10px;
   margin: 0px 0px 30px 0px;
 }
-/* line 70, ../sass/_invitations.scss */
+/* line 63, ../sass/_invitations.scss */
 #inviteForm fieldset p {
   margin-top: 0px;
 }
-/* line 74, ../sass/_invitations.scss */
+/* line 67, ../sass/_invitations.scss */
 #inviteForm fieldset .formNote {
   font-size: 13px;
   line-height: 1.4em;
   margin-bottom: 0px;
 }
-/* line 82, ../sass/_invitations.scss */
+/* line 75, ../sass/_invitations.scss */
 #inviteForm #chosenRecipe p {
   margin-bottom: 15px;
 }
-/* line 86, ../sass/_invitations.scss */
+/* line 79, ../sass/_invitations.scss */
 #inviteForm #chosenRecipe .button {
   margin-bottom: 10px;
 }
-/* line 91, ../sass/_invitations.scss */
+/* line 84, ../sass/_invitations.scss */
 #inviteForm #recipeTitle {
   font-weight: 700;
 }
-/* line 95, ../sass/_invitations.scss */
+/* line 88, ../sass/_invitations.scss */
 #inviteForm #sendInvitationButton {
   display: inline-block;
   border: 0px;
@@ -2065,7 +2062,7 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
 }
-/* line 122, ../sass/core.scss */
+/* line 130, ../sass/core.scss */
 #inviteForm #sendInvitationButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -2073,7 +2070,7 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
 }
-/* line 136, ../sass/core.scss */
+/* line 144, ../sass/core.scss */
 #inviteForm #sendInvitationButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -2081,13 +2078,13 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 141, ../sass/core.scss */
+/* line 149, ../sass/core.scss */
 #inviteForm #sendInvitationButton .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 147, ../sass/core.scss */
+/* line 155, ../sass/core.scss */
 #inviteForm #sendInvitationButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -2098,7 +2095,7 @@ body#meals .cookedBy .moreLink {
 
 /**********************************************************/
 /* DATE PICKER PLUGIN */
-/* line 104, ../sass/_invitations.scss */
+/* line 97, ../sass/_invitations.scss */
 #datePicker {
   width: 300px;
   margin-top: 10px;
@@ -2106,7 +2103,7 @@ body#meals .cookedBy .moreLink {
   padding: 10px;
   position: relative;
 }
-/* line 111, ../sass/_invitations.scss */
+/* line 104, ../sass/_invitations.scss */
 #datePicker h2 {
   text-align: center;
   font-size: 14px;
@@ -2118,25 +2115,25 @@ body#meals .cookedBy .moreLink {
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 119, ../sass/_invitations.scss */
+/* line 112, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev {
   position: absolute;
   left: 10px;
   top: 10px;
 }
-/* line 125, ../sass/_invitations.scss */
+/* line 118, ../sass/_invitations.scss */
 #datePicker .dp-nav-next {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-/* line 131, ../sass/_invitations.scss */
+/* line 124, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev .disabled {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 135, ../sass/_invitations.scss */
+/* line 128, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev-year, #datePicker .dp-nav-next-year, #datePicker .dp-nav-prev-month, #datePicker .dp-nav-next-month {
   display: inline-block;
   background: #3797a2;
@@ -2150,24 +2147,24 @@ body#meals .cookedBy .moreLink {
   color: #fff;
   font-weight: bold;
 }
-/* line 144, ../sass/_invitations.scss */
+/* line 137, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev-year:hover, #datePicker .dp-nav-next-year:hover, #datePicker .dp-nav-prev-month:hover, #datePicker .dp-nav-next-month:hover {
   background: #1c6770;
 }
-/* line 148, ../sass/_invitations.scss */
+/* line 141, ../sass/_invitations.scss */
 #datePicker .dp-nav-next-year {
   float: right;
 }
-/* line 152, ../sass/_invitations.scss */
+/* line 145, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev-year, #datePicker .dp-nav-prev-month {
   margin-right: 5px;
 }
-/* line 156, ../sass/_invitations.scss */
+/* line 149, ../sass/_invitations.scss */
 #datePicker .dp-nav-next-year, #datePicker .dp-nav-next-month {
   margin-left: 5px;
 }
 
-/* line 161, ../sass/_invitations.scss */
+/* line 154, ../sass/_invitations.scss */
 table.jCalendar {
   width: 300px;
   background: #fff;
@@ -2176,11 +2173,11 @@ table.jCalendar {
   border-spacing: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 169, ../sass/_invitations.scss */
+/* line 162, ../sass/_invitations.scss */
 table.jCalendar th {
   padding: 5px 8px;
 }
-/* line 173, ../sass/_invitations.scss */
+/* line 166, ../sass/_invitations.scss */
 table.jCalendar td {
   color: #4e565c;
   padding: 3px 5px;
@@ -2192,40 +2189,40 @@ table.jCalendar td {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 180, ../sass/_invitations.scss */
+/* line 173, ../sass/_invitations.scss */
 table.jCalendar td.current-month {
   background: #ededec;
   color: #000;
 }
-/* line 185, ../sass/_invitations.scss */
+/* line 178, ../sass/_invitations.scss */
 table.jCalendar td.today {
   font-weight: bold;
 }
-/* line 190, ../sass/_invitations.scss */
+/* line 183, ../sass/_invitations.scss */
 table.jCalendar td.selected,
 table.jCalendar td.selected.dp-hover {
   background: #ef5922;
   color: #fff;
 }
-/* line 195, ../sass/_invitations.scss */
+/* line 188, ../sass/_invitations.scss */
 table.jCalendar td.dp-hover, table.jCalendar tr.activeWeekHover td {
   background: #ddd;
   color: #000;
   cursor: pointer;
 }
-/* line 201, ../sass/_invitations.scss */
+/* line 194, ../sass/_invitations.scss */
 table.jCalendar tr.selectedWeek td {
   background: #f66;
   color: #fff;
 }
-/* line 206, ../sass/_invitations.scss */
+/* line 199, ../sass/_invitations.scss */
 table.jCalendar td.disabled {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   cursor: default;
 }
-/* line 211, ../sass/_invitations.scss */
+/* line 204, ../sass/_invitations.scss */
 table.jCalendar td.disabled.dp-hover {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
@@ -2233,12 +2230,12 @@ table.jCalendar td.disabled.dp-hover {
   background: #ededec;
   color: #000;
 }
-/* line 217, ../sass/_invitations.scss */
+/* line 210, ../sass/_invitations.scss */
 table.jCalendar td.disabled.other-month.dp-hover {
   background: #ededec;
   color: #4e565c;
 }
-/* line 224, ../sass/_invitations.scss */
+/* line 217, ../sass/_invitations.scss */
 table.jCalendar td.unselectable,
 table.jCalendar td.unselectable:hover,
 table.jCalendar td.unselectable.dp-hover {
@@ -2250,7 +2247,7 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* RSVP PAGE */
-/* line 234, ../sass/_invitations.scss */
+/* line 227, ../sass/_invitations.scss */
 #reply h1#title {
   margin: 15px;
   font-size: 44px;
@@ -2258,13 +2255,13 @@ table.jCalendar td.unselectable.dp-hover {
   text-align: center;
 }
 
-/* line 239, ../sass/_invitations.scss */
+/* line 232, ../sass/_invitations.scss */
 #invitationInfoContainer {
   padding: 20px;
   background: #ededec;
 }
 
-/* line 244, ../sass/_invitations.scss */
+/* line 237, ../sass/_invitations.scss */
 #invitationInfo {
   padding: 30px;
   border: 1px solid #aaa;
@@ -2272,12 +2269,12 @@ table.jCalendar td.unselectable.dp-hover {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 250, ../sass/_invitations.scss */
+/* line 243, ../sass/_invitations.scss */
 #invitationInfo h1 {
   font-size: 28px;
   margin-bottom: 30px;
 }
-/* line 255, ../sass/_invitations.scss */
+/* line 248, ../sass/_invitations.scss */
 #invitationInfo #recipeImage {
   float: left;
   margin-right: 30px;
@@ -2287,11 +2284,11 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
-/* line 262, ../sass/_invitations.scss */
+/* line 255, ../sass/_invitations.scss */
 #invitationInfo #details {
   margin-left: 250px;
 }
-/* line 265, ../sass/_invitations.scss */
+/* line 258, ../sass/_invitations.scss */
 #invitationInfo #details dt {
   font-size: 13px;
   text-transform: uppercase;
@@ -2300,23 +2297,23 @@ table.jCalendar td.unselectable.dp-hover {
   font-family: "proxima-nova", sans-serif;
   padding-top: 15px;
 }
-/* line 270, ../sass/_invitations.scss */
+/* line 263, ../sass/_invitations.scss */
 #invitationInfo #details dd {
   font-size: 22px;
   margin-bottom: 15px;
 }
 
-/* line 277, ../sass/_invitations.scss */
+/* line 270, ../sass/_invitations.scss */
 #replyForm {
   width: 700px;
   margin: 0px auto;
   text-align: center;
 }
-/* line 282, ../sass/_invitations.scss */
+/* line 275, ../sass/_invitations.scss */
 #replyForm .checkbox {
   margin: 0px 0px 15px 0px;
 }
-/* line 286, ../sass/_invitations.scss */
+/* line 279, ../sass/_invitations.scss */
 #replyForm .checkboxLabel {
   text-transform: none;
   font-size: 18px;
@@ -2325,17 +2322,17 @@ table.jCalendar td.unselectable.dp-hover {
   font-style: normal;
   font-family: "jubilat", Georgia, serif;
 }
-/* line 295, ../sass/_invitations.scss */
+/* line 288, ../sass/_invitations.scss */
 #replyForm label {
   display: block;
   margin-bottom: 5px;
   font-size: 14px;
 }
-/* line 301, ../sass/_invitations.scss */
+/* line 294, ../sass/_invitations.scss */
 #replyForm .extraInput {
   margin: 15px 20px;
 }
-/* line 305, ../sass/_invitations.scss */
+/* line 298, ../sass/_invitations.scss */
 #replyForm input[type=text] {
   border: 1px solid #aaa;
   padding: 5px;
@@ -2343,13 +2340,13 @@ table.jCalendar td.unselectable.dp-hover {
   width: 100%;
   font-size: 14px;
 }
-/* line 313, ../sass/_invitations.scss */
+/* line 306, ../sass/_invitations.scss */
 #replyForm textarea {
   width: 100%;
   height: 100px;
   resize: vertical;
 }
-/* line 319, ../sass/_invitations.scss */
+/* line 312, ../sass/_invitations.scss */
 #replyForm button {
   display: inline-block;
   border: 0px;
@@ -2385,7 +2382,7 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
 }
-/* line 122, ../sass/core.scss */
+/* line 130, ../sass/core.scss */
 #replyForm button:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -2393,7 +2390,7 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
 }
-/* line 136, ../sass/core.scss */
+/* line 144, ../sass/core.scss */
 #replyForm button:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -2401,13 +2398,13 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 141, ../sass/core.scss */
+/* line 149, ../sass/core.scss */
 #replyForm button .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 147, ../sass/core.scss */
+/* line 155, ../sass/core.scss */
 #replyForm button em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -2416,11 +2413,11 @@ table.jCalendar td.unselectable.dp-hover {
   letter-spacing: 0.05em;
 }
 
-/* line 324, ../sass/_invitations.scss */
+/* line 317, ../sass/_invitations.scss */
 #replyButtons {
   text-align: center;
 }
-/* line 326, ../sass/_invitations.scss */
+/* line 319, ../sass/_invitations.scss */
 #replyButtons a {
   display: inline-block;
   border: 0px;
@@ -2457,7 +2454,7 @@ table.jCalendar td.unselectable.dp-hover {
   box-shadow: 0 7px 0 #78902f;
   color: #000;
 }
-/* line 122, ../sass/core.scss */
+/* line 130, ../sass/core.scss */
 #replyButtons a:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -2465,7 +2462,7 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
 }
-/* line 136, ../sass/core.scss */
+/* line 144, ../sass/core.scss */
 #replyButtons a:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -2473,13 +2470,13 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 141, ../sass/core.scss */
+/* line 149, ../sass/core.scss */
 #replyButtons a .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 147, ../sass/core.scss */
+/* line 155, ../sass/core.scss */
 #replyButtons a em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -2487,36 +2484,36 @@ table.jCalendar td.unselectable.dp-hover {
   font-weight: 400;
   letter-spacing: 0.05em;
 }
-/* line 331, ../sass/_invitations.scss */
+/* line 324, ../sass/_invitations.scss */
 #replyButtons #answerYes, #replyButtons #answerMaybe {
   background: #DAEDC7;
   color: #3F8000;
 }
-/* line 336, ../sass/_invitations.scss */
+/* line 329, ../sass/_invitations.scss */
 #replyButtons #answerYes:hover, #replyButtons #answerMaybe:hover {
   background: #C9E6AC;
 }
-/* line 340, ../sass/_invitations.scss */
+/* line 333, ../sass/_invitations.scss */
 #replyButtons #answerYes.selected, #replyButtons #answerMaybe.selected {
   background: #7AB342;
   color: #fff;
 }
-/* line 345, ../sass/_invitations.scss */
+/* line 338, ../sass/_invitations.scss */
 #replyButtons #answerNo {
   background: #F7DDCB;
   color: #962D00;
 }
-/* line 350, ../sass/_invitations.scss */
+/* line 343, ../sass/_invitations.scss */
 #replyButtons #answerNo:hover {
   background: #F2D3BD;
 }
-/* line 354, ../sass/_invitations.scss */
+/* line 347, ../sass/_invitations.scss */
 #replyButtons #answerNo.selected {
   background: #EB6931;
   color: #fff;
 }
 
-/* line 360, ../sass/_invitations.scss */
+/* line 353, ../sass/_invitations.scss */
 #replyReasons {
   background: #ededec;
   padding: 30px 30px 20px 30px;
@@ -2526,14 +2523,14 @@ table.jCalendar td.unselectable.dp-hover {
   text-align: left;
 }
 
-/* line 369, ../sass/_invitations.scss */
+/* line 362, ../sass/_invitations.scss */
 #replyMessage {
   background: #ededec;
   padding: 30px;
   text-align: left;
   margin: 30px 0px;
 }
-/* line 375, ../sass/_invitations.scss */
+/* line 368, ../sass/_invitations.scss */
 #replyMessage label {
   font-size: 13px;
   text-transform: uppercase;
@@ -2547,11 +2544,11 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* INVITATIONS LIST */
-/* line 384, ../sass/_invitations.scss */
+/* line 377, ../sass/_invitations.scss */
 .filterTags {
   font-family: "proxima-nova", sans-serif;
 }
-/* line 387, ../sass/_invitations.scss */
+/* line 380, ../sass/_invitations.scss */
 .filterTags a {
   font-weight: bold;
   display: inline-block;
@@ -2568,18 +2565,18 @@ table.jCalendar td.unselectable.dp-hover {
   width: 100px;
   text-align: center;
 }
-/* line 399, ../sass/_invitations.scss */
+/* line 392, ../sass/_invitations.scss */
 .filterTags a.selected {
   color: #fff;
   background: #aaa;
 }
 
-/* line 405, ../sass/_invitations.scss */
+/* line 398, ../sass/_invitations.scss */
 .invitationsTable {
   margin: 30px 0px;
   width: 100%;
 }
-/* line 409, ../sass/_invitations.scss */
+/* line 402, ../sass/_invitations.scss */
 .invitationsTable th {
   font-size: 13px;
   text-transform: uppercase;
@@ -2587,7 +2584,7 @@ table.jCalendar td.unselectable.dp-hover {
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 413, ../sass/_invitations.scss */
+/* line 406, ../sass/_invitations.scss */
 .invitationsTable td, .invitationsTable th {
   border-bottom: 1px solid #aaa;
   padding: 10px;
