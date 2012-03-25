@@ -14,89 +14,14 @@
 
 <h1 id="pageTitle">Invite a Friend to Cook</h1>
 
-<p class="intro">Fill in the blanks to the right to craft a personalized Hotpot invitation for your friend.</p>
-
-<div id="inviteFormContainer">
-
-	<form id="inviteForm" method="POST" action="/sendInvitation">
-		
-		<div class="formItem">
-			<label>Selected Meal</label>
-			<div id="chosenRecipe">
-				<div id="recipeThumbnail"><img src="/static/images/food/{{ meal.slug }}.jpg" /></div>
-				<div id="recipeTitle">{{ meal.title }}</div>
-				<a href="">Change Meal</a>
-			</div>
-			<input type="hidden" value="{{ meal.slug }}" name="meal" />
-		</div>
-		
-		<div class="formItem">
-			<label>Friend's Email Address</label>
-			<input type="text" name="inviteeEmail" />
-			<p class="note">Just one email address, please. We're working on cooking with multiple friends soon!</p>
-		</div>
-		
-		<div class="formItem">
-			<label>Friend's Name</label>
-			<input type="text" name="inviteeName" id="friendNameInput" />
-		</div>
-		
-		<div class="formItem">
-			<label>Short Personalized Message</label>
-			<textarea id="messageBodyInput">Let&rsquo;s cook together on Hotpot!</textarea>
-			<input type="hidden" id="messageBodyInputHTML" name="message">
-		</div>
-		
-		<div class="formItem">
-			<label>Date</label>
-			<div id="datePicker"></div>
-			<input type="hidden" id="selectedDateInput" />
-		</div>
-		
-		<div class="formItem">
-			<label>Time</label>
-			<select id="timePickerHour">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option selected>7</option>
-				<option>8</option>
-				<option>9</option>
-				<option>10</option>
-				<option>11</option>
-				<option>12</option>
-			</select>
-			:
-			<select id="timePickerMinute">
-				<option>00</option>
-				<option>15</option>
-				<option>30</option>
-				<option>45</option>
-			</select>
-			<select id="timePickerAMPM">
-				<option>AM</option>
-				<option selected>PM</option>
-			</select>
-		</div>
-		
-		<input type="hidden" id="datetimeInput" name="datetime" value="0" />
-		<input type="hidden" id="readableDate" name="readableDate" />
-		<input type="hidden" id="readableTime" name="readableTime" />
-				
-		<button type="submit" id="sendInvitationButton">Send Invitation</button>
-	</form>
-	
-</div><!-- #inviteFormContainer -->
+<p id="pageIntro">Fill in the blanks to the right to craft a personalized Hotpot invitation for your friend.</p>
 
 
+
+<!-- YUP I just pasted the HTML email tables in here. Sorry, gods of HTML, plaese don't smite me. -->
 
 <div id="invitationPreviewContainer">
 	<div id="invitationPreview">
-	
-		<!-- YUP I just pasted the HTML email tables in here. Sorry, gods of HTML, plaese don't smite me. -->
 
 		<table cellpadding="0" cellspacing="0" width="620" bgcolor="#ffffff" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_Main.png);">
 		
@@ -153,18 +78,18 @@
 				<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
 					<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						<tr>
-							<td valign="top" width="37%" align="center" style="font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
-								<img style="display:block;" width="42" height="12" src="http://test.letsgohotpot.com/static/images/email/text_date.png" alt="Date">
+							<td valign="top" width="37%" style="text-align:center; font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
+								<img width="42" height="12" src="http://test.letsgohotpot.com/static/images/email/text_date.png" alt="Date">
 								<p id="selectedDate">[DATE FROM DATEPICKER]</p>
 							</td>
 							<td width="5%"></td>
-							<td valign="top" width="16%" align="center" style="font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
-								<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_time.png" width="41" height="12" alt="Time">
+							<td valign="top" width="16%" align="center" style="vertical-align:top; text-align:center; font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
+								<img src="http://test.letsgohotpot.com/static/images/email/text_time.png" width="41" height="12" alt="Time">
 								<p id="selectedTime"><span id="selectedHour">0</span>:<span id="selectedMinute"></span> <span id="selectedAMPM"></span></p>
 							</td>
 							<td width="5%"></td>
-							<td valign="top" width="37%" align="center" style="font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
-								<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_place.png" width="52" height="13" alt="Place">
+							<td valign="top" width="37%" align="center" style="text-align:center; font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
+								<img src="http://test.letsgohotpot.com/static/images/email/text_place.png" width="52" height="13" alt="Place">
 								<p>Our kitchens,<br>via Hotpot</p>
 							</td>
 						</tr>
@@ -240,6 +165,104 @@
 		
 	</div><!-- #invitePreview -->
 </div><!-- #invitePreviewContainer -->
+
+
+
+
+
+
+<div id="inviteFormContainer">
+
+	<form id="inviteForm" method="POST" action="/sendInvitation">
+
+		<h2>1. Friend Details</h2>
+		
+		<fieldset>
+		
+			<div class="formItem">
+				<label>Friend's Name:</label>
+				<input type="text" name="inviteeName" id="friendNameInput" />
+			</div>
+			
+			<div class="formItem">
+				<label>Friend's Email Address:</label>
+				<input type="text" name="inviteeEmail" />
+			</div>
+			
+			<p class="formNote">Just one friend, please. We're working on cooking with multiple friends soon!</p>
+		</fieldset>
+		
+		<h2>2. Personal Message</h2>
+		
+		<fieldset>
+			<div class="formItem">
+				<label>Write a few sentences:</label>
+				<textarea id="messageBodyInput">Let&rsquo;s cook together on Hotpot!</textarea>
+				<input type="hidden" id="messageBodyInputHTML" name="message">
+			</div>
+		</fieldset>
+		
+		<h2>3. What to Cook</h2>
+		
+		<fieldset>
+			<div id="chosenRecipe">
+				<p>You've chosen <span id="recipeTitle">{{ meal.title }}</span></p>
+				<a href="" class="button">Change Meal</a>
+				<input type="hidden" value="{{ meal.slug }}" name="meal" />
+			</div>
+		</fieldset>
+		
+		<h2>4. Date &amp; Time</h2>
+		
+		<fieldset>
+			<div class="formItem">
+				<label>Select a date:</label>
+				<div id="datePicker"></div>
+				<input type="hidden" id="selectedDateInput" />
+			</div>
+			
+			<div class="formItem">
+				<label>Select a time:</label>
+				<select id="timePickerHour">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option selected>7</option>
+					<option>8</option>
+					<option>9</option>
+					<option>10</option>
+					<option>11</option>
+					<option>12</option>
+				</select>
+				:
+				<select id="timePickerMinute">
+					<option>00</option>
+					<option>15</option>
+					<option>30</option>
+					<option>45</option>
+				</select>
+				<select id="timePickerAMPM">
+					<option>AM</option>
+					<option selected>PM</option>
+				</select>
+			</div>
+		</fieldset>
+		
+		<input type="hidden" id="datetimeInput" name="datetime" value="0" />
+		<input type="hidden" id="readableDate" name="readableDate" />
+		<input type="hidden" id="readableTime" name="readableTime" />
+		
+		<p>Check the preview on the left and make sure everything looks good! Upon hitting send, we'll send your friend the invitation and he/she will be able to R.S.V.P.</p>
+		<div class="buttons">	
+			<button type="submit" id="sendInvitationButton">Send Invitation</button>
+		</div>
+	</form>
+	
+</div><!-- #inviteFormContainer -->
+
 
 
 {% endblock main %}

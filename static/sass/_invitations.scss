@@ -1,59 +1,100 @@
 /**********************************************************/
 /* INVITE PAGE */
 
-#inviteForm {
+#invite {
+	#pageTitle {
+		@include bigFatLetters;
+		text-align: center;
+		font-size:38px;
+	}
+	
+	#pageIntro {
+		text-align: center;
+		margin-bottom: 50px;
+		font-size:16px;
+	}
+}
+
+#inviteFormContainer {
+	margin-left:680px;
+}
+
+#invitationPreviewContainer {
 	float:left;
-	width:40%;
+	width:620px;
+	padding:20px 15px 10px 15px;
+	background:url(/static/images/email/bg.png);
+	
+	p {
+		margin:15px 0px;
+	}
+}
+
+#inviteForm {
 	@include box-sizing(border-box);
-	padding-right:30px;
+	
+	h2 {
+		font-weight: 700;
+		text-transform: uppercase;
+		color:$darkBlue;
+		font-size:16px;
+		margin-bottom:10px;
+	}
+	
+	input, textarea {
+		border:0px;
+	}
+	
+	p {
+		font-size:18px;
+		margin:30px 0px;
+	}
 
 	.formItem {
-		margin-bottom:30px;
+		margin-bottom:15px;
+	}
+	
+	label {
+		font-weight: 700;
+		font-size:13px;
+		color:$darkBlue;
+		margin-bottom:5px;
+	}
+	
+	fieldset {
+		background:rgba($mediumBlue, .10);
+		padding:15px;
+		@include border-radius(10px);
+		margin:0px 0px 30px 0px;
+		
+		p {
+			margin-top:0px;
+		}
+	
+		.formNote {
+			font-size:13px;
+			line-height:1.4em;
+			margin-bottom:0px;
+		}
 	}
 	
 	#chosenRecipe {
-		height:70px;
-		padding:15px;
-		background:$subtleColor;
-	}
-	
-	#recipeThumbnail {
-		width:70px;
-		height:70px;
-		overflow: hidden;
-		position: relative;
-		float:left;
-		margin-right:15px;
-	
-		img {
-			height:100%;
-			position: absolute;
-			left:-20%;
+		p {
+			margin-bottom:15px;
+		}
+		
+		.button {
+			margin-bottom:10px;
 		}
 	}
 	
 	#recipeTitle {
-		font-size:18px;
-		margin-bottom:5px;
+		font-weight:700;
 	}
 	
 	#sendInvitationButton {
 		@include bigButton;
-		margin:0px;
-		font-family: $serif;
-		border:0;
-		width:auto;
-		font-weight: normal;
 	}
-}
-
-#invitationPreviewContainer {
-	margin-left:40%;
-	
-	h3 {
-		@include labelType;
-	}
-	
 }
 
 
@@ -63,7 +104,7 @@
 #datePicker {
 	width:300px;
 	margin-top:10px;
-    background: $subtleColor;
+    background: rgba($mediumBlue, .1);
     padding:10px;
     position: relative;
     
@@ -93,16 +134,15 @@
 	
 	.dp-nav-prev-year, .dp-nav-next-year, .dp-nav-prev-month, .dp-nav-next-month {
 		display: inline-block;
-		background:#fff;
+		background:$mediumBlue;
 		padding: 3px 5px;
-		border:1px solid #aaa;
 		@include border-radius(5px);
-		color:#000;
+		color:#fff;
 		font-weight: bold;
 	}
 	
 	.dp-nav-prev-year:hover, .dp-nav-next-year:hover, .dp-nav-prev-month:hover, .dp-nav-next-month:hover {
-		background:$subtleColor;
+		background:$darkBlue;
 	}
 	
 	.dp-nav-next-year {
@@ -120,7 +160,6 @@
 
 table.jCalendar {
 	width:300px;
-	border: 1px solid #aaa;
 	background:#fff;
     border-collapse: separate;
     border-spacing: 0px;
@@ -132,7 +171,7 @@ table.jCalendar {
     }
     
     td {
-		color: #aaa;
+		color: $textColor;
 		padding: 3px 5px;
 		text-align: center;
 		@include border-radius(5px);
@@ -149,7 +188,7 @@ table.jCalendar {
 	
 	td.selected,
 	td.selected.dp-hover {
-		background: #f66;
+		background: $orange;
 		color: #fff;
 	}
 	
@@ -177,7 +216,7 @@ table.jCalendar {
 	
 	td.disabled.other-month.dp-hover {
 		background:$subtleColor;
-		color:#aaa;
+		color:$textColor;
 	}
 	
 	td.unselectable,

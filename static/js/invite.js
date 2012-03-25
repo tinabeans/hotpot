@@ -161,7 +161,7 @@ $(document).ready(function(){
 		}
 		
 		// display selected date on invite preview
-		$('#selectedDate').html(weekday + ", " + month + " " + selectedDate.getDate() + ", " + selectedDate.getFullYear())
+		$('#selectedDate').html(weekday + ",<br>" + month + " " + selectedDate.getDate() + ", " + selectedDate.getFullYear())
 		
 	});
 	

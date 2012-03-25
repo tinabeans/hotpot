@@ -60,6 +60,7 @@ $serif: "jubilat", Georgia, serif;
 	font-size:35px;
 	font-weight:700;
 	color:$darkBlue;
+	margin-bottom:10px;
 }
 
 @mixin smallHeading {
@@ -97,6 +98,10 @@ $serif: "jubilat", Georgia, serif;
 
 .kern {
 	letter-spacing: -0.09em;
+}
+
+.intro, #intro {
+	font-size:1.4em;
 }
 
 /**********************************************************/
@@ -239,10 +244,6 @@ p {
 #mainContainer {
 	padding:40px 0px;
 	margin:0px auto;
-}
-
-.intro {
-	font-size:1.4em;
 }
 
 .message {
@@ -565,7 +566,6 @@ $headerHeight: 96px;
 
 label {
 	display:block;
-	@include labelType;
 }
 
 input, textarea {
@@ -574,14 +574,16 @@ input, textarea {
 	margin:0px;
 	width:100%;
 	font-size:14px;
+	color:$textColor;
 }
 
 textarea {
 	height:100px;
 	resize: vertical;
+	padding:10px;
 }
 
-form .note {
+form .note, .formNote {
 	margin-top:5px;
 	font-style:italic;
 	font-size:12px;
