@@ -130,6 +130,37 @@ $serif: "jubilat", Georgia, serif;
 	&:hover {
 		background: darken($green, 4);
 		@include box-shadow(0 4px 0 darken($green, 20));
+		color:#fff;
+	}
+	
+	&:active {
+		@include box-shadow(0 2px 0 darken($green, 15));
+		position: relative;
+		top:2px;
+	}
+}
+
+@mixin smallButton {
+	color:#fff;
+	display:inline-block;
+	@include bigFatLetters;
+	@include border-radius(6px);
+	border:0px;
+	background: $mediumBlue;
+	font-size:12px;
+	padding:7px 9px 5px 9px;
+	@include box-shadow(0 4px 0 darken($mediumBlue, 15));
+	
+	&:hover {
+		background: darken($mediumBlue, 4);
+		@include box-shadow(0 4px 0 darken($mediumBlue, 20));
+		color:#fff;
+	}
+	
+	&:active {
+		@include box-shadow(0 2px 0 darken($mediumBlue, 15));
+		position: relative;
+		top:2px;
 	}
 }
 
@@ -169,18 +200,34 @@ $serif: "jubilat", Georgia, serif;
 	border:3px solid #fff;
 }
 
-@mixin smallUserpic {
+@mixin brownBg {
+	background: #f8f6f0 url(/static/images/textureSoft.png);
+}
+
+@mixin userpic {
 	@include border-radius(100px);
-	border:3px solid $lightBrown;
 	@include box-shadow(0px 3px 5px rgba(0,0,0,.15));
+	border:3px solid #fff;
 	background: $lightBrown;
-	width:32px;
-	height:32px;
 	
 	img {
 		width:100%;
+		height:100%;
 		@include border-radius(100px);
 	}
+}
+
+@mixin smallUserpic {
+	@include userpic;
+	width:32px;
+	height:32px;
+}
+
+@mixin largeUserpic {
+	@include userpic;
+	width:80px;
+	height:80px;
+	border-width:5px;
 }
 
 @mixin labelType {
@@ -265,14 +312,18 @@ p {
 	@include button;
 }
 
-.button:hover {
-	color:#fff;
+.smallButton {
+	@include smallButton;
 }
 
-.button:active {
-	@include box-shadow(0 2px 0 darken($green, 15));
-	position: relative;
-	top:2px;
+.bigButton {
+	@include bigButton;
+}
+
+.divider {
+	background: $lightBrown url(/static/images/textureStrong.png);
+	height:5px;
+	margin: 15px 0px;
 }
 
 /**********************************************************/

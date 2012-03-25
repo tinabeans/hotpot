@@ -2,120 +2,128 @@
 
 {% block title %}Home{% endblock %}
 
-{% block customJS %}{% endblock %}
+{% block customJS %}
+<script src="/static/js/invitations.js" type="text/javascript"></script>
+{% endblock %}
 
-{% block bodyId %}{% endblock %}
+{% block bodyId %}invitations{% endblock %}
 {% block bodyClass %}{% endblock %}
 
 {% block main %}
 
-<h1 id="pageTitle">Invitations</h1>
+<h1 id="pageTitle">Invitations Sent</h1>
+<!--p id="pageIntro">View invitations sent by you</p-->
 
-<nav class="filterTags">
-	Filter by Status:
-	<a href="" class="selected">View All</a>
-	<a href="">Awaiting Reply</a>
-	<a href="">It's on!</a>	
-	<a href="">Change needed</a>
-	<a href="">Declined</a>
-</nav>
+<aside id="invitationsSidebar">
 
-<h2>Sent</h2>
+	<nav id="invitationTypeNav">
+		<a id="sentLink" class="selected" href="">Sent ({{ invitationsSent|length() }})</a>
+		<a id="receivedLink" href="">Received ({{ invitationsReceived|length() }})</a>
+	</nav>
+	
+	<div class="divider"></div>
+	
+	<div id="upcoming">
+		<p>You have <strong>3</strong> upcoming plans to cook.</p>
+		
+		<a href="/upcoming" class="button">View Upcoming</a>
+	</div>
 
-<table class="invitationsTable">
-	<thead>
-		<tr>
-			<th>With</th>
-			<th>Cooking</th>
-			<th>Date</th>
-			<th>Time</th>
-			<th>Status</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-	{% for invitation in invitations %}
-		<tr>
-			<td>
+</aside>
+
+<div id="invitationsList">
+
+	<!-- 
+	<nav id="invitationFilters">
+		Filter by Status:
+		<a href="" class="selected">View All</a>
+		<a href="">Awaiting Reply</a>
+		<a href="">It's on!</a>	
+		<a href="">Change needed</a>
+		<a href="">Declined</a>
+	</nav> -->
+	
+	<div id="sent" class="invitationsList">
+	{% for invitation in invitationsSent %}
+		<div class="invitation">
+			
+			<div class="statusBar">
+				{{ invitation.status }}
+				
+				<span class="sendDate">Sent {{ invitation.sendDate }}</span>
+			</div>
+			
+			<div class="mealImage">
+				<img src="/static/images/food/{{ invitation.meal.slug }}.jpg" />
+			</div>
+			
+			<div class="partnerUserpic">
 				{% for invitee in invitation.inviteesInfo %}
-					{% if invitee.userpic %}
-						<img src="/static/uploads/userpics/{{ invitee.userpic }}" width="50" height="50" title="{{ invitee.name }}" />
-					{% else %}
+					<img src="/static/uploads/userpics/{{ invitee.userpic }}" />
+				{% endfor %}
+			</div>
+			
+			<div class="invitationInfo">
+				<h2>{{ invitation.meal.title }}</h2>
+				<div class="with">
+					<span class="label">With</span>
+					{% for invitee in invitation.inviteesInfo %}
 						{{ invitee.name }}
-					{% endif %}
-				{% endfor %}
-			</td>
-			<td>{{ invitation.meal }}</td>
-			<td>{{ invitation.readableDate }}</td>
-			<td>{{ invitation.readableTime|safe }}</td>
-			<td>
-			{% if invitation.replies %}
-				{% for reply in invitation.replies %}
-					{% if reply.mainReply == "yes" %}
-						It's on!
-					{% elif reply.mainReply == "maybe" %}
-						Change needed
-					{% elif reply.mainReply == "no" %}
-						Declined
-					{% endif %}
-				{% endfor %}
-			{% else %}
-				Awaiting reply
-			{% endif %}
-			</td>
-			<td><a href="/invitations/{{ invitation._id }}">view</a></td>
-		</tr>
+					{% endfor %}
+				</div>
+				<div class="datetime">
+					<span class="label date">Date</span>
+					{{ invitation.readableDate }}
+					
+					<span class="label time">Time</span>
+					{{ invitation.readableTime|safe }}
+				</div>
+				
+				<a href="/invitations/{{ invitation._id }}" class="smallButton">View Invitation</a>
+			</div>
+			
+		</div>
 	{% endfor %}
-	</tbody>
-</table>
-
-<h2>Received</h2>
-
-<table class="invitationsTable">
-	<thead>
-		<tr>
-			<th>With</th>
-			<th>Cooking</th>
-			<th>Date</th>
-			<th>Time</th>
-			<th>Status</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-	{% for invitation in invitations %}
-		<tr>
-			<td>
-				{% for invitee in invitation.inviteesInfo %}
-					{% if invitee.userpic %}
-						<img src="/static/uploads/userpics/{{ invitee.userpic }}" width="50" height="50" title="{{ invitee.name }}" />
-					{% else %}
-						{{ invitee.name }}
-					{% endif %}
-				{% endfor %}
-			</td>
-			<td>{{ invitation.meal }}</td>
-			<td>{{ invitation.readableDate }}</td>
-			<td>{{ invitation.readableTime|safe }}</td>
-			<td>
-			{% if invitation.replies %}
-				{% for reply in invitation.replies %}
-					{% if reply.mainReply == "yes" %}
-						It's on!
-					{% elif reply.mainReply == "maybe" %}
-						Change needed
-					{% elif reply.mainReply == "no" %}
-						Declined
-					{% endif %}
-				{% endfor %}
-			{% else %}
-				Awaiting reply
-			{% endif %}
-			</td>
-			<td><a href="/invitations/{{ invitation._id }}">view</a></td>
-		</tr>
+	</div><!-- #sent -->
+	
+	<div id="received" style="display:none;" class="invitationsList">
+	{% for invitation in invitationsReceived %}
+		<div class="invitation">
+		
+			<div class="statusBar">
+				{{ invitation.status }}
+				
+				<span class="sendDate">Sent {{ invitation.sendDate }}</span>
+			</div>
+			
+			<div class="mealImage">
+				<img src="/static/images/food/{{ invitation.meal.slug }}.jpg" />
+			</div>
+			
+			<div class="partnerUserpic">
+				<img src="/static/uploads/userpics/{{ invitation.host.userpic }}" />
+			</div>
+			
+			<div class="invitationInfo">
+				<h2>{{ invitation.meal.title }}</h2>
+				<div class="with">
+					<span class="label">With</span>
+					{{ invitation.host.name }}
+				</div>
+				<div class="datetime">
+					<span class="label date">Date</span>
+					{{ invitation.readableDate }}
+					
+					<span class="label time">Time</span>
+					{{ invitation.readableTime|safe }}
+				</div>
+				
+				<a href="/invitations/{{ invitation._id }}" class="smallButton">View Invitation</a>
+			</div>
+			
+		</div>
 	{% endfor %}
-	</tbody>
-</table>
+	</div><!-- #received -->
 
+</div><!-- #invitationsList -->
 {% endblock main %}

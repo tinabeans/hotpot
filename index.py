@@ -363,7 +363,7 @@ def sendInvitation():
 	
 	# construct new invitation document based on incoming form data and info above
 	newInvitation = {
-		"status" : "new",
+		"status" : "Awaiting reply",
 		"hostId" : flask.session['userId'],
 		"inviteeIds" : [inviteeId], # this is an array!
 		"datetime" : int(data['datetime']),
@@ -567,10 +567,23 @@ def sendReply():
 			# appending reply
 			invitation['replies'].append(replyInfo)
 	
-	# if the reply was a yes, set a flag in the database to indicate that the cooking's happening!
-	# [insert Carrie voice: "It's HAPPENING!"
+	# set status of invitation
+	# TODO: this logic needs to be fixed major big time for multiple invitees,
+	# because if a second person replies, it will just overwrite the status of the first person
+	# Right now it works fine for just one invitee...
 	if replyInfo['mainReply'] == "yes":
+		invitation['status'] = "Hooray! It's on!"
+		
+		# also, set a flag in the database to indicate that the cooking's happening.
+		# [insert Carrie voice: "It's HAPPENING!"
 		invitation['itsHappening'] = True
+		
+	elif replyInfo['mainReply'] == 'maybe':
+		invitation['status'] = 'Change needed'
+		
+	elif replyInfo['mainReply'] == 'no':
+		invitation['status'] = 'Declined'
+	
 	
 	# store updated invitation entry back in database
 	db.invitations.save(invitation)
@@ -636,9 +649,10 @@ def sendReply():
 @app.route('/invitations')
 def showInvitations():
 	
+	# grab all the sent invitations
 	invitationsSent = list(db.invitations.find({'hostId' : flask.session['userId']}))
 	
-	# fetch and include full invitee info for template
+	# add invitee and meal info for sent invitations
 	for invitation in invitationsSent:
 		
 		invitation['inviteesInfo'] = []
@@ -654,20 +668,59 @@ def showInvitations():
 				
 				if 'userpic' in invitee:
 					inviteeInfo['userpic'] = invitee['userpic']
+				else:
+					inviteeInfo['userpic'] = 'placeholder.png'
 			
 			else:
 				inviteeInfo = {
 					'name' : inviteeId,
-					'_id' : None
+					'_id' : None,
+					'userpic' : 'placeholder.png'
 				}
 			
 			invitation['inviteesInfo'].append(inviteeInfo)
 		
 		invitation.pop('inviteeIds', None)
+		
+		# get meal info
+		meal = db.meals.find_one({'slug' : invitation['meal']})
+		mealInfo = {
+			'title' : meal['title'],
+			'slug' : meal['slug']
+		}
+		
+		invitation['meal'] = mealInfo
+		
+	# grab all the received invitations too
+	invitationsReceived = list(db.invitations.find({'inviteeIds' : flask.session['userId']}))
 	
-	# TODO: invitationsReceived = list(db.invitations.find({'hostId' : flask.session['userId']}))
+	# include host info for received invitations
+	for invitation in invitationsReceived:
 	
-	return render_template('invitations.html', invitations=invitationsSent)
+		host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
+	
+		hostInfo = {
+			'name' : host['name'],
+			'_id' : str(host['_id'])
+		}
+		
+		if 'userpic' in host:
+			hostInfo['userpic'] = host['userpic']
+		else:
+			hostInfo['userpic'] = 'placeholder.png'
+			
+		invitation['host'] = hostInfo
+		
+		# get meal info
+		meal = db.meals.find_one({'slug' : invitation['meal']})
+		mealInfo = {
+			'title' : meal['title'],
+			'slug' : meal['slug']
+		}
+		
+		invitation['meal'] = mealInfo
+	
+	return render_template('invitations.html', invitationsSent=invitationsSent, invitationsReceived=invitationsReceived)
 
 
 @app.route('/invitations/<id>')

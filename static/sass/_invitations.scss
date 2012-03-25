@@ -374,37 +374,137 @@ table.jCalendar {
 /**********************************************************/
 /* INVITATIONS LIST */
 
-.filterTags {
-	font-family:$sans;
-	
-	a {
-		font-weight: bold;
-		display:inline-block;
-		background:$subtleColor;
-		@include border-radius(5px);
-		padding:5px 8px;
-		color:#666;
-		margin-left:10px;
-		width:100px;
-		text-align: center;
+#invitations {
+	#pageTitle {
+		margin-bottom:40px;
 	}
 	
-	a.selected {
-		color:#fff;
-		background:#aaa;
+	#pageIntro {
+		margin-bottom:40px;
 	}
 }
 
-.invitationsTable {
-	margin: 30px 0px;
-	width:100%;
-
-	th {
-		@include smallHeading;
+#invitationsSidebar {
+	float:left;
+	width: 170px;
+	
+	nav {
+		a {
+			display: block;
+			margin:0px 0px 15px 0px;
+			font-weight: 700;
+			color: $textColor;
+			font-size: 16px;
+			
+			&:hover {
+				color:$orange;
+			}
+		
+			&.selected {
+				color:$green;
+			}
+		}
 	}
+}
 
-	td, th {
-		border-bottom:1px solid #aaa;
-		padding:10px;
+#invitationsList {
+	margin-left:200px;
+	
+	.invitationType {
+		margin-bottom:30px;
+		font-weight: 700;
+		font-size:14px;	
 	}
+	
+	.invitation {
+		@include brownBg;
+		padding:50px 30px 30px 30px;
+		position: relative;
+		@include clearfix;
+		margin-bottom:30px;
+		
+		.statusBar {
+			@include box-sizing(border-box);
+			position: absolute;
+			width:100%;
+			background: #e2decd url(/static/images/textureStrong.png);
+			left:0;
+			top:0;
+			padding: 5px 10px;
+			@include bigFatLetters;
+			color:$darkBrown;
+		}
+		
+		.sendDate {
+			position: absolute;
+			right:8;
+			top:5;
+			font-weight: 600;
+			text-transform: none;
+			font-size:12px;
+		}
+		
+		.partnerUserpic {
+			@include largeUserpic;
+			position: absolute;
+			left:15px;
+			top:35px;
+		}
+	
+		.mealImage {
+			width:120px;
+			height:120px;
+			overflow:hidden;
+			border:5px solid #fff;
+			float:left;
+			
+			img {
+				height:100%;
+				
+			}
+		}
+		
+		.invitationInfo {
+			margin-left:150px;
+			font-size:16px;
+			
+			h2 {
+				font-size:20px;
+				font-weight: 700;
+			}
+			
+			.label {
+				@include bigFatLetters;
+				font-size:12px;
+				margin-right: 10px;
+				
+				&.date {
+					color:$orange;
+				}
+				
+				&.time {
+					margin-left:20px;
+					color:$green;
+				}
+			}
+			
+			.datetime {
+				margin:10px 0px 20px 0px;
+			}
+			
+			.with {
+				margin:10px 0px;
+			
+				.label {
+					color:$darkBlue;
+				}
+			}
+			
+			
+		}
+	}
+}
+
+#invitationFilters {
+	margin-bottom:30px;
 }
