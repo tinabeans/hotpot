@@ -45,7 +45,17 @@
 			{% else %}
 				
 				<nav id="primaryUserNav">
-					<a href="/invitations" id="invitationsLink"><span class="tooltip">Invitations</span></a>
+					{% if alertNumber != 0 %}
+						<a href="/invitations?filter=received" id="invitationsLink">
+							<span class="tooltip">Invitations</span>
+							<span class="alertNumber">{{ alertNumber }}</span>
+						</a>
+					{% else %}
+						<a href="/invitations" id="invitationsLink">
+							<span class="tooltip">Invitations</span>
+						</a>
+					{% endif %}
+					
 					<a href="/history" id="historyLink"><span class="tooltip">Cooking History</span></a>
 				</nav><!-- #primaryUserNav -->
 				

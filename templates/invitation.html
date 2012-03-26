@@ -14,14 +14,19 @@
 <aside id="invitationsSidebar">
 
 	<nav id="invitationTypeNav">
-		<a id="sentLink" {% if invitationType == 'sent' %}class="selected"{% endif %} href="/invitations">Sent ({{ numberOfInvitationsSent }})</a>
-		<a id="receivedLink" {% if invitationType == 'received' %}class="selected"{% endif %} href="/invitations?filter=received">Received ({{ numberOfInvitationsReceived }})</a>
+		<a id="sentLink" {% if invitationType == 'sent' %}class="selected"{% endif %} href="/invitations">
+			{{ numberOfInvitationsSent }} Sent
+		</a>
+		<a id="receivedLink" {% if invitationType == 'received' %}class="selected"{% endif %} href="/invitations?filter=received">
+			{{ numberOfInvitationsReceived }} Received
+			{% if alertNumber != 0 %}<span class="alertText">New</span>{% endif %}
+		</a>
 	</nav>
 	
 	<div class="divider"></div>
 	
 	<div id="upcoming">
-		<p>You have <strong>3</strong> upcoming plans to cook.</p>
+		<p>Ooooo, you have <strong>x</strong> confirmed Hotpots coming up</p>
 		
 		<a href="/upcoming" class="button">View Upcoming</a>
 	</div>
@@ -124,7 +129,13 @@
 						{% endif %}
 					</div>
 				{% else %}
-					<h3>Waiting for reply from <strong>{{ invitee.name }}</strong>.</h3>
+					{% if invitee._id == user._id %}
+						<h3>Waiting for your reply.</h3>
+						<a href="/reply/{{ invitation._id }}?invitee={{ user._id }}" class="smallButton">Send Reply</a>
+					{% else %}
+						<h3>Waiting for reply from <strong>{{ invitee.name }}</strong>.</h3>
+					{% endif %}
+					
 				{% endif %}
 				</div>
 			</div>

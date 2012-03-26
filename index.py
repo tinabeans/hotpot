@@ -57,7 +57,18 @@ def render_template(template, **kwargs):
 			'_id' : str(user['_id'])
 		}
 		
-		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, **kwargs)
+		# if user's logged in, also grab the # of new invites they have, if any
+		newInvites = list(db.invitations.find({'inviteeIds' : flask.session['userId']}))
+		
+		alertNumber = len(newInvites)
+		
+		for invite in newInvites:
+			if 'replies' in invite:
+				for reply in invite['replies']:
+					if reply['userId'] == flask.session['userId']:
+						alertNumber = alertNumber-1
+		
+		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, **kwargs)
 	else:
 		isLoggedIn = False
 		print 'helloooooooooooooooooooo'

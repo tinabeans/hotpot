@@ -432,6 +432,16 @@ table.jCalendar {
 				color:$green;
 			}
 		}
+		
+		.alertText {
+			@include alertNumber;
+			width:auto;
+			padding:3px 5px 3px 5px;
+			font-size:11px;
+			position: relative;
+			top:-1px;
+			margin-left:5px;
+		}
 	}
 }
 
@@ -442,6 +452,22 @@ table.jCalendar {
 		margin-bottom:30px;
 		font-weight: 700;
 		font-size:14px;	
+	}
+	
+	.message {
+		text-align: left;
+		font-size:18px;
+		color:$textColor;
+		margin: 0px 0px 30px 0px;
+	}
+	
+	.alertNumber {
+		@include alertNumber;
+		width:20px;
+		height:20px;
+		padding:0px;
+		font-size:14px;
+		line-height: 21px;
 	}
 	
 	.invitation, #singleInvitation {

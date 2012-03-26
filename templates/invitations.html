@@ -17,14 +17,19 @@
 <aside id="invitationsSidebar">
 
 	<nav id="invitationTypeNav">
-		<a id="sentLink" class="selected" href="">Sent ({{ invitationsSent|length() }})</a>
-		<a id="receivedLink" href="">Received ({{ invitationsReceived|length() }})</a>
+		<a id="sentLink" class="selected" href="">
+			{{ invitationsSent|length() }} Sent
+		</a>
+		<a id="receivedLink" href="">
+			{{ invitationsReceived|length() }} Received
+			{% if alertNumber != 0 %}<span class="alertText">New</span>{% endif %}
+		</a>
 	</nav>
 	
 	<div class="divider"></div>
 	
 	<div id="upcoming">
-		<p>You have <strong>3</strong> upcoming plans to cook.</p>
+		<p>Ooooo, you have <strong>x</strong> confirmed Hotpots coming up</p>
 		
 		<a href="/upcoming" class="button">View Upcoming</a>
 	</div>
@@ -44,6 +49,10 @@
 	</nav> -->
 	
 	<div id="sent" class="invitationsList">
+	{% if invitationsSent|length() == 0 %}
+		<p class="message">No invitations. We recommend sending some as soon as possible! :)</p>
+	{% endif %}
+	
 	{% for invitation in invitationsSent %}
 		<div class="invitation">
 			
@@ -97,12 +106,21 @@
 	</div><!-- #sent -->
 	
 	<div id="received" style="display:none;" class="invitationsList">
+	{% if alertNumber != 0 %}
+		<p class="message">You have <span class="alertNumber">{{ alertNumber }}</span> invitation{% if alertNumber > 1 %}s{% endif %} below awaiting your reply.</p>
+	{% endif %}
+	
+	
+	{% if invitationsReceived|length() == 0 %}
+		<p class="message">No invitations received... yet!</p>
+	{% endif %}
+	
 	{% for invitation in invitationsReceived %}
 		<div class="invitation">
 		
 			<div class="statusBar {{ invitation.status }}">
 				{% if invitation.status == "new" %}
-					Awaiting Reply
+					Awaiting Your Reply
 				{% elif invitation.status == "changeNeeded" %}
 					Change Needed
 				{% elif invitation.status == "declined" %}
