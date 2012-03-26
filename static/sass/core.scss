@@ -200,15 +200,30 @@ $serif: "jubilat", Georgia, serif;
 	border:3px solid #fff;
 }
 
-@mixin brownBg {
+@mixin lightBrownBg {
 	background: #f8f6f0 url(/static/images/textureSoft.png);
 }
 
+@mixin lightGreenBg {
+	background:rgba($green, .15);
+}
+
+@mixin lightOrangeBg {
+	background:rgba($orange, .08);
+}
+
+@mixin lightBlueBg {
+	background:rgba($mediumBlue, .10);
+}
+
 @mixin userpic {
+	display:inline-block;
 	@include border-radius(100px);
 	@include box-shadow(0px 3px 5px rgba(0,0,0,.15));
 	border:3px solid #fff;
 	background: $lightBrown;
+	width: 48px;
+	height:48px;
 	
 	img {
 		width:100%;
@@ -276,6 +291,10 @@ a:hover {
 	color:$orange;
 }
 
+strong {
+	font-weight:700;
+}
+
 
 p {
 	line-height:1.4em;
@@ -324,6 +343,20 @@ p {
 	background: $lightBrown url(/static/images/textureStrong.png);
 	height:5px;
 	margin: 15px 0px;
+}
+
+.returnLink {
+	margin-bottom:15px;
+
+	a {
+		font-size:14px;
+		font-weight: 700;
+		color:$textColor;
+		
+		&:hover {
+			color:$orange;
+		}
+	}
 }
 
 /**********************************************************/

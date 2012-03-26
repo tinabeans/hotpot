@@ -4,7 +4,7 @@
 
 {% block customJS %}{% endblock %}
 
-{% block bodyId %}{% endblock %}
+{% block bodyId %}invitationSent{% endblock %}
 {% block bodyClass %}{% endblock %}
 
 {% block main %}
@@ -12,7 +12,13 @@
 
 <h1 id="pageTitle">Invite a Friend to Cook</h1>
 
-<p class="intro">Your invitation has been sent!</p>
+<p class="intro">Woohoo! Your invitation has been successfully sent to <strong>{{ invitation.inviteeName }}</strong>.</p>
+
+<p class="message">We'll send you a notification when your friend replies. You can <a href="/invitations/{{ invitation._id }}">view a record of the invitation here.</a></p>
+
+<div id="invitationPreviewContainer">
+	{{ invitationMessage|safe }}
+</div>
 
 
 {% endblock main %}

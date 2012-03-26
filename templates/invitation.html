@@ -1,70 +1,137 @@
 {% extends "base/common.html" %}
 
-{% block title %}Invitation{% endblock %}
+{% block title %}Invitation Sent{% endblock %}
 
 {% block customJS %}{% endblock %}
 
-{% block bodyId %}{% endblock %}
+{% block bodyId %}invitations{% endblock %}
 {% block bodyClass %}{% endblock %}
 
 {% block main %}
 
-<div id="invitationInfoContainer">
-	<div id="invitationInfo">
-		<img id="recipeImage" src="/static/images/food/{{ invitation.meal }}.jpg" width="300" />
-		<h1>{{ invitation.meal }}</h1>
+<h1 id="pageTitle">Invitations {{ invitationType }}</h1>
+
+<aside id="invitationsSidebar">
+
+	<nav id="invitationTypeNav">
+		<a id="sentLink" {% if invitationType == 'sent' %}class="selected"{% endif %} href="/invitations">Sent ({{ numberOfInvitationsSent }})</a>
+		<a id="receivedLink" {% if invitationType == 'received' %}class="selected"{% endif %} href="/invitations?filter=received">Received ({{ numberOfInvitationsReceived }})</a>
+	</nav>
+	
+	<div class="divider"></div>
+	
+	<div id="upcoming">
+		<p>You have <strong>3</strong> upcoming plans to cook.</p>
 		
-		<dl id="details">
-			<dt>Date</dt>
-			<dd id="selectedDate">{{ invitation.readableDate|safe }}</dd>
-			
-			<dt>Time</dt>
-			<dd id="selectedTime">{{ invitation.readableTime|safe }}</dd>
-			
-			<dt>With</dt>
-			<dd id="invitees">
-				{% for invitee in invitation.inviteesInfo %}
-					{% if invitee.userpic %}
-						<img src="/static/uploads/userpics/{{ invitee.userpic }}" width="50" height="50" title="{{ invitee.name }}" />
-					{% else %}
-						{{ invitee.name }}
-					{% endif %}
-				{% endfor %}
-			</dd>
-		</dl>
+		<a href="/upcoming" class="button">View Upcoming</a>
 	</div>
-</div>
 
-{% if invitation.replies %}
+</aside>
 
-	{% if invitation.from == user.email %}
-		<h2>{{ invitation.friendName }} replied:</h2>
-	{% else %}
-		<h2>You replied:</h2>
-	{% endif %}
-	
-	{% if invitation.reply.mainReply == "yes" %}
-		<p>Yes! the cooking party is on!</p>
-		
-	{% elif invitation.reply.mainReply == 'maybe' %}
-		<p>Yes, but...</p>
-	
-		{% if invitation.reply.altTimes != "" %}
-			<p>the time doesn't work; suggested alternate times: {{ invitation.reply.altTimes }}</p>
-		{% endif %}
+<div id="invitationContainer">
+	<div class="returnLink"><a href="/invitations{% if invitationType == 'received' %}?filter=received{% endif %}">&laquo; Back to All Invitations {% if invitationType == 'received' %}Received{% else %}Sent{% endif %}</a></div>
+
+	<div id="singleInvitation">
+				
+		<div class="statusBar {{ invitation.status }}">
+			{% if invitation.status == "new" %}
+				Awaiting Reply
+			{% elif invitation.status == "changeNeeded" %}
+				Change Needed
+			{% elif invitation.status == "declined" %}
+				Declined
+			{% elif invitation.status == "accepted" %}
+				Hooray! It's happening!
+			{% else %}
+				unknown status
+			{% endif %}
 			
-		{% if invitation.reply.altMeals != "" %}
-			<p>the selected meal doesn't work; other food ideas: {{ invitation.reply.altMeals }}</p>
-		{% endif %}
-	
-	{% elif invitation.reply.mainReply == "no" %}
-		<p>no. awww.</p>
-	{% endif %}	
+			<span class="sendDate">Sent {{ invitation.sendDate }}</span>
+		</div>
 		
-	{% if invitation.reply.message != "" %}
-		<p>Message: {{ invitation.reply.message }}</p>
-	{% endif %}
-
-{% endif %}
+		<div class="mealImage">
+			<img src="/static/images/food/{{ invitation.meal.slug }}.jpg" />
+		</div>
+		
+		<div class="invitationInfo">
+			<h2>{{ invitation.meal.title }}</h2>
+			<div class="datetime1">
+				<span class="label date">Date</span>
+				{{ invitation.readableDate }}
+			</div>
+			<div class="datetime2">
+				<span class="label time">Time</span>
+				{{ invitation.readableTime|safe }}
+			</div>
+			
+			<div class="with">
+				<span class="label">With</span>
+				<span class="userpic"><img src="/static/uploads/userpics/{{ invitation.host.userpic }}" title="{{ invitation.host.name }}" /></span>
+				{% for invitee in invitation.inviteesInfo %}
+					<span class="userpic"><img src="/static/uploads/userpics/{{ invitee.userpic }}" title="{{ invitee.name }}" /></span>
+				{% endfor %}
+			</div>
+		</div>
+	</div><!-- #singleInvitation -->
+	
+	<div id="invitationActivity">
+		
+		<div class="activityItem">
+			<div class="userpic"><img src="/static/uploads/userpics/{{ invitation.host.userpic }}" title="{{ invitation.host.name }}" /></div>
+			<div class="activityBody">
+				{% if invitation.host._id == user._id %}
+					<h3>Sent by <strong>you</strong> {{ invitation.sendDate }}</h3>
+				{% else %}
+					<h3>Sent by <strong>{{ invitation.host.name }}</strong> {{ invitation.sendDate }}</h3>
+				{% endif %}
+			</div>
+		</div>
+		
+		<div class="activityItem">
+			{% for invitee in invitation.inviteesInfo %}
+			<div class="userpic"><img src="/static/uploads/userpics/{{ invitee.userpic }}" title="{{ invitee.name }}" /></div>
+			<div class="activityBody">
+				{% if invitee.reply %}
+					{% if invitee._id == user._id %}
+						<h3><strong>You</strong> replied:</h3>
+					{% else %}
+						<h3><strong>{{ invitee.name }}</strong> replied:</h3>
+					{% endif %}
+					<div class="reply {{invitee.reply.mainReply}}">
+						<p class="mainReply">
+						{% if invitee.reply.mainReply == "yes" %}
+								Yes!
+						{% elif invitee.reply.mainReply == "maybe" %}
+							Yes, but...
+						{% elif invitee.reply.mainReply == "no" %}
+							No, sorry!
+						{% endif %}
+						</p>
+						
+						{% if invitee.reply.mainReply == "maybe" %}
+							
+							{% if invitee.reply.altTime %}
+								<p>The date/time doesn't work for me. Alternate times: {{ invitee.reply.altTimes }}</p>
+							{% endif %}
+								
+							{% if invitee.reply.altMeals %}
+								<p>I don't want to make {{ invitation.meal.title }}. Other suggestions: {{ invitee.reply.altMeals }}</p>
+							{% endif %}
+						{% endif %}
+						
+						{% if invitee.reply.message %}
+							<p>{{ invitee.reply.message }}</p>
+						{% endif %}
+					</div>
+				{% else %}
+					<h3>Waiting for reply from <strong>{{ invitee.name }}</strong>.</h3>
+				{% endif %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		
+	</div><!-- #invitationActivity -->
+</div><!-- #invitationContainer -->
 
 {% endblock main %}

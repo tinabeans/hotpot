@@ -221,6 +221,34 @@ table.jCalendar {
 }
 
 /**********************************************************/
+/* INVITATION SENT PAGE */
+
+#invitationSent {
+	#pageTitle {
+		margin-bottom:30px;
+	}
+	
+	.intro {
+		text-align: center;
+		font-size:22px;
+		margin-bottom:5px;
+	}
+
+	p.message {
+		text-align: center;
+		font-size:16px;
+		color:$textColor;
+	}
+	
+	#invitationPreviewContainer {
+		margin:40px auto;
+		float:none;
+	}
+}
+
+
+
+/**********************************************************/
 /* RSVP PAGE */
 
 #reply {
@@ -372,7 +400,7 @@ table.jCalendar {
 }
 
 /**********************************************************/
-/* INVITATIONS LIST */
+/* VIEWING INVITATIONS */
 
 #invitations {
 	#pageTitle {
@@ -407,7 +435,7 @@ table.jCalendar {
 	}
 }
 
-#invitationsList {
+#invitationContainer {
 	margin-left:200px;
 	
 	.invitationType {
@@ -416,8 +444,8 @@ table.jCalendar {
 		font-size:14px;	
 	}
 	
-	.invitation {
-		@include brownBg;
+	.invitation, #singleInvitation {
+		@include lightBrownBg;
 		padding:50px 30px 30px 30px;
 		position: relative;
 		@include clearfix;
@@ -433,6 +461,21 @@ table.jCalendar {
 			padding: 5px 10px;
 			@include bigFatLetters;
 			color:$darkBrown;
+			
+			&.accepted {
+				background: $green url(/static/images/textureStrong.png);
+				color: #fff;
+			}
+			
+			&.declined {
+				background: rgba($mediumBlue, .15);
+				color:$darkBlue;
+			}
+			
+			&.changeNeeded {
+				background: rgba($orange, .15);
+				color:$orange;
+			}
 		}
 		
 		.sendDate {
@@ -442,13 +485,6 @@ table.jCalendar {
 			font-weight: 600;
 			text-transform: none;
 			font-size:12px;
-		}
-		
-		.partnerUserpic {
-			@include largeUserpic;
-			position: absolute;
-			left:15px;
-			top:35px;
 		}
 	
 		.mealImage {
@@ -460,7 +496,6 @@ table.jCalendar {
 			
 			img {
 				height:100%;
-				
 			}
 		}
 		
@@ -499,11 +534,112 @@ table.jCalendar {
 					color:$darkBlue;
 				}
 			}
+		}
+	}
+	
+	.invitation {
+		.partnerUserpic {
+			@include largeUserpic;
+			position: absolute;
+			left:15px;
+			top:35px;
+		}
+		
+		.invitationInfo {
+			.datetime {
+				margin:10px 0px 20px 0px;
+			}
+		}
+	}
+	
+	#singleInvitation {
+		.mealImage {
+			width:230px;
+			height:230px;
 			
+			img {
+				position: relative;
+				left:-18%;
+			}
+		}
+		
+		.invitationInfo {
+			margin-left:270px;
+			font-size:20px;
 			
+			h2 {
+				font-size:30px;
+				margin-bottom:20px;
+			}
+			
+			.label {
+				font-size:14px;
+				display:block;
+				margin-bottom:8px;
+			}
+			
+			.datetime1 {
+				float:left;
+				margin-right:30px;
+			}
+			
+			.with {
+				margin-top:20px;
+			}
+		}
+		
+		.userpic {
+			@include largeUserpic;
+			margin-right:10px;
 		}
 	}
 }
+
+#invitationActivity {
+	.activityItem {
+		min-height:56px;
+		margin:30px 0px;
+		
+		h3 {
+			padding:15px 0px;
+			font-size:18px;
+		}
+	}
+	
+	.activityBody {
+		margin-left:75px;
+	}
+	
+	.userpic {
+		@include userpic;
+		float:left;
+	}
+	
+	.reply {
+		padding:10px 15px 1px 15px;
+		@include lightBrownBg;
+		font-size:18px;
+	
+		.mainReply {
+			font-size:30px;
+			font-weight: 700;
+			margin-bottom:5px;
+		}
+		
+		&.yes {
+			@include lightGreenBg;
+		}
+		
+		&.maybe {
+			@include lightOrangeBg;
+		}
+		
+		&.no {
+			@include lightBlueBg;
+		}
+	}
+}
+
 
 #invitationFilters {
 	margin-bottom:30px;

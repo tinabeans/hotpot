@@ -385,7 +385,7 @@ $mealSidebarRightOffset:33px;
 #mealCredits {
 	margin-top:30px;
 	padding:20px;
-	background:rgba($green, .15);
+	@include lightGreenBg;
 	font-size: 13px;
 	@include clearfix;
 	

@@ -35,7 +35,7 @@
 	<tr>
 		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
 		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
-			<h1 style="text-align:center; color:#1c6770; font-size:35px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;">{{ meal.title }}</h1>
+			<h1 style="text-align:center; font-weight:bold; color:#1c6770; font-size:35px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;">{{ meal.title }}</h1>
 			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:14px;">{{ meal.shortDescription }} <a href="/meals/{{ meal.slug }}" style="color:#f07239; text-decoration:none;">More about this meal »</a></p>
 			
 		</td>
@@ -55,18 +55,18 @@
 		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				<tr>
-					<td valign="top" width="37%" align="center" style="font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
-						<img style="display:block;" width="42" height="12" src="http://test.letsgohotpot.com/static/images/email/text_date.png" alt="Date">
+					<td valign="top" width="37%" align="center" style="font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; text-align:center; vertical-align:top;">
+						<img width="42" height="12" src="http://test.letsgohotpot.com/static/images/email/text_date.png" alt="Date">
 						<p>{{ invitation.readableDate|safe }}</p>
 					</td>
 					<td width="5%"></td>
-					<td valign="top" width="16%" align="center" style="font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
-						<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_time.png" width="41" height="12" alt="Time">
+					<td valign="top" width="16%" align="center" style="font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; text-align:center; vertical-align:top;">
+						<img src="http://test.letsgohotpot.com/static/images/email/text_time.png" width="41" height="12" alt="Time">
 						<p>{{ invitation.readableTime|safe }}</p>
 					</td>
 					<td width="5%"></td>
-					<td valign="top" width="37%" align="center" style="font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
-						<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_place.png" width="52" height="13" alt="Place">
+					<td valign="top" width="37%" align="center" style="font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; text-align:center; vertical-align:top;">
+						<img src="http://test.letsgohotpot.com/static/images/email/text_place.png" width="52" height="13" alt="Place">
 						<p>Our kitchens,<br>via Hotpot</p>
 					</td>
 				</tr>
@@ -88,8 +88,8 @@
 	
 	<tr>
 		<td width="50" height="69" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
-		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)" align="center">
-			<a href="/reply/{{ invitation._id }}?invitee={{ invitation.inviteeId }}" id="RSVPButton"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/button_RSVP.png" width="244" height="69" alt="Click to R.S.V.P."></a>
+		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png); text-align:center;" align="center">
+			<a href="http://localhost:7777/reply/{{ invitation._id }}?invitee={{ invitation.inviteeId }}" id="RSVPButton"><img src="http://test.letsgohotpot.com/static/images/email/button_RSVP.png" width="244" height="69" alt="Click to R.S.V.P."></a>
 		</td>
 		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
 	</tr>
@@ -135,7 +135,7 @@
 						</table>
 					</td>
 					<td width="30" align="center"></td>
-					<td width="217" valign="top">
+					<td width="217" valign="top" style="text-align:left">
 					
 						<!-- HOW THIS WORKS -->
 					

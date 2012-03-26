@@ -31,7 +31,7 @@
 
 </aside>
 
-<div id="invitationsList">
+<div id="invitationContainer">
 
 	<!-- 
 	<nav id="invitationFilters">
@@ -47,8 +47,18 @@
 	{% for invitation in invitationsSent %}
 		<div class="invitation">
 			
-			<div class="statusBar">
-				{{ invitation.status }}
+			<div class="statusBar {{ invitation.status }}">
+				{% if invitation.status == "new" %}
+					Awaiting Reply
+				{% elif invitation.status == "changeNeeded" %}
+					Change Needed
+				{% elif invitation.status == "declined" %}
+					Declined
+				{% elif invitation.status == "accepted" %}
+					Hooray! It's happening!
+				{% else %}
+					unknown status
+				{% endif %}
 				
 				<span class="sendDate">Sent {{ invitation.sendDate }}</span>
 			</div>
@@ -90,8 +100,18 @@
 	{% for invitation in invitationsReceived %}
 		<div class="invitation">
 		
-			<div class="statusBar">
-				{{ invitation.status }}
+			<div class="statusBar {{ invitation.status }}">
+				{% if invitation.status == "new" %}
+					Awaiting Reply
+				{% elif invitation.status == "changeNeeded" %}
+					Change Needed
+				{% elif invitation.status == "declined" %}
+					Declined
+				{% elif invitation.status == "accepted" %}
+					Hooray! It's happening!
+				{% else %}
+					unknown status
+				{% endif %}
 				
 				<span class="sendDate">Sent {{ invitation.sendDate }}</span>
 			</div>

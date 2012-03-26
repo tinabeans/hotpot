@@ -12,4 +12,13 @@ $(document).ready(function(){
 		
 		$('#pageTitle').html('Invitations ' + invitationType);
 	});
+	
+	// check whether to show sent or received invitations
+	var urlParams = getURLParams();
+	console.log(urlParams);
+	
+	if (urlParams.filter == "received"){
+		$('#receivedLink').click();
+	}
+	// we do nothing if filter=sent because sent is showned by default
 });
