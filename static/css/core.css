@@ -1,4 +1,4 @@
-/* line 17, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,47 +20,46 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 115, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+/* line 114, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
@@ -68,7 +67,7 @@ footer, header, hgroup, menu, nav, section {
 /* COLORS */
 /**********************************************************/
 /* TYPOGRAPHY */
-/* line 74, ../sass/core.scss */
+/* line 80, ../sass/core.scss */
 #sectionTitle {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -78,15 +77,15 @@ footer, header, hgroup, menu, nav, section {
   color: #3797a2;
   font-size: 60px;
 }
-/* line 81, ../sass/core.scss */
+/* line 87, ../sass/core.scss */
 #sectionTitle .color2 {
   color: #2a747c;
 }
-/* line 85, ../sass/core.scss */
+/* line 91, ../sass/core.scss */
 #sectionTitle .color3 {
   color: #31858f;
 }
-/* line 89, ../sass/core.scss */
+/* line 95, ../sass/core.scss */
 #sectionTitle .small em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -96,7 +95,7 @@ footer, header, hgroup, menu, nav, section {
   font-size: 28px;
 }
 
-/* line 95, ../sass/core.scss */
+/* line 101, ../sass/core.scss */
 #pageTitle {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -104,20 +103,21 @@ footer, header, hgroup, menu, nav, section {
   text-align: center;
   font-size: 38px;
   color: #1c6770;
+  margin-bottom: 10px;
 }
 
-/* line 102, ../sass/core.scss */
+/* line 109, ../sass/core.scss */
 #pageIntro {
   text-align: center;
   font-size: 16px;
 }
 
-/* line 107, ../sass/core.scss */
+/* line 114, ../sass/core.scss */
 .kern {
   letter-spacing: -0.09em;
 }
 
-/* line 111, ../sass/core.scss */
+/* line 118, ../sass/core.scss */
 .intro, #intro {
   font-size: 1.4em;
 }
@@ -127,17 +127,17 @@ footer, header, hgroup, menu, nav, section {
 /* BUTTON-Y GOODNESS */
 /* BORDER STYLES */
 /* BACKGROUND COLORS */
-/* USER AVATARS */
+/* IMAGES */
 /* MISC */
 /* OLD STUFF!? */
 /**********************************************************/
 /* TAG REDEFINITIONS */
-/* line 299, ../sass/core.scss */
+/* line 321, ../sass/core.scss */
 html {
   height: 100%;
 }
 
-/* line 303, ../sass/core.scss */
+/* line 325, ../sass/core.scss */
 body {
   margin: 0px;
   padding: 0px;
@@ -149,23 +149,23 @@ body {
   background: white url(/static/images/bodyBg.jpg);
 }
 
-/* line 311, ../sass/core.scss */
+/* line 333, ../sass/core.scss */
 a {
   text-decoration: none;
   color: #ef5922;
 }
 
-/* line 316, ../sass/core.scss */
+/* line 338, ../sass/core.scss */
 a:hover {
   color: #ef5922;
 }
 
-/* line 320, ../sass/core.scss */
+/* line 342, ../sass/core.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 325, ../sass/core.scss */
+/* line 347, ../sass/core.scss */
 p {
   line-height: 1.4em;
   margin: 0px 0px 15px 0px;
@@ -173,20 +173,20 @@ p {
 
 /**********************************************************/
 /* COMMON */
-/* line 340, ../sass/core.scss */
+/* line 362, ../sass/core.scss */
 #homeIntro, #mainContainer, #featuredMeals, #mainFooter {
   width: 88%;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 344, ../sass/core.scss */
+/* line 366, ../sass/core.scss */
 #mainContainer {
   padding: 40px 0px;
   margin: 0px auto;
 }
 
-/* line 349, ../sass/core.scss */
+/* line 371, ../sass/core.scss */
 .message {
   text-align: center;
   margin: 30px;
@@ -194,7 +194,7 @@ p {
   color: red;
 }
 
-/* line 356, ../sass/core.scss */
+/* line 378, ../sass/core.scss */
 .button {
   display: inline-block;
   border: 0px;
@@ -217,7 +217,7 @@ p {
   -o-box-shadow: 0 4px 0 #78902f;
   box-shadow: 0 4px 0 #78902f;
 }
-/* line 132, ../sass/core.scss */
+/* line 139, ../sass/core.scss */
 .button:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -226,7 +226,7 @@ p {
   box-shadow: 0 4px 0 #687d29;
   color: #fff;
 }
-/* line 138, ../sass/core.scss */
+/* line 145, ../sass/core.scss */
 .button:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -236,7 +236,7 @@ p {
   top: 2px;
 }
 
-/* line 360, ../sass/core.scss */
+/* line 382, ../sass/core.scss */
 .smallButton {
   color: #fff;
   display: inline-block;
@@ -258,7 +258,7 @@ p {
   -o-box-shadow: 0 4px 0 #246269;
   box-shadow: 0 4px 0 #246269;
 }
-/* line 156, ../sass/core.scss */
+/* line 163, ../sass/core.scss */
 .smallButton:hover {
   background: #328993;
   -moz-box-shadow: 0 4px 0 #1d5056;
@@ -267,7 +267,7 @@ p {
   box-shadow: 0 4px 0 #1d5056;
   color: #fff;
 }
-/* line 162, ../sass/core.scss */
+/* line 169, ../sass/core.scss */
 .smallButton:active {
   -moz-box-shadow: 0 2px 0 #246269;
   -webkit-box-shadow: 0 2px 0 #246269;
@@ -277,7 +277,7 @@ p {
   top: 2px;
 }
 
-/* line 364, ../sass/core.scss */
+/* line 386, ../sass/core.scss */
 .bigButton {
   display: inline-block;
   border: 0px;
@@ -313,7 +313,7 @@ p {
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
 }
-/* line 132, ../sass/core.scss */
+/* line 139, ../sass/core.scss */
 .bigButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -322,7 +322,7 @@ p {
   box-shadow: 0 4px 0 #687d29;
   color: #fff;
 }
-/* line 138, ../sass/core.scss */
+/* line 145, ../sass/core.scss */
 .bigButton:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -331,7 +331,7 @@ p {
   position: relative;
   top: 2px;
 }
-/* line 177, ../sass/core.scss */
+/* line 184, ../sass/core.scss */
 .bigButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -339,13 +339,13 @@ p {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 182, ../sass/core.scss */
+/* line 189, ../sass/core.scss */
 .bigButton .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 188, ../sass/core.scss */
+/* line 195, ../sass/core.scss */
 .bigButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -354,36 +354,36 @@ p {
   letter-spacing: 0.05em;
 }
 
-/* line 368, ../sass/core.scss */
+/* line 390, ../sass/core.scss */
 .divider {
   background: #e9e7e0 url(/static/images/textureStrong.png);
   height: 5px;
   margin: 15px 0px;
 }
 
-/* line 374, ../sass/core.scss */
+/* line 396, ../sass/core.scss */
 .returnLink {
   margin-bottom: 15px;
 }
-/* line 377, ../sass/core.scss */
+/* line 399, ../sass/core.scss */
 .returnLink a {
   font-size: 14px;
   font-weight: 700;
   color: #4e565c;
 }
-/* line 382, ../sass/core.scss */
+/* line 404, ../sass/core.scss */
 .returnLink a:hover {
   color: #ef5922;
 }
 
 /**********************************************************/
 /* HEADER */
-/* line 394, ../sass/core.scss */
+/* line 416, ../sass/core.scss */
 #mainHeader {
   position: relative;
   height: 96px;
 }
-/* line 398, ../sass/core.scss */
+/* line 420, ../sass/core.scss */
 #mainHeader h1 {
   background: url(/static/images/headerLeftEdge.png) right top no-repeat;
   width: 180px;
@@ -393,13 +393,13 @@ p {
   left: 6%;
   z-index: 1;
 }
-/* line 407, ../sass/core.scss */
+/* line 429, ../sass/core.scss */
 #mainHeader h1 img {
   margin-top: 15px;
   width: 150px;
 }
 
-/* line 414, ../sass/core.scss */
+/* line 436, ../sass/core.scss */
 #headerNavsContainer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -411,17 +411,17 @@ p {
   padding-left: 179px;
 }
 
-/* line 422, ../sass/core.scss */
+/* line 444, ../sass/core.scss */
 #headerNavs {
   background: url(/static/images/headerBg.png) repeat-x;
   height: 96px;
 }
 
-/* line 427, ../sass/core.scss */
+/* line 449, ../sass/core.scss */
 #mainNav {
   padding: 26px 0px 0px 28px;
 }
-/* line 430, ../sass/core.scss */
+/* line 452, ../sass/core.scss */
 #mainNav a {
   display: inline-block;
   margin-right: 30px;
@@ -430,18 +430,17 @@ p {
   font-weight: 900;
   font-size: 23px;
   letter-spacing: .05em;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
   color: #736c5b;
 }
-/* line 439, ../sass/core.scss */
+/* line 461, ../sass/core.scss */
 #mainNav a .small {
   display: block;
   font-size: .6em;
   font-weight: 600;
 }
-/* line 444, ../sass/core.scss */
+/* line 466, ../sass/core.scss */
 #mainNav a .small em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -450,21 +449,20 @@ p {
   letter-spacing: normal;
   font-size: 1.1em;
 }
-/* line 455, ../sass/core.scss */
+/* line 477, ../sass/core.scss */
 #mainNav a:hover {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
 
-/* line 460, ../sass/core.scss */
+/* line 482, ../sass/core.scss */
 #serviceNavs {
   position: absolute;
   top: 0;
   right: 6%;
 }
 
-/* line 466, ../sass/core.scss */
+/* line 488, ../sass/core.scss */
 #bigInviteButton {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -491,19 +489,19 @@ p {
   top: 17px;
   letter-spacing: .05em;
 }
-/* line 482, ../sass/core.scss */
+/* line 504, ../sass/core.scss */
 #bigInviteButton .big {
   font-size: 19px;
   display: block;
 }
-/* line 487, ../sass/core.scss */
+/* line 509, ../sass/core.scss */
 #bigInviteButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-weight: 500;
   text-transform: lowercase;
 }
-/* line 494, ../sass/core.scss */
+/* line 516, ../sass/core.scss */
 #bigInviteButton .small {
   font-size: 12px;
   display: block;
@@ -511,7 +509,7 @@ p {
   top: 1px;
 }
 
-/* line 502, ../sass/core.scss */
+/* line 524, ../sass/core.scss */
 #userInfoContainer {
   float: left;
   height: 10px;
@@ -520,13 +518,13 @@ p {
   min-width: 155px;
 }
 
-/* line 510, ../sass/core.scss */
+/* line 532, ../sass/core.scss */
 #userInfo {
   padding: 6px 52px 5px 12px;
   color: #736c5b;
   cursor: pointer;
 }
-/* line 515, ../sass/core.scss */
+/* line 537, ../sass/core.scss */
 #userInfo .userpic {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -542,7 +540,7 @@ p {
   top: 8px;
   z-index: 3;
 }
-/* line 525, ../sass/core.scss */
+/* line 547, ../sass/core.scss */
 #userInfo .userpic img {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -552,17 +550,17 @@ p {
   border-radius: 80px;
   width: 62px;
 }
-/* line 531, ../sass/core.scss */
+/* line 553, ../sass/core.scss */
 #userInfo h2 {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-size: 12px;
 }
-/* line 537, ../sass/core.scss */
+/* line 559, ../sass/core.scss */
 #userInfo .greeting {
   display: block;
 }
-/* line 541, ../sass/core.scss */
+/* line 563, ../sass/core.scss */
 #userInfo .username {
   display: inline-block;
   font-weight: bold;
@@ -574,21 +572,21 @@ p {
   background: url(/static/images/icon_downArrow_brown.png) right center no-repeat;
 }
 
-/* line 553, ../sass/core.scss */
+/* line 575, ../sass/core.scss */
 #userInfo.hover {
   color: #fff;
   background: #ef5922;
 }
-/* line 557, ../sass/core.scss */
+/* line 579, ../sass/core.scss */
 #userInfo.hover .userpic {
   border-color: #ef5922;
 }
-/* line 561, ../sass/core.scss */
+/* line 583, ../sass/core.scss */
 #userInfo.hover .username {
   background: url(/static/images/icon_downArrow_white.png) right center no-repeat;
 }
 
-/* line 566, ../sass/core.scss */
+/* line 588, ../sass/core.scss */
 #secondaryUserNav {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -600,7 +598,7 @@ p {
   position: relative;
   z-index: 2;
 }
-/* line 574, ../sass/core.scss */
+/* line 596, ../sass/core.scss */
 #secondaryUserNav a {
   display: block;
   font-weight: 700;
@@ -610,22 +608,22 @@ p {
   text-transform: uppercase;
   color: #736c5b;
 }
-/* line 584, ../sass/core.scss */
+/* line 606, ../sass/core.scss */
 #secondaryUserNav a:hover {
   background: #b3cbc6;
   color: #1c6770;
 }
 
-/* line 590, ../sass/core.scss */
+/* line 612, ../sass/core.scss */
 #primaryUserNav {
   padding-top: 31px;
   margin-right: 10px;
 }
-/* line 594, ../sass/core.scss */
+/* line 616, ../sass/core.scss */
 #primaryUserNav #invitationsLink {
   position: relative;
 }
-/* line 597, ../sass/core.scss */
+/* line 619, ../sass/core.scss */
 #primaryUserNav #invitationsLink .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -650,7 +648,7 @@ p {
   top: -2px;
   left: -8px;
 }
-/* line 605, ../sass/core.scss */
+/* line 627, ../sass/core.scss */
 #primaryUserNav a {
   float: left;
   display: block;
@@ -669,7 +667,7 @@ p {
   position: relative;
   text-align: center;
 }
-/* line 618, ../sass/core.scss */
+/* line 640, ../sass/core.scss */
 #primaryUserNav a .tooltip {
   display: none;
   position: absolute;
@@ -685,59 +683,59 @@ p {
   border-radius: 20px;
   white-space: nowrap;
 }
-/* line 630, ../sass/core.scss */
+/* line 652, ../sass/core.scss */
 #primaryUserNav a:hover {
   background-color: #736c5b;
 }
-/* line 633, ../sass/core.scss */
+/* line 655, ../sass/core.scss */
 #primaryUserNav a:hover .tooltip {
   display: block;
 }
 
-/* line 639, ../sass/core.scss */
+/* line 661, ../sass/core.scss */
 #invitationsLink {
   background-image: url(/static/images/icon_envelope.png);
 }
 
-/* line 640, ../sass/core.scss */
+/* line 662, ../sass/core.scss */
 #historyLink {
   background-image: url(/static/images/icon_clock.png);
 }
 
-/* line 641, ../sass/core.scss */
+/* line 663, ../sass/core.scss */
 #invitationsLink:hover {
   background-image: url(/static/images/icon_envelope_white.png);
 }
 
-/* line 642, ../sass/core.scss */
+/* line 664, ../sass/core.scss */
 #historyLink:hover {
   background-image: url(/static/images/icon_clock_white.png);
 }
 
-/* line 644, ../sass/core.scss */
+/* line 666, ../sass/core.scss */
 #primaryUserNav {
   float: left;
 }
 
 /**********************************************************/
 /* FOOTER */
-/* line 652, ../sass/core.scss */
+/* line 674, ../sass/core.scss */
 #mainFooter {
   text-align: center;
   clear: both;
   color: #666;
   padding: 60px 0px 30px 0px;
 }
-/* line 658, ../sass/core.scss */
+/* line 680, ../sass/core.scss */
 #mainFooter p {
   font-style: italic;
 }
 
-/* line 663, ../sass/core.scss */
+/* line 685, ../sass/core.scss */
 #footerNav {
   margin: 15px 0px;
 }
-/* line 666, ../sass/core.scss */
+/* line 688, ../sass/core.scss */
 #footerNav a {
   display: inline-block;
   padding: 0px 10px;
@@ -746,13 +744,13 @@ p {
 
 /**********************************************************/
 /* FORMS */
-/* line 677, ../sass/core.scss */
+/* line 699, ../sass/core.scss */
 .formItem {
   margin-bottom: 15px;
   position: relative;
 }
 
-/* line 682, ../sass/core.scss */
+/* line 704, ../sass/core.scss */
 .formItemError {
   position: absolute;
   right: -193px;
@@ -763,17 +761,17 @@ p {
   padding: 5px 10px;
 }
 
-/* line 692, ../sass/core.scss */
+/* line 714, ../sass/core.scss */
 .buttons {
   text-align: center;
 }
 
-/* line 696, ../sass/core.scss */
+/* line 718, ../sass/core.scss */
 label {
   display: block;
 }
 
-/* line 700, ../sass/core.scss */
+/* line 722, ../sass/core.scss */
 input, textarea {
   border: 1px solid #aaa;
   padding: 5px;
@@ -783,21 +781,21 @@ input, textarea {
   color: #4e565c;
 }
 
-/* line 709, ../sass/core.scss */
+/* line 731, ../sass/core.scss */
 textarea {
   height: 100px;
   resize: vertical;
   padding: 10px;
 }
 
-/* line 715, ../sass/core.scss */
+/* line 737, ../sass/core.scss */
 form .note, .formNote {
   margin-top: 5px;
   font-style: italic;
   font-size: 12px;
 }
 
-/* line 721, ../sass/core.scss */
+/* line 743, ../sass/core.scss */
 input[type=submit] {
   display: inline-block;
   border: 0px;
@@ -821,7 +819,7 @@ input[type=submit] {
   box-shadow: 0 4px 0 #78902f;
   width: auto;
 }
-/* line 132, ../sass/core.scss */
+/* line 139, ../sass/core.scss */
 input[type=submit]:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -830,7 +828,7 @@ input[type=submit]:hover {
   box-shadow: 0 4px 0 #687d29;
   color: #fff;
 }
-/* line 138, ../sass/core.scss */
+/* line 145, ../sass/core.scss */
 input[type=submit]:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -902,7 +900,7 @@ input[type=submit]:active {
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
 }
-/* line 132, ../sass/core.scss */
+/* line 139, ../sass/core.scss */
 #joinUs a:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -911,7 +909,7 @@ input[type=submit]:active {
   box-shadow: 0 4px 0 #687d29;
   color: #fff;
 }
-/* line 138, ../sass/core.scss */
+/* line 145, ../sass/core.scss */
 #joinUs a:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -920,7 +918,7 @@ input[type=submit]:active {
   position: relative;
   top: 2px;
 }
-/* line 177, ../sass/core.scss */
+/* line 184, ../sass/core.scss */
 #joinUs a:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -928,13 +926,13 @@ input[type=submit]:active {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 182, ../sass/core.scss */
+/* line 189, ../sass/core.scss */
 #joinUs a .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 188, ../sass/core.scss */
+/* line 195, ../sass/core.scss */
 #joinUs a em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -1129,9 +1127,8 @@ input[type=submit]:active {
   text-transform: uppercase;
   letter-spacing: .15em;
 }
-
-/* line 107, ../sass/_room.scss */
-#ingredients {
+/* line 106, ../sass/_room.scss */
+#room #ingredients {
   position: absolute;
   left: 80px;
   top: 40px;
@@ -1144,24 +1141,23 @@ input[type=submit]:active {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   font-size: 16px;
 }
-/* line 117, ../sass/_room.scss */
-#ingredients li {
+/* line 116, ../sass/_room.scss */
+#room #ingredients li {
   margin: 10px 0px;
   cursor: pointer;
 }
-/* line 122, ../sass/_room.scss */
-#ingredients .crossedOut {
+/* line 121, ../sass/_room.scss */
+#room #ingredients .crossedOut {
   text-decoration: line-through;
 }
-/* line 126, ../sass/_room.scss */
-#ingredients .closeButton {
+/* line 125, ../sass/_room.scss */
+#room #ingredients .closeButton {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-
-/* line 133, ../sass/_room.scss */
-#steps {
+/* line 132, ../sass/_room.scss */
+#room #steps {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -1172,9 +1168,8 @@ input[type=submit]:active {
   background: #fff;
   font-size: 1.75em;
 }
-
-/* line 142, ../sass/_room.scss */
-.step {
+/* line 141, ../sass/_room.scss */
+#room .step {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -1184,73 +1179,68 @@ input[type=submit]:active {
   overflow-y: auto;
   overflow-x: hidden;
 }
-/* line 149, ../sass/_room.scss */
-.step ul {
+/* line 148, ../sass/_room.scss */
+#room .step ul {
   margin-left: 20px;
 }
-/* line 152, ../sass/_room.scss */
-.step ul li {
+/* line 151, ../sass/_room.scss */
+#room .step ul li {
   font-size: 18px;
   margin: 10px 0px;
   list-style-type: circle;
 }
-
-/* line 160, ../sass/_room.scss */
-.currentStep a {
+/* line 159, ../sass/_room.scss */
+#room .currentStep a {
   background: #fff;
 }
-
-/* line 164, ../sass/_room.scss */
-.extra {
+/* line 163, ../sass/_room.scss */
+#room .extra {
   font-size: 16px;
   margin: 30px 0px;
 }
-/* line 168, ../sass/_room.scss */
-.extra h1 {
+/* line 167, ../sass/_room.scss */
+#room .extra h1 {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: .2em;
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-
-/* line 173, ../sass/_room.scss */
-.snippet {
+/* line 172, ../sass/_room.scss */
+#room .snippet {
   margin: 30px 0px;
   font-size: 14px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 178, ../sass/_room.scss */
-.snippet p {
+/* line 177, ../sass/_room.scss */
+#room .snippet p {
   line-height: 1.25em;
 }
-
-/* line 183, ../sass/_room.scss */
-.notesContainer {
+/* line 182, ../sass/_room.scss */
+#room .notesContainer {
   margin: 30px 0px;
 }
-
-/* line 187, ../sass/_room.scss */
-.cookingNote {
+/* line 186, ../sass/_room.scss */
+#room .cookingNote {
   font-family: "proxima-nova", sans-serif;
   margin: 15px 0px;
   position: relative;
 }
-/* line 192, ../sass/_room.scss */
-.cookingNote p {
+/* line 191, ../sass/_room.scss */
+#room .cookingNote p {
   font-style: normal;
 }
-/* line 196, ../sass/_room.scss */
-.cookingNote .userpic {
+/* line 195, ../sass/_room.scss */
+#room .cookingNote .userpic {
   width: 30px;
   float: left;
 }
-/* line 201, ../sass/_room.scss */
-.cookingNote .noteContent {
+/* line 200, ../sass/_room.scss */
+#room .cookingNote .noteContent {
   font-size: 12px;
 }
-/* line 205, ../sass/_room.scss */
-.cookingNote .timestamp {
+/* line 204, ../sass/_room.scss */
+#room .cookingNote .timestamp {
   text-align: right;
   font-style: normal;
   display: block;
@@ -1258,9 +1248,8 @@ input[type=submit]:active {
   font-size: 10px;
   text-transform: uppercase;
 }
-
-/* line 216, ../sass/_room.scss */
-.cookingNote.note .noteContent {
+/* line 215, ../sass/_room.scss */
+#room .cookingNote.note .noteContent {
   margin-left: 40px;
   background: #ededec;
   padding: 10px;
@@ -1271,17 +1260,16 @@ input[type=submit]:active {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 223, ../sass/_room.scss */
-.cookingNote.note .userpic {
+/* line 222, ../sass/_room.scss */
+#room .cookingNote.note .userpic {
   margin-top: 15px;
 }
-
-/* line 230, ../sass/_room.scss */
-.cookingNote.stamp .noteContent {
+/* line 229, ../sass/_room.scss */
+#room .cookingNote.stamp .noteContent {
   height: 40px;
 }
-/* line 233, ../sass/_room.scss */
-.cookingNote.stamp .noteContent p {
+/* line 232, ../sass/_room.scss */
+#room .cookingNote.stamp .noteContent p {
   position: absolute;
   background: #ff0000;
   left: 60px;
@@ -1293,22 +1281,21 @@ input[type=submit]:active {
   font-weight: bold;
   font-size: 10px;
 }
-/* line 246, ../sass/_room.scss */
-.cookingNote.stamp .noteContent img {
+/* line 245, ../sass/_room.scss */
+#room .cookingNote.stamp .noteContent img {
   width: 40px;
   position: absolute;
   top: 10px;
   left: 22px;
 }
-
-/* line 255, ../sass/_room.scss */
-.step {
+/* line 254, ../sass/_room.scss */
+#room .step {
   display: none;
 }
 
 /**********************************************************/
 /* WIDGETS */
-/* line 262, ../sass/_room.scss */
+/* line 263, ../sass/_room.scss */
 .widget {
   border: 1px solid #666;
   background: #fff;
@@ -1324,14 +1311,14 @@ input[type=submit]:active {
   font-size: 14px;
   display: none;
 }
-/* line 274, ../sass/_room.scss */
+/* line 275, ../sass/_room.scss */
 .widget .closeButton {
   position: absolute;
   top: 5px;
   right: 5px;
 }
 
-/* line 282, ../sass/_room.scss */
+/* line 283, ../sass/_room.scss */
 #notepad textarea {
   border: 1px solid #ccc;
   margin-top: 10px;
@@ -1341,31 +1328,31 @@ input[type=submit]:active {
   resize: none;
 }
 
-/* line 292, ../sass/_room.scss */
+/* line 293, ../sass/_room.scss */
 #stampPicker ul {
   padding: 10px 0px 0px 0px;
 }
 
-/* line 296, ../sass/_room.scss */
+/* line 297, ../sass/_room.scss */
 #stampPicker .stamp {
   font-family: "proxima-nova", sans-serif;
   float: left;
 }
-/* line 300, ../sass/_room.scss */
+/* line 301, ../sass/_room.scss */
 #stampPicker .stamp .stampButton {
   display: block;
   height: 40px;
   width: 40px;
   padding: 10px;
 }
-/* line 307, ../sass/_room.scss */
+/* line 308, ../sass/_room.scss */
 #stampPicker .stamp .stampInfo {
   display: none;
   margin-top: 5px;
   font-size: 12px;
 }
 
-/* line 314, ../sass/_room.scss */
+/* line 315, ../sass/_room.scss */
 #stampInfoDisplay, #stampInstructions {
   margin: 15px 0px 0px 0px;
   padding: 10px;
@@ -1373,24 +1360,24 @@ input[type=submit]:active {
   font-family: "proxima-nova", sans-serif;
   height: 32px;
 }
-/* line 321, ../sass/_room.scss */
+/* line 322, ../sass/_room.scss */
 #stampInfoDisplay p, #stampInstructions p {
   font-size: 12px;
   line-height: 14px;
 }
 
-/* line 328, ../sass/_room.scss */
+/* line 329, ../sass/_room.scss */
 #stampInfoDisplay h3 {
   font-weight: bold;
   margin-bottom: 4px;
 }
 
-/* line 335, ../sass/_room.scss */
+/* line 336, ../sass/_room.scss */
 #stampInstructions p {
   font-style: italic;
 }
 
-/* line 340, ../sass/_room.scss */
+/* line 341, ../sass/_room.scss */
 #widgetNav {
   position: absolute;
   bottom: 0;
@@ -1401,7 +1388,7 @@ input[type=submit]:active {
   font-size: 16px;
   background: #fff;
 }
-/* line 350, ../sass/_room.scss */
+/* line 351, ../sass/_room.scss */
 #widgetNav a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1411,7 +1398,7 @@ input[type=submit]:active {
   padding: 5px 7px;
   margin: 1px;
 }
-/* line 357, ../sass/_room.scss */
+/* line 358, ../sass/_room.scss */
 #widgetNav a.active {
   background: #fff;
   border: 1px solid #666;
@@ -1423,7 +1410,7 @@ input[type=submit]:active {
 
 /**********************************************************/
 /* VIDEOS */
-/* line 370, ../sass/_room.scss */
+/* line 371, ../sass/_room.scss */
 #videoContainer {
   margin-left: 385px;
   height: 70%;
@@ -1434,12 +1421,12 @@ input[type=submit]:active {
   position: relative;
 }
 
-/* line 377, ../sass/_room.scss */
+/* line 378, ../sass/_room.scss */
 #videoContainer.fullsize {
   height: 100%;
 }
 
-/* line 381, ../sass/_room.scss */
+/* line 382, ../sass/_room.scss */
 #videos {
   padding: 20px;
   height: 100%;
@@ -1450,12 +1437,12 @@ input[type=submit]:active {
   background: #ededec;
 }
 
-/* line 388, ../sass/_room.scss */
+/* line 389, ../sass/_room.scss */
 #myInfo {
   position: absolute;
 }
 
-/* line 392, ../sass/_room.scss */
+/* line 393, ../sass/_room.scss */
 #chatBoxButton {
   position: absolute;
   top: 10px;
@@ -1464,7 +1451,7 @@ input[type=submit]:active {
 
 /**********************************************************/
 /* CHAT BOX */
-/* line 402, ../sass/_room.scss */
+/* line 403, ../sass/_room.scss */
 #chatBoxContainer {
   margin-left: 385px;
   height: 30%;
@@ -1476,7 +1463,7 @@ input[type=submit]:active {
   position: relative;
 }
 
-/* line 410, ../sass/_room.scss */
+/* line 411, ../sass/_room.scss */
 #chatBox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1488,7 +1475,7 @@ input[type=submit]:active {
   padding-bottom: 27px;
 }
 
-/* line 418, ../sass/_room.scss */
+/* line 419, ../sass/_room.scss */
 #chatMessages {
   height: 100%;
   -moz-box-sizing: border-box;
@@ -1498,16 +1485,16 @@ input[type=submit]:active {
   padding: 10px 15px;
   overflow: auto;
 }
-/* line 424, ../sass/_room.scss */
+/* line 425, ../sass/_room.scss */
 #chatMessages .chatMessage {
   margin: 5px 0px;
 }
-/* line 428, ../sass/_room.scss */
+/* line 429, ../sass/_room.scss */
 #chatMessages .chatMessageAuthor {
   font-weight: bold;
 }
 
-/* line 433, ../sass/_room.scss */
+/* line 434, ../sass/_room.scss */
 #chatInputContainer {
   position: absolute;
   bottom: 0px;
@@ -1519,7 +1506,7 @@ input[type=submit]:active {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 441, ../sass/_room.scss */
+/* line 442, ../sass/_room.scss */
 #chatInputContainer input {
   display: block;
   width: 100%;
@@ -1527,7 +1514,7 @@ input[type=submit]:active {
   border: 0px;
   margin: 0px;
 }
-/* line 449, ../sass/_room.scss */
+/* line 450, ../sass/_room.scss */
 #chatInputContainer input:focus {
   outline: none;
   border: none;
@@ -1625,7 +1612,7 @@ body#meals .cookedBy li {
   color: #736c5b;
   text-transform: uppercase;
 }
-/* line 236, ../sass/core.scss */
+/* line 247, ../sass/core.scss */
 body#meals .cookedBy li img {
   width: 100%;
   height: 100%;
@@ -1805,7 +1792,7 @@ body#meals .cookedBy .moreLink {
 
 /**********************************************************/
 /* SINGLE MEAL PAGE */
-/* line 234, ../sass/_meals.scss */
+/* line 235, ../sass/_meals.scss */
 #meal #returnLink {
   float: left;
   display: block;
@@ -1831,33 +1818,30 @@ body#meals .cookedBy .moreLink {
   font-size: 12px;
   margin-left: 8px;
 }
-
-/* line 250, ../sass/_meals.scss */
+/* line 251, ../sass/_meals.scss */
 #meal #returnLink:hover {
   background: rgba(55, 151, 162, 0.6) url(/static/images/textureSoft.png);
 }
-
-/* line 254, ../sass/_meals.scss */
-#mealImageContainer {
+/* line 255, ../sass/_meals.scss */
+#meal #mealImageContainer {
   border: 10px solid rgba(115, 108, 91, 0.1);
   margin-bottom: 30px;
 }
-
-/* line 259, ../sass/_meals.scss */
-#mealImage {
+/* line 260, ../sass/_meals.scss */
+#meal #mealImage {
   border: 3px solid #fff;
   height: 300px;
   overflow: hidden;
   position: relative;
 }
-/* line 265, ../sass/_meals.scss */
-#mealImage img {
+/* line 266, ../sass/_meals.scss */
+#meal #mealImage img {
   position: absolute;
   top: -70%;
   width: 100%;
 }
 
-/* line 272, ../sass/_meals.scss */
+/* line 274, ../sass/_meals.scss */
 #mealTitle {
   font-family: "proxima-nova", sans-serif;
   font-size: 35px;
@@ -1867,19 +1851,19 @@ body#meals .cookedBy .moreLink {
   margin-left: 100px;
 }
 
-/* line 277, ../sass/_meals.scss */
+/* line 279, ../sass/_meals.scss */
 #mealFacts {
   font-size: 16px;
   margin-left: 100px;
   margin-bottom: 30px;
 }
-/* line 282, ../sass/_meals.scss */
+/* line 284, ../sass/_meals.scss */
 #mealFacts li {
   display: inline-block;
   margin-right: 20px;
 }
 
-/* line 288, ../sass/_meals.scss */
+/* line 290, ../sass/_meals.scss */
 #mealSidebar {
   float: right;
   width: 300px;
@@ -1888,7 +1872,7 @@ body#meals .cookedBy .moreLink {
   z-index: 1;
   margin-top: -300px;
 }
-/* line 296, ../sass/_meals.scss */
+/* line 298, ../sass/_meals.scss */
 #mealSidebar #importantStuff {
   padding: 10px;
   background: #f0ece4 url(/static/images/textureStrong.png);
@@ -1904,12 +1888,12 @@ body#meals .cookedBy .moreLink {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
-/* line 304, ../sass/_meals.scss */
+/* line 306, ../sass/_meals.scss */
 #shoppingList {
   padding: 10px;
   background: white url(/static/images/textureSoft.png);
 }
-/* line 308, ../sass/_meals.scss */
+/* line 310, ../sass/_meals.scss */
 #shoppingList h1 {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -1921,30 +1905,30 @@ body#meals .cookedBy .moreLink {
   margin: 15px 0px 20px 0px;
   font-size: 24px;
 }
-/* line 316, ../sass/_meals.scss */
+/* line 318, ../sass/_meals.scss */
 #shoppingList li {
   font-size: 16px;
   font-family: "proxima-nova", sans-serif;
   padding: 8px 10px;
 }
-/* line 321, ../sass/_meals.scss */
+/* line 323, ../sass/_meals.scss */
 #shoppingList li .amount {
   float: right;
   padding-left: 6px;
   font-weight: bold;
   font-size: .8em;
 }
-/* line 329, ../sass/_meals.scss */
+/* line 331, ../sass/_meals.scss */
 #shoppingList li.odd {
   background: #f4f7f6 url(/static/images/textureSoft.png);
 }
 
-/* line 334, ../sass/_meals.scss */
+/* line 336, ../sass/_meals.scss */
 #cookedBy {
   margin-top: 30px;
   padding: 0px 0px 0px 10px;
 }
-/* line 338, ../sass/_meals.scss */
+/* line 340, ../sass/_meals.scss */
 #cookedBy h1 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1953,11 +1937,11 @@ body#meals .cookedBy .moreLink {
   margin-bottom: 15px;
   color: #ef5922;
 }
-/* line 343, ../sass/_meals.scss */
+/* line 345, ../sass/_meals.scss */
 #cookedBy ul {
   margin-right: -18px;
 }
-/* line 347, ../sass/_meals.scss */
+/* line 349, ../sass/_meals.scss */
 #cookedBy li {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -1981,7 +1965,7 @@ body#meals .cookedBy .moreLink {
   display: inline-block;
   margin: 0px 10px 15px 0px;
 }
-/* line 236, ../sass/core.scss */
+/* line 247, ../sass/core.scss */
 #cookedBy li img {
   width: 100%;
   height: 100%;
@@ -1992,13 +1976,13 @@ body#meals .cookedBy .moreLink {
   -khtml-border-radius: 100px;
   border-radius: 100px;
 }
-/* line 355, ../sass/_meals.scss */
+/* line 357, ../sass/_meals.scss */
 #cookedBy li:hover {
   position: relative;
   top: -3px;
 }
 
-/* line 361, ../sass/_meals.scss */
+/* line 363, ../sass/_meals.scss */
 #inviteButton {
   display: inline-block;
   border: 0px;
@@ -2041,7 +2025,7 @@ body#meals .cookedBy .moreLink {
   margin: 20px;
   margin-bottom: 30px;
 }
-/* line 132, ../sass/core.scss */
+/* line 139, ../sass/core.scss */
 #inviteButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -2050,7 +2034,7 @@ body#meals .cookedBy .moreLink {
   box-shadow: 0 4px 0 #687d29;
   color: #fff;
 }
-/* line 138, ../sass/core.scss */
+/* line 145, ../sass/core.scss */
 #inviteButton:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -2059,7 +2043,7 @@ body#meals .cookedBy .moreLink {
   position: relative;
   top: 2px;
 }
-/* line 177, ../sass/core.scss */
+/* line 184, ../sass/core.scss */
 #inviteButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -2067,13 +2051,13 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 182, ../sass/core.scss */
+/* line 189, ../sass/core.scss */
 #inviteButton .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 188, ../sass/core.scss */
+/* line 195, ../sass/core.scss */
 #inviteButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -2082,7 +2066,7 @@ body#meals .cookedBy .moreLink {
   letter-spacing: 0.05em;
 }
 
-/* line 369, ../sass/_meals.scss */
+/* line 371, ../sass/_meals.scss */
 #inviteButton:active {
   -moz-box-shadow: 0 3px 0 #78902f;
   -webkit-box-shadow: 0 3px 0 #78902f;
@@ -2092,12 +2076,12 @@ body#meals .cookedBy .moreLink {
   top: 4px;
 }
 
-/* line 375, ../sass/_meals.scss */
+/* line 377, ../sass/_meals.scss */
 #mealDescription {
   margin-right: 363px;
   font-size: 22px;
 }
-/* line 379, ../sass/_meals.scss */
+/* line 381, ../sass/_meals.scss */
 #mealDescription h1 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -2107,7 +2091,7 @@ body#meals .cookedBy .moreLink {
   color: #1c6770;
 }
 
-/* line 385, ../sass/_meals.scss */
+/* line 387, ../sass/_meals.scss */
 #mealCredits {
   margin-top: 30px;
   padding: 20px;
@@ -2116,7 +2100,7 @@ body#meals .cookedBy .moreLink {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 392, ../sass/_meals.scss */
+/* line 394, ../sass/_meals.scss */
 #mealCredits h1 {
   font-weight: 700;
   text-transform: none;
@@ -2124,11 +2108,11 @@ body#meals .cookedBy .moreLink {
   margin-bottom: 5px;
   color: #4e565c;
 }
-/* line 400, ../sass/_meals.scss */
+/* line 402, ../sass/_meals.scss */
 #mealCredits p {
   margin: 0;
 }
-/* line 404, ../sass/_meals.scss */
+/* line 406, ../sass/_meals.scss */
 #mealCredits #submissionUser {
   width: 48px;
   -moz-border-radius: 100px;
@@ -2140,7 +2124,7 @@ body#meals .cookedBy .moreLink {
   float: left;
   margin-right: 15px;
 }
-/* line 411, ../sass/_meals.scss */
+/* line 413, ../sass/_meals.scss */
 #mealCredits .stuff {
   width: 50%;
   float: left;
@@ -2275,7 +2259,7 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
 }
-/* line 132, ../sass/core.scss */
+/* line 139, ../sass/core.scss */
 #inviteForm #sendInvitationButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -2284,7 +2268,7 @@ body#meals .cookedBy .moreLink {
   box-shadow: 0 4px 0 #687d29;
   color: #fff;
 }
-/* line 138, ../sass/core.scss */
+/* line 145, ../sass/core.scss */
 #inviteForm #sendInvitationButton:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -2293,7 +2277,7 @@ body#meals .cookedBy .moreLink {
   position: relative;
   top: 2px;
 }
-/* line 177, ../sass/core.scss */
+/* line 184, ../sass/core.scss */
 #inviteForm #sendInvitationButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -2301,13 +2285,13 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 182, ../sass/core.scss */
+/* line 189, ../sass/core.scss */
 #inviteForm #sendInvitationButton .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 188, ../sass/core.scss */
+/* line 195, ../sass/core.scss */
 #inviteForm #sendInvitationButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -2352,7 +2336,6 @@ body#meals .cookedBy .moreLink {
 }
 /* line 124, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev .disabled {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
@@ -2440,14 +2423,12 @@ table.jCalendar tr.selectedWeek td {
 }
 /* line 199, ../sass/_invitations.scss */
 table.jCalendar td.disabled {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   cursor: default;
 }
 /* line 204, ../sass/_invitations.scss */
 table.jCalendar td.disabled.dp-hover {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   background: #ededec;
@@ -2462,7 +2443,6 @@ table.jCalendar td.disabled.other-month.dp-hover {
 table.jCalendar td.unselectable,
 table.jCalendar td.unselectable:hover,
 table.jCalendar td.unselectable.dp-hover {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
   cursor: default;
@@ -2629,7 +2609,7 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
 }
-/* line 132, ../sass/core.scss */
+/* line 139, ../sass/core.scss */
 #replyForm button:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -2638,7 +2618,7 @@ table.jCalendar td.unselectable.dp-hover {
   box-shadow: 0 4px 0 #687d29;
   color: #fff;
 }
-/* line 138, ../sass/core.scss */
+/* line 145, ../sass/core.scss */
 #replyForm button:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -2647,7 +2627,7 @@ table.jCalendar td.unselectable.dp-hover {
   position: relative;
   top: 2px;
 }
-/* line 177, ../sass/core.scss */
+/* line 184, ../sass/core.scss */
 #replyForm button:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -2655,13 +2635,13 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 182, ../sass/core.scss */
+/* line 189, ../sass/core.scss */
 #replyForm button .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 188, ../sass/core.scss */
+/* line 195, ../sass/core.scss */
 #replyForm button em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -2711,7 +2691,7 @@ table.jCalendar td.unselectable.dp-hover {
   box-shadow: 0 7px 0 #78902f;
   color: #000;
 }
-/* line 132, ../sass/core.scss */
+/* line 139, ../sass/core.scss */
 #replyButtons a:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -2720,7 +2700,7 @@ table.jCalendar td.unselectable.dp-hover {
   box-shadow: 0 4px 0 #687d29;
   color: #fff;
 }
-/* line 138, ../sass/core.scss */
+/* line 145, ../sass/core.scss */
 #replyButtons a:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -2729,7 +2709,7 @@ table.jCalendar td.unselectable.dp-hover {
   position: relative;
   top: 2px;
 }
-/* line 177, ../sass/core.scss */
+/* line 184, ../sass/core.scss */
 #replyButtons a:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -2737,13 +2717,13 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 182, ../sass/core.scss */
+/* line 189, ../sass/core.scss */
 #replyButtons a .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 188, ../sass/core.scss */
+/* line 195, ../sass/core.scss */
 #replyButtons a em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -2966,27 +2946,29 @@ table.jCalendar td.unselectable.dp-hover {
 }
 /* line 516, ../sass/_invitations.scss */
 #invitationContainer .invitation .mealImage, #invitationContainer #singleInvitation .mealImage {
-  width: 120px;
-  height: 120px;
   overflow: hidden;
   border: 5px solid #fff;
+  width: 200px;
+  height: 200px;
+  width: 120px;
+  height: 120px;
   float: left;
 }
-/* line 523, ../sass/_invitations.scss */
+/* line 273, ../sass/core.scss */
 #invitationContainer .invitation .mealImage img, #invitationContainer #singleInvitation .mealImage img {
   height: 100%;
 }
-/* line 528, ../sass/_invitations.scss */
+/* line 523, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo, #invitationContainer #singleInvitation .invitationInfo {
   margin-left: 150px;
   font-size: 16px;
 }
-/* line 532, ../sass/_invitations.scss */
+/* line 527, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo h2, #invitationContainer #singleInvitation .invitationInfo h2 {
   font-size: 20px;
   font-weight: 700;
 }
-/* line 537, ../sass/_invitations.scss */
+/* line 532, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .label, #invitationContainer #singleInvitation .invitationInfo .label {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -2994,28 +2976,28 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 12px;
   margin-right: 10px;
 }
-/* line 542, ../sass/_invitations.scss */
+/* line 537, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .label.date, #invitationContainer #singleInvitation .invitationInfo .label.date {
   color: #ef5922;
 }
-/* line 546, ../sass/_invitations.scss */
+/* line 541, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .label.time, #invitationContainer #singleInvitation .invitationInfo .label.time {
   margin-left: 20px;
   color: #a5c349;
 }
-/* line 552, ../sass/_invitations.scss */
+/* line 547, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .datetime, #invitationContainer #singleInvitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 556, ../sass/_invitations.scss */
+/* line 551, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .with, #invitationContainer #singleInvitation .invitationInfo .with {
   margin: 10px 0px;
 }
-/* line 559, ../sass/_invitations.scss */
+/* line 554, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .with .label, #invitationContainer #singleInvitation .invitationInfo .with .label {
   color: #1c6770;
 }
-/* line 567, ../sass/_invitations.scss */
+/* line 562, ../sass/_invitations.scss */
 #invitationContainer .invitation .partnerUserpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -3039,7 +3021,7 @@ table.jCalendar td.unselectable.dp-hover {
   left: 15px;
   top: 35px;
 }
-/* line 236, ../sass/core.scss */
+/* line 247, ../sass/core.scss */
 #invitationContainer .invitation .partnerUserpic img {
   width: 100%;
   height: 100%;
@@ -3050,46 +3032,46 @@ table.jCalendar td.unselectable.dp-hover {
   -khtml-border-radius: 100px;
   border-radius: 100px;
 }
-/* line 575, ../sass/_invitations.scss */
+/* line 570, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 582, ../sass/_invitations.scss */
+/* line 577, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .mealImage {
   width: 230px;
   height: 230px;
 }
-/* line 586, ../sass/_invitations.scss */
+/* line 581, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .mealImage img {
   position: relative;
   left: -18%;
 }
-/* line 592, ../sass/_invitations.scss */
+/* line 587, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo {
   margin-left: 270px;
   font-size: 20px;
 }
-/* line 596, ../sass/_invitations.scss */
+/* line 591, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo h2 {
   font-size: 30px;
   margin-bottom: 20px;
 }
-/* line 601, ../sass/_invitations.scss */
+/* line 596, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo .label {
   font-size: 14px;
   display: block;
   margin-bottom: 8px;
 }
-/* line 607, ../sass/_invitations.scss */
+/* line 602, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo .datetime1 {
   float: left;
   margin-right: 30px;
 }
-/* line 612, ../sass/_invitations.scss */
+/* line 607, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo .with {
   margin-top: 20px;
 }
-/* line 617, ../sass/_invitations.scss */
+/* line 612, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -3111,7 +3093,7 @@ table.jCalendar td.unselectable.dp-hover {
   border-width: 5px;
   margin-right: 10px;
 }
-/* line 236, ../sass/core.scss */
+/* line 247, ../sass/core.scss */
 #invitationContainer #singleInvitation .userpic img {
   width: 100%;
   height: 100%;
@@ -3123,21 +3105,21 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
 }
 
-/* line 625, ../sass/_invitations.scss */
+/* line 620, ../sass/_invitations.scss */
 #invitationActivity .activityItem {
   min-height: 56px;
   margin: 30px 0px;
 }
-/* line 629, ../sass/_invitations.scss */
+/* line 624, ../sass/_invitations.scss */
 #invitationActivity .activityItem h3 {
   padding: 15px 0px;
   font-size: 18px;
 }
-/* line 635, ../sass/_invitations.scss */
+/* line 630, ../sass/_invitations.scss */
 #invitationActivity .activityBody {
   margin-left: 75px;
 }
-/* line 639, ../sass/_invitations.scss */
+/* line 634, ../sass/_invitations.scss */
 #invitationActivity .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -3156,7 +3138,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 48px;
   float: left;
 }
-/* line 236, ../sass/core.scss */
+/* line 247, ../sass/core.scss */
 #invitationActivity .userpic img {
   width: 100%;
   height: 100%;
@@ -3167,34 +3149,458 @@ table.jCalendar td.unselectable.dp-hover {
   -khtml-border-radius: 100px;
   border-radius: 100px;
 }
-/* line 644, ../sass/_invitations.scss */
+/* line 639, ../sass/_invitations.scss */
 #invitationActivity .reply {
   padding: 10px 15px 1px 15px;
   background: #f8f6f0 url(/static/images/textureSoft.png);
   font-size: 18px;
 }
-/* line 649, ../sass/_invitations.scss */
+/* line 644, ../sass/_invitations.scss */
 #invitationActivity .reply .mainReply {
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 5px;
 }
-/* line 655, ../sass/_invitations.scss */
+/* line 650, ../sass/_invitations.scss */
 #invitationActivity .reply.yes {
   background: rgba(165, 195, 73, 0.15);
 }
-/* line 659, ../sass/_invitations.scss */
+/* line 654, ../sass/_invitations.scss */
 #invitationActivity .reply.maybe {
   background: rgba(239, 89, 34, 0.08);
 }
-/* line 663, ../sass/_invitations.scss */
+/* line 658, ../sass/_invitations.scss */
 #invitationActivity .reply.no {
   background: rgba(55, 151, 162, 0.1);
 }
 
-/* line 670, ../sass/_invitations.scss */
+/* line 665, ../sass/_invitations.scss */
 #invitationFilters {
   margin-bottom: 30px;
+}
+
+/**********************************************************/
+/* HISTORY LIST PAGE */
+/* line 5, ../sass/_history.scss */
+#history #pageIntro {
+  margin-bottom: 40px;
+}
+
+/* line 12, ../sass/_history.scss */
+#historyList .historyItem {
+  position: relative;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+/* line 18, ../sass/_history.scss */
+#historyList a {
+  background: #f8f6f0 url(/static/images/textureSoft.png);
+  overflow: hidden;
+  *zoom: 1;
+  display: block;
+  padding: 20px;
+  color: #4e565c;
+}
+/* line 25, ../sass/_history.scss */
+#historyList a:hover {
+  background: #f5f2e9 url(/static/images/textureSoft.png);
+}
+/* line 30, ../sass/_history.scss */
+#historyList .mealImage {
+  float: left;
+  overflow: hidden;
+  border: 5px solid #fff;
+  width: 200px;
+  height: 200px;
+  width: 180px;
+  height: 100px;
+}
+/* line 273, ../sass/core.scss */
+#historyList .mealImage img {
+  height: 100%;
+}
+/* line 36, ../sass/_history.scss */
+#historyList .mealImage img {
+  width: 100%;
+  height: auto;
+}
+/* line 42, ../sass/_history.scss */
+#historyList .userpics {
+  position: absolute;
+  top: 35px;
+  left: 35px;
+}
+/* line 47, ../sass/_history.scss */
+#historyList .userpics .userpic {
+  display: inline-block;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  border: 3px solid #fff;
+  background: #e9e7e0;
+  width: 48px;
+  height: 48px;
+  width: 32px;
+  height: 32px;
+}
+/* line 247, ../sass/core.scss */
+#historyList .userpics .userpic img {
+  width: 100%;
+  height: 100%;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+}
+/* line 52, ../sass/_history.scss */
+#historyList .hotpotInfo {
+  margin-left: 210px;
+  height: 100px;
+  background: url(/static/images/bigArrow.png) right center no-repeat;
+}
+/* line 58, ../sass/_history.scss */
+#historyList .date {
+  margin-top: 10px;
+  font-size: 18px;
+}
+/* line 63, ../sass/_history.scss */
+#historyList h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 8px 0px 16px 0px;
+}
+/* line 69, ../sass/_history.scss */
+#historyList .label {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 12px;
+  color: #3797a2;
+  margin-right: 6px;
+}
+/* line 74, ../sass/_history.scss */
+#historyList .with {
+  margin-right: 30px;
+  float: left;
+}
+/* line 79, ../sass/_history.scss */
+#historyList .summary .label {
+  color: #ef5922;
+}
+
+/**********************************************************/
+/* HISTORY SINGLE PAGE */
+/* line 89, ../sass/_history.scss */
+#historySingle #pageTitle {
+  text-transform: none;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+/* line 95, ../sass/_history.scss */
+#historySingle #pageTitle .small {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 20px;
+  color: #3797a2;
+  margin-bottom: 5px;
+  letter-spacing: .05em;
+}
+/* line 104, ../sass/_history.scss */
+#historySingle #historyIntro {
+  background: #f8f6f0 url(/static/images/textureSoft.png);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  *zoom: 1;
+  margin-bottom: 40px;
+}
+/* line 111, ../sass/_history.scss */
+#historySingle #historyIntro .userpic {
+  display: inline-block;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  border: 3px solid #fff;
+  background: #e9e7e0;
+  width: 48px;
+  height: 48px;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+/* line 247, ../sass/core.scss */
+#historySingle #historyIntro .userpic img {
+  width: 100%;
+  height: 100%;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+}
+/* line 117, ../sass/_history.scss */
+#historySingle #mealImage {
+  overflow: hidden;
+  border: 5px solid #fff;
+  width: 200px;
+  height: 200px;
+  float: left;
+  width: 400px;
+  height: 300px;
+}
+/* line 273, ../sass/core.scss */
+#historySingle #mealImage img {
+  height: 100%;
+}
+/* line 123, ../sass/_history.scss */
+#historySingle #mealImage img {
+  width: auto;
+  height: 100%;
+  position: relative;
+  left: -20px;
+}
+/* line 131, ../sass/_history.scss */
+#historySingle #userpics {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  z-index: 1;
+}
+/* line 137, ../sass/_history.scss */
+#historySingle #userpics .userpic {
+  display: inline-block;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  border: 3px solid #fff;
+  background: #e9e7e0;
+  width: 48px;
+  height: 48px;
+  width: 80px;
+  height: 80px;
+  border-width: 5px;
+}
+/* line 247, ../sass/core.scss */
+#historySingle #userpics .userpic img {
+  width: 100%;
+  height: 100%;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+}
+/* line 142, ../sass/_history.scss */
+#historySingle #historyDetails {
+  margin-left: 440px;
+  font-size: 16px;
+}
+/* line 146, ../sass/_history.scss */
+#historySingle #historyDetails .intro {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+/* line 151, ../sass/_history.scss */
+#historySingle #historyDetails .userSynopsis {
+  margin-bottom: 15px;
+}
+/* line 152, ../sass/_history.scss */
+#historySingle #historyDetails .userSynopsis .userpic {
+  margin-right: 10px;
+}
+/* line 161, ../sass/_history.scss */
+#historySingle #historySteps h2 {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #ef5922;
+  text-align: center;
+  letter-spacing: .05em;
+  font-size: 18px;
+  margin: 10px 0px 8px 0px;
+}
+/* line 170, ../sass/_history.scss */
+#historySingle #historySteps .stepContent {
+  background: url(/static/images/timelineStripeOrange.png) center top repeat-y;
+  overflow: visible;
+}
+/* line 174, ../sass/_history.scss */
+#historySingle #historySteps .stepContent:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+/* line 183, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .instructionsContainer {
+  background: url(/static/images/stepInstructionsTopOrange.png) right top no-repeat;
+  padding-top: 15px;
+  float: left;
+  width: 46%;
+  position: relative;
+  top: -18px;
+}
+/* line 192, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .instructions {
+  background: rgba(239, 89, 34, 0.08);
+  padding: 10px 20px 20px 20px;
+  font-size: 16px;
+  margin-right: 14px;
+}
+/* line 198, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .instructions h3 {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 12px;
+  color: #3797a2;
+  color: #ef5922;
+  margin-bottom: 15px;
+}
+/* line 204, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .instructions ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  font-size: 14px;
+}
+/* line 209, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .instructions ul li {
+  margin: 5px 0px;
+}
+/* line 214, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .instructions .extra {
+  font-size: 14px;
+}
+/* line 217, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .instructions .extra p {
+  margin: 0px;
+}
+/* line 221, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .instructions .extra .label {
+  float: left;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 12px;
+  color: #3797a2;
+  color: #ef5922;
+  margin-top: 4px;
+  margin-right: 8px;
+}
+/* line 231, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .notesContainer {
+  margin: 0px 0px 0px 50%;
+  padding: 20px 0px;
+}
+/* line 235, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .notesContainer .userpic {
+  display: inline-block;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  border: 3px solid #fff;
+  background: #e9e7e0;
+  width: 48px;
+  height: 48px;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+/* line 247, ../sass/core.scss */
+#historySingle #historySteps .stepContent .notesContainer .userpic img {
+  width: 100%;
+  height: 100%;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+}
+/* line 241, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .cookingNote {
+  position: relative;
+  left: -20px;
+  margin: 0px 0px 20px 0px;
+}
+/* line 246, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .cookingNote .userpic {
+  float: left;
+}
+/* line 250, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .cookingNote .description {
+  margin-left: 50px;
+  padding: 10px 0px 10px 0px;
+  font-size: 14px;
+}
+/* line 256, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .cookingNote .noteContent {
+  margin-left: 50px;
+}
+/* line 261, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .cookingNote.note .notecontent {
+  background: #f8f6f0 url(/static/images/textureSoft.png);
+  font-size: 16px;
+  padding: 15px;
+  margin-left: 50px;
+  font-family: "Courier New", monospace;
+}
+/* line 271, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .cookingNote.stamp .noteContent {
+  position: relative;
+}
+/* line 275, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .cookingNote.stamp img {
+  position: static;
+}
+/* line 279, ../sass/_history.scss */
+#historySingle #historySteps .stepContent .cookingNote.stamp p {
+  background: red;
+  position: absolute;
+  top: 16px;
+  left: 53px;
+  padding: 2px 8px 2px 5px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
 }
 
 /**********************************************************/

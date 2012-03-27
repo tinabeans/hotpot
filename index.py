@@ -49,7 +49,7 @@ def render_template(template, **kwargs):
 	# decide if i'm logged in or not
 	if 'userId' in flask.session:
 		isLoggedIn = True
-		print 'hello'
+		
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 		userInfo = {
 			'name' : user['name'],
@@ -71,7 +71,6 @@ def render_template(template, **kwargs):
 		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, **kwargs)
 	else:
 		isLoggedIn = False
-		print 'helloooooooooooooooooooo'
 		return flask.render_template(template, isLoggedIn=isLoggedIn, **kwargs)
 
 
@@ -305,7 +304,7 @@ def updateMyProfile():
 		# delete older user pic, if it's around
 		try:
 			os.remove(os.path.join(USERPIC_FOLDER, user['userpic']))
-			print "baleted"
+			# print "baleted"
 		except:
 			print "oh. i guess that file didn't exist after all. oh well."
 		
@@ -552,7 +551,7 @@ def sendReply():
 	
 	# if there aren't any replies stored yet, make an array to store them!
 	if 'replies' not in invitation:
-		print 'no replies yet'
+		# print 'no replies yet'
 		invitation['replies'] = []
 		
 		invitation['replies'].append(replyInfo)
@@ -855,7 +854,7 @@ def sendCookingReminder():
 	
 	# grab all the infos of the people who said yes...
 	for reply in invitation['replies']:
-		print reply['mainReply']
+		# print reply['mainReply']
 	
 		if reply['mainReply'] != "yes":
 			continue
@@ -895,6 +894,52 @@ timer.start()
 ##############################################################################
 # HOTPOT ROOM
 
+# takes a meal dictionary and inserts notes into the appropriate step
+def insertNotesIntoSteps(meal, notes):
+	
+	for step in meal['steps']:
+	
+		notesToInsert = []
+		currentStepId = step['id']
+		
+		# the for-loop below is for grabbing just the foodNotes related to this step
+		for note in notes:
+			
+			if note['stepId'] != currentStepId:
+				continue # this skips the rest of the stuff in the loop and starts the next iteration
+			
+			# get the note author's name from their id
+			noteAuthor = db.users.find_one({'_id' : ObjectId(note['userId'])})
+			
+			# grab just the info we wamt to send to the template
+			noteInfo = {
+				'timestamp' : note['timestamp'],
+				'type' : note['type'],
+				'_id' : str(note['_id']),
+				'content' : note['content'],
+				'noteAuthor' : {
+					'name' : noteAuthor['name'],
+					'userpic' : noteAuthor['userpic']
+				}
+			}
+			
+			# if it's a stamp, add in some additional info...
+			if note['type'] == 'stamp':
+				stampInfo = db.stamps.find_one({'slug' : note['content']})
+				
+				noteInfo['content'] = {
+					'stampName' : stampInfo['name'],
+					'stampSlug' : stampInfo['slug']
+				}
+			
+			notesToInsert.append(noteInfo)
+			
+		
+		if len(notesToInsert) != 0:
+			step['notes'] = notesToInsert
+		
+	return meal
+
 @app.route('/rooms/<invitationId>')
 def showRoom(invitationId):
 	# if the user's not logged in, redirect them to the login page
@@ -915,56 +960,11 @@ def showRoom(invitationId):
 		# grab the meal info (for displaying recipe steps, etc.)
 		meal = db.meals.find_one({'slug' : roomInfo['meal']})
 		
-		# grab all the foodNotes related to this room
+		# grab all the notes related to this room
 		notesInThisRoom = list(db.notes.find({'invitationId' : invitationId}))
 		
-		print notesInThisRoom
-		
-		# and insert them into the recipe object at the appropriate step, one step at a time
-		for step in meal['steps']:
-		
-			print 'step: ' + step['id']
-		
-			notesToInsert = []
-			currentStepId = step['id']
-			
-			# the for-loop below is for grabbing just the foodNotes related to this step
-			for note in notesInThisRoom:
-				
-				if note['stepId'] != currentStepId:
-					continue # this skips the rest of the stuff in the loop and starts the next iteration
-				
-				print note
-				
-				# get the note author's name from their id
-				noteAuthor = db.users.find_one({'_id' : ObjectId(note['userId'])})
-				
-				# grab just the info we wamt to send to the template
-				noteInfo = {
-					'timestamp' : note['timestamp'],
-					'type' : note['type'],
-					'_id' : str(note['_id']),
-					'content' : note['content'],
-					'noteAuthor' : {
-						'name' : noteAuthor['name'],
-						'userpic' : noteAuthor['userpic']
-					}
-				}
-				
-				# if it's a stamp, add in some additional info...
-				if note['type'] == 'stamp':
-					stampInfo = db.stamps.find_one({'slug' : note['content']})
-					
-					noteInfo['content'] = {
-						'stampName' : stampInfo['name'],
-						'stampSlug' : stampInfo['slug']
-					}
-				
-				notesToInsert.append(noteInfo)
-				
-			
-			if len(notesToInsert) != 0:
-				step['notes'] = notesToInsert
+		# ...and insert them into the recipe object at the appropriate step, one step at a time
+		meal = insertNotesIntoSteps(meal, notesInThisRoom)
 		
 		# grab all the stamps too
 		stamps = list(db.stamps.find())
@@ -1003,6 +1003,8 @@ def postFoodnote():
 
 @app.route('/socketMessageHandler', methods=['POST'])
 def doStuffWithStuffFromTornado():
+	print flask.request.json
+
 	requestJSON = flask.request.json
 	data = requestJSON['data']
 	
@@ -1089,9 +1091,44 @@ def doStuffWithStuffFromTornado():
 		}
 				
 	# use json.dumps() instead of str() because on the other end we need a well-formatted JSON string with double-quotes
-	print requestJSON
-	print dataForResponse
+	# print requestJSON
+	# print dataForResponse
 	return json.dumps(dataForResponse)
+
+
+##############################################################################
+# COOKING HISTORY
+
+@app.route('/history/')
+def showHistory():
+	
+	# need to find all invitations where hostId or one of the inviteeIds matches the current logged-in user
+	# then sort them by date
+	
+	hotpots = list(db.invitations.find({'hostId' : flask.session['userId']}))
+	
+	for hotpot in hotpots:
+		# print hotpot
+		grabInvitationInfo(hotpot)
+
+	return render_template('history.html', hotpots=hotpots)
+
+
+@app.route('/history/<id>')
+def showSingleHistory(id):
+	
+	hotpot = grabInvitationInfo(db.invitations.find_one({'_id' : ObjectId(id)}))
+	
+	# grab meal info
+	meal = db.meals.find_one({'slug' : hotpot['meal']['slug']})
+	
+	# grab notes related to this hotpot
+	notes = list(db.notes.find({'invitationId' : str(hotpot['_id'])}))
+	
+	# stuff notes into the meals dict at the appropriate steps
+	meal = insertNotesIntoSteps(meal, notes)
+	
+	return render_template('historySingle.html', hotpot=hotpot, meal=meal)
 
 
 ##############################################################################

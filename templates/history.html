@@ -1,0 +1,53 @@
+{% extends "base/common.html" %}
+
+{% block title %}Cooking History{% endblock %}
+
+{% block customJS %}{% endblock %}
+
+{% block bodyId %}history{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+<h1 id="pageTitle">Cooking History</h1>
+
+<p id="pageIntro">View notes and stamps from all your Hotpots and relive the good ol' times.</p>
+
+<ul id="historyList">
+	{% for hotpot in hotpots %}
+	<li class="historyItem">
+		<a href="/history/{{ hotpot._id }}">
+			<div class="mealImage">
+				<img src="/static/images/food/{{ hotpot.meal.slug }}.jpg" />
+			</div>
+			
+			<div class="userpics">
+				<div class="userpic"><img src="/static/uploads/userpics/{{ hotpot.host.userpic }}" /></div>
+				{% for invitee in hotpot.inviteesInfo %}
+					<div class="userpic"><img src="/static/uploads/userpics/{{ invitee.userpic }}" /></div>
+				{% endfor %}
+			</div>
+		
+			<div class="hotpotInfo">
+				<div class="date">{{ hotpot.readableDate }}</div>
+				<h2>{{ hotpot.meal.title }}</h2>
+				
+				<div class="with">
+					<span class="label">With</span>
+					{{ hotpot.host.name }}
+					{% for invitee in hotpot.inviteesInfo %}
+						, {{ invitee.name }}
+					{% endfor %}
+				</div>
+				
+				<div class="summary">
+					<span class="label">total of</span>
+					<strong>x</strong> notes, <strong>x</strong> stamps
+				</div>
+			</div><!-- #hotpotInfo -->
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+
+{% endblock main %}

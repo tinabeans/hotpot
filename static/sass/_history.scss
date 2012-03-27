@@ -1,0 +1,295 @@
+/**********************************************************/
+/* HISTORY LIST PAGE */
+
+#history {
+	#pageIntro {
+		margin-bottom:40px;
+	}
+}
+
+#historyList {
+
+	.historyItem {
+		position: relative;
+		margin-bottom:30px;
+		font-size:16px;
+	}
+
+	a {
+		@include lightBrownBg;
+		@include clearfix;
+		display:block;
+		padding: 20px;
+		color:$textColor;
+		
+		&:hover {
+			@include lightBrownBgHover;
+		}
+	}
+	
+	.mealImage {
+		float:left;
+		@include mealImage;
+		width: 180px;
+		height: 100px;
+		
+		img {
+			width:100%;
+			height:auto;
+		}
+	}
+	
+	.userpics {
+		position: absolute;
+		top: 35px;
+		left:35px;
+	
+		.userpic {
+			@include smallUserpic;
+		}
+	}
+	
+	.hotpotInfo {
+		margin-left: 210px;
+		height: 100px;
+		background:url(/static/images/bigArrow.png) right center no-repeat;
+	}
+	
+	.date {
+		margin-top: 10px;
+		font-size:18px;
+	}
+	
+	h2 {
+		font-size:22px;
+		font-weight:700;
+		margin:8px 0px 16px 0px;
+	}
+	
+	.label {
+		@include textLabel;
+		margin-right:6px;
+	}
+	
+	.with {
+		margin-right:30px;
+		float:left;
+	}
+	
+	.summary .label {
+		color:$orange;
+	}
+}
+
+/**********************************************************/
+/* HISTORY SINGLE PAGE */
+
+#historySingle {	
+
+	#pageTitle {
+	
+		text-transform: none;
+		font-weight: 700;
+		margin-bottom:40px;
+		
+		.small {
+			@include bigFatLetters;
+			font-size: 20px;
+			color:$mediumBlue;
+			margin-bottom:5px;
+			letter-spacing: .05em;
+		}
+	}
+	
+	#historyIntro {
+		@include lightBrownBg;
+		padding:30px;
+		position: relative;
+		@include clearfix;	
+		margin-bottom:40px;
+		
+		.userpic {
+			@include smallUserpic;
+			vertical-align: middle;
+		}
+	}
+		
+	#mealImage {
+		@include mealImage;
+		float:left;
+		width:400px;
+		height:300px;
+		
+		img {
+			width:auto;
+			height:100%;
+			position: relative;
+			left:-20px;
+		}
+	}
+	
+	#userpics {
+		position: absolute;
+		top:50px;
+		left:50px;
+		z-index: +1;
+		
+		.userpic {
+			@include largeUserpic;
+		}
+	}
+	
+	#historyDetails {
+		margin-left:440px;
+		font-size:16px;
+		
+		.intro {
+			font-size:26px;
+			margin-bottom:20px;
+		}
+		
+		.userSynopsis {
+			.userpic {
+				margin-right:10px;
+			}
+		
+			margin-bottom:15px;
+		}
+	}
+	
+	#historySteps {
+		h2 {
+			@include sectionTitle;
+			color:$orange;
+			text-align: center;
+			letter-spacing: .05em;
+			font-size: 18px;
+			margin: 10px 0px 8px 0px;
+		}
+		
+		.stepContent {
+			background: url(/static/images/timelineStripeOrange.png) center top repeat-y;
+			overflow:visible;
+			
+			&:after {
+				visibility: hidden;
+				display: block;
+				font-size: 0;
+				content: " ";
+				clear: both;
+				height: 0;
+			}
+			
+			.instructionsContainer {
+				background: url(/static/images/stepInstructionsTopOrange.png) right top no-repeat;
+				padding-top: 15px;
+				float:left;
+				width:46%;				
+				position: relative;
+				top: -18px;
+			}
+		
+			.instructions {
+				@include lightOrangeBg;
+				padding: 10px 20px 20px 20px;
+				font-size:16px;
+				margin-right:14px;
+				
+				h3 {
+					@include textLabel;
+					color:$orange;
+					margin-bottom: 15px;
+				}
+				
+				ul {
+					list-style-type: disc;
+					margin-left:20px;
+					font-size:14px;
+					
+					li {
+						margin:5px 0px;
+					}
+				}
+				
+				.extra	{
+					font-size:14px;
+					
+					p {
+						margin:0px;
+					}
+					
+					.label {
+						float:left;
+						@include textLabel;
+						color:$orange;
+						margin-top: 4px;
+						margin-right: 8px;
+					}
+				}
+			}
+			
+			.notesContainer {
+				margin: 0px 0px 0px 50%;
+				padding:20px 0px;
+				
+				.userpic {
+					@include smallUserpic;
+					vertical-align: middle;
+				}
+			}
+			
+			.cookingNote {
+				position: relative;
+				left:-20px;
+				margin:0px 0px 20px 0px;
+				
+				.userpic {
+					float:left;
+				}
+				
+				.description {
+					margin-left:50px;
+					padding:10px 0px 10px 0px;
+					font-size: 14px;
+				}
+				
+				.noteContent {
+					margin-left:50px;
+				}
+				
+				&.note {
+					.notecontent {
+						@include lightBrownBg;
+						font-size:16px;
+						padding:15px;
+						margin-left:50px;
+						font-family: "Courier New", monospace;
+					}
+				}
+				
+				&.stamp {
+					.noteContent {
+						position: relative;
+					}
+				
+					img {
+						position: static;
+					}
+					
+					p {
+						background:red;
+						position: absolute;
+						top:16px;
+						left:53px;
+						padding:2px 8px 2px 5px;
+						color:#fff;
+						font-weight: bold;
+						text-transform: uppercase;
+						font-size:13px;
+					}
+				}
+			
+			}
+		}
+	}
+}

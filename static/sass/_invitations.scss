@@ -514,15 +514,10 @@ table.jCalendar {
 		}
 	
 		.mealImage {
+			@include mealImage;
 			width:120px;
 			height:120px;
-			overflow:hidden;
-			border:5px solid #fff;
 			float:left;
-			
-			img {
-				height:100%;
-			}
 		}
 		
 		.invitationInfo {

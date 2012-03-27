@@ -231,41 +231,43 @@ body#meals {
 $mealSidebarWidth:300px;
 $mealSidebarRightOffset:33px;
 
-#meal #returnLink {
-	float:left;
-	display: block;
-	width:70px;
-	height:70px;
-	@include bigFatLetters;
-	background:rgba($mediumBlue, .4) url(/static/images/textureSoft.png);
-	color:#fff;
-	text-align: center;
-	@include border-radius(100px);
-	@include box-sizing(border-box);
-	padding:18px 10px 10px 10px;
-	font-size:12px;
-	margin-left:8px;
-}
+#meal {
+	#returnLink {
+		float:left;
+		display: block;
+		width:70px;
+		height:70px;
+		@include bigFatLetters;
+		background:rgba($mediumBlue, .4) url(/static/images/textureSoft.png);
+		color:#fff;
+		text-align: center;
+		@include border-radius(100px);
+		@include box-sizing(border-box);
+		padding:18px 10px 10px 10px;
+		font-size:12px;
+		margin-left:8px;
+	}
+			
+	#returnLink:hover {
+		background:rgba($mediumBlue, .6) url(/static/images/textureSoft.png);
+	}
 
-#meal #returnLink:hover {
-	background:rgba($mediumBlue, .6) url(/static/images/textureSoft.png);
-}
-
-#mealImageContainer {
-	@include imageOuterBorder;
-	margin-bottom:30px;
-}
-
-#mealImage {
-	@include imageInnerBorder;
-	height:300px;
-	overflow: hidden;
-	position: relative;
+	#mealImageContainer {
+		@include imageOuterBorder;
+		margin-bottom:30px;
+	}
 	
-	img {
-		position: absolute;
-		top: -70%;
-		width:100%;
+	#mealImage {
+		@include imageInnerBorder;
+		height:300px;
+		overflow: hidden;
+		position: relative;
+		
+		img {
+			position: absolute;
+			top: -70%;
+			width:100%;
+		}
 	}
 }
 
