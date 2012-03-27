@@ -19,7 +19,7 @@
 		</a>
 		<a id="receivedLink" {% if invitationType == 'received' %}class="selected"{% endif %} href="/invitations?filter=received">
 			{{ numberOfInvitationsReceived }} Received
-			{% if alertNumber != 0 %}<span class="alertText">New</span>{% endif %}
+			{% if alertNumber != 0 %}<span class="alertText">{{ alertNumber }} New</span>{% endif %}
 		</a>
 	</nav>
 	
