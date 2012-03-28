@@ -726,6 +726,10 @@ def grabInvitationInfo(invitation):
 
 @app.route('/invitations/')
 def showInvitations():
+
+	if 'userId' not in flask.session:
+		flask.flash('Log in to view invitations.')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/invitations/'}))
 	
 	# grab all the sent invitations
 	invitationsSent = list(db.invitations.find({'hostId' : flask.session['userId']}))
@@ -746,6 +750,12 @@ def showInvitations():
 
 @app.route('/invitations/<id>')
 def showInvitation(id):
+
+	if 'userId' not in flask.session:
+		flask.flash('Log in to view invitations.')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/invitations/' + id}))
+	
+	# TODO: check if this invite belongs to the person who's logged in
 	
 	invitation = db.invitations.find_one({'_id' : ObjectId(id)})
 	
@@ -1106,6 +1116,10 @@ def doStuffWithStuffFromTornado():
 
 @app.route('/history/')
 def showHistory():
+
+	if 'userId' not in flask.session:
+		flask.flash('Log in to view history.')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/history/'}))
 	
 	# need to find all invitations where hostId or one of the inviteeIds matches the current logged-in user
 	allHotpots = list(db.invitations.find({'hostId' : flask.session['userId'], 'itsHappening' : True})) + list(db.invitations.find({'inviteeIds' : flask.session['userId'], 'itsHappening' : True}))
@@ -1117,12 +1131,19 @@ def showHistory():
 		if hotpot['datetime'] < time.time():
 			pastHotpot = grabInvitationInfo(hotpot)
 			pastHotpots.append(pastHotpot)
-
+	
+	# just send the ones from the past to the template
 	return render_template('history.html', hotpots=pastHotpots)
 
 
 @app.route('/history/<id>')
 def showSingleHistory(id):
+	
+	if 'userId' not in flask.session:
+		flask.flash('Log in to view history.')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/history/' + id}))
+		
+	# TODO: check if this history belongs to the person who's logged in
 	
 	hotpot = grabInvitationInfo(db.invitations.find_one({'_id' : ObjectId(id)}))
 	
