@@ -26,7 +26,7 @@
 
 {% block main %}
 
-<h1 id="title">Reply to an Invitation</h1>
+<h1 id="pageTitle">Reply to an Invitation</h1>
 
 {% with messages = get_flashed_messages() %}
 	{% if messages %}
@@ -106,24 +106,31 @@
 	
 {% else %}
 <div id="replyFormContainer">
-	<h2>{{ hostName }} has invited you to cook:</h2>
+	<h2>
+		<span class="userpic"><img src="/static/uploads/userpics/{{ host.userpic }}" /></span>
+		<strong>{{ host.name }}</strong> has invited you to cook:
+	</h2>
 	
-	<div id="invitationInfoContainer">
-		<div id="invitationInfo">
-			<img id="recipeImage" src="/static/images/food/{{ meal.slug }}.jpg" width="300" />
-			<h1>{{ meal.title }}</h1>
+
+	<div id="invitationInfo">
+		<img id="recipeImage" src="/static/images/food/{{ meal.slug }}.jpg" width="300" />
+		<h1>{{ meal.title }}</h1>
+		
+		<p>{{ meal.description }}</p>
+		
+		<dl id="details">
+			<dt class="date">Date</dt>
+			<dd id="selectedDate">{{ invitation.readableDate|safe }}</dd>
 			
-			<dl id="details">
-				<dt>Date</dt>
-				<dd id="selectedDate">{{ invitation.readableDate|safe }}</dd>
-				
-				<dt>Time</dt>
-				<dd id="selectedTime">{{ invitation.readableTime|safe }}</dd>
-			</dl>
-		</div>
-	</div>
-	
-	<h2>Your reply:</h2>
+			<dt class="time">Time</dt>
+			<dd id="selectedTime">{{ invitation.readableTime|safe }}</dd>
+		</dl>
+	</div><!-- #invitationInfo -->
+
+	<h2>
+		<span class="userpic"><img src="/static/uploads/userpics/{{ user.userpic }}" /></span>
+		Your reply:
+	</h2>
 	
 	<form id="replyForm" action="/sendReply" method="POST">
 	

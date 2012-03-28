@@ -453,9 +453,14 @@ def showReplyForm(id):
 			show = 'reply'
 		
 	meal = db.meals.find_one({'slug' : invitation['meal']})
-	hostName = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})['name']
+	
+	host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
+	hostInfo = {
+		'name' : host['name'],
+		'userpic' : host['userpic']
+	}
 			
-	return render_template('reply.html', show=show, invitation=invitation, meal=meal, inviteeId=inviteeId, hostName=hostName, loggedInName=loggedInName)
+	return render_template('reply.html', show=show, invitation=invitation, meal=meal, inviteeId=inviteeId, host=hostInfo, loggedInName=loggedInName)
 
 
 @app.route('/loginToReply', methods=['POST'])
@@ -634,25 +639,26 @@ def sendReply():
 	
 	# compose and send email back to host
 	email = Message("Hotpot RSVP", recipients=[hostEmail])
-	email.html = render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
+	replyMessage = render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
+	email.html = replyMessage
 	mail.send(email)
+	
+	host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
+		
+	hostInfo = {
+		'name' : host['name'],
+		'userpic' : host['userpic']
+	}
 	
 	# if reply was a yes, also send the invitee a confirmation
 	if replyInfo['mainReply'] == "yes":
 		inviteeEmail = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})['email']
 		
-		host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
-		
-		hostInfo = {
-			'name' : host['name'],
-			'userpic' : host['userpic']
-		}
-	
 		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail])
 		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=invitationInfo, meal=mealInfo)
 		mail.send(email)
 	
-	return render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
+	return render_template('replySent.html', replyMessage=replyMessage, host=hostInfo, invitation=invitation)
 
 
 ##############################################################################

@@ -186,6 +186,12 @@ $serif: "jubilat", Georgia, serif;
 		@include box-shadow(0 7px 0 darken($green, 20));
 	}
 	
+	&:active {
+		@include box-shadow(0 4px 0 darken($green, 20));
+		position: relative;
+		top:5px;
+	}
+	
 	.small {
 		margin:2px 0px;
 		font-size:.6em;
@@ -706,7 +712,6 @@ $headerHeight: 96px;
 	right:-193px;
 	width:165px;
 	background:lighten(yellow, 42%);
-	font-family: $sans;
 	top: 19px;
 	padding:5px 10px;
 }
@@ -720,12 +725,12 @@ label {
 }
 
 input, textarea {
-	border:1px solid #aaa;
 	padding:5px;
 	margin:0px;
 	width:100%;
 	font-size:14px;
 	color:$textColor;
+	border:0;
 }
 
 textarea {
