@@ -774,11 +774,13 @@ def showInvitation(id):
 ##############################################################################
 # SENDING A COOKING REMINDER
 
-hourToSendReminders = 4
+hourToSendReminders = 6
 checkForReminderTimeInterval = 300 # 5min
 
 # check at short intervals whether it's time to send out reminder emails yet
 def checkWhetherItsTimeToSendOutReminderEmails():
+
+	print "checking whether it's time to send out reminder emails"
 
 	# perform the check right away...
 	currentTime = time.time()
@@ -787,18 +789,21 @@ def checkWhetherItsTimeToSendOutReminderEmails():
 	currentHour = datetime.datetime.fromtimestamp(currentTime).hour
 	
 	# if current time matches the designated reminder-sending time...
-	# then start the 2nd timer which actually sends out reminders... and repeats every 24 hours
 	if currentHour == hourToSendReminders:
+		print "yes, it appears to be time"
+		
 		# ... then see which reminders to send out
 		checkWhichCookingsAreComingUp()
 	
-	else:
-		timer = threading.Timer(checkForReminderTimeInterval, checkWhetherItsTimeToSendOutReminderEmails)
-		timer.daemon = True
-		timer.start()
+	# repeat
+	timer = threading.Timer(checkForReminderTimeInterval, checkWhetherItsTimeToSendOutReminderEmails)
+	timer.daemon = True
+	timer.start()
 
 
 def checkWhichCookingsAreComingUp():
+
+	print "grab all future cookings!"
 	
 	# grab a list of ALL the invitations that were accepted
 	cookings = list(db.invitations.find({'itsHappening' : True}))
@@ -811,24 +816,20 @@ def checkWhichCookingsAreComingUp():
 	
 	for cooking in cookings:
 		# if the cooking event is happening "tomorrow"...
-		if currentTime+86400*2 >= cooking['datetime'] and currentTime+8640 <= cooking['datetime']:
+		if currentTime+86400 <= cooking['datetime'] <= currentTime+86400*2:
+			print "here's one happening tomorrow"
 			# add it to the upcoming cookings array!
 			upcomingCookings.append(cooking)
 	
-	# send remindsers for all the upcoming cookings
+	# send reminders for all the upcoming cookings
 	for cooking in upcomingCookings:
 		if 'reminderSent' not in cooking:
 			
+			# just in case: set a flag in the DB for reminder sent, so it doesn't get sent multiple times by accident
+			cooking['reminderSent'] = True
+			db.invitations.save(cooking)
+			
 			urllib2.urlopen(BASE_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id'])).read()
-		
-		# just in case: set a flag in the DB for reminder sent, so it doesn't get sent multiple times by accident
-		cooking['reminderSent'] = True
-		db.invitations.save(cooking)
-	
-	# repeat every 24 hours
-	timer = threading.Timer(86400, checkWhichCookingsAreComingUp)
-	timer.daemon = True
-	timer.start()
 
 
 # called by checkForUpcomingCooking() above if the cooking is within the next 48 hours
@@ -845,18 +846,15 @@ def sendCookingReminder():
 	# grab info about attendees
 	attendees = []
 	
-	# also store attendee addresses in its own array for mailing purposes
-	attendeeEmails = []
-	
 	# first add host info... because a host is an attendee, too!
 	host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
 	hostInfo = {
 		'userpic' : host['userpic'],
-		'name' : host['name']
+		'name' : host['name'],
+		'email' : host['email']
 	}
 	
 	attendees.append(hostInfo);
-	attendeeEmails.append(host['email'])
 	
 	# grab all the infos of the people who said yes...
 	for reply in invitation['replies']:
@@ -868,11 +866,11 @@ def sendCookingReminder():
 		attendee = db.users.find_one({'_id' : ObjectId(reply['userId'])})
 		attendeeInfo = {
 			'userpic' : attendee['userpic'],
-			'name' : attendee['name']
+			'name' : attendee['name'],
+			'email' : attendee['email']
 		}
 		
 		attendees.append(attendeeInfo)
-		attendeeEmails.append(attendee['email'])
 	
 	invitation['attendees'] = attendees
 	
@@ -884,14 +882,22 @@ def sendCookingReminder():
 	}
 	
 	# compose and send email for every attendee
-	email = Message("Get Ready to Cook!", recipients=attendeeEmails)
-	email.html = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal)
-	mail.send(email)
+	# we do it one at a time instead of feeding Message() an array because we actually want each email to be slightly different:
+	# it should say 'you' instead of the recipient's name, because being addressed in the third person is weird
 	
-	return "sent!"
+	for attendee in attendees:
+		print 'reminder email sent to ' + attendee['name'] + ' for ' + invitation['readableDate']
+		
+		email = Message("Get Ready to Cook!", recipients=[attendee['email']])
+		email.html = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal, user=attendee)
+		mail.send(email)
+	
+	return "reminder email sent!"
 
+# I have no initialization function, so I'll just leave this here...
 # start checking a few moments after the server starts
 # the delay is to give the server some time to boot up..?
+print "calling check function"
 timer = threading.Timer(5, checkWhetherItsTimeToSendOutReminderEmails)
 timer.daemon = True
 timer.start()
