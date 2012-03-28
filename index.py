@@ -18,8 +18,11 @@ import saveStuff
 
 USERPIC_FOLDER = 'static/uploads/userpics'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
-BASE_URL = 'http://localhost:7777'
+BASE_URL = 'http://test.letsgohotpot.com'
+LOCAL_URL = 'http://localhost:7777'
 
+hourToSendReminders = 6
+checkForReminderTimeInterval = 300 # 5min
 
 # creating new Flask instance
 app = flask.Flask(__name__)
@@ -68,7 +71,7 @@ def render_template(template, **kwargs):
 					if reply['userId'] == flask.session['userId']:
 						alertNumber = alertNumber-1
 		
-		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, **kwargs)
+		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, BASE_URL=BASE_URL, **kwargs)
 	else:
 		isLoggedIn = False
 		return flask.render_template(template, isLoggedIn=isLoggedIn, **kwargs)
@@ -774,9 +777,6 @@ def showInvitation(id):
 ##############################################################################
 # SENDING A COOKING REMINDER
 
-hourToSendReminders = 6
-checkForReminderTimeInterval = 300 # 5min
-
 # check at short intervals whether it's time to send out reminder emails yet
 def checkWhetherItsTimeToSendOutReminderEmails():
 
@@ -829,7 +829,7 @@ def checkWhichCookingsAreComingUp():
 			cooking['reminderSent'] = True
 			db.invitations.save(cooking)
 			
-			urllib2.urlopen(BASE_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id'])).read()
+			urllib2.urlopen(LOCAL_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id'])).read()
 
 
 # called by checkForUpcomingCooking() above if the cooking is within the next 48 hours
@@ -894,13 +894,6 @@ def sendCookingReminder():
 	
 	return "reminder email sent!"
 
-# I have no initialization function, so I'll just leave this here...
-# start checking a few moments after the server starts
-# the delay is to give the server some time to boot up..?
-print "calling check function"
-timer = threading.Timer(5, checkWhetherItsTimeToSendOutReminderEmails)
-timer.daemon = True
-timer.start()
 
 
 ##############################################################################
@@ -1152,6 +1145,24 @@ def saveStuffFunction():
 	return "database being populated. omgscary"
 	
 
+##############################################################################
+# INITIALIZATIONINGS
+
+@app.before_first_request
+def initialize():
+	# start checking for time to send out reminder emails a few moments after the server starts
+	# the delay is to give the server some time to boot up..?
+	print "initializing check function"
+	timer = threading.Timer(5, checkWhetherItsTimeToSendOutReminderEmails)
+	timer.daemon = True
+	timer.start()
+
+def sendFirstRequestToStartTheInitializationFunctionYeah():
+	urllib2.urlopen(LOCAL_URL + '/').read()
 
 if __name__ == '__main__':
+	
+	timer = threading.Timer(1, sendFirstRequestToStartTheInitializationFunctionYeah)
+	timer.start()
+	
 	app.run(host='0.0.0.0', port=7777, debug=True)
