@@ -1108,15 +1108,17 @@ def doStuffWithStuffFromTornado():
 def showHistory():
 	
 	# need to find all invitations where hostId or one of the inviteeIds matches the current logged-in user
-	# then sort them by date
+	allHotpots = list(db.invitations.find({'hostId' : flask.session['userId'], 'itsHappening' : True})) + list(db.invitations.find({'inviteeIds' : flask.session['userId'], 'itsHappening' : True}))
 	
-	hotpots = list(db.invitations.find({'hostId' : flask.session['userId']}))
+	pastHotpots = []
 	
-	for hotpot in hotpots:
-		# print hotpot
-		grabInvitationInfo(hotpot)
+	# loop through and find ones which occurred in the past
+	for hotpot in allHotpots:
+		if hotpot['datetime'] < time.time():
+			pastHotpot = grabInvitationInfo(hotpot)
+			pastHotpots.append(pastHotpot)
 
-	return render_template('history.html', hotpots=hotpots)
+	return render_template('history.html', hotpots=pastHotpots)
 
 
 @app.route('/history/<id>')

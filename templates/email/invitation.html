@@ -110,7 +110,7 @@
 		<td width="520" style="background:url({{ BASE_URL }}/static/email/bg_Main.png)">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				<tr>
-					<td width="275" valign="top">
+					<td width="275" valign="top" style="vertical-align:top;">
 					
 						<!-- SHOPPING LIST -->
 						
@@ -123,8 +123,8 @@
 							{% for ingredient in meal.ingredients %}
 							<tr>
 								<td width="20" style="background:url({{ BASE_URL }}/static/images/email/bg_ShoppingListLeft.png)"></td>
-								<td height="35" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px; {{ loop.cycle('background:url({{ BASE_URL }}/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">&nbsp; &nbsp;{{ ingredient.name }}</td>
-								<td align="right" style="text-align:right; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; {{ loop.cycle('background:url({{ BASE_URL }}/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}&nbsp; &nbsp;</td>
+								<td height="35" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px; {{ loop.cycle('background:url(' ~ BASE_URL ~ '/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">&nbsp; &nbsp;{{ ingredient.name }}</td>
+								<td align="right" style="text-align:right; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; {{ loop.cycle('background:url(' ~ BASE_URL ~ '/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}&nbsp; &nbsp;</td>
 								<td width="20" style="background:url({{ BASE_URL }}/static/images/email/bg_ShoppingListRight.png)"></td>
 							</tr>
 							{% endfor %}
