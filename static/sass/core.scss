@@ -55,6 +55,12 @@ $serif: "jubilat", Georgia, serif;
 	margin-bottom:15px;
 }
 
+@mixin textLabel {
+	@include bigFatLetters;
+	font-size:12px;
+	color: $mediumBlue;
+}
+
 @mixin bigHeading {
 	font-family: $sans;
 	font-size:35px;
@@ -97,6 +103,7 @@ $serif: "jubilat", Georgia, serif;
 	text-align: center;
 	font-size:38px;
 	color:$darkBlue;
+	margin-bottom:10px;
 }
 
 #pageIntro {
@@ -179,6 +186,12 @@ $serif: "jubilat", Georgia, serif;
 		@include box-shadow(0 7px 0 darken($green, 20));
 	}
 	
+	&:active {
+		@include box-shadow(0 4px 0 darken($green, 20));
+		position: relative;
+		top:5px;
+	}
+	
 	.small {
 		margin:2px 0px;
 		font-size:.6em;
@@ -210,6 +223,10 @@ $serif: "jubilat", Georgia, serif;
 	background: #f8f6f0 url(/static/images/textureSoft.png);
 }
 
+@mixin lightBrownBgHover {
+	background: darken(#f8f6f0, 2) url(/static/images/textureSoft.png);
+}
+
 @mixin lightGreenBg {
 	background:rgba($green, .15);
 }
@@ -222,7 +239,7 @@ $serif: "jubilat", Georgia, serif;
 	background:rgba($mediumBlue, .10);
 }
 
-/* USER AVATARS */
+/* IMAGES */
 
 @mixin userpic {
 	display:inline-block;
@@ -251,6 +268,17 @@ $serif: "jubilat", Georgia, serif;
 	width:80px;
 	height:80px;
 	border-width:5px;
+}
+
+@mixin mealImage {
+	overflow:hidden;
+	border:5px solid #fff;
+	width:200px;
+	height:200px;
+	
+	img {
+		height:100%;
+	}
 }
 
 /* MISC */
@@ -684,7 +712,6 @@ $headerHeight: 96px;
 	right:-193px;
 	width:165px;
 	background:lighten(yellow, 42%);
-	font-family: $sans;
 	top: 19px;
 	padding:5px 10px;
 }
@@ -698,12 +725,12 @@ label {
 }
 
 input, textarea {
-	border:1px solid #aaa;
 	padding:5px;
 	margin:0px;
 	width:100%;
 	font-size:14px;
 	color:$textColor;
+	border:0;
 }
 
 textarea {

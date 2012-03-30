@@ -101,161 +101,162 @@
 		text-transform: uppercase;
 		letter-spacing:.15em;
 	}
-
-}
-
-#ingredients {
-	position: absolute;
-	left: 80px;
-	top: 40px;
-	width: 220px;
-	padding: 20px;
-	background:#fff;
-	@include box-shadow(0px 2px 5px rgba(0,0,0,.2));
-	font-size:16px;
 	
-	li {
-		margin:10px 0px;
-		cursor: pointer;
-	}
 	
-	.crossedOut {
-		text-decoration: line-through;
-	}
-	
-	.closeButton {
+	#ingredients {
 		position: absolute;
-		right: 10px;
-		top: 10px;
-	}
-}
-
-#steps {
-	@include box-sizing(border-box);
-	position: relative;
-	height:100%;
-	overflow: hidden;
-	background:#fff;
-	font-size:1.75em;
-}
-
-.step {	
-	@include box-sizing(border-box);
-	padding:30px 30px 50px 30px;
-	height: 100%;
-	overflow-y: auto;
-	overflow-x: hidden;
-
-	ul {
-		margin-left:20px;
+		left: 80px;
+		top: 40px;
+		width: 220px;
+		padding: 20px;
+		background:#fff;
+		@include box-shadow(0px 2px 5px rgba(0,0,0,.2));
+		font-size:16px;
 		
 		li {
-			font-size:18px;
 			margin:10px 0px;
-			list-style-type:circle;
+			cursor: pointer;
 		}
-	}
-}
-
-.currentStep a {
-	background:#fff;
-}
-
-.extra {
-	font-size:16px;
-	margin:30px 0px;
-	
-	h1 {
-		@include smallHeading;
-	}
-}
-
-.snippet {
-	margin:30px 0px;
-	font-size:14px;
-	font-family: $sans;
-	
-	p {
-		line-height:1.25em;
-	}
-}
-
-.notesContainer {
-	margin:30px 0px;
-}
-
-.cookingNote {
-	font-family: $sans;
-	margin:15px 0px;
-	position: relative;
-	
-	p {
-		font-style: normal;
-	}
-	
-	.userpic {
-		width:30px;
-		float:left;
-	}
-	
-	.noteContent {
-		font-size:12px;
-	}
-
-	.timestamp {
-		text-align: right;
-		font-style: normal;
-		display: block;
-		margin-bottom:5px;
-		font-size:10px;
-		text-transform: uppercase;
-	}
-}
-
-.cookingNote.note {
-	.noteContent {
-		margin-left:40px;
-		background:$subtleColor;
-		padding:10px;
-		@include border-radius(5px);
-	}
-	
-	.userpic {
-		margin-top:15px;
-	}
-}
-
-.cookingNote.stamp {
-
-	.noteContent {
-		height: 40px;
-	
-		p {
-			position: absolute;
-			background:#ff0000;
-			left:60px;
-			top:21px;
-			padding:2px 4px;
-			color:#fff;
-			text-transform: uppercase;
-			letter-spacing:.1em;
-			font-weight: bold;
-			font-size:10px;
+		
+		.crossedOut {
+			text-decoration: line-through;
 		}
-	
-		img {
-			width:40px;
+		
+		.closeButton {
 			position: absolute;
+			right: 10px;
 			top: 10px;
-			left:22px;
 		}
 	}
-}
+	
+	#steps {
+		@include box-sizing(border-box);
+		position: relative;
+		height:100%;
+		overflow: hidden;
+		background:#fff;
+		font-size:1.75em;
+	}
+	
+	.step {	
+		@include box-sizing(border-box);
+		padding:30px 30px 50px 30px;
+		height: 100%;
+		overflow-y: auto;
+		overflow-x: hidden;
+	
+		ul {
+			margin-left:20px;
+			
+			li {
+				font-size:18px;
+				margin:10px 0px;
+				list-style-type:circle;
+			}
+		}
+	}
+	
+	.currentStep a {
+		background:#fff;
+	}
+	
+	.extra {
+		font-size:16px;
+		margin:30px 0px;
+		
+		h1 {
+			@include smallHeading;
+		}
+	}
+	
+	.snippet {
+		margin:30px 0px;
+		font-size:14px;
+		font-family: $sans;
+		
+		p {
+			line-height:1.25em;
+		}
+	}
+	
+	.notesContainer {
+		margin:30px 0px;
+	}
+	
+	.cookingNote {
+		font-family: $sans;
+		margin:15px 0px;
+		position: relative;
+		
+		p {
+			font-style: normal;
+		}
+		
+		.userpic {
+			width:30px;
+			float:left;
+		}
+		
+		.noteContent {
+			font-size:12px;
+		}
+	
+		.timestamp {
+			text-align: right;
+			font-style: normal;
+			display: block;
+			margin-bottom:5px;
+			font-size:10px;
+			text-transform: uppercase;
+		}
+	}
+	
+	.cookingNote.note {
+		.noteContent {
+			margin-left:40px;
+			background:$subtleColor;
+			padding:10px;
+			@include border-radius(5px);
+		}
+		
+		.userpic {
+			margin-top:15px;
+		}
+	}
+	
+	.cookingNote.stamp {
+	
+		.noteContent {
+			height: 40px;
+		
+			p {
+				position: absolute;
+				background:#ff0000;
+				left:60px;
+				top:21px;
+				padding:2px 4px;
+				color:#fff;
+				text-transform: uppercase;
+				letter-spacing:.1em;
+				font-weight: bold;
+				font-size:10px;
+			}
+		
+			img {
+				width:40px;
+				position: absolute;
+				top: 10px;
+				left:22px;
+			}
+		}
+	}
+	
+	.step {
+		display:none;
+	}
 
-.step {
-	display:none;
+	
 }
-
 /**********************************************************/
 /* WIDGETS */
 

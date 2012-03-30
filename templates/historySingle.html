@@ -1,0 +1,138 @@
+{% extends "base/common.html" %}
+
+{% block title %}Cooking History{% endblock %}
+
+{% block customJS %}{% endblock %}
+
+{% block bodyId %}historySingle{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+
+<h1 id="pageTitle">
+	<div class="small">Cooking History</div>
+	{{ hotpot.readableDate|safe }}
+</h1>
+
+<div id="historyIntro">
+
+	<div id="userpics">
+		<div class="userpic"><img src="/static/uploads/userpics/{{ hotpot.host.userpic }}" /></div>
+		{% for invitee in hotpot.inviteesInfo %}
+			<div class="userpic"><img src="/static/uploads/userpics/{{ invitee.userpic }}" /></div>
+		{% endfor %}
+	</div>
+
+	<div id="mealImage">
+		<img src="/static/images/food/{{ hotpot.meal.slug }}.jpg" />
+	</div>
+	
+	<div id="historyDetails">
+		<p class="intro">
+			On {{ hotpot.readableDate|safe }} at {{ hotpot.readableTime|safe }},
+			<strong>{% if hotpot.host._id != user._id %}
+				{{ hotpot.host.name }}
+			{% else %}
+				you
+			{% endif %}</strong>
+			and 
+			{% for invitee in hotpot.inviteesInfo %}
+				<strong>{% if invitee._id != user._id %}
+					{{ invitee.name }}
+				{% else %}
+					you
+				{% endif %}
+			{% endfor %}</strong>
+			made a delicious meal of <strong>{{ hotpot.meal.title }}</strong>.
+		</p>
+			
+		<div class="userSynopsis">
+			<div class="userpic"><img src="/static/uploads/userpics/{{ hotpot.host.userpic }}" /></div>
+			<strong>{{ hotpot.host.name }}</strong> wrote <strong>x</strong> notes and gave <strong>x</strong> stamps.
+		</div>
+		
+		{% for invitee in hotpot.inviteesInfo %}
+			<div class="userSynopsis">
+				<div class="userpic"><img src="/static/uploads/userpics/{{ invitee.userpic }}" /></div>
+				<strong>{{ invitee.name }}</strong> wrote <strong>x</strong> notes and gave <strong>x</strong> stamps.
+			</div>
+		{% endfor %}
+	</div>
+
+</div><!-- #historyIntro -->
+
+<div id="historySteps">
+
+	{% set stepCounter = 1 %}
+	
+	{% for step in meal.steps %}
+		
+		<h2>
+			{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
+				{% set stepCounter = stepCounter + 1 %}
+				Step {{ stepCounter }}
+			{% elif step.type == "ingredients" %}
+				Start
+			{% else %}
+				{{ step.type }}
+			{% endif %}
+		</h2>
+		
+		<div class="stepContent">
+			<div class="instructionsContainer">
+				<div class="instructions">
+					
+					{{ step.text|safe }}
+					
+					{% if step.type == "ingredients" %}
+						<ul>
+						{% for ingredient in meal.ingredients %}
+							<li>{{ ingredient.name }} {% if ingredient.amount is defined %}({{ ingredient.amount }}){% endif %}</li>
+						{% endfor %}
+						</ul>
+					{% endif %}
+					
+					{% if step.extra is defined %}
+						<div class="extra">
+							<span class="label">Protip!</span>
+							{{ step.extra|safe }}
+						</div>
+					{% endif %}
+				</div><!-- #instructions -->
+			</div>
+			
+			<div class="notesContainer">
+				{% if step.notes is defined %}
+					{% for note in step.notes %}
+					<div class="cookingNote {{ note.type }}" data-id="{{ note._id }}">
+						
+						<div class="userpic"><img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" /></div>
+						
+						{% if note.type == "note" %}
+							<div class="description"><strong>{{ note.noteAuthor.name }}</strong> posted a note at {{ note.timestamp }}</div>
+						
+							<div class="noteContent">
+								<p>{{ note.content }}</p>
+							</div>
+							
+						{% elif note.type == "stamp" %}
+						
+							<div class="description"><strong>{{ note.noteAuthor.name }}</strong> posted a stamp at {{ note.timestamp }}</div>
+						
+							<div class="noteContent">
+								<img src="/static/images/stamps/{{ note.content.stampSlug }}.png" />
+								<p>{{ note.content.stampName }}!</p>
+							</div>
+						{% endif %}
+					</div>
+					{% endfor %}
+				{% endif %}
+			</div><!-- .notesContainer -->
+		</div><!-- .stepContent -->
+		
+	{% endfor %}
+	
+</div>
+
+{% endblock main %}

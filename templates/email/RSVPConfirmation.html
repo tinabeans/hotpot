@@ -1,63 +1,63 @@
-<table width="100%" bgcolor="#e5e2da" style="background:url(http://test.letsgohotpot.com/static/images/email/bg.png);" cellpadding="20" cellspacing="0" border="0"><tr><td align="center">
+<table width="100%" bgcolor="#e5e2da" style="background:url({{ BASE_URL }}/static/images/email/bg.png);" cellpadding="20" cellspacing="0" border="0"><tr><td align="center">
 
-<table cellpadding="0" cellspacing="0" width="620" bgcolor="#ffffff" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_Main.png);">
+<table cellpadding="0" cellspacing="0" width="620" bgcolor="#ffffff" style="background:url({{ BASE_URL }}/static/images/email/bg_Main.png);">
 
 	<!-- EMAIL HEADER -->
 
 	<tr>
 		<td colspan="3">
-			<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/header.png" width="620" height="115" alt="Hotpot logo">
+			<img style="display:block;" src="{{ BASE_URL }}/static/images/email/header.png" width="620" height="115" alt="Hotpot logo">
 		</td>
 	</tr>
 	
 	<!-- TEXT -->
 	
 	<tr>
-		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
-		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
+		<td width="50" style="background:url({{ BASE_URL }}/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url({{ BASE_URL }}/static/email/bg_Main.png)">
 			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:18px;">
 				<span style="font-size:24px;">Hooray!</span> You're all set to cook with <span style="font-weight:bold;">{{ host.name }}</span>. <br>Here are the details:
 			</p>
 		</td>
-		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
+		<td width="50" style="background:url({{ BASE_URL }}/static/images/email/bg_MainRight.png)"></td>
 	</tr>
 	
 	<!-- a small gap -->
 	
 	<tr>
-		<td width="50" height="36" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
-		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
+		<td width="50" height="36" style="background:url({{ BASE_URL }}/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url({{ BASE_URL }}/static/email/bg_Main.png)">
 		</td>
-		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
+		<td width="50" style="background:url({{ BASE_URL }}/static/images/email/bg_MainRight.png)"></td>
 	</tr>
 	
 	<!-- INVITATION INFO -->
 	
 	<tr>
-		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
-		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
+		<td width="50" style="background:url({{ BASE_URL }}/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url({{ BASE_URL }}/static/email/bg_Main.png)">
 			<h1 style="text-align:center; color:#1c6770; font-size:28px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; line-height:20px;">{{ meal.title }}</h1>
 			<p style="text-align:center; line-height:1em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:18px;">
-				<img src="http://test.letsgohotpot.com/static/images/email/text_date.png" alt="Date"> &nbsp;{{ invitation.readableTime|safe }} &nbsp; &nbsp;<img src="http://test.letsgohotpot.com/static/images/email/text_time.png" alt="Time"> &nbsp;{{ invitation.readableDate|safe }}
+				<img src="{{ BASE_URL }}/static/images/email/text_date.png" alt="Date"> &nbsp;{{ invitation.readableTime|safe }} &nbsp; &nbsp;<img src="{{ BASE_URL }}/static/images/email/text_time.png" alt="Time"> &nbsp;{{ invitation.readableDate|safe }}
 			</p>
-			<p style="text-align:center; line-height:5em;"><a href="http://test.letsgohotpot.com/invitations/{{ invitation._id }}"><img src="http://test.letsgohotpot.com/static/images/email/button_ViewInvitation.png" width="151" height="36"></a></p>
+			<p style="text-align:center; line-height:5em;"><a href="{{ BASE_URL }}/invitations/{{ invitation._id }}"><img src="{{ BASE_URL }}/static/images/email/button_ViewInvitation.png" width="151" height="36"></a></p>
 		</td>
-		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
+		<td width="50" style="background:url({{ BASE_URL }}/static/images/email/bg_MainRight.png)"></td>
 	</tr>
 	
 	<!-- a small gap -->
 	
 	<tr>
-		<td width="50" height="36" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
-		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
+		<td width="50" height="36" style="background:url({{ BASE_URL }}/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url({{ BASE_URL }}/static/email/bg_Main.png)">
 		</td>
-		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
+		<td width="50" style="background:url({{ BASE_URL }}/static/images/email/bg_MainRight.png)"></td>
 	</tr>
 
 	
 	<tr>
-		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
-		<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
+		<td width="50" style="background:url({{ BASE_URL }}/static/images/email/bg_MainLeft.png)"></td>
+		<td width="520" style="background:url({{ BASE_URL }}/static/email/bg_Main.png)">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				<tr>
 					<td width="275" valign="top">
@@ -67,20 +67,20 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr>
-								<td colspan="4"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_shoppingList.png" alt="Shopping List" height="75" width="275"></td>
+								<td colspan="4"><img style="display:block;" src="{{ BASE_URL }}/static/images/email/text_shoppingList.png" alt="Shopping List" height="75" width="275"></td>
 							</tr>
 							
 							{% for ingredient in meal.ingredients %}
 							<tr>
-								<td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListLeft.png)"></td>
-								<td height="35" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px; {{ loop.cycle('background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">&nbsp; &nbsp;{{ ingredient.name }}</td>
-								<td align="right" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; {{ loop.cycle('background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}&nbsp; &nbsp;</td>
-								<td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListRight.png)"></td>
+								<td width="20" style="background:url({{ BASE_URL }}/static/images/email/bg_ShoppingListLeft.png)"></td>
+								<td height="35" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px; {{ loop.cycle('background:url(' ~ BASE_URL ~ '/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">&nbsp; &nbsp;{{ ingredient.name }}</td>
+								<td align="right" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; {{ loop.cycle('background:url(' ~ BASE_URL ~ '/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}&nbsp; &nbsp;</td>
+								<td width="20" style="background:url({{ BASE_URL }}/static/images/email/bg_ShoppingListRight.png)"></td>
 							</tr>
 							{% endfor %}
 							
 							<tr>
-								<td colspan="4"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/shoppingListBottom.png" height="21" width="275"></td>
+								<td colspan="4"><img style="display:block;" src="{{ BASE_URL }}/static/images/email/shoppingListBottom.png" height="21" width="275"></td>
 							</tr>
 						</table>
 					</td>
@@ -88,7 +88,7 @@
 					<td width="217" valign="top">
 					
 						<!-- ADD TO CALENDAR -->
-						<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_WhatsNext.png" width="125" height="13" alt="What's Next?">
+						<img style="display:block;" src="{{ BASE_URL }}/static/images/email/text_WhatsNext.png" width="125" height="13" alt="What's Next?">
 						
 						<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">We’ll send both you and {{ host.name }} a reminder the day before, containing a link to your Cooking Room. At the appointed time, simply click the link and cook away!</p>
 						<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">Meanwhile, why not go pick up some ingredients and get properly excited? :)</p>
@@ -97,19 +97,19 @@
 						
 						<!-- ADD TO CALENDAR -->
 					
-						<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_addToCalendar.png" width="160" height="13" alt="Add to Calendar">
+						<img style="display:block;" src="{{ BASE_URL }}/static/images/email/text_addToCalendar.png" width="160" height="13" alt="Add to Calendar">
 						
 						<p>[ TODO: links go here ]</p>
 					</td>
 				</tr>
 			</table>
 		</td>
-		<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
+		<td width="50" style="background:url({{ BASE_URL }}/static/images/email/bg_MainRight.png)"></td>
 	</tr>
 
 	<tr>
 		<td colspan="3">
-			<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/footer.png" width="620" height="115" alt="Brought to you by Hotpot">
+			<img style="display:block;" src="{{ BASE_URL }}/static/images/email/footer.png" width="620" height="115" alt="Brought to you by Hotpot">
 		</td>
 	</tr>
 </table>

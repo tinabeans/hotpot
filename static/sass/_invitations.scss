@@ -12,7 +12,7 @@
 	margin-left:680px;
 }
 
-#invitationPreviewContainer {
+#invitationPreviewContainer, #replyContainer {
 	float:left;
 	width:620px;
 	padding:20px 15px 10px 15px;
@@ -252,25 +252,43 @@ table.jCalendar {
 /* RSVP PAGE */
 
 #reply {
-	h1#title {
-		@include bigFormalHeading;
+	#pageTitle {
+		margin-bottom:30px;
+	}
+	
+	.intro {
+		text-align: center;
 	}
 }
 
-#invitationInfoContainer {
-	padding:20px;
-	background:$subtleColor;
+#replyFormContainer {
+	.userpic {
+		@include smallUserpic;
+		vertical-align: middle;
+	}
+	
+	h2 {
+		text-align: center;
+		font-size:20px;
+		margin:20px;
+	}
 }
 
 #invitationInfo {
 	padding:30px;
-	border:1px solid #aaa;
-	background:#fff;
+	@include lightBrownBg;
 	@include clearfix;
+	margin-bottom:30px;
 	
 	h1 {
+		font-weight: 700;
 		font-size:28px;
-		margin-bottom:30px;
+		margin: 10px 0px 10px 0px;
+	}
+	
+	p {
+		font-size:16px;
+		margin:0px 0px 20px 0px;
 	}
 	
 	#recipeImage {
@@ -284,12 +302,21 @@ table.jCalendar {
 		margin-left:250px;
 		
 		dt {
-			@include smallHeading;
-			padding-top:15px;
+			@include textLabel;
+			font-size:14px;
+			margin:10px 0px 8px 0px;
+			
+			&.date {
+				color: $orange;
+			}
+			
+			&.time {
+				color: $green;
+			}
 		}
 		
 		dd {
-			font-size:22px;
+			font-size:18px;
 			margin-bottom:15px;
 		}
 	}
@@ -297,8 +324,32 @@ table.jCalendar {
 
 #replyForm {
 	width:700px;
-	margin:0px auto;
+	margin:3px auto;
 	text-align: center;
+	
+	#theRestOfTheReplyForm.yes {
+		color:$green;
+	
+		#replyMessage {
+			@include lightGreenBg;
+		}
+	}
+	
+	#theRestOfTheReplyForm.maybe {
+		color:$orange;
+	
+		#replyMessage {
+			@include lightOrangeBg;
+		}
+	}
+	
+	#theRestOfTheReplyForm.no {
+		color:$mediumBlue;
+	
+		#replyMessage {
+			@include lightBlueBg;
+		}
+	}
 
 	.checkbox {
 		margin:0px 0px 15px 0px;
@@ -310,12 +361,14 @@ table.jCalendar {
 		display: inline;
 		letter-spacing: normal;
 		font-style: normal;
-		font-family: $serif;
+		font-weight: normal;
+		color:$textColor;
 	}
 	
-	label {
+	label {	
+		font-weight: 700;
 		display: block;
-		margin-bottom:5px;
+		margin-bottom:10px;
 		font-size:14px;
 	}
 	
@@ -324,11 +377,15 @@ table.jCalendar {
 	}
 	
 	input[type=text] {
-		border:1px solid #aaa;
 		padding:5px;
 		margin:0px;
 		width:100%;
 		font-size:14px;
+	}
+	
+	input[type=checkbox] {
+		width: auto;
+		margin-right:5px;
 	}
 	
 	textarea {
@@ -346,57 +403,93 @@ table.jCalendar {
 	text-align: center;
 	a {
 		@include bigButton;
-		color:#000;
-	}
-	
-	#answerYes, #answerMaybe {
-		background:#DAEDC7;
-		color:#3F8000;
-	}
-	
-	#answerYes:hover, #answerMaybe:hover {
-		background:#C9E6AC;
-	}
-	
-	#answerYes.selected, #answerMaybe.selected {
-		background:#7AB342;
 		color:#fff;
+		letter-spacing: .05em;
+	}
+	
+	#answerYes {
+		background:$green;
+		
+		&:hover {
+			background:darken($green, 5)
+		}
+		
+		&:active {
+			@include box-shadow(0 2px 0 darken($green, 15));
+		}
+		
+		&.selected {
+			position: relative;
+			top:4px;
+			background:darken($green, 8);
+			@include box-shadow(0 3px 0 darken($green, 20));
+		}
+	}
+	
+	#answerMaybe {
+		background:$orange;
+		@include box-shadow(0 7px 0 darken($orange, 15));
+		
+		&:hover {
+			background:darken($orange, 5)
+		}
+		
+		&:active {
+			@include box-shadow(0 2px 0 darken($orange, 15));
+		}
+		
+		&.selected {
+			position: relative;
+			top:4px;
+			@include box-shadow(0 3px 0 darken($orange, 20));
+			background:darken($orange, 8);
+		}
 	}
 	
 	#answerNo {
-		background:#F7DDCB;
-		color:#962D00;
-	}
-	
-	#answerNo:hover {
-		background:#F2D3BD;
-	}
-	
-	#answerNo.selected {
-		background:#EB6931;
-		color:#fff;
+		background:$mediumBlue;
+		@include box-shadow(0 7px 0 darken($mediumBlue, 15));
+		
+		&:hover {
+			background:darken($mediumBlue, 5)
+		}
+		
+		&:active {
+			@include box-shadow(0 2px 0 darken($mediumBlue, 15));
+		}
+		
+		&.selected {
+			position: relative;
+			top:4px;
+			@include box-shadow(0 3px 0 darken($mediumBlue, 20));
+			background:darken($mediumBlue, 8);
+		}
 	}
 }
 
+#theRestOfTheReplyForm {
+	margin-top:30px;
+}
+
 #replyReasons {
-	background:$subtleColor;
-	padding:30px 30px 20px 30px;
-	margin:30px 0px 0px 0px;
-	font-family: $sans;
+	@include lightOrangeBg;
+	padding:30px 30px 0px 30px;
 	border-bottom:1px solid #fff;
 	text-align: left;
 }
 
 #replyMessage {
-	background:$subtleColor;
 	padding:30px;
 	text-align: left;
-	margin:30px 0px;
-	
-	label {
-		@include labelType;
-		font-style: normal;
-	}
+	margin:-1px 0px 30px 0px;
+}
+
+/**********************************************************/
+/* REPLY SENT PAGE */
+
+#replyContainer {
+	margin:40px auto;
+	float:none;
 }
 
 /**********************************************************/
@@ -514,15 +607,10 @@ table.jCalendar {
 		}
 	
 		.mealImage {
+			@include mealImage;
 			width:120px;
 			height:120px;
-			overflow:hidden;
-			border:5px solid #fff;
 			float:left;
-			
-			img {
-				height:100%;
-			}
 		}
 		
 		.invitationInfo {

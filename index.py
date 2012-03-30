@@ -18,8 +18,11 @@ import saveStuff
 
 USERPIC_FOLDER = 'static/uploads/userpics'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
-BASE_URL = 'http://localhost:7777'
+BASE_URL = 'http://test.letsgohotpot.com'
+LOCAL_URL = 'http://localhost:7777'
 
+hourToSendReminders = 6
+checkForReminderTimeInterval = 300 # 5min
 
 # creating new Flask instance
 app = flask.Flask(__name__)
@@ -49,7 +52,7 @@ def render_template(template, **kwargs):
 	# decide if i'm logged in or not
 	if 'userId' in flask.session:
 		isLoggedIn = True
-		print 'hello'
+		
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 		userInfo = {
 			'name' : user['name'],
@@ -68,10 +71,9 @@ def render_template(template, **kwargs):
 					if reply['userId'] == flask.session['userId']:
 						alertNumber = alertNumber-1
 		
-		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, **kwargs)
+		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, BASE_URL=BASE_URL, **kwargs)
 	else:
 		isLoggedIn = False
-		print 'helloooooooooooooooooooo'
 		return flask.render_template(template, isLoggedIn=isLoggedIn, **kwargs)
 
 
@@ -305,7 +307,7 @@ def updateMyProfile():
 		# delete older user pic, if it's around
 		try:
 			os.remove(os.path.join(USERPIC_FOLDER, user['userpic']))
-			print "baleted"
+			# print "baleted"
 		except:
 			print "oh. i guess that file didn't exist after all. oh well."
 		
@@ -454,9 +456,14 @@ def showReplyForm(id):
 			show = 'reply'
 		
 	meal = db.meals.find_one({'slug' : invitation['meal']})
-	hostName = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})['name']
+	
+	host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
+	hostInfo = {
+		'name' : host['name'],
+		'userpic' : host['userpic']
+	}
 			
-	return render_template('reply.html', show=show, invitation=invitation, meal=meal, inviteeId=inviteeId, hostName=hostName, loggedInName=loggedInName)
+	return render_template('reply.html', show=show, invitation=invitation, meal=meal, inviteeId=inviteeId, host=hostInfo, loggedInName=loggedInName)
 
 
 @app.route('/loginToReply', methods=['POST'])
@@ -552,7 +559,7 @@ def sendReply():
 	
 	# if there aren't any replies stored yet, make an array to store them!
 	if 'replies' not in invitation:
-		print 'no replies yet'
+		# print 'no replies yet'
 		invitation['replies'] = []
 		
 		invitation['replies'].append(replyInfo)
@@ -635,25 +642,26 @@ def sendReply():
 	
 	# compose and send email back to host
 	email = Message("Hotpot RSVP", recipients=[hostEmail])
-	email.html = render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
+	replyMessage = render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
+	email.html = replyMessage
 	mail.send(email)
+	
+	host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
+		
+	hostInfo = {
+		'name' : host['name'],
+		'userpic' : host['userpic']
+	}
 	
 	# if reply was a yes, also send the invitee a confirmation
 	if replyInfo['mainReply'] == "yes":
 		inviteeEmail = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})['email']
 		
-		host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
-		
-		hostInfo = {
-			'name' : host['name'],
-			'userpic' : host['userpic']
-		}
-	
 		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail])
 		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=invitationInfo, meal=mealInfo)
 		mail.send(email)
 	
-	return render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
+	return render_template('replySent.html', replyMessage=replyMessage, host=hostInfo, invitation=invitation)
 
 
 ##############################################################################
@@ -718,6 +726,10 @@ def grabInvitationInfo(invitation):
 
 @app.route('/invitations/')
 def showInvitations():
+
+	if 'userId' not in flask.session:
+		flask.flash('Log in to view invitations.')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/invitations/'}))
 	
 	# grab all the sent invitations
 	invitationsSent = list(db.invitations.find({'hostId' : flask.session['userId']}))
@@ -738,6 +750,12 @@ def showInvitations():
 
 @app.route('/invitations/<id>')
 def showInvitation(id):
+
+	if 'userId' not in flask.session:
+		flask.flash('Log in to view invitations.')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/invitations/' + id}))
+	
+	# TODO: check if this invite belongs to the person who's logged in
 	
 	invitation = db.invitations.find_one({'_id' : ObjectId(id)})
 	
@@ -769,11 +787,10 @@ def showInvitation(id):
 ##############################################################################
 # SENDING A COOKING REMINDER
 
-hourToSendReminders = 4
-checkForReminderTimeInterval = 300 # 5min
-
 # check at short intervals whether it's time to send out reminder emails yet
 def checkWhetherItsTimeToSendOutReminderEmails():
+
+	print "checking whether it's time to send out reminder emails"
 
 	# perform the check right away...
 	currentTime = time.time()
@@ -782,18 +799,21 @@ def checkWhetherItsTimeToSendOutReminderEmails():
 	currentHour = datetime.datetime.fromtimestamp(currentTime).hour
 	
 	# if current time matches the designated reminder-sending time...
-	# then start the 2nd timer which actually sends out reminders... and repeats every 24 hours
 	if currentHour == hourToSendReminders:
+		print "yes, it appears to be time"
+		
 		# ... then see which reminders to send out
 		checkWhichCookingsAreComingUp()
 	
-	else:
-		timer = threading.Timer(checkForReminderTimeInterval, checkWhetherItsTimeToSendOutReminderEmails)
-		timer.daemon = True
-		timer.start()
+	# repeat
+	timer = threading.Timer(checkForReminderTimeInterval, checkWhetherItsTimeToSendOutReminderEmails)
+	timer.daemon = True
+	timer.start()
 
 
 def checkWhichCookingsAreComingUp():
+
+	print "grab all future cookings!"
 	
 	# grab a list of ALL the invitations that were accepted
 	cookings = list(db.invitations.find({'itsHappening' : True}))
@@ -806,24 +826,20 @@ def checkWhichCookingsAreComingUp():
 	
 	for cooking in cookings:
 		# if the cooking event is happening "tomorrow"...
-		if currentTime+86400*2 >= cooking['datetime'] and currentTime+8640 <= cooking['datetime']:
+		if currentTime+86400 <= cooking['datetime'] <= currentTime+86400*2:
+			print "here's one happening tomorrow"
 			# add it to the upcoming cookings array!
 			upcomingCookings.append(cooking)
 	
-	# send remindsers for all the upcoming cookings
+	# send reminders for all the upcoming cookings
 	for cooking in upcomingCookings:
 		if 'reminderSent' not in cooking:
 			
-			urllib2.urlopen(BASE_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id'])).read()
-		
-		# just in case: set a flag in the DB for reminder sent, so it doesn't get sent multiple times by accident
-		cooking['reminderSent'] = True
-		db.invitations.save(cooking)
-	
-	# repeat every 24 hours
-	timer = threading.Timer(86400, checkWhichCookingsAreComingUp)
-	timer.daemon = True
-	timer.start()
+			# just in case: set a flag in the DB for reminder sent, so it doesn't get sent multiple times by accident
+			cooking['reminderSent'] = True
+			db.invitations.save(cooking)
+			
+			urllib2.urlopen(LOCAL_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id'])).read()
 
 
 # called by checkForUpcomingCooking() above if the cooking is within the next 48 hours
@@ -840,22 +856,19 @@ def sendCookingReminder():
 	# grab info about attendees
 	attendees = []
 	
-	# also store attendee addresses in its own array for mailing purposes
-	attendeeEmails = []
-	
 	# first add host info... because a host is an attendee, too!
 	host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
 	hostInfo = {
 		'userpic' : host['userpic'],
-		'name' : host['name']
+		'name' : host['name'],
+		'email' : host['email']
 	}
 	
 	attendees.append(hostInfo);
-	attendeeEmails.append(host['email'])
 	
 	# grab all the infos of the people who said yes...
 	for reply in invitation['replies']:
-		print reply['mainReply']
+		# print reply['mainReply']
 	
 		if reply['mainReply'] != "yes":
 			continue
@@ -863,11 +876,11 @@ def sendCookingReminder():
 		attendee = db.users.find_one({'_id' : ObjectId(reply['userId'])})
 		attendeeInfo = {
 			'userpic' : attendee['userpic'],
-			'name' : attendee['name']
+			'name' : attendee['name'],
+			'email' : attendee['email']
 		}
 		
 		attendees.append(attendeeInfo)
-		attendeeEmails.append(attendee['email'])
 	
 	invitation['attendees'] = attendees
 	
@@ -879,21 +892,68 @@ def sendCookingReminder():
 	}
 	
 	# compose and send email for every attendee
-	email = Message("Get Ready to Cook!", recipients=attendeeEmails)
-	email.html = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal)
-	mail.send(email)
+	# we do it one at a time instead of feeding Message() an array because we actually want each email to be slightly different:
+	# it should say 'you' instead of the recipient's name, because being addressed in the third person is weird
 	
-	return "sent!"
+	for attendee in attendees:
+		print 'reminder email sent to ' + attendee['name'] + ' for ' + invitation['readableDate']
+		
+		email = Message("Get Ready to Cook!", recipients=[attendee['email']])
+		email.html = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal, user=attendee)
+		mail.send(email)
+	
+	return "reminder email sent!"
 
-# start checking a few moments after the server starts
-# the delay is to give the server some time to boot up..?
-timer = threading.Timer(5, checkWhetherItsTimeToSendOutReminderEmails)
-timer.daemon = True
-timer.start()
 
 
 ##############################################################################
 # HOTPOT ROOM
+
+# takes a meal dictionary and inserts notes into the appropriate step
+def insertNotesIntoSteps(meal, notes):
+	
+	for step in meal['steps']:
+	
+		notesToInsert = []
+		currentStepId = step['id']
+		
+		# the for-loop below is for grabbing just the foodNotes related to this step
+		for note in notes:
+			
+			if note['stepId'] != currentStepId:
+				continue # this skips the rest of the stuff in the loop and starts the next iteration
+			
+			# get the note author's name from their id
+			noteAuthor = db.users.find_one({'_id' : ObjectId(note['userId'])})
+			
+			# grab just the info we wamt to send to the template
+			noteInfo = {
+				'timestamp' : note['timestamp'],
+				'type' : note['type'],
+				'_id' : str(note['_id']),
+				'content' : note['content'],
+				'noteAuthor' : {
+					'name' : noteAuthor['name'],
+					'userpic' : noteAuthor['userpic']
+				}
+			}
+			
+			# if it's a stamp, add in some additional info...
+			if note['type'] == 'stamp':
+				stampInfo = db.stamps.find_one({'slug' : note['content']})
+				
+				noteInfo['content'] = {
+					'stampName' : stampInfo['name'],
+					'stampSlug' : stampInfo['slug']
+				}
+			
+			notesToInsert.append(noteInfo)
+			
+		
+		if len(notesToInsert) != 0:
+			step['notes'] = notesToInsert
+		
+	return meal
 
 @app.route('/rooms/<invitationId>')
 def showRoom(invitationId):
@@ -915,56 +975,11 @@ def showRoom(invitationId):
 		# grab the meal info (for displaying recipe steps, etc.)
 		meal = db.meals.find_one({'slug' : roomInfo['meal']})
 		
-		# grab all the foodNotes related to this room
+		# grab all the notes related to this room
 		notesInThisRoom = list(db.notes.find({'invitationId' : invitationId}))
 		
-		print notesInThisRoom
-		
-		# and insert them into the recipe object at the appropriate step, one step at a time
-		for step in meal['steps']:
-		
-			print 'step: ' + step['id']
-		
-			notesToInsert = []
-			currentStepId = step['id']
-			
-			# the for-loop below is for grabbing just the foodNotes related to this step
-			for note in notesInThisRoom:
-				
-				if note['stepId'] != currentStepId:
-					continue # this skips the rest of the stuff in the loop and starts the next iteration
-				
-				print note
-				
-				# get the note author's name from their id
-				noteAuthor = db.users.find_one({'_id' : ObjectId(note['userId'])})
-				
-				# grab just the info we wamt to send to the template
-				noteInfo = {
-					'timestamp' : note['timestamp'],
-					'type' : note['type'],
-					'_id' : str(note['_id']),
-					'content' : note['content'],
-					'noteAuthor' : {
-						'name' : noteAuthor['name'],
-						'userpic' : noteAuthor['userpic']
-					}
-				}
-				
-				# if it's a stamp, add in some additional info...
-				if note['type'] == 'stamp':
-					stampInfo = db.stamps.find_one({'slug' : note['content']})
-					
-					noteInfo['content'] = {
-						'stampName' : stampInfo['name'],
-						'stampSlug' : stampInfo['slug']
-					}
-				
-				notesToInsert.append(noteInfo)
-				
-			
-			if len(notesToInsert) != 0:
-				step['notes'] = notesToInsert
+		# ...and insert them into the recipe object at the appropriate step, one step at a time
+		meal = insertNotesIntoSteps(meal, notesInThisRoom)
 		
 		# grab all the stamps too
 		stamps = list(db.stamps.find())
@@ -1003,6 +1018,8 @@ def postFoodnote():
 
 @app.route('/socketMessageHandler', methods=['POST'])
 def doStuffWithStuffFromTornado():
+	print flask.request.json
+
 	requestJSON = flask.request.json
 	data = requestJSON['data']
 	
@@ -1089,9 +1106,57 @@ def doStuffWithStuffFromTornado():
 		}
 				
 	# use json.dumps() instead of str() because on the other end we need a well-formatted JSON string with double-quotes
-	print requestJSON
-	print dataForResponse
+	# print requestJSON
+	# print dataForResponse
 	return json.dumps(dataForResponse)
+
+
+##############################################################################
+# COOKING HISTORY
+
+@app.route('/history/')
+def showHistory():
+
+	if 'userId' not in flask.session:
+		flask.flash('Log in to view history.')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/history/'}))
+	
+	# need to find all invitations where hostId or one of the inviteeIds matches the current logged-in user
+	allHotpots = list(db.invitations.find({'hostId' : flask.session['userId'], 'itsHappening' : True})) + list(db.invitations.find({'inviteeIds' : flask.session['userId'], 'itsHappening' : True}))
+	
+	pastHotpots = []
+	
+	# loop through and find ones which occurred in the past
+	for hotpot in allHotpots:
+		if hotpot['datetime'] < time.time():
+			pastHotpot = grabInvitationInfo(hotpot)
+			pastHotpots.append(pastHotpot)
+	
+	# just send the ones from the past to the template
+	return render_template('history.html', hotpots=pastHotpots)
+
+
+@app.route('/history/<id>')
+def showSingleHistory(id):
+	
+	if 'userId' not in flask.session:
+		flask.flash('Log in to view history.')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/history/' + id}))
+		
+	# TODO: check if this history belongs to the person who's logged in
+	
+	hotpot = grabInvitationInfo(db.invitations.find_one({'_id' : ObjectId(id)}))
+	
+	# grab meal info
+	meal = db.meals.find_one({'slug' : hotpot['meal']['slug']})
+	
+	# grab notes related to this hotpot
+	notes = list(db.notes.find({'invitationId' : str(hotpot['_id'])}))
+	
+	# stuff notes into the meals dict at the appropriate steps
+	meal = insertNotesIntoSteps(meal, notes)
+	
+	return render_template('historySingle.html', hotpot=hotpot, meal=meal)
 
 
 ##############################################################################
@@ -1103,6 +1168,24 @@ def saveStuffFunction():
 	return "database being populated. omgscary"
 	
 
+##############################################################################
+# INITIALIZATIONINGS
+
+@app.before_first_request
+def initialize():
+	# start checking for time to send out reminder emails a few moments after the server starts
+	# the delay is to give the server some time to boot up..?
+	print "initializing check function"
+	timer = threading.Timer(5, checkWhetherItsTimeToSendOutReminderEmails)
+	timer.daemon = True
+	timer.start()
+
+def sendFirstRequestToStartTheInitializationFunctionYeah():
+	urllib2.urlopen(LOCAL_URL + '/').read()
 
 if __name__ == '__main__':
+	
+	timer = threading.Timer(1, sendFirstRequestToStartTheInitializationFunctionYeah)
+	timer.start()
+	
 	app.run(host='0.0.0.0', port=7777, debug=True)

@@ -37,7 +37,7 @@ class SocketHandler(tornadio.SocketConnection):
 
 	# called when a client sends a message
 	def on_message(self, message):
-		print "got message from front end"
+		print "got message from front end: " + message
 		
 		# nice to have
 		if type(message) is unicode:

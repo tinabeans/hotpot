@@ -7,6 +7,9 @@ $(document).ready(function(){
 		e.preventDefault();
 		$('#replyButtons .selected').removeClass('selected');
 		$(this).addClass('selected');
+		
+		$('#theRestOfTheReplyForm').attr('class', $(this).attr('data-value'));
+		
 		$('#theRestOfTheReplyForm').show();
 		
 		// set the hidden field's value to the selected option
