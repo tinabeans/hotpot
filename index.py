@@ -21,8 +21,8 @@ ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
 BASE_URL = 'http://test.letsgohotpot.com'
 LOCAL_URL = 'http://localhost:7777'
 
-hourToSendReminders = 6
-checkForReminderTimeInterval = 300 # 5min
+hourToSendReminders = 23
+checkForReminderTimeInterval = 10 # 5min
 
 # creating new Flask instance
 app = flask.Flask(__name__)
@@ -77,10 +77,12 @@ def render_template(template, **kwargs):
 					if reply['userId'] == flask.session['userId']:
 						alertNumber = alertNumber-1
 		
+		print 'base url: ' + BASE_URL
+		
 		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, BASE_URL=BASE_URL, **kwargs)
 	else:
 		isLoggedIn = False
-		return flask.render_template(template, isLoggedIn=isLoggedIn, **kwargs)
+		return flask.render_template(template, isLoggedIn=isLoggedIn, BASE_URL=BASE_URL, **kwargs)
 
 
 
@@ -825,6 +827,8 @@ def checkWhetherItsTimeToSendOutReminderEmails():
 	# find out the currentTime's hour
 	currentHour = datetime.datetime.fromtimestamp(currentTime).hour
 	
+	print currentHour
+	
 	# if current time matches the designated reminder-sending time...
 	if currentHour == hourToSendReminders:
 		print "yes, it appears to be time"
@@ -923,10 +927,15 @@ def sendCookingReminder():
 	# it should say 'you' instead of the recipient's name, because being addressed in the third person is weird
 	
 	for attendee in attendees:
-		print 'reminder email sent to ' + attendee['name'] + ' for ' + invitation['readableDate']
+		# print 'reminder email sent to ' + attendee['name'] + ' for ' + invitation['readableDate']
 		
 		email = Message("Get Ready to Cook!", recipients=[attendee['email']])
-		email.html = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal, user=attendee)
+		
+		message = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal, recipient=attendee) 
+		email.html = message
+		
+		print message
+		
 		mail.send(email)
 	
 	return "reminder email sent!"
