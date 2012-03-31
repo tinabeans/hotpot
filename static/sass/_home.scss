@@ -1,4 +1,229 @@
 /**********************************************************/
+/* COVER */
+
+body#cover {
+	background:#faf9f8 url(/static/images/introBg.gif) center top no-repeat fixed;
+	
+	.message {
+		position: fixed;
+		width: 40%;
+		background: rgba($darkBrown, .7);
+		top: 0;
+		margin: 0;
+		left: 30%;
+		z-index: +2;
+		padding: 8px;
+		color: #fff;
+		font-weight: 700;
+	}
+}
+
+#coverBg {
+	background:url(/static/images/textureSoft.png) fixed;
+}
+
+#coverContainer {
+	width:780px;
+	margin:0px auto;
+	position: relative;
+}
+
+#coverHeader {
+	position: fixed;
+	margin-left:450px;
+	padding-top:125px;
+	text-align: center;
+	width:330px;
+	
+	#moreArrow {
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		top: 600px;
+		font-weight: bold;
+	}
+	
+	h1 img {
+		width:328px;
+	}
+	
+	h2 {
+		@include bigFatLetters;
+		color:$darkBlue;
+		margin-top:12px;
+		font-size:49px;
+	}
+	
+	#coverButtons {
+		margin-top:50px;
+		position: relative;
+		left:60px;
+	
+		a {
+			display: block;
+			@include bigFatLetters;
+			color:#fff;
+			@include box-sizing(border-box);
+			position: absolute
+		}
+	}
+	
+	#loginLink {
+		width:90px;
+		height:89px;
+		background:url(/static/images/loginButton.png);
+		font-size:22px;
+		padding-top:35px;
+		z-index: +1;
+	}
+	
+	#registerLink {
+		background:$green url(/static/images/textureStrong.png);
+		width:140px;
+		height:140px;
+		@include border-radius(200px);
+		font-size:40px;
+		padding-top:35px;
+		left:61px;
+		top:16px;
+		
+		.small {
+			font-size:26px;
+			line-height:23px;
+		}
+	}
+	
+	#loginFormContainer, #registrationFormContainer {
+		display: none;
+		background:#f0ece4 url(/static/images/textureSoft.png);
+		position: absolute;
+		right: -10px;
+		z-index: +2;
+		@include border-radius(10px);
+		padding:10px 20px 25px 25px;
+		
+		.closeButton {
+			display: block;
+			width:29px;
+			height:29px;
+			background:#d9d4ca url(/static/images/icon_x.png) no-repeat center center;
+			text-indent:-999em;
+			@include border-radius(20px);
+			position: absolute;
+			right:-10px;
+			top:-10px;
+			@include box-shadow(0 3px 5px rgba(0,0,0,.35));
+			
+			&:hover {
+				background-color:darken(#d9d4ca, 10);
+			}
+		}
+		
+		.formItemError {
+			position: absolute;
+			left: -179px;
+			width: 165px;
+			background: url(/static/images/formErrorBg.png) no-repeat;
+			top: 4px;
+			padding: 5px 10px;
+			color: white;
+			font-weight: 700;
+		}
+		
+		label {
+			display: none;
+		}
+		
+		h2 {
+			font-size:18px;
+			color:rgba($darkBrown, .7);
+			margin-bottom:10px;
+		}
+		
+		.formItem {
+			margin-bottom:10px;
+		}
+		
+		input[type=password], input[type=text] {
+			padding:7px;
+		}
+		
+		.formItem {
+			text-align: left;
+		}
+		
+		.firstname {
+			width:48%;
+			float: left;
+		}
+		
+		.lastname {
+			width:48%;
+			margin-left:52%;
+			display:block;
+		}
+		
+		.buttons {
+			margin-top:20px;
+		}
+	}
+}
+
+#coverInfo {
+	width:350px;
+	
+	#coverIllustration {
+		margin-bottom:60px;
+	}
+	
+	h2 {
+		@include bigFatLetters;
+		color:$orange;
+		font-size:28px;
+		margin-bottom:15px;
+	}
+	
+	h3 {
+		@include bigFatLetters;
+		color:$orange;
+		font-size:16px;
+		margin-bottom:10px;
+		
+		&.first {
+			color:$green;
+		}
+		
+		&.second {
+			color:$mediumBlue;
+		}
+		
+		&.third {
+			color:$orange;
+		}
+		
+		&.fourth {
+			color:$green;
+		}
+	}
+	
+	.featureImage {
+		@include lightBrownBorder;
+		height:200px;
+		margin-bottom:20px;
+	}
+	
+	p {
+		font-size:14px;
+		margin-bottom:30px;
+		
+		&.intro {
+			font-size:18px;
+		}
+	}
+}
+
+
+/**********************************************************/
 /* HOME */
 
 #home {

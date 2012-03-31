@@ -849,30 +849,287 @@ input[type=submit]:active {
 /**********************************************************/
 /* CSS for different page types */
 /**********************************************************/
+/* COVER */
+/* line 4, ../sass/_home.scss */
+body#cover {
+  background: #faf9f8 url(/static/images/introBg.gif) center top no-repeat fixed;
+}
+/* line 7, ../sass/_home.scss */
+body#cover .message {
+  position: fixed;
+  width: 40%;
+  background: rgba(115, 108, 91, 0.7);
+  top: 0;
+  margin: 0;
+  left: 30%;
+  z-index: 2;
+  padding: 8px;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* line 21, ../sass/_home.scss */
+#coverBg {
+  background: url(/static/images/textureSoft.png) fixed;
+}
+
+/* line 25, ../sass/_home.scss */
+#coverContainer {
+  width: 780px;
+  margin: 0px auto;
+  position: relative;
+}
+
+/* line 31, ../sass/_home.scss */
+#coverHeader {
+  position: fixed;
+  margin-left: 450px;
+  padding-top: 125px;
+  text-align: center;
+  width: 330px;
+}
+/* line 38, ../sass/_home.scss */
+#coverHeader #moreArrow {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 600px;
+  font-weight: bold;
+}
+/* line 46, ../sass/_home.scss */
+#coverHeader h1 img {
+  width: 328px;
+}
+/* line 50, ../sass/_home.scss */
+#coverHeader h2 {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #1c6770;
+  margin-top: 12px;
+  font-size: 49px;
+}
+/* line 57, ../sass/_home.scss */
+#coverHeader #coverButtons {
+  margin-top: 50px;
+  position: relative;
+  left: 60px;
+}
+/* line 62, ../sass/_home.scss */
+#coverHeader #coverButtons a {
+  display: block;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #fff;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+}
+/* line 71, ../sass/_home.scss */
+#coverHeader #loginLink {
+  width: 90px;
+  height: 89px;
+  background: url(/static/images/loginButton.png);
+  font-size: 22px;
+  padding-top: 35px;
+  z-index: 1;
+}
+/* line 80, ../sass/_home.scss */
+#coverHeader #registerLink {
+  background: #a5c349 url(/static/images/textureStrong.png);
+  width: 140px;
+  height: 140px;
+  -moz-border-radius: 200px;
+  -webkit-border-radius: 200px;
+  -o-border-radius: 200px;
+  -ms-border-radius: 200px;
+  -khtml-border-radius: 200px;
+  border-radius: 200px;
+  font-size: 40px;
+  padding-top: 35px;
+  left: 61px;
+  top: 16px;
+}
+/* line 90, ../sass/_home.scss */
+#coverHeader #registerLink .small {
+  font-size: 26px;
+  line-height: 23px;
+}
+/* line 96, ../sass/_home.scss */
+#coverHeader #loginFormContainer, #coverHeader #registrationFormContainer {
+  display: none;
+  background: #f0ece4 url(/static/images/textureSoft.png);
+  position: absolute;
+  right: -10px;
+  z-index: 2;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  padding: 10px 20px 25px 25px;
+}
+/* line 105, ../sass/_home.scss */
+#coverHeader #loginFormContainer .closeButton, #coverHeader #registrationFormContainer .closeButton {
+  display: block;
+  width: 29px;
+  height: 29px;
+  background: #d9d4ca url(/static/images/icon_x.png) no-repeat center center;
+  text-indent: -999em;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+  -o-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+/* line 117, ../sass/_home.scss */
+#coverHeader #loginFormContainer .closeButton:hover, #coverHeader #registrationFormContainer .closeButton:hover {
+  background-color: #c4bcac;
+}
+/* line 122, ../sass/_home.scss */
+#coverHeader #loginFormContainer .formItemError, #coverHeader #registrationFormContainer .formItemError {
+  position: absolute;
+  left: -179px;
+  width: 165px;
+  background: url(/static/images/formErrorBg.png) no-repeat;
+  top: 4px;
+  padding: 5px 10px;
+  color: white;
+  font-weight: 700;
+}
+/* line 133, ../sass/_home.scss */
+#coverHeader #loginFormContainer label, #coverHeader #registrationFormContainer label {
+  display: none;
+}
+/* line 137, ../sass/_home.scss */
+#coverHeader #loginFormContainer h2, #coverHeader #registrationFormContainer h2 {
+  font-size: 18px;
+  color: rgba(115, 108, 91, 0.7);
+  margin-bottom: 10px;
+}
+/* line 143, ../sass/_home.scss */
+#coverHeader #loginFormContainer .formItem, #coverHeader #registrationFormContainer .formItem {
+  margin-bottom: 10px;
+}
+/* line 147, ../sass/_home.scss */
+#coverHeader #loginFormContainer input[type=password], #coverHeader #loginFormContainer input[type=text], #coverHeader #registrationFormContainer input[type=password], #coverHeader #registrationFormContainer input[type=text] {
+  padding: 7px;
+}
+/* line 151, ../sass/_home.scss */
+#coverHeader #loginFormContainer .formItem, #coverHeader #registrationFormContainer .formItem {
+  text-align: left;
+}
+/* line 155, ../sass/_home.scss */
+#coverHeader #loginFormContainer .firstname, #coverHeader #registrationFormContainer .firstname {
+  width: 48%;
+  float: left;
+}
+/* line 160, ../sass/_home.scss */
+#coverHeader #loginFormContainer .lastname, #coverHeader #registrationFormContainer .lastname {
+  width: 48%;
+  margin-left: 52%;
+  display: block;
+}
+/* line 166, ../sass/_home.scss */
+#coverHeader #loginFormContainer .buttons, #coverHeader #registrationFormContainer .buttons {
+  margin-top: 20px;
+}
+
+/* line 172, ../sass/_home.scss */
+#coverInfo {
+  width: 350px;
+}
+/* line 175, ../sass/_home.scss */
+#coverInfo #coverIllustration {
+  margin-bottom: 60px;
+}
+/* line 179, ../sass/_home.scss */
+#coverInfo h2 {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #ef5922;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+/* line 186, ../sass/_home.scss */
+#coverInfo h3 {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #ef5922;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+/* line 192, ../sass/_home.scss */
+#coverInfo h3.first {
+  color: #a5c349;
+}
+/* line 196, ../sass/_home.scss */
+#coverInfo h3.second {
+  color: #3797a2;
+}
+/* line 200, ../sass/_home.scss */
+#coverInfo h3.third {
+  color: #ef5922;
+}
+/* line 204, ../sass/_home.scss */
+#coverInfo h3.fourth {
+  color: #a5c349;
+}
+/* line 209, ../sass/_home.scss */
+#coverInfo .featureImage {
+  border: 6px solid rgba(115, 108, 91, 0.15);
+  height: 200px;
+  margin-bottom: 20px;
+}
+/* line 215, ../sass/_home.scss */
+#coverInfo p {
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+/* line 219, ../sass/_home.scss */
+#coverInfo p.intro {
+  font-size: 18px;
+}
+
+/**********************************************************/
 /* HOME */
-/* line 5, ../sass/_home.scss */
+/* line 230, ../sass/_home.scss */
 #home #mainContainer {
   width: 100%;
 }
 
-/* line 10, ../sass/_home.scss */
+/* line 235, ../sass/_home.scss */
 #introBlurb {
   text-align: center;
   font-size: 42px;
   padding-bottom: 10px;
 }
 
-/* line 16, ../sass/_home.scss */
+/* line 241, ../sass/_home.scss */
 #featuredRecipes {
   clear: both;
 }
 
-/* line 20, ../sass/_home.scss */
+/* line 245, ../sass/_home.scss */
 #joinUs {
   text-align: center;
   margin: 30px;
 }
-/* line 24, ../sass/_home.scss */
+/* line 249, ../sass/_home.scss */
 #joinUs a {
   display: inline-block;
   border: 0px;
@@ -958,22 +1215,22 @@ input[type=submit]:active {
   letter-spacing: 0.05em;
 }
 
-/* line 31, ../sass/_home.scss */
+/* line 256, ../sass/_home.scss */
 #joinUs a:hover {
   background: #777;
 }
 
-/* line 35, ../sass/_home.scss */
+/* line 260, ../sass/_home.scss */
 #featuredMealsContainer {
   background: #ededec;
   margin: 60px 0px;
 }
 
-/* line 40, ../sass/_home.scss */
+/* line 265, ../sass/_home.scss */
 #featuredMeals {
   padding: 30px 0px;
 }
-/* line 43, ../sass/_home.scss */
+/* line 268, ../sass/_home.scss */
 #featuredMeals h1 {
   font-family: "proxima-nova", sans-serif;
   margin-bottom: 30px;
@@ -982,14 +1239,14 @@ input[type=submit]:active {
   font-size: 18px;
   text-align: center;
 }
-/* line 53, ../sass/_home.scss */
+/* line 278, ../sass/_home.scss */
 #featuredMeals .mealList li {
   position: relative;
   display: inline-block;
   width: 30%;
   margin-right: 4%;
 }
-/* line 59, ../sass/_home.scss */
+/* line 284, ../sass/_home.scss */
 #featuredMeals .mealList li h2 {
   position: absolute;
   top: 28px;
@@ -999,7 +1256,7 @@ input[type=submit]:active {
   padding: 7px 10px 10px 10px;
   font-size: 20px;
 }
-/* line 69, ../sass/_home.scss */
+/* line 294, ../sass/_home.scss */
 #featuredMeals .mealList li img {
   border: 10px solid #fff;
   width: 100%;
@@ -1008,7 +1265,7 @@ input[type=submit]:active {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 76, ../sass/_home.scss */
+/* line 301, ../sass/_home.scss */
 #featuredMeals .mealList li.last {
   margin-right: 0%;
 }

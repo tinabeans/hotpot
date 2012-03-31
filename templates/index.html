@@ -1,0 +1,189 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="google-site-verification" content="Sbm02wgk0_0BssE3_5dCtdj6XMW0aGYDaXL4D8aOJAs" />
+
+<title>Hotpot - Let's Cook!</title>
+
+<!-- Typekit JS -->
+<script type="text/javascript" src="http://use.typekit.com/qje5yme.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+<!-- jQuery library -->
+<script src="/static/js/lib/jquery-1.7.1.min.js" type="text/javascript"></script>
+
+<!-- my scripts -->
+<script src="/static/js/utils.js" type="text/javascript"></script>
+<script src="/static/js/common.js" type="text/javascript"></script>
+<script src="static/js/lib/jquery.sha1.js" type="text/javascript"></script>
+<script src="static/js/validation.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$('.closeButton').click(function(e){
+		e.preventDefault();
+		$(this).parent().fadeOut(300, function(){$('.formItemError').remove();});
+		
+		// also get rid of form validation errors
+	});
+	
+	$('#loginLink').click(function(e){
+		e.preventDefault();
+		$('#loginFormContainer').fadeIn();
+	});
+	
+	$('#registerLink').click(function(e){
+		e.preventDefault();
+		$('#registrationFormContainer').fadeIn();
+	});
+
+	$('#registrationForm, #loginForm').submit(function(e){
+		// we're not sending passwords in the clear, yay!
+		// although yang says in a perfect world i would be using https...
+		// hmph.
+		var encryptedPassword = $.sha1($(this).find('.passwordField').val());
+		$(this).children('.encryptedPassword').val(encryptedPassword);
+	});
+});
+
+</script>
+
+
+<link rel="stylesheet" href="/static/css/core.css" type="text/css" />
+
+</head>
+ 
+<body id="cover">
+
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="message">
+			{{ message }}
+		</div>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+
+<div id="coverBg">
+<div id="coverContainer">
+
+	<header id="coverHeader">
+		<h1><img src="/static/images/HotpotLogo_Alpha.png" /></h1>
+		<h2>Let's Cook!</h2>
+		
+		<div id="coverButtons">
+			<a href="" id="loginLink">Login</a>
+			<a href="" id="registerLink">Join <span class="small">Hotpot</span></a>
+		</div>
+		
+		<div id="loginFormContainer">
+			<a href="" class="closeButton">x</a>
+			
+			<h2>Login</h2>
+		
+			<form id="loginForm" action="/loginAction" method="POST">
+				<div class="formItem">
+					<label>email:</label>
+					<input type="text" name="email" class="required emailInput" placeholder="email address" />
+				</div>
+				
+				<div class="formItem">
+					<label>password:</label>
+					<input type="password" class="passwordField required" placeholder="password" />
+				</div>
+				
+				<input type="hidden" name="password" class="encryptedPassword" />
+				
+				{% if redirectURL %}
+					<input type="hidden" name="redirectURL" value="{{ redirectURL }}" />
+				{% endif %}
+				
+				<div class="buttons">
+					<input type="submit" value="let's go!" />
+				</div>
+			</form>
+		</div><!-- #loginFormContainer -->
+		
+		<div id="registrationFormContainer">
+			<a href="" class="closeButton">x</a>
+			
+			<h2>Register</h2>
+		
+			<form id="registrationForm" action="registerAction" method="POST">
+				<div class="formItem">
+					<label>first name:</label>
+					<input type="text" name="name" class="firstname required" placeholder="first name" />
+					<label>last name:</label>
+					<input type="text" name="lastname" class="lastname" placeholder="last name" />
+				</div>
+			
+				<div class="formItem">
+					<label>email:</label>
+					<input type="text" name="email" class="required emailInput" placeholder="email" />
+				</div>
+				
+				<div class="formItem">
+					<label>password:</label>
+					<input type="password" class="required passwordField" placeholder="password" />
+				</div>
+				
+				<input type="hidden" name="password" class="encryptedPassword" />
+				
+				<div class="buttons">
+					<input type="submit" value="Join Hotpot" />
+				</div>
+			</form>
+			</div><!-- #registrationFormContainer -->
+		
+		<div id="moreArrow">
+			Curious? Scroll down...
+		</div>
+	</header>
+	
+	<div id="coverInfo">
+		
+		<div id="coverIllustration">
+			<img src="/static/images/yaaay.png" />
+		</div>
+		
+		<h2>Cooking = awesome</h2>
+		<p class="intro">
+			What's better than a homemade meal, with the freshest seasonal ingredients, hand-crafted by you? How about making it together with friends? Turn up the flame and roll up your sleeves. Let's cook!
+		</p>
+		
+		<div class="featureImage"></div>
+		
+		<h3 class="first">Cook with anyone, anywhere</h3>
+		<p>No matter where you are, you can be in each other’s kitchens, so you can co-create the masterpiece that will be dinner. Show off your knife skills&mdash;or ask for pro tips from your buddy. You can even jot down notes together.</p>
+		
+		<div class="featureImage"></div>
+		
+		<h3 class="second">A recipe for every palate</h3>
+		<p>Can't decide what to cook? We did the hard work for you: choose from our curated collection of meals, all personally vetted in our kitchens for deliciousness and makeability, as well as healthfulness and seasonality. Leave the hours of searching and testing to us, so you can do what's fun: cook!</p>
+		
+		<div class="featureImage"></div>
+		
+		<h3 class="third">Revisit the good times</h3>
+		<p>Hotpot keeps a record of every time you cook, so you can see the things you’ve made over time, revisit your cooking notes, and relive the excitement of that one time your salmon burst into flames.</p>
+		
+		<div class="featureImage"></div>
+		
+		<h3 class="fourth">Coming soon: the best community</h3>
+		<p>We're building not just the best community of cooks, but of awesome people from all walks of life. Meet new friends the world over, swap food stories, and of course, cook together!</p>
+	</div><!-- #coverInfo -->
+	
+	<footer id="mainFooter">
+		<nav id="footerNav">
+			<a href="">About Hotpot</a>
+			<a href="">Send Feedback</a>
+			<a href="">Contact</a>
+		</nav>
+		<p>Hotpot is created by Tina Ye for her Master's Thesis in Interaction Design at SVA. Read more about the project <a href="http://thesis.tinabeans.com/">here</a>.</p>
+	</footer>
+	
+</div><!-- #coverContainer -->
+</div><!-- #coverBg -->
+
+</body>
+</html>

@@ -83,7 +83,7 @@ def render_template(template, **kwargs):
 
 @app.route('/')
 def index():
-	return render_template('home.html')
+	return render_template('index.html')
 
 
 ##############################################################################
@@ -188,7 +188,7 @@ def login():
 			return flask.redirect(data['redirectURL'])
 		else:
 			flask.flash("Logged in. Welcome!")
-			return flask.redirect(flask.url_for('index'))
+			return flask.redirect(flask.url_for('home'))
 	else:
 		flask.flash("Login info was incorrect.")
 		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : data['redirectURL']}))
@@ -232,9 +232,16 @@ def register():
 	# (i've decided to use the stringified ObjectId to identify the user everywhere, including in sessions & the front end)
 	flask.session['userId'] = str(userId)
 	
-	flask.flash("""Welcome to Hotpot!""")
-	return flask.redirect(flask.url_for('showEditProfileForm'))
+	flask.flash("welcome")
+	return flask.redirect(flask.url_for('home'))
 
+
+##############################################################################
+# LOGGED IN HOME
+
+@app.route('/home')
+def showHome():
+	return render_template('home.html')
 
 
 ##############################################################################

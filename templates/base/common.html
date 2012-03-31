@@ -62,7 +62,7 @@
 				<div id="userInfoContainer">
 					<div id="userInfo">
 						<div class="userpic">
-							<img src="/static/uploads/userpics/{{ user.userpic }}" />
+							<img src="/static/uploads/userpics/{% if user.userpic!='none' %}{{ user.userpic }}{% else %}placeholder.png{% endif %}" />
 						</div>
 						
 						<h2>
