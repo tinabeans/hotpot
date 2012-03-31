@@ -1,5 +1,5 @@
 /**********************************************************/
-/* COVER */
+/* INTRO PAGE / COVER */
 
 body#cover {
 	background:#faf9f8 url(/static/images/introBg.gif) center top no-repeat fixed;
@@ -224,7 +224,173 @@ body#cover {
 
 
 /**********************************************************/
-/* HOME */
+/* HOME / USER DASHBOARD */
+
+#dashboard {
+	font-size:16px;
+
+	#pageTitle {
+		margin-bottom:40px;
+	}
+	
+	#mainContainer h2 {
+		@include bigFatLetters;
+		font-size:18px;
+		margin-bottom:15px;
+	}
+}
+
+#welcomeMessageContainer {
+	@include imageOuterBorder;
+	margin-bottom:40px;
+	
+	h2 {
+		text-align: center;
+		color:$orange;
+	}
+}
+
+#welcomeMessage {
+	padding:30px 30px 10px 25px;
+	background:#fff;
+	
+	#signature {
+		text-align: left;
+	}
+}
+
+#dashboardRight {
+	width:290px;
+	float:right;
+	
+	#inviteButton {
+		width:100%;
+		margin:0px;
+		display: inline-block;
+		font-size:34px;
+	}
+	
+	.buttons {
+		margin-bottom:40px;
+	}
+	
+	#upcoming {
+		h2 {
+			color:$mediumBlue;
+		}
+	}
+}
+
+#dashboardLeft {
+	margin-right:290px;
+	padding-right:40px;
+	
+}
+
+#newInvitationsAlert {
+	font-size:18px;
+	color:$textColor;
+	margin: 0px 0px 15px 0px;
+	
+	.alertNumber {
+		@include alertNumber;
+		width:20px;
+		height:20px;
+		padding:0px;
+		font-size:14px;
+		line-height: 21px;
+	}
+}
+
+#userInfoBox {
+	@include lightBrownBg;
+	padding:30px;
+	@include clearfix;
+	margin-bottom:40px;
+	
+	.userpic {
+		@include largeUserpic;
+		float:left;
+		width:115px;
+		height:115px;
+		position: relative;
+		top:-3px;
+	}
+	
+	.content {
+		margin-left: 150px;
+	}
+	
+	.location {
+		margin-top:5px;
+		font-size:16px;
+		font-style: italic;
+	}
+	
+	a {
+		margin-top:20px;
+	}
+}
+
+#dashboard #maincontainer #userInfoBox {
+	
+	h2 {
+		font-size: 30px;
+		text-transform: none;
+		font-weight: bold;
+		margin-bottom:0px;
+	}
+	
+}
+
+#whatsNew {
+	
+	h2 {
+		color:$green;
+	}
+	
+	#newMeal {
+		@include lightGreenBg;
+		padding:30px;
+		font-size:16px;
+		@include clearfix;
+		
+		.mealImage {
+			@include mealImage;
+			width:130px;
+			height:130px;
+			float:left;
+		}
+		
+		h3 {
+			font-size:20px;
+			font-weight: 700;
+			margin-bottom:10px;
+		}
+		
+		.content {
+			margin-left:160px;
+		}
+	}
+	
+	.smallButton {
+		background:$green;
+		@include box-shadow(0 4px 0 darken($green, 15));
+	
+		&:hover {
+			background: darken($green, 4);
+			@include box-shadow(0 4px 0 darken($green, 20));
+		}
+		
+		&:active {
+			@include box-shadow(0 2px 0 darken($green, 15));
+		}
+	}
+}
+
+
+/**********************************************************/
+/* OLD HOME */
 
 #home {
 	#mainContainer {

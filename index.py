@@ -60,6 +60,12 @@ def render_template(template, **kwargs):
 			'_id' : str(user['_id'])
 		}
 		
+		if 'lastname' in user:
+			userInfo['lastname'] = user['lastname']
+			
+		if 'location' in user:
+			userInfo['location'] = user['location']
+		
 		# if user's logged in, also grab the # of new invites they have, if any
 		newInvites = list(db.invitations.find({'inviteeIds' : flask.session['userId']}))
 		
@@ -79,11 +85,32 @@ def render_template(template, **kwargs):
 
 
 ##############################################################################
-# HOMEPAGE
+# INTRO PAGE
 
 @app.route('/')
 def index():
+	if 'userId' in flask.session:
+		return flask.redirect(flask.url_for('home'))
+		
 	return render_template('index.html')
+	
+
+##############################################################################
+# LOGGED IN HOME
+
+@app.route('/home')
+def home():
+	newMeal = db.meals.find_one({'slug' : 'LemonGarlicKalePasta'})
+	
+	return render_template('home.html', newMeal=newMeal)
+
+
+##############################################################################
+# PEOPLE PAGE
+
+@app.route('/people')
+def people():
+	return render_template('people.html')
 
 
 ##############################################################################
@@ -225,7 +252,7 @@ def register():
 		'lastname' : data['lastname'],
 		'email' : data['email'],
 		'password' : data['password'],
-		'userpic' : 'none'
+		'userpic' : 'placeholder.png'
 	})
 	
 	# log the user in by setting a variable in the session object
@@ -234,14 +261,6 @@ def register():
 	
 	flask.flash("welcome")
 	return flask.redirect(flask.url_for('home'))
-
-
-##############################################################################
-# LOGGED IN HOME
-
-@app.route('/home')
-def showHome():
-	return render_template('home.html')
 
 
 ##############################################################################
@@ -311,12 +330,13 @@ def updateMyProfile():
 		# random num is to prevent caching & displaying the old pic when uploading a new pic w/ same extension
 		userpicFilename = str(user['_id']) + '_' + str(random.random()) + '.' + userpic.filename.rsplit('.', 1)[1]
 		
-		# delete older user pic, if it's around
-		try:
-			os.remove(os.path.join(USERPIC_FOLDER, user['userpic']))
-			# print "baleted"
-		except:
-			print "oh. i guess that file didn't exist after all. oh well."
+		# delete older user pic, if it's around (only if its not the placeholder)
+		if user['userpic'] != 'placeholder.png':
+			try:
+				os.remove(os.path.join(USERPIC_FOLDER, user['userpic']))
+				# print "baleted"
+			except:
+				print "oh. i guess that file didn't exist after all. oh well."
 		
 		# save to the right folder on the server
 		userpic.save(os.path.join(USERPIC_FOLDER, userpicFilename))

@@ -1,70 +1,91 @@
 {% extends "base/common.html" %}
 
 {% block title %}Home{% endblock %}
-{% block bodyId %}home{% endblock %}
+{% block bodyId %}dashboard{% endblock %}
 
 {% block main %}
 
+<h1 id="pageTitle">Hello, {{ user.name }}!</h1>
 
 {% with messages = get_flashed_messages() %}
 	{% if messages %}
 		{% for message in messages %}
-		<div class="systemMessage">
-			{{ message }}
-		</div>
+			{% if message == "welcome" %}
+				<div id="welcomeMessageContainer">
+					<div id="welcomeMessage">
+						<h2>Welcome to Hotpot!</h2>
+						
+						<p>I’m so happy you could join us! Please, make yourself at home. I suggest <a href="/editProfile">filling out your profile</a>, and then diving right into <a href="/meals">finding something delicious to cook</a> with your friends. If ever you find yourself lost, email <a href="mailto:t@tinabeans.com">t@tinabeans.com</a>. I’m here to make cooking as fun as it can be for you, and that’s the way it should be!</p>
+						<p id="signature">Your host,<br />Tina Ye</p>
+					</div>
+				</div>
+			{% else %}
+				<div class="message">
+					{{ message }}
+				</div>
+			{% endif %}
 		{% endfor %}
 	{% endif %}
 {% endwith %}
 
-
-<div id="homeIntro">
-
-	<p id="introBlurb">Cook a great meal with friends in real-time. <!--span class="small">Explore different cuisines, make new friends (or hang out with old ones), and unlock your culinary skills!</span--></p>
+<div id="dashboardRight">
 	
-	<div id="joinUs">
-		<a href="" id="registerButton">Let's Cook! <span class="small">Create an Account</span></a>
-		<a href="" id="loginButton">Got Account? <span class="small">Log In Here</span></a>
-	</div><!-- #joinUs -->
+	<div class="buttons">
+		<a href="/meals" class="bigButton" id="inviteButton"><span class="small">Browse </span>the meals</a>
+	</div>
 	
-</div><!-- #homeIntro -->
+	<div id="upcoming">
+		<h2>Upcoming</h2>
+		
+		<p>[INCOMPLETE] You have <strong>x</strong> Hotpots coming up.</p>
+		
+		<a href="/invitations" class="smallButton">All Invitations</a>
+	</div>
+	
+</div>
 
-<div id="featuredMealsContainer">
-	<section id="featuredMeals">
-		<h1>What's Cooking?</h1>
-		<ul class="mealList">
-			<li>
-				<a href="http://test.letsgohotpot.com/meals/LemonGarlicKalePasta">
-					<h2>Lemon Garlic Kale Pasta</h2>
-					<img src="/static/images/food/LemonGarlicKalePasta.jpg">
-				</a>
-				<h3>Recently Cooked By:</h3>
-				<ul>
-					<li><a href=""><img src="" /> <span class="name">Tina Y.</span></a></li>
-					<li><a href=""><img src="" /> <span class="name">Yang Y.</span></a></li>
-				</ul>
-			</li>
+
+	
+{% if alertNumber != 0 %}
+	<p id="newInvitationsAlert">You have <span class="alertNumber">{{ alertNumber }}</span> invitation{% if alertNumber > 1 %}s{% endif %} awaiting your reply. <a href="/invitations/?filter=received">Take a look &raquo;</a></p>
+{% endif %}
+
+<div id="dashboardLeft">
+	<div id="userInfoBox">
+		<div class="userpic">
+			<img src="/static/uploads/userpics/{{ user.userpic }}">
+		</div>
+		
+		<div class="content">
+			<h2>{{ user.name }} {{ user.lastname }}</h2>
+			<div class="location">
+				{% if user.location %}
+					{{ user.location }}
+				{% else %}
+					No location given
+				{% endif %}
+			</div>
+			<a href="/editProfile" class="smallButton">Edit Profile</a>
+		</div>
+	</div>
+	
+	<div id="whatsNew">
+		<h2>What's New?</h2>
+		
+		<p><strong>3/23/12</strong>  We just added a new meal to the collection:</p>
+		
+		<div id="newMeal">
+			<div class="mealImage">
+				<img src="/static/images/food/{{ newMeal.slug }}.jpg" />
+			</div>
 			
-			<li>
-				<h2>Lemon Garlic Kale Pasta</h2>
-				<img src="/static/images/food/SalmonTeriyaki.jpg">
-				<h3>Recently Cooked By:</h3>
-				<ul>
-					<li><a href=""><img src="" /> <span class="name">Tina Y.</span></a></li>
-					<li><a href=""><img src="" /> <span class="name">Yang Y.</span></a></li>
-				</ul>
-			</li>
-			
-			<li class="last">
-				<h2>Apple Cheddar Quiche</h2>
-				<img src="/static/images/food/SalmonTeriyaki.jpg">
-				<h3>Recently Cooked By:</h3>
-				<ul>
-					<li><a href=""><img src="" /> <span class="name">Tina Y.</span></a></li>
-					<li><a href=""><img src="" /> <span class="name">Yang Y.</span></a></li>
-				</ul>
-			</li>
-		</ul>
-	</section><!-- #featuredMeals -->
-</div><!-- #featuredMealsContainer -->
+			<div class="content">
+				<h3>{{ newMeal.title }}</h3>
+				<p>{{ newMeal.shortDescription }}</p>
+				<a href="/meals/{{ newMeal.slug }}" class="smallButton">Check it out</a>
+			</div>
+		</div>
+	</div>
+</div>
 
 {% endblock main %}
