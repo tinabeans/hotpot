@@ -430,7 +430,7 @@ def sendInvitation():
 	meal = db.meals.find_one({'slug' : newInvitation['meal']})
 	
 	# compose email to send
-	email = Message("Hotpot Invitation Test", recipients=[data['inviteeEmail']])
+	email = Message(newInvitation['hostName'] + """ says "Let's Cook!" """, recipients=[data['inviteeEmail']])
 	invitationMessage = render_template('email/invitation.html', meal=meal, invitation=newInvitation)
 	email.html = invitationMessage
 	mail.send(email)
