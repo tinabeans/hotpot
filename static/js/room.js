@@ -42,6 +42,7 @@ $(document).ready(function() {
 		$('#steps ol li').first().show();
 		
 		sendCurrentStep();
+		bindKeyEvents();
 	});
 	
 
@@ -112,20 +113,23 @@ $(document).ready(function() {
 		$('#stepTabs .currentStep').next().find('a').click();
 	};
 	
-	$(document.documentElement).keydown(function(e){
-		console.log('key');
-		// left or up key
-		if(e.keyCode === 37 || e.keyCode === 38)	{
-			console.log('prev');
-			goToPrevStep();
-		}
-		// right or down key
-		else if (e.keyCode === 39 || e.keyCode === 40) {
-			console.log('next');
-			goToNextStep();
-		}
-	});
+	// key nav is not activated until user clicks the start button
+	var bindKeyEvents = function(){
 	
+		$(document.documentElement).keydown(function(e){
+			console.log('key');
+			// left or up key
+			if(e.keyCode === 37 || e.keyCode === 38)	{
+				console.log('prev');
+				goToPrevStep();
+			}
+			// right or down key
+			else if (e.keyCode === 39 || e.keyCode === 40) {
+				console.log('next');
+				goToNextStep();
+			}
+		});
+	} // called in $('#recipeStartButton').click(), above
 	
 	/****************************************************************************************/
 	// INGREDIENTS PANE
