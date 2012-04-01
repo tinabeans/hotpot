@@ -126,17 +126,6 @@ $(document).ready(function() {
 		}
 	});
 	
-	// next/previous buttons
-	$('#prevButton').click(function(e){
-		e.preventDefault();
-		goToPrevStep();
-	});
-	
-	$('#nextButton').click(function(e){
-		e.preventDefault();
-		goToNextStep();
-	});
-	
 	
 	/****************************************************************************************/
 	// INGREDIENTS PANE
