@@ -180,6 +180,8 @@ $serif: "jubilat", Georgia, serif;
 	margin:5px;
 	@include border-radius(15px);
 	@include box-shadow(0 7px 0 darken($green, 15));
+	position: relative;
+	top:0;
 	
 	&:hover {
 		background: darken($green, 4);
@@ -189,7 +191,7 @@ $serif: "jubilat", Georgia, serif;
 	&:active {
 		@include box-shadow(0 4px 0 darken($green, 20));
 		position: relative;
-		top:5px;
+		top:4px;
 	}
 	
 	.small {

@@ -53,12 +53,19 @@
 				</h1>
 				
 				<nav id="recipeNav">
+					<!-- Generate user icons for everyone but self and keep them hidden until actually in use -->
+					{% for attendee in attendees %}
+						{% if attendee._id != user._id %}
+							<div class="userStepIcon" data-id="{{ attendee._id }}"><img src="/static/uploads/userpics/{{ attendee.userpic }}" /></div>
+						{% endif %}
+					{% endfor %}
+					
 					<ul id="stepTabs">
 					
 					{% set stepCounter = 1 %}
 					
 					{% for step in meal.steps %}
-						<li class="{{ step.type }} {% if loop.first %}currentStep{% endif %}">
+						<li class="{{ step.type }}">
 							<a href="" id="stepTab-{{ step.id }}">
 								{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
 									{% set stepCounter = stepCounter + 1 %}
@@ -79,10 +86,35 @@
 				</nav><!-- #recipeNav -->
 				
 				<section id="steps">
+					<div id="recipeStart">
+						<div id="startButtonContainer">
+							<p>When everyone has arrived, click Start to begin.</p>
+							<a href="" id="recipeStartButton" class="bigButton">Start</a>
+						</div>
+						
+						<div id="instructionsCookingTimeline" class="instructions">
+							<h2>Cooking Timeline</h2>
+							<p>Here, you’ll be able to see what step everyone is currently on.</p>
+							<img src="/static/images/instructionsArrow1.png" />
+						</div>
+						
+						<div id="instructionsKeyboardNav" class="instructions">
+							<img src="/static/images/instructionsKeyboardNav.png" />
+							<h2>Navigation</h2>
+							<p>Use your arrow keys to switch between steps.</p>
+						</div>
+						
+						<div id="instructionsCookingNotes" class="instructions">
+							<h2>Cooking Notes</h2>
+							<p>Record memorable happenings together and even add stamps!</p>
+							<img src="/static/images/instructionsArrow2.png" />
+						</div>
+					</div>
+				
 					<ol>
 						{% set stepCounter = 1 %}
 						{% for step in meal.steps %}
-						<li id="step-{{ step.id }}" class="step {{ step.type }}" {% if loop.first %}style="display:block;"{% endif %}>
+						<li id="step-{{ step.id }}" class="step {{ step.type }}">
 							<h2>
 							{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
 								{% set stepCounter = stepCounter + 1 %}

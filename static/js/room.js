@@ -28,12 +28,30 @@ $(document).ready(function() {
 	$(window).resize(setCookingAreaHeight);
 	setCookingAreaHeight();
 	
+	
+	/****************************************************************************************/
+	// RECIPE START SCREEN
+	
+	$('#recipeStartButton').click(function(e){
+		e.preventDefault();
+		
+		$('#recipeStart').hide();
+		
+		// go to first step
+		$('#stepTabs li').first().addClass('currentStep');
+		$('#steps ol li').first().show();
+		
+		sendCurrentStep();
+	});
+	
 
 	/****************************************************************************************/
 	// RECIPE NAVIGATION
 	
 	var sendCurrentStep = function(){
+		// close the cooking notes, if open
 		$('#widgets .closeButton').click();
+		
 		console.log('sending');
 		var currentStepNumber = $('#stepTabs .currentStep a').attr('id').split('-')[1];
 		
@@ -50,15 +68,24 @@ $(document).ready(function() {
 	
 	// callback for socket.on('message')
 	var updateStepPositions = function(data) {
-		console.log(data);
+		// console.log(data);
 		
 		// no need to update step position markers for yourself
 		if (data.userId !== currentUserId) {
 		
-			// remove existing user position marker for this user
-			$('.positionMarker[data-id="' + data.userId + '"]').remove();
-			$stepTabToAddMarkerTo = $('#stepTab-' + data.stepNumber).parent();
-			$stepTabToAddMarkerTo.append('<div class="positionMarker" data-id=' + data.userId + '>' + data.username + '</div>');
+			// grab reference to user icon element
+			var $userStepIcon = $('.userStepIcon[data-id=' + data.userId + ']');
+			console.log($userStepIcon);
+			
+			// detach from dom
+			$userStepIcon.detach();
+			console.log('detached');
+			
+			// find out where to re-add it
+			$targetStepTab = $('#stepTab-' + data.stepNumber);
+			console.log($targetStepTab);
+			
+			$userStepIcon.insertAfter($targetStepTab);
 		}
 	};
 

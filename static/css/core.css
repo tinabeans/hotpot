@@ -132,12 +132,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* OLD STUFF!? */
 /**********************************************************/
 /* TAG REDEFINITIONS */
-/* line 327, ../sass/core.scss */
+/* line 329, ../sass/core.scss */
 html {
   height: 100%;
 }
 
-/* line 331, ../sass/core.scss */
+/* line 333, ../sass/core.scss */
 body {
   margin: 0px;
   padding: 0px;
@@ -149,23 +149,23 @@ body {
   background: white url(/static/images/bodyBg.jpg);
 }
 
-/* line 339, ../sass/core.scss */
+/* line 341, ../sass/core.scss */
 a {
   text-decoration: none;
   color: #ef5922;
 }
 
-/* line 344, ../sass/core.scss */
+/* line 346, ../sass/core.scss */
 a:hover {
   color: #ef5922;
 }
 
-/* line 348, ../sass/core.scss */
+/* line 350, ../sass/core.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 353, ../sass/core.scss */
+/* line 355, ../sass/core.scss */
 p {
   line-height: 1.4em;
   margin: 0px 0px 15px 0px;
@@ -173,20 +173,20 @@ p {
 
 /**********************************************************/
 /* COMMON */
-/* line 368, ../sass/core.scss */
+/* line 370, ../sass/core.scss */
 #homeIntro, #mainContainer, #featuredMeals, #mainFooter {
   width: 88%;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 372, ../sass/core.scss */
+/* line 374, ../sass/core.scss */
 #mainContainer {
   padding: 40px 0px;
   margin: 0px auto;
 }
 
-/* line 377, ../sass/core.scss */
+/* line 379, ../sass/core.scss */
 .message {
   text-align: center;
   margin: 30px;
@@ -194,7 +194,7 @@ p {
   color: red;
 }
 
-/* line 384, ../sass/core.scss */
+/* line 386, ../sass/core.scss */
 .button {
   display: inline-block;
   border: 0px;
@@ -236,7 +236,7 @@ p {
   top: 2px;
 }
 
-/* line 388, ../sass/core.scss */
+/* line 390, ../sass/core.scss */
 .smallButton {
   color: #fff;
   display: inline-block;
@@ -277,7 +277,7 @@ p {
   top: 2px;
 }
 
-/* line 392, ../sass/core.scss */
+/* line 394, ../sass/core.scss */
 .bigButton {
   display: inline-block;
   border: 0px;
@@ -312,6 +312,8 @@ p {
   -webkit-box-shadow: 0 7px 0 #78902f;
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
+  position: relative;
+  top: 0;
 }
 /* line 139, ../sass/core.scss */
 .bigButton:hover {
@@ -331,7 +333,7 @@ p {
   position: relative;
   top: 2px;
 }
-/* line 184, ../sass/core.scss */
+/* line 186, ../sass/core.scss */
 .bigButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -339,22 +341,22 @@ p {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 189, ../sass/core.scss */
+/* line 191, ../sass/core.scss */
 .bigButton:active {
   -moz-box-shadow: 0 4px 0 #687d29;
   -webkit-box-shadow: 0 4px 0 #687d29;
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
   position: relative;
-  top: 5px;
+  top: 4px;
 }
-/* line 195, ../sass/core.scss */
+/* line 197, ../sass/core.scss */
 .bigButton .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 201, ../sass/core.scss */
+/* line 203, ../sass/core.scss */
 .bigButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -363,36 +365,36 @@ p {
   letter-spacing: 0.05em;
 }
 
-/* line 396, ../sass/core.scss */
+/* line 398, ../sass/core.scss */
 .divider {
   background: #e9e7e0 url(/static/images/textureStrong.png);
   height: 5px;
   margin: 15px 0px;
 }
 
-/* line 402, ../sass/core.scss */
+/* line 404, ../sass/core.scss */
 .returnLink {
   margin-bottom: 15px;
 }
-/* line 405, ../sass/core.scss */
+/* line 407, ../sass/core.scss */
 .returnLink a {
   font-size: 14px;
   font-weight: 700;
   color: #4e565c;
 }
-/* line 410, ../sass/core.scss */
+/* line 412, ../sass/core.scss */
 .returnLink a:hover {
   color: #ef5922;
 }
 
 /**********************************************************/
 /* HEADER */
-/* line 422, ../sass/core.scss */
+/* line 424, ../sass/core.scss */
 #mainHeader {
   position: relative;
   height: 96px;
 }
-/* line 426, ../sass/core.scss */
+/* line 428, ../sass/core.scss */
 #mainHeader h1 {
   background: url(/static/images/headerLeftEdge.png) right top no-repeat;
   width: 180px;
@@ -402,13 +404,13 @@ p {
   left: 6%;
   z-index: 1;
 }
-/* line 435, ../sass/core.scss */
+/* line 437, ../sass/core.scss */
 #mainHeader h1 img {
   margin-top: 15px;
   width: 150px;
 }
 
-/* line 442, ../sass/core.scss */
+/* line 444, ../sass/core.scss */
 #headerNavsContainer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -420,17 +422,17 @@ p {
   padding-left: 179px;
 }
 
-/* line 450, ../sass/core.scss */
+/* line 452, ../sass/core.scss */
 #headerNavs {
   background: url(/static/images/headerBg.png) repeat-x;
   height: 96px;
 }
 
-/* line 455, ../sass/core.scss */
+/* line 457, ../sass/core.scss */
 #mainNav {
   padding: 26px 0px 0px 28px;
 }
-/* line 458, ../sass/core.scss */
+/* line 460, ../sass/core.scss */
 #mainNav a {
   display: inline-block;
   margin-right: 30px;
@@ -443,13 +445,13 @@ p {
   opacity: 0.6;
   color: #736c5b;
 }
-/* line 467, ../sass/core.scss */
+/* line 469, ../sass/core.scss */
 #mainNav a .small {
   display: block;
   font-size: .6em;
   font-weight: 600;
 }
-/* line 472, ../sass/core.scss */
+/* line 474, ../sass/core.scss */
 #mainNav a .small em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -458,20 +460,20 @@ p {
   letter-spacing: normal;
   font-size: 1.1em;
 }
-/* line 483, ../sass/core.scss */
+/* line 485, ../sass/core.scss */
 #mainNav a:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
 
-/* line 488, ../sass/core.scss */
+/* line 490, ../sass/core.scss */
 #serviceNavs {
   position: absolute;
   top: 0;
   right: 6%;
 }
 
-/* line 494, ../sass/core.scss */
+/* line 496, ../sass/core.scss */
 #bigInviteButton {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -498,19 +500,19 @@ p {
   top: 17px;
   letter-spacing: .05em;
 }
-/* line 510, ../sass/core.scss */
+/* line 512, ../sass/core.scss */
 #bigInviteButton .big {
   font-size: 19px;
   display: block;
 }
-/* line 515, ../sass/core.scss */
+/* line 517, ../sass/core.scss */
 #bigInviteButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-weight: 500;
   text-transform: lowercase;
 }
-/* line 522, ../sass/core.scss */
+/* line 524, ../sass/core.scss */
 #bigInviteButton .small {
   font-size: 12px;
   display: block;
@@ -518,7 +520,7 @@ p {
   top: 1px;
 }
 
-/* line 530, ../sass/core.scss */
+/* line 532, ../sass/core.scss */
 #userInfoContainer {
   float: left;
   height: 10px;
@@ -527,13 +529,13 @@ p {
   min-width: 155px;
 }
 
-/* line 538, ../sass/core.scss */
+/* line 540, ../sass/core.scss */
 #userInfo {
   padding: 6px 52px 5px 12px;
   color: #736c5b;
   cursor: pointer;
 }
-/* line 543, ../sass/core.scss */
+/* line 545, ../sass/core.scss */
 #userInfo .userpic {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -549,7 +551,7 @@ p {
   top: 8px;
   z-index: 3;
 }
-/* line 553, ../sass/core.scss */
+/* line 555, ../sass/core.scss */
 #userInfo .userpic img {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -559,17 +561,17 @@ p {
   border-radius: 80px;
   width: 62px;
 }
-/* line 559, ../sass/core.scss */
+/* line 561, ../sass/core.scss */
 #userInfo h2 {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-size: 12px;
 }
-/* line 565, ../sass/core.scss */
+/* line 567, ../sass/core.scss */
 #userInfo .greeting {
   display: block;
 }
-/* line 569, ../sass/core.scss */
+/* line 571, ../sass/core.scss */
 #userInfo .username {
   display: inline-block;
   font-weight: bold;
@@ -581,21 +583,21 @@ p {
   background: url(/static/images/icon_downArrow_brown.png) right center no-repeat;
 }
 
-/* line 581, ../sass/core.scss */
+/* line 583, ../sass/core.scss */
 #userInfo.hover {
   color: #fff;
   background: #ef5922;
 }
-/* line 585, ../sass/core.scss */
+/* line 587, ../sass/core.scss */
 #userInfo.hover .userpic {
   border-color: #ef5922;
 }
-/* line 589, ../sass/core.scss */
+/* line 591, ../sass/core.scss */
 #userInfo.hover .username {
   background: url(/static/images/icon_downArrow_white.png) right center no-repeat;
 }
 
-/* line 594, ../sass/core.scss */
+/* line 596, ../sass/core.scss */
 #secondaryUserNav {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -607,7 +609,7 @@ p {
   position: relative;
   z-index: 2;
 }
-/* line 602, ../sass/core.scss */
+/* line 604, ../sass/core.scss */
 #secondaryUserNav a {
   display: block;
   font-weight: 700;
@@ -617,22 +619,22 @@ p {
   text-transform: uppercase;
   color: #736c5b;
 }
-/* line 612, ../sass/core.scss */
+/* line 614, ../sass/core.scss */
 #secondaryUserNav a:hover {
   background: #b3cbc6;
   color: #1c6770;
 }
 
-/* line 618, ../sass/core.scss */
+/* line 620, ../sass/core.scss */
 #primaryUserNav {
   padding-top: 31px;
   margin-right: 10px;
 }
-/* line 622, ../sass/core.scss */
+/* line 624, ../sass/core.scss */
 #primaryUserNav #invitationsLink {
   position: relative;
 }
-/* line 625, ../sass/core.scss */
+/* line 627, ../sass/core.scss */
 #primaryUserNav #invitationsLink .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -657,7 +659,7 @@ p {
   top: -2px;
   left: -8px;
 }
-/* line 633, ../sass/core.scss */
+/* line 635, ../sass/core.scss */
 #primaryUserNav a {
   float: left;
   display: block;
@@ -676,7 +678,7 @@ p {
   position: relative;
   text-align: center;
 }
-/* line 646, ../sass/core.scss */
+/* line 648, ../sass/core.scss */
 #primaryUserNav a .tooltip {
   display: none;
   position: absolute;
@@ -692,59 +694,59 @@ p {
   border-radius: 20px;
   white-space: nowrap;
 }
-/* line 658, ../sass/core.scss */
+/* line 660, ../sass/core.scss */
 #primaryUserNav a:hover {
   background-color: #736c5b;
 }
-/* line 661, ../sass/core.scss */
+/* line 663, ../sass/core.scss */
 #primaryUserNav a:hover .tooltip {
   display: block;
 }
 
-/* line 667, ../sass/core.scss */
+/* line 669, ../sass/core.scss */
 #invitationsLink {
   background-image: url(/static/images/icon_envelope.png);
 }
 
-/* line 668, ../sass/core.scss */
+/* line 670, ../sass/core.scss */
 #historyLink {
   background-image: url(/static/images/icon_clock.png);
 }
 
-/* line 669, ../sass/core.scss */
+/* line 671, ../sass/core.scss */
 #invitationsLink:hover {
   background-image: url(/static/images/icon_envelope_white.png);
 }
 
-/* line 670, ../sass/core.scss */
+/* line 672, ../sass/core.scss */
 #historyLink:hover {
   background-image: url(/static/images/icon_clock_white.png);
 }
 
-/* line 672, ../sass/core.scss */
+/* line 674, ../sass/core.scss */
 #primaryUserNav {
   float: left;
 }
 
 /**********************************************************/
 /* FOOTER */
-/* line 680, ../sass/core.scss */
+/* line 682, ../sass/core.scss */
 #mainFooter {
   text-align: center;
   clear: both;
   color: #666;
   padding: 60px 0px 30px 0px;
 }
-/* line 686, ../sass/core.scss */
+/* line 688, ../sass/core.scss */
 #mainFooter p {
   font-style: italic;
 }
 
-/* line 691, ../sass/core.scss */
+/* line 693, ../sass/core.scss */
 #footerNav {
   margin: 15px 0px;
 }
-/* line 694, ../sass/core.scss */
+/* line 696, ../sass/core.scss */
 #footerNav a {
   display: inline-block;
   padding: 0px 10px;
@@ -753,13 +755,13 @@ p {
 
 /**********************************************************/
 /* FORMS */
-/* line 705, ../sass/core.scss */
+/* line 707, ../sass/core.scss */
 .formItem {
   margin-bottom: 15px;
   position: relative;
 }
 
-/* line 710, ../sass/core.scss */
+/* line 712, ../sass/core.scss */
 .formItemError {
   position: absolute;
   right: -193px;
@@ -769,17 +771,17 @@ p {
   padding: 5px 10px;
 }
 
-/* line 719, ../sass/core.scss */
+/* line 721, ../sass/core.scss */
 .buttons {
   text-align: center;
 }
 
-/* line 723, ../sass/core.scss */
+/* line 725, ../sass/core.scss */
 label {
   display: block;
 }
 
-/* line 727, ../sass/core.scss */
+/* line 729, ../sass/core.scss */
 input, textarea {
   padding: 5px;
   margin: 0px;
@@ -789,21 +791,21 @@ input, textarea {
   border: 0;
 }
 
-/* line 736, ../sass/core.scss */
+/* line 738, ../sass/core.scss */
 textarea {
   height: 100px;
   resize: vertical;
   padding: 10px;
 }
 
-/* line 742, ../sass/core.scss */
+/* line 744, ../sass/core.scss */
 form .note, .formNote {
   margin-top: 5px;
   font-style: italic;
   font-size: 12px;
 }
 
-/* line 748, ../sass/core.scss */
+/* line 750, ../sass/core.scss */
 input[type=submit] {
   display: inline-block;
   border: 0px;
@@ -1240,7 +1242,7 @@ body#cover .message {
   position: relative;
   top: -3px;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #userInfoBox .userpic img {
   width: 100%;
   height: 100%;
@@ -1296,7 +1298,7 @@ body#cover .message {
   height: 130px;
   float: left;
 }
-/* line 279, ../sass/core.scss */
+/* line 281, ../sass/core.scss */
 #whatsNew #newMeal .mealImage img {
   height: 100%;
 }
@@ -1393,6 +1395,8 @@ body#cover .message {
   -webkit-box-shadow: 0 7px 0 #78902f;
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
+  position: relative;
+  top: 0;
 }
 /* line 139, ../sass/core.scss */
 #joinUs a:hover {
@@ -1412,7 +1416,7 @@ body#cover .message {
   position: relative;
   top: 2px;
 }
-/* line 184, ../sass/core.scss */
+/* line 186, ../sass/core.scss */
 #joinUs a:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -1420,22 +1424,22 @@ body#cover .message {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 189, ../sass/core.scss */
+/* line 191, ../sass/core.scss */
 #joinUs a:active {
   -moz-box-shadow: 0 4px 0 #687d29;
   -webkit-box-shadow: 0 4px 0 #687d29;
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
   position: relative;
-  top: 5px;
+  top: 4px;
 }
-/* line 195, ../sass/core.scss */
+/* line 197, ../sass/core.scss */
 #joinUs a .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 201, ../sass/core.scss */
+/* line 203, ../sass/core.scss */
 #joinUs a em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -1560,7 +1564,7 @@ body#cover .message {
 
 /**********************************************************/
 /* COOKING ROOM: RECIPE */
-/* line 52, ../sass/_room.scss */
+/* line 53, ../sass/_room.scss */
 #recipeContainer {
   position: relative;
   float: left;
@@ -1572,8 +1576,9 @@ body#cover .message {
   background: #fff;
   height: 100%;
   padding-top: 65px;
+  padding-bottom: 45px;
 }
-/* line 61, ../sass/_room.scss */
+/* line 63, ../sass/_room.scss */
 #recipeContainer #recipeTitle {
   position: absolute;
   left: 0px;
@@ -1597,7 +1602,7 @@ body#cover .message {
   font-weight: 700;
   font-size: 19px;
 }
-/* line 76, ../sass/_room.scss */
+/* line 78, ../sass/_room.scss */
 #recipeContainer #recipeTitle .label {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1608,12 +1613,12 @@ body#cover .message {
   margin-bottom: 3px;
 }
 
-/* line 86, ../sass/_room.scss */
+/* line 88, ../sass/_room.scss */
 #recipe {
   height: 100%;
 }
 
-/* line 90, ../sass/_room.scss */
+/* line 92, ../sass/_room.scss */
 #recipeNav {
   float: left;
   width: 50px;
@@ -1625,25 +1630,52 @@ body#cover .message {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   background: #d9d6d1 url(/static/images/textureSoft.png);
-  -moz-border-radius-bottomleft: 10px;
-  -webkit-border-bottom-left-radius: 10px;
-  -o-border-bottom-left-radius: 10px;
-  -ms-border-bottom-left-radius: 10px;
-  -khtml-border-bottom-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+}
+/* line 101, ../sass/_room.scss */
+#recipeNav .userStepIcon {
+  display: inline-block;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
+  -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  border: 3px solid #fff;
+  background: #e9e7e0;
+  width: 48px;
+  height: 48px;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: -2;
+  left: -21px;
+  display: none;
+}
+/* line 255, ../sass/core.scss */
+#recipeNav .userStepIcon img {
+  width: 100%;
+  height: 100%;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -o-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -khtml-border-radius: 100px;
+  border-radius: 100px;
 }
 
-/* line 101, ../sass/_room.scss */
+/* line 114, ../sass/_room.scss */
 #stepTabs li {
   position: relative;
 }
-/* line 104, ../sass/_room.scss */
-#stepTabs li .positionMarker {
-  position: absolute;
-  top: 0;
-  left: -10px;
+/* line 117, ../sass/_room.scss */
+#stepTabs li .userStepIcon {
+  display: block;
 }
-/* line 110, ../sass/_room.scss */
+/* line 121, ../sass/_room.scss */
 #stepTabs li a {
   display: block;
   border-right: 0px;
@@ -1666,11 +1698,157 @@ body#cover .message {
   color: #736c5b;
 }
 
-/* line 125, ../sass/_room.scss */
+/* line 137, ../sass/_room.scss */
+#cookingRoom #steps {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  font-size: 20px;
+}
+/* line 146, ../sass/_room.scss */
+#cookingRoom .step, #cookingRoom #recipeStart {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 25px;
+  height: 100%;
+}
+/* line 151, ../sass/_room.scss */
+#cookingRoom .step p, #cookingRoom #recipeStart p {
+  line-height: 1.3em;
+}
+/* line 156, ../sass/_room.scss */
+#cookingRoom #recipeStart {
+  position: relative;
+  overflow: hidden;
+}
+/* line 160, ../sass/_room.scss */
+#cookingRoom #recipeStart #startButtonContainer {
+  margin-top: 27%;
+  background: rgba(165, 195, 73, 0.15);
+  padding: 25px;
+  text-align: center;
+}
+/* line 166, ../sass/_room.scss */
+#cookingRoom #recipeStart #startButtonContainer p {
+  font-size: 17px;
+  line-height: 1.3em;
+}
+/* line 172, ../sass/_room.scss */
+#cookingRoom #recipeStart .instructions {
+  position: absolute;
+}
+/* line 175, ../sass/_room.scss */
+#cookingRoom #recipeStart .instructions p {
+  font-size: 14px;
+  line-height: 1.25em;
+}
+/* line 180, ../sass/_room.scss */
+#cookingRoom #recipeStart .instructions h2 {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: .1em;
+  color: #a5c349;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+/* line 189, ../sass/_room.scss */
+#cookingRoom #recipeStart #instructionsCookingTimeline {
+  top: 25px;
+}
+/* line 192, ../sass/_room.scss */
+#cookingRoom #recipeStart #instructionsCookingTimeline img {
+  position: absolute;
+  top: 47px;
+  left: -20px;
+}
+/* line 199, ../sass/_room.scss */
+#cookingRoom #recipeStart #instructionsKeyboardNav {
+  position: relative;
+  margin-top: 25px;
+}
+/* line 203, ../sass/_room.scss */
+#cookingRoom #recipeStart #instructionsKeyboardNav p {
+  margin-right: 150px;
+}
+/* line 207, ../sass/_room.scss */
+#cookingRoom #recipeStart #instructionsKeyboardNav img {
+  width: 150px;
+  float: right;
+}
+/* line 213, ../sass/_room.scss */
+#cookingRoom #recipeStart #instructionsCookingNotes {
+  bottom: 14px;
+  width: 243px;
+}
+/* line 217, ../sass/_room.scss */
+#cookingRoom #recipeStart #instructionsCookingNotes img {
+  position: absolute;
+  right: 6px;
+  top: 28px;
+}
+/* line 225, ../sass/_room.scss */
+#cookingRoom .step {
+  display: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/* line 230, ../sass/_room.scss */
+#cookingRoom .step h2 {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #3797a2;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+/* line 238, ../sass/_room.scss */
+#cookingRoom .step ul {
+  margin-left: 20px;
+}
+/* line 241, ../sass/_room.scss */
+#cookingRoom .step ul li {
+  font-size: 18px;
+  margin: 10px 0px;
+  list-style-type: circle;
+}
+/* line 249, ../sass/_room.scss */
+#cookingRoom .currentStep a {
+  background: #fff;
+}
+/* line 253, ../sass/_room.scss */
+#cookingRoom .extra {
+  background: rgba(165, 195, 73, 0.15);
+  padding: 15px 15px 1px 15px;
+  font-size: 14px;
+  margin: 20px 0px;
+}
+/* line 259, ../sass/_room.scss */
+#cookingRoom .extra h1 {
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #a5c349;
+  font-size: 11px;
+  float: left;
+  position: relative;
+  top: 4px;
+  margin-right: 7px;
+  letter-spacing: .1em;
+}
+/* line 271, ../sass/_room.scss */
 #cookingRoom #ingredients {
   margin: 0px;
 }
-/* line 128, ../sass/_room.scss */
+/* line 274, ../sass/_room.scss */
 #cookingRoom #ingredients li {
   font-size: 16px;
   height: 33px;
@@ -1684,126 +1862,45 @@ body#cover .message {
   cursor: pointer;
   background: url(/static/images/checkbox.png) 7px 9px no-repeat;
 }
-/* line 138, ../sass/_room.scss */
+/* line 284, ../sass/_room.scss */
 #cookingRoom #ingredients li.odd {
   background: #f4f7f6 url(/static/images/checkbox.png) 7px 9px no-repeat;
 }
-/* line 143, ../sass/_room.scss */
+/* line 289, ../sass/_room.scss */
 #cookingRoom #ingredients .amount {
   font-size: 12px;
   font-weight: 700;
   margin-left: 5px;
 }
-/* line 149, ../sass/_room.scss */
+/* line 295, ../sass/_room.scss */
 #cookingRoom #ingredients .crossedOut {
   background: url(/static/images/checkboxChecked.png) 7px 8px no-repeat;
 }
-/* line 152, ../sass/_room.scss */
+/* line 298, ../sass/_room.scss */
 #cookingRoom #ingredients .crossedOut.odd {
   background: #f4f7f6 url(/static/images/checkboxChecked.png) 7px 8px no-repeat;
 }
-/* line 157, ../sass/_room.scss */
+/* line 303, ../sass/_room.scss */
 #cookingRoom #ingredients .closeButton {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-/* line 164, ../sass/_room.scss */
-#cookingRoom #steps {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  background: #fff;
-  font-size: 20px;
-}
-/* line 173, ../sass/_room.scss */
-#cookingRoom .step {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 25px;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-/* line 180, ../sass/_room.scss */
-#cookingRoom .step h2 {
-  font-family: "proxima-nova", sans-serif;
-  text-transform: uppercase;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  color: #3797a2;
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-/* line 188, ../sass/_room.scss */
-#cookingRoom .step p {
-  line-height: 1.3em;
-}
-/* line 192, ../sass/_room.scss */
-#cookingRoom .step ul {
-  margin-left: 20px;
-}
-/* line 195, ../sass/_room.scss */
-#cookingRoom .step ul li {
-  font-size: 18px;
-  margin: 10px 0px;
-  list-style-type: circle;
-}
-/* line 203, ../sass/_room.scss */
-#cookingRoom .currentStep a {
-  background: #fff;
-}
-/* line 207, ../sass/_room.scss */
-#cookingRoom .extra {
-  background: rgba(165, 195, 73, 0.15);
-  padding: 15px 15px 1px 15px;
-  font-size: 14px;
-  margin: 20px 0px;
-}
-/* line 213, ../sass/_room.scss */
-#cookingRoom .extra h1 {
-  font-family: "proxima-nova", sans-serif;
-  text-transform: uppercase;
-  font-weight: 900;
-  color: #a5c349;
-  font-size: 11px;
-  float: left;
-  position: relative;
-  top: 4px;
-  margin-right: 7px;
-  letter-spacing: .1em;
-}
-/* line 225, ../sass/_room.scss */
-#cookingRoom .snippet {
-  margin: 30px 0px;
-  font-size: 14px;
-  font-family: "proxima-nova", sans-serif;
-}
-/* line 230, ../sass/_room.scss */
-#cookingRoom .snippet p {
-  line-height: 1.25em;
-}
-/* line 235, ../sass/_room.scss */
+/* line 310, ../sass/_room.scss */
 #cookingRoom .notesContainer {
   margin: 30px 0px;
 }
-/* line 239, ../sass/_room.scss */
+/* line 314, ../sass/_room.scss */
 #cookingRoom .cookingNote {
   font-family: "proxima-nova", sans-serif;
   margin: 15px 0px;
   position: relative;
 }
-/* line 244, ../sass/_room.scss */
+/* line 319, ../sass/_room.scss */
 #cookingRoom .cookingNote p {
   font-style: normal;
 }
-/* line 248, ../sass/_room.scss */
+/* line 323, ../sass/_room.scss */
 #cookingRoom .cookingNote .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -1824,7 +1921,7 @@ body#cover .message {
   height: 32px;
   float: left;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #cookingRoom .cookingNote .userpic img {
   width: 100%;
   height: 100%;
@@ -1835,11 +1932,11 @@ body#cover .message {
   -khtml-border-radius: 100px;
   border-radius: 100px;
 }
-/* line 255, ../sass/_room.scss */
+/* line 330, ../sass/_room.scss */
 #cookingRoom .cookingNote .noteContent {
   font-size: 12px;
 }
-/* line 259, ../sass/_room.scss */
+/* line 334, ../sass/_room.scss */
 #cookingRoom .cookingNote .timestamp {
   text-align: right;
   font-style: normal;
@@ -1848,7 +1945,7 @@ body#cover .message {
   font-size: 10px;
   text-transform: uppercase;
 }
-/* line 270, ../sass/_room.scss */
+/* line 345, ../sass/_room.scss */
 #cookingRoom .cookingNote.note .noteContent {
   margin-left: 40px;
   background: rgba(55, 151, 162, 0.1);
@@ -1860,15 +1957,15 @@ body#cover .message {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 277, ../sass/_room.scss */
+/* line 352, ../sass/_room.scss */
 #cookingRoom .cookingNote.note .userpic {
   margin-top: 15px;
 }
-/* line 284, ../sass/_room.scss */
+/* line 359, ../sass/_room.scss */
 #cookingRoom .cookingNote.stamp .noteContent {
   height: 40px;
 }
-/* line 287, ../sass/_room.scss */
+/* line 362, ../sass/_room.scss */
 #cookingRoom .cookingNote.stamp .noteContent p {
   position: absolute;
   background: #ff0000;
@@ -1881,21 +1978,17 @@ body#cover .message {
   font-weight: bold;
   font-size: 10px;
 }
-/* line 300, ../sass/_room.scss */
+/* line 375, ../sass/_room.scss */
 #cookingRoom .cookingNote.stamp .noteContent img {
   width: 40px;
   position: absolute;
   top: 10px;
   left: 22px;
 }
-/* line 309, ../sass/_room.scss */
-#cookingRoom .step {
-  display: none;
-}
 
 /**********************************************************/
 /* WIDGETS */
-/* line 318, ../sass/_room.scss */
+/* line 387, ../sass/_room.scss */
 .widget {
   display: none;
   -moz-border-radius: 5px;
@@ -1921,20 +2014,20 @@ body#cover .message {
   background: #828a91;
   color: #fff;
 }
-/* line 332, ../sass/_room.scss */
+/* line 401, ../sass/_room.scss */
 .widget .closeButton {
   position: absolute;
   top: 5px;
   right: 5px;
 }
 
-/* line 341, ../sass/_room.scss */
+/* line 410, ../sass/_room.scss */
 #notepad p {
   line-height: 1.2em;
   font-size: 13px;
   margin-bottom: 4px;
 }
-/* line 347, ../sass/_room.scss */
+/* line 416, ../sass/_room.scss */
 #notepad textarea {
   border: 1px solid #ccc;
   margin-bottom: 10px;
@@ -1944,13 +2037,13 @@ body#cover .message {
   resize: none;
   font-style: normal;
 }
-/* line 357, ../sass/_room.scss */
+/* line 426, ../sass/_room.scss */
 #notepad input[type=submit] {
   width: 100%;
   cursor: pointer;
 }
 
-/* line 363, ../sass/_room.scss */
+/* line 432, ../sass/_room.scss */
 #stampPicker ul {
   margin: 10px 0px 0px 0px;
   overflow: hidden;
@@ -1964,43 +2057,43 @@ body#cover .message {
   border-radius: 5px;
 }
 
-/* line 370, ../sass/_room.scss */
+/* line 439, ../sass/_room.scss */
 #stampPicker .stamp {
   font-family: "proxima-nova", sans-serif;
   float: left;
 }
-/* line 374, ../sass/_room.scss */
+/* line 443, ../sass/_room.scss */
 #stampPicker .stamp .stampButton {
   display: block;
   height: 42px;
   width: 43px;
   padding: 10px;
 }
-/* line 381, ../sass/_room.scss */
+/* line 450, ../sass/_room.scss */
 #stampPicker .stamp .stampInfo {
   display: none;
   margin-top: 5px;
   font-size: 13px;
 }
 
-/* line 388, ../sass/_room.scss */
+/* line 457, ../sass/_room.scss */
 #stampInfoDisplay, #stampInstructions {
   font-style: normal;
   height: 32px;
 }
-/* line 392, ../sass/_room.scss */
+/* line 461, ../sass/_room.scss */
 #stampInfoDisplay p, #stampInstructions p {
   font-size: 13px;
   line-height: 1.3em;
 }
 
-/* line 399, ../sass/_room.scss */
+/* line 468, ../sass/_room.scss */
 #stampInfoDisplay h3 {
   font-weight: bold;
   margin-bottom: 4px;
 }
 
-/* line 405, ../sass/_room.scss */
+/* line 474, ../sass/_room.scss */
 #widgetNav {
   position: absolute;
   bottom: 0;
@@ -2021,7 +2114,7 @@ body#cover .message {
   border-bottom-left-radius: 10px;
   padding: 7px;
 }
-/* line 417, ../sass/_room.scss */
+/* line 486, ../sass/_room.scss */
 #widgetNav a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2041,11 +2134,11 @@ body#cover .message {
   background-position: center center;
   background-repeat: no-repeat;
 }
-/* line 428, ../sass/_room.scss */
+/* line 497, ../sass/_room.scss */
 #widgetNav a:hover {
   background-color: rgba(115, 108, 91, 0.2);
 }
-/* line 432, ../sass/_room.scss */
+/* line 501, ../sass/_room.scss */
 #widgetNav a.active {
   border-top: 1px solid #fff;
   position: relative;
@@ -2054,18 +2147,18 @@ body#cover .message {
   background-color: #fff;
   background-repeat: no-repeat;
 }
-/* line 442, ../sass/_room.scss */
+/* line 511, ../sass/_room.scss */
 #widgetNav #stampPickerButton {
   background-image: url(/static/images/icon_stamp.png);
 }
-/* line 447, ../sass/_room.scss */
+/* line 516, ../sass/_room.scss */
 #widgetNav #notepadButton {
   background-image: url(/static/images/icon_note.png);
 }
 
 /**********************************************************/
 /* VIDEOS */
-/* line 455, ../sass/_room.scss */
+/* line 524, ../sass/_room.scss */
 #videoContainer {
   margin-left: 360px;
   height: 70%;
@@ -2076,12 +2169,12 @@ body#cover .message {
   position: relative;
 }
 
-/* line 462, ../sass/_room.scss */
+/* line 531, ../sass/_room.scss */
 #videoContainer.fullsize {
   height: 100%;
 }
 
-/* line 466, ../sass/_room.scss */
+/* line 535, ../sass/_room.scss */
 #videos {
   padding: 20px;
   height: 100%;
@@ -2091,12 +2184,12 @@ body#cover .message {
   box-sizing: border-box;
 }
 
-/* line 472, ../sass/_room.scss */
+/* line 541, ../sass/_room.scss */
 #myInfo {
   position: absolute;
 }
 
-/* line 476, ../sass/_room.scss */
+/* line 545, ../sass/_room.scss */
 #chatBoxButton {
   position: absolute;
   top: 10px;
@@ -2105,7 +2198,7 @@ body#cover .message {
 
 /**********************************************************/
 /* CHAT BOX */
-/* line 486, ../sass/_room.scss */
+/* line 555, ../sass/_room.scss */
 #chatBoxContainer {
   margin-left: 360px;
   height: 30%;
@@ -2117,7 +2210,7 @@ body#cover .message {
   position: relative;
 }
 
-/* line 494, ../sass/_room.scss */
+/* line 563, ../sass/_room.scss */
 #chatBox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2136,7 +2229,7 @@ body#cover .message {
   position: relative;
 }
 
-/* line 504, ../sass/_room.scss */
+/* line 573, ../sass/_room.scss */
 #chatMessages {
   height: 100%;
   -moz-box-sizing: border-box;
@@ -2146,16 +2239,16 @@ body#cover .message {
   padding: 10px 15px;
   overflow: auto;
 }
-/* line 510, ../sass/_room.scss */
+/* line 579, ../sass/_room.scss */
 #chatMessages .chatMessage {
   margin: 5px 0px;
 }
-/* line 514, ../sass/_room.scss */
+/* line 583, ../sass/_room.scss */
 #chatMessages .chatMessageAuthor {
   font-weight: bold;
 }
 
-/* line 519, ../sass/_room.scss */
+/* line 588, ../sass/_room.scss */
 #chatInputContainer {
   position: absolute;
   bottom: 0px;
@@ -2167,7 +2260,7 @@ body#cover .message {
   box-sizing: border-box;
   padding: 5px;
 }
-/* line 527, ../sass/_room.scss */
+/* line 596, ../sass/_room.scss */
 #chatInputContainer input {
   display: block;
   width: 100%;
@@ -2182,7 +2275,7 @@ body#cover .message {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 537, ../sass/_room.scss */
+/* line 606, ../sass/_room.scss */
 #chatInputContainer input:focus {
   outline: none;
   background: #ddedee;
@@ -2280,7 +2373,7 @@ body#meals .cookedBy li {
   color: #736c5b;
   text-transform: uppercase;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 body#meals .cookedBy li img {
   width: 100%;
   height: 100%;
@@ -2633,7 +2726,7 @@ body#meals .cookedBy .moreLink {
   display: inline-block;
   margin: 0px 10px 15px 0px;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #cookedBy li img {
   width: 100%;
   height: 100%;
@@ -2685,6 +2778,8 @@ body#meals .cookedBy .moreLink {
   -webkit-box-shadow: 0 7px 0 #78902f;
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
+  position: relative;
+  top: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -2711,7 +2806,7 @@ body#meals .cookedBy .moreLink {
   position: relative;
   top: 2px;
 }
-/* line 184, ../sass/core.scss */
+/* line 186, ../sass/core.scss */
 #inviteButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -2719,22 +2814,22 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 189, ../sass/core.scss */
+/* line 191, ../sass/core.scss */
 #inviteButton:active {
   -moz-box-shadow: 0 4px 0 #687d29;
   -webkit-box-shadow: 0 4px 0 #687d29;
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
   position: relative;
-  top: 5px;
+  top: 4px;
 }
-/* line 195, ../sass/core.scss */
+/* line 197, ../sass/core.scss */
 #inviteButton .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 201, ../sass/core.scss */
+/* line 203, ../sass/core.scss */
 #inviteButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -2935,6 +3030,8 @@ body#meals .cookedBy .moreLink {
   -webkit-box-shadow: 0 7px 0 #78902f;
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
+  position: relative;
+  top: 0;
 }
 /* line 139, ../sass/core.scss */
 #inviteForm #sendInvitationButton:hover {
@@ -2954,7 +3051,7 @@ body#meals .cookedBy .moreLink {
   position: relative;
   top: 2px;
 }
-/* line 184, ../sass/core.scss */
+/* line 186, ../sass/core.scss */
 #inviteForm #sendInvitationButton:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -2962,22 +3059,22 @@ body#meals .cookedBy .moreLink {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 189, ../sass/core.scss */
+/* line 191, ../sass/core.scss */
 #inviteForm #sendInvitationButton:active {
   -moz-box-shadow: 0 4px 0 #687d29;
   -webkit-box-shadow: 0 4px 0 #687d29;
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
   position: relative;
-  top: 5px;
+  top: 4px;
 }
-/* line 195, ../sass/core.scss */
+/* line 197, ../sass/core.scss */
 #inviteForm #sendInvitationButton .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 201, ../sass/core.scss */
+/* line 203, ../sass/core.scss */
 #inviteForm #sendInvitationButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -3190,7 +3287,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 32px;
   vertical-align: middle;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #replyFormContainer .userpic img {
   width: 100%;
   height: 100%;
@@ -3373,6 +3470,8 @@ table.jCalendar td.unselectable.dp-hover {
   -webkit-box-shadow: 0 7px 0 #78902f;
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
+  position: relative;
+  top: 0;
 }
 /* line 139, ../sass/core.scss */
 #replyForm button:hover {
@@ -3392,7 +3491,7 @@ table.jCalendar td.unselectable.dp-hover {
   position: relative;
   top: 2px;
 }
-/* line 184, ../sass/core.scss */
+/* line 186, ../sass/core.scss */
 #replyForm button:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -3400,22 +3499,22 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 189, ../sass/core.scss */
+/* line 191, ../sass/core.scss */
 #replyForm button:active {
   -moz-box-shadow: 0 4px 0 #687d29;
   -webkit-box-shadow: 0 4px 0 #687d29;
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
   position: relative;
-  top: 5px;
+  top: 4px;
 }
-/* line 195, ../sass/core.scss */
+/* line 197, ../sass/core.scss */
 #replyForm button .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 201, ../sass/core.scss */
+/* line 203, ../sass/core.scss */
 #replyForm button em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -3463,6 +3562,8 @@ table.jCalendar td.unselectable.dp-hover {
   -webkit-box-shadow: 0 7px 0 #78902f;
   -o-box-shadow: 0 7px 0 #78902f;
   box-shadow: 0 7px 0 #78902f;
+  position: relative;
+  top: 0;
   color: #fff;
   letter-spacing: .05em;
 }
@@ -3484,7 +3585,7 @@ table.jCalendar td.unselectable.dp-hover {
   position: relative;
   top: 2px;
 }
-/* line 184, ../sass/core.scss */
+/* line 186, ../sass/core.scss */
 #replyButtons a:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 7px 0 #687d29;
@@ -3492,22 +3593,22 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #687d29;
   box-shadow: 0 7px 0 #687d29;
 }
-/* line 189, ../sass/core.scss */
+/* line 191, ../sass/core.scss */
 #replyButtons a:active {
   -moz-box-shadow: 0 4px 0 #687d29;
   -webkit-box-shadow: 0 4px 0 #687d29;
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
   position: relative;
-  top: 5px;
+  top: 4px;
 }
-/* line 195, ../sass/core.scss */
+/* line 197, ../sass/core.scss */
 #replyButtons a .small {
   margin: 2px 0px;
   font-size: .6em;
   display: block;
 }
-/* line 201, ../sass/core.scss */
+/* line 203, ../sass/core.scss */
 #replyButtons a em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -3792,7 +3893,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 120px;
   float: left;
 }
-/* line 279, ../sass/core.scss */
+/* line 281, ../sass/core.scss */
 #invitationContainer .invitation .mealImage img, #invitationContainer #singleInvitation .mealImage img {
   height: 100%;
 }
@@ -3859,7 +3960,7 @@ table.jCalendar td.unselectable.dp-hover {
   left: 15px;
   top: 35px;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #invitationContainer .invitation .partnerUserpic img {
   width: 100%;
   height: 100%;
@@ -3931,7 +4032,7 @@ table.jCalendar td.unselectable.dp-hover {
   border-width: 5px;
   margin-right: 10px;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #invitationContainer #singleInvitation .userpic img {
   width: 100%;
   height: 100%;
@@ -3976,7 +4077,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 48px;
   float: left;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #invitationActivity .userpic img {
   width: 100%;
   height: 100%;
@@ -4053,7 +4154,7 @@ table.jCalendar td.unselectable.dp-hover {
   width: 180px;
   height: 100px;
 }
-/* line 279, ../sass/core.scss */
+/* line 281, ../sass/core.scss */
 #historyList .mealImage img {
   height: 100%;
 }
@@ -4088,7 +4189,7 @@ table.jCalendar td.unselectable.dp-hover {
   width: 32px;
   height: 32px;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #historyList .userpics .userpic img {
   width: 100%;
   height: 100%;
@@ -4183,7 +4284,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 32px;
   vertical-align: middle;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #historySingle #historyIntro .userpic img {
   width: 100%;
   height: 100%;
@@ -4204,7 +4305,7 @@ table.jCalendar td.unselectable.dp-hover {
   width: 400px;
   height: 300px;
 }
-/* line 279, ../sass/core.scss */
+/* line 281, ../sass/core.scss */
 #historySingle #mealImage img {
   height: 100%;
 }
@@ -4243,7 +4344,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 80px;
   border-width: 5px;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #historySingle #userpics .userpic img {
   width: 100%;
   height: 100%;
@@ -4381,7 +4482,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 32px;
   vertical-align: middle;
 }
-/* line 253, ../sass/core.scss */
+/* line 255, ../sass/core.scss */
 #historySingle #historySteps .stepContent .notesContainer .userpic img {
   width: 100%;
   height: 100%;

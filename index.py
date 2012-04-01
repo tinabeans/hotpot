@@ -1021,7 +1021,14 @@ def showRoom(invitationId):
 		# grab all the stamps too
 		stamps = list(db.stamps.find())
 		
-		return render_template('room.html', meal=meal, userId=flask.session['userId'], invitationId=invitationId, stamps=stamps )
+		# grab info of all attendees
+		attendees = []
+		attendees.append(grabUserInfo(roomInfo['hostId']))
+		
+		for inviteeId in roomInfo['inviteeIds']:
+			attendees.append(grabUserInfo(inviteeId))
+		
+		return render_template('room.html', meal=meal, invitationId=invitationId, stamps=stamps, attendees=attendees)
 
 '''
 def postFoodnote():
