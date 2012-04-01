@@ -430,7 +430,7 @@ def sendInvitation():
 	meal = db.meals.find_one({'slug' : newInvitation['meal']})
 	
 	# compose email to send
-	email = Message(newInvitation['hostName'] + """ says "Let's Cook!" """, recipients=[data['inviteeEmail']])
+	email = Message("Hotpot Invitation Test", recipients=[data['inviteeEmail']])
 	invitationMessage = render_template('email/invitation.html', meal=meal, invitation=newInvitation)
 	email.html = invitationMessage
 	mail.send(email)
@@ -547,7 +547,8 @@ def registerToReply():
 	userId = db.users.insert({
 		'email' : data['email'],
 		'name' : data['name'],
-		'password' : data['password']
+		'password' : data['password'],
+		'userpic' : 'placeholder.png'
 	})
 	
 	# log the user in
