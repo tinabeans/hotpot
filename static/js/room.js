@@ -17,6 +17,17 @@ $(document).ready(function() {
 	// useful variables
 	var currentUserId = $('#userId').text();
 	
+	
+	/****************************************************************************************/
+	// RESIZING LAYOUT
+	
+	var setCookingAreaHeight = function(){
+		$('#cookingArea').height($(window).height()-$('#cookingHeader').height()-20);
+	};
+	
+	$(window).resize(setCookingAreaHeight);
+	setCookingAreaHeight();
+	
 
 	/****************************************************************************************/
 	// RECIPE NAVIGATION
@@ -207,7 +218,7 @@ $(document).ready(function() {
 			noteContent = '<img src="/static/images/stamps/' + data.content.stampSlug + '.png" /><p>' + data.content.stampName + '!</p>';
 		}
 		
-		$elementToAddNoteTo.append('<div class="cookingNote ' + data.type + '" data-id="' + data.noteId + '"><img src="/static/uploads/userpics/' + data.noteAuthor.userpic + '" class="userpic" /><div class="timestamp">' + data.timestamp + '</div><div class="noteContent">' + noteContent + '</div></div>');
+		$elementToAddNoteTo.append('<div class="cookingNote ' + data.type + '" data-id="' + data.noteId + '"><div class="userpic"><img src="/static/uploads/userpics/' + data.noteAuthor.userpic + '" /></div><div class="timestamp">' + data.timestamp + '</div><div class="noteContent">' + noteContent + '</div></div>');
 		
 		// grab reference to the newly posted note…
 		var $newNote = $(".cookingNote[data-id='" + data.noteId + "']");
