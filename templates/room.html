@@ -113,56 +113,64 @@
 				
 					<ol>
 						{% set stepCounter = 1 %}
+						
 						{% for step in meal.steps %}
-						<li id="step-{{ step.id }}" class="step {{ step.type }}">
-							<h2>
-							{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
-								{% set stepCounter = stepCounter + 1 %}
-								Step {{ stepCounter }}
-							{% else %}
-								{{ step.type }}
-							{% endif %}
-							</h2>
-							
-							{{ step.text|safe }}
-							
-							{% if step.type == "ingredients" %}
-							<ul id="ingredients">
-							{% for ingredient in meal.ingredients %}
-								<li class="{{ loop.cycle('odd', 'even') }}"><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
-							{% endfor %}
-							</ul>
-							{% endif %}
-							
-							{% if step.extra is defined %}
-							<div class="extra">
-								<h1>Protip!</h1>
-								{{ step.extra|safe }}
-							</div>
-							{% endif %}
-							
-							<!-- Cooking Notes! wheeeee -->
-							<div class="notesContainer">
-							{% if step.notes is defined %}
-								{% for note in step.notes %}
-								<div class="cookingNote {{ note.type }}" data-id="{{ note._id }}">
-									<div class="userpic"><img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" /></div>
-									<div class="timestamp">{{ note.timestamp }}</div>
-									
-									<div class="noteContent">
-										{% if note.type == "note" %}
-											<p>{{ note.content }}</p>
-										{% elif note.type == "stamp" %}
-											<img src="/static/images/stamps/{{ note.content.stampSlug }}.png" />
-											<p>{{ note.content.stampName }}!</p>
-										{% endif %}
-									</div>
+							<li id="step-{{ step.id }}" class="step {{ step.type }}">
+								<h2>
+									{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
+										{% set stepCounter = stepCounter + 1 %}
+										Step {{ stepCounter }}
+									{% else %}
+										{{ step.type }}
+									{% endif %}
+								</h2>
+								
+								{{ step.text|safe }}
+								
+								{% if step.type == "ingredients" %}
+									<ul id="ingredients">
+										{% for ingredient in meal.ingredients %}
+											<li class="{{ loop.cycle('odd', 'even') }}"><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+								
+								{% if step.extra is defined %}
+								<div class="extra">
+									<h1>Protip!</h1>
+									{{ step.extra|safe }}
 								</div>
-								{% endfor %}
-							{% endif %}
-							</div><!-- .notesContainer -->
-							
-						</li>
+								{% endif %}
+								
+								{% if step.type == "rest" or step.type == "eat" %}
+									<form class="noteFormInline">
+										<textarea name="note" class="note"></textarea>
+										<input type="submit" value="Add Cooking Note" />
+									</form>
+								{% endif %}
+								
+								<!-- Cooking Notes! wheeeee -->
+								<div class="notesContainer">
+								{% if step.notes is defined %}
+									{% for note in step.notes %}
+									<div class="cookingNote {{ note.type }}" data-id="{{ note._id }}">
+										<div class="userpic"><img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" /></div>
+										<div class="timestamp">{{ note.timestamp }}</div>
+										
+										<div class="noteContent">
+											{% if note.type == "note" %}
+												<p>{{ note.content }}</p>
+											{% elif note.type == "stamp" %}
+												<img src="/static/images/stamps/{{ note.content.stampSlug }}.png" />
+												<p>{{ note.content.stampName }}!</p>
+											{% endif %}
+										</div>
+									</div>
+									{% endfor %}
+								{% endif %}
+								</div><!-- .notesContainer -->
+								
+							</li>
 						{% endfor %}				
 					</ol>
 					

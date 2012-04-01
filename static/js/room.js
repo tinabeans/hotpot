@@ -42,7 +42,7 @@ $(document).ready(function() {
 		$('#steps ol li').first().show();
 		
 		sendCurrentStep();
-		bindKeyEvents();
+		initRecipeNav();
 	});
 	
 
@@ -89,19 +89,6 @@ $(document).ready(function() {
 			$userStepIcon.insertAfter($targetStepTab);
 		}
 	};
-
-	// Clicking on a recipe step switches the view to that step
-	$('#stepTabs li a').click(function(e) {
-		console.log('click');
-		e.preventDefault();
-		$('.step').hide();
-		$('#stepTabs .currentStep').removeClass('currentStep');
-		var stepNumber = $(this).attr('id').split('-')[1];
-		$('#step-' + stepNumber).show();
-		$(this).parent().addClass('currentStep');
-		
-		sendCurrentStep();
-	});
 	
 	// Using arrow keys to go to the next/previous step
 	
@@ -113,11 +100,21 @@ $(document).ready(function() {
 		$('#stepTabs .currentStep').next().find('a').click();
 	};
 	
-	// key nav is not activated until user clicks the start button
-	var bindKeyEvents = function(){
+	// recipe nav is not activated until user clicks the start button
+	
+	$('#stepTabs li a').click(function(e) {
+		e.preventDefault();
+	});
+	
+	var initRecipeNav = function(){
 	
 		$(document.documentElement).keydown(function(e){
-			console.log('key');
+			
+			// don't use keyboard nav if we're in a textarea or input.
+			if(e.target.nodeName == "TEXTAREA" || e.target.nodeName == "INPUT") {
+				return;
+			}
+			
 			// left or up key
 			if(e.keyCode === 37 || e.keyCode === 38)	{
 				console.log('prev');
@@ -128,6 +125,18 @@ $(document).ready(function() {
 				console.log('next');
 				goToNextStep();
 			}
+		});
+		
+		// Clicking on a recipe step switches the view to that step
+		$('#stepTabs li a').click(function(e) {
+			
+			$('.step').hide();
+			$('#stepTabs .currentStep').removeClass('currentStep');
+			var stepNumber = $(this).attr('id').split('-')[1];
+			$('#step-' + stepNumber).show();
+			$(this).parent().addClass('currentStep');
+			
+			sendCurrentStep();
 		});
 	} // called in $('#recipeStartButton').click(), above
 	
@@ -152,7 +161,7 @@ $(document).ready(function() {
 	});
 	
 	/****************************************************************************************/
-	// NOTE-ADDING PANES
+	// WIDGET PANES
 	
 	var toggleWidget = function($button, widgetSelector){
 		var $widget = $(widgetSelector);
@@ -184,7 +193,7 @@ $(document).ready(function() {
 	// NOTES (badges, etc.)
 	
 	// submits the note
-	$('#noteForm').submit(function(e){
+	$('#noteForm, .noteFormInline').submit(function(e){
 		e.preventDefault();
 		
 		// "this" is the form
