@@ -3,13 +3,15 @@
 # python standard libraries
 import hashlib, random, json, os, time, urllib, threading, datetime, urllib2
 
-# nice 3rd party stuff
+# flask
 import flask
 from flaskext.mail import Mail, Message
+
+# pymongo
 import pymongo
 from pymongo.objectid import ObjectId
 
-# used to put stuff in the db
+# database fixture thing that yang told me to make
 import saveStuff
 
 
@@ -21,13 +23,13 @@ ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
 BASE_URL = 'http://test.letsgohotpot.com'
 LOCAL_URL = 'http://localhost:7777'
 
+# for sending cooking reminder emails
 hourToSendReminders = 23
 checkForReminderTimeInterval = 10 # 5min
 
 # creating new Flask instance
 app = flask.Flask(__name__)
 app.config.from_pyfile('config.cfg')
-
 
 # start up mail object to send messages via SMTP
 mail = Mail(app)
@@ -204,23 +206,33 @@ def showLogin():
 
 @app.route('/loginAction', methods=['POST'])
 def login():
+	
 	data = flask.request.form
+	
+	print data
 	
 	userDocument = db.users.find_one({'email' : data['email'], 'password' : data['password']})
 	
+	print userDocument
+	
 	if userDocument is not None:
+		print 'user found'
 		# log the user in by setting a session variable
 		flask.session['userId'] = str(userDocument['_id'])
 		
 		# redirect to the place you were gonna go... if there were such a place
 		if 'redirectURL' in data:
 			return flask.redirect(data['redirectURL'])
+		# otherwise just drop them on their homepage
 		else:
 			flask.flash("Logged in. Welcome!")
 			return flask.redirect(flask.url_for('home'))
 	else:
 		flask.flash("Login info was incorrect.")
-		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : data['redirectURL']}))
+		
+		# return people to the page they tried to login from
+		return flask.redirect(flask.request.referrer)
+			
 
 
 @app.route('/logout')

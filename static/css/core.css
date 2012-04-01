@@ -2346,6 +2346,15 @@ body#cover .message {
 }
 
 /**********************************************************/
+/* VIDEO! */
+/* line 634, ../sass/_room.scss */
+#myInfo {
+  background: #f8f6f0 url(/static/images/textureSoft.png);
+  width: 200px;
+  height: 100px;
+}
+
+/**********************************************************/
 /* MEALS PAGE */
 /* line 6, ../sass/_meals.scss */
 body#meals #sectionTitle .small {

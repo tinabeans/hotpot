@@ -9,7 +9,7 @@ $(document).ready(function() {
 	
 	// as soon as a connection is made, send a message to the back-end so it knows which 'room' you are in
 	var socketConnectMessage = JSON.stringify({
-		'type' : 'socket connect',
+		'type' : 'Here I am!',
 		'roomId' : $('body').attr('data-id')
 	});
 	socket.send(socketConnectMessage);
@@ -387,6 +387,26 @@ $(document).ready(function() {
 		}
 	}
 	
+	/****************************************************************************************/
+	// OPENTOK!
+	// crazy magic openTok video stuff happens!!!
+	
+	var doOpenTokStuff = function(data){
+		
+		// create and initialize a session object
+		openTokSession = TB.initSession(data['sessionId']);
+		// note to self: this is kinda bad because openTokSession is declared in the global namespace inside a separate file, opentok.js... but this is good enough for a thesis prototyoe :P
+		
+		// add event listeners... the handlers are in opentok.js
+		openTokSession.addEventListener('sessionConnected', sessionConnectedHandler);
+		openTokSession.addEventListener('streamCreated', streamCreatedHandler);
+		openTokSession.addEventListener('streamDestroyed', streamDestroyedHandler);
+		openTokSession.addEventListener('connectionDestroyed', connectionDestroyedHandler);
+		
+		// actually connect to that session using the API key and this user's token (generated in and sent over by socketstuff.py)
+		openTokSession.connect(openTokAPIKey, data['token']);
+	};
+	
 	
 	/****************************************************************************************/
 	// SOCKET IO STUFF
@@ -411,6 +431,10 @@ $(document).ready(function() {
 		
 		else if(messageJSON['type'] == 'focus') {
 			updateUserFocus(data);
+		}
+		
+		else if(messageJSON['type'] == 'openTok token') {
+			doOpenTokStuff(messageJSON['data']);
 		}
 		
 	});
