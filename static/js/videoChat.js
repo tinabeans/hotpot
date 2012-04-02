@@ -8,7 +8,7 @@ var openTokSession;
 
 function sessionConnectedHandler(event) {
 	// start publishing my video
-	publisher = openTokSession.publish('myVideo', { width: 215, height:150 });
+	publisher = openTokSession.publish('myVideo', { width: 170, height:100 });
 	 
 	// Subscribe to streams that were in the session when we connected
 	subscribeToStreams(event.streams);
@@ -24,6 +24,10 @@ function streamDestroyedHandler(event) {
 		var stream = event.streams[i];
 		$('#container-stream' + stream.streamId).remove();
 		
+		if ($('.friendVideo').length == 0) {
+			$('#friendVideoPlaceholder').show();
+		}
+			
 		var subscribers = openTokSession.getSubscribersForStream(stream);
 		for (var i = 0; i < subscribers.length; i++) {
 			openTokSession.unsubscribe(subscribers[i]);
@@ -60,6 +64,8 @@ function subscribeToStreams(streams) {
 		var newVideoDiv = '<div class="friendVideo" id="container-' + streamID + '" data-connectionID ="' + connectionID + '"><div id="' + streamID + '"></div></div>';
 		
 		$('#videos').append(newVideoDiv);
+		
+		$('#friendVideoPlaceholder').hide();
 											 
 		// actually subscribe to the stream (replaces div with the stream video)
 		openTokSession.subscribe(streams[i], streamID);

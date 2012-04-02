@@ -37,10 +37,10 @@
 }
 
 #cookingArea {
-	@include border-bottom-left-radius(10px);
-	@include border-top-left-radius(10px);
+	@include border-radius(10px);
 	@include box-sizing(border-box);
 	background: #e7e6e3 url(/static/images/textureSoft.png);
+	position: relative;
 }
 
 
@@ -542,39 +542,131 @@ $widgetNavHeight:45px;
 
 #videoContainer {
 	margin-left: 360px;
-	height:70%;
+	height:74%;
 	@include box-sizing(border-box);
 	position: relative;
-}
-	
-#videoContainer.fullsize {
-	height:100%;
+	padding:0px 0px;
+
+	&.fullsize {
+		height:100%;
+		padding-bottom:40px;
+	}
 }
 
 #videos {
-	padding:20px;
+	padding:20px 20px 30px 20px;
 	height:100%;
 	@include box-sizing(border-box);
+	position: relative;
 }
 
-#myInfo {
-	position: absolute;
+#friendVideoPlaceholder {
+	background-color:rgba($darkBrown, .1);
+	color: rgba($darkBrown, .4);
+	height:100%;
+	position: relative;
+	font-size:30px;
+	font-weight: 700;
+	border:5px solid rgba($darkBrown, .1);
+	
+	p {
+		position:absolute;
+		top:45%;
+		width:100%;
+		text-align: center;
+	}
 }
 
-#chatBoxButton {
+#myVideoContainer, .friendVideo {
+	border:5px solid #fff;
+	@include box-shadow(0px 1px 4px rgba(0,0,0,.5));
+}
+
+#myVideoContainer {
 	position: absolute;
-	top:10px;
-	right:10px;
+	bottom:20px;
+	right:20px;
+	z-index: +999;
+}
+
+.attendeeStatus {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 15px;
+	padding: 6px 7px 6px 10px;
+	background:#fff;
+	@include border-bottom-left-radius(5px);
+	
+	.status {
+		margin-left:5px;
+	}
+}
+
+#myStatus {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 12px;
+	background: white;
+	padding: 1px 2px 4px 6px;
+	@include border-bottom-left-radius(5px);
+	
+	.status {
+		margin-left:1px;
+	}
+}
+
+.attendeeStatus, #myStatus {
+	font-weight: 700;
+	z-index: +2;
+
+	.status {
+		color:$orange;
+		font-size:11px;
+	}
+}
+
+.friendVideo {
+	@include box-sizing(border-box);
 }
 
 
 /**********************************************************/
 /* CHAT BOX */
 
+#hideChatButton, #showChatButton {
+	font-weight: bold;
+	background:$mediumBlue;
+	padding: 4px 5px 4px 5px;
+	border-radius: 5px;
+	color:#fff;
+	@include bigFatLetters;
+	font-size:10px;
+	letter-spacing:.05em;
+	
+	&:hover {
+		background: darken($mediumBlue, 5);
+	}
+}
+
+#hideChatButton {
+	position: absolute;
+	top:5px;
+	right:25px;
+	z-index: +3;
+}
+
+#showChatButton {
+	position: absolute;
+	right: 220px;
+}
+
 #chatBoxContainer {
 	margin-left: 360px;
-	height:30%;
-	padding:20px;
+	margin-right:200px;
+	height:26%;
+	padding:0px 20px 20px 20px;
 	@include box-sizing(border-box);
 	position: relative;
 }
@@ -583,7 +675,8 @@ $widgetNavHeight:45px;
 	@include box-sizing(border-box);
 	height: 100%;
 	font-family: $sans;
-	padding-bottom:27px;
+	padding-top:5px;
+	padding-bottom:35px;
 	background:#fff;
 	@include border-radius(5px);
 	position: relative;
@@ -592,7 +685,7 @@ $widgetNavHeight:45px;
 #chatMessages {
 	height:100%;
 	@include box-sizing(border-box);
-	padding:10px 15px;
+	padding:5px 15px;
 	overflow: auto;
 	
 	.chatMessage {
@@ -611,15 +704,18 @@ $widgetNavHeight:45px;
 	width:100%;
 	@include box-sizing(border-box);
 	padding:5px;
+	height:35px;
 	
 	input {
 		display: block;
 		width:100%;
-		padding:7px 10px;
+		padding:7px 5px;
+		height:25px;
 		border:0px;
 		margin:0px;
 		background:#ebf4f5;
-		@include border-radius(5px);
+		@include border-radius(3px);
+		font-size:13px;
 	}
 	
 	input:focus {
@@ -627,15 +723,3 @@ $widgetNavHeight:45px;
 		background:darken(#ebf4f5, 4);
 	}
 }
-
-/**********************************************************/
-/* VIDEO! */
-
-#myInfo {
-	@include lightBrownBg;
-	width:200px;
-	height:100px;
-}
-
-
-

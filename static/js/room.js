@@ -304,10 +304,19 @@ $(document).ready(function() {
 	// CHAT BOX STUFF
 	
 	// toggles chatbox visbility
-	$('#chatBoxButton').click(function(e){
+	$('#hideChatButton').click(function(e){
 		e.preventDefault();
-		$('#chatContainer').toggle();
+		$('#chatBoxContainer').hide();
 		$('#videoContainer').toggleClass('fullsize')
+	});
+	
+	$('#showChatButton').click(function(e){
+		e.preventDefault();
+		$('#chatBoxContainer').show();
+		$('#videoContainer').toggleClass('fullsize')
+		
+		// scroll chat messages to bottom
+		$('#chatMessages').scrollTop($('#chatMessages').scrollTop()+9000001);
 	});
 	
 	// submits a chat message
@@ -339,7 +348,7 @@ $(document).ready(function() {
 		$chatMessages.append('<div class="chatMessage"><span class="chatMessageAuthor">' + data.userId + '</span>: <span class="chatMessageBody">' + data.chatMessage + '</span></div>');
 		
 		// scroll chat messages to bottom
-		$chatMessages.scrollTop($chatMessages.scrollTop()+9001);
+		$chatMessages.scrollTop($chatMessages.scrollTop()+9000001);
 	};
 	
 	/****************************************************************************************/
@@ -379,11 +388,24 @@ $(document).ready(function() {
 	
 	// called inside socket.on('message')
 	var updateUserFocus = function(data) {
-		if (data.userId === currentUserId) {
-			$('#myStatus').html('my focus is ' + data.focus);
+		console.log('update focus')
+		
+		var focusText;
+		
+		if (data.focus) {
+			focusText = "Active"
 		}
 		else {
-			$('#partnerStatus').html(data.username + '\'s focus is ' + data.focus);
+			focusText = "Idle"
+		}
+		
+		if (data.userId === currentUserId) {
+			console.log('set my focus to ' + data.focus);
+			$('#myStatus .status').html(focusText);
+		}
+		else {
+			console.log('set yangs focus to ' + data.focus);
+			$('.attendeeStatus[data-id=' + data.userId + '] .status').html(focusText);
 		}
 	}
 	

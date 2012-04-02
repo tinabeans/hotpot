@@ -1544,23 +1544,18 @@ body#cover .message {
 
 /* line 39, ../sass/_room.scss */
 #cookingArea {
-  -moz-border-radius-bottomleft: 10px;
-  -webkit-border-bottom-left-radius: 10px;
-  -o-border-bottom-left-radius: 10px;
-  -ms-border-bottom-left-radius: 10px;
-  -khtml-border-bottom-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  -moz-border-radius-topleft: 10px;
-  -webkit-border-top-left-radius: 10px;
-  -o-border-top-left-radius: 10px;
-  -ms-border-top-left-radius: 10px;
-  -khtml-border-top-left-radius: 10px;
-  border-top-left-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   background: #e7e6e3 url(/static/images/textureSoft.png);
+  position: relative;
 }
 
 /**********************************************************/
@@ -2225,7 +2220,24 @@ body#cover .message {
 /* line 543, ../sass/_room.scss */
 #videoContainer {
   margin-left: 360px;
-  height: 70%;
+  height: 74%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0px 0px;
+}
+/* line 550, ../sass/_room.scss */
+#videoContainer.fullsize {
+  height: 100%;
+  padding-bottom: 40px;
+}
+
+/* line 556, ../sass/_room.scss */
+#videos {
+  padding: 20px 20px 30px 20px;
+  height: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -2233,40 +2245,140 @@ body#cover .message {
   position: relative;
 }
 
-/* line 550, ../sass/_room.scss */
-#videoContainer.fullsize {
+/* line 563, ../sass/_room.scss */
+#friendVideoPlaceholder {
+  background-color: rgba(115, 108, 91, 0.1);
+  color: rgba(115, 108, 91, 0.4);
   height: 100%;
+  position: relative;
+  font-size: 30px;
+  font-weight: 700;
+  border: 5px solid rgba(115, 108, 91, 0.1);
+}
+/* line 572, ../sass/_room.scss */
+#friendVideoPlaceholder p {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  text-align: center;
 }
 
-/* line 554, ../sass/_room.scss */
-#videos {
-  padding: 20px;
-  height: 100%;
+/* line 580, ../sass/_room.scss */
+#myVideoContainer, .friendVideo {
+  border: 5px solid #fff;
+  -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* line 585, ../sass/_room.scss */
+#myVideoContainer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+/* line 592, ../sass/_room.scss */
+.attendeeStatus {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 15px;
+  padding: 6px 7px 6px 10px;
+  background: #fff;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -o-border-bottom-left-radius: 5px;
+  -ms-border-bottom-left-radius: 5px;
+  -khtml-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+/* line 601, ../sass/_room.scss */
+.attendeeStatus .status {
+  margin-left: 5px;
+}
+
+/* line 606, ../sass/_room.scss */
+#myStatus {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 12px;
+  background: white;
+  padding: 1px 2px 4px 6px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -o-border-bottom-left-radius: 5px;
+  -ms-border-bottom-left-radius: 5px;
+  -khtml-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+/* line 615, ../sass/_room.scss */
+#myStatus .status {
+  margin-left: 1px;
+}
+
+/* line 620, ../sass/_room.scss */
+.attendeeStatus, #myStatus {
+  font-weight: 700;
+  z-index: 2;
+}
+/* line 624, ../sass/_room.scss */
+.attendeeStatus .status, #myStatus .status {
+  color: #ef5922;
+  font-size: 11px;
+}
+
+/* line 630, ../sass/_room.scss */
+.friendVideo {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-/* line 560, ../sass/_room.scss */
-#myInfo {
-  position: absolute;
-}
-
-/* line 564, ../sass/_room.scss */
-#chatBoxButton {
-  position: absolute;
-  top: 10px;
-  right: 10px;
 }
 
 /**********************************************************/
 /* CHAT BOX */
-/* line 574, ../sass/_room.scss */
+/* line 638, ../sass/_room.scss */
+#hideChatButton, #showChatButton {
+  font-weight: bold;
+  background: #3797a2;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  color: #fff;
+  font-family: "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 10px;
+  letter-spacing: .05em;
+}
+/* line 648, ../sass/_room.scss */
+#hideChatButton:hover, #showChatButton:hover {
+  background: #31858f;
+}
+
+/* line 653, ../sass/_room.scss */
+#hideChatButton {
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  z-index: 3;
+}
+
+/* line 660, ../sass/_room.scss */
+#showChatButton {
+  position: absolute;
+  right: 220px;
+}
+
+/* line 665, ../sass/_room.scss */
 #chatBoxContainer {
   margin-left: 360px;
-  height: 30%;
-  padding: 20px;
+  margin-right: 200px;
+  height: 26%;
+  padding: 0px 20px 20px 20px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -2274,7 +2386,7 @@ body#cover .message {
   position: relative;
 }
 
-/* line 582, ../sass/_room.scss */
+/* line 674, ../sass/_room.scss */
 #chatBox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2282,7 +2394,8 @@ body#cover .message {
   box-sizing: border-box;
   height: 100%;
   font-family: "proxima-nova", sans-serif;
-  padding-bottom: 27px;
+  padding-top: 5px;
+  padding-bottom: 35px;
   background: #fff;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2293,26 +2406,26 @@ body#cover .message {
   position: relative;
 }
 
-/* line 592, ../sass/_room.scss */
+/* line 685, ../sass/_room.scss */
 #chatMessages {
   height: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 10px 15px;
+  padding: 5px 15px;
   overflow: auto;
 }
-/* line 598, ../sass/_room.scss */
+/* line 691, ../sass/_room.scss */
 #chatMessages .chatMessage {
   margin: 5px 0px;
 }
-/* line 602, ../sass/_room.scss */
+/* line 695, ../sass/_room.scss */
 #chatMessages .chatMessageAuthor {
   font-weight: bold;
 }
 
-/* line 607, ../sass/_room.scss */
+/* line 700, ../sass/_room.scss */
 #chatInputContainer {
   position: absolute;
   bottom: 0px;
@@ -2323,35 +2436,29 @@ body#cover .message {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   padding: 5px;
+  height: 35px;
 }
-/* line 615, ../sass/_room.scss */
+/* line 709, ../sass/_room.scss */
 #chatInputContainer input {
   display: block;
   width: 100%;
-  padding: 7px 10px;
+  padding: 7px 5px;
+  height: 25px;
   border: 0px;
   margin: 0px;
   background: #ebf4f5;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 13px;
 }
-/* line 625, ../sass/_room.scss */
+/* line 721, ../sass/_room.scss */
 #chatInputContainer input:focus {
   outline: none;
   background: #ddedee;
-}
-
-/**********************************************************/
-/* VIDEO! */
-/* line 634, ../sass/_room.scss */
-#myInfo {
-  background: #f8f6f0 url(/static/images/textureSoft.png);
-  width: 200px;
-  height: 100px;
 }
 
 /**********************************************************/
