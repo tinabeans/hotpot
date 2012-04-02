@@ -24,7 +24,7 @@ BASE_URL = 'http://test.letsgohotpot.com'
 LOCAL_URL = 'http://localhost:7777'
 
 # for sending cooking reminder emails
-hourToSendReminders = 23
+hourToSendReminders = 6
 checkForReminderTimeInterval = 10 # 5min
 
 # creating new Flask instance
@@ -78,8 +78,6 @@ def render_template(template, **kwargs):
 				for reply in invite['replies']:
 					if reply['userId'] == flask.session['userId']:
 						alertNumber = alertNumber-1
-		
-		print 'base url: ' + BASE_URL
 		
 		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, BASE_URL=BASE_URL, **kwargs)
 	else:
@@ -442,7 +440,7 @@ def sendInvitation():
 	meal = db.meals.find_one({'slug' : newInvitation['meal']})
 	
 	# compose email to send
-	email = Message("Hotpot Invitation Test", recipients=[data['inviteeEmail']])
+	email = Message("Let's Cook!", recipients=[data['inviteeEmail']])
 	invitationMessage = render_template('email/invitation.html', meal=meal, invitation=newInvitation)
 	email.html = invitationMessage
 	mail.send(email)
@@ -695,13 +693,35 @@ def sendReply():
 		'userpic' : host['userpic']
 	}
 	
-	# if reply was a yes, also send the invitee a confirmation
+	# if reply was a yes...
 	if replyInfo['mainReply'] == "yes":
+		# also send the invitee a confirmation
 		inviteeEmail = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})['email']
 		
 		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail])
 		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=invitationInfo, meal=mealInfo)
 		mail.send(email)
+		
+		# check whether this invitation is for something happening on the same day.
+		# if so, send out a "reminder" email for today (b/c the reminder emails contain the link to the room)
+		currentTime = time.time();
+		
+		# TODO: this is a VERY naive implementation whereby we consider something 'same day' if it's less than 12 hrs from now
+		# obviously this wouldn't make sense if we sent the invite at 9pm for 8am the next day...
+		# but since i haven't figured out time zones yet, this will have to do for now.
+		if invitation['datetime'] <= currentTime+43200:
+			print "oh we're cooking on the same day? cool."
+			if 'reminderSent' not in invitation:
+				invitation['reminderSent'] = True
+				db.invitations.save(invitation)
+				
+				print "calling send cooking reminder"
+				
+				# have to set a timer to make a request on a separate thread, or else we get a request timeout
+				def sendCookingReminderAfterWaitingOneSecond():
+					urllib2.urlopen(LOCAL_URL + '/sendCookingReminder?invitationId=' + str(invitation['_id']) + '&today=yes').read()
+				timer = threading.Timer(1, sendCookingReminderAfterWaitingOneSecond)
+				timer.start()
 	
 	return render_template('replySent.html', replyMessage=replyMessage, host=hostInfo, invitation=invitation)
 
@@ -840,7 +860,7 @@ def checkWhetherItsTimeToSendOutReminderEmails():
 	# find out the currentTime's hour
 	currentHour = datetime.datetime.fromtimestamp(currentTime).hour
 	
-	print currentHour
+	print "currentHour = " + str(currentHour)
 	
 	# if current time matches the designated reminder-sending time...
 	if currentHour == hourToSendReminders:
@@ -869,8 +889,16 @@ def checkWhichCookingsAreComingUp():
 	currentTime = time.time()
 	
 	for cooking in cookings:
-		# if the cooking event is happening "tomorrow," as in less than 48 hours away...
-		if cooking['datetime'] <= currentTime+86400*2:
+		# if the cooking event is happening in less than 24 hours (from 6am), then consider it "today"
+		if cooking['datetime'] <= currentTime+86400:
+			print "here's one happening today"
+			
+			# carry this info along (to be used when sending out emails) then discard it later before it gets into the db
+			cooking['isToday'] = "yes"
+			upcomingCookings.append(cooking)
+			
+		# else if the cooking event is happening in less than 48 hours, then consider it tomorrow
+		elif cooking['datetime'] <= currentTime+86400*2:
 			print "here's one happening tomorrow"
 			# add it to the upcoming cookings array!
 			upcomingCookings.append(cooking)
@@ -878,19 +906,32 @@ def checkWhichCookingsAreComingUp():
 	# send reminders for all the upcoming cookings
 	for cooking in upcomingCookings:
 		if 'reminderSent' not in cooking:
+		
+			if 'isToday' in cooking:
+				if cooking['isToday'] == 'yes':
+					# create a URL param to append when calling sendCookingReminder
+					todayString = "&isToday=yes"
+					
+					# discard this info so it doesn't get saved to the db
+					cooking.pop['isToday']
+			else:
+				todayString = ""
 			
 			# just in case: set a flag in the DB for reminder sent, so it doesn't get sent multiple times by accident
 			cooking['reminderSent'] = True
 			db.invitations.save(cooking)
 			
-			urllib2.urlopen(LOCAL_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id'])).read()
+			urllib2.urlopen(LOCAL_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id']) + todayString).read()
 
 
 # called by checkForUpcomingCooking() above if the cooking is within the next 48 hours
 @app.route('/sendCookingReminder')
 def sendCookingReminder():
 	
+	print "sending cooking reminder"
+	
 	invitationId = flask.request.args.get('invitationId', '')
+	isToday = flask.request.args.get('today', 'no')
 	
 	if invitationId == '':
 		return "invitation not found"
@@ -944,7 +985,7 @@ def sendCookingReminder():
 		
 		email = Message("Get Ready to Cook!", recipients=[attendee['email']])
 		
-		message = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal, recipient=attendee) 
+		message = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal, recipient=attendee, isToday=isToday)
 		email.html = message
 		
 		print message

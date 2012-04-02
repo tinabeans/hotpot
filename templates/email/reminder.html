@@ -16,7 +16,7 @@
 		<td width="50" style="background:url({{ BASE_URL }}/static/images/email/bg_MainLeft.png)"></td>
 		<td width="520" style="background:url({{ BASE_URL }}/static/email/bg_Main.png)">
 		
-			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:20px;">Tomorrow, <strong style="font-weight:bold;">{{ invitation.readableDate }}</strong>, is Hotpot day!</p>
+			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:20px;">{% if isToday == "no" %}Tomorrow{% else %}Today{% endif %}, <strong style="font-weight:bold;">{{ invitation.readableDate }}</strong>, is Hotpot day!</p>
 			
 			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:20px;">At <strong style="font-weight:bold;">{{ invitation.readableTime|safe }}</strong>, you and <strong style="font-weight:bold;">{% for attendee in attendees %}{% if attendee.name != recipient.name %}{{ attendee.name }}{% endif %}{% endfor %}</strong> will be making:</p>
 			
@@ -24,9 +24,9 @@
 			
 			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:20px;">Here is your Cooking Room:</p>
 			
-			<p style="text-align:center"><a href="{{ BASE_URL }}/rooms/{{ invitation._id }}" id="RSVPButton"><img src="{{ BASE_URL }}/static/images/email/button_launchCookingRoom.png" width="314" height="45" alt="Launch cooking room"></a></p>
-			
 			<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:13px;">At the agreed-upon time, just click the link above and cook away! (If you lose this email, don't worry. You can always find the link on your Hotpot Invitations page, under Upcoming.)</p>
+			
+			<p style="text-align:center"><a href="{{ BASE_URL }}/rooms/{{ invitation._id }}" id="RSVPButton"><img src="{{ BASE_URL }}/static/images/email/button_launchCookingRoom.png" width="314" height="45" alt="Launch cooking room"></a></p>
 			
 		</td>
 		<td width="50" style="background:url({{ BASE_URL }}/static/images/email/bg_MainRight.png)"></td>
