@@ -25,7 +25,7 @@
 
 {% block main %}
 
-<h1 id="title">Log In</h1>
+<h1 id="pageTitle">Log In</h1>
 
 {% with messages = get_flashed_messages() %}
 	{% if messages %}
@@ -42,12 +42,12 @@
 <form id="loginForm" action="/loginAction" method="POST">
 	<div class="formItem">
 		<label>email:</label>
-		<input type="text" name="email" class="required emailInput" />
+		<input type="text" name="email" placeholder="email" class="required emailInput" />
 	</div>
 	
 	<div class="formItem">
 		<label>password:</label>
-		<input type="password" id="passwordField" class="required" />
+		<input type="password" id="passwordField" placeholder="password" class="required" />
 	</div>
 	
 	<input type="hidden" name="password" id="encryptedPassword" />

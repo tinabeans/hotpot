@@ -130,7 +130,7 @@ $serif: "jubilat", Georgia, serif;
 	background: $green;
 	color:#fff;
 	@include bigFatLetters;
-	@include border-radius(6px);
+	@include border-radius(10px);
 	text-align: center;
 	padding:8px 16px;
 	font-size:16px;
@@ -359,7 +359,7 @@ p {
 
 
 /**********************************************************/
-/* COMMON */
+/* COMMON STUFF */
 
 @mixin outerContainer {
 	width: 88%;
@@ -374,13 +374,6 @@ p {
 #mainContainer {
 	padding:40px 0px;
 	margin:0px auto;
-}
-
-.message {
-	text-align: center;
-	margin:30px;
-	font-family: $sans;
-	color:red;
 }
 
 .button {
@@ -415,6 +408,21 @@ p {
 	}
 }
 
+.message {
+	background: rgba($darkBrown, .7);
+	color: #fff;
+	font-weight: 700;
+	width: 346px;
+	margin: 0 auto;
+	padding: 8px;
+	@include border-radius(5px);
+	text-align: center;
+	
+	a {
+		color:#FFC240;
+	}
+}
+
 /**********************************************************/
 /* HEADER */
 
@@ -431,19 +439,19 @@ $headerHeight: 96px;
 		height:$headerHeight;
 		position: absolute;
 		top:0px;
-		left:6%;
+		left:7%;
 		z-index: +1;
 		
 		img {
-			margin-top:15px;
-			width:150px;
+			margin-top: 13px;
+			width: 140px;
 		}
 	}
 }
 
 #headerNavsContainer {
 	@include box-sizing(border-box);
-	width:94%;
+	width:93%;
 	position: absolute;
 	right:0;
 	padding-left: 179px;
@@ -455,21 +463,22 @@ $headerHeight: 96px;
 }
 
 #mainNav {
-	padding: 26px 0px 0px 28px;
+	padding: 23px 0px 0px 30px;
 
 	a {
 		display:inline-block;
-		margin-right:30px;
+		margin-right:35px;
 		@include bigFatLetters;
-		font-size:23px;
+		font-size:27px;
 		letter-spacing:.05em;
 		@include opacity(.6);
 		color:$darkBrown;
+		line-height:20px;
 		
 		.small {
 			display:block;
-			font-size:.6em;
-			font-weight: 600;
+			font-size:.55em;
+			font-weight: 900;
 			
 			em {
 				font-family:$serif;
@@ -477,7 +486,7 @@ $headerHeight: 96px;
 				font-weight: 500;
 				text-transform: lowercase;
 				letter-spacing: normal;
-				font-size: 1.1em;
+				font-size: 1em;
 			}
 		}
 	}
@@ -491,6 +500,19 @@ $headerHeight: 96px;
 	position: absolute;
 	top:0;
 	right: 6%;
+	
+	#loginLink, #registerLink {
+		display: inline-block;
+		font-weight: bold;
+		color:$orange;
+		text-align: right;
+		margin:45px 0px 0px 30px;
+		font-size:15px;
+		
+		&:hover {
+			color:lighten($orange, 10);
+		}
+	}
 }
 
 #bigInviteButton {
@@ -711,11 +733,13 @@ $headerHeight: 96px;
 
 .formItemError {
 	position: absolute;
-	right:-193px;
-	width:165px;
-	background:lighten(yellow, 42%);
-	top: 19px;
-	padding:5px 10px;
+	left: -179px;
+	width: 165px;
+	background: url(/static/images/formErrorBg.png) no-repeat;
+	top: 4px;
+	padding: 5px 10px;
+	color: white;
+	font-weight: 700;
 }
 
 .buttons {

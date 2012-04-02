@@ -1,16 +1,24 @@
 /**********************************************************/
 /* REGISTRATION & LOGIN PAGE */
 
-#registrationFormContainer, #loginFormContainer,  {
-	width:300px;
-	background:lighten($subtleColor, 3%);
-	padding:30px;
-	margin:0px auto;
+#login, #register {
+	#pageTitle {
+		margin-bottom:40px;
+	}
 }
 
-#registration, #login {
-	#title {
-		text-align: center;
+#registrationFormContainer, #loginFormContainer,  {
+	width:300px;
+	@include lightGreenBg;
+	padding:30px;
+	margin:20px auto;
+	
+	label {
+		display:none;
+	}
+	
+	input[type=password], input[type=text] {
+		padding:7px;
 	}
 }
 

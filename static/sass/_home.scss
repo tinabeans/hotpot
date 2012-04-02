@@ -7,14 +7,10 @@ body#cover {
 	.message {
 		position: fixed;
 		width: 40%;
-		background: rgba($darkBrown, .7);
 		top: 0;
 		margin: 0;
 		left: 30%;
 		z-index: +2;
-		padding: 8px;
-		color: #fff;
-		font-weight: 700;
 	}
 }
 
@@ -117,17 +113,6 @@ body#cover {
 			&:hover {
 				background-color:darken(#d9d4ca, 10);
 			}
-		}
-		
-		.formItemError {
-			position: absolute;
-			left: -179px;
-			width: 165px;
-			background: url(/static/images/formErrorBg.png) no-repeat;
-			top: 4px;
-			padding: 5px 10px;
-			color: white;
-			font-weight: 700;
 		}
 		
 		label {

@@ -221,11 +221,11 @@ table.jCalendar {
 }
 
 /**********************************************************/
-/* INVITATION SENT PAGE */
+/* INVITATION & REPLY SENT PAGE */
 
-#invitationSent {
+#invitationSent, #replySent {
 	#pageTitle {
-		margin-bottom:30px;
+		margin-bottom:40px;
 	}
 	
 	.intro {
@@ -234,18 +234,22 @@ table.jCalendar {
 		margin-bottom:5px;
 	}
 
-	p.message {
+	p {
 		text-align: center;
 		font-size:16px;
 		color:$textColor;
 	}
-	
-	#invitationPreviewContainer {
-		margin:40px auto;
-		float:none;
-	}
 }
 
+#invitationSent #invitationPreviewContainer {
+	margin:40px auto;
+	float:none;
+}
+
+#replySent #replyContainer {
+	margin:40px auto;
+	float:none;
+}
 
 
 /**********************************************************/
@@ -253,11 +257,21 @@ table.jCalendar {
 
 #reply {
 	#pageTitle {
-		margin-bottom:30px;
+		margin-bottom:40px;
 	}
 	
 	.intro {
 		text-align: center;
+	}
+}
+
+#newUserOptions {
+	text-align: center;
+	margin:20px;
+	
+	a {
+		@include bigButton;
+		width:220px;
 	}
 }
 
@@ -484,13 +498,6 @@ table.jCalendar {
 	margin:-1px 0px 30px 0px;
 }
 
-/**********************************************************/
-/* REPLY SENT PAGE */
-
-#replyContainer {
-	margin:40px auto;
-	float:none;
-}
 
 /**********************************************************/
 /* VIEWING INVITATIONS */

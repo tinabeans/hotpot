@@ -4,7 +4,7 @@
 
 {% block customJS %}{% endblock %}
 
-{% block bodyId %}reply{% endblock %}
+{% block bodyId %}replySent{% endblock %}
 {% block bodyClass %}{% endblock %}
 
 {% block main %}
@@ -14,7 +14,7 @@
 
 <p class="intro">Thanks! Your reply has been successfully sent to <strong>{{ host.name }}</strong>.</p>
 
-<p class="message">You can <a href="/invitations/{{ invitation._id }}">view a record of your reply here.</a></p>
+<p>You can <a href="/invitations/{{ invitation._id }}">view a record of your reply here.</a></p>
 
 <div id="replyContainer">
 	{{ replyMessage|safe }}

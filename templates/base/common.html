@@ -38,7 +38,6 @@
 		<div id="serviceNavs">
 			{% if not isLoggedIn %}
 			
-				<h2>Welcome to Hotpot!</h2>
 				<a href="/login" id="loginLink">Log In</a>
 				<a href="/register" id="registerLink">Join Hotpot</a>
 			
@@ -78,14 +77,13 @@
 					</nav><!-- #secondaryUserNav -->
 				</div><!-- userInfoContainer -->
 				
+				<a href="/invite/LemonGarlicKalePasta" id="bigInviteButton">
+					<span class="big">Invite</span> 
+					<span class="small"><em>a</em> Friend <em>to</em></span> 
+					<span class="big">Cook!</span>
+				</a>
 				
 			{% endif %}
-		
-			<a href="/invite/LemonGarlicKalePasta" id="bigInviteButton">
-				<span class="big">Invite</span> 
-				<span class="small"><em>a</em> Friend <em>to</em></span> 
-				<span class="big">Cook!</span>
-			</a>
 		</div>
 		
 	</div><!-- #headerNav -->
@@ -100,8 +98,8 @@
 <footer id="mainFooter">
 	<nav id="footerNav">
 		<a href="">About Hotpot</a>
-		<a href="">Send Feedback</a>
-		<a href="">Contact</a>
+		<a href="mailto:feedback@letsgohotpot.com">Send Feedback</a>
+		<a href="mailto:t@tinabeans.com">Contact</a>
 	</nav>
 	<p>Hotpot is created by Tina Ye for her Master's Thesis in Interaction Design at SVA. Read more about the project <a href="http://thesis.tinabeans.com/">here</a>.</p>
 </footer>
