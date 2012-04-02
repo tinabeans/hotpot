@@ -76,6 +76,13 @@
 					<span class="userpic"><img src="/static/uploads/userpics/{{ invitee.userpic }}" title="{{ invitee.name }}" /></span>
 				{% endfor %}
 			</div>
+			
+			{% if invitation.status == "accepted" %}
+				<div class="cookingRoomLink">
+					<a href="/rooms/{{ invitation._id }}" class="bigButton"><span class="small">Launch</span>Cooking Room</a>
+				</div>
+			{% endif %}
+			
 		</div>
 	</div><!-- #singleInvitation -->
 	

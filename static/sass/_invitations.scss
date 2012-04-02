@@ -642,11 +642,17 @@ table.jCalendar {
 			}
 			
 			.with {
-				margin:10px 0px;
+				margin:10px 20px 0px 0px;
+				float:left;
 			
 				.label {
 					color:$darkBlue;
 				}
+			}
+			
+			.cookingRoomLink {
+				margin-top: 48px;
+				margin-left: 230px;
 			}
 		}
 	}

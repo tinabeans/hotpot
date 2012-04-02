@@ -869,8 +869,8 @@ def checkWhichCookingsAreComingUp():
 	currentTime = time.time()
 	
 	for cooking in cookings:
-		# if the cooking event is happening "tomorrow"...
-		if currentTime+86400 <= cooking['datetime'] <= currentTime+86400*2:
+		# if the cooking event is happening "tomorrow," as in less than 48 hours away...
+		if cooking['datetime'] <= currentTime+86400*2:
 			print "here's one happening tomorrow"
 			# add it to the upcoming cookings array!
 			upcomingCookings.append(cooking)
