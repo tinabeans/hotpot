@@ -771,10 +771,14 @@ form .note, .formNote {
 	font-size:12px;
 }
 
-input[type=submit] {
+input[type=submit], button[type=submit] {
 	@include button;
 	width:auto;
 	cursor: pointer;
+}
+
+input[disabled=disabled], button[disabled=disabled] {
+	@include opacity(.5);
 }
 
 

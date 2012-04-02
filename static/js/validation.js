@@ -17,6 +17,9 @@ $(document).ready(function(){
 		// clear previous errors
 		$('.formItemError').remove();
 		
+		// hide overall error message, if present
+		$('#errorsPresentMessage').hide();
+		
 		var errors = [];
 		
 		$(this).find('.required').each(function(){
@@ -50,6 +53,10 @@ $(document).ready(function(){
 		
 		// if there are any errors
 		if (errors.length > 0) {
+			
+			// display a message right above the submit button, if there is one
+			$('#errorsPresentMessage').show();
+		
 			for (var i=0; i<errors.length; i++) {
 				
 				errorMessage = ""
@@ -72,8 +79,14 @@ $(document).ready(function(){
 				// add an error message next to the appropriate element
 				errors[i]['$element'].after('<div class="formItemError">' + errorMessage + '</div>');
 			}
-		}	
+		}
 		
+		// if it made it past all the errors, then our form input is legit!
+		// too legit to quit!
+		// ...
+		// so that means we're gonna actually send it? yay!
+		// let's disable the submit button so it doesn't get sent a billion times (cough, Carrie.....)
+		$(this).find('[type=submit]').attr('disabled', 'disabled');
 	});
 
 });

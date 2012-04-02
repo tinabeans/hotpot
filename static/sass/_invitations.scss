@@ -34,6 +34,23 @@
 		margin-bottom:10px;
 	}
 	
+	.formItemError {
+		top:20px;
+	}
+	
+	#errorsPresentMessage {
+		display: none;
+		
+		p {
+			width:250px;
+			font-size:14px;
+			font-weight:700;
+			text-align:center;
+			margin:15px auto;
+			color:$orange;
+		}
+	}
+	
 	input, textarea {
 		border:0px;
 	}
@@ -87,6 +104,7 @@
 	
 	#sendInvitationButton {
 		@include bigButton;
+		cursor: pointer;
 	}
 }
 
