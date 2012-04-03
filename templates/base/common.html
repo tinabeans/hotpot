@@ -59,16 +59,19 @@
 				</nav><!-- #primaryUserNav -->
 				
 				<div id="userInfoContainer">
+					<a href="/home">
 					<div id="userInfo">
-						<div class="userpic">
-							<a href="/home"><img src="/static/uploads/userpics/{% if user.userpic!='none' %}{{ user.userpic }}{% else %}placeholder.png{% endif %}" /></a>
-						</div>
+							<div class="userpic">
+								<img src="/static/uploads/userpics/{% if user.userpic!='none' %}{{ user.userpic }}{% else %}placeholder.png{% endif %}" />
+							</div>
+							
+							<h2>
+								<span class="greeting">Great to see you,</span>
+								<span class="username">{{ user.name }}!</span>
+							</h2>
 						
-						<h2>
-							<span class="greeting">Great to see you,</span>
-							<span class="username">{{ user.name }}!</span>
-						</h2>
 					</div>
+					</a>
 					
 					<nav id="secondaryUserNav">
 						<a href="/home">My Dashboard</a>
@@ -78,8 +81,8 @@
 				</div><!-- userInfoContainer -->
 				
 				<a href="/invite/LemonGarlicKalePasta" id="bigInviteButton">
-					<span class="big">Invite</span> 
-					<span class="small"><em>a</em> Friend <em>to</em></span> 
+					<span class="big">Invite</span>
+					<span class="small"><em>a</em> Friend <em>to</em></span>
 					<span class="big">Cook!</span>
 				</a>
 				

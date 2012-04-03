@@ -383,26 +383,27 @@ def updateMyProfile():
 		# random num is to prevent caching & displaying the old pic when uploading a new pic w/ same extension
 		userpicFilename = str(user['_id']) + '_' + str(random.random()) + '.' + userpic.filename.rsplit('.', 1)[1]
 		
+		print "got file and named it " + userpicFilename
+		
 		# delete older user pic, if it's around (only if its not the placeholder)
 		if user['userpic'] != 'placeholder.png':
 			try:
 				os.remove(os.path.join(USERPIC_FOLDER, user['userpic']))
-				# print "baleted"
+				print "baleted"
 			except:
 				print "oh. i guess that file didn't exist after all. oh well."
 		
 		# save to the right folder on the server
 		userpic.save(os.path.join(USERPIC_FOLDER, userpicFilename))
+		print "saved the file"
 		
 		# update database so we now know there's a picture for this user
-		db.users.update({'_id' : ObjectId(flask.session['userId'])}, {'$set' : { 'userpic' : userpicFilename } })
+		user['userpic'] = userpicFilename
 		
-	# retrieve updated user data
-	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+	db.users.save(user)	
 	
-	
-	flask.flash("Changes saved.")
-	return flask.redirect('/profile/me')
+	flask.flash("Changes to your profile were saved.")
+	return flask.redirect('/home')
 	
 	
 	

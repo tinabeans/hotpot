@@ -256,6 +256,7 @@ $serif: "jubilat", Georgia, serif;
 		width:100%;
 		height:100%;
 		@include border-radius(100px);
+		background:#fff;
 	}
 }
 
@@ -533,7 +534,7 @@ $headerHeight: 96px;
 	letter-spacing: .05em;
 	
 	.big {
-		font-size:19px;
+		font-size:20px;
 		display: block;
 	}
 	
@@ -545,7 +546,7 @@ $headerHeight: 96px;
 	}
 	
 	.small {
-		font-size:12px;
+		font-size:13px;
 		display: block;
 		position: relative;
 		top:1px
@@ -563,7 +564,10 @@ $headerHeight: 96px;
 #userInfo {
 	padding: 6px 52px 5px 12px;
 	color:$darkBrown;
-	cursor: pointer;
+	
+	a {
+		display:block;
+	}
 	
 	.userpic {
 		@include border-radius(80px);
@@ -577,8 +581,9 @@ $headerHeight: 96px;
 		
 		img {
 			@include border-radius(80px);
-			width:62px;
-			height:62px;
+			width:100%;
+			height:100%;
+			background:#fff;
 		}
 	}
 	
@@ -590,6 +595,7 @@ $headerHeight: 96px;
 	
 	.greeting {
 		display: block;
+		font-weight: normal;
 	}
 	
 	.username {
@@ -768,8 +774,7 @@ textarea {
 }
 
 form .note, .formNote {
-	margin-top:5px;
-	font-style:italic;
+	margin-top:8px;
 	font-size:12px;
 }
 

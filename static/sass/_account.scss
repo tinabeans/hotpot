@@ -23,9 +23,9 @@
 }
 
 /**********************************************************/
-/* ACCOUNT INFO PAGE */
+/* EDIT ACCOUNT INFO & EDIT PROFILE PAGE */
 
-#account {
+#profile, #account {
 	#pageTitle {
 		margin-bottom:40px;
 	}
@@ -39,7 +39,7 @@
 	width:300px;
 	margin:0px auto;
 	@include lightBrownBg;
-	padding:30px;
+	padding:1px 30px 30px 30px;
 	
 	.buttons {
 		text-align: left;
@@ -54,7 +54,7 @@
 		@include bigFatLetters;
 		color:$orange;
 		font-size:16px;
-		margin:0px 0px 30px 0px;
+		margin:35px 0px 20px 0px;
 	}
 	
 	fieldset {
@@ -64,5 +64,25 @@
 	input[type=submit] {
 		width:100%;
 		@include box-sizing(border-box);
+	}
+	
+	.firstname {
+		width:48%;
+		float: left;
+	}
+	
+	.lastname {
+		width:48%;
+		margin-left:52%;
+		display:block;
+	}
+	
+	.userpic {
+		@include largeUserpic;
+		float:left;
+	}
+	
+	#userpicUpload {
+		margin-left: 100px;
 	}
 }
