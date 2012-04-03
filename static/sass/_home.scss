@@ -153,7 +153,18 @@ body#cover {
 		.buttons {
 			margin-top:20px;
 		}
+		
 	}
+}
+
+#codeForm {
+	#codeError {
+		margin-top:20px;
+		margin-bottom:0px;
+		color:$orange;
+		font-weight:700;
+	}
+	
 }
 
 #coverInfo {

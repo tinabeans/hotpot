@@ -44,6 +44,34 @@ $(document).ready(function(){
 		var encryptedPassword = $.sha1($(this).find('.passwordField').val());
 		$(this).children('.encryptedPassword').val(encryptedPassword);
 	});
+	
+	$('#codeForm').submit(function(e){
+		e.preventDefault();
+		
+		$('#codeError').remove();
+		
+		$.ajax({
+			url : '/checkTesterCode',
+			type : 'POST',
+			data : {
+				'code' : $('#codeInput').val()
+			},
+			success : function(data){
+				console.log(data);
+				
+				if (data == "wrong code") {
+					$('#codeSubmitButton').removeAttr('disabled');
+					$('#codeForm').append('<p id="codeError">Oops, that code isn\'t valid.</p>');
+				}
+				else {
+					$('#codeForm').remove();
+					$('#registrationFormContainer h2').html('Hooray!');
+					$('#registrationFormContainer').append("<p>Thanks for being a Hotpot tester! Make yourself an account below:</p>" + data);
+				}
+			}
+		});
+		
+	});
 });
 
 </script>
@@ -108,33 +136,21 @@ $(document).ready(function(){
 		<div id="registrationFormContainer">
 			<a href="" class="closeButton">x</a>
 			
-			<h2>Register</h2>
+			<h2>Enter Tester Code</h2>
 		
-			<form id="registrationForm" action="registerAction" method="POST">
-				<div class="formItem">
-					<label>first name:</label>
-					<input type="text" name="name" class="firstname required" placeholder="first name" />
-					<label>last name:</label>
-					<input type="text" name="lastname" class="lastname" placeholder="last name" />
-				</div>
+			<form id="codeForm">
+				<p>Hotpot is currently in semi-private alpha. If you're interested in testing it out (and don't mind a few things breaking here and there), please <a href="mailto:t@tinabeans.com">email me for the tester code</a>.</p>
 			
 				<div class="formItem">
-					<label>email:</label>
-					<input type="text" name="email" class="required emailInput" placeholder="email" />
+					<label>Tester code</label>
+					<input type="text" id="codeInput" name="code" class="required" placeholder="enter code here" />
 				</div>
-				
-				<div class="formItem">
-					<label>password:</label>
-					<input type="password" class="required passwordField" placeholder="password" />
-				</div>
-				
-				<input type="hidden" name="password" class="encryptedPassword" />
 				
 				<div class="buttons">
-					<input type="submit" value="Join Hotpot" />
+					<input type="submit" id="codeSubmitButton" value="Submit" />
 				</div>
-			</form>
-			</div><!-- #registrationFormContainer -->
+			</form><!-- #codeForm -->
+		</div><!-- #registrationFormContainer -->
 		
 		<div id="moreArrow">
 			Curious? Scroll down...
@@ -173,15 +189,14 @@ $(document).ready(function(){
 		<p>We're building not just the best community of cooks, but of awesome people from all walks of life. Meet new friends the world over, swap food stories, and of course, cook together!</p>
 		
 		<p class="intro">
-			Hotpot is currently in public alpha, so you're invited to create an account and try it out. Be sure to <a href="mailto:t@tinabeans.com">let me know what you think</a>!
+			Hotpot is currently in semi-private alpha. If you're interested in testing it out (and don't mind a few things breaking here and there), please <a href="mailto:t@tinabeans.com">email me for the tester code</a>.
 		</p>
 	</div><!-- #coverInfo -->
 	
 	<footer id="mainFooter">
 		<nav id="footerNav">
-			<a href="">About Hotpot</a>
-			<a href="">Send Feedback</a>
-			<a href="">Contact</a>
+			<a href="mailto:feedback@letsgohotpot.com">Send Feedback</a>
+			<a href="mailto:t@tinabeans.com">Contact</a>
 		</nav>
 		<p>Hotpot is created by Tina Ye for her Master's Thesis in Interaction Design at SVA. Read more about the project <a href="http://thesis.tinabeans.com/">here</a>.</p>
 	</footer>

@@ -24,6 +24,8 @@ import config
 USERPIC_FOLDER = 'static/uploads/userpics'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
 
+TESTER_CODE = "cooking is awesome"
+
 # for sending cooking reminder emails
 hourToSendReminders = 6
 checkForReminderTimeInterval = 10 # 5min
@@ -129,6 +131,21 @@ def people():
 
 ##############################################################################
 # INVITE CODES (NOT NEEDED)
+
+
+@app.route('/checkTesterCode', methods=['POST'])
+def checkTesterCode():
+	data = flask.request.form
+	
+	registrationFormHTML = flask.render_template('registrationForm.html')
+	
+	if data['code'] == TESTER_CODE:
+		return registrationFormHTML
+		
+	else:
+		return """wrong code"""
+
+
 '''
 @app.route('/generateCode')
 def showGenerateCodeForm():

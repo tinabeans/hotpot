@@ -108,7 +108,6 @@ $(document).ready(function(){
 			
 			return false;
 		}
-		console.log("hmmmmmmmmmmmmmmmm");
 		
 		// if it made it past all the errors, then our form input is legit!
 		// too legit to quit!
@@ -116,7 +115,6 @@ $(document).ready(function(){
 		// so that means we're gonna actually send it? yay!
 		// let's disable the submit button so it doesn't get sent a billion times (cough, Carrie.....)
 		$(this).find('[type=submit]').attr('disabled', 'disabled');
-		console.log("hmmmmmmmmmmmmmmmm");
 	});
 
 });
