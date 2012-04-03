@@ -262,7 +262,9 @@ def start(db):
 			}
 		]
 	}
-	'''
+	
+	db.meals.save(meal1)
+
 	meal2 = {
 		"_id": ObjectId('4f666a6b4bf254343c000001'),
 	
@@ -270,13 +272,21 @@ def start(db):
 		
 		"title" : "Classic Chinese Steamed Fish",
 		
-		"description" : """some description goes here""",
+		"credit":"Tina's mom",
 		
-		"summary" : """Summary goes here""",
+		"creditURL":"#",
 		
-		"credit" : "Tinabeans",
+		"shortDescription": """A super-easy and healthy traditional standby&mdash;home cooking at its best.""",
 		
-		"creditURL" : "http://tinabeans.com",
+		"time" : "1 hr - 2 hr",
+		
+		"type" : "pescatarian",
+		
+		"difficulty" : "easy-peasy",
+		
+		"flavors" : "light, savory, fragrant",
+		
+		"description":"""From the contributor: "Whenever I go home to visit my mom, she makes fish (there's an old Chinese believe that fish is good for your brain), so this always reminds me of home. This is so yummy, you won't believe how easy it is. My mom always uses whole fish, but fillets work just as well for those of us less culinarily gifted!"</p><p>Here we've paired it with <strong>steamed white rice</strong> and <strong>stir-fried bok choy</strong> to make a classic Chinese homecooked meal. You'll even learn traditional Chinese cooking techniques too!""",
 		
 		"ingredients": [
 			{
@@ -433,6 +443,8 @@ def start(db):
 		]
 	}
 	
+	db.meals.save(meal2)
+	
 	meal3 = {
 		"_id": ObjectId('4f667da14bf254378f000000'),
 	
@@ -440,13 +452,21 @@ def start(db):
 		
 		"title" : "Apple Cheddar Quiche",
 		
-		"description" : """some description goes here""",
+		"credit":"Closet Cooking",
 		
-		"summary" : """Summary goes here""",
+		"creditURL":"http://www.closetcooking.com/2010/12/apple-and-cheddar-quiche.html",
 		
-		"credit" : "Closet Cooking",
+		"shortDescription": """The flavors of apple, cheddar and rosemary combine deliciously in this savory quiche.""",
 		
-		"creditURL" : "http://www.closetcooking.com/2010/12/apple-and-cheddar-quiche.html",
+		"time" : "1 hr - 2 hr",
+		
+		"type" : "vegetarian",
+		
+		"difficulty" : "easy-peasy",
+		
+		"flavors" : "rich, savory, sweet",
+		
+		"description":"""Apple and cheddar: what could be better than this perfect pairing of flavors? How about adding in a dash of rosemary, a swirl of cream, and binding it all together with fresh eggs in a toasty crust? This quiche works for any meal of the day, including a light dinner. Here, we've paired it with a <strong>cranberry spinach salad</strong> in homemade <strong>balsamic vinaigrette</strong>. It reheats wonderfully for lunch the next day... that is, assuming there's any left.""",
 		
 		"ingredients": [
 			{
@@ -605,6 +625,5 @@ def start(db):
 			}
 		]
 	}
-	'''
-	
-	db.meals.save(meal1)
+
+	db.meals.save(meal3)

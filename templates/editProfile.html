@@ -23,7 +23,7 @@
 {% endwith %}
 	
 
-<h1 id="title">Edit My Profile</h1>
+<h1 id="pageTitle">Edit My Profile</h1>
 
 <div id="accountInfoFormContainer">
 <form id="accountInfoForm" method="POST" action="/saveProfile" enctype="multipart/form-data">
@@ -31,30 +31,37 @@
 	<fieldset>
 		<h2>Basic Info</h2>
 		<div class="formItem">
-			<label>First Name</label>
-			<input type="text" name="name" value="{{ user.name }}" class="required" />
-		</div>
-		
-		<div class="formItem">
-			<label>Last Name</label>
-			<input type="text" name="lastname" value="{% if user.lastname %}{{ user.lastname }}{% endif %}" />
+			<label>First name</label>
+			<input type="text" name="name" class="firstname" value="{{ user.name }}" class="required" />
+			<label>Last name</label>
+			</label><input type="text" class="lastname" placeholder="last name" name="lastname" value="{% if user.lastname %}{{ user.lastname }}{% endif %}" />
 		</div>
 		
 		<div class="formItem">
 			<label>Location</label>
+			<input type="text" name="location" value="{% if user.location %}{{ user.location }}{% endif %}" placeholder="location" />
 			<p class="note">e.g. "New York City" or "Beijing, China"</p>
-			<input type="text" name="location" value="{% if user.location %}{{ user.location }}{% endif %}" />
 		</div>
 		
-		<div class="formItem">
+		<h2>Upload a Photo</h2>
+		
+		<p>Add a photo so people can see your gorgeous face!</p>
+		
+		<div class="userpic">
+			{% if user.userpic %}
+				<img src="static/uploads/userpics/{{ user.userpic }}" width="80" />
+			{% else %}
+				<img src="static/uploads/userpics/placeholder.png" width="80" />
+			{% endif %}
+		</div>
+		
+		<div class="formItem" id="userpicUpload">
 			<label>Picture</label>
-			<p class="note">Upload a photo so new friends can see your lovely face.</p>
 			<input type="file" name="userpic" />
-			{% if user.userpic %}<img src="static/uploads/userpics/{{ user.userpic }}" width="80" />{% endif %}
 		</div>
 	</fieldset>
 	
-	<input type="submit" value="Save" />
+	<input type="submit" value="Save Changes" />
 	
 </form>
 </div><!-- #accountInfoFormContainer -->

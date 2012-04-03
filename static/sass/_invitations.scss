@@ -34,6 +34,23 @@
 		margin-bottom:10px;
 	}
 	
+	.formItemError {
+		top:20px;
+	}
+	
+	#errorsPresentMessage {
+		display: none;
+		
+		p {
+			width:250px;
+			font-size:14px;
+			font-weight:700;
+			text-align:center;
+			margin:15px auto;
+			color:$orange;
+		}
+	}
+	
 	input, textarea {
 		border:0px;
 	}
@@ -87,6 +104,7 @@
 	
 	#sendInvitationButton {
 		@include bigButton;
+		cursor: pointer;
 	}
 }
 
@@ -221,11 +239,11 @@ table.jCalendar {
 }
 
 /**********************************************************/
-/* INVITATION SENT PAGE */
+/* INVITATION & REPLY SENT PAGE */
 
-#invitationSent {
+#invitationSent, #replySent {
 	#pageTitle {
-		margin-bottom:30px;
+		margin-bottom:40px;
 	}
 	
 	.intro {
@@ -234,18 +252,22 @@ table.jCalendar {
 		margin-bottom:5px;
 	}
 
-	p.message {
+	p {
 		text-align: center;
 		font-size:16px;
 		color:$textColor;
 	}
-	
-	#invitationPreviewContainer {
-		margin:40px auto;
-		float:none;
-	}
 }
 
+#invitationSent #invitationPreviewContainer {
+	margin:40px auto;
+	float:none;
+}
+
+#replySent #replyContainer {
+	margin:40px auto;
+	float:none;
+}
 
 
 /**********************************************************/
@@ -253,11 +275,21 @@ table.jCalendar {
 
 #reply {
 	#pageTitle {
-		margin-bottom:30px;
+		margin-bottom:40px;
 	}
 	
 	.intro {
 		text-align: center;
+	}
+}
+
+#newUserOptions {
+	text-align: center;
+	margin:20px;
+	
+	a {
+		@include bigButton;
+		width:220px;
 	}
 }
 
@@ -484,13 +516,6 @@ table.jCalendar {
 	margin:-1px 0px 30px 0px;
 }
 
-/**********************************************************/
-/* REPLY SENT PAGE */
-
-#replyContainer {
-	margin:40px auto;
-	float:none;
-}
 
 /**********************************************************/
 /* VIEWING INVITATIONS */
@@ -545,13 +570,6 @@ table.jCalendar {
 		margin-bottom:30px;
 		font-weight: 700;
 		font-size:14px;	
-	}
-	
-	.message {
-		text-align: left;
-		font-size:18px;
-		color:$textColor;
-		margin: 0px 0px 30px 0px;
 	}
 	
 	.alertNumber {
@@ -642,11 +660,17 @@ table.jCalendar {
 			}
 			
 			.with {
-				margin:10px 0px;
+				margin:10px 20px 0px 0px;
+				float:left;
 			
 				.label {
 					color:$darkBlue;
 				}
+			}
+			
+			.cookingRoomLink {
+				margin-top: 48px;
+				margin-left: 230px;
 			}
 		}
 	}

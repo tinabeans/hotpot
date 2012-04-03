@@ -6,7 +6,7 @@
 
 {% block main %}
 
-<a href="" id="returnLink">Return to all Meals</a>
+<a href="/meals" id="returnLink">More Meals<br /><img src="/static/images/icon_arrowLeft.png"></a>
 
 <h1 id="mealTitle">{{ meal.title }}</h1>
 
@@ -31,7 +31,7 @@
 	<div id="importantStuff">
 	
 		<a href="/invite/{{ meal.slug }}" id="inviteButton">
-			<span class="small"><em>Invite a Friend to</em></span> Cook This!
+			<span class="small"><em>Invite a Friend to</em></span> Cook This
 		</a>
 	
 		<section id="shoppingList">

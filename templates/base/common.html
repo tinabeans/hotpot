@@ -38,7 +38,6 @@
 		<div id="serviceNavs">
 			{% if not isLoggedIn %}
 			
-				<h2>Welcome to Hotpot!</h2>
 				<a href="/login" id="loginLink">Log In</a>
 				<a href="/register" id="registerLink">Join Hotpot</a>
 			
@@ -60,32 +59,34 @@
 				</nav><!-- #primaryUserNav -->
 				
 				<div id="userInfoContainer">
+					<a href="/home">
 					<div id="userInfo">
-						<div class="userpic">
-							<img src="/static/uploads/userpics/{% if user.userpic!='none' %}{{ user.userpic }}{% else %}placeholder.png{% endif %}" />
-						</div>
+							<div class="userpic">
+								<img src="/static/uploads/userpics/{% if user.userpic!='none' %}{{ user.userpic }}{% else %}placeholder.png{% endif %}" />
+							</div>
+							
+							<h2>
+								<span class="greeting">Great to see you,</span>
+								<span class="username">{{ user.name }}!</span>
+							</h2>
 						
-						<h2>
-							<span class="greeting">Great to see you,</span>
-							<span class="username">{{ user.name }}!</span>
-						</h2>
 					</div>
+					</a>
 					
 					<nav id="secondaryUserNav">
-						<a href="/profile/me">My Profile</a>
-						<a href="/accountinfo">Account Information</a>
+						<a href="/home">My Dashboard</a>
+						<a href="/accountinfo">Account Settings</a>
 						<a href="/logout">Log Out</a>
 					</nav><!-- #secondaryUserNav -->
 				</div><!-- userInfoContainer -->
 				
+				<a href="/invite/LemonGarlicKalePasta" id="bigInviteButton">
+					<span class="big">Invite</span>
+					<span class="small"><em>a</em> Friend <em>to</em></span>
+					<span class="big">Cook!</span>
+				</a>
 				
 			{% endif %}
-		
-			<a href="/invite/LemonGarlicKalePasta" id="bigInviteButton">
-				<span class="big">Invite</span> 
-				<span class="small"><em>a</em> Friend <em>to</em></span> 
-				<span class="big">Cook!</span>
-			</a>
 		</div>
 		
 	</div><!-- #headerNav -->
@@ -100,8 +101,8 @@
 <footer id="mainFooter">
 	<nav id="footerNav">
 		<a href="">About Hotpot</a>
-		<a href="">Send Feedback</a>
-		<a href="">Contact</a>
+		<a href="mailto:feedback@letsgohotpot.com">Send Feedback</a>
+		<a href="mailto:t@tinabeans.com">Contact</a>
 	</nav>
 	<p>Hotpot is created by Tina Ye for her Master's Thesis in Interaction Design at SVA. Read more about the project <a href="http://thesis.tinabeans.com/">here</a>.</p>
 </footer>

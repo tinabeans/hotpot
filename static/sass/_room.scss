@@ -1,133 +1,138 @@
 /**********************************************************/
 /* COOKING ROOM */
 
-
-#container {
-	width:95%;
-	margin:0px auto;
-	@include box-sizing(border-box);
-}
-
-#room #container {
-	height:95%;
-	padding: 20px 0px;
-}
-
-#room header {
-	width:100%;
-	height:5%;
-	background: #222;
-	color:#fff;
-	@include box-sizing(border-box);
+#cookingRoom {
+	background: #fff url(/static/images/textureSoft.png);
 	
-	h1 {
-		font-size:20px;
-		width:95%;
-		margin:0 auto;
-		padding:10px 0;
+	#userId {
+		display: none;
 	}
+	
+	#roomBg {
+		background: url(/static/images/bg_clouds.png) center top no-repeat;
+		padding:0px 20px;
+	}
+	
+	header {
+		width:100%;
+		height:65px;
+		position: relative;
+		
+		h1 {
+			margin:0px;
+			padding-top:10px;
+			text-align: center;
+			
+			img {
+				height:48px;
+			}
+		}
+	}
+	
+	#serviceNav {
+		position: absolute;
+		top:20px;
+		right:0px;
+	}
+}
+
+#cookingArea {
+	@include border-radius(10px);
+	@include box-sizing(border-box);
+	background: #e7e6e3 url(/static/images/textureSoft.png);
+	position: relative;
 }
 
 
 /**********************************************************/
 /* COOKING ROOM: RECIPE */
 
+$recipeTitleHeight:65px;
+$widgetNavHeight:45px;
+
 #recipeContainer {
 	position: relative;
 	float:left;
 	width:360px;
-	padding:40px 10px 50px 10px;
 	@include box-sizing(border-box);
-	background:$subtleColor;
+	background:#fff;
 	height:100%;
-}
-
-#recipeNav {
-	float:left;
-	width:60px;
-}
+	padding-top:$recipeTitleHeight;
+	padding-bottom:$widgetNavHeight;
 	
-#stepTabs li {
-	position:relative;
-
-	.positionMarker {
+	#recipeTitle {
 		position: absolute;
-		top: 0;
-		left: 30px;
+		left:0px;
+		top:0px;
+		height:$recipeTitleHeight;
+		margin:0px;
+		width:100%;
+		text-align: center;
+		background: #f0efec url(/static/images/textureSoft.png);
+		@include border-top-left-radius(10px);
+		@include box-sizing(border-box);
+		padding:15px;
+		font-weight: 700;
+		font-size:19px;
+		
+		.label {
+			@include bigFatLetters;
+			color:$orange;
+			font-size:11px;
+			letter-spacing:.01em;
+			margin-bottom:3px;
+		}
 	}
-	
-	a {
-		display:block;
-		border-right:0px;
-		padding:7px;
-		margin:0px 0px 3px 0px;
-		font-family: $sans;
-		font-weight: bold;
-		font-size:1.2em;
-		@include border-top-left-radius(5px);
-		@include border-bottom-left-radius(5px);
-	}
-}
-
-#stepsNav {
-	position: absolute;
-	bottom:20px;
-	left:80px;
-}
-
-#ingredientsButton {
-	display: block;
-	width:45px;
-	background:#ddd;
-	padding:5px;
-	margin-bottom:5px;
-	@include border-radius(5px);
-	overflow: hidden;
 }
 
 #recipe {
 	height: 100%;
 }
 
-#room {
+#recipeNav {
+	float:left;
+	width:50px;
+	height:100%;
+	text-align: center;
+	padding:15px 0px 15px 5px;
+	@include box-sizing(border-box);
+	background: #d9d6d1 url(/static/images/textureSoft.png);
+	
+	.userStepIcon {
+		@include userpic;
+		width:28px;
+		height:28px;
+		position: absolute;
+		top: -2;
+		left: -21px;
+		display:none;
+	}
+}
+	
+#stepTabs {
 
-	#recipeTitle {
-		position: absolute;
-		top:15px;
-		left:0;
-		width:100%;
-		text-align: center;
-		font-size:13px;
-		text-transform: uppercase;
-		letter-spacing:.15em;
-	}
-	
-	
-	#ingredients {
-		position: absolute;
-		left: 80px;
-		top: 40px;
-		width: 220px;
-		padding: 20px;
-		background:#fff;
-		@include box-shadow(0px 2px 5px rgba(0,0,0,.2));
-		font-size:16px;
+	li {
+		position:relative;
 		
-		li {
-			margin:10px 0px;
-			cursor: pointer;
+		.userStepIcon {
+			display:block;
 		}
 		
-		.crossedOut {
-			text-decoration: line-through;
-		}
-		
-		.closeButton {
-			position: absolute;
-			right: 10px;
-			top: 10px;
+		a {
+			display:block;
+			border-right:0px;
+			padding:7px;
+			margin:0px 0px 3px 0px;
+			font-weight: bold;
+			font-size:14px;
+			@include border-top-left-radius(5px);
+			@include border-bottom-left-radius(5px);
+			color:$darkBrown;
 		}
 	}
+}
+
+#cookingRoom {
 	
 	#steps {
 		@include box-sizing(border-box);
@@ -135,15 +140,100 @@
 		height:100%;
 		overflow: hidden;
 		background:#fff;
-		font-size:1.75em;
+		font-size:20px;
 	}
 	
-	.step {	
+	.step, #recipeStart {	
 		@include box-sizing(border-box);
-		padding:30px 30px 50px 30px;
+		padding:25px;
 		height: 100%;
+		
+		p {
+			line-height:1.3em;
+		}
+	}
+	
+	#recipeStart {
+		position: relative;
+		overflow: hidden;
+	
+		#startButtonContainer {
+			margin-top:27%;
+			@include lightGreenBg;
+			padding:25px;
+			text-align: center;
+			
+			p {
+				font-size:17px;
+				line-height:1.3em;
+			}
+		}
+	
+		.instructions {
+			position: absolute;
+		
+			p {
+				font-size:14px;
+				line-height:1.25em;
+			}
+			
+			h2 {
+				@include bigFatLetters;
+				letter-spacing: .1em;
+				color:$green;
+				font-size:11px;
+				margin-bottom:5px;
+			}
+		}
+		
+		#instructionsCookingTimeline {
+			top: 25px;
+			
+			img {
+				position: absolute;
+				top: 47px;
+				left: -20px;
+			}
+		}
+		
+		#instructionsKeyboardNav {
+			position: relative;
+			margin-top: 25px;
+			
+			p {
+				margin-right:150px;
+			}
+			
+			img {
+				width:150px;
+				float:right;
+			}
+		}
+		
+		#instructionsCookingNotes {
+			bottom:14px;
+			width:243px;
+			
+			img {
+				position: absolute;
+				right: 6px;
+				top: 28px;
+			}
+		}
+	}
+	
+	.step {
+		display:none;
 		overflow-y: auto;
 		overflow-x: hidden;
+		
+		h2 {
+			@include bigFatLetters;
+			letter-spacing:0.1em;
+			color:$mediumBlue;
+			font-size:14px;
+			margin-bottom:4px;
+		}
 	
 		ul {
 			margin-left:20px;
@@ -161,21 +251,78 @@
 	}
 	
 	.extra {
-		font-size:16px;
-		margin:30px 0px;
+		@include lightGreenBg;
+		padding:15px 15px 1px 15px;
+		font-size:14px;
+		margin:20px 0px;
 		
 		h1 {
-			@include smallHeading;
+			@include bigFatLetters;
+			color:$green;
+			font-size:11px;
+			float:left;
+			position: relative;
+			top: 4px;
+			margin-right: 7px;
+			letter-spacing: .1em;
 		}
 	}
 	
-	.snippet {
-		margin:30px 0px;
-		font-size:14px;
-		font-family: $sans;
+	.noteFormInline {
+		textarea {
+			background:#EBF4F5;
+			@include border-radius(5px);
+			margin-bottom:10px;
+			height:50px;
+			
+			&:focus {
+				outline:none;
+				background:darken(#ebf4f5, 4);
+			}
+		}
 		
-		p {
-			line-height:1.25em;
+		input[type=submit] {
+			@include smallButton;
+			width: 100%;
+		}
+	}
+	
+	#ingredients {
+		margin:0px;
+		
+		li {
+			font-size:16px;
+			height:33px;
+			@include box-sizing(border-box);
+			list-style-type: none;
+			margin:0px;
+			padding:4px 5px 6px 30px;
+			cursor: pointer;
+			background:url(/static/images/checkbox.png) 7px 9px no-repeat;
+			
+			&.odd {
+				background: #f4f7f6 url(/static/images/checkbox.png) 7px 9px no-repeat;
+			}
+		}
+		
+		.amount {
+			font-size:12px;
+			font-weight: 700;
+			margin-left:5px;
+		}
+		
+		.crossedOut {
+			background:url(/static/images/checkboxChecked.png) 7px 8px no-repeat;
+			
+			&.odd {
+				background: #f4f7f6 url(/static/images/checkboxChecked.png) 7px 8px no-repeat;
+			}
+		}
+		
+		.closeButton {
+			position: absolute;
+			right: 10px;
+			top: 10px;
 		}
 	}
 	
@@ -193,7 +340,9 @@
 		}
 		
 		.userpic {
-			width:30px;
+			@include userpic;
+			width:32px;
+			height:32px;
 			float:left;
 		}
 		
@@ -213,9 +362,9 @@
 	
 	.cookingNote.note {
 		.noteContent {
-			margin-left:40px;
-			background:$subtleColor;
-			padding:10px;
+			margin-left:25px;
+			@include lightBrownBg;
+			padding:10px 10px 10px 20px;
 			@include border-radius(5px);
 		}
 		
@@ -250,27 +399,23 @@
 			}
 		}
 	}
-	
-	.step {
-		display:none;
-	}
-
-	
 }
 /**********************************************************/
 /* WIDGETS */
 
 .widget {
-	border:1px solid #666;
-	background:#fff;
+	display:none;
+	@include border-radius(5px);
 	position: absolute;
-	left:25px;
-	bottom: 37px;
+	right:10px;
+	bottom: 57px;
 	width:230px;
 	@include box-sizing(border-box);
 	padding: 20px;
 	font-size:14px;
-	display:none;
+	@include box-shadow(0px 3px 5px rgba($darkBrown, .7));
+	background:#828a91;
+	color:#fff;
 	
 	.closeButton {
 		position: absolute;
@@ -280,18 +425,34 @@
 }
 
 #notepad {
+
+	p {
+		line-height:1.2em;
+		font-size:13px;
+		margin-bottom:4px;
+	}
+
 	textarea {
-		border:1px solid #ccc;
-		margin-top:10px;
+		@include border-radius(5px);
+		margin-bottom:10px;
 		width:100%;
 		height:150px;
 		padding:5px;
 		resize: none;
+		font-style:normal;
+	}
+	
+	input[type=submit] {
+		width:100%;
+		cursor: pointer;
 	}
 }
 
 #stampPicker ul {
-	padding:10px 0px 0px 0px;
+	margin:10px 0px 0px 0px;
+	@include clearfix;
+	background:#fff;
+	@include border-radius(5px);
 }
 
 #stampPicker .stamp {
@@ -300,28 +461,25 @@
 	
 	.stampButton {
 		display:block;
-		height:40px;
-		width:40px;
+		height:42px;
+		width:43px;
 		padding:10px;
 	}
 	
 	.stampInfo {
 		display: none;
 		margin-top:5px;
-		font-size:12px;
+		font-size:13px;
 	}
 }
 
 #stampInfoDisplay, #stampInstructions {
-	margin:15px 0px 0px 0px;
-	padding:10px;
-	background:$subtleColor;
-	font-family: $sans;
+	font-style: normal;
 	height:32px;
 	
 	p {
-		font-size:12px;
-		line-height:14px;
+		font-size:13px;
+		line-height:1.3em;
 	}
 }
 
@@ -332,36 +490,50 @@
 	}
 }
 
-#stampInstructions {
-	p {
-		font-style: italic;
-	}
-}
-
 #widgetNav {
 	position: absolute;
 	bottom:0;
-	left:25px;
-	width:230px;
+	left:0px;
+	width:100%;
+	height:$widgetNavHeight;
+	@include box-sizing(border-box);
 	text-align: right;
-	padding:10px 0px;
-	font-size:16px;
-	background:#fff;
+	background: #f0efec url(/static/images/textureSoft.png);
+	@include border-bottom-left-radius(10px);
+	padding:7px;
 	
 	a {
 		@include box-sizing(border-box);
 		display: inline-block;
-		padding:5px 7px;
-		margin:1px;
+		text-align: left;
+		text-indent: -9999px;
+		width:50px;
+		height: 31px;
+		@include border-radius(5px);
+		background-position:center center;
+		background-repeat:no-repeat;
+		
+		&:hover {
+			background-color:rgba($darkBrown, .2);
+		}
+		
+		&.active {
+			border-top:1px solid #fff;
+			position: relative;
+			margin:0;
+			z-index: 999;
+			background-color:#fff;
+			background-repeat:no-repeat;
+		}
 	}
 	
-	a.active {
-		background: #fff;
-		border:1px solid #666;
-		border-top:1px solid #fff;
-		position: relative;
-		margin:0;
-		z-index: 999;
+	#stampPickerButton {
+		background-image:url(/static/images/icon_stamp.png);
+		
+	}
+	
+	#notepadButton {
+		background-image:url(/static/images/icon_note.png);
 	}
 }
 
@@ -369,57 +541,151 @@
 /* VIDEOS */
 
 #videoContainer {
-	margin-left: 385px;
-	height:70%;
+	margin-left: 360px;
+	height:74%;
 	@include box-sizing(border-box);
 	position: relative;
-}
-	
-#videoContainer.fullsize {
-	height:100%;
+	padding:0px 0px;
+
+	&.fullsize {
+		height:100%;
+		padding-bottom:40px;
+	}
 }
 
 #videos {
-	padding:20px;
+	padding:20px 20px 30px 20px;
 	height:100%;
 	@include box-sizing(border-box);
-	background: $subtleColor;
+	position: relative;
 }
 
-#myInfo {
-	position: absolute;
+#friendVideoPlaceholder {
+	background-color:rgba($darkBrown, .1);
+	color: rgba($darkBrown, .4);
+	height:100%;
+	position: relative;
+	font-size:30px;
+	font-weight: 700;
+	border:5px solid rgba($darkBrown, .1);
+	
+	p {
+		position:absolute;
+		top:45%;
+		width:100%;
+		text-align: center;
+	}
 }
 
-#chatBoxButton {
+#myVideoContainer, .friendVideo {
+	border:5px solid #fff;
+	@include box-shadow(0px 1px 4px rgba(0,0,0,.5));
+}
+
+#myVideoContainer {
 	position: absolute;
-	top:10px;
-	right:10px;
+	bottom:20px;
+	right:20px;
+	z-index: +999;
+}
+
+.attendeeStatus {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 15px;
+	padding: 6px 7px 6px 10px;
+	background:#fff;
+	@include border-bottom-left-radius(5px);
+	
+	.status {
+		margin-left:5px;
+	}
+}
+
+#myStatus {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 12px;
+	background: white;
+	padding: 1px 2px 4px 6px;
+	@include border-bottom-left-radius(5px);
+	
+	.status {
+		margin-left:1px;
+	}
+}
+
+.attendeeStatus, #myStatus {
+	font-weight: 700;
+	z-index: +2;
+
+	.status {
+		color:$orange;
+		font-size:11px;
+	}
+}
+
+.friendVideo {
+	@include box-sizing(border-box);
 }
 
 
 /**********************************************************/
 /* CHAT BOX */
 
+#hideChatButton, #showChatButton {
+	font-weight: bold;
+	background:$mediumBlue;
+	padding: 4px 5px 4px 5px;
+	border-radius: 5px;
+	color:#fff;
+	@include bigFatLetters;
+	font-size:10px;
+	letter-spacing:.05em;
+	
+	&:hover {
+		background: darken($mediumBlue, 5);
+	}
+}
+
+#hideChatButton {
+	position: absolute;
+	top:5px;
+	right:25px;
+	z-index: +3;
+}
+
+#showChatButton {
+	position: absolute;
+	right: 220px;
+}
+
 #chatBoxContainer {
-	margin-left: 385px;
-	height:30%;
-	padding-top:25px;
+	margin-left: 360px;
+	margin-right:200px;
+	height:26%;
+	padding:0px 20px 20px 20px;
 	@include box-sizing(border-box);
 	position: relative;
 }
 
 #chatBox {
 	@include box-sizing(border-box);
-	border:1px solid #ccc;
 	height: 100%;
 	font-family: $sans;
-	padding-bottom:27px;
+	padding-top:5px;
+	padding-bottom:35px;
+	background:#fff;
+	@include border-radius(5px);
+	position: relative;
 }
 
 #chatMessages {
 	height:100%;
 	@include box-sizing(border-box);
-	padding:10px 15px;
+	padding:5px 15px;
 	overflow: auto;
 	
 	.chatMessage {
@@ -435,20 +701,25 @@
 	position: absolute;
 	bottom:0px;
 	left:0px;
-	border:1px solid #ccc;
 	width:100%;
 	@include box-sizing(border-box);
+	padding:5px;
+	height:35px;
 	
 	input {
 		display: block;
 		width:100%;
-		padding:7px 10px;
+		padding:7px 5px;
+		height:25px;
 		border:0px;
 		margin:0px;
+		background:#ebf4f5;
+		@include border-radius(3px);
+		font-size:13px;
 	}
 	
 	input:focus {
 		outline:none;
-		border:none;
+		background:darken(#ebf4f5, 4);
 	}
 }

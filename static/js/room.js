@@ -9,7 +9,7 @@ $(document).ready(function() {
 	
 	// as soon as a connection is made, send a message to the back-end so it knows which 'room' you are in
 	var socketConnectMessage = JSON.stringify({
-		'type' : 'socket connect',
+		'type' : 'Here I am!',
 		'roomId' : $('body').attr('data-id')
 	});
 	socket.send(socketConnectMessage);
@@ -17,12 +17,42 @@ $(document).ready(function() {
 	// useful variables
 	var currentUserId = $('#userId').text();
 	
+	
+	/****************************************************************************************/
+	// RESIZING LAYOUT
+	
+	var setCookingAreaHeight = function(){
+		$('#cookingArea').height($(window).height()-$('#cookingHeader').height()-20);
+	};
+	
+	$(window).resize(setCookingAreaHeight);
+	setCookingAreaHeight();
+	
+	
+	/****************************************************************************************/
+	// RECIPE START SCREEN
+	
+	$('#recipeStartButton').click(function(e){
+		e.preventDefault();
+		
+		$('#recipeStart').hide();
+		
+		// go to first step
+		$('#stepTabs li').first().addClass('currentStep');
+		$('#steps ol li').first().show();
+		
+		sendCurrentStep();
+		initRecipeNav();
+	});
+	
 
 	/****************************************************************************************/
 	// RECIPE NAVIGATION
 	
 	var sendCurrentStep = function(){
+		// close the cooking notes, if open
 		$('#widgets .closeButton').click();
+		
 		console.log('sending');
 		var currentStepNumber = $('#stepTabs .currentStep a').attr('id').split('-')[1];
 		
@@ -39,30 +69,26 @@ $(document).ready(function() {
 	
 	// callback for socket.on('message')
 	var updateStepPositions = function(data) {
-		console.log(data);
+		// console.log(data);
 		
 		// no need to update step position markers for yourself
 		if (data.userId !== currentUserId) {
 		
-			// remove existing user position marker for this user
-			$('.positionMarker[data-id="' + data.userId + '"]').remove();
-			$stepTabToAddMarkerTo = $('#stepTab-' + data.stepNumber).parent();
-			$stepTabToAddMarkerTo.append('<div class="positionMarker" data-id=' + data.userId + '>' + data.username + '</div>');
+			// grab reference to user icon element
+			var $userStepIcon = $('.userStepIcon[data-id=' + data.userId + ']');
+			console.log($userStepIcon);
+			
+			// detach from dom
+			$userStepIcon.detach();
+			console.log('detached');
+			
+			// find out where to re-add it
+			$targetStepTab = $('#stepTab-' + data.stepNumber);
+			console.log($targetStepTab);
+			
+			$userStepIcon.insertAfter($targetStepTab);
 		}
 	};
-
-	// Clicking on a recipe step switches the view to that step
-	$('#stepTabs li a').click(function(e) {
-		console.log('click');
-		e.preventDefault();
-		$('.step').hide();
-		$('#stepTabs .currentStep').removeClass('currentStep');
-		var stepNumber = $(this).attr('id').split('-')[1];
-		$('#step-' + stepNumber).show();
-		$(this).parent().addClass('currentStep');
-		
-		sendCurrentStep();
-	});
 	
 	// Using arrow keys to go to the next/previous step
 	
@@ -74,31 +100,45 @@ $(document).ready(function() {
 		$('#stepTabs .currentStep').next().find('a').click();
 	};
 	
-	$(document.documentElement).keydown(function(e){
-		console.log('key');
-		// left or up key
-		if(e.keyCode === 37 || e.keyCode === 38)	{
-			console.log('prev');
-			goToPrevStep();
-		}
-		// right or down key
-		else if (e.keyCode === 39 || e.keyCode === 40) {
-			console.log('next');
-			goToNextStep();
-		}
-	});
+	// recipe nav is not activated until user clicks the start button
 	
-	// next/previous buttons
-	$('#prevButton').click(function(e){
+	$('#stepTabs li a').click(function(e) {
 		e.preventDefault();
-		goToPrevStep();
 	});
 	
-	$('#nextButton').click(function(e){
-		e.preventDefault();
-		goToNextStep();
-	});
+	var initRecipeNav = function(){
 	
+		$(document.documentElement).keydown(function(e){
+			
+			// don't use keyboard nav if we're in a textarea or input.
+			if(e.target.nodeName == "TEXTAREA" || e.target.nodeName == "INPUT") {
+				return;
+			}
+			
+			// left or up key
+			if(e.keyCode === 37 || e.keyCode === 38)	{
+				console.log('prev');
+				goToPrevStep();
+			}
+			// right or down key
+			else if (e.keyCode === 39 || e.keyCode === 40) {
+				console.log('next');
+				goToNextStep();
+			}
+		});
+		
+		// Clicking on a recipe step switches the view to that step
+		$('#stepTabs li a').click(function(e) {
+			
+			$('.step').hide();
+			$('#stepTabs .currentStep').removeClass('currentStep');
+			var stepNumber = $(this).attr('id').split('-')[1];
+			$('#step-' + stepNumber).show();
+			$(this).parent().addClass('currentStep');
+			
+			sendCurrentStep();
+		});
+	} // called in $('#recipeStartButton').click(), above
 	
 	/****************************************************************************************/
 	// INGREDIENTS PANE
@@ -121,7 +161,7 @@ $(document).ready(function() {
 	});
 	
 	/****************************************************************************************/
-	// NOTE-ADDING PANES
+	// WIDGET PANES
 	
 	var toggleWidget = function($button, widgetSelector){
 		var $widget = $(widgetSelector);
@@ -153,7 +193,7 @@ $(document).ready(function() {
 	// NOTES (badges, etc.)
 	
 	// submits the note
-	$('#noteForm').submit(function(e){
+	$('#noteForm, .noteFormInline').submit(function(e){
 		e.preventDefault();
 		
 		// "this" is the form
@@ -207,7 +247,7 @@ $(document).ready(function() {
 			noteContent = '<img src="/static/images/stamps/' + data.content.stampSlug + '.png" /><p>' + data.content.stampName + '!</p>';
 		}
 		
-		$elementToAddNoteTo.append('<div class="cookingNote ' + data.type + '" data-id="' + data.noteId + '"><img src="/static/uploads/userpics/' + data.noteAuthor.userpic + '" class="userpic" /><div class="timestamp">' + data.timestamp + '</div><div class="noteContent">' + noteContent + '</div></div>');
+		$elementToAddNoteTo.append('<div class="cookingNote ' + data.type + '" data-id="' + data.noteId + '"><div class="userpic"><img src="/static/uploads/userpics/' + data.noteAuthor.userpic + '" /></div><div class="timestamp">' + data.timestamp + '</div><div class="noteContent">' + noteContent + '</div></div>');
 		
 		// grab reference to the newly posted note…
 		var $newNote = $(".cookingNote[data-id='" + data.noteId + "']");
@@ -264,10 +304,19 @@ $(document).ready(function() {
 	// CHAT BOX STUFF
 	
 	// toggles chatbox visbility
-	$('#chatBoxButton').click(function(e){
+	$('#hideChatButton').click(function(e){
 		e.preventDefault();
-		$('#chatContainer').toggle();
+		$('#chatBoxContainer').hide();
 		$('#videoContainer').toggleClass('fullsize')
+	});
+	
+	$('#showChatButton').click(function(e){
+		e.preventDefault();
+		$('#chatBoxContainer').show();
+		$('#videoContainer').toggleClass('fullsize')
+		
+		// scroll chat messages to bottom
+		$('#chatMessages').scrollTop($('#chatMessages').scrollTop()+9000001);
 	});
 	
 	// submits a chat message
@@ -299,7 +348,7 @@ $(document).ready(function() {
 		$chatMessages.append('<div class="chatMessage"><span class="chatMessageAuthor">' + data.userId + '</span>: <span class="chatMessageBody">' + data.chatMessage + '</span></div>');
 		
 		// scroll chat messages to bottom
-		$chatMessages.scrollTop($chatMessages.scrollTop()+9001);
+		$chatMessages.scrollTop($chatMessages.scrollTop()+9000001);
 	};
 	
 	/****************************************************************************************/
@@ -339,13 +388,46 @@ $(document).ready(function() {
 	
 	// called inside socket.on('message')
 	var updateUserFocus = function(data) {
-		if (data.userId === currentUserId) {
-			$('#myStatus').html('my focus is ' + data.focus);
+		console.log('update focus')
+		
+		var focusText;
+		
+		if (data.focus) {
+			focusText = "Active"
 		}
 		else {
-			$('#partnerStatus').html(data.username + '\'s focus is ' + data.focus);
+			focusText = "Idle"
+		}
+		
+		if (data.userId === currentUserId) {
+			console.log('set my focus to ' + data.focus);
+			$('#myStatus .status').html(focusText);
+		}
+		else {
+			console.log('set yangs focus to ' + data.focus);
+			$('.attendeeStatus[data-id=' + data.userId + '] .status').html(focusText);
 		}
 	}
+	
+	/****************************************************************************************/
+	// OPENTOK!
+	// crazy magic openTok video stuff happens!!!
+	
+	var doOpenTokStuff = function(data){
+		
+		// create and initialize a session object
+		openTokSession = TB.initSession(data['sessionId']);
+		// note to self: this is kinda bad because openTokSession is declared in the global namespace inside a separate file, opentok.js... but this is good enough for a thesis prototyoe :P
+		
+		// add event listeners... the handlers are in opentok.js
+		openTokSession.addEventListener('sessionConnected', sessionConnectedHandler);
+		openTokSession.addEventListener('streamCreated', streamCreatedHandler);
+		openTokSession.addEventListener('streamDestroyed', streamDestroyedHandler);
+		openTokSession.addEventListener('connectionDestroyed', connectionDestroyedHandler);
+		
+		// actually connect to that session using the API key and this user's token (generated in and sent over by socketstuff.py)
+		openTokSession.connect(openTokAPIKey, data['token']);
+	};
 	
 	
 	/****************************************************************************************/
@@ -371,6 +453,10 @@ $(document).ready(function() {
 		
 		else if(messageJSON['type'] == 'focus') {
 			updateUserFocus(data);
+		}
+		
+		else if(messageJSON['type'] == 'openTok token') {
+			doOpenTokStuff(messageJSON['data']);
 		}
 		
 	});

@@ -6,6 +6,7 @@
 <script src="/static/js/lib/date.js" type="text/javascript"></script>
 <script src="/static/js/lib/jquery.datePicker.js" type="text/javascript"></script>
 <script src="/static/js/invite.js" type="text/javascript"></script>
+<script src="/static/js/validation.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block bodyId %}invite{% endblock %}
@@ -194,12 +195,12 @@
 		
 			<div class="formItem">
 				<label>Friend's Name:</label>
-				<input type="text" name="inviteeName" id="friendNameInput" />
+				<input type="text" name="inviteeName" id="friendNameInput" class="required" />
 			</div>
 			
 			<div class="formItem">
 				<label>Friend's Email Address:</label>
-				<input type="text" name="inviteeEmail" />
+				<input type="text" name="inviteeEmail" class="required emailInput" />
 			</div>
 			
 			<p class="formNote">Just one friend, please. We're working on cooking with multiple friends soon!</p>
@@ -269,6 +270,11 @@
 		<input type="hidden" id="readableTime" name="readableTime" />
 		
 		<p>Check the preview on the left and make sure everything looks good! Upon hitting send, we'll send your friend the invitation and he/she will be able to R.S.V.P.</p>
+		
+		<div id="errorsPresentMessage">
+			<p>Oops, looks like we're missing some crucial information above!</p>
+		</div>
+		
 		<div class="buttons">	
 			<button type="submit" id="sendInvitationButton">Send Invitation</button>
 		</div>

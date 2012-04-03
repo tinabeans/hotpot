@@ -3,16 +3,16 @@
 <head>
 <title>HotPot prototype! yeah!!</title>
 
-<!-- Typekit JS -->
-<!--<script type="text/javascript" src="http://use.typekit.com/qje5yme.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
+<!-- Typekit -->
+<script type="text/javascript" src="http://use.typekit.com/qje5yme.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-<!-- jQuery library -->
+<!-- jQuery -->
 <script src="http://code.jquery.com/jquery-1.6.4.min.js" type="text/javascript"></script>
 
 <!-- OpenTok JS -->
-<!--script src="http://staging.tokbox.com/v0.91/js/TB.min.js" type="text/javascript"></script-->
-<!--script src="/static/js/opentok.js" type="text/javascript"></script-->
+<script src="http://static.opentok.com/v0.91/js/TB.min.js" type="text/javascript"></script>
+<script src="/static/js/videoChat.js" type="text/javascript"></script>
 
 <!-- Socket IO -->
 <script src="/static/js/lib/socket.io.min.js" type="text/javascript"></script>
@@ -24,89 +24,158 @@
 
 </head>
  
-<body id="room" data-id="{{ invitationId }}">
+<body id="cookingRoom" data-id="{{ invitationId }}">
 
-<header id="cookingHeader">
-	<h1>Hotpot</h1>
-	Logged in as <span id="userId">{{ userId }}</span>
-</header>
+<!-- User ID needs to be present on the page somewhere for Javascript to access it -->
+<div id="userId">{{ user._id }}</div>
 
-<div id="container">
+<div id="roomBg">
+
+	<header id="cookingHeader">
+		<h1><img src="/static/images/HotpotLogo_Alpha.png"></h1>
+		
+		<nav id="serviceNav">
+			<a href="/history" id="exitLink">
+				<span class="tooltip">Exit</span>
+			</a>
+		</nav>
+	</header>
 	
-	<div id="recipeContainer">
+	<div id="cookingArea">
 		
-		<section id="recipe" data-id="{{ meal._id }}">
+		<div id="recipeContainer">
 		
-			<h1 id="recipeTitle">{{ meal.title }}</h1>
+			<section id="recipe" data-id="{{ meal._id }}">
 			
-			<nav id="recipeNav">
-				<ul id="stepTabs">
-				{% set stepCounter = 1 %}
-				{% for step in meal.steps %}
-					<li class="{{ step.type }} {% if loop.first %}currentStep{% endif %}">
-						{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
-							{% set stepNumber = stepCounter %}
-							{% set stepCounter = stepCounter + 1 %}
-						{% else %}
-							{% set stepNumber = step.type %}
-						{% endif %}
-						<a href="" id="stepTab-{{ step.id }}">{{ stepNumber }}</a>
-					</li>
-				{% endfor %}
-				</ul>
+				<h1 id="recipeTitle">
+					<div class="label">Now Cooking</div>
+					{{ meal.title }}
+				</h1>
 				
-				<div id="stepsNav">
-					<a href="#" id="startButton">Start</a>
-					<a href="#" id="prevButton">Previous</a>
-					<a href="#" id="nextButton">Next</a>
-				</div>
-			</nav><!-- #recipeNav -->
-			
-			<section id="steps">
-				<ol>
+				<nav id="recipeNav">
+					<!-- Generate user icons for everyone but self and keep them hidden until actually in use -->
+					{% for attendee in attendees %}
+						{% if attendee._id != user._id %}
+							<div class="userStepIcon" data-id="{{ attendee._id }}"><img src="/static/uploads/userpics/{{ attendee.userpic }}" /></div>
+						{% endif %}
+					{% endfor %}
+					
+					<ul id="stepTabs">
+					
+					{% set stepCounter = 1 %}
+					
 					{% for step in meal.steps %}
-					<li id="step-{{ step.id }}" class="step {{ step.type }}" {% if loop.first %}style="display:block;"{% endif %}>
-						{{ step.text|safe }}
-						
-						{% if step.type == "ingredients" %}
-						<ul>
-						{% for ingredient in meal.ingredients %}
-							<li>{{ ingredient.name }} {% if ingredient.amount is defined %}({{ ingredient.amount }}){% endif %}</li>
-						{% endfor %}
-						</ul>
-						{% endif %}
-						
-						{% if step.extra is defined %}
-						<div class="extra">
-							<h1>Protip!</h1>
-							{{ step.extra|safe }}
+						<li class="{{ step.type }}">
+							<a href="" id="stepTab-{{ step.id }}">
+								{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
+									{% set stepCounter = stepCounter + 1 %}
+									{{ stepCounter }}
+								{% else %}
+									<img src="/static/images/icon_{{ step.type }}.png" />
+								{% endif %}
+							</a>
+						</li>
+					{% endfor %}
+					</ul>
+					
+					<!-- <div id="stepsNav">
+						<a href="#" id="startButton">Start</a>
+						<a href="#" id="prevButton">Previous</a>
+						<a href="#" id="nextButton">Next</a>
+					</div> -->
+				</nav><!-- #recipeNav -->
+				
+				<section id="steps">
+					<div id="recipeStart">
+						<div id="startButtonContainer">
+							<p>When everyone has arrived, click Start to begin.</p>
+							<a href="" id="recipeStartButton" class="bigButton">Start</a>
 						</div>
-						{% endif %}
 						
-						<!-- Cooking Notes! wheeeee -->
-						<div class="notesContainer">
-						{% if step.notes is defined %}
-							{% for note in step.notes %}
-							<div class="cookingNote {{ note.type }}" data-id="{{ note._id }}"><img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" class="userpic" />			
-								<div class="timestamp">{{ note.timestamp }}</div>
-								
-								<div class="noteContent">
-									{% if note.type == "note" %}
-										<p>{{ note.content }}</p>
-									{% elif note.type == "stamp" %}
-										<img src="/static/images/stamps/{{ note.content.stampSlug }}.png" />
-										<p>{{ note.content.stampName }}!</p>
+						<div id="instructionsCookingTimeline" class="instructions">
+							<h2>Cooking Timeline</h2>
+							<p>Here, you’ll be able to see what step everyone is currently on.</p>
+							<img src="/static/images/instructionsArrow1.png" />
+						</div>
+						
+						<div id="instructionsKeyboardNav" class="instructions">
+							<img src="/static/images/instructionsKeyboardNav.png" />
+							<h2>Navigation</h2>
+							<p>Use your arrow keys to switch between steps.</p>
+						</div>
+						
+						<div id="instructionsCookingNotes" class="instructions">
+							<h2>Cooking Notes</h2>
+							<p>Record memorable happenings together and even add stamps!</p>
+							<img src="/static/images/instructionsArrow2.png" />
+						</div>
+					</div>
+				
+					<ol>
+						{% set stepCounter = 1 %}
+						
+						{% for step in meal.steps %}
+							<li id="step-{{ step.id }}" class="step {{ step.type }}">
+								<h2>
+									{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
+										{% set stepCounter = stepCounter + 1 %}
+										Step {{ stepCounter }}
+									{% else %}
+										{{ step.type }}
 									{% endif %}
+								</h2>
+								
+								{{ step.text|safe }}
+								
+								{% if step.type == "ingredients" %}
+									<ul id="ingredients">
+										{% for ingredient in meal.ingredients %}
+											<li class="{{ loop.cycle('odd', 'even') }}"><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+								
+								{% if step.extra is defined %}
+								<div class="extra">
+									<h1>Protip!</h1>
+									{{ step.extra|safe }}
 								</div>
-							</div>
-							{% endfor %}
-						{% endif %}
-						</div><!-- .notesContainer -->
-						
-					</li>
-					{% endfor %}				
-				</ol>
-						
+								{% endif %}
+								
+								{% if step.type == "rest" or step.type == "eat" %}
+									<form class="noteFormInline">
+										<textarea name="note" class="note"></textarea>
+										<input type="submit" value="Add Cooking Note" />
+									</form>
+								{% endif %}
+								
+								<!-- Cooking Notes! wheeeee -->
+								<div class="notesContainer">
+								{% if step.notes is defined %}
+									{% for note in step.notes %}
+									<div class="cookingNote {{ note.type }}" data-id="{{ note._id }}">
+										<div class="userpic"><img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" /></div>
+										<div class="timestamp">{{ note.timestamp }}</div>
+										
+										<div class="noteContent">
+											{% if note.type == "note" %}
+												<p>{{ note.content }}</p>
+											{% elif note.type == "stamp" %}
+												<img src="/static/images/stamps/{{ note.content.stampSlug }}.png" />
+												<p>{{ note.content.stampName }}!</p>
+											{% endif %}
+										</div>
+									</div>
+									{% endfor %}
+								{% endif %}
+								</div><!-- .notesContainer -->
+								
+							</li>
+						{% endfor %}				
+					</ol>
+					
+				</section><!-- #steps -->
+				
 				<div id="widgets">
 					<nav id="widgetNav">
 						<a href="" id="stampPickerButton" class="widgetButton">Stamps</a>
@@ -139,7 +208,7 @@
 					
 					<div id="notepad" class="widget">
 						<a href="" class="closeButton">Close</a>
-						<p>Use this space to jot down impressions, surprises, questions and answers.</p>
+						<p>Share your surprises, discoveries, and impressions:</p>
 						<form id="noteForm">
 							<textarea name="note" class="note"></textarea>
 							<input type="submit" />
@@ -148,43 +217,61 @@
 				
 				</div><!-- #widgets -->
 				
-			</section><!-- #steps -->
+			</section><!-- #recipe -->
+		</div><!-- #recipeContainer -->
+	
+		<div id="videoContainer">
 			
-		</section><!-- #recipe -->
-		
-	</div><!-- #recipeContainer -->
-
-	<div id="videoContainer">
-		<a href="#" id="chatBoxButton">Toggle Chat Box</a>
-		<div id="videos">
-			<!-- OpenTok adds video elements here -->
-		</div>
-		<div id="partnerStatus"></div>
-		<div id="myStatus"></div>
-	</div>
-	
-	<div id="myInfo">
-		<div id="myVideo">
-			<!-- OpenTok adds video elements here -->
-		</div>
-	</div>
-	
-	<div id="chatBoxContainer">
-		<div id="chatBox">
-			<div id="chatMessages">
-				<!-- CHAT MESSAGES APPEAR HERE -->
-			</div><!-- #messages -->			
-				
-			<div id="chatInputContainer">
-				<form id="chatInputForm">
-					<input type="text" name="chatMessage" />
-				</form>
+			{% for attendee in attendees %}
+				{% if attendee._id != user._id %}
+					<div class="attendeeStatus" data-id="{{ attendee._id }}">
+						<span class="name">{{ attendee.name }}</span>
+						<span class="status"></span>
+					</div>
+				{% endif %}
+			{% endfor %}
+			
+			<div id="videos">
+				<!-- OpenTok adds video elements here -->
+				<div id="friendVideoPlaceholder">
+					<p>Waiting for friend(s) to join...</p>
+				</div>
 			</div>
 			
-		</div><!-- #chatBox -->
+			<a href="#" id="showChatButton">Show Chat Box</a>
+		</div>
 		
-	</div><!-- #chatContainer -->
+		<div id="myVideoContainer">
+			<div id="myVideo">
+				<!-- OpenTok adds video elements here -->
+			</div>
+			
+			<div id="myStatus">
+				<span class="name">{{ user.name }}</span>
+				<span class="status"></span>
+			</div>
+		</div>
+		
+		<div id="chatBoxContainer">
+			<a href="#" id="hideChatButton">Hide Chat Box</a>
+		
+			<div id="chatBox">
+				<div id="chatMessages">
+					<!-- CHAT MESSAGES APPEAR HERE -->
+				</div><!-- #messages -->			
+					
+				<div id="chatInputContainer">
+					<form id="chatInputForm">
+						<input type="text" name="chatMessage" placeholder="type message here" />
+					</form>
+				</div>
+				
+			</div><!-- #chatBox -->
+			
+		</div><!-- #chatContainer -->
+	
+	</div><!-- #container -->
 
-</div><!-- #container -->
+</div><!-- #roomBg -->
 </body>
 </html>
