@@ -61,7 +61,7 @@
 				<div id="userInfoContainer">
 					<div id="userInfo">
 						<div class="userpic">
-							<img src="/static/uploads/userpics/{% if user.userpic!='none' %}{{ user.userpic }}{% else %}placeholder.png{% endif %}" />
+							<a href="/home"><img src="/static/uploads/userpics/{% if user.userpic!='none' %}{{ user.userpic }}{% else %}placeholder.png{% endif %}" /></a>
 						</div>
 						
 						<h2>
@@ -71,8 +71,8 @@
 					</div>
 					
 					<nav id="secondaryUserNav">
-						<a href="/profile/me">My Profile</a>
-						<a href="/accountinfo">Account Information</a>
+						<a href="/home">My Dashboard</a>
+						<a href="/accountinfo">Account Settings</a>
 						<a href="/logout">Log Out</a>
 					</nav><!-- #secondaryUserNav -->
 				</div><!-- userInfoContainer -->

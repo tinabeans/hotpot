@@ -27,6 +27,8 @@ LOCAL_URL = 'http://localhost:7777'
 hourToSendReminders = 6
 checkForReminderTimeInterval = 10 # 5min
 
+emailSenderInfo = ("Hotpot", "hey@letsgohotpot.com")
+
 # creating new Flask instance
 app = flask.Flask(__name__)
 app.config.from_pyfile('config.cfg')
@@ -443,6 +445,8 @@ def showInviteForm(meal):
 def sendInvitation():
 	data = flask.request.form
 	
+	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+	
 	# look up whether invited friend already exists as a user
 	invitee = db.users.find_one({'email' : data['inviteeEmail']})
 	
@@ -471,7 +475,7 @@ def sendInvitation():
 	
 	# add some extra info that's needed by the email template, but which we don't need stored in the database
 	# NOTE: assuming for now there is only one friend! (even though the document has an array for 'friendIds')
-	newInvitation['hostName'] = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})['name']
+	newInvitation['hostName'] = user['name']
 	newInvitation['inviteeName'] = data['inviteeName']
 	newInvitation['inviteeId'] = inviteeId
 	
@@ -479,7 +483,7 @@ def sendInvitation():
 	meal = db.meals.find_one({'slug' : newInvitation['meal']})
 	
 	# compose email to send
-	email = Message("Let's Cook!", recipients=[data['inviteeEmail']])
+	email = Message(user['name'] + " invites you to cook!", recipients=[data['inviteeEmail']], sender=emailSenderInfo)
 	invitationMessage = render_template('email/invitation.html', meal=meal, invitation=newInvitation)
 	email.html = invitationMessage
 	mail.send(email)
@@ -720,7 +724,7 @@ def sendReply():
 	}
 	
 	# compose and send email back to host
-	email = Message("Hotpot RSVP", recipients=[hostEmail])
+	email = Message("Hotpot RSVP", recipients=[hostEmail], sender=emailSenderInfo)
 	replyMessage = render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
 	email.html = replyMessage
 	mail.send(email)
@@ -737,7 +741,7 @@ def sendReply():
 		# also send the invitee a confirmation
 		inviteeEmail = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})['email']
 		
-		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail])
+		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail], sender=emailSenderInfo)
 		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=invitationInfo, meal=mealInfo)
 		mail.send(email)
 		
@@ -1069,7 +1073,7 @@ def sendCookingReminder():
 	for attendee in attendees:
 		# print 'reminder email sent to ' + attendee['name'] + ' for ' + invitation['readableDate']
 		
-		email = Message("Get Ready to Cook!", recipients=[attendee['email']])
+		email = Message("Get Ready to Cook!", recipients=[attendee['email']], sender=emailSenderInfo)
 		
 		message = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal, recipient=attendee, isToday=isToday)
 		email.html = message
