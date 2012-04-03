@@ -46,7 +46,7 @@ app.secret_key = '''nTi!"2Oq#j2WdnUsQziTn52y8xGfZl:"MH*H|`yVClNLA4UG'GIvq1qc%Gk}
 
 # open database connection!
 connection = pymongo.Connection()
-db = connection.hotpot_live
+db = connection[config.DB_NAME]
 
 
 ##############################################################################

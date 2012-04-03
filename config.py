@@ -6,6 +6,7 @@ if sys.argv[1] == "LIVE":
 	LOCAL_URL = 'http://localhost:8888'
 	PORT_NUMBER = 8888
 	SOCKETS_PORT_NUMBER = 8889
+	DB_NAME = "hotpot_live"
 	
 elif sys.argv[1] == "TEST":
 	
@@ -13,3 +14,4 @@ elif sys.argv[1] == "TEST":
 	LOCAL_URL = 'http://localhost:7777'
 	PORT_NUMBER = 7777
 	SOCKETS_PORT_NUMBER = 7778
+	DB_NAME = "hotpot"
