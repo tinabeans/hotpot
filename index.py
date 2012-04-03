@@ -18,8 +18,8 @@ import saveStuff
 
 USERPIC_FOLDER = 'static/uploads/userpics'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
-BASE_URL = 'http://test.letsgohotpot.com'
-LOCAL_URL = 'http://localhost:7777'
+BASE_URL = 'http://letsgohotpot.com'
+LOCAL_URL = 'http://localhost:8888'
 
 hourToSendReminders = 23
 checkForReminderTimeInterval = 10 # 5min
@@ -41,7 +41,7 @@ app.secret_key = '''nTi!"2Oq#j2WdnUsQziTn52y8xGfZl:"MH*H|`yVClNLA4UG'GIvq1qc%Gk}
 
 # open database connection!
 connection = pymongo.Connection()
-db = connection.hotpot
+db = connection.hotpot_live
 
 
 ##############################################################################
@@ -430,7 +430,7 @@ def sendInvitation():
 	meal = db.meals.find_one({'slug' : newInvitation['meal']})
 	
 	# compose email to send
-	email = Message("Hotpot Invitation Test", recipients=[data['inviteeEmail']])
+	email = Message(newInvitation['hostName'] + """ says "Let's Cook!" """, recipients=[data['inviteeEmail']])
 	invitationMessage = render_template('email/invitation.html', meal=meal, invitation=newInvitation)
 	email.html = invitationMessage
 	mail.send(email)
@@ -1225,4 +1225,4 @@ if __name__ == '__main__':
 	timer = threading.Timer(1, sendFirstRequestToStartTheInitializationFunctionYeah)
 	timer.start()
 	
-	app.run(host='0.0.0.0', port=7777, debug=True)
+	app.run(host='0.0.0.0', port=8888, debug=True)
