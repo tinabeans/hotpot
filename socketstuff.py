@@ -21,11 +21,12 @@ from lib import OpenTokSDK
 # utils
 import json
 
+# config variables, to make moving to production easier
+import config
+
 
 ##############################################################################
 # SETUP AND VARS AND STUFF
-
-LOCAL_URL = "http://localhost:7777"
 
 # keep tabs on all the client-side connections that exist so we can iterate through them later when sending out messages
 # it will be a dictionary where the keys are roomIds, pointing to lists of sockets in that room
@@ -126,7 +127,7 @@ class SocketHandler(tornadio.SocketConnection):
 			# and then on the Flask end, we set up an @route thingy to handle the request
 			
 			# have to create a request object. the body is just the data being sent from the front end as a socket message
-			request = tornado.httpclient.HTTPRequest(url=LOCAL_URL + "/socketMessageHandler", method="POST", headers={'Content-Type':'application/json'}, body=message)
+			request = tornado.httpclient.HTTPRequest(url=config.LOCAL_URL + "/socketMessageHandler", method="POST", headers={'Content-Type':'application/json'}, body=message)
 			
 			# then actually execute the request
 			# when the response comes back containing stuff Flask wants to send back out to the front-end,
@@ -152,7 +153,7 @@ class SocketHandler(tornadio.SocketConnection):
 
 # boilerplate stuff to get tornado up and running
 application = tornado.web.Application([ tornadio.get_router(SocketHandler).route() ])
-application.listen(7778) # this is the port i chose for tornado to talk to the client on
+application.listen(config.SOCKETS_PORT_NUMBER) # this is the port i chose for tornado to talk to the client on
 httpClient = tornado.httpclient.AsyncHTTPClient()
 
 globalLoop = tornado.ioloop.IOLoop.instance()

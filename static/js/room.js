@@ -4,7 +4,7 @@ $(document).ready(function() {
 	// INITIALIZATION STUFF
 	
 	// start a new connection when you enter the room
-	socket = new io.Socket(window.location.hostname, {'port' : 7778});
+	socket = new io.Socket(window.location.hostname, {'port' : SOCKETS_PORT_NUMBER});
 	socket.connect();
 	
 	// as soon as a connection is made, send a message to the back-end so it knows which 'room' you are in

@@ -14,14 +14,15 @@ from pymongo.objectid import ObjectId
 # database fixture thing that yang told me to make
 import saveStuff
 
+# config variables, to make moving to production easier
+import config
+
 
 ##############################################################################
 # GLOBAL VARIABLES & CONFIG
 
 USERPIC_FOLDER = 'static/uploads/userpics'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
-BASE_URL = 'http://letsgohotpot.com'
-LOCAL_URL = 'http://localhost:8888'
 
 # for sending cooking reminder emails
 hourToSendReminders = 6
@@ -81,10 +82,10 @@ def render_template(template, **kwargs):
 					if reply['userId'] == flask.session['userId']:
 						alertNumber = alertNumber-1
 		
-		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, BASE_URL=BASE_URL, **kwargs)
+		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, BASE_URL=config.BASE_URL, **kwargs)
 	else:
 		isLoggedIn = False
-		return flask.render_template(template, isLoggedIn=isLoggedIn, BASE_URL=BASE_URL, **kwargs)
+		return flask.render_template(template, isLoggedIn=isLoggedIn, BASE_URL=config.BASE_URL, **kwargs)
 
 
 
@@ -763,7 +764,7 @@ def sendReply():
 				
 				# have to set a timer to make a request on a separate thread, or else we get a request timeout
 				def sendCookingReminderAfterWaitingOneSecond():
-					urllib2.urlopen(LOCAL_URL + '/sendCookingReminder?invitationId=' + str(invitation['_id']) + '&today=yes').read()
+					urllib2.urlopen(config.LOCAL_URL + '/sendCookingReminder?invitationId=' + str(invitation['_id']) + '&today=yes').read()
 				timer = threading.Timer(1, sendCookingReminderAfterWaitingOneSecond)
 				timer.start()
 	
@@ -1012,7 +1013,7 @@ def checkWhichCookingsAreComingUp():
 			cooking['reminderSent'] = True
 			db.invitations.save(cooking)
 			
-			urllib2.urlopen(LOCAL_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id']) + todayString).read()
+			urllib2.urlopen(config.LOCAL_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id']) + todayString).read()
 
 
 # called by checkForUpcomingCooking() above if the cooking is within the next 48 hours
@@ -1172,7 +1173,7 @@ def showRoom(invitationId):
 		for inviteeId in roomInfo['inviteeIds']:
 			attendees.append(grabUserInfo(inviteeId))
 		
-		return render_template('room.html', meal=meal, invitationId=invitationId, stamps=stamps, attendees=attendees)
+		return render_template('room.html', meal=meal, invitationId=invitationId, stamps=stamps, attendees=attendees, socketsPortNumber=config.SOCKETS_PORT_NUMBER)
 
 '''
 def postFoodnote():
@@ -1369,11 +1370,11 @@ def initialize():
 	timer.start()
 
 def sendFirstRequestToStartTheInitializationFunctionYeah():
-	urllib2.urlopen(LOCAL_URL + '/').read()
+	urllib2.urlopen(config.LOCAL_URL + '/').read()
 
 if __name__ == '__main__':
 	
 	timer = threading.Timer(1, sendFirstRequestToStartTheInitializationFunctionYeah)
 	timer.start()
 	
-	app.run(host='0.0.0.0', port=8888, debug=True)
+	app.run(host='0.0.0.0', port=config.PORT_NUMBER, debug=True)
