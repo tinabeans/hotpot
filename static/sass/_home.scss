@@ -11,6 +11,8 @@ body#cover {
 		margin: 0;
 		left: 30%;
 		z-index: +2;
+		@include border-top-left-radius(0px);
+		@include border-top-right-radius(0px);
 	}
 }
 
@@ -193,8 +195,11 @@ body#cover {
 	
 	.featureImage {
 		@include lightBrownBorder;
-		height:200px;
 		margin-bottom:20px;
+	}
+	
+	#peopleImage {
+		border:0;
 	}
 	
 	p {
@@ -220,8 +225,24 @@ body#cover {
 	
 	#mainContainer h2 {
 		@include bigFatLetters;
-		font-size:18px;
+		font-size:24px;
 		margin-bottom:15px;
+	}
+	
+	#upcomingContainer, #invitations {
+		margin-top:40px;
+	}
+	
+	#upcomingContainer h2 {
+		color:$orange;
+	}
+	
+	#invitations h2 {
+		color:$mediumBlue;
+	}
+	
+	.intro {
+		font-size:18px;
 	}
 }
 
@@ -252,19 +273,122 @@ body#cover {
 		width:100%;
 		margin:0px;
 		display: inline-block;
-		font-size:34px;
+		font-size:32px;
 	}
 	
 	.buttons {
 		margin-bottom:40px;
 	}
+}
+
+#upcomingContainer {
 	
-	#upcoming {
-		h2 {
-			color:$mediumBlue;
+	.alertNumber {
+		@include alertNumber;
+		width:20px;
+		height:20px;
+		padding:0px;
+		font-size:14px;
+		line-height: 21px;
+	}
+	
+	.invitation {
+		@include lightBrownBg;
+		padding:30px 30px 30px 30px;
+		position: relative;
+		@include clearfix;
+		margin-bottom:30px;
+		
+		.sendDate {
+			position: absolute;
+			right:8;
+			top:5;
+			font-weight: 600;
+			text-transform: none;
+			font-size:12px;
+		}
+	
+		.mealImage {
+			@include mealImage;
+			width:120px;
+			height:120px;
+			float:left;
+		}
+		
+		.invitationInfo {
+			margin-left:150px;
+			font-size:16px;
+			
+			h3 {
+				font-weight: 700;
+				text-transform: none;
+				font-size:20px;
+				font-size:24px;
+			}
+			
+			.label {
+				@include bigFatLetters;
+				font-size:12px;
+				margin-right: 10px;
+				
+				&.date {
+					color:$orange;
+				}
+				
+				&.time {
+					margin-left:20px;
+					color:$green;
+				}
+			}
+			
+			.datetime {
+				margin:10px 0px 20px 0px;
+			}
+			
+			.with {
+				margin:10px 20px 0px 0px;
+				float:left;
+			
+				.label {
+					color:$darkBlue;
+				}
+			}
+		}
+	}
+	
+	.invitation {
+		.partnerUserpic {
+			@include largeUserpic;
+			position: absolute;
+			left:15px;
+			top:15px;
+		}
+		
+		.invitationInfo {
+			.datetime {
+				margin:10px 0px 20px 0px;
+			}
+		}
+		
+		.cookingRoomLink {
+			background:$green;
+			@include box-sizing(border-box);
+			@include box-shadow(0 4px 0 darken($green, 15));
+			margin-left:10px;
+		
+			&:hover {
+				background: darken($green, 4);
+				@include box-shadow(0 4px 0 darken($green, 20));
+			}
+			
+			&:active {
+				@include box-shadow(0 2px 0 darken($green, 15));
+			}
 		}
 	}
 }
+
+
 
 #dashboardLeft {
 	margin-right:290px;
@@ -288,22 +412,26 @@ body#cover {
 }
 
 #userInfoBox {
-	@include lightBrownBg;
-	padding:30px;
+	@include lightBlueBg;
+	padding: 25px 30px 30px 30px;
 	@include clearfix;
 	margin-bottom:40px;
+	margin-left:20px;
+	margin-left: 60px;
+	position: relative;
+	overflow:visible;
 	
 	.userpic {
 		@include largeUserpic;
-		float:left;
+		position: absolute;
+		left: -73px;
+		top: 11px;
 		width:115px;
 		height:115px;
-		position: relative;
-		top:-3px;
 	}
 	
 	.content {
-		margin-left: 150px;
+		margin-left: 45px;
 	}
 	
 	.location {
@@ -328,47 +456,42 @@ body#cover {
 	
 }
 
-#whatsNew {
+#dashboard #whatsNew {
 	
 	h2 {
+		font-size:18px;
 		color:$green;
+	}
+	
+	p {
+		font-size:14px;
 	}
 	
 	#newMeal {
 		@include lightGreenBg;
-		padding:30px;
-		font-size:16px;
+		padding:20px;
 		@include clearfix;
 		
 		.mealImage {
 			@include mealImage;
-			width:130px;
-			height:130px;
-			float:left;
+			height:120px;
+			margin-bottom:20px;
+			width:100%;
+			@include box-sizing(border-box);
+			
+			img {
+				width:100%;
+				height:auto;
+				position: relative;
+				top:-10%;
+			}
 		}
 		
 		h3 {
-			font-size:20px;
+			font-size:23px;
 			font-weight: 700;
 			margin-bottom:10px;
-		}
-		
-		.content {
-			margin-left:160px;
-		}
-	}
-	
-	.smallButton {
-		background:$green;
-		@include box-shadow(0 4px 0 darken($green, 15));
-	
-		&:hover {
-			background: darken($green, 4);
-			@include box-shadow(0 4px 0 darken($green, 20));
-		}
-		
-		&:active {
-			@include box-shadow(0 2px 0 darken($green, 15));
+			line-height:1.2em;
 		}
 	}
 }

@@ -31,7 +31,7 @@
 	<div id="upcoming">
 		<p>Ooooo, you have <strong>x</strong> confirmed Hotpots coming up</p>
 		
-		<a href="/upcoming" class="button">View Upcoming</a>
+		<a href="/invitations/upcoming" class="button">View Upcoming</a>
 	</div>
 
 </aside>
@@ -50,7 +50,7 @@
 	
 	<div id="sent" class="invitationsList">
 	{% if invitationsSent|length() == 0 %}
-		<p class="message">No invitations. We recommend sending some as soon as possible! :)</p>
+		<p class="intro">No invitations. We recommend sending some as soon as possible! :)</p>
 	{% endif %}
 	
 	{% for invitation in invitationsSent %}
@@ -107,12 +107,12 @@
 	
 	<div id="received" style="display:none;" class="invitationsList">
 	{% if alertNumber != 0 %}
-		<p class="message">You have <span class="alertNumber">{{ alertNumber }}</span> invitation{% if alertNumber > 1 %}s{% endif %} below awaiting your reply.</p>
+		<p class="intro">You have <span class="alertNumber">{{ alertNumber }}</span> invitation{% if alertNumber > 1 %}s{% endif %} below awaiting your reply.</p>
 	{% endif %}
 	
 	
 	{% if invitationsReceived|length() == 0 %}
-		<p class="message">No invitations received... yet!</p>
+		<p class="intro">No invitations received... yet!</p>
 	{% endif %}
 	
 	{% for invitation in invitationsReceived %}
@@ -163,5 +163,5 @@
 	{% endfor %}
 	</div><!-- #received -->
 
-</div><!-- #invitationsList -->
+</div><!-- #invitationsContainer -->
 {% endblock main %}

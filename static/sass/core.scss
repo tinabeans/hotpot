@@ -341,10 +341,11 @@ body {
 a {
 	text-decoration:none;
 	color:$orange;
-}
-
-a:hover {
-	color:$orange;
+	font-weight: 600;
+	
+	&:hover {
+		color:lighten($orange, 10);
+	}
 }
 
 strong {
@@ -577,6 +578,7 @@ $headerHeight: 96px;
 		img {
 			@include border-radius(80px);
 			width:62px;
+			height:62px;
 		}
 	}
 	

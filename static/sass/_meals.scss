@@ -238,18 +238,23 @@ $mealSidebarRightOffset:33px;
 		width:70px;
 		height:70px;
 		@include bigFatLetters;
-		background:rgba($mediumBlue, .4) url(/static/images/textureSoft.png);
+		background:rgba($mediumBlue, .9) url(/static/images/textureStrong.png);
 		color:#fff;
 		text-align: center;
 		@include border-radius(100px);
 		@include box-sizing(border-box);
-		padding:18px 10px 10px 10px;
-		font-size:12px;
+		padding:17px 10px 10px 10px;
+		font-size:13px;
+		letter-spacing: .05em;
 		margin-left:8px;
+		
+		img {
+			margin-top:2px;
+		}
 	}
 			
 	#returnLink:hover {
-		background:rgba($mediumBlue, .6) url(/static/images/textureSoft.png);
+		background:darken($mediumBlue, 5) url(/static/images/textureStrong.png);
 	}
 
 	#mealImageContainer {

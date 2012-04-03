@@ -104,7 +104,16 @@ def index():
 def home():
 	newMeal = db.meals.find_one({'slug' : 'LemonGarlicKalePasta'})
 	
-	return render_template('home.html', newMeal=newMeal)
+	# grab both the sent and received invitations that have been accepted
+	invitations = grabAllInvitationsFor(flask.session['userId'])
+	
+	futureHotpots = filterUpcoming(invitations)
+	
+	# grab other info for upcoming Hotpots!
+	for hotpot in futureHotpots:
+		grabInvitationInfo(hotpot)
+	
+	return render_template('home.html', newMeal=newMeal, hotpots=futureHotpots)
 
 
 ##############################################################################
@@ -284,8 +293,38 @@ def showMyStuff():
 	if 'userId' in flask.session:
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 
-	return render_template('account.html')
+	return render_template('account.html', userEmail=user['email'])
 
+
+@app.route('/updateAccountInfo', methods=['POST'])
+def updateAccountInfo():
+	data = flask.request.form
+	
+	emailWasChanged = False
+	passwordWasChanged = False
+	
+	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+	if data['email'] != user['email']:
+		user['email'] = data['email']
+		emailWasChanged = True
+	
+	if data['password'] != '':
+		user['password'] = data['password']
+		passwordWasChanged = True
+	
+	if emailWasChanged and passwordWasChanged:
+		flask.flash('Email and password have been updated.')
+	elif emailWasChanged:
+		flask.flash('Email has been updated.')
+	elif passwordWasChanged:
+		flask.flash('Password has been updated.')
+	else:
+		flask.flash('No changes were made.')
+	
+	db.users.save(user);
+	
+	return flask.redirect(flask.url_for('showMyStuff'))
+	
 
 
 ##############################################################################
@@ -738,6 +777,8 @@ def grabMealInfo(slug):
 	
 	return mealInfo
 
+
+
 def grabUserInfo(inviteeId):
 	
 	if '@' not in inviteeId:
@@ -761,6 +802,8 @@ def grabUserInfo(inviteeId):
 		}
 		
 	return inviteeInfo
+
+
 	
 def grabInvitationInfo(invitation):
 	# start a new blank array to hold invitee details
@@ -786,6 +829,25 @@ def grabInvitationInfo(invitation):
 	
 	return invitation
 
+
+
+def grabAllInvitationsFor(userId):
+	
+	return list(db.invitations.find({'hostId' : userId, 'itsHappening' : True })) + list(db.invitations.find({'inviteeIds' : userId, 'itsHappening' : True }))
+	
+def filterUpcoming(invitations):
+	
+	# filter out the ones that are in the past
+	futureHotpots = []
+	
+	for invitation in invitations:
+		if invitation['datetime'] >= time.time(): # current time
+			futureHotpots.append(invitation)
+		
+	return futureHotpots
+	
+	
+
 @app.route('/invitations/')
 def showInvitations():
 
@@ -808,6 +870,29 @@ def showInvitations():
 		grabInvitationInfo(invitation)
 	
 	return render_template('invitations.html', invitationsSent=invitationsSent, invitationsReceived=invitationsReceived)
+
+
+@app.route('/invitations/upcoming')
+def showUpcoming():
+	
+	if 'userId' not in flask.session:
+		flask.flash('Log in to view upcoming Hotpots.')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/invitations/upcoming'}))
+		
+	# grab both the sent and received invitations that have been accepted
+	invitations = grabAllInvitationsFor(flask.session['userId'])
+	
+	futureHotpots = filterUpcoming(invitations)
+	
+	# grab other info for upcoming Hotpots!
+	for hotpot in futureHotpots:
+		grabInvitationInfo(hotpot)
+	
+	# get number of invitations sent and received
+	numberOfInvitationsSent = len(list(db.invitations.find({'hostId' : flask.session['userId']})))
+	numberOfInvitationsReceived = len(list(db.invitations.find({'inviteeIds' : flask.session['userId']})))
+	
+	return render_template('upcoming.html', hotpots=futureHotpots, numberOfInvitationsSent=numberOfInvitationsSent, numberOfInvitationsReceived=numberOfInvitationsReceived)
 
 
 @app.route('/invitations/<id>')
@@ -844,6 +929,7 @@ def showInvitation(id):
 		invitationType = "received"
 	
 	return render_template('invitation.html', invitation=invitation, numberOfInvitationsSent=numberOfInvitationsSent, numberOfInvitationsReceived=numberOfInvitationsReceived, invitationType=invitationType)
+	
 
 
 ##############################################################################

@@ -572,13 +572,6 @@ table.jCalendar {
 		font-size:14px;	
 	}
 	
-	.message {
-		text-align: left;
-		font-size:18px;
-		color:$textColor;
-		margin: 0px 0px 30px 0px;
-	}
-	
 	.alertNumber {
 		@include alertNumber;
 		width:20px;

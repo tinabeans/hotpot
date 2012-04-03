@@ -27,24 +27,29 @@
 <div id="dashboardRight">
 	
 	<div class="buttons">
-		<a href="/meals" class="bigButton" id="inviteButton"><span class="small">Browse </span>the meals</a>
+		<a href="/meals" class="bigButton" id="inviteButton"><span class="small"><em>Browse</em></span>the meals</a>
 	</div>
 	
-	<div id="upcoming">
-		<h2>Upcoming</h2>
+	<div id="whatsNew">
+		<h2>What's New?</h2>
 		
-		<p>[INCOMPLETE] You have <strong>x</strong> Hotpots coming up.</p>
+		<p><strong>3/23/12</strong>  We just added a new meal to the collection:</p>
 		
-		<a href="/invitations" class="smallButton">All Invitations</a>
+		<div id="newMeal">
+			<h3>{{ newMeal.title }}</h3>
+		
+			<div class="mealImage">
+				<a href="/meals/{{ newMeal.slug }}"><img src="/static/images/food/{{ newMeal.slug }}.jpg" /></a>
+			</div>
+			
+			<div class="content">
+				<p>{{ newMeal.shortDescription }} <a href="/meals/{{ newMeal.slug }}">Take a look &raquo;</a></p>
+			</div>
+		</div>
 	</div>
 	
 </div>
 
-
-	
-{% if alertNumber != 0 %}
-	<p id="newInvitationsAlert">You have <span class="alertNumber">{{ alertNumber }}</span> invitation{% if alertNumber > 1 %}s{% endif %} awaiting your reply. <a href="/invitations/?filter=received">Take a look &raquo;</a></p>
-{% endif %}
 
 <div id="dashboardLeft">
 	<div id="userInfoBox">
@@ -65,23 +70,62 @@
 		</div>
 	</div>
 	
-	<div id="whatsNew">
-		<h2>What's New?</h2>
-		
-		<p><strong>3/23/12</strong>  We just added a new meal to the collection:</p>
-		
-		<div id="newMeal">
-			<div class="mealImage">
-				<img src="/static/images/food/{{ newMeal.slug }}.jpg" />
-			</div>
+	<div id="upcomingContainer">
+		<h2>Upcoming</h2>
+	
+		<div id="upcoming" class="invitationsList">
 			
-			<div class="content">
-				<h3>{{ newMeal.title }}</h3>
-				<p>{{ newMeal.shortDescription }}</p>
-				<a href="/meals/{{ newMeal.slug }}" class="smallButton">Check it out</a>
+			{% if hotpots|length() == 0 %}
+				<p class="intro">Nothing coming up. Maybe it's time to <a href="/meals">start making some plans</a>!</p>
+			{% else %}
+				<p class="intro">You have <span class="alertNumber">{{ hotpots|length() }}</span> Hotpot{% if hotpots|length() > 1 %}s{% endif %} on the horizon:</p>
+			{% endif %}
+		
+		{% for hotpot in hotpots %}
+			<div class="invitation">
+				
+				<div class="mealImage">
+					<img src="/static/images/food/{{ hotpot.meal.slug }}.jpg" />
+				</div>
+				
+				<div class="partnerUserpic">
+					<img src="/static/uploads/userpics/{{ hotpot.host.userpic }}" />
+				</div>
+				
+				<div class="invitationInfo">
+					<h3>{{ hotpot.meal.title }}</h3>
+					<div class="with">
+						<span class="label">With</span>
+						{{ hotpot.host.name }}
+					</div>
+					<div class="datetime">
+						<span class="label date">Date</span>
+						{{ hotpot.readableDate }}
+						
+						<span class="label time">Time</span>
+						{{ hotpot.readableTime|safe }}
+					</div>
+					
+					<a href="/invitations/{{ hotpot._id }}" class="smallButton">View Invitation</a>
+					<a href="/rooms/{{ hotpot._id }}" class="smallButton cookingRoomLink">Launch Cooking Room</a>
+				</div>
+				
 			</div>
-		</div>
+		{% endfor %}
+		</div><!-- #upcoming -->
+
+	</div><!-- #upcomingContainer-->
+	
+	<div id="invitations">
+		<h2>Invitations</h2>
+		
+		{% if alertNumber != 0 %}
+		<p id="newInvitationsAlert">You have <span class="alertNumber">{{ alertNumber }}</span> invitation{% if alertNumber > 1 %}s{% endif %} awaiting your reply. <a href="/invitations/?filter=received">Take a look &raquo;</a></p>
+	{% endif %}
+		
+		<a href="/invitations" class="smallButton">View My Invitations</a>
 	</div>
+	
 </div>
 
 {% endblock main %}
