@@ -373,6 +373,10 @@ table.jCalendar {
 		#replyMessage {
 			@include lightOrangeBg;
 		}
+		
+		a {
+			color:$mediumBlue;
+		}
 	}
 	
 	#theRestOfTheReplyForm.no {
