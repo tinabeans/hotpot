@@ -36,10 +36,7 @@ allTheSockets = {}
 openTokSessions = {}
 
 # OpenTok setup
-api_key = "6303111"
-api_secret = "45b94b30d4f5554ad7445950c13e8d78e099e92e"
-
-opentok_sdk = OpenTokSDK.OpenTokSDK(api_key, api_secret)
+opentok_sdk = OpenTokSDK.OpenTokSDK(config.api_key, config.api_secret)
 
 # no comment.
 tornado.websocket.WebSocketHandler.allow_draft76 = lambda self:True

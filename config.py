@@ -1,5 +1,8 @@
 import sys
 
+api_key = "6303111"
+api_secret = "45b94b30d4f5554ad7445950c13e8d78e099e92e"
+
 if sys.argv[1] == "LIVE":
 
 	BASE_URL = 'http://letsgohotpot.com'

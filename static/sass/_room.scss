@@ -1,16 +1,85 @@
 /**********************************************************/
+/* DRESSING ROOM */
+
+#dressingRoom {
+	h1 {
+		padding:40px;
+		text-align: center;
+		
+		img {
+			width:230px;
+		}
+	}
+	
+	
+}
+
+#dressingRoomBox {
+	width:800px;
+	@include lightBrownBorder;
+	background:#fff;
+	padding:30px;
+	margin:0px auto;
+	@include clearfix;
+	
+	h2 {
+		@include bigFatLetters;
+		font-size:30px;
+		text-align: center;
+		color:$darkBlue;
+	}
+	
+	p.intro {
+		margin-top:10px;
+		text-align: center;
+		width:80%;
+		margin:10px auto 20px auto;
+	}
+	
+	#testVideoContainer {
+		float: left;
+		width:370px;
+		margin-right: 20px;
+		height:240px;
+	}
+	
+	h3 {
+		@include bigFatLetters;
+		font-size:16px;
+		color:$mediumBlue;
+		margin-bottom:10px;
+	}
+	
+	ul {
+		margin-left: 400px;
+		padding-left:25px;
+	}
+	
+	li {
+		list-style-type: disc;
+		font-size:16px;
+		padding:5px 0px;
+	}
+	
+	.bigButton {
+		margin-top:20px;
+	}
+}
+
+
+/**********************************************************/
 /* COOKING ROOM */
+	
+#roomBg {
+	background: url(/static/images/bg_clouds.png) center top no-repeat;
+	padding:0px 20px;
+}
 
 #cookingRoom {
 	background: #fff url(/static/images/textureSoft.png);
 	
 	#userId {
 		display: none;
-	}
-	
-	#roomBg {
-		background: url(/static/images/bg_clouds.png) center top no-repeat;
-		padding:0px 20px;
 	}
 	
 	header {
@@ -577,7 +646,7 @@ $widgetNavHeight:45px;
 	}
 }
 
-#myVideoContainer, .friendVideo {
+#myVideoContainer, .friendVideo, #testVideoContainer {
 	border:5px solid #fff;
 	@include box-shadow(0px 1px 4px rgba(0,0,0,.5));
 }

@@ -17,6 +17,9 @@ import saveStuff
 # config variables, to make moving to production easier
 import config
 
+# opentok
+from lib import OpenTokSDK
+
 
 ##############################################################################
 # GLOBAL VARIABLES & CONFIG
@@ -1107,6 +1110,17 @@ def sendCookingReminder():
 
 ##############################################################################
 # HOTPOT ROOM
+
+
+@app.route('/getready/<id>')
+def showDressingRoom(id):
+	
+	# generate an opentok session and token to send to the user
+	opentok_sdk = OpenTokSDK.OpenTokSDK(config.api_key, config.api_secret)
+	session = opentok_sdk.create_session()
+	token = opentok_sdk.generate_token(session.session_id)
+	
+	return render_template('dressingRoom.html', roomId=id, token=token, sessionId=session.session_id)
 
 # takes a meal dictionary and inserts notes into the appropriate step
 def insertNotesIntoSteps(meal, notes):

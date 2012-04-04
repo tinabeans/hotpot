@@ -37,7 +37,7 @@ $(document).ready(function(){
 		$('#registrationFormContainer').fadeIn();
 	});
 
-	$('#registrationForm, #loginForm').submit(function(e){
+	$(document).on('submit', '#registrationForm, #loginForm', function(e){
 		// we're not sending passwords in the clear, yay!
 		// although yang says in a perfect world i would be using https...
 		// hmph.

@@ -12,7 +12,7 @@ $(document).ready(function(){
 	};
 
 
-	$('form').submit(function(e){
+	$(document).on('submit', 'form', function(e){
 		
 		// clear previous errors
 		$('.formItemError').remove();
