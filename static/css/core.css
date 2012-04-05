@@ -5171,35 +5171,48 @@ table.jCalendar td.unselectable.dp-hover {
   padding: 7px;
 }
 
+/* line 27, ../sass/_account.scss */
+#registrationForm .firstname, #accountInfoForm .firstname {
+  width: 48%;
+  float: left;
+}
+/* line 32, ../sass/_account.scss */
+#registrationForm .lastname, #accountInfoForm .lastname {
+  width: 48%;
+  margin-left: 52%;
+  display: block;
+}
+
 /**********************************************************/
 /* EDIT ACCOUNT INFO & EDIT PROFILE PAGE */
-/* line 29, ../sass/_account.scss */
+/* line 43, ../sass/_account.scss */
 #profile #pageTitle, #account #pageTitle {
   margin-bottom: 40px;
 }
-/* line 33, ../sass/_account.scss */
+/* line 47, ../sass/_account.scss */
 #profile .message, #account .message {
   margin-bottom: 20px;
 }
 
-/* line 38, ../sass/_account.scss */
+/* line 52, ../sass/_account.scss */
 #accountInfoFormContainer {
   width: 300px;
   margin: 0px auto;
   background: #f8f6f0 url(/static/images/textureSoft.png);
   padding: 1px 30px 30px 30px;
 }
-/* line 44, ../sass/_account.scss */
-#accountInfoFormContainer .buttons {
+
+/* line 60, ../sass/_account.scss */
+#accountInfoForm .buttons {
   text-align: left;
   margin-top: 30px;
 }
-/* line 49, ../sass/_account.scss */
-#accountInfoFormContainer label {
+/* line 65, ../sass/_account.scss */
+#accountInfoForm label {
   display: none;
 }
-/* line 53, ../sass/_account.scss */
-#accountInfoFormContainer h2 {
+/* line 69, ../sass/_account.scss */
+#accountInfoForm h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
   font-weight: 900;
@@ -5207,31 +5220,20 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 16px;
   margin: 35px 0px 20px 0px;
 }
-/* line 60, ../sass/_account.scss */
-#accountInfoFormContainer fieldset {
+/* line 76, ../sass/_account.scss */
+#accountInfoForm fieldset {
   margin: 0px 0px 30px 0px;
 }
-/* line 64, ../sass/_account.scss */
-#accountInfoFormContainer input[type=submit] {
+/* line 80, ../sass/_account.scss */
+#accountInfoForm input[type=submit] {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 69, ../sass/_account.scss */
-#accountInfoFormContainer .firstname {
-  width: 48%;
-  float: left;
-}
-/* line 74, ../sass/_account.scss */
-#accountInfoFormContainer .lastname {
-  width: 48%;
-  margin-left: 52%;
-  display: block;
-}
-/* line 80, ../sass/_account.scss */
-#accountInfoFormContainer .userpic {
+/* line 85, ../sass/_account.scss */
+#accountInfoForm .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
@@ -5253,7 +5255,7 @@ table.jCalendar td.unselectable.dp-hover {
   float: left;
 }
 /* line 255, ../sass/core.scss */
-#accountInfoFormContainer .userpic img {
+#accountInfoForm .userpic img {
   width: 100%;
   height: 100%;
   -moz-border-radius: 100px;
@@ -5264,7 +5266,7 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 85, ../sass/_account.scss */
-#accountInfoFormContainer #userpicUpload {
+/* line 90, ../sass/_account.scss */
+#accountInfoForm #userpicUpload {
   margin-left: 100px;
 }

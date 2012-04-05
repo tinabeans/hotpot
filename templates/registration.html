@@ -15,7 +15,7 @@
 			// although yang says in a perfect world i would be using https...
 			// hmph.
 			var encryptedPassword = $.sha1($('#passwordField').val());
-			$('#encryptedPassword').val(encryptedPassword);
+			$(this).find('.encryptedPassword').val(encryptedPassword);
 		});
 	});
 	
@@ -33,33 +33,9 @@
 <h1 id="pageTitle">Join Hotpot</h1>
 
 <div id="registrationFormContainer">
-<form id="registrationForm" action="registerAction" method="POST">
-	<div class="formItem">
-		<label>first name: *</label>
-		<input type="text" name="name" class="required" placeholder="first name" />
-	</div>
-	
-	<div class="formItem">
-		<label>last name:</label>
-		<input type="text" name="lastname" placeholder="last name" />
-	</div>
 
-	<div class="formItem">
-		<label>email: *</label>
-		<input type="text" name="email" class="required emailInput" placeholder="email" />
-	</div>
-	
-	<div class="formItem">
-		<label>password: *</label>
-		<input type="password" id="passwordField" class="required" placeholder="password" />
-	</div>
-	
-	<input type="hidden" name="password" id="encryptedPassword" />
-	
-	<div class="buttons">
-		<input type="submit" />
-	</div>
-</form>
+	{% include 'registrationForm.html' %}
+
 </div><!-- #registrationFormContainer -->
 
 
