@@ -451,6 +451,16 @@ def showMeal(slug):
 ##############################################################################
 # INVITING SOMEONE TO COOK
 
+@app.route('/invite')
+def showBlankInviteForm():
+	
+	if 'userId' not in flask.session:
+		return flask.redirect('/login?redirect=invite')
+	else:
+		meals = list(db.meals.find())
+		meal = db.meals.find_one()
+		return render_template('invite.html', meals=meals, meal=meal)
+
 @app.route('/invite/<meal>')
 def showInviteForm(meal):
 	
@@ -461,6 +471,22 @@ def showInviteForm(meal):
 	else:
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 		return render_template('invite.html', meal=meal )
+
+@app.route('/loadMealInformation')
+def loadMealInformation():
+
+	slug = flask.request.args.get('slug', '')
+	
+	meal = db.meals.find_one({'slug' : slug})
+	
+	mealInfo = {
+		'title' : meal['title'],
+		'shortDescription' : meal['shortDescription'],
+		'ingredients' : meal['ingredients'],
+		'slug' : meal['slug']
+	}
+	
+	return json.dumps(mealInfo)
 	
 
 @app.route('/sendInvitation', methods=['POST'])

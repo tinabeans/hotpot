@@ -132,12 +132,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* OLD STUFF!? */
 /**********************************************************/
 /* TAG REDEFINITIONS */
-/* line 330, ../sass/core.scss */
+/* line 347, ../sass/core.scss */
 html {
   height: 100%;
 }
 
-/* line 334, ../sass/core.scss */
+/* line 351, ../sass/core.scss */
 body {
   margin: 0px;
   padding: 0px;
@@ -149,23 +149,23 @@ body {
   background: white url(/static/images/bodyBg.jpg);
 }
 
-/* line 342, ../sass/core.scss */
+/* line 359, ../sass/core.scss */
 a {
   text-decoration: none;
   color: #ef5922;
   font-weight: 600;
 }
-/* line 347, ../sass/core.scss */
+/* line 364, ../sass/core.scss */
 a:hover {
   color: #f27d52;
 }
 
-/* line 352, ../sass/core.scss */
+/* line 369, ../sass/core.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 357, ../sass/core.scss */
+/* line 374, ../sass/core.scss */
 p {
   line-height: 1.4em;
   margin: 0px 0px 15px 0px;
@@ -173,20 +173,20 @@ p {
 
 /**********************************************************/
 /* COMMON STUFF */
-/* line 372, ../sass/core.scss */
+/* line 389, ../sass/core.scss */
 #homeIntro, #mainContainer, #featuredMeals, #mainFooter {
   width: 88%;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 376, ../sass/core.scss */
+/* line 393, ../sass/core.scss */
 #mainContainer {
   padding: 40px 0px;
   margin: 0px auto;
 }
 
-/* line 381, ../sass/core.scss */
+/* line 398, ../sass/core.scss */
 .button {
   display: inline-block;
   border: 0px;
@@ -228,7 +228,7 @@ p {
   top: 2px;
 }
 
-/* line 385, ../sass/core.scss */
+/* line 402, ../sass/core.scss */
 .smallButton {
   color: #fff;
   display: inline-block;
@@ -269,7 +269,7 @@ p {
   top: 2px;
 }
 
-/* line 389, ../sass/core.scss */
+/* line 406, ../sass/core.scss */
 .bigButton {
   display: inline-block;
   border: 0px;
@@ -357,29 +357,29 @@ p {
   letter-spacing: 0.05em;
 }
 
-/* line 393, ../sass/core.scss */
+/* line 410, ../sass/core.scss */
 .divider {
   background: #e9e7e0 url(/static/images/textureStrong.png);
   height: 5px;
   margin: 15px 0px;
 }
 
-/* line 399, ../sass/core.scss */
+/* line 416, ../sass/core.scss */
 .returnLink {
   margin-bottom: 15px;
 }
-/* line 402, ../sass/core.scss */
+/* line 419, ../sass/core.scss */
 .returnLink a {
   font-size: 14px;
   font-weight: 700;
   color: #4e565c;
 }
-/* line 407, ../sass/core.scss */
+/* line 424, ../sass/core.scss */
 .returnLink a:hover {
   color: #ef5922;
 }
 
-/* line 413, ../sass/core.scss */
+/* line 430, ../sass/core.scss */
 .message {
   background: rgba(115, 108, 91, 0.7);
   color: #fff;
@@ -395,19 +395,19 @@ p {
   border-radius: 5px;
   text-align: center;
 }
-/* line 423, ../sass/core.scss */
+/* line 440, ../sass/core.scss */
 .message a {
   color: #FFC240;
 }
 
 /**********************************************************/
 /* HEADER */
-/* line 434, ../sass/core.scss */
+/* line 451, ../sass/core.scss */
 #mainHeader {
   position: relative;
   height: 96px;
 }
-/* line 438, ../sass/core.scss */
+/* line 455, ../sass/core.scss */
 #mainHeader h1 {
   background: url(/static/images/headerLeftEdge.png) right top no-repeat;
   width: 180px;
@@ -417,13 +417,13 @@ p {
   left: 7%;
   z-index: 1;
 }
-/* line 447, ../sass/core.scss */
+/* line 464, ../sass/core.scss */
 #mainHeader h1 img {
   margin-top: 13px;
   width: 140px;
 }
 
-/* line 454, ../sass/core.scss */
+/* line 471, ../sass/core.scss */
 #headerNavsContainer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -435,17 +435,17 @@ p {
   padding-left: 179px;
 }
 
-/* line 462, ../sass/core.scss */
+/* line 479, ../sass/core.scss */
 #headerNavs {
   background: url(/static/images/headerBg.png) repeat-x;
   height: 96px;
 }
 
-/* line 467, ../sass/core.scss */
+/* line 484, ../sass/core.scss */
 #mainNav {
   padding: 23px 0px 0px 30px;
 }
-/* line 470, ../sass/core.scss */
+/* line 487, ../sass/core.scss */
 #mainNav a {
   display: inline-block;
   margin-right: 35px;
@@ -459,13 +459,13 @@ p {
   color: #736c5b;
   line-height: 20px;
 }
-/* line 480, ../sass/core.scss */
+/* line 497, ../sass/core.scss */
 #mainNav a .small {
   display: block;
   font-size: .55em;
   font-weight: 900;
 }
-/* line 485, ../sass/core.scss */
+/* line 502, ../sass/core.scss */
 #mainNav a .small em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -474,19 +474,19 @@ p {
   letter-spacing: normal;
   font-size: 1em;
 }
-/* line 496, ../sass/core.scss */
+/* line 513, ../sass/core.scss */
 #mainNav a:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
 
-/* line 501, ../sass/core.scss */
+/* line 518, ../sass/core.scss */
 #serviceNavs {
   position: absolute;
   top: 0;
   right: 6%;
 }
-/* line 506, ../sass/core.scss */
+/* line 523, ../sass/core.scss */
 #serviceNavs #loginLink, #serviceNavs #registerLink {
   display: inline-block;
   font-weight: bold;
@@ -495,12 +495,12 @@ p {
   margin: 45px 0px 0px 30px;
   font-size: 15px;
 }
-/* line 514, ../sass/core.scss */
+/* line 531, ../sass/core.scss */
 #serviceNavs #loginLink:hover, #serviceNavs #registerLink:hover {
   color: #f27d52;
 }
 
-/* line 520, ../sass/core.scss */
+/* line 537, ../sass/core.scss */
 #bigInviteButton {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -527,19 +527,19 @@ p {
   top: 17px;
   letter-spacing: .05em;
 }
-/* line 536, ../sass/core.scss */
+/* line 553, ../sass/core.scss */
 #bigInviteButton .big {
   font-size: 20px;
   display: block;
 }
-/* line 541, ../sass/core.scss */
+/* line 558, ../sass/core.scss */
 #bigInviteButton em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-weight: 500;
   text-transform: lowercase;
 }
-/* line 548, ../sass/core.scss */
+/* line 565, ../sass/core.scss */
 #bigInviteButton .small {
   font-size: 13px;
   display: block;
@@ -547,7 +547,7 @@ p {
   top: 1px;
 }
 
-/* line 556, ../sass/core.scss */
+/* line 573, ../sass/core.scss */
 #userInfoContainer {
   float: left;
   height: 10px;
@@ -556,16 +556,16 @@ p {
   min-width: 155px;
 }
 
-/* line 564, ../sass/core.scss */
+/* line 581, ../sass/core.scss */
 #userInfo {
   padding: 6px 52px 5px 12px;
   color: #736c5b;
 }
-/* line 568, ../sass/core.scss */
+/* line 585, ../sass/core.scss */
 #userInfo a {
   display: block;
 }
-/* line 572, ../sass/core.scss */
+/* line 589, ../sass/core.scss */
 #userInfo .userpic {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -581,7 +581,7 @@ p {
   top: 8px;
   z-index: 3;
 }
-/* line 582, ../sass/core.scss */
+/* line 599, ../sass/core.scss */
 #userInfo .userpic img {
   -moz-border-radius: 80px;
   -webkit-border-radius: 80px;
@@ -593,18 +593,18 @@ p {
   height: 100%;
   background: #fff;
 }
-/* line 590, ../sass/core.scss */
+/* line 607, ../sass/core.scss */
 #userInfo h2 {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
   font-size: 12px;
 }
-/* line 596, ../sass/core.scss */
+/* line 613, ../sass/core.scss */
 #userInfo .greeting {
   display: block;
   font-weight: normal;
 }
-/* line 601, ../sass/core.scss */
+/* line 618, ../sass/core.scss */
 #userInfo .username {
   display: inline-block;
   font-weight: bold;
@@ -616,21 +616,21 @@ p {
   background: url(/static/images/icon_downArrow_brown.png) right center no-repeat;
 }
 
-/* line 613, ../sass/core.scss */
+/* line 630, ../sass/core.scss */
 #userInfo.hover {
   color: #fff;
   background: #ef5922;
 }
-/* line 617, ../sass/core.scss */
+/* line 634, ../sass/core.scss */
 #userInfo.hover .userpic {
   border-color: #ef5922;
 }
-/* line 621, ../sass/core.scss */
+/* line 638, ../sass/core.scss */
 #userInfo.hover .username {
   background: url(/static/images/icon_downArrow_white.png) right center no-repeat;
 }
 
-/* line 626, ../sass/core.scss */
+/* line 643, ../sass/core.scss */
 #secondaryUserNav {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -642,7 +642,7 @@ p {
   position: relative;
   z-index: 2;
 }
-/* line 634, ../sass/core.scss */
+/* line 651, ../sass/core.scss */
 #secondaryUserNav a {
   display: block;
   font-weight: 700;
@@ -652,22 +652,22 @@ p {
   text-transform: uppercase;
   color: #736c5b;
 }
-/* line 644, ../sass/core.scss */
+/* line 661, ../sass/core.scss */
 #secondaryUserNav a:hover {
   background: #b3cbc6;
   color: #1c6770;
 }
 
-/* line 650, ../sass/core.scss */
+/* line 667, ../sass/core.scss */
 #primaryUserNav {
   padding-top: 31px;
   margin-right: 10px;
 }
-/* line 654, ../sass/core.scss */
+/* line 671, ../sass/core.scss */
 #primaryUserNav #invitationsLink {
   position: relative;
 }
-/* line 657, ../sass/core.scss */
+/* line 674, ../sass/core.scss */
 #primaryUserNav #invitationsLink .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -692,7 +692,7 @@ p {
   top: -2px;
   left: -8px;
 }
-/* line 665, ../sass/core.scss */
+/* line 682, ../sass/core.scss */
 #primaryUserNav a {
   float: left;
   display: block;
@@ -711,7 +711,7 @@ p {
   position: relative;
   text-align: center;
 }
-/* line 678, ../sass/core.scss */
+/* line 695, ../sass/core.scss */
 #primaryUserNav a .tooltip {
   display: none;
   position: absolute;
@@ -727,59 +727,59 @@ p {
   border-radius: 20px;
   white-space: nowrap;
 }
-/* line 690, ../sass/core.scss */
+/* line 707, ../sass/core.scss */
 #primaryUserNav a:hover {
   background-color: #736c5b;
 }
-/* line 693, ../sass/core.scss */
+/* line 710, ../sass/core.scss */
 #primaryUserNav a:hover .tooltip {
   display: block;
 }
 
-/* line 699, ../sass/core.scss */
+/* line 716, ../sass/core.scss */
 #invitationsLink {
   background-image: url(/static/images/icon_envelope.png);
 }
 
-/* line 700, ../sass/core.scss */
+/* line 717, ../sass/core.scss */
 #historyLink {
   background-image: url(/static/images/icon_clock.png);
 }
 
-/* line 701, ../sass/core.scss */
+/* line 718, ../sass/core.scss */
 #invitationsLink:hover {
   background-image: url(/static/images/icon_envelope_white.png);
 }
 
-/* line 702, ../sass/core.scss */
+/* line 719, ../sass/core.scss */
 #historyLink:hover {
   background-image: url(/static/images/icon_clock_white.png);
 }
 
-/* line 704, ../sass/core.scss */
+/* line 721, ../sass/core.scss */
 #primaryUserNav {
   float: left;
 }
 
 /**********************************************************/
 /* FOOTER */
-/* line 712, ../sass/core.scss */
+/* line 729, ../sass/core.scss */
 #mainFooter {
   text-align: center;
   clear: both;
   color: #666;
   padding: 60px 0px 30px 0px;
 }
-/* line 718, ../sass/core.scss */
+/* line 735, ../sass/core.scss */
 #mainFooter p {
   font-style: italic;
 }
 
-/* line 723, ../sass/core.scss */
+/* line 740, ../sass/core.scss */
 #footerNav {
   margin: 15px 0px;
 }
-/* line 726, ../sass/core.scss */
+/* line 743, ../sass/core.scss */
 #footerNav a {
   display: inline-block;
   padding: 0px 10px;
@@ -788,13 +788,13 @@ p {
 
 /**********************************************************/
 /* FORMS */
-/* line 737, ../sass/core.scss */
+/* line 754, ../sass/core.scss */
 .formItem {
   margin-bottom: 15px;
   position: relative;
 }
 
-/* line 742, ../sass/core.scss */
+/* line 759, ../sass/core.scss */
 .formItemError {
   position: absolute;
   left: -179px;
@@ -806,17 +806,17 @@ p {
   font-weight: 700;
 }
 
-/* line 753, ../sass/core.scss */
+/* line 770, ../sass/core.scss */
 .buttons {
   text-align: center;
 }
 
-/* line 757, ../sass/core.scss */
+/* line 774, ../sass/core.scss */
 label {
   display: block;
 }
 
-/* line 761, ../sass/core.scss */
+/* line 778, ../sass/core.scss */
 input, textarea {
   padding: 5px;
   margin: 0px;
@@ -826,20 +826,20 @@ input, textarea {
   border: 0;
 }
 
-/* line 770, ../sass/core.scss */
+/* line 787, ../sass/core.scss */
 textarea {
   height: 100px;
   resize: vertical;
   padding: 10px;
 }
 
-/* line 776, ../sass/core.scss */
+/* line 793, ../sass/core.scss */
 form .note, .formNote {
   margin-top: 8px;
   font-size: 12px;
 }
 
-/* line 781, ../sass/core.scss */
+/* line 798, ../sass/core.scss */
 input[type=submit], button[type=submit] {
   display: inline-block;
   border: 0px;
@@ -883,7 +883,7 @@ input[type=submit]:active, button[type=submit]:active {
   top: 2px;
 }
 
-/* line 787, ../sass/core.scss */
+/* line 804, ../sass/core.scss */
 input[disabled=disabled], button[disabled=disabled] {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
@@ -1045,49 +1045,49 @@ body#cover .message {
   -o-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
 }
-/* line 115, ../sass/_home.scss */
+/* line 220, ../sass/core.scss */
 #coverHeader #loginFormContainer .closeButton:hover, #coverHeader #registrationFormContainer .closeButton:hover {
   background-color: #c4bcac;
 }
-/* line 120, ../sass/_home.scss */
+/* line 107, ../sass/_home.scss */
 #coverHeader #loginFormContainer label, #coverHeader #registrationFormContainer label {
   display: none;
 }
-/* line 124, ../sass/_home.scss */
+/* line 111, ../sass/_home.scss */
 #coverHeader #loginFormContainer h2, #coverHeader #registrationFormContainer h2 {
   font-size: 18px;
   color: rgba(115, 108, 91, 0.7);
   margin-bottom: 10px;
 }
-/* line 130, ../sass/_home.scss */
+/* line 117, ../sass/_home.scss */
 #coverHeader #loginFormContainer .formItem, #coverHeader #registrationFormContainer .formItem {
   margin-bottom: 10px;
 }
-/* line 134, ../sass/_home.scss */
+/* line 121, ../sass/_home.scss */
 #coverHeader #loginFormContainer input[type=password], #coverHeader #loginFormContainer input[type=text], #coverHeader #registrationFormContainer input[type=password], #coverHeader #registrationFormContainer input[type=text] {
   padding: 7px;
 }
-/* line 138, ../sass/_home.scss */
+/* line 125, ../sass/_home.scss */
 #coverHeader #loginFormContainer .formItem, #coverHeader #registrationFormContainer .formItem {
   text-align: left;
 }
-/* line 142, ../sass/_home.scss */
+/* line 129, ../sass/_home.scss */
 #coverHeader #loginFormContainer .firstname, #coverHeader #registrationFormContainer .firstname {
   width: 48%;
   float: left;
 }
-/* line 147, ../sass/_home.scss */
+/* line 134, ../sass/_home.scss */
 #coverHeader #loginFormContainer .lastname, #coverHeader #registrationFormContainer .lastname {
   width: 48%;
   margin-left: 52%;
   display: block;
 }
-/* line 153, ../sass/_home.scss */
+/* line 140, ../sass/_home.scss */
 #coverHeader #loginFormContainer .buttons, #coverHeader #registrationFormContainer .buttons {
   margin-top: 20px;
 }
 
-/* line 161, ../sass/_home.scss */
+/* line 148, ../sass/_home.scss */
 #codeForm #codeError {
   margin-top: 20px;
   margin-bottom: 0px;
@@ -1095,15 +1095,15 @@ body#cover .message {
   font-weight: 700;
 }
 
-/* line 170, ../sass/_home.scss */
+/* line 157, ../sass/_home.scss */
 #coverInfo {
   width: 350px;
 }
-/* line 173, ../sass/_home.scss */
+/* line 160, ../sass/_home.scss */
 #coverInfo #coverIllustration {
   margin-bottom: 60px;
 }
-/* line 177, ../sass/_home.scss */
+/* line 164, ../sass/_home.scss */
 #coverInfo h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1112,7 +1112,7 @@ body#cover .message {
   font-size: 28px;
   margin-bottom: 15px;
 }
-/* line 184, ../sass/_home.scss */
+/* line 171, ../sass/_home.scss */
 #coverInfo h3 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1121,52 +1121,52 @@ body#cover .message {
   font-size: 16px;
   margin-bottom: 10px;
 }
-/* line 190, ../sass/_home.scss */
+/* line 177, ../sass/_home.scss */
 #coverInfo h3.first {
   color: #a5c349;
 }
-/* line 194, ../sass/_home.scss */
+/* line 181, ../sass/_home.scss */
 #coverInfo h3.second {
   color: #3797a2;
 }
-/* line 198, ../sass/_home.scss */
+/* line 185, ../sass/_home.scss */
 #coverInfo h3.third {
   color: #ef5922;
 }
-/* line 202, ../sass/_home.scss */
+/* line 189, ../sass/_home.scss */
 #coverInfo h3.fourth {
   color: #a5c349;
 }
-/* line 207, ../sass/_home.scss */
+/* line 194, ../sass/_home.scss */
 #coverInfo .featureImage {
   border: 6px solid rgba(115, 108, 91, 0.15);
   margin-bottom: 20px;
 }
-/* line 212, ../sass/_home.scss */
+/* line 199, ../sass/_home.scss */
 #coverInfo #peopleImage {
   border: 0;
 }
-/* line 216, ../sass/_home.scss */
+/* line 203, ../sass/_home.scss */
 #coverInfo p {
   font-size: 14px;
   margin-bottom: 30px;
 }
-/* line 220, ../sass/_home.scss */
+/* line 207, ../sass/_home.scss */
 #coverInfo p.intro {
   font-size: 18px;
 }
 
 /**********************************************************/
 /* HOME / USER DASHBOARD */
-/* line 230, ../sass/_home.scss */
+/* line 217, ../sass/_home.scss */
 #dashboard {
   font-size: 16px;
 }
-/* line 233, ../sass/_home.scss */
+/* line 220, ../sass/_home.scss */
 #dashboard #pageTitle {
   margin-bottom: 40px;
 }
-/* line 237, ../sass/_home.scss */
+/* line 224, ../sass/_home.scss */
 #dashboard #mainContainer h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1174,62 +1174,62 @@ body#cover .message {
   font-size: 24px;
   margin-bottom: 15px;
 }
-/* line 243, ../sass/_home.scss */
+/* line 230, ../sass/_home.scss */
 #dashboard #upcomingContainer, #dashboard #invitations {
   margin-top: 40px;
 }
-/* line 247, ../sass/_home.scss */
+/* line 234, ../sass/_home.scss */
 #dashboard #upcomingContainer h2 {
   color: #ef5922;
 }
-/* line 251, ../sass/_home.scss */
+/* line 238, ../sass/_home.scss */
 #dashboard #invitations h2 {
   color: #3797a2;
 }
-/* line 255, ../sass/_home.scss */
+/* line 242, ../sass/_home.scss */
 #dashboard .intro {
   font-size: 18px;
 }
 
-/* line 260, ../sass/_home.scss */
+/* line 247, ../sass/_home.scss */
 #welcomeMessageContainer {
   border: 10px solid rgba(115, 108, 91, 0.1);
   margin-bottom: 40px;
 }
-/* line 264, ../sass/_home.scss */
+/* line 251, ../sass/_home.scss */
 #welcomeMessageContainer h2 {
   text-align: center;
   color: #ef5922;
 }
 
-/* line 270, ../sass/_home.scss */
+/* line 257, ../sass/_home.scss */
 #welcomeMessage {
   padding: 30px 30px 10px 25px;
   background: #fff;
 }
-/* line 274, ../sass/_home.scss */
+/* line 261, ../sass/_home.scss */
 #welcomeMessage #signature {
   text-align: left;
 }
 
-/* line 279, ../sass/_home.scss */
+/* line 266, ../sass/_home.scss */
 #dashboardRight {
   width: 290px;
   float: right;
 }
-/* line 283, ../sass/_home.scss */
+/* line 270, ../sass/_home.scss */
 #dashboardRight #inviteButton {
   width: 100%;
   margin: 0px;
   display: inline-block;
   font-size: 32px;
 }
-/* line 290, ../sass/_home.scss */
+/* line 277, ../sass/_home.scss */
 #dashboardRight .buttons {
   margin-bottom: 40px;
 }
 
-/* line 297, ../sass/_home.scss */
+/* line 284, ../sass/_home.scss */
 #upcomingContainer .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -1256,7 +1256,7 @@ body#cover .message {
   font-size: 14px;
   line-height: 21px;
 }
-/* line 306, ../sass/_home.scss */
+/* line 293, ../sass/_home.scss */
 #upcomingContainer .invitation {
   background: #f8f6f0 url(/static/images/textureSoft.png);
   padding: 30px 30px 30px 30px;
@@ -1265,7 +1265,7 @@ body#cover .message {
   *zoom: 1;
   margin-bottom: 30px;
 }
-/* line 313, ../sass/_home.scss */
+/* line 300, ../sass/_home.scss */
 #upcomingContainer .invitation .sendDate {
   position: absolute;
   right: 8;
@@ -1274,7 +1274,7 @@ body#cover .message {
   text-transform: none;
   font-size: 12px;
 }
-/* line 322, ../sass/_home.scss */
+/* line 309, ../sass/_home.scss */
 #upcomingContainer .invitation .mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -1284,23 +1284,23 @@ body#cover .message {
   height: 120px;
   float: left;
 }
-/* line 282, ../sass/core.scss */
+/* line 299, ../sass/core.scss */
 #upcomingContainer .invitation .mealImage img {
   height: 100%;
 }
-/* line 329, ../sass/_home.scss */
+/* line 316, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo {
   margin-left: 150px;
   font-size: 16px;
 }
-/* line 333, ../sass/_home.scss */
+/* line 320, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo h3 {
   font-weight: 700;
   text-transform: none;
   font-size: 20px;
   font-size: 24px;
 }
-/* line 340, ../sass/_home.scss */
+/* line 327, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .label {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1308,29 +1308,29 @@ body#cover .message {
   font-size: 12px;
   margin-right: 10px;
 }
-/* line 345, ../sass/_home.scss */
+/* line 332, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .label.date {
   color: #ef5922;
 }
-/* line 349, ../sass/_home.scss */
+/* line 336, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .label.time {
   margin-left: 20px;
   color: #a5c349;
 }
-/* line 355, ../sass/_home.scss */
+/* line 342, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 359, ../sass/_home.scss */
+/* line 346, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .with {
   margin: 10px 20px 0px 0px;
   float: left;
 }
-/* line 363, ../sass/_home.scss */
+/* line 350, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .with .label {
   color: #1c6770;
 }
-/* line 371, ../sass/_home.scss */
+/* line 358, ../sass/_home.scss */
 #upcomingContainer .invitation .partnerUserpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -1354,7 +1354,7 @@ body#cover .message {
   left: 15px;
   top: 15px;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #upcomingContainer .invitation .partnerUserpic img {
   width: 100%;
   height: 100%;
@@ -1366,11 +1366,11 @@ body#cover .message {
   border-radius: 100px;
   background: #fff;
 }
-/* line 379, ../sass/_home.scss */
+/* line 366, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 384, ../sass/_home.scss */
+/* line 371, ../sass/_home.scss */
 #upcomingContainer .invitation .cookingRoomLink {
   background: #a5c349;
   -moz-box-sizing: border-box;
@@ -1383,7 +1383,7 @@ body#cover .message {
   box-shadow: 0 4px 0 #78902f;
   margin-left: 10px;
 }
-/* line 390, ../sass/_home.scss */
+/* line 377, ../sass/_home.scss */
 #upcomingContainer .invitation .cookingRoomLink:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -1391,7 +1391,7 @@ body#cover .message {
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
 }
-/* line 395, ../sass/_home.scss */
+/* line 382, ../sass/_home.scss */
 #upcomingContainer .invitation .cookingRoomLink:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -1399,19 +1399,19 @@ body#cover .message {
   box-shadow: 0 2px 0 #78902f;
 }
 
-/* line 404, ../sass/_home.scss */
+/* line 391, ../sass/_home.scss */
 #dashboardLeft {
   margin-right: 290px;
   padding-right: 40px;
 }
 
-/* line 410, ../sass/_home.scss */
+/* line 397, ../sass/_home.scss */
 #newInvitationsAlert {
   font-size: 18px;
   color: #4e565c;
   margin: 0px 0px 15px 0px;
 }
-/* line 415, ../sass/_home.scss */
+/* line 402, ../sass/_home.scss */
 #newInvitationsAlert .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -1439,7 +1439,7 @@ body#cover .message {
   line-height: 21px;
 }
 
-/* line 425, ../sass/_home.scss */
+/* line 412, ../sass/_home.scss */
 #userInfoBox {
   background: rgba(55, 151, 162, 0.1);
   padding: 25px 30px 30px 30px;
@@ -1451,7 +1451,7 @@ body#cover .message {
   position: relative;
   overflow: visible;
 }
-/* line 435, ../sass/_home.scss */
+/* line 422, ../sass/_home.scss */
 #userInfoBox .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -1477,7 +1477,7 @@ body#cover .message {
   width: 115px;
   height: 115px;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #userInfoBox .userpic img {
   width: 100%;
   height: 100%;
@@ -1489,22 +1489,22 @@ body#cover .message {
   border-radius: 100px;
   background: #fff;
 }
-/* line 444, ../sass/_home.scss */
+/* line 431, ../sass/_home.scss */
 #userInfoBox .content {
   margin-left: 45px;
 }
-/* line 448, ../sass/_home.scss */
+/* line 435, ../sass/_home.scss */
 #userInfoBox .location {
   margin-top: 5px;
   font-size: 16px;
   font-style: italic;
 }
-/* line 454, ../sass/_home.scss */
+/* line 441, ../sass/_home.scss */
 #userInfoBox a {
   margin-top: 20px;
 }
 
-/* line 461, ../sass/_home.scss */
+/* line 448, ../sass/_home.scss */
 #dashboard #maincontainer #userInfoBox h2 {
   font-size: 30px;
   text-transform: none;
@@ -1512,23 +1512,23 @@ body#cover .message {
   margin-bottom: 0px;
 }
 
-/* line 472, ../sass/_home.scss */
+/* line 459, ../sass/_home.scss */
 #dashboard #whatsNew h2 {
   font-size: 18px;
   color: #a5c349;
 }
-/* line 477, ../sass/_home.scss */
+/* line 464, ../sass/_home.scss */
 #dashboard #whatsNew p {
   font-size: 14px;
 }
-/* line 481, ../sass/_home.scss */
+/* line 468, ../sass/_home.scss */
 #dashboard #whatsNew #newMeal {
   background: rgba(165, 195, 73, 0.15);
   padding: 20px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 486, ../sass/_home.scss */
+/* line 473, ../sass/_home.scss */
 #dashboard #whatsNew #newMeal .mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -1542,18 +1542,18 @@ body#cover .message {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 282, ../sass/core.scss */
+/* line 299, ../sass/core.scss */
 #dashboard #whatsNew #newMeal .mealImage img {
   height: 100%;
 }
-/* line 493, ../sass/_home.scss */
+/* line 480, ../sass/_home.scss */
 #dashboard #whatsNew #newMeal .mealImage img {
   width: 100%;
   height: auto;
   position: relative;
   top: -10%;
 }
-/* line 501, ../sass/_home.scss */
+/* line 488, ../sass/_home.scss */
 #dashboard #whatsNew #newMeal h3 {
   font-size: 23px;
   font-weight: 700;
@@ -1563,29 +1563,29 @@ body#cover .message {
 
 /**********************************************************/
 /* OLD HOME */
-/* line 515, ../sass/_home.scss */
+/* line 502, ../sass/_home.scss */
 #home #mainContainer {
   width: 100%;
 }
 
-/* line 520, ../sass/_home.scss */
+/* line 507, ../sass/_home.scss */
 #introBlurb {
   text-align: center;
   font-size: 42px;
   padding-bottom: 10px;
 }
 
-/* line 526, ../sass/_home.scss */
+/* line 513, ../sass/_home.scss */
 #featuredRecipes {
   clear: both;
 }
 
-/* line 530, ../sass/_home.scss */
+/* line 517, ../sass/_home.scss */
 #joinUs {
   text-align: center;
   margin: 30px;
 }
-/* line 534, ../sass/_home.scss */
+/* line 521, ../sass/_home.scss */
 #joinUs a {
   display: inline-block;
   border: 0px;
@@ -1673,22 +1673,22 @@ body#cover .message {
   letter-spacing: 0.05em;
 }
 
-/* line 541, ../sass/_home.scss */
+/* line 528, ../sass/_home.scss */
 #joinUs a:hover {
   background: #777;
 }
 
-/* line 545, ../sass/_home.scss */
+/* line 532, ../sass/_home.scss */
 #featuredMealsContainer {
   background: #ededec;
   margin: 60px 0px;
 }
 
-/* line 550, ../sass/_home.scss */
+/* line 537, ../sass/_home.scss */
 #featuredMeals {
   padding: 30px 0px;
 }
-/* line 553, ../sass/_home.scss */
+/* line 540, ../sass/_home.scss */
 #featuredMeals h1 {
   font-family: "proxima-nova", sans-serif;
   margin-bottom: 30px;
@@ -1697,14 +1697,14 @@ body#cover .message {
   font-size: 18px;
   text-align: center;
 }
-/* line 563, ../sass/_home.scss */
+/* line 550, ../sass/_home.scss */
 #featuredMeals .mealList li {
   position: relative;
   display: inline-block;
   width: 30%;
   margin-right: 4%;
 }
-/* line 569, ../sass/_home.scss */
+/* line 556, ../sass/_home.scss */
 #featuredMeals .mealList li h2 {
   position: absolute;
   top: 28px;
@@ -1714,7 +1714,7 @@ body#cover .message {
   padding: 7px 10px 10px 10px;
   font-size: 20px;
 }
-/* line 579, ../sass/_home.scss */
+/* line 566, ../sass/_home.scss */
 #featuredMeals .mealList li img {
   border: 10px solid #fff;
   width: 100%;
@@ -1723,7 +1723,7 @@ body#cover .message {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 586, ../sass/_home.scss */
+/* line 573, ../sass/_home.scss */
 #featuredMeals .mealList li.last {
   margin-right: 0%;
 }
@@ -1946,7 +1946,7 @@ body#cover .message {
   left: -21px;
   display: none;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #recipeNav .userStepIcon img {
   width: 100%;
   height: 100%;
@@ -2271,7 +2271,7 @@ body#cover .message {
   height: 32px;
   float: left;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #cookingRoom .cookingNote .userpic img {
   width: 100%;
   height: 100%;
@@ -2850,7 +2850,7 @@ body#meals .cookedBy li {
   color: #736c5b;
   text-transform: uppercase;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 body#meals .cookedBy li img {
   width: 100%;
   height: 100%;
@@ -3209,7 +3209,7 @@ body#meals .cookedBy .moreLink {
   display: inline-block;
   margin: 0px 10px 15px 0px;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #cookedBy li img {
   width: 100%;
   height: 100%;
@@ -3392,32 +3392,161 @@ body#meals .cookedBy .moreLink {
 #invite #pageIntro {
   margin-bottom: 50px;
 }
+/* line 10, ../sass/_invitations.scss */
+#invite.noscroll {
+  overflow: hidden;
+}
 
-/* line 11, ../sass/_invitations.scss */
+/* line 15, ../sass/_invitations.scss */
+#overlayContainer {
+  background: rgba(255, 255, 255, 0.5);
+  display: none;
+  width: 100%;
+  height: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9001;
+}
+/* line 26, ../sass/_invitations.scss */
+#overlayContainer #recipePickerContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: white url(/static/images/textureSoft.png);
+  width: 600px;
+  height: 400px;
+  margin-top: -240px;
+  margin-left: -310px;
+  -moz-box-shadow: 0px 0px 0px 10px rgba(115, 108, 91, 0.5);
+  -webkit-box-shadow: 0px 0px 0px 10px rgba(115, 108, 91, 0.5);
+  -o-box-shadow: 0px 0px 0px 10px rgba(115, 108, 91, 0.5);
+  box-shadow: 0px 0px 0px 10px rgba(115, 108, 91, 0.5);
+}
+/* line 37, ../sass/_invitations.scss */
+#overlayContainer #recipePickerContainer .closeButton {
+  display: block;
+  width: 29px;
+  height: 29px;
+  background: #d9d4ca url(/static/images/icon_x.png) no-repeat center center;
+  text-indent: -999em;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+  -o-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+  top: -20px;
+  right: -20px;
+  z-index: 1;
+}
+/* line 220, ../sass/core.scss */
+#overlayContainer #recipePickerContainer .closeButton:hover {
+  background-color: #c4bcac;
+}
+/* line 45, ../sass/_invitations.scss */
+#overlayContainer #recipePicker {
+  width: 100%;
+  height: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 30px;
+}
+/* line 53, ../sass/_invitations.scss */
+#overlayContainer #recipePicker h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+/* line 59, ../sass/_invitations.scss */
+#overlayContainer #recipePicker li {
+  margin: 30px 0px;
+  background: #f8f6f0 url(/static/images/textureSoft.png);
+  padding: 15px;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 66, ../sass/_invitations.scss */
+#overlayContainer #recipePicker .mealContent {
+  margin-left: 125px;
+  margin-right: 120px;
+}
+/* line 71, ../sass/_invitations.scss */
+#overlayContainer #recipePicker h2 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+/* line 77, ../sass/_invitations.scss */
+#overlayContainer #recipePicker p {
+  font-size: 14px;
+  margin-bottom: 1px;
+}
+/* line 82, ../sass/_invitations.scss */
+#overlayContainer #recipePicker .mealImage {
+  overflow: hidden;
+  border: 5px solid #fff;
+  width: 200px;
+  height: 200px;
+  float: left;
+  height: 70px;
+  width: 100px;
+}
+/* line 299, ../sass/core.scss */
+#overlayContainer #recipePicker .mealImage img {
+  height: 100%;
+}
+/* line 88, ../sass/_invitations.scss */
+#overlayContainer #recipePicker .mealImage img {
+  height: 100%;
+  width: auto;
+}
+/* line 94, ../sass/_invitations.scss */
+#overlayContainer #recipePicker .button {
+  float: right;
+  margin-top: 21px;
+}
+
+/* line 101, ../sass/_invitations.scss */
 #inviteFormContainer {
   margin-left: 680px;
 }
 
-/* line 15, ../sass/_invitations.scss */
+/* line 105, ../sass/_invitations.scss */
 #invitationPreviewContainer, #replyContainer {
   float: left;
   width: 620px;
   padding: 20px 15px 10px 15px;
   background: url(/static/images/email/bg.png);
 }
-/* line 21, ../sass/_invitations.scss */
+/* line 111, ../sass/_invitations.scss */
 #invitationPreviewContainer p, #replyContainer p {
   margin: 15px 0px;
 }
 
-/* line 26, ../sass/_invitations.scss */
+/* line 116, ../sass/_invitations.scss */
 #inviteForm {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 29, ../sass/_invitations.scss */
+/* line 119, ../sass/_invitations.scss */
 #inviteForm h2 {
   font-weight: 700;
   text-transform: uppercase;
@@ -3425,15 +3554,15 @@ body#meals .cookedBy .moreLink {
   font-size: 16px;
   margin-bottom: 10px;
 }
-/* line 37, ../sass/_invitations.scss */
+/* line 127, ../sass/_invitations.scss */
 #inviteForm .formItemError {
   top: 20px;
 }
-/* line 41, ../sass/_invitations.scss */
+/* line 131, ../sass/_invitations.scss */
 #inviteForm #errorsPresentMessage {
   display: none;
 }
-/* line 44, ../sass/_invitations.scss */
+/* line 134, ../sass/_invitations.scss */
 #inviteForm #errorsPresentMessage p {
   width: 250px;
   font-size: 14px;
@@ -3442,27 +3571,27 @@ body#meals .cookedBy .moreLink {
   margin: 15px auto;
   color: #ef5922;
 }
-/* line 54, ../sass/_invitations.scss */
+/* line 144, ../sass/_invitations.scss */
 #inviteForm input, #inviteForm textarea {
   border: 0px;
 }
-/* line 58, ../sass/_invitations.scss */
+/* line 148, ../sass/_invitations.scss */
 #inviteForm p {
   font-size: 18px;
   margin: 30px 0px;
 }
-/* line 63, ../sass/_invitations.scss */
+/* line 153, ../sass/_invitations.scss */
 #inviteForm .formItem {
   margin-bottom: 15px;
 }
-/* line 67, ../sass/_invitations.scss */
+/* line 157, ../sass/_invitations.scss */
 #inviteForm label {
   font-weight: 700;
   font-size: 13px;
   color: #1c6770;
   margin-bottom: 5px;
 }
-/* line 74, ../sass/_invitations.scss */
+/* line 164, ../sass/_invitations.scss */
 #inviteForm fieldset {
   background: rgba(55, 151, 162, 0.1);
   padding: 15px;
@@ -3474,29 +3603,29 @@ body#meals .cookedBy .moreLink {
   border-radius: 10px;
   margin: 0px 0px 30px 0px;
 }
-/* line 80, ../sass/_invitations.scss */
+/* line 170, ../sass/_invitations.scss */
 #inviteForm fieldset p {
   margin-top: 0px;
 }
-/* line 84, ../sass/_invitations.scss */
+/* line 174, ../sass/_invitations.scss */
 #inviteForm fieldset .formNote {
   font-size: 13px;
   line-height: 1.4em;
   margin-bottom: 0px;
 }
-/* line 92, ../sass/_invitations.scss */
+/* line 182, ../sass/_invitations.scss */
 #inviteForm #chosenRecipe p {
   margin-bottom: 15px;
 }
-/* line 96, ../sass/_invitations.scss */
+/* line 186, ../sass/_invitations.scss */
 #inviteForm #chosenRecipe .button {
   margin-bottom: 10px;
 }
-/* line 101, ../sass/_invitations.scss */
+/* line 191, ../sass/_invitations.scss */
 #inviteForm #recipeTitle {
   font-weight: 700;
 }
-/* line 105, ../sass/_invitations.scss */
+/* line 195, ../sass/_invitations.scss */
 #inviteForm #sendInvitationButton {
   display: inline-block;
   border: 0px;
@@ -3584,10 +3713,23 @@ body#meals .cookedBy .moreLink {
   font-weight: 400;
   letter-spacing: 0.05em;
 }
+/* line 200, ../sass/_invitations.scss */
+#inviteForm #selectMealButton {
+  float: left;
+  margin-right: 15px;
+}
+/* line 205, ../sass/_invitations.scss */
+#inviteForm #loadingImage {
+  display: none;
+}
+/* line 208, ../sass/_invitations.scss */
+#inviteForm #loadingImage img {
+  margin-top: 10px;
+}
 
 /**********************************************************/
 /* DATE PICKER PLUGIN */
-/* line 115, ../sass/_invitations.scss */
+/* line 218, ../sass/_invitations.scss */
 #datePicker {
   width: 300px;
   margin-top: 10px;
@@ -3595,7 +3737,7 @@ body#meals .cookedBy .moreLink {
   padding: 10px;
   position: relative;
 }
-/* line 122, ../sass/_invitations.scss */
+/* line 225, ../sass/_invitations.scss */
 #datePicker h2 {
   text-align: center;
   font-size: 14px;
@@ -3607,24 +3749,24 @@ body#meals .cookedBy .moreLink {
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 130, ../sass/_invitations.scss */
+/* line 233, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev {
   position: absolute;
   left: 10px;
   top: 10px;
 }
-/* line 136, ../sass/_invitations.scss */
+/* line 239, ../sass/_invitations.scss */
 #datePicker .dp-nav-next {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-/* line 142, ../sass/_invitations.scss */
+/* line 245, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev .disabled {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 146, ../sass/_invitations.scss */
+/* line 249, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev-year, #datePicker .dp-nav-next-year, #datePicker .dp-nav-prev-month, #datePicker .dp-nav-next-month {
   display: inline-block;
   background: #3797a2;
@@ -3638,24 +3780,24 @@ body#meals .cookedBy .moreLink {
   color: #fff;
   font-weight: bold;
 }
-/* line 155, ../sass/_invitations.scss */
+/* line 258, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev-year:hover, #datePicker .dp-nav-next-year:hover, #datePicker .dp-nav-prev-month:hover, #datePicker .dp-nav-next-month:hover {
   background: #1c6770;
 }
-/* line 159, ../sass/_invitations.scss */
+/* line 262, ../sass/_invitations.scss */
 #datePicker .dp-nav-next-year {
   float: right;
 }
-/* line 163, ../sass/_invitations.scss */
+/* line 266, ../sass/_invitations.scss */
 #datePicker .dp-nav-prev-year, #datePicker .dp-nav-prev-month {
   margin-right: 5px;
 }
-/* line 167, ../sass/_invitations.scss */
+/* line 270, ../sass/_invitations.scss */
 #datePicker .dp-nav-next-year, #datePicker .dp-nav-next-month {
   margin-left: 5px;
 }
 
-/* line 172, ../sass/_invitations.scss */
+/* line 275, ../sass/_invitations.scss */
 table.jCalendar {
   width: 300px;
   background: #fff;
@@ -3664,11 +3806,11 @@ table.jCalendar {
   border-spacing: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 180, ../sass/_invitations.scss */
+/* line 283, ../sass/_invitations.scss */
 table.jCalendar th {
   padding: 5px 8px;
 }
-/* line 184, ../sass/_invitations.scss */
+/* line 287, ../sass/_invitations.scss */
 table.jCalendar td {
   color: #4e565c;
   padding: 3px 5px;
@@ -3680,51 +3822,51 @@ table.jCalendar td {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 191, ../sass/_invitations.scss */
+/* line 294, ../sass/_invitations.scss */
 table.jCalendar td.current-month {
   background: #ededec;
   color: #000;
 }
-/* line 196, ../sass/_invitations.scss */
+/* line 299, ../sass/_invitations.scss */
 table.jCalendar td.today {
   font-weight: bold;
 }
-/* line 201, ../sass/_invitations.scss */
+/* line 304, ../sass/_invitations.scss */
 table.jCalendar td.selected,
 table.jCalendar td.selected.dp-hover {
   background: #ef5922;
   color: #fff;
 }
-/* line 206, ../sass/_invitations.scss */
+/* line 309, ../sass/_invitations.scss */
 table.jCalendar td.dp-hover, table.jCalendar tr.activeWeekHover td {
   background: #ddd;
   color: #000;
   cursor: pointer;
 }
-/* line 212, ../sass/_invitations.scss */
+/* line 315, ../sass/_invitations.scss */
 table.jCalendar tr.selectedWeek td {
   background: #f66;
   color: #fff;
 }
-/* line 217, ../sass/_invitations.scss */
+/* line 320, ../sass/_invitations.scss */
 table.jCalendar td.disabled {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   cursor: default;
 }
-/* line 222, ../sass/_invitations.scss */
+/* line 325, ../sass/_invitations.scss */
 table.jCalendar td.disabled.dp-hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   background: #ededec;
   color: #000;
 }
-/* line 228, ../sass/_invitations.scss */
+/* line 331, ../sass/_invitations.scss */
 table.jCalendar td.disabled.other-month.dp-hover {
   background: #ededec;
   color: #4e565c;
 }
-/* line 235, ../sass/_invitations.scss */
+/* line 338, ../sass/_invitations.scss */
 table.jCalendar td.unselectable,
 table.jCalendar td.unselectable:hover,
 table.jCalendar td.unselectable.dp-hover {
@@ -3735,30 +3877,30 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* INVITATION & REPLY SENT PAGE */
-/* line 245, ../sass/_invitations.scss */
+/* line 348, ../sass/_invitations.scss */
 #invitationSent #pageTitle, #replySent #pageTitle {
   margin-bottom: 40px;
 }
-/* line 249, ../sass/_invitations.scss */
+/* line 352, ../sass/_invitations.scss */
 #invitationSent .intro, #replySent .intro {
   text-align: center;
   font-size: 22px;
   margin-bottom: 5px;
 }
-/* line 255, ../sass/_invitations.scss */
+/* line 358, ../sass/_invitations.scss */
 #invitationSent p, #replySent p {
   text-align: center;
   font-size: 16px;
   color: #4e565c;
 }
 
-/* line 262, ../sass/_invitations.scss */
+/* line 365, ../sass/_invitations.scss */
 #invitationSent #invitationPreviewContainer {
   margin: 40px auto;
   float: none;
 }
 
-/* line 267, ../sass/_invitations.scss */
+/* line 370, ../sass/_invitations.scss */
 #replySent #replyContainer {
   margin: 40px auto;
   float: none;
@@ -3766,21 +3908,21 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* RSVP PAGE */
-/* line 277, ../sass/_invitations.scss */
+/* line 380, ../sass/_invitations.scss */
 #reply #pageTitle {
   margin-bottom: 40px;
 }
-/* line 281, ../sass/_invitations.scss */
+/* line 384, ../sass/_invitations.scss */
 #reply .intro {
   text-align: center;
 }
 
-/* line 286, ../sass/_invitations.scss */
+/* line 389, ../sass/_invitations.scss */
 #newUserOptions {
   text-align: center;
   margin: 20px;
 }
-/* line 290, ../sass/_invitations.scss */
+/* line 393, ../sass/_invitations.scss */
 #newUserOptions a {
   display: inline-block;
   border: 0px;
@@ -3869,7 +4011,7 @@ table.jCalendar td.unselectable.dp-hover {
   letter-spacing: 0.05em;
 }
 
-/* line 297, ../sass/_invitations.scss */
+/* line 400, ../sass/_invitations.scss */
 #replyFormContainer .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -3890,7 +4032,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 32px;
   vertical-align: middle;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #replyFormContainer .userpic img {
   width: 100%;
   height: 100%;
@@ -3902,14 +4044,14 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 302, ../sass/_invitations.scss */
+/* line 405, ../sass/_invitations.scss */
 #replyFormContainer h2 {
   text-align: center;
   font-size: 20px;
   margin: 20px;
 }
 
-/* line 309, ../sass/_invitations.scss */
+/* line 412, ../sass/_invitations.scss */
 #invitationInfo {
   padding: 30px;
   background: #f8f6f0 url(/static/images/textureSoft.png);
@@ -3917,18 +4059,18 @@ table.jCalendar td.unselectable.dp-hover {
   *zoom: 1;
   margin-bottom: 30px;
 }
-/* line 315, ../sass/_invitations.scss */
+/* line 418, ../sass/_invitations.scss */
 #invitationInfo h1 {
   font-weight: 700;
   font-size: 28px;
   margin: 10px 0px 10px 0px;
 }
-/* line 321, ../sass/_invitations.scss */
+/* line 424, ../sass/_invitations.scss */
 #invitationInfo p {
   font-size: 16px;
   margin: 0px 0px 20px 0px;
 }
-/* line 326, ../sass/_invitations.scss */
+/* line 429, ../sass/_invitations.scss */
 #invitationInfo #recipeImage {
   float: left;
   margin-right: 30px;
@@ -3938,11 +4080,11 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
-/* line 333, ../sass/_invitations.scss */
+/* line 436, ../sass/_invitations.scss */
 #invitationInfo #details {
   margin-left: 250px;
 }
-/* line 336, ../sass/_invitations.scss */
+/* line 439, ../sass/_invitations.scss */
 #invitationInfo #details dt {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -3952,59 +4094,59 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 14px;
   margin: 10px 0px 8px 0px;
 }
-/* line 341, ../sass/_invitations.scss */
+/* line 444, ../sass/_invitations.scss */
 #invitationInfo #details dt.date {
   color: #ef5922;
 }
-/* line 345, ../sass/_invitations.scss */
+/* line 448, ../sass/_invitations.scss */
 #invitationInfo #details dt.time {
   color: #a5c349;
 }
-/* line 350, ../sass/_invitations.scss */
+/* line 453, ../sass/_invitations.scss */
 #invitationInfo #details dd {
   font-size: 18px;
   margin-bottom: 15px;
 }
 
-/* line 357, ../sass/_invitations.scss */
+/* line 460, ../sass/_invitations.scss */
 #replyForm {
   width: 700px;
   margin: 3px auto;
   text-align: center;
 }
-/* line 362, ../sass/_invitations.scss */
+/* line 465, ../sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.yes {
   color: #a5c349;
 }
-/* line 365, ../sass/_invitations.scss */
+/* line 468, ../sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.yes #replyMessage {
   background: rgba(165, 195, 73, 0.15);
 }
-/* line 370, ../sass/_invitations.scss */
+/* line 473, ../sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.maybe {
   color: #ef5922;
 }
-/* line 373, ../sass/_invitations.scss */
+/* line 476, ../sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.maybe #replyMessage {
   background: rgba(239, 89, 34, 0.08);
 }
-/* line 377, ../sass/_invitations.scss */
+/* line 480, ../sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.maybe a {
   color: #3797a2;
 }
-/* line 382, ../sass/_invitations.scss */
+/* line 485, ../sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.no {
   color: #3797a2;
 }
-/* line 385, ../sass/_invitations.scss */
+/* line 488, ../sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.no #replyMessage {
   background: rgba(55, 151, 162, 0.1);
 }
-/* line 390, ../sass/_invitations.scss */
+/* line 493, ../sass/_invitations.scss */
 #replyForm .checkbox {
   margin: 0px 0px 15px 0px;
 }
-/* line 394, ../sass/_invitations.scss */
+/* line 497, ../sass/_invitations.scss */
 #replyForm .checkboxLabel {
   text-transform: none;
   font-size: 18px;
@@ -4014,36 +4156,36 @@ table.jCalendar td.unselectable.dp-hover {
   font-weight: normal;
   color: #4e565c;
 }
-/* line 404, ../sass/_invitations.scss */
+/* line 507, ../sass/_invitations.scss */
 #replyForm label {
   font-weight: 700;
   display: block;
   margin-bottom: 10px;
   font-size: 14px;
 }
-/* line 411, ../sass/_invitations.scss */
+/* line 514, ../sass/_invitations.scss */
 #replyForm .extraInput {
   margin: 15px 20px;
 }
-/* line 415, ../sass/_invitations.scss */
+/* line 518, ../sass/_invitations.scss */
 #replyForm input[type=text] {
   padding: 5px;
   margin: 0px;
   width: 100%;
   font-size: 14px;
 }
-/* line 422, ../sass/_invitations.scss */
+/* line 525, ../sass/_invitations.scss */
 #replyForm input[type=checkbox] {
   width: auto;
   margin-right: 5px;
 }
-/* line 427, ../sass/_invitations.scss */
+/* line 530, ../sass/_invitations.scss */
 #replyForm textarea {
   width: 100%;
   height: 100px;
   resize: vertical;
 }
-/* line 433, ../sass/_invitations.scss */
+/* line 536, ../sass/_invitations.scss */
 #replyForm button {
   display: inline-block;
   border: 0px;
@@ -4131,11 +4273,11 @@ table.jCalendar td.unselectable.dp-hover {
   letter-spacing: 0.05em;
 }
 
-/* line 438, ../sass/_invitations.scss */
+/* line 541, ../sass/_invitations.scss */
 #replyButtons {
   text-align: center;
 }
-/* line 440, ../sass/_invitations.scss */
+/* line 543, ../sass/_invitations.scss */
 #replyButtons a {
   display: inline-block;
   border: 0px;
@@ -4224,22 +4366,22 @@ table.jCalendar td.unselectable.dp-hover {
   font-weight: 400;
   letter-spacing: 0.05em;
 }
-/* line 446, ../sass/_invitations.scss */
+/* line 549, ../sass/_invitations.scss */
 #replyButtons #answerYes {
   background: #a5c349;
 }
-/* line 449, ../sass/_invitations.scss */
+/* line 552, ../sass/_invitations.scss */
 #replyButtons #answerYes:hover {
   background: #98b63c;
 }
-/* line 453, ../sass/_invitations.scss */
+/* line 556, ../sass/_invitations.scss */
 #replyButtons #answerYes:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
   -o-box-shadow: 0 2px 0 #78902f;
   box-shadow: 0 2px 0 #78902f;
 }
-/* line 457, ../sass/_invitations.scss */
+/* line 560, ../sass/_invitations.scss */
 #replyButtons #answerYes.selected {
   position: relative;
   top: 4px;
@@ -4249,7 +4391,7 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 3px 0 #687d29;
   box-shadow: 0 3px 0 #687d29;
 }
-/* line 465, ../sass/_invitations.scss */
+/* line 568, ../sass/_invitations.scss */
 #replyButtons #answerMaybe {
   background: #ef5922;
   -moz-box-shadow: 0 7px 0 #b73b0d;
@@ -4257,18 +4399,18 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #b73b0d;
   box-shadow: 0 7px 0 #b73b0d;
 }
-/* line 469, ../sass/_invitations.scss */
+/* line 572, ../sass/_invitations.scss */
 #replyButtons #answerMaybe:hover {
   background: #e74a11;
 }
-/* line 473, ../sass/_invitations.scss */
+/* line 576, ../sass/_invitations.scss */
 #replyButtons #answerMaybe:active {
   -moz-box-shadow: 0 2px 0 #b73b0d;
   -webkit-box-shadow: 0 2px 0 #b73b0d;
   -o-box-shadow: 0 2px 0 #b73b0d;
   box-shadow: 0 2px 0 #b73b0d;
 }
-/* line 477, ../sass/_invitations.scss */
+/* line 580, ../sass/_invitations.scss */
 #replyButtons #answerMaybe.selected {
   position: relative;
   top: 4px;
@@ -4278,7 +4420,7 @@ table.jCalendar td.unselectable.dp-hover {
   box-shadow: 0 3px 0 #9f330c;
   background: #d94610;
 }
-/* line 485, ../sass/_invitations.scss */
+/* line 588, ../sass/_invitations.scss */
 #replyButtons #answerNo {
   background: #3797a2;
   -moz-box-shadow: 0 7px 0 #246269;
@@ -4286,18 +4428,18 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #246269;
   box-shadow: 0 7px 0 #246269;
 }
-/* line 489, ../sass/_invitations.scss */
+/* line 592, ../sass/_invitations.scss */
 #replyButtons #answerNo:hover {
   background: #31858f;
 }
-/* line 493, ../sass/_invitations.scss */
+/* line 596, ../sass/_invitations.scss */
 #replyButtons #answerNo:active {
   -moz-box-shadow: 0 2px 0 #246269;
   -webkit-box-shadow: 0 2px 0 #246269;
   -o-box-shadow: 0 2px 0 #246269;
   box-shadow: 0 2px 0 #246269;
 }
-/* line 497, ../sass/_invitations.scss */
+/* line 600, ../sass/_invitations.scss */
 #replyButtons #answerNo.selected {
   position: relative;
   top: 4px;
@@ -4308,12 +4450,12 @@ table.jCalendar td.unselectable.dp-hover {
   background: #2d7b84;
 }
 
-/* line 506, ../sass/_invitations.scss */
+/* line 609, ../sass/_invitations.scss */
 #theRestOfTheReplyForm {
   margin-top: 30px;
 }
 
-/* line 510, ../sass/_invitations.scss */
+/* line 613, ../sass/_invitations.scss */
 #replyReasons {
   background: rgba(239, 89, 34, 0.08);
   padding: 30px 30px 0px 30px;
@@ -4321,7 +4463,7 @@ table.jCalendar td.unselectable.dp-hover {
   text-align: left;
 }
 
-/* line 517, ../sass/_invitations.scss */
+/* line 620, ../sass/_invitations.scss */
 #replyMessage {
   padding: 30px;
   text-align: left;
@@ -4330,21 +4472,21 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* VIEWING INVITATIONS */
-/* line 528, ../sass/_invitations.scss */
+/* line 631, ../sass/_invitations.scss */
 #invitations #pageTitle {
   margin-bottom: 40px;
 }
-/* line 532, ../sass/_invitations.scss */
+/* line 635, ../sass/_invitations.scss */
 #invitations #pageIntro {
   margin-bottom: 40px;
 }
 
-/* line 537, ../sass/_invitations.scss */
+/* line 640, ../sass/_invitations.scss */
 #invitationsSidebar {
   float: left;
   width: 170px;
 }
-/* line 542, ../sass/_invitations.scss */
+/* line 645, ../sass/_invitations.scss */
 #invitationsSidebar nav a {
   display: block;
   margin: 0px 0px 15px 0px;
@@ -4352,15 +4494,15 @@ table.jCalendar td.unselectable.dp-hover {
   color: #4e565c;
   font-size: 16px;
 }
-/* line 549, ../sass/_invitations.scss */
+/* line 652, ../sass/_invitations.scss */
 #invitationsSidebar nav a:hover {
   color: #ef5922;
 }
-/* line 553, ../sass/_invitations.scss */
+/* line 656, ../sass/_invitations.scss */
 #invitationsSidebar nav a.selected {
   color: #a5c349;
 }
-/* line 558, ../sass/_invitations.scss */
+/* line 661, ../sass/_invitations.scss */
 #invitationsSidebar nav .alertText {
   display: inline-block;
   background: #ef5922;
@@ -4389,17 +4531,17 @@ table.jCalendar td.unselectable.dp-hover {
   margin-left: 5px;
 }
 
-/* line 570, ../sass/_invitations.scss */
+/* line 673, ../sass/_invitations.scss */
 #invitationContainer {
   margin-left: 200px;
 }
-/* line 573, ../sass/_invitations.scss */
+/* line 676, ../sass/_invitations.scss */
 #invitationContainer .invitationType {
   margin-bottom: 30px;
   font-weight: 700;
   font-size: 14px;
 }
-/* line 579, ../sass/_invitations.scss */
+/* line 682, ../sass/_invitations.scss */
 #invitationContainer .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -4426,7 +4568,7 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 14px;
   line-height: 21px;
 }
-/* line 588, ../sass/_invitations.scss */
+/* line 691, ../sass/_invitations.scss */
 #invitationContainer .invitation, #invitationContainer #singleInvitation {
   background: #f8f6f0 url(/static/images/textureSoft.png);
   padding: 50px 30px 30px 30px;
@@ -4435,7 +4577,7 @@ table.jCalendar td.unselectable.dp-hover {
   *zoom: 1;
   margin-bottom: 30px;
 }
-/* line 595, ../sass/_invitations.scss */
+/* line 698, ../sass/_invitations.scss */
 #invitationContainer .invitation .statusBar, #invitationContainer #singleInvitation .statusBar {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -4452,22 +4594,22 @@ table.jCalendar td.unselectable.dp-hover {
   font-weight: 900;
   color: #736c5b;
 }
-/* line 606, ../sass/_invitations.scss */
+/* line 709, ../sass/_invitations.scss */
 #invitationContainer .invitation .statusBar.accepted, #invitationContainer #singleInvitation .statusBar.accepted {
   background: #a5c349 url(/static/images/textureStrong.png);
   color: #fff;
 }
-/* line 611, ../sass/_invitations.scss */
+/* line 714, ../sass/_invitations.scss */
 #invitationContainer .invitation .statusBar.declined, #invitationContainer #singleInvitation .statusBar.declined {
   background: rgba(55, 151, 162, 0.15);
   color: #1c6770;
 }
-/* line 616, ../sass/_invitations.scss */
+/* line 719, ../sass/_invitations.scss */
 #invitationContainer .invitation .statusBar.changeNeeded, #invitationContainer #singleInvitation .statusBar.changeNeeded {
   background: rgba(239, 89, 34, 0.15);
   color: #ef5922;
 }
-/* line 622, ../sass/_invitations.scss */
+/* line 725, ../sass/_invitations.scss */
 #invitationContainer .invitation .sendDate, #invitationContainer #singleInvitation .sendDate {
   position: absolute;
   right: 8;
@@ -4476,7 +4618,7 @@ table.jCalendar td.unselectable.dp-hover {
   text-transform: none;
   font-size: 12px;
 }
-/* line 631, ../sass/_invitations.scss */
+/* line 734, ../sass/_invitations.scss */
 #invitationContainer .invitation .mealImage, #invitationContainer #singleInvitation .mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -4486,21 +4628,21 @@ table.jCalendar td.unselectable.dp-hover {
   height: 120px;
   float: left;
 }
-/* line 282, ../sass/core.scss */
+/* line 299, ../sass/core.scss */
 #invitationContainer .invitation .mealImage img, #invitationContainer #singleInvitation .mealImage img {
   height: 100%;
 }
-/* line 638, ../sass/_invitations.scss */
+/* line 741, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo, #invitationContainer #singleInvitation .invitationInfo {
   margin-left: 150px;
   font-size: 16px;
 }
-/* line 642, ../sass/_invitations.scss */
+/* line 745, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo h2, #invitationContainer #singleInvitation .invitationInfo h2 {
   font-size: 20px;
   font-weight: 700;
 }
-/* line 647, ../sass/_invitations.scss */
+/* line 750, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .label, #invitationContainer #singleInvitation .invitationInfo .label {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -4508,34 +4650,34 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 12px;
   margin-right: 10px;
 }
-/* line 652, ../sass/_invitations.scss */
+/* line 755, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .label.date, #invitationContainer #singleInvitation .invitationInfo .label.date {
   color: #ef5922;
 }
-/* line 656, ../sass/_invitations.scss */
+/* line 759, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .label.time, #invitationContainer #singleInvitation .invitationInfo .label.time {
   margin-left: 20px;
   color: #a5c349;
 }
-/* line 662, ../sass/_invitations.scss */
+/* line 765, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .datetime, #invitationContainer #singleInvitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 666, ../sass/_invitations.scss */
+/* line 769, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .with, #invitationContainer #singleInvitation .invitationInfo .with {
   margin: 10px 20px 0px 0px;
   float: left;
 }
-/* line 670, ../sass/_invitations.scss */
+/* line 773, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .with .label, #invitationContainer #singleInvitation .invitationInfo .with .label {
   color: #1c6770;
 }
-/* line 675, ../sass/_invitations.scss */
+/* line 778, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .cookingRoomLink, #invitationContainer #singleInvitation .invitationInfo .cookingRoomLink {
   margin-top: 48px;
   margin-left: 230px;
 }
-/* line 683, ../sass/_invitations.scss */
+/* line 786, ../sass/_invitations.scss */
 #invitationContainer .invitation .partnerUserpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -4559,7 +4701,7 @@ table.jCalendar td.unselectable.dp-hover {
   left: 15px;
   top: 35px;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #invitationContainer .invitation .partnerUserpic img {
   width: 100%;
   height: 100%;
@@ -4571,46 +4713,46 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 691, ../sass/_invitations.scss */
+/* line 794, ../sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 698, ../sass/_invitations.scss */
+/* line 801, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .mealImage {
   width: 230px;
   height: 230px;
 }
-/* line 702, ../sass/_invitations.scss */
+/* line 805, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .mealImage img {
   position: relative;
   left: -18%;
 }
-/* line 708, ../sass/_invitations.scss */
+/* line 811, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo {
   margin-left: 270px;
   font-size: 20px;
 }
-/* line 712, ../sass/_invitations.scss */
+/* line 815, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo h2 {
   font-size: 30px;
   margin-bottom: 20px;
 }
-/* line 717, ../sass/_invitations.scss */
+/* line 820, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo .label {
   font-size: 14px;
   display: block;
   margin-bottom: 8px;
 }
-/* line 723, ../sass/_invitations.scss */
+/* line 826, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo .datetime1 {
   float: left;
   margin-right: 30px;
 }
-/* line 728, ../sass/_invitations.scss */
+/* line 831, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo .with {
   margin-top: 20px;
 }
-/* line 733, ../sass/_invitations.scss */
+/* line 836, ../sass/_invitations.scss */
 #invitationContainer #singleInvitation .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -4632,7 +4774,7 @@ table.jCalendar td.unselectable.dp-hover {
   border-width: 5px;
   margin-right: 10px;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #invitationContainer #singleInvitation .userpic img {
   width: 100%;
   height: 100%;
@@ -4645,21 +4787,21 @@ table.jCalendar td.unselectable.dp-hover {
   background: #fff;
 }
 
-/* line 741, ../sass/_invitations.scss */
+/* line 844, ../sass/_invitations.scss */
 #invitationActivity .activityItem {
   min-height: 56px;
   margin: 30px 0px;
 }
-/* line 745, ../sass/_invitations.scss */
+/* line 848, ../sass/_invitations.scss */
 #invitationActivity .activityItem h3 {
   padding: 15px 0px;
   font-size: 18px;
 }
-/* line 751, ../sass/_invitations.scss */
+/* line 854, ../sass/_invitations.scss */
 #invitationActivity .activityBody {
   margin-left: 75px;
 }
-/* line 755, ../sass/_invitations.scss */
+/* line 858, ../sass/_invitations.scss */
 #invitationActivity .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -4678,7 +4820,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 48px;
   float: left;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #invitationActivity .userpic img {
   width: 100%;
   height: 100%;
@@ -4690,32 +4832,32 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 760, ../sass/_invitations.scss */
+/* line 863, ../sass/_invitations.scss */
 #invitationActivity .reply {
   padding: 10px 15px 1px 15px;
   background: #f8f6f0 url(/static/images/textureSoft.png);
   font-size: 18px;
 }
-/* line 765, ../sass/_invitations.scss */
+/* line 868, ../sass/_invitations.scss */
 #invitationActivity .reply .mainReply {
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 5px;
 }
-/* line 771, ../sass/_invitations.scss */
+/* line 874, ../sass/_invitations.scss */
 #invitationActivity .reply.yes {
   background: rgba(165, 195, 73, 0.15);
 }
-/* line 775, ../sass/_invitations.scss */
+/* line 878, ../sass/_invitations.scss */
 #invitationActivity .reply.maybe {
   background: rgba(239, 89, 34, 0.08);
 }
-/* line 779, ../sass/_invitations.scss */
+/* line 882, ../sass/_invitations.scss */
 #invitationActivity .reply.no {
   background: rgba(55, 151, 162, 0.1);
 }
 
-/* line 786, ../sass/_invitations.scss */
+/* line 889, ../sass/_invitations.scss */
 #invitationFilters {
   margin-bottom: 30px;
 }
@@ -4756,7 +4898,7 @@ table.jCalendar td.unselectable.dp-hover {
   width: 180px;
   height: 100px;
 }
-/* line 282, ../sass/core.scss */
+/* line 299, ../sass/core.scss */
 #historyList .mealImage img {
   height: 100%;
 }
@@ -4791,7 +4933,7 @@ table.jCalendar td.unselectable.dp-hover {
   width: 32px;
   height: 32px;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #historyList .userpics .userpic img {
   width: 100%;
   height: 100%;
@@ -4887,7 +5029,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 32px;
   vertical-align: middle;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #historySingle #historyIntro .userpic img {
   width: 100%;
   height: 100%;
@@ -4909,7 +5051,7 @@ table.jCalendar td.unselectable.dp-hover {
   width: 400px;
   height: 300px;
 }
-/* line 282, ../sass/core.scss */
+/* line 299, ../sass/core.scss */
 #historySingle #mealImage img {
   height: 100%;
 }
@@ -4948,7 +5090,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 80px;
   border-width: 5px;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #historySingle #userpics .userpic img {
   width: 100%;
   height: 100%;
@@ -5087,7 +5229,7 @@ table.jCalendar td.unselectable.dp-hover {
   height: 32px;
   vertical-align: middle;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #historySingle #historySteps .stepContent .notesContainer .userpic img {
   width: 100%;
   height: 100%;
@@ -5254,7 +5396,7 @@ table.jCalendar td.unselectable.dp-hover {
   border-width: 5px;
   float: left;
 }
-/* line 255, ../sass/core.scss */
+/* line 272, ../sass/core.scss */
 #accountInfoForm .userpic img {
   width: 100%;
   height: 100%;

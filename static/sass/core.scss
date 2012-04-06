@@ -205,6 +205,23 @@ $serif: "jubilat", Georgia, serif;
 	}
 }
 
+@mixin closeButton {
+	display: block;
+	width:29px;
+	height:29px;
+	background:#d9d4ca url(/static/images/icon_x.png) no-repeat center center;
+	text-indent:-999em;
+	@include border-radius(20px);
+	position: absolute;
+	right:-10px;
+	top:-10px;
+	@include box-shadow(0 3px 5px rgba(0,0,0,.35));
+	
+	&:hover {
+		background-color:darken(#d9d4ca, 10);
+	}
+}
+
 /* BORDER STYLES */
 
 @mixin lightBrownBorder {

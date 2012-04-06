@@ -18,7 +18,6 @@
 <p id="pageIntro">Fill in the blanks to the right to craft a personalized Hotpot invitation for your friend.</p>
 
 
-
 <!-- YUP I just pasted the HTML email tables in here. Sorry, gods of HTML, plaese don't smite me. -->
 
 <div id="invitationPreviewContainer">
@@ -39,9 +38,9 @@
 			<tr>
 				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_messageAreaLeft.png)"></td>
 				<td width="520" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_messageArea.png); font-family:'Courier New', monospace; font-size:20px; line-height:1.4em;">
-					<p id="greeting">Hi <span id="friendName">John Smith</span>,</p>
+					<p id="greeting">Hi <span id="friendName">friend</span>,</p>
 					<div id="messageBody">
-						<p>Let's make {{ meal.title }} together on Hotpot.</p>
+						A personal message goes here!
 					</div>
 					<p style="text-align:right">Cheers,<br>{{ user.name }}</p>
 				</td>
@@ -59,8 +58,8 @@
 			<tr>
 				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
 				<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
-					<h1 style="text-align:center; color:#1c6770; font-size:35px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;">{{ meal.title }}</h1>
-					<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:14px;">{{ meal.shortDescription }} <a href="/meals/{{ meal.slug }}" style="color:#f07239; text-decoration:none;">More about this meal »</a></p>
+					<h1 id="previewMealTitle" style="text-align:center; color:#1c6770; font-size:35px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;">{{ meal.title }}</h1>
+					<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:14px;" id="previewMealDescription">{{ meal.shortDescription }} <a href="/meals/{{ meal.slug }}" style="color:#f07239; text-decoration:none;">More about this meal »</a></p>
 					
 				</td>
 				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
@@ -69,7 +68,7 @@
 			<!-- IMAGE -->
 			
 			<tr>
-				<td colspan="3"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/foodpics/LemonGarlicKalePasta.png" width="620" height="277" alt="{{ meal.title }}"></td>
+				<td colspan="3"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/foodpics/{{ meal.slug }}.png" width="620" height="277" alt="{{ meal.title }}" id="previewMealImage"></td>
 			</tr>
 			
 			<!-- DATE, TIME, PLACE -->
@@ -119,22 +118,22 @@
 							
 								<!-- SHOPPING LIST -->
 								
-								<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								<table cellpadding="0" cellspacing="0" border="0" width="100%" id="previewShoppingList">
 									
-									<tr>
+									<tr id="previewShoppingListStart">
 										<td colspan="4"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_shoppingList.png" alt="Shopping List" height="75" width="275"></td>
 									</tr>
 									
 									{% for ingredient in meal.ingredients %}
-									<tr>
+									<tr class="previewIngredientItem">
 										<td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListLeft.png)"></td>
 										<td height="35" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px; {{ loop.cycle('background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">&nbsp; &nbsp;{{ ingredient.name }}</td>
-										<td align="right" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; {{ loop.cycle('background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}&nbsp; &nbsp;</td>
+										<td align="right" style="text-align:right; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; {{ loop.cycle('background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}&nbsp; &nbsp;</td>
 										<td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListRight.png)"></td>
 									</tr>
 									{% endfor %}
 									
-									<tr>
+									<tr id="previewShoppingListEnd">
 										<td colspan="4"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/shoppingListBottom.png" height="21" width="275"></td>
 									</tr>
 								</table>
@@ -210,8 +209,8 @@
 		
 		<fieldset>
 			<div class="formItem">
-				<label>Write a few sentences:</label>
-				<textarea id="messageBodyInput">Let&rsquo;s cook together on Hotpot!</textarea>
+				<label>Get your friend excited to cook!</label>
+				<textarea id="messageBodyInput"></textarea>
 				<input type="hidden" id="messageBodyInputHTML" name="message">
 			</div>
 		</fieldset>
@@ -220,9 +219,17 @@
 		
 		<fieldset>
 			<div id="chosenRecipe">
-				<p>You've chosen <span id="recipeTitle">{{ meal.title }}</span></p>
-				<a href="#" class="button">Change Meal</a> [INACTIVE]
-				<input type="hidden" value="{{ meal.slug }}" name="meal" />
+				<label>Selected meal:</label>
+				<p id="mealTitleDisplay">{{ meal.title }}</p>
+				
+				<a href="#" id="selectMealButton" class="button">Select Meal</a>
+				
+				<div id="loadingImage">
+					Loading meal into invitation <br />
+					<img src="/static/images/loader.gif" />
+				</div>
+				
+				<input type="hidden" value="{{ meal.slug }}" name="meal" id="mealInput" />
 			</div>
 		</fieldset>
 		
@@ -269,10 +276,10 @@
 		<input type="hidden" id="readableDate" name="readableDate" />
 		<input type="hidden" id="readableTime" name="readableTime" />
 		
-		<p>Check the preview on the left and make sure everything looks good! Upon hitting send, we'll send your friend the invitation and he/she will be able to R.S.V.P.</p>
+		<p>Check the preview on the left and make sure everything looks good! Upon hitting send, we'll email your friend the invitation and he/she will be able to R.S.V.P.</p>
 		
 		<div id="errorsPresentMessage">
-			<p>Oops, looks like we're missing some crucial information above!</p>
+			<p>Oops, looks like we're missing some crucial information above.</p>
 		</div>
 		
 		<div class="buttons">	
@@ -282,6 +289,34 @@
 	
 </div><!-- #inviteFormContainer -->
 
+<div id="overlayContainer">
+	<div id="recipePickerContainer">
+		<section id="recipePicker">
+			
+			<a href="" class="closeButton">Close</a>
+		
+			<h1>Select a meal to cook with your friend:</h1>
+			
+			<ul>
+				{% for meal in meals %}
+				<li>
+					<div class="mealImage">
+						<img src="/static/images/food/{{ meal.slug }}.jpg">
+					</div>
+					
+					<a href="/meals/{{ meal.slug }}" class="button mealPickerButton" data-id="{{ meal.slug }}" title="{{ meal.title }}" target="_blank">Choose</a>
+					
+					<div class="mealContent">
+						<h2>{{ meal.title }}</h2>
+						<p>{{ meal.shortDescription|safe }} <a href="/meals/{{ meal.slug }}" target="_blank">More info</a></p>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+			
+		</section>
+	</div><!-- #recipePickerContainer -->
+</div><!-- #overlayContainer -->
 
 
 {% endblock main %}
