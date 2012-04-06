@@ -12,7 +12,7 @@
 
 <h1 id="pageTitle">
 	<div class="small">Cooking History</div>
-	{{ hotpot.readableDate|safe }}
+	{{ hotpot.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}
 </h1>
 
 <div id="historyIntro">
@@ -30,7 +30,7 @@
 	
 	<div id="historyDetails">
 		<p class="intro">
-			On {{ hotpot.readableDate|safe }} at {{ hotpot.readableTime|safe }},
+			On {{ hotpot.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }} at {{ hotpot.datetime|jsDatetimeLocaleFormat("%l:%M %p")|safe }},
 			<strong>{% if hotpot.host._id != user._id %}
 				{{ hotpot.host.name }}
 			{% else %}
@@ -110,7 +110,7 @@
 						<div class="userpic"><img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" /></div>
 						
 						{% if note.type == "note" %}
-							<div class="description"><strong>{{ note.noteAuthor.name }}</strong> posted a note at {{ note.timestamp }}</div>
+							<div class="description"><strong>{{ note.noteAuthor.name }}</strong> posted a note at {{ note.timestamp|jsDatetimeLocaleFormat("%l:%M %p")|safe }}</div>
 						
 							<div class="noteContent">
 								<p>{{ note.content }}</p>
@@ -118,7 +118,7 @@
 							
 						{% elif note.type == "stamp" %}
 						
-							<div class="description"><strong>{{ note.noteAuthor.name }}</strong> posted a stamp at {{ note.timestamp }}</div>
+							<div class="description"><strong>{{ note.noteAuthor.name }}</strong> posted a stamp at {{ note.timestamp|jsDatetimeLocaleFormat("%l:%M %p")|safe }}</div>
 						
 							<div class="noteContent">
 								<img src="/static/images/stamps/{{ note.content.stampSlug }}.png" />

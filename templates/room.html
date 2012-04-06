@@ -22,6 +22,7 @@
 <script src="/static/js/lib/socket.io.min.js" type="text/javascript"></script>
 
 <!-- my scripts -->
+<script src="/static/js/utils.js" type="text/javascript"></script>
 <script src="/static/js/room.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="/static/css/core.css" type="text/css" />
@@ -159,7 +160,7 @@
 									{% for note in step.notes %}
 									<div class="cookingNote {{ note.type }}" data-id="{{ note._id }}">
 										<div class="userpic"><img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" /></div>
-										<div class="timestamp">{{ note.timestamp }}</div>
+										<div class="timestamp">{{ note.timestamp|jsDatetimeLocaleFormat("%l:%M %p")|safe }}</div>
 										
 										<div class="noteContent">
 											{% if note.type == "note" %}

@@ -193,6 +193,8 @@ $(document).ready(function(){
 	// DATE PICKER
 	
 	var datetime = new Date();
+	datetime.setSeconds(0);
+	datetime.setMilliseconds(0);
 	
 	// create the date picker
 	$('#datePicker').datePicker({
@@ -238,6 +240,7 @@ $(document).ready(function(){
 		
 		// display selected date on invite preview
 		$('#selectedDate').html(weekday + ", " + month + " " + selectedDate.getDate() + ", " + selectedDate.getFullYear())
+		$('#selectedTzname').text(getTzInfo(selectedDate).split(' ')[1]);
 		
 	});
 	
@@ -291,8 +294,9 @@ $(document).ready(function(){
 		
 		// set other hidden fields
 		$('#messageBodyInputHTML').val($('#messageBody').html().trim());
-		$('#readableDate').val($('#selectedDate').html());
-		$('#readableTime').val($('#selectedTime').html());
+		$('#readableDate').val($('#selectedDate').text());
+		$('#readableTime').val($('#selectedTime').text());
+		$('#tzinfo').val(getTzInfo(datetime));
 	});
 	
 });

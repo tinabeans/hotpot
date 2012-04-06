@@ -22,6 +22,9 @@ $(document).ready(function(){
 		// hmph.
 		var encryptedPassword = $.sha1($(this).find('.passwordField').val());
 		$(this).children('.encryptedPassword').val(encryptedPassword);
+
+		// determine user's TZ info and sneak it into the hidden input field
+		$(this).find('.tzinfo').val(getTzInfo());
 	});
 	
 	$('#codeForm').submit(function(e){

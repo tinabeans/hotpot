@@ -247,7 +247,7 @@ $(document).ready(function() {
 			noteContent = '<img src="/static/images/stamps/' + data.content.stampSlug + '.png" /><p>' + data.content.stampName + '!</p>';
 		}
 		
-		$elementToAddNoteTo.append('<div class="cookingNote ' + data.type + '" data-id="' + data.noteId + '"><div class="userpic"><img src="/static/uploads/userpics/' + data.noteAuthor.userpic + '" /></div><div class="timestamp">' + data.timestamp + '</div><div class="noteContent">' + noteContent + '</div></div>');
+		$elementToAddNoteTo.append('<div class="cookingNote ' + data.type + '" data-id="' + data.noteId + '"><div class="userpic"><img src="/static/uploads/userpics/' + data.noteAuthor.userpic + '" /></div><div class="timestamp">' + formatDatetimeLocale(data.timestamp, "%l:%M %p") + '</div><div class="noteContent">' + noteContent + '</div></div>');
 		
 		// grab reference to the newly posted note…
 		var $newNote = $(".cookingNote[data-id='" + data.noteId + "']");
