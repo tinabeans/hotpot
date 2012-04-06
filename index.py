@@ -92,6 +92,10 @@ def render_template(template, **kwargs):
 		isLoggedIn = False
 		return flask.render_template(template, isLoggedIn=isLoggedIn, BASE_URL=config.BASE_URL, **kwargs)
 
+@app.template_filter()
+def jsDatetimeLocaleFormat(tstamp, fmt):
+	return '<script type="text/javascript">document.write(formatDatetimeLocale(%d, "%s"))</script>' % (tstamp, fmt)
+
 
 
 ##############################################################################
