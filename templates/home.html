@@ -103,10 +103,10 @@
 					</div>
 					<div class="datetime">
 						<span class="label date">Date</span>
-						{{ hotpot.readableDate }}
+						{{ hotpot.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}
 						
 						<span class="label time">Time</span>
-						{{ hotpot.readableTime|safe }}
+						{{ hotpot.datetime|jsDatetimeLocaleFormat("%l:%M %p")|safe }}
 					</div>
 					
 					<a href="/invitations/{{ hotpot._id }}" class="smallButton">View Invitation</a>

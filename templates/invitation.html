@@ -51,7 +51,7 @@
 				unknown status
 			{% endif %}
 			
-			<span class="sendDate">Sent {{ invitation.sendDate }}</span>
+			<span class="sendDate">Sent {{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</span>
 		</div>
 		
 		<div class="mealImage">
@@ -62,11 +62,11 @@
 			<h2>{{ invitation.meal.title }}</h2>
 			<div class="datetime1">
 				<span class="label date">Date</span>
-				{{ invitation.readableDate }}
+				{{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}
 			</div>
 			<div class="datetime2">
 				<span class="label time">Time</span>
-				{{ invitation.readableTime|safe }}
+				{{ invitation.datetime|jsDatetimeLocaleFormat("%l:%M %p")|safe }}
 			</div>
 			
 			<div class="with">
@@ -92,9 +92,9 @@
 			<div class="userpic"><img src="/static/uploads/userpics/{{ invitation.host.userpic }}" title="{{ invitation.host.name }}" /></div>
 			<div class="activityBody">
 				{% if invitation.host._id == user._id %}
-					<h3>Sent by <strong>you</strong> {{ invitation.sendDate }}</h3>
+					<h3>Sent by <strong>you</strong> {{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</h3>
 				{% else %}
-					<h3>Sent by <strong>{{ invitation.host.name }}</strong> {{ invitation.sendDate }}</h3>
+					<h3>Sent by <strong>{{ invitation.host.name }}</strong> {{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</h3>
 				{% endif %}
 			</div>
 		</div>
