@@ -69,7 +69,7 @@
 					unknown status
 				{% endif %}
 				
-				<span class="sendDate">Sent {{ invitation.sendDate|jsDatetimeLocaleFormat("%A, %B %d")|safe }}</span>
+				<span class="sendDate">Sent {{ invitation.sendDate|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</span>
 			</div>
 			
 			<div class="mealImage">
@@ -92,7 +92,7 @@
 				</div>
 				<div class="datetime">
 					<span class="label date">Date</span>
-					{{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d")|safe }}
+					{{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}
 					
 					<span class="label time">Time</span>
 					{{ invitation.datetime|jsDatetimeLocaleFormat("%l:%M %p")|safe }}
@@ -131,7 +131,7 @@
 					unknown status
 				{% endif %}
 				
-				<span class="sendDate">Sent {{ invitation.sendDate|jsDatetimeLocaleFormat("%A, %B %d")|safe }}</span>
+				<span class="sendDate">Sent {{ invitation.sendDate|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</span>
 			</div>
 			
 			<div class="mealImage">
@@ -150,7 +150,7 @@
 				</div>
 				<div class="datetime">
 					<span class="label date">Date</span>
-					{{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d")|safe }}
+					{{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}
 					
 					<span class="label time">Time</span>
 					{{ invitation.datetime|jsDatetimeLocaleFormat("%l:%M %p")|safe }}
