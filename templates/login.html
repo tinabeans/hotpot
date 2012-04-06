@@ -13,6 +13,7 @@
 			// hmph.
 			var encryptedPassword = $.sha1($('#passwordField').val());
 			$(this).find('.encryptedPassword').val(encryptedPassword);
+			$(this).find('.tzinfo').val(getTzInfo());
 		});
 	});
 	</script>

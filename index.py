@@ -249,7 +249,15 @@ def login():
 		print 'user found'
 		# log the user in by setting a session variable
 		flask.session['userId'] = str(userDocument['_id'])
-		
+
+		# get timezone info from form and store it in the database
+		tzinfo = data.get('tzinfo', '').split()
+		if len(tzinfo) and tzinfo[0].isdigit():
+			userDocument['tzoffset'] = int(tzinfo[0])
+			if len(tzinfo) == 2 and len(tzinfo[1]) == 3: # e.g. EST, PDT
+				userDocument['tzname'] = tzinfo[1]
+			db.users.save(userDocument)
+
 		# redirect to the place you were gonna go... if there were such a place
 		if 'redirectURL' in data:
 			return flask.redirect(data['redirectURL'])

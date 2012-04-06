@@ -118,3 +118,16 @@ $(document).ready(function(){
 	});
 
 });
+
+function getTzInfo() {
+	var now = new Date();
+	var tzinfo = String(now.getTimezoneOffset())
+	var localeTimeStr = now.toLocaleTimeString();
+	if (localeTimeStr.length == 15 && localeTimeStr[11] == ' ') {
+		var tzname = localeTimeStr.substr(11);
+		if (tzname == tzname.toUpperCase()) {
+			tzinfo += tzname;
+		}
+	}
+	return tzinfo;
+}
