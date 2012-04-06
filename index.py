@@ -473,7 +473,7 @@ def showInviteForm(meal):
 	else:
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 		return render_template('invite.html', meal=meal )
-	
+
 
 @app.route('/sendInvitation', methods=['POST'])
 def sendInvitation():
@@ -490,7 +490,7 @@ def sendInvitation():
 		inviteeId = str(invitee['_id'])
 	else:
 		inviteeId = data['inviteeEmail']
-	
+
 	# construct new invitation document based on incoming form data and info above
 	newInvitation = {
 		"status" : "new",
@@ -501,9 +501,17 @@ def sendInvitation():
 		"meal" : data['meal'],
 		"readableTime": data['readableTime'],
 		"readableDate": data['readableDate'],
-		"message" : data['message']
+		"message" : data['message'],
+		"tzoffset": 300,
+		"tzname": "EST"
 	}
-	
+	# get timezone info from form and store it in the database
+	tzinfo = data.get('tzinfo', '').split()
+	if len(tzinfo) and tzinfo[0].isdigit():
+		newInvitation['tzoffset'] = int(tzinfo[0])
+		if len(tzinfo) == 2 and len(tzinfo[1]) == 3: # e.g. EST, PDT
+			newInvitation['tzname'] = tzinfo[1]
+
 	# insert into database
 	db.invitations.insert(newInvitation)
 	
@@ -518,6 +526,7 @@ def sendInvitation():
 	
 	# compose email to send
 	email = Message(user['name'] + " invites you to cook!", recipients=[data['inviteeEmail']], sender=emailSenderInfo)
+	# TODO: if recipient has an account, translate to their TZ
 	invitationMessage = render_template('email/invitation.html', meal=meal, invitation=newInvitation)
 	email.html = invitationMessage
 	mail.send(email)

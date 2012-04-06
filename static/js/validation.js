@@ -119,12 +119,15 @@ $(document).ready(function(){
 
 });
 
-function getTzInfo() {
-	var now = new Date();
-	var tzinfo = String(now.getTimezoneOffset())
-	var localeTimeStr = now.toLocaleTimeString();
-	if (localeTimeStr.length == 15 && localeTimeStr[11] == ' ') {
-		var tzname = localeTimeStr.substr(11);
+function getTzInfo(dateObj) {
+	if (!dateObj) {
+		dateObj = new Date();
+	}
+	var tzinfo = String(dateObj.getTimezoneOffset())
+	var localeTimeStr = dateObj.toLocaleTimeString();
+	var len = localeTimeStr.length;
+	if ((len == 14 || len == 15) && localeTimeStr[len - 4] == ' ') {
+		var tzname = localeTimeStr.substr(len - 4);
 		if (tzname == tzname.toUpperCase()) {
 			tzinfo += tzname;
 		}
