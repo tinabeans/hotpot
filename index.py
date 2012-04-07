@@ -811,27 +811,12 @@ def sendReply():
 	# if reply was a yes...
 	if replyInfo['mainReply'] == "yes":
 		# also send the invitee a confirmation
-		invitee = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})
-		inviteeEmail = invitee['email']
-
-		# calculate the cooking time in the invitee's locale
-		offset = datetime.timedelta(minutes=invitee.get('tzoffset', 0))
-		localDt = datetime.datetime.utcfromtimestamp(invitation['datetime']) - offset
-
-		# make a copy so we can modify it for the invitee
-		confirmationInfo = dict(invitationInfo)
-		confirmationInfo['readableDate'] = localDt.strftime("%A, %B %d, %Y")
-		readableTime = localDt.strftime("%I:%M %p")
-		if readableTime.startswith('0'):
-			readableTime = readableTime[1:]
-		if invitee.get('tzname'):
-			readableTime += ' ' + invitee['tzname']
-		confirmationInfo['readableTime'] = readableTime
-
+		inviteeEmail = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})['email']
+		
 		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail], sender=emailSenderInfo)
-		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=confirmationInfo, meal=mealInfo)
+		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=invitationInfo, meal=mealInfo)
 		mail.send(email)
-
+		
 		# check whether this invitation is for something happening on the same day.
 		# if so, send out a "reminder" email for today (b/c the reminder emails contain the link to the room)
 		currentTime = time.time();
@@ -925,7 +910,8 @@ def grabInvitationInfo(invitation):
 def grabAllInvitationsFor(userId):
 	
 	return list(db.invitations.find({'hostId' : userId, 'itsHappening' : True })) + list(db.invitations.find({'inviteeIds' : userId, 'itsHappening' : True }))
-	
+
+
 def filterUpcoming(invitations):
 	
 	# filter out the ones that are in the past
@@ -960,7 +946,10 @@ def showInvitations():
 	for invitation in invitationsReceived:
 		grabInvitationInfo(invitation)
 	
-	return render_template('invitations.html', invitationsSent=invitationsSent, invitationsReceived=invitationsReceived)
+	# grab number of future hotpots
+	numberOfUpcoming = len(filterUpcoming(invitationsSent)) + len(filterUpcoming(invitationsReceived))
+	
+	return render_template('invitations.html', invitationsSent=invitationsSent, invitationsReceived=invitationsReceived, numberOfUpcoming=numberOfUpcoming)
 
 
 @app.route('/invitations/upcoming')

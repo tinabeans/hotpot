@@ -46,7 +46,7 @@
 		{% if hotpots|length() == 0 %}
 			<p class="intro">Nothing on the horizon. Maybe it's time to start <a href="/meals">making some plans</a>!</p>
 		{% else %}
-			<p class="intro">You have <span class="alertNumber">{{ hotpots|length() }}</span> Hotpot{% if hotpots|length() > 1 %}s{% endif %} that are coming up.</p>
+			<p class="intro">You have <span class="alertNumber">{{ hotpots|length() }}</span> Hotpot{% if hotpots|length() > 1 %}s{% endif %} coming up:</p>
 		{% endif %}
 	
 	{% for hotpot in hotpots %}
