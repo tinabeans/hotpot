@@ -93,8 +93,10 @@ def render_template(template, **kwargs):
 		return flask.render_template(template, isLoggedIn=isLoggedIn, BASE_URL=config.BASE_URL, **kwargs)
 
 @app.template_filter()
-def jsDatetimeLocaleFormat(tstamp, fmt):
-	return '<script type="text/javascript">document.write(formatDatetimeLocale(%d, "%s"))</script>' % (tstamp, fmt)
+def jsDatetimeLocaleFormat(tstamp, fmt, tzname=False):
+	return """<script type="text/javascript">document.write(formatDatetimeLocale(%d, "%s") %s)</script>""" % (
+		tstamp, fmt, ("""+ ' ' + TZ_NAME""" if tzname else '')
+	)
 
 
 
@@ -811,8 +813,21 @@ def sendReply():
 	# if reply was a yes...
 	if replyInfo['mainReply'] == "yes":
 		# also send the invitee a confirmation
-		inviteeEmail = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})['email']
-		
+		invitee = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})
+		inviteeEmail = invitee['email']
+
+		# calculate the cooking time in the invitee's locale
+		offset = datetime.timedelta(minutes=invitee.get('tzoffset', 0))
+		localDt = datetime.datetime.utcfromtimestamp(invitation['datetime']) - offset
+
+		# make a copy so we can modify it for the invitee
+		confirmationInfo = dict(invitationInfo)
+		confirmationInfo['readableDate'] = localDt.strftime("%A, %B %d, %Y")
+		readableTime = localDt.strftime("%l:%M %p").strip()
+		if invitee.get('tzname'):
+			readableTime += ' ' + invitee['tzname']
+		confirmationInfo['readableTime'] = readableTime
+
 		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail], sender=emailSenderInfo)
 		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=invitationInfo, meal=mealInfo)
 		mail.send(email)
