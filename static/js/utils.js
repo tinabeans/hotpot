@@ -52,6 +52,9 @@ function formatDatetimeLocale(tstamp, format) {
 	return (new Date(tstamp * 1000)).strftime(format);
 }
 var TZ_NAME = (function getLocaleTzName() {
-	var localeTimeStr = (new Date()).toLocaleTimeString();
-	return localeTimeStr.substr(localeTimeStr.length - 3);
+	var s = (new Date()).toString();
+	if (s[s.length - 5] == '(' && s[s.length - 1] == ')') {
+		return s.substr(s.length - 4, 3);
+	}
+	return '';
 })();
