@@ -30,7 +30,6 @@ ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
 TESTER_CODE = "cooking is awesome"
 
 # for sending cooking reminder emails
-hourToSendReminders = 6
 checkForReminderTimeInterval = 10 # 5min
 
 emailSenderInfo = ("Hotpot", "hey@letsgohotpot.com")
@@ -98,6 +97,9 @@ def jsDatetimeLocaleFormat(tstamp, fmt, tzname=False):
 		tstamp, fmt, ("""+ ' ' + TZ_NAME""" if tzname else '')
 	)
 
+
+def naiveLocalDatetimeForUser(tstamp, userInfo):
+	return datetime.datetime.utcfromtimestamp(tstamp) - datetime.timedelta(minutes=userInfo.get('tzoffset', 0))
 
 
 ##############################################################################
@@ -817,8 +819,7 @@ def sendReply():
 		inviteeEmail = invitee['email']
 
 		# calculate the cooking time in the invitee's locale
-		offset = datetime.timedelta(minutes=invitee.get('tzoffset', 0))
-		localDt = datetime.datetime.utcfromtimestamp(invitation['datetime']) - offset
+		localDt = naiveLocalDatetimeForUser(invitation['datetime'], invitee)
 
 		# make a copy so we can modify it for the invitee
 		confirmationInfo = dict(invitationInfo)
@@ -1035,143 +1036,98 @@ def checkWhetherItsTimeToSendOutReminderEmails():
 
 	print "checking whether it's time to send out reminder emails"
 
-	# perform the check right away...
-	currentTime = time.time()
-	
-	# find out the currentTime's hour
-	currentHour = datetime.datetime.fromtimestamp(currentTime).hour
-	
-	print "currentHour = " + str(currentHour)
-	
-	# if current time matches the designated reminder-sending time...
-	if currentHour == hourToSendReminders:
-		print "yes, it appears to be time"
-		
-		# ... then see which reminders to send out
-		checkWhichCookingsAreComingUp()
-	
+	# loop through all invitations that are happening
+	for invitation in db.invitations.find({'itsHappening' : True}):
+		invitationUpdated = False
+
+		if not invitation.get('hostReminderSent'):
+			if checkReminderSentForUser(invitation, invitation['hostId']):
+				invitation['hostReminderSent'] = True
+				invitationUpdated = True
+
+		for attendee in invitation['replies']:
+			if attendee['mainReply'] == 'yes' and not attendee.get('reminderSent'):
+				if checkReminderSentForUser(invitation, attendee['userId']):
+					attendee['reminderSent'] = True
+					invitationUpdated = True
+
+		if invitationUpdated:
+			db.invitations.save(invitation)
+
 	# repeat
 	timer = threading.Timer(checkForReminderTimeInterval, checkWhetherItsTimeToSendOutReminderEmails)
 	timer.daemon = True
 	timer.start()
 
 
-def checkWhichCookingsAreComingUp():
+def checkReminderSentForUser(invitation, userId):
+	"""Checks whether a user should've been reminder-emailed about an invitation,
+	   and if so, make an HTTP request to send that email. This works for both
+	   hosts and invitees. Returns True if an email was sent.
+	"""
+	userInfo = db.users.find_one({'_id': ObjectId(userId)})
 
-	print "grab all future cookings!"
-	
-	# grab a list of ALL the invitations that were accepted
-	cookings = list(db.invitations.find({'itsHappening' : True}))
-	
-	# for filtering only the invitations that are coming up
-	upcomingCookings = []
-	
-	# get the current time for filtering purposes
-	currentTime = time.time()
-	
-	for cooking in cookings:
-		# if the cooking event is happening in less than 24 hours (from 6am), then consider it "today"
-		if cooking['datetime'] <= currentTime+86400:
-			print "here's one happening today"
-			
-			# carry this info along (to be used when sending out emails) then discard it later before it gets into the db
-			cooking['isToday'] = "yes"
-			upcomingCookings.append(cooking)
-			
-		# else if the cooking event is happening in less than 48 hours, then consider it tomorrow
-		elif cooking['datetime'] <= currentTime+86400*2:
-			print "here's one happening tomorrow"
-			# add it to the upcoming cookings array!
-			upcomingCookings.append(cooking)
-	
-	# send reminders for all the upcoming cookings
-	for cooking in upcomingCookings:
-		if 'reminderSent' not in cooking:
-		
-			if 'isToday' in cooking:
-				if cooking['isToday'] == 'yes':
-					# create a URL param to append when calling sendCookingReminder
-					todayString = "&isToday=yes"
-					
-					# discard this info so it doesn't get saved to the db
-					cooking.pop['isToday']
-			else:
-				todayString = ""
-			
-			# just in case: set a flag in the DB for reminder sent, so it doesn't get sent multiple times by accident
-			cooking['reminderSent'] = True
-			db.invitations.save(cooking)
-			
-			urllib2.urlopen(config.LOCAL_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id']) + todayString).read()
+	dt = naiveLocalDatetimeForUser(invitation['datetime'], userInfo)
+	hoursBefore = 18 + dt.hour
+	if dt.hour < 4: # count 12am-4am as previous day
+		hoursBefore += 24
+	secondsBefore = (hoursBefore * 60 + dt.minute) * 60
+
+	timeRemaining = invitation['datetime'] - time.time()
+	if timeRemaining < secondsBefore:
+		query = urllib.urlencode({'invitationId': invitation['_id'], 'userId': userId,
+		                          'isToday': ('yes' if timeRemaining < 86000 else 'no')})
+		def sendRequestToSendReminder():
+			urllib2.urlopen(config.LOCAL_URL + '/sendCookingReminder?' + query).read()
+
+		timer = threading.Timer(0.5, sendRequestToSendReminder)
+		timer.start()
+		return True
 
 
 # called by checkForUpcomingCooking() above if the cooking is within the next 48 hours
 @app.route('/sendCookingReminder')
 def sendCookingReminder():
-	
 	print "sending cooking reminder"
 	
-	invitationId = flask.request.args.get('invitationId', '')
-	isToday = flask.request.args.get('today', 'no')
-	
-	if invitationId == '':
+	invitationId = flask.request.args.get('invitationId')
+	userId = flask.request.args.get('userId')
+	isToday = flask.request.args.get('isToday', 'no')
+
+	if not invitationId:
 		return "invitation not found"
+	if not userId:
+		return "user not found"
 	
 	invitation = db.invitations.find_one({'_id' : ObjectId(invitationId)})
+	userInfo = db.users.find_one({'_id': ObjectId(userId)})
 	
-	# grab info about attendees
-	attendees = []
-	
-	# first add host info... because a host is an attendee, too!
-	host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
-	hostInfo = {
-		'userpic' : host['userpic'],
-		'name' : host['name'],
-		'email' : host['email']
-	}
-	
-	attendees.append(hostInfo);
-	
-	# grab all the infos of the people who said yes...
-	for reply in invitation['replies']:
-		# print reply['mainReply']
-	
-		if reply['mainReply'] != "yes":
-			continue
-		
-		attendee = db.users.find_one({'_id' : ObjectId(reply['userId'])})
-		attendeeInfo = {
-			'userpic' : attendee['userpic'],
-			'name' : attendee['name'],
-			'email' : attendee['email']
-		}
-		
-		attendees.append(attendeeInfo)
-	
-	invitation['attendees'] = attendees
+	localDt = naiveLocalDatetimeForUser(invitation['datetime'], userInfo)
+	readableDate = localDt.strftime("%A, %B %d, %Y")
+	readableTime = localDt.strftime("%l:%M %p").strip()
+	if userInfo.get('tzname'):
+		readableTime += ' ' + userInfo['tzname']
+
+	invitation['readableDate'] = readableDate
+	invitation['readableTime'] = readableTime
+
+	# grab a list of all attendees
+	attendeeIds = [invitation['hostId']] + [reply['userId'] for reply in invitation['replies']
+	                                                        if reply['mainReply'] == 'yes']
+	attendees = [db.users.find_one({'_id': ObjectId(aId)}) for aId in attendeeIds]
 	
 	# grab recipe ingredients to send along
-	meal = db.meals.find_one({'slug' : invitation['meal']})
-	mealInfo = {
-		'ingredients' : meal['ingredients'],
-		'title' : meal['title']
-	}
+	mealInfo = db.meals.find_one({'slug' : invitation['meal']})
 	
-	# compose and send email for every attendee
-	# we do it one at a time instead of feeding Message() an array because we actually want each email to be slightly different:
-	# it should say 'you' instead of the recipient's name, because being addressed in the third person is weird
-	
-	for attendee in attendees:
-		# print 'reminder email sent to ' + attendee['name'] + ' for ' + invitation['readableDate']
+	# compose and send email to the user
+	email = Message("Get Ready to Cook!", recipients=[userInfo['email']], sender=emailSenderInfo)
 		
-		email = Message("Get Ready to Cook!", recipients=[attendee['email']], sender=emailSenderInfo)
+	message = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=mealInfo, recipient=userInfo, isToday=isToday)
+	email.html = message
 		
-		message = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal, recipient=attendee, isToday=isToday)
-		email.html = message
+	print message
 		
-		print message
-		
-		mail.send(email)
+	mail.send(email)
 	
 	return "reminder email sent!"
 
