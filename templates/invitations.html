@@ -29,9 +29,12 @@
 	<div class="divider"></div>
 	
 	<div id="upcoming">
-		<p>Ooooo, you have <strong>x</strong> confirmed Hotpots coming up</p>
-		
-		<a href="/invitations/upcoming" class="button">View Upcoming</a>
+		{% if numberOfUpcoming == 0 %}
+			<p>No confirmed Hotpots coming up.</p>
+		{% else %}
+			<p>Oooo, you have <strong>{{ numberOfUpcoming }}</strong> confirmed Hotpot{% if numberOfUpcoming > 1 %}s{% endif %} coming up.</p>
+			<a href="/invitations/upcoming" class="button">View Upcoming</a>
+		{% endif %}
 	</div>
 
 </aside>
