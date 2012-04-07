@@ -807,12 +807,27 @@ def sendReply():
 	# if reply was a yes...
 	if replyInfo['mainReply'] == "yes":
 		# also send the invitee a confirmation
-		inviteeEmail = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})['email']
-		
+		invitee = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})
+		inviteeEmail = invitee['email']
+
+		# calculate the cooking time in the invitee's locale
+		offset = datetime.timedelta(minutes=invitee.get('tzoffset', 0))
+		localDt = datetime.datetime.utcfromtimestamp(invitation['datetime']) - offset
+
+		# make a copy so we can modify it for the invitee
+		confirmationInfo = dict(invitationInfo)
+		confirmationInfo['readableDate'] = localDt.strftime("%A, %B %d, %Y")
+		readableTime = localDt.strftime("%I:%M %p")
+		if readableTime.startswith('0'):
+			readableTime = readableTime[1:]
+		if invitee.get('tzname'):
+			readableTime += ' ' + invitee['tzname']
+		confirmationInfo['readableTime'] = readableTime
+
 		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail], sender=emailSenderInfo)
-		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=invitationInfo, meal=mealInfo)
+		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=confirmationInfo, meal=mealInfo)
 		mail.send(email)
-		
+
 		# check whether this invitation is for something happening on the same day.
 		# if so, send out a "reminder" email for today (b/c the reminder emails contain the link to the room)
 		currentTime = time.time();
