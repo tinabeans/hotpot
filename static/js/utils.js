@@ -51,3 +51,7 @@ Date.prototype.strftime = function(format) {
 function formatDatetimeLocale(tstamp, format) {
 	return (new Date(tstamp * 1000)).strftime(format);
 }
+var TZ_NAME = (function getLocaleTzName() {
+	var localeTimeStr = (new Date()).toLocaleTimeString();
+	return localeTimeStr.substr(localeTimeStr.length - 3);
+})();

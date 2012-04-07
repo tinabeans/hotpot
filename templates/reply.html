@@ -136,10 +136,10 @@
 		
 		<dl id="details">
 			<dt class="date">Date</dt>
-			<dd id="selectedDate">{{ invitation.readableDate|safe }}</dd>
+			<dd id="selectedDate">{{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</dd>
 			
 			<dt class="time">Time</dt>
-			<dd id="selectedTime">{{ invitation.readableTime|safe }}</dd>
+			<dd id="selectedTime">{{ invitation.datetime|jsDatetimeLocaleFormat("%l:%M %p", True)|safe }}</dd>
 		</dl>
 	</div><!-- #invitationInfo -->
 

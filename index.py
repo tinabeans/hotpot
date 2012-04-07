@@ -93,8 +93,10 @@ def render_template(template, **kwargs):
 		return flask.render_template(template, isLoggedIn=isLoggedIn, BASE_URL=config.BASE_URL, **kwargs)
 
 @app.template_filter()
-def jsDatetimeLocaleFormat(tstamp, fmt):
-	return '<script type="text/javascript">document.write(formatDatetimeLocale(%d, "%s"))</script>' % (tstamp, fmt)
+def jsDatetimeLocaleFormat(tstamp, fmt, tzname=False):
+	return """<script type="text/javascript">document.write(formatDatetimeLocale(%d, "%s") %s)</script>""" % (
+		tstamp, fmt, ("""+ ' ' + TZ_NAME""" if tzname else '')
+	)
 
 
 
@@ -821,9 +823,7 @@ def sendReply():
 		# make a copy so we can modify it for the invitee
 		confirmationInfo = dict(invitationInfo)
 		confirmationInfo['readableDate'] = localDt.strftime("%A, %B %d, %Y")
-		readableTime = localDt.strftime("%I:%M %p")
-		if readableTime.startswith('0'):
-			readableTime = readableTime[1:]
+		readableTime = localDt.strftime("%l:%M %p").strip()
 		if invitee.get('tzname'):
 			readableTime += ' ' + invitee['tzname']
 		confirmationInfo['readableTime'] = readableTime
