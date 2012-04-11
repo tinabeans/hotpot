@@ -58,8 +58,8 @@
 			<tr>
 				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
 				<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
-					<h1 id="previewMealTitle" style="text-align:center; color:#1c6770; font-size:35px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;">{{ meal.title }}</h1>
-					<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:14px;" id="previewMealDescription">{{ meal.shortDescription }} <a href="/meals/{{ meal.slug }}" style="color:#f07239; text-decoration:none;">More about this meal »</a></p>
+					<h1 id="previewMealTitle" style="text-align:center; color:#1c6770; font-size:35px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;">{{ meal.title|title }}</h1>
+					<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:14px;" id="previewMealDescription">{{ meal.shortDescription|safe }} <a href="/meals/{{ meal.slug }}" style="color:#f07239; text-decoration:none;">More about this meal »</a></p>
 					
 				</td>
 				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
@@ -68,7 +68,7 @@
 			<!-- IMAGE -->
 			
 			<tr>
-				<td colspan="3"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/foodpics/{{ meal.slug }}.png" width="620" height="277" alt="{{ meal.title }}" id="previewMealImage"></td>
+				<td colspan="3"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/foodpics/{{ meal.slug }}.png" width="620" height="277" alt="{{ meal.title|safe }}" id="previewMealImage"></td>
 			</tr>
 			
 			<!-- DATE, TIME, PLACE -->
@@ -220,7 +220,7 @@
 		<fieldset>
 			<div id="chosenRecipe">
 				<label>Selected meal:</label>
-				<p id="mealTitleDisplay">{{ meal.title }}</p>
+				<p id="mealTitleDisplay">{{ meal.title|safe }}</p>
 				
 				<a href="#" id="selectMealButton" class="button">Select Meal</a>
 				
@@ -305,10 +305,10 @@
 						<img src="/static/images/food/{{ meal.slug }}.jpg">
 					</div>
 					
-					<a href="/meals/{{ meal.slug }}" class="button mealPickerButton" data-id="{{ meal.slug }}" title="{{ meal.title }}" target="_blank">Choose</a>
+					<a href="/meals/{{ meal.slug }}" class="button mealPickerButton" data-id="{{ meal.slug }}" title="{{ meal.title|safe }}" target="_blank">Choose</a>
 					
 					<div class="mealContent">
-						<h2>{{ meal.title }}</h2>
+						<h2>{{ meal.title|safe }}</h2>
 						<p>{{ meal.shortDescription|safe }} <a href="/meals/{{ meal.slug }}" target="_blank">More info</a></p>
 					</div>
 				</li>

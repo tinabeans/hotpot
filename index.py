@@ -122,7 +122,7 @@ def home():
 	if 'userId' not in flask.session:
 		return flask.redirect(flask.url_for('index'));
 	
-	newMeal = db.meals.find_one({'slug' : 'LemonGarlicKalePasta'})
+	newMeal = db.meals.find_one({'slug' : 'GarlicCuminVinaigretteEggplant'})
 	
 	# grab both the sent and received invitations that have been accepted
 	invitations = grabAllInvitationsFor(flask.session['userId'])

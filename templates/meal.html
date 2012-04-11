@@ -1,6 +1,6 @@
 {% extends "base/common.html" %}
 
-{% block title %}{{ meal.title }}{% endblock %}
+{% block title %}{{ meal.title|safe }}{% endblock %}
 {% block bodyId %}meal{% endblock %}
 {% block bodyClass %}secondary{% endblock %}
 
@@ -8,7 +8,7 @@
 
 <a href="/meals" id="returnLink">More Meals<br /><img src="/static/images/icon_arrowLeft.png"></a>
 
-<h1 id="mealTitle">{{ meal.title }}</h1>
+<h1 id="mealTitle">{{ meal.title|safe }}</h1>
 
 <ul id="mealFacts">
 	<li>{{ meal.time }}</li>

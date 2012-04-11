@@ -65,7 +65,7 @@
 							<!-- ALTERNATIVE MEALS -->
 								
 							{% if reply.altMeals != "" %}
-								<p style="font-family:'Courier New', monospace; font-size:18px; line-height:1.4em; color:#4e565c;">I don't want to make {{ meal.title }}. Other suggestions: {{ reply.altMeals }}</p>
+								<p style="font-family:'Courier New', monospace; font-size:18px; line-height:1.4em; color:#4e565c;">I don't want to make {{ meal.title|safe }}. Other suggestions: {{ reply.altMeals }}</p>
 							{% endif %}
 						{% endif %}
 						
@@ -101,7 +101,7 @@
 					The original invitation was for:
 				{% endif %}
 			</p>
-			<h1 style="text-align:center; color:#1c6770; font-size:28px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; line-height:20px;">{{ meal.title }}</h1>
+			<h1 style="text-align:center; color:#1c6770; font-size:28px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; line-height:20px;">{{ meal.title|safe }}</h1>
 			<p style="text-align:center; line-height:1em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:18px;">
 				<img src="{{ BASE_URL }}/static/images/email/text_date.png" alt="Date"> &nbsp;{{ invitation.readableDate|safe }} &nbsp; &nbsp;<img src="{{ BASE_URL }}/static/images/email/text_time.png" alt="Time"> &nbsp;{{ invitation.readableTime|safe }}
 			</p>
