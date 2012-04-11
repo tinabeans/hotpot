@@ -143,6 +143,7 @@ $widgetNavHeight:45px;
 		padding:15px;
 		font-weight: 700;
 		font-size:19px;
+		white-space: nowrap;
 		
 		.label {
 			@include bigFatLetters;
@@ -150,6 +151,22 @@ $widgetNavHeight:45px;
 			font-size:11px;
 			letter-spacing:.01em;
 			margin-bottom:3px;
+		}
+		
+		.longTitle {
+			display:none;
+		}
+		
+		&:hover {
+			.longTitle {
+				display: block;
+				position: relative;
+				z-index:+3;
+			}
+			
+			.shortTitle {
+				display: none;
+			}
 		}
 	}
 }

@@ -474,23 +474,15 @@ def showMeal(slug):
 @app.route('/invite')
 def showBlankInviteForm():
 	
+	meal = flask.request.args.get('meal', 'LemonGarlicKalePasta')
+	
 	if 'userId' not in flask.session:
 		return flask.redirect('/login?redirect=invite')
 	else:
 		meals = list(db.meals.find())
-		meal = db.meals.find_one()
+		meal = db.meals.find_one({ 'slug' : meal })
+		
 		return render_template('invite.html', meals=meals, meal=meal)
-
-@app.route('/invite/<meal>')
-def showInviteForm(meal):
-	
-	meal = db.meals.find_one({ 'slug' : meal })
-	
-	if 'userId' not in flask.session:
-		return flask.redirect('/login')
-	else:
-		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
-		return render_template('invite.html', meal=meal )
 
 @app.route('/loadMealInformation')
 def loadMealInformation():
@@ -1218,6 +1210,12 @@ def showRoom(invitationId):
 		
 		# ...and insert them into the recipe object at the appropriate step, one step at a time
 		meal = insertNotesIntoSteps(meal, notesInThisRoom)
+		if len(meal['title']) > 35:
+			truncatedTitle = meal['title'][0:35]
+			shortTitle = truncatedTitle[0:truncatedTitle.rfind(' ')] + '...'
+			meal['shortTitle'] = shortTitle
+		
+		# truncate the meal name if it's too long
 		
 		# grab all the stamps too
 		stamps = list(db.stamps.find())

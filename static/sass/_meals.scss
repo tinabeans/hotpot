@@ -23,6 +23,7 @@ body#meals {
 	.meal {
 		@include imageOuterBorder;
 		position: relative;
+		margin-bottom:30px;
 	}
 	
 	.mealImageLink {

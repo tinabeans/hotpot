@@ -15,6 +15,7 @@
 	<li>{{ meal.type }}</li>
 	<li>{{ meal.difficulty }}</li>
 	<li>{{ meal.flavors }}</li>
+	{% if meal.servings %}<li>{{ meal.servings }}</li>{% endif %}
 </ul>
 
 <div id="mealImageContainer">
@@ -30,7 +31,7 @@
 
 	<div id="importantStuff">
 	
-		<a href="/invite/{{ meal.slug }}" id="inviteButton">
+		<a href="/invite?meal={{ meal.slug }}" id="inviteButton">
 			<span class="small"><em>Invite a Friend to</em></span> Cook This
 		</a>
 	
@@ -72,13 +73,13 @@
 			<img id="submissionUser" src="/static/uploads/userpics/placeholder.png" />
 		
 			<h1>Submitted By:</h1>
-			<p>Tinabeans<br />
-				January 21, 2012
+			<p>{% if meal.submittedBy %}{{ meal.submittedBy }}{% else %}Tinabeans{% endif %}<br />
+				{% if meal.submissionDate %}{{ meal.submissionDate }}{% else %}January 21, 2012{% endif %}
 			</p>
 		</div>
 		
 		<div class="stuff">
-			<h1>Inspired By:</h1>
+			<h1>Recipe Sources:</h1>
 			<a href="{{meal.creditURL}}" target="_blank">{{ meal.credit }}</a>
 		</div>
 	</section><!-- #mealCredits -->

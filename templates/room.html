@@ -54,7 +54,12 @@
 			
 				<h1 id="recipeTitle">
 					<div class="label">Now Cooking</div>
-					{{ meal.title }}
+					{% if meal.shortTitle %}
+						<div class="longTitle">{{ meal.title }}</div>
+						<div class="shortTitle">{{ meal.shortTitle }}</div>
+					{% else %}
+						{{ meal.title }}
+					{% endif %}
 				</h1>
 				
 				<nav id="recipeNav">

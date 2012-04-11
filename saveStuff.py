@@ -634,7 +634,7 @@ def start(db):
 	
 		"slug" : "GarlicCuminVinaigretteEggplant",
 		
-		"title" : "Grilled Eggplant with Garlic-Cumin Vinaigrette, Feta &amp; Herbs",
+		"title" : "Grilled Eggplant with Garlic-Cumin Vinaigrette",
 		
 		"submittedBy" : "Beatriz",
 		
@@ -788,7 +788,7 @@ def start(db):
 			{
 				"id": "10",
 				"type": "rest",
-				"text": """Take a break while the couscous finishes steaming and the vinaigrette flavors mesh. Now's a good time to write down any thoughts, discoveries, and reactions you've had, too!"""
+				"text": """<p>Take a break while the couscous finishes steaming and the vinaigrette flavors mesh. Now's a good time to write down any thoughts, discoveries, and reactions you've had, too!</p>"""
 			},
 			{
 				"id": "11",
