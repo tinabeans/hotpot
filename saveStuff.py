@@ -100,7 +100,7 @@ def start(db):
 	})
 	'''
 	
-	
+	'''
 	meal1 = {
 		"_id": ObjectId('4f3352569685aa28d5000008'),
 		
@@ -627,3 +627,188 @@ def start(db):
 	}
 
 	db.meals.save(meal3)
+	'''
+	
+	meal4 = {
+		"_id" : ObjectId('4f8509bb9685aa744c000000'),
+	
+		"slug" : "GarlicCuminVinaigretteEggplant",
+		
+		"title" : "Grilled Eggplant with Garlic-Cumin Vinaigrette, Feta &amp; Herbs",
+		
+		"submittedBy" : "Beatriz",
+		
+		"submissionDate" : "April 10, 2011",
+		
+		"credit":"Fine Cooking",
+		
+		"creditURL":"http://www.finecooking.com/recipes/grilled-eggplant-garlic-cumin-vinaigrette-feta-herbs.aspx?nterms=112064",
+		
+		"shortDescription": """If you aren't a believer in eggplants, this will definitely bring you around.""",
+		
+		"time" : "1 hr",
+		
+		"servings" : "2-4 servings",
+		
+		"type" : "vegetarian",
+		
+		"difficulty" : "easy-peasy",
+		
+		"flavors" : "zesty, Mediterranean, fresh",
+		
+		"description":"""Zesty homemade vinaigrette, creamy eggplant and bright herbs served over a bed of couscous make for quite a sophisticated dinner or lunch! But it's surprisingly easy and healthy, too. Here's a presentation tip from the original site: "This dish looks especially nice served on a platter, with the feta and herbs scattered over grilled eggplant." Why not? Food that looks better, tastes better!""",
+		
+		"ingredients": [
+			{
+				"name" : "garlic",
+				"amount": "1 clove"
+			},
+			{
+				"name" : """lemon""",
+				"amount": "1"
+			},
+			{
+				"name" : "shallot",
+				"amount": "1"
+			},
+			{
+				"name" : "couscous",
+				"amount": "1 cup"
+			},
+			{
+				"name" : "globe eggplant",
+				"amount": '1 large'
+			},
+			{
+				"name" : "feta cheese",
+				"amount": "1/4 cup"
+			},
+			{
+				"name" : "fresh mint",
+				"amount": "2 tbsp"
+			},
+			{
+				"name" : "fresh cilantro",
+				"amount": "2 tbsp"
+			},
+			{
+				"name" : "salt"
+			},
+			{
+				"name" : "cayenne pepper"
+			},
+			{
+				"name" : "cumin"
+			},
+			{
+				"name" : "extra virgin olive oil"
+			}
+			
+		],
+		"steps": [
+			{
+				"id": "0",
+				"type": "ingredients",
+				"text": """<p>Gather the following ingredients:</p>"""
+			},
+			{
+				"id": "1",
+				"type": "prep",
+				"text": """<p>Prepare the vinaigrette ingredients:</p>
+					<ul>
+						<li>Squeeze the lemon.</li>
+						<li>Finely dice the shallot.</li>
+						<li>Mash the garlic clove.</li>
+						<li>Lightly toast 1/2 teaspoon of cumin in a pan (optional).</li>
+					</ul>""",
+				"extra": "<p>To mash garlic, you can either pound with a mortar &amp; pestle, squeeze through a garlic press, or finely chop then mash it with a fork. A sprinkle of salt helps the garlic soften up while mashing.</p>"
+			},
+			{
+				"id": "2",
+				"type": "prep",
+				"text": """<p>Combine in two separate small bowls:</p>
+					<ul>
+						<li>the mashed garlic</li>
+						<li>1 tablespoon of lemon juice</li>
+					</ul>
+					<p>and</p>
+					<ul>
+						<li>the minced shallot</li>
+						<li>1/2 tablespoon of lemon juice.</li>
+					</ul>
+					<p>Let sit for 10 minutes.</p>"""
+			},
+			{
+				"id": "3",
+				"type": "prep",
+				"text": """<p>Meanwhile, prepare the eggplant ingredients:</p>
+					<ul>
+						<li>Slice the eggplant into 1/2-inch-thick slices.</li>
+						<li>Chop 2 tablespoons of mint leaves.</li>
+						<li>Chop 2 tablespoons of cilantro leaves.</li>
+					</ul>"""
+			},
+			{
+				"id": "4",
+				"type": "prep",
+				"text": """<p>Brush or rub both sides of the eggplant slices with olive oil and sprinkle on a little bit of salt.</p>"""
+			},
+			{
+				"id" : "5",
+				"type" : "heat",
+				"text" : "<p>Start the couscous. Bring <strong>1 and 1/2 cup of water</strong> to boil in a medium pot. While waiting for the water, you can start cooking the eggplant..."
+			},
+			{
+				"id": "6",
+				"type": "heat",
+				"text": """<p>Fire up the grill, or if you don't have a grill, heat a big non-stick skillet on high heat.</p>"""
+			},
+			{
+				"id": "7",
+				"type": "heat",
+				"text": """<p>When the grill or pan is very hot, lay the slices on top. Grill/saute until slices are golden brown and feel soft when poked, about 3&ndash;4 minutes per side. If water comes to a boil during this time, see next step.</p>""",
+				"extra": "<p>How to tell if the pan is hot enough? Throw a <i>tiny</i> bit of water in, and see if it immediately evaporates. Be careful if there is already oil in the pan; too much water will make the oil pop and splatter!</p>"
+			},
+			{
+				"id": "8",
+				"type": "heat",
+				"text": """<p>When the water comes to a boil, add <strong>1 cup of couscous</strong>, cover tightly, and turn off the heat. Let it sit covered for 15 minutes.</p>"""
+			},
+			{
+				"id": "9",
+				"type": "finish",
+				"text": """<p>Finish the vinaigrette. Whisk into the lemon-garlic mixture:</p>
+					<ul>
+						<li>the toasted cumin</li>
+						<li>3 tablespoons of olive oil</li>
+						<li>a pinch of cayenne, to taste</li>
+					</ul>""",
+				"extra": """<p>Tasting is everything, so treat yourself to a little sample of that vinaigrette and adjust the spices accordingly. Jot down your reaction using the notes and stamps buttons.</p>"""
+			},
+			{
+				"id": "10",
+				"type": "rest",
+				"text": """Take a break while the couscous finishes steaming and the vinaigrette flavors mesh. Now's a good time to write down any thoughts, discoveries, and reactions you've had, too!"""
+			},
+			{
+				"id": "11",
+				"type": "finish",
+				"text": """<p>When the couscous is done, it's ready to serve. Fluff it with a fork and put a big mound on a plate. Top with:</p>
+					<ul>
+						<li>a few slices of eggplant</li>
+						<li>some of the shallot-lemon mixture</li>
+						<li>a sprinkle of feta</li>
+						<li>a sprinkle of cilantro and mint</li>
+						<li>a drizzle of vinagrette</li>
+					</ul>
+					<p>If you're feeding more than one person, repeat this with each plate.</p>"""
+			},
+			{
+				"id": "12",
+				"type": "eat",
+				"text": """<p>Time to eat! How's it taste? Write it all down here:</p>"""
+			}
+		]
+	}
+
+	db.meals.save(meal4)
