@@ -29,9 +29,12 @@
 	<div class="divider"></div>
 	
 	<div id="upcoming">
-		<p>Ooooo, you have <strong>x</strong> confirmed Hotpots coming up</p>
-		
-		<a href="/upcoming" class="button">View Upcoming</a>
+		{% if numberOfUpcoming == 0 %}
+			<p>No confirmed Hotpots coming up.</p>
+		{% else %}
+			<p>Oooo, you have <strong>{{ numberOfUpcoming }}</strong> confirmed Hotpot{% if numberOfUpcoming > 1 %}s{% endif %} coming up.</p>
+			<a href="/invitations/upcoming" class="button">View Upcoming</a>
+		{% endif %}
 	</div>
 
 </aside>
@@ -50,7 +53,7 @@
 	
 	<div id="sent" class="invitationsList">
 	{% if invitationsSent|length() == 0 %}
-		<p class="message">No invitations. We recommend sending some as soon as possible! :)</p>
+		<p class="intro">No invitations. We recommend sending some as soon as possible! :)</p>
 	{% endif %}
 	
 	{% for invitation in invitationsSent %}
@@ -69,7 +72,7 @@
 					unknown status
 				{% endif %}
 				
-				<span class="sendDate">Sent {{ invitation.sendDate }}</span>
+				<span class="sendDate">Sent {{ invitation.sendDate|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</span>
 			</div>
 			
 			<div class="mealImage">
@@ -92,10 +95,10 @@
 				</div>
 				<div class="datetime">
 					<span class="label date">Date</span>
-					{{ invitation.readableDate }}
+					{{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}
 					
 					<span class="label time">Time</span>
-					{{ invitation.readableTime|safe }}
+					{{ invitation.datetime|jsDatetimeLocaleFormat("%l:%M %p")|safe }}
 				</div>
 				
 				<a href="/invitations/{{ invitation._id }}" class="smallButton">View Invitation</a>
@@ -107,12 +110,12 @@
 	
 	<div id="received" style="display:none;" class="invitationsList">
 	{% if alertNumber != 0 %}
-		<p class="message">You have <span class="alertNumber">{{ alertNumber }}</span> invitation{% if alertNumber > 1 %}s{% endif %} below awaiting your reply.</p>
+		<p class="intro">You have <span class="alertNumber">{{ alertNumber }}</span> invitation{% if alertNumber > 1 %}s{% endif %} below awaiting your reply.</p>
 	{% endif %}
 	
 	
 	{% if invitationsReceived|length() == 0 %}
-		<p class="message">No invitations received... yet!</p>
+		<p class="intro">No invitations received... yet!</p>
 	{% endif %}
 	
 	{% for invitation in invitationsReceived %}
@@ -131,7 +134,7 @@
 					unknown status
 				{% endif %}
 				
-				<span class="sendDate">Sent {{ invitation.sendDate }}</span>
+				<span class="sendDate">Sent {{ invitation.sendDate|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</span>
 			</div>
 			
 			<div class="mealImage">
@@ -150,10 +153,10 @@
 				</div>
 				<div class="datetime">
 					<span class="label date">Date</span>
-					{{ invitation.readableDate }}
+					{{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}
 					
 					<span class="label time">Time</span>
-					{{ invitation.readableTime|safe }}
+					{{ invitation.datetime|jsDatetimeLocaleFormat("%l:%M %p")|safe }}
 				</div>
 				
 				<a href="/invitations/{{ invitation._id }}" class="smallButton">View Invitation</a>
@@ -163,5 +166,5 @@
 	{% endfor %}
 	</div><!-- #received -->
 
-</div><!-- #invitationsList -->
+</div><!-- #invitationsContainer -->
 {% endblock main %}

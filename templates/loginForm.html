@@ -1,0 +1,21 @@
+<form id="loginForm" action="/loginAction" method="POST">
+	<div class="formItem">
+		<label>email:</label>
+		<input type="text" name="email" placeholder="email" class="required emailInput" />
+	</div>
+	
+	<div class="formItem">
+		<label>password:</label>
+		<input type="password" id="passwordField" placeholder="password" class="required" />
+	</div>
+	
+	<input type="hidden" name="password" class="encryptedPassword" />
+	
+	{% if redirectURL %}
+		<input type="hidden" name="redirectURL" value="{{ redirectURL }}" />
+	{% endif %}
+	
+	<div class="buttons">
+		<input type="submit" />
+	</div>
+</form>

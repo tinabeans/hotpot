@@ -6,6 +6,96 @@
 	#pageIntro {
 		margin-bottom: 50px;
 	}
+	
+	&.noscroll {
+		overflow:hidden;
+	}
+}
+
+#overlayContainer {
+	background:rgba(#fff, .5);
+	display: none;
+	width:100%;
+	height:100%;
+	@include box-sizing(border-box);
+	position: fixed;
+	top:0px;
+	left:0px;
+	z-index: 9001;
+	
+	#recipePickerContainer {
+		position: absolute;
+		top:50%;
+		left:50%;
+		background:#fff url(/static/images/textureSoft.png);
+		width:600px;
+		height:400px;
+		margin-top:-240px;
+		margin-left:-310px;
+		@include box-shadow(0px 0px 0px 10px rgba($darkBrown, .5));
+		
+		.closeButton {
+			@include closeButton;
+			top:-20px;
+			right:-20px;
+			z-index:+1;
+		}
+	}
+	
+	#recipePicker {
+		width:100%;
+		height:100%;
+		@include box-sizing(border-box);
+		overflow-y:auto;
+		overflow-x: hidden;
+		padding:30px;
+		
+		h1 {
+			text-align: center;
+			margin-bottom:20px;
+			font-size:20px;
+		}
+		
+		li {
+			margin:30px 0px;
+			@include lightBrownBg;
+			padding:15px;
+			@include clearfix;
+		}
+		
+		.mealContent {
+			margin-left:125px;
+			margin-right:120px;
+		}
+		
+		h2 {
+			font-weight:700;
+			font-size:20px;
+			margin-bottom:5px;
+		}
+		
+		p {
+			font-size:14px;
+			margin-bottom:1px;
+		}
+		
+		.mealImage {
+			@include mealImage;
+			float: left;
+			height:70px;
+			width:100px;
+			
+			img {
+				height: 100%;
+				width:auto;
+			}
+		}
+		
+		.button {
+			float:right;
+			margin-top:21px;
+		}
+	}
 }
 
 #inviteFormContainer {
@@ -23,7 +113,7 @@
 	}
 }
 
-#inviteForm {
+#inviteForm, #emailContainer {
 	@include box-sizing(border-box);
 	
 	h2 {
@@ -32,6 +122,23 @@
 		color:$darkBlue;
 		font-size:16px;
 		margin-bottom:10px;
+	}
+	
+	.formItemError {
+		top:20px;
+	}
+	
+	#errorsPresentMessage {
+		display: none;
+		
+		p {
+			width:250px;
+			font-size:14px;
+			font-weight:700;
+			text-align:center;
+			margin:15px auto;
+			color:$orange;
+		}
 	}
 	
 	input, textarea {
@@ -45,6 +152,17 @@
 
 	.formItem {
 		margin-bottom:15px;
+		
+		&.left {
+			float:left;
+			width:50%;
+			@include box-sizing(border-box);
+			padding-right:15px;
+		}
+		
+		&.right {
+			margin-left:50%;
+		}
 	}
 	
 	label {
@@ -87,6 +205,19 @@
 	
 	#sendInvitationButton {
 		@include bigButton;
+		cursor: pointer;
+	}
+	
+	#selectMealButton {
+		margin-right:15px;
+	}
+	
+	#loadingImage {
+		display:none;
+		
+		img {
+			margin-top:10px;
+		}
 	}
 }
 
@@ -221,11 +352,11 @@ table.jCalendar {
 }
 
 /**********************************************************/
-/* INVITATION SENT PAGE */
+/* INVITATION & REPLY SENT PAGE */
 
-#invitationSent {
+#invitationSent, #replySent {
 	#pageTitle {
-		margin-bottom:30px;
+		margin-bottom:40px;
 	}
 	
 	.intro {
@@ -234,18 +365,22 @@ table.jCalendar {
 		margin-bottom:5px;
 	}
 
-	p.message {
+	p {
 		text-align: center;
 		font-size:16px;
 		color:$textColor;
 	}
-	
-	#invitationPreviewContainer {
-		margin:40px auto;
-		float:none;
-	}
 }
 
+#invitationSent #invitationPreviewContainer {
+	margin:40px auto;
+	float:none;
+}
+
+#replySent #replyContainer {
+	margin:40px auto;
+	float:none;
+}
 
 
 /**********************************************************/
@@ -253,11 +388,21 @@ table.jCalendar {
 
 #reply {
 	#pageTitle {
-		margin-bottom:30px;
+		margin-bottom:40px;
 	}
 	
 	.intro {
 		text-align: center;
+	}
+}
+
+#newUserOptions {
+	text-align: center;
+	margin:20px;
+	
+	a {
+		@include bigButton;
+		width:220px;
 	}
 }
 
@@ -340,6 +485,10 @@ table.jCalendar {
 	
 		#replyMessage {
 			@include lightOrangeBg;
+		}
+		
+		a {
+			color:$mediumBlue;
 		}
 	}
 	
@@ -484,13 +633,6 @@ table.jCalendar {
 	margin:-1px 0px 30px 0px;
 }
 
-/**********************************************************/
-/* REPLY SENT PAGE */
-
-#replyContainer {
-	margin:40px auto;
-	float:none;
-}
 
 /**********************************************************/
 /* VIEWING INVITATIONS */
@@ -545,13 +687,6 @@ table.jCalendar {
 		margin-bottom:30px;
 		font-weight: 700;
 		font-size:14px;	
-	}
-	
-	.message {
-		text-align: left;
-		font-size:18px;
-		color:$textColor;
-		margin: 0px 0px 30px 0px;
 	}
 	
 	.alertNumber {
@@ -642,11 +777,17 @@ table.jCalendar {
 			}
 			
 			.with {
-				margin:10px 0px;
+				margin:10px 20px 0px 0px;
+				float:left;
 			
 				.label {
 					color:$darkBlue;
 				}
+			}
+			
+			.cookingRoomLink {
+				margin-top: 48px;
+				margin-left: 230px;
 			}
 		}
 	}
@@ -758,3 +899,104 @@ table.jCalendar {
 #invitationFilters {
 	margin-bottom:30px;
 }
+
+/**********************************************************/
+/* NEW SIMPLE INVITE PAGE */
+
+#otherInviteOptions {
+	@include box-sizing(border-box);
+	float:right;
+	width: 25%;
+	@include lightBrownBg;
+	padding: 30px;
+}
+
+#emailContainer {
+	@include box-sizing(border-box);
+	@include lightBlueBg;
+	width:72%;
+	padding:30px;
+	
+	h2 {
+		
+		@include bigFatLetters;
+		color:$mediumBlue;
+		font-size:18px;
+		margin-bottom:20px;
+	
+		img {
+			vertical-align: middle;
+			margin-right:10px;
+		}
+	}
+	
+	#messageBody {
+		background:#fff;
+		@include border-radius(10px);
+		padding:30px;
+		@include box-shadow(0px 2px 7px rgba($darkBrown, .5));
+	}
+	
+	#messageBodyInputContainer textarea, #recipeInputContainer {
+		border: 3px dashed $lightBrown;
+		padding:20px;
+		@include border-radius(10px);
+		margin-bottom:30px;
+	}
+	
+	#messageBodyInputContainer textarea:focus {
+		outline:none;
+		border:0;
+		border: 3px solid $lightBrown;
+	}
+	
+	#recipeInputContainer {
+		@include clearfix;
+	}
+	
+	#chosenRecipe {
+		display:none;
+		
+		#mealImage {
+			float:left;
+			margin-right:20px;
+		}
+		
+		#mealTitle {
+			margin: 0 0 10px 0;
+		}
+		
+		#mealDescription {
+			margin: 0 0 10px 0;
+			font-size:16px;
+		}
+	}
+	
+	#aboutHotpot {
+		background: rgba($lightBrown, .3);
+		padding:20px;
+		
+		h2 {
+			color: $orange;
+			margin-bottom:5px;
+			
+			img {
+				position: relative;
+				top: -9px;
+				left: 6px;
+			}
+		}
+		
+		p {
+			font-size:16px;
+			padding:0px;
+			margin:0px;
+		}
+	}
+}
+
+
+
+
+
+

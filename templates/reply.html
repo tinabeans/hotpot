@@ -3,6 +3,7 @@
 {% block title %}Reply{% endblock %}
 
 {% block customJS %}
+	<script type="text/javascript" src="/static/js/validation.js"></script>
 	<script type="text/javascript" src="/static/js/reply.js"></script>
 	<script src="/static/js/lib/jquery.sha1.js" type="text/javascript"></script>
 	
@@ -39,23 +40,28 @@
 {% endwith %}
 
 {% if show == "registration" %}
-	<p class="message">First, please create a Hotpot account.</p>
+	<p class="message">Create a new Hotpot account.</p>
 
 	<div id="registrationFormContainer">
 	<form id="registrationForm" action="/registerToReply" method="POST">
 		<div class="formItem">
-			<label>email:</label>
-			<input type="text" name="email" value="{{ inviteeId }}" />
+			<label>first name: *</label>
+			<input type="text" name="name" class="required" placeholder="first name" />
 		</div>
 		
 		<div class="formItem">
-			<label>name:</label>
-			<input type="text" name="name" />
+			<label>last name:</label>
+			<input type="text" name="lastname" placeholder="last name" />
+		</div>
+	
+		<div class="formItem">
+			<label>email: *</label>
+			<input type="text" name="email" class="required emailInput" placeholder="email" />
 		</div>
 		
 		<div class="formItem">
-			<label>password:</label>
-			<input type="password" id="passwordField" />
+			<label>password: *</label>
+			<input type="password" id="passwordField" class="required" placeholder="password" />
 		</div>
 		
 		<input type="hidden" name="password" id="encryptedPassword" />
@@ -74,12 +80,12 @@
 	<form id="loginForm" action="/loginToReply" method="POST">
 		<div class="formItem">
 			<label>email:</label>
-			<input type="text" name="email" />
+			<input type="text" name="email" placeholder="email" class="required emailInput" />
 		</div>
 		
 		<div class="formItem">
 			<label>password:</label>
-			<input type="password" id="passwordField" />
+			<input type="password" id="passwordField" placeholder="password" class="required" />
 		</div>
 		
 		<input type="hidden" name="password" id="encryptedPassword" />
@@ -97,12 +103,22 @@
 	<p>You've already replied! Check it out: <a href="/invitations/{{ invitation._id }}">here</a></p>
 	
 {% elif show == "confirm" %}
-	<p class="message">You're logged in as {{ loggedInName }}. Is this correct?</p>
-	<a href="/continueToReply?invitationId={{ invitation._id }}&inviteeId={{ inviteeId }}">Yup, that's me! - Continue</a><br />
-	<a href="/logoutToReply?invitationId={{ invitation._id }}&inviteeId={{ inviteeId }}">That's not me! I want my own account</a>
+	<p class="intro">You're logged in as <strong>{{ user.name }}{% if user.lastname %} {{ user.lastname }}{% endif %}</strong>. Is this correct?</p>
+	
+	<div id="newUserOptions">
+		<a href="/continueToReply?invitationId={{ invitation._id }}&inviteeId={{ inviteeId }}">
+			<span class="small"><em>Yup, that's me!</em></span>
+			Continue
+		</a>
+		
+		<a href="/logoutToReply?invitationId={{ invitation._id }}&inviteeId={{ inviteeId }}">
+			<span class="small"><em>That's not me, sir.</em></span>
+			New Account
+		</a>
+	</div>
 	
 {% elif show == "wrongperson" %}
-	<p>Looks like this invite isn't for you! <a href="/logoutToReply?invitationId={{ invitation._id }}&inviteeId={{ inviteeId }}">Switch accounts?</a></p>
+	<div class="message">Looks like this invite isn't for you! <a href="/logoutToReply?invitationId={{ invitation._id }}&inviteeId={{ inviteeId }}">Switch accounts?</a></div>
 	
 {% else %}
 <div id="replyFormContainer">
@@ -120,10 +136,10 @@
 		
 		<dl id="details">
 			<dt class="date">Date</dt>
-			<dd id="selectedDate">{{ invitation.readableDate|safe }}</dd>
+			<dd id="selectedDate">{{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</dd>
 			
 			<dt class="time">Time</dt>
-			<dd id="selectedTime">{{ invitation.readableTime|safe }}</dd>
+			<dd id="selectedTime">{{ invitation.datetime|jsDatetimeLocaleFormat("%l:%M %p", True)|safe }}</dd>
 		</dl>
 	</div><!-- #invitationInfo -->
 
@@ -160,7 +176,7 @@
 				</div>
 				
 				<div id="altMealsContainer" class="extraInput" style="display:none;">
-					<label>Suggest some good alternatives (<a href="">See what the choices are</a>):</label>
+					<label>Suggest some alternative meals (<a href="/meals" target="_blank">See other options here</a>):</label>
 					<input type="text" name="altMeals"></textarea>
 				</div>
 			</div>

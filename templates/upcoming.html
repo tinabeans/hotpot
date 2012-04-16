@@ -1,0 +1,101 @@
+{% extends "base/common.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block customJS %}
+{% endblock %}
+
+{% block bodyId %}invitations{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+<h1 id="pageTitle">Upcoming</h1>
+<!--p id="pageIntro">View invitations sent by you</p-->
+
+<aside id="invitationsSidebar">
+
+	<nav id="invitationTypeNav">
+		<a id="sentLink" {% if invitationType == 'sent' %}class="selected"{% endif %} href="/invitations">
+			{{ numberOfInvitationsSent }} Sent
+		</a>
+		<a id="receivedLink" {% if invitationType == 'received' %}class="selected"{% endif %} href="/invitations?filter=received">
+			{{ numberOfInvitationsReceived }} Received
+			{% if alertNumber != 0 %}<span class="alertText">{{ alertNumber }} New</span>{% endif %}
+		</a>
+	</nav>
+	
+	<div class="divider"></div>
+	
+	<div id="upcoming">
+		{% if alertNumber != 0 %}
+			<p>You have <strong>{{ alertNumber }}</strong> invitation{% if alertNumber > 1 %}s{% endif %} awaiting your reply. <a href="/invitations?filter=received">Take a look &raquo;</a></p>
+			
+			<a href="/invitations?filter=received" class="button">Invitations</a>
+		{% else %}
+			<a href="/invitations" class="button">Invitations</a>
+		{% endif %}
+	</div>
+
+</aside>
+
+<div id="invitationContainer">
+	
+	<div id="upcoming" class="invitationsList">
+		
+		{% if hotpots|length() == 0 %}
+			<p class="intro">Nothing on the horizon. Maybe it's time to start <a href="/meals">making some plans</a>!</p>
+		{% else %}
+			<p class="intro">You have <span class="alertNumber">{{ hotpots|length() }}</span> Hotpot{% if hotpots|length() > 1 %}s{% endif %} coming up:</p>
+		{% endif %}
+	
+	{% for hotpot in hotpots %}
+		<div class="invitation">
+		
+			<div class="statusBar {{ hotpot.status }}">
+				{% if hotpot.status == "new" %}
+					Awaiting Your Reply
+				{% elif hotpot.status == "changeNeeded" %}
+					Change Needed
+				{% elif hotpot.status == "declined" %}
+					Declined
+				{% elif hotpot.status == "accepted" %}
+					Hooray! It's happening!
+				{% else %}
+					unknown status
+				{% endif %}
+				
+				<span class="sendDate">Sent {{ hotpot.sendDate|jsDatetimeLocaleFormat("%A, %B %d")|safe }}</span>
+			</div>
+			
+			<div class="mealImage">
+				<img src="/static/images/food/{{ hotpot.meal.slug }}.jpg" />
+			</div>
+			
+			<div class="partnerUserpic">
+				<img src="/static/uploads/userpics/{{ hotpot.host.userpic }}" />
+			</div>
+			
+			<div class="invitationInfo">
+				<h2>{{ hotpot.meal.title }}</h2>
+				<div class="with">
+					<span class="label">With</span>
+					{{ hotpot.host.name }}
+				</div>
+				<div class="datetime">
+					<span class="label date">Date</span>
+					{{ hotpot.datetime|jsDatetimeLocaleFormat("%A, %B %d")|safe }}
+					
+					<span class="label time">Time</span>
+					{{ hotpot.datetime|jsDatetimeLocaleFormat("%l:%M %p")|safe }}
+				</div>
+				
+				<a href="/invitations/{{ hotpot._id }}" class="smallButton">View Invitation</a>
+			</div>
+			
+		</div>
+	{% endfor %}
+	</div><!-- #upcoming -->
+
+</div><!-- #invitationsContainer -->
+{% endblock main %}

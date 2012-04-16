@@ -4,10 +4,10 @@ from lib import OpenTokSDK
 # OpenTok setup
 api_key = "6303111"
 api_secret = "45b94b30d4f5554ad7445950c13e8d78e099e92e"
-session_address = "68.175.75.213"
 
 opentok_sdk = OpenTokSDK.OpenTokSDK(api_key, api_secret)
 
+session_address = "68.175.75.213"
 session_properties = {
 	OpenTokSDK.SessionProperties.p2p_preference: "enabled"
 }

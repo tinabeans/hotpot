@@ -6,6 +6,7 @@
 <script src="/static/js/lib/date.js" type="text/javascript"></script>
 <script src="/static/js/lib/jquery.datePicker.js" type="text/javascript"></script>
 <script src="/static/js/invite.js" type="text/javascript"></script>
+<script src="/static/js/validation.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block bodyId %}invite{% endblock %}
@@ -13,256 +14,125 @@
 {% block main %}
 
 <h1 id="pageTitle">Invite a Friend to Cook</h1>
+<p id="pageIntro">Tell your friends about Hotpot and get cooking!</p>
 
-<p id="pageIntro">Fill in the blanks to the right to craft a personalized Hotpot invitation for your friend.</p>
+<aside id="otherInviteOptions">
+	<p>You can also share with your friends on Facebook and Twitter:</p>
+	
+	<div id="twitterInvite">
+		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://letsgohotpot.com" data-text="Hotpot is here! Who wants to cook with me? More info at" data-size="large">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>
+	
+	<div id="facebookInvite">
+		<div class="fb-like" data-href="http://letsgohotpot.com" data-send="true" data-layout="button_count" data-width="100" data-show-faces="true"></div>
+	</div>
+</aside>
 
-
-
-<!-- YUP I just pasted the HTML email tables in here. Sorry, gods of HTML, plaese don't smite me. -->
-
-<div id="invitationPreviewContainer">
-	<div id="invitationPreview">
-
-		<table cellpadding="0" cellspacing="0" width="620" bgcolor="#ffffff" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_Main.png);">
-		
-			<!-- INVITE HEADER -->
-		
-			<tr>
-				<td colspan="3">
-					<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/invitationHeader.png" width="620" height="225" alt="Let's Cook!">
-				</td>
-			</tr>
-			
-			<!-- PERSONAL MESSAGE -->
-			
-			<tr>
-				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_messageAreaLeft.png)"></td>
-				<td width="520" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_messageArea.png); font-family:'Courier New', monospace; font-size:20px; line-height:1.4em;">
-					<p id="greeting">Hi <span id="friendName">John Smith</span>,</p>
-					<div id="messageBody">
-						<p>Let's make {{ meal.title }} together on Hotpot.</p>
-					</div>
-					<p style="text-align:right">Cheers,<br>{{ user.name }}</p>
-				</td>
-				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_messageAreaRight.png)"></td>
-			</tr>
-			
-			<!-- "GET READY TO COOK..." -->
-			
-			<tr>
-				<td colspan="3"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_getReady.png" width="620" height="133" alt="Get ready to make..."></td>
-			</tr>
-			
-			<!-- TITLE and DESCRIPTION -->
-			
-			<tr>
-				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
-				<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
-					<h1 style="text-align:center; color:#1c6770; font-size:35px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;">{{ meal.title }}</h1>
-					<p style="text-align:center; line-height:1.5em; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:14px;">{{ meal.shortDescription }} <a href="/meals/{{ meal.slug }}" style="color:#f07239; text-decoration:none;">More about this meal »</a></p>
-					
-				</td>
-				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
-			</tr>
-			
-			<!-- IMAGE -->
-			
-			<tr>
-				<td colspan="3"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/foodpics/LemonGarlicKalePasta.png" width="620" height="277" alt="{{ meal.title }}"></td>
-			</tr>
-			
-			<!-- DATE, TIME, PLACE -->
-			
-			<tr>
-				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
-				<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
-					<table cellpadding="0" cellspacing="0" border="0" width="100%">
-						<tr>
-							<td valign="top" width="37%" style="text-align:center; font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
-								<img width="42" height="12" src="http://test.letsgohotpot.com/static/images/email/text_date.png" alt="Date">
-								<p id="selectedDate">[DATE FROM DATEPICKER]</p>
-							</td>
-							<td width="5%"></td>
-							<td valign="top" width="16%" align="center" style="vertical-align:top; text-align:center; font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
-								<img src="http://test.letsgohotpot.com/static/images/email/text_time.png" width="41" height="12" alt="Time">
-								<p id="selectedTime"><span id="selectedHour">0</span>:<span id="selectedMinute"></span> <span id="selectedAMPM"></span></p>
-							</td>
-							<td width="5%"></td>
-							<td valign="top" width="37%" align="center" style="text-align:center; font-size:22px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c;">
-								<img src="http://test.letsgohotpot.com/static/images/email/text_place.png" width="52" height="13" alt="Place">
-								<p>Our kitchens,<br>via Hotpot</p>
-							</td>
-						</tr>
-					</table>
-				</td>
-				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
-			</tr>
-			
-			<!-- a small gap -->
-			
-			<tr>
-				<td width="50" height="36" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
-				<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
-				</td>
-				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
-			</tr>
-			
-			<!-- ADDITIONAL INFO -->
-			
-			<tr>
-				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainLeft.png)"></td>
-				<td width="520" style="background:url(http://test.letsgohotpot.com/static/email/bg_Main.png)">
-					<table cellpadding="0" cellspacing="0" border="0" width="100%">
-						<tr>
-							<td width="275" valign="top">
-							
-								<!-- SHOPPING LIST -->
-								
-								<table cellpadding="0" cellspacing="0" border="0" width="100%">
-									
-									<tr>
-										<td colspan="4"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_shoppingList.png" alt="Shopping List" height="75" width="275"></td>
-									</tr>
-									
-									{% for ingredient in meal.ingredients %}
-									<tr>
-										<td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListLeft.png)"></td>
-										<td height="35" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px; {{ loop.cycle('background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">&nbsp; &nbsp;{{ ingredient.name }}</td>
-										<td align="right" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; {{ loop.cycle('background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListBlueStripe.png);', '') }}">{% if ingredient.amount is defined %}{{ ingredient.amount }}{% endif %}&nbsp; &nbsp;</td>
-										<td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListRight.png)"></td>
-									</tr>
-									{% endfor %}
-									
-									<tr>
-										<td colspan="4"><img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/shoppingListBottom.png" height="21" width="275"></td>
-									</tr>
-								</table>
-							</td>
-							<td width="30" align="center"></td>
-							<td width="217" valign="top">
-							
-								<!-- HOW THIS WORKS -->
-							
-								<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/text_HowThisWorks.png" width="179" height="13" alt="How does this work?">
-								<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">Hotpot is a web app that lets people from anywhere in the world cook together online. To cook with me, you'll need a webcam and the latest version of your favorite web browser.</p>
-								<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">If you have all those things, simply accept my invitation and you’ll get a special link to our own Cooking Room. At the appointed time, we’ll meet there and cook this meal together!</p>
-								<p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#4e565c; font-size:13px; line-height:1.4em;">To learn more about Hotpot, check out the site: <a href="http://letsgohotpot.com" style="color:#f07239; text-decoration:none;">LetsGoHotpot.com</a></p>
-							</td>
-						</tr>
-					</table>
-				</td>
-				<td width="50" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_MainRight.png)"></td>
-			</tr>
-			
-			<!-- FOOTER -->
-			
-			<tr>
-				<td colspan="3">
-					<img style="display:block;" src="http://test.letsgohotpot.com/static/images/email/footer.png" width="620" height="115" alt="Brought to you by Hotpot">
-				</td>
-			</tr>
-		</table>
-		
-	</div><!-- #invitePreview -->
-</div><!-- #invitePreviewContainer -->
-
-
-
-
-
-
-<div id="inviteFormContainer">
-
-	<form id="inviteForm" method="POST" action="/sendInvitation">
-
-		<h2>1. Friend Details</h2>
-		
-		<fieldset>
-		
+<div id="emailContainer">
+	<h2><img src="/static/images/icon_bigEnvelope.png" /> Email a friend</h2>
+	
+	<form id="emailInvite">
+	
+		{% if not isLoggedIn %}
 			<div class="formItem">
-				<label>Friend's Name:</label>
-				<input type="text" name="inviteeName" id="friendNameInput" />
+				<label>Your Name:</label>
+				<input type="text" name="inviteeName" id="friendNameInput" class="required" />
 			</div>
 			
 			<div class="formItem">
-				<label>Friend's Email Address:</label>
-				<input type="text" name="inviteeEmail" />
+				<label>Your Email Address:</label>
+				<input type="text" name="inviteeEmail" class="required emailInput" />
 			</div>
+		{% endif %}
+	
+		<div class="formItem left">
+			<label>Friend's Name:</label>
+			<input type="text" name="inviteeName" id="friendNameInput" class="required" />
+		</div>
+		
+		<div class="formItem right">
+			<label>Friend's Email Address:</label>
+			<input type="text" name="inviteeEmail" class="required emailInput" />
+		</div>
+		
+		<div id="messageBody">
 			
-			<p class="formNote">Just one friend, please. We're working on cooking with multiple friends soon!</p>
-		</fieldset>
-		
-		<h2>2. Personal Message</h2>
-		
-		<fieldset>
-			<div class="formItem">
-				<label>Write a few sentences:</label>
-				<textarea id="messageBodyInput">Let&rsquo;s cook together on Hotpot!</textarea>
+			<label>Personal message:</label>
+			<div id="messageBodyInputContainer">
+				<textarea id="messageBodyInput">Let's cook on Hotpot! Let me know what times and dates work for you, and I can set us up with a Cooking Room. Can't wait!</textarea>
 				<input type="hidden" id="messageBodyInputHTML" name="message">
 			</div>
-		</fieldset>
-		
-		<h2>3. What to Cook</h2>
-		
-		<fieldset>
-			<div id="chosenRecipe">
-				<p>You've chosen <span id="recipeTitle">{{ meal.title }}</span></p>
-				<a href="" class="button">Change Meal</a>
-				<input type="hidden" value="{{ meal.slug }}" name="meal" />
+			
+			<label>Suggest a meal to cook (optional):</label>
+			<div id="recipeInputContainer">
+				<div id="chosenRecipe">
+					<div id="mealImage"></div>
+					<p id="mealTitle"></p>
+					<p id="mealDescription"></p>
+					<a href="" id="removeMealButton">Remove Meal</a>
+				</div>
+				
+				<div id="loadingImage">
+					Loading meal into invitation <br />
+					<img src="/static/images/loader.gif" />
+				</div>
+				
+				<a href="#" id="selectMealButton" class="button">Select a Meal</a>
+				
+				<input type="hidden" value="" name="meal" id="mealInput" />
 			</div>
-		</fieldset>
 		
-		<h2>4. Date &amp; Time</h2>
 		
-		<fieldset>
-			<div class="formItem">
-				<label>Select a date:</label>
-				<div id="datePicker"></div>
-				<input type="hidden" id="selectedDateInput" />
+			<div id="aboutHotpot">
+				<h2>What's <img src="/static/images/HotpotLogo_Alpha.png" width="80" /> ?</h2>
+				<p>Hotpot lets us cook together online in real time. Check out Hotpot at <a href="http://test.letsgohotpot.com">LetsGoHotpot.com</a>, then reply to this email to let me know if you'd like to cook.</p>
 			</div>
 			
-			<div class="formItem">
-				<label>Select a time:</label>
-				<select id="timePickerHour">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option selected>7</option>
-					<option>8</option>
-					<option>9</option>
-					<option>10</option>
-					<option>11</option>
-					<option>12</option>
-				</select>
-				:
-				<select id="timePickerMinute">
-					<option>00</option>
-					<option>15</option>
-					<option>30</option>
-					<option>45</option>
-				</select>
-				<select id="timePickerAMPM">
-					<option>AM</option>
-					<option selected>PM</option>
-				</select>
-			</div>
-		</fieldset>
-		
-		<input type="hidden" id="datetimeInput" name="datetime" value="0" />
-		<input type="hidden" id="readableDate" name="readableDate" />
-		<input type="hidden" id="readableTime" name="readableTime" />
-		
-		<p>Check the preview on the left and make sure everything looks good! Upon hitting send, we'll send your friend the invitation and he/she will be able to R.S.V.P.</p>
-		<div class="buttons">	
-			<button type="submit" id="sendInvitationButton">Send Invitation</button>
 		</div>
+		
 	</form>
-	
-</div><!-- #inviteFormContainer -->
+</div>
 
+<div id="overlayContainer">
+	<div id="recipePickerContainer">
+		<section id="recipePicker">
+			
+			<a href="" class="closeButton">Close</a>
+		
+			<h1>Select a meal to cook with your friend:</h1>
+			
+			<ul>
+				{% for meal in meals %}
+				<li>
+					<div class="mealImage">
+						<img src="/static/images/food/{{ meal.slug }}.jpg">
+					</div>
+					
+					<a href="/meals/{{ meal.slug }}" class="button mealPickerButton" data-id="{{ meal.slug }}" title="{{ meal.title|safe }}" target="_blank">Choose</a>
+					
+					<div class="mealContent">
+						<h2>{{ meal.title|safe }}</h2>
+						<p>{{ meal.shortDescription|safe }} <a href="/meals/{{ meal.slug }}" target="_blank">More info</a></p>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+			
+		</section>
+	</div><!-- #recipePickerContainer -->
+</div><!-- #overlayContainer -->
 
 
 {% endblock main %}
+
+{% block moreCustomJS %}
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+{% endblock moreCustomJS %}

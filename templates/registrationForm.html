@@ -1,0 +1,25 @@
+<form id="registrationForm" action="registerAction" method="POST">
+	<div class="formItem">
+		<label>first name:</label>
+		<input type="text" name="name" class="firstname required" placeholder="first name" />
+		<label>last name:</label>
+		<input type="text" name="lastname" class="lastname" placeholder="last name" />
+	</div>
+
+	<div class="formItem">
+		<label>email:</label>
+		<input type="text" name="email" class="required emailInput" placeholder="email" />
+	</div>
+	
+	<div class="formItem">
+		<label>password:</label>
+		<input type="password" class="required passwordField" placeholder="password" />
+	</div>
+	
+	<input type="hidden" name="password" class="encryptedPassword" />
+	<input type="hidden" name="tzinfo" class="tzinfo" />
+	
+	<div class="buttons">
+		<input type="submit" value="Join Hotpot" />
+	</div>
+</form>

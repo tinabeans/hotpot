@@ -4,6 +4,20 @@
 
 {% block customJS %}
 	<script src="static/js/validation.js" type="text/javascript"></script>
+	<script src="/static/js/lib/jquery.sha1.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$('#accountInfoForm').submit(function(e){
+			// encrypt password for sending, if the password fields have something in them
+			
+			if ($('#passwordField').val() != "") {
+				$('#encryptedPassword').val($.sha1($('#passwordField').val()));
+			}
+			
+		});
+	});
+	</script>
 {% endblock %}
 
 {% block bodyId %}account{% endblock %}
@@ -11,20 +25,32 @@
 
 {% block main %}
 
-<h1 id="title">Update Account Information</h1>
+<h1 id="pageTitle">Account Settings</h1>
+
+
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="message">
+			{{ message }}
+		</div>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+
 
 <div id="accountInfoFormContainer">
-<form id="accountInfoForm">
+<form id="accountInfoForm" action="/updateAccountInfo" method="POST">
 	<fieldset>
 		<h2>Change Password</h2>
 		<div class="formItem">
 			<label>Password</label>
-			<input type="password" />
+			<input type="password" class="match" id="passwordField" placeholder="new password" />
 		</div>
 		
 		<div class="formItem">
 			<label>Password Again</label>
-			<input type="text" />
+			<input type="password" class="match" placeholder="confirm password" />
 		</div>
 	</fieldset>
 	
@@ -33,11 +59,13 @@
 		
 		<div class="formItem">
 			<label>Email Address</label>
-			<input type="text" class="required emailInput" />
+			<input type="text" class="required emailInput" name="email" placeholder="email" value="{{ userEmail }}" />
 		</div>
 		
+		<input type="hidden" name="password" id="encryptedPassword" />
+		
 		<div class="buttons">
-			<input type="submit" value="Update" />
+			<input type="submit" value="Update Settings" />
 		</div>
 	</fieldset>
 	

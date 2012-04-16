@@ -8,12 +8,14 @@
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
+	
+	
 		$('#registrationForm').submit(function(e){
 			// we're not sending passwords in the clear, yay!
 			// although yang says in a perfect world i would be using https...
 			// hmph.
 			var encryptedPassword = $.sha1($('#passwordField').val());
-			$('#encryptedPassword').val(encryptedPassword);
+			$(this).find('.encryptedPassword').val(encryptedPassword);
 		});
 	});
 	
@@ -28,36 +30,12 @@
 
 {% block main %}
 
-<h1 id="title">Join Hotpot</h1>
+<h1 id="pageTitle">Join Hotpot</h1>
 
 <div id="registrationFormContainer">
-<form id="registrationForm" action="registerAction" method="POST">
-	<div class="formItem">
-		<label>first name: *</label>
-		<input type="text" name="name" class="required" />
-	</div>
-	
-	<div class="formItem">
-		<label>last name:</label>
-		<input type="text" name="lastname" />
-	</div>
 
-	<div class="formItem">
-		<label>email: *</label>
-		<input type="text" name="email" class="required emailInput" />
-	</div>
-	
-	<div class="formItem">
-		<label>password: *</label>
-		<input type="password" id="passwordField" class="required" />
-	</div>
-	
-	<input type="hidden" name="password" id="encryptedPassword" />
-	
-	<div class="buttons">
-		<input type="submit" />
-	</div>
-</form>
+	{% include 'registrationForm.html' %}
+
 </div><!-- #registrationFormContainer -->
 
 

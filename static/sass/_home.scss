@@ -1,5 +1,502 @@
 /**********************************************************/
-/* HOME */
+/* INTRO PAGE / COVER */
+
+body#cover {
+	background:#faf9f8 url(/static/images/introBg.gif) center top no-repeat fixed;
+	
+	.message {
+		position: fixed;
+		width: 40%;
+		top: 0;
+		margin: 0;
+		left: 30%;
+		z-index: +2;
+		@include border-top-left-radius(0px);
+		@include border-top-right-radius(0px);
+	}
+}
+
+#coverBg {
+	background:url(/static/images/textureSoft.png) fixed;
+}
+
+#coverContainer {
+	width:780px;
+	margin:0px auto;
+	position: relative;
+}
+
+#coverHeader {
+	position: fixed;
+	margin-left:450px;
+	padding-top:125px;
+	text-align: center;
+	width:330px;
+	
+	#moreArrow {
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		top: 600px;
+		font-weight: bold;
+	}
+	
+	h1 img {
+		width:328px;
+	}
+	
+	h2 {
+		@include bigFatLetters;
+		color:$darkBlue;
+		margin-top:12px;
+		font-size:49px;
+	}
+	
+	#coverButtons {
+		margin-top:50px;
+		position: relative;
+		left:60px;
+	
+		a {
+			display: block;
+			@include bigFatLetters;
+			color:#fff;
+			@include box-sizing(border-box);
+			position: absolute
+		}
+	}
+	
+	#loginLink {
+		width:90px;
+		height:89px;
+		background:url(/static/images/loginButton.png);
+		font-size:22px;
+		padding-top:35px;
+		z-index: +1;
+	}
+	
+	#registerLink {
+		background:$green url(/static/images/textureStrong.png);
+		width:140px;
+		height:140px;
+		@include border-radius(200px);
+		font-size:40px;
+		padding-top:35px;
+		left:61px;
+		top:16px;
+		
+		.small {
+			font-size:26px;
+			line-height:23px;
+		}
+	}
+	
+	#loginFormContainer, #registrationFormContainer {
+		display: none;
+		background:#f0ece4 url(/static/images/textureSoft.png);
+		position: absolute;
+		right: -10px;
+		z-index: +2;
+		@include border-radius(10px);
+		padding:10px 20px 25px 25px;
+		
+		.closeButton {
+			@include closeButton;
+		}
+		
+		label {
+			display: none;
+		}
+		
+		h2 {
+			font-size:18px;
+			color:rgba($darkBrown, .7);
+			margin-bottom:10px;
+		}
+		
+		.formItem {
+			margin-bottom:10px;
+		}
+		
+		input[type=password], input[type=text] {
+			padding:7px;
+		}
+		
+		.formItem {
+			text-align: left;
+		}
+		
+		.firstname {
+			width:48%;
+			float: left;
+		}
+		
+		.lastname {
+			width:48%;
+			margin-left:52%;
+			display:block;
+		}
+		
+		.buttons {
+			margin-top:20px;
+		}
+		
+	}
+}
+
+#codeForm {
+	#codeError {
+		margin-top:20px;
+		margin-bottom:0px;
+		color:$orange;
+		font-weight:700;
+	}
+	
+}
+
+#coverInfo {
+	width:350px;
+	
+	#coverIllustration {
+		margin-bottom:60px;
+	}
+	
+	h2 {
+		@include bigFatLetters;
+		color:$orange;
+		font-size:28px;
+		margin-bottom:15px;
+	}
+	
+	h3 {
+		@include bigFatLetters;
+		color:$orange;
+		font-size:16px;
+		margin-bottom:10px;
+		
+		&.first {
+			color:$green;
+		}
+		
+		&.second {
+			color:$mediumBlue;
+		}
+		
+		&.third {
+			color:$orange;
+		}
+		
+		&.fourth {
+			color:$green;
+		}
+	}
+	
+	.featureImage {
+		@include lightBrownBorder;
+		margin-bottom:20px;
+	}
+	
+	#peopleImage {
+		border:0;
+	}
+	
+	p {
+		font-size:14px;
+		margin-bottom:30px;
+		
+		&.intro {
+			font-size:18px;
+		}
+	}
+}
+
+
+/**********************************************************/
+/* HOME / USER DASHBOARD */
+
+#dashboard {
+	font-size:16px;
+
+	#pageTitle {
+		margin-bottom:40px;
+	}
+	
+	#mainContainer h2 {
+		@include bigFatLetters;
+		font-size:24px;
+		margin-bottom:15px;
+	}
+	
+	#upcomingContainer, #invitations {
+		margin-top:40px;
+	}
+	
+	#upcomingContainer h2 {
+		color:$orange;
+	}
+	
+	#invitations h2 {
+		color:$mediumBlue;
+	}
+	
+	.intro {
+		font-size:18px;
+	}
+}
+
+#welcomeMessageContainer {
+	@include imageOuterBorder;
+	margin-bottom:40px;
+	
+	h2 {
+		text-align: center;
+		color:$orange;
+	}
+}
+
+#welcomeMessage {
+	padding:30px 30px 10px 25px;
+	background:#fff;
+	
+	#signature {
+		text-align: left;
+	}
+}
+
+#dashboardRight {
+	width:290px;
+	float:right;
+	
+	#inviteButton {
+		width:100%;
+		margin:0px;
+		display: inline-block;
+		font-size:32px;
+	}
+	
+	.buttons {
+		margin-bottom:40px;
+	}
+}
+
+#upcomingContainer {
+	
+	.alertNumber {
+		@include alertNumber;
+		width:20px;
+		height:20px;
+		padding:0px;
+		font-size:14px;
+		line-height: 21px;
+	}
+	
+	.invitation {
+		@include lightBrownBg;
+		padding:30px 30px 30px 30px;
+		position: relative;
+		@include clearfix;
+		margin-bottom:30px;
+		
+		.sendDate {
+			position: absolute;
+			right:8;
+			top:5;
+			font-weight: 600;
+			text-transform: none;
+			font-size:12px;
+		}
+	
+		.mealImage {
+			@include mealImage;
+			width:120px;
+			height:120px;
+			float:left;
+		}
+		
+		.invitationInfo {
+			margin-left:150px;
+			font-size:16px;
+			
+			h3 {
+				font-weight: 700;
+				text-transform: none;
+				font-size:20px;
+				font-size:24px;
+			}
+			
+			.label {
+				@include bigFatLetters;
+				font-size:12px;
+				margin-right: 10px;
+				
+				&.date {
+					color:$orange;
+				}
+				
+				&.time {
+					margin-left:20px;
+					color:$green;
+				}
+			}
+			
+			.datetime {
+				margin:10px 0px 20px 0px;
+			}
+			
+			.with {
+				margin:10px 20px 0px 0px;
+				float:left;
+			
+				.label {
+					color:$darkBlue;
+				}
+			}
+		}
+	}
+	
+	.invitation {
+		.partnerUserpic {
+			@include largeUserpic;
+			position: absolute;
+			left:15px;
+			top:15px;
+		}
+		
+		.invitationInfo {
+			.datetime {
+				margin:10px 0px 20px 0px;
+			}
+		}
+		
+		.cookingRoomLink {
+			background:$green;
+			@include box-sizing(border-box);
+			@include box-shadow(0 4px 0 darken($green, 15));
+			margin-left:10px;
+		
+			&:hover {
+				background: darken($green, 4);
+				@include box-shadow(0 4px 0 darken($green, 20));
+			}
+			
+			&:active {
+				@include box-shadow(0 2px 0 darken($green, 15));
+			}
+		}
+	}
+}
+
+
+
+#dashboardLeft {
+	margin-right:290px;
+	padding-right:40px;
+	
+}
+
+#newInvitationsAlert {
+	font-size:18px;
+	color:$textColor;
+	margin: 0px 0px 15px 0px;
+	
+	.alertNumber {
+		@include alertNumber;
+		width:20px;
+		height:20px;
+		padding:0px;
+		font-size:14px;
+		line-height: 21px;
+	}
+}
+
+#userInfoBox {
+	@include lightBlueBg;
+	padding: 25px 30px 30px 30px;
+	@include clearfix;
+	margin-bottom:40px;
+	margin-left:20px;
+	margin-left: 60px;
+	position: relative;
+	overflow:visible;
+	
+	.userpic {
+		@include largeUserpic;
+		position: absolute;
+		left: -73px;
+		top: 11px;
+		width:115px;
+		height:115px;
+	}
+	
+	.content {
+		margin-left: 45px;
+	}
+	
+	.location {
+		margin-top:5px;
+		font-size:16px;
+		font-style: italic;
+	}
+	
+	a {
+		margin-top:20px;
+	}
+}
+
+#dashboard #maincontainer #userInfoBox {
+	
+	h2 {
+		font-size: 30px;
+		text-transform: none;
+		font-weight: bold;
+		margin-bottom:0px;
+	}
+	
+}
+
+#dashboard #whatsNew {
+	
+	h2 {
+		font-size:18px;
+		color:$green;
+	}
+	
+	p {
+		font-size:14px;
+	}
+	
+	#newMeal {
+		@include lightGreenBg;
+		padding:20px;
+		@include clearfix;
+		
+		.mealImage {
+			@include mealImage;
+			height:120px;
+			margin-bottom:20px;
+			width:100%;
+			@include box-sizing(border-box);
+			
+			img {
+				width:100%;
+				height:auto;
+				position: relative;
+				top:-10%;
+			}
+		}
+		
+		h3 {
+			font-size:23px;
+			font-weight: 700;
+			margin-bottom:10px;
+			line-height:1.2em;
+		}
+	}
+}
+
+
+/**********************************************************/
+/* OLD HOME */
 
 #home {
 	#mainContainer {

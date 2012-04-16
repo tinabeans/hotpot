@@ -29,7 +29,7 @@
 			</div>
 		
 			<div class="hotpotInfo">
-				<div class="date">{{ hotpot.readableDate }}</div>
+				<div class="date">{{ hotpot.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</div>
 				<h2>{{ hotpot.meal.title }}</h2>
 				
 				<div class="with">

@@ -86,10 +86,6 @@ $(document).ready(function(){
 	// TYPE-N-UPDATE INVITE PREVIEW
 	
 	var friendNamePlaceholder = "John Smith";
-	var messageBodyPlaceholder = $('#messageBody').text().trim();
-	
-	// set placeholder for message body textarea
-	$('#messageBodyInput').val(messageBodyPlaceholder);
 	
 	$('#friendNameInput').bind('textchange', function(e){
 		$('#friendName').html($(this).val());
@@ -113,10 +109,105 @@ $(document).ready(function(){
 		$('#messageBody').html('<p>' + messageBodyPlaceholder + '</p>');
 	});
 	
+	
+	/****************************************************************************************/
+	// MEAL PICKER
+	
+	$('#selectMealButton').click(function(e){
+		e.preventDefault();
+		$('#overlayContainer').show();
+		
+		$('body').addClass('noscroll');
+	});
+	
+	$('#recipePickerContainer .closeButton').click(function(e){
+		e.preventDefault();
+		$('#overlayContainer').hide();
+		
+		$('body').removeClass('noscroll');
+	});
+	
+	$('.mealPickerButton').click(function(e){
+		e.preventDefault();
+	
+		// close the meal picker
+		$('#recipePickerContainer .closeButton').click();
+		
+		// grab the slug & title of the meal that was chosen
+		var slug = $(this).attr('data-id');
+		var title = $(this).attr('title');
+		
+		// set the hidden field and text on form to the clicked meal
+		$('#mealInput').val(slug);
+		$('#mealTitleDisplay').html(title);
+		
+		// display a loading indicator
+		$('#loadingImage').show();
+		
+		// make an AJAX call to the server, sending the slug
+		$.ajax({
+			url : '/loadMealInformation',
+			type : 'GET',
+			data : {
+				'slug' : slug
+			},
+			success : function(data){
+				
+				// server returns meal info
+				mealInfo = JSON.parse(data)
+				console.log(mealInfo);
+				
+				// insert meal info into the DOM
+				$('#chosenRecipe').show();
+				$('#mealTitle').html(mealInfo['title']);
+				$('#mealImage').html('<img src="/static/images/email/foodpics/' + mealInfo['slug'] + '_small.png" />');
+				$('#mealDescription').html(mealInfo['shortDescription'] + ' <a href="/meals/' + mealInfo['slug'] + '" style="color:#f07239; text-decoration:none;">More Info »</a>');
+				$('#selectMealButton').hide();
+				
+				/* $('#previewMealDescription').html(mealInfo['shortDescription'] + ' <a href="/meals/' + mealInfo['slug'] + '" style="color:#f07239; text-decoration:none;">More about this meal »</a>');
+				$('#previewMealImage').attr('src', '/static/images/email/foodpics/' + mealInfo['slug'] + '.png');
+				
+				$('.previewIngredientItem').remove();
+				
+				for (var i=0; i<mealInfo['ingredients'].length; i++) {
+					// figure out if we have to add the stripey bg color or not
+					var oddHTML = ""
+					if (i%2 == 0) {
+						oddHTML = 'background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListBlueStripe.png);'
+					}
+					
+					// figure out if there is an amount of this ingredient
+					var amount = ""
+					if (mealInfo.ingredients[i].amount != undefined) {
+						amount = mealInfo.ingredients[i].amount;
+					}
+					
+					var html = '<tr class="previewIngredientItem"><td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListLeft.png)"></td><td height="35" style="font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px;' + oddHTML + '">&nbsp; &nbsp;' + mealInfo.ingredients[i].name + '</td><td align="right" style="text-align:right; font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; ' + oddHTML + '">' + amount + '&nbsp; &nbsp;</td><td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListRight.png)"></td></tr>';
+					
+					$('#previewShoppingListEnd').before(html);
+						
+				}
+				*/
+				// hide loading indicator
+				$('#loadingImage').hide();
+			}
+		});
+	});
+	
+	$('#removeMealButton').click(function(e){
+		e.preventDefault();
+		$('#mealInput').val('');
+		$('#chosenRecipe').hide();
+		$('#selectMealButton').show();
+	});
+	
+	
 	/****************************************************************************************/
 	// DATE PICKER
 	
 	var datetime = new Date();
+	datetime.setSeconds(0);
+	datetime.setMilliseconds(0);
 	
 	// create the date picker
 	$('#datePicker').datePicker({
@@ -162,6 +253,7 @@ $(document).ready(function(){
 		
 		// display selected date on invite preview
 		$('#selectedDate').html(weekday + ", " + month + " " + selectedDate.getDate() + ", " + selectedDate.getFullYear())
+		$('#selectedTzname').text(getTzInfo(selectedDate).split(' ')[1]);
 		
 	});
 	
@@ -215,8 +307,9 @@ $(document).ready(function(){
 		
 		// set other hidden fields
 		$('#messageBodyInputHTML').val($('#messageBody').html().trim());
-		$('#readableDate').val($('#selectedDate').html());
-		$('#readableTime').val($('#selectedTime').html());
+		$('#readableDate').val($('#selectedDate').text());
+		$('#readableTime').val($('#selectedTime').text());
+		$('#tzinfo').val(getTzInfo(datetime));
 	});
 	
 });

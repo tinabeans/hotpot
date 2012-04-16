@@ -3,14 +3,22 @@
 # python standard libraries
 import hashlib, random, json, os, time, urllib, threading, datetime, urllib2
 
-# nice 3rd party stuff
+# flask
 import flask
 from flaskext.mail import Mail, Message
+
+# pymongo
 import pymongo
 from pymongo.objectid import ObjectId
 
-# used to put stuff in the db
+# database fixture thing that yang told me to make
 import saveStuff
+
+# config variables, to make moving to production easier
+import config
+
+# opentok
+from lib import OpenTokSDK
 
 
 ##############################################################################
@@ -18,16 +26,17 @@ import saveStuff
 
 USERPIC_FOLDER = 'static/uploads/userpics'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif'])
-BASE_URL = 'http://test.letsgohotpot.com'
-LOCAL_URL = 'http://localhost:7777'
 
-hourToSendReminders = 6
-checkForReminderTimeInterval = 300 # 5min
+TESTER_CODE = "cooking is awesome"
+
+# for sending cooking reminder emails
+checkForReminderTimeInterval = 10 # 5min
+
+emailSenderInfo = ("Hotpot", "hey@letsgohotpot.com")
 
 # creating new Flask instance
 app = flask.Flask(__name__)
 app.config.from_pyfile('config.cfg')
-
 
 # start up mail object to send messages via SMTP
 mail = Mail(app)
@@ -41,7 +50,7 @@ app.secret_key = '''nTi!"2Oq#j2WdnUsQziTn52y8xGfZl:"MH*H|`yVClNLA4UG'GIvq1qc%Gk}
 
 # open database connection!
 connection = pymongo.Connection()
-db = connection.hotpot
+db = connection[config.DB_NAME]
 
 
 ##############################################################################
@@ -60,6 +69,12 @@ def render_template(template, **kwargs):
 			'_id' : str(user['_id'])
 		}
 		
+		if 'lastname' in user:
+			userInfo['lastname'] = user['lastname']
+			
+		if 'location' in user:
+			userInfo['location'] = user['location']
+		
 		# if user's logged in, also grab the # of new invites they have, if any
 		newInvites = list(db.invitations.find({'inviteeIds' : flask.session['userId']}))
 		
@@ -71,23 +86,81 @@ def render_template(template, **kwargs):
 					if reply['userId'] == flask.session['userId']:
 						alertNumber = alertNumber-1
 		
-		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, BASE_URL=BASE_URL, **kwargs)
+		return flask.render_template(template, isLoggedIn=isLoggedIn, user=userInfo, alertNumber=alertNumber, BASE_URL=config.BASE_URL, **kwargs)
 	else:
 		isLoggedIn = False
-		return flask.render_template(template, isLoggedIn=isLoggedIn, **kwargs)
+		return flask.render_template(template, isLoggedIn=isLoggedIn, BASE_URL=config.BASE_URL, **kwargs)
 
+@app.template_filter()
+def jsDatetimeLocaleFormat(tstamp, fmt, tzname=False):
+	return """<script type="text/javascript">document.write(formatDatetimeLocale(%d, "%s") %s)</script>""" % (
+		tstamp, fmt, ("""+ ' ' + TZ_NAME""" if tzname else '')
+	)
+
+
+def naiveLocalDatetimeForUser(tstamp, userInfo):
+	return datetime.datetime.utcfromtimestamp(tstamp) - datetime.timedelta(minutes=userInfo.get('tzoffset', 0))
 
 
 ##############################################################################
-# HOMEPAGE
+# INTRO PAGE
 
 @app.route('/')
 def index():
-	return render_template('home.html')
+	if 'userId' in flask.session:
+		return flask.redirect(flask.url_for('home'))
+		
+	return render_template('index.html')
+	
+
+##############################################################################
+# LOGGED IN HOME
+
+@app.route('/home')
+def home():
+
+	if 'userId' not in flask.session:
+		return flask.redirect(flask.url_for('index'));
+	
+	newMeal = db.meals.find_one({'slug' : 'GarlicCuminVinaigretteEggplant'})
+	
+	# grab both the sent and received invitations that have been accepted
+	invitations = grabAllInvitationsFor(flask.session['userId'])
+	
+	futureHotpots = filterUpcoming(invitations)
+	
+	# grab other info for upcoming Hotpots!
+	for hotpot in futureHotpots:
+		grabInvitationInfo(hotpot)
+	
+	return render_template('home.html', newMeal=newMeal, hotpots=futureHotpots)
+
+
+##############################################################################
+# PEOPLE PAGE
+
+@app.route('/people')
+def people():
+	return render_template('people.html')
 
 
 ##############################################################################
 # INVITE CODES (NOT NEEDED)
+
+
+@app.route('/checkTesterCode', methods=['POST'])
+def checkTesterCode():
+	data = flask.request.form
+	
+	registrationFormHTML = flask.render_template('registrationForm.html')
+	
+	if data['code'] == TESTER_CODE:
+		return registrationFormHTML
+		
+	else:
+		return """wrong code"""
+
+
 '''
 @app.route('/generateCode')
 def showGenerateCodeForm():
@@ -175,23 +248,41 @@ def showLogin():
 
 @app.route('/loginAction', methods=['POST'])
 def login():
+	
 	data = flask.request.form
+	
+	print data
 	
 	userDocument = db.users.find_one({'email' : data['email'], 'password' : data['password']})
 	
+	print userDocument
+	
 	if userDocument is not None:
+		print 'user found'
 		# log the user in by setting a session variable
 		flask.session['userId'] = str(userDocument['_id'])
-		
+
+		# get timezone info from form and store it in the database
+		tzinfo = data.get('tzinfo', '').split()
+		if len(tzinfo) and tzinfo[0].isdigit():
+			userDocument['tzoffset'] = int(tzinfo[0])
+			if len(tzinfo) == 2 and len(tzinfo[1]) == 3: # e.g. EST, PDT
+				userDocument['tzname'] = tzinfo[1]
+			db.users.save(userDocument)
+
 		# redirect to the place you were gonna go... if there were such a place
 		if 'redirectURL' in data:
 			return flask.redirect(data['redirectURL'])
+		# otherwise just drop them on their homepage
 		else:
 			flask.flash("Logged in. Welcome!")
-			return flask.redirect(flask.url_for('index'))
+			return flask.redirect(flask.url_for('home'))
 	else:
 		flask.flash("Login info was incorrect.")
-		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : data['redirectURL']}))
+		
+		# return people to the page they tried to login from
+		return flask.redirect(flask.request.referrer)
+			
 
 
 @app.route('/logout')
@@ -225,16 +316,15 @@ def register():
 		'lastname' : data['lastname'],
 		'email' : data['email'],
 		'password' : data['password'],
-		'userpic' : 'none'
+		'userpic' : 'placeholder.png'
 	})
 	
 	# log the user in by setting a variable in the session object
 	# (i've decided to use the stringified ObjectId to identify the user everywhere, including in sessions & the front end)
 	flask.session['userId'] = str(userId)
 	
-	flask.flash("""Welcome to Hotpot!""")
-	return flask.redirect(flask.url_for('showEditProfileForm'))
-
+	flask.flash("welcome")
+	return flask.redirect(flask.url_for('home'))
 
 
 ##############################################################################
@@ -246,8 +336,38 @@ def showMyStuff():
 	if 'userId' in flask.session:
 		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 
-	return render_template('account.html')
+	return render_template('account.html', userEmail=user['email'])
 
+
+@app.route('/updateAccountInfo', methods=['POST'])
+def updateAccountInfo():
+	data = flask.request.form
+	
+	emailWasChanged = False
+	passwordWasChanged = False
+	
+	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+	if data['email'] != user['email']:
+		user['email'] = data['email']
+		emailWasChanged = True
+	
+	if data['password'] != '':
+		user['password'] = data['password']
+		passwordWasChanged = True
+	
+	if emailWasChanged and passwordWasChanged:
+		flask.flash('Email and password have been updated.')
+	elif emailWasChanged:
+		flask.flash('Email has been updated.')
+	elif passwordWasChanged:
+		flask.flash('Password has been updated.')
+	else:
+		flask.flash('No changes were made.')
+	
+	db.users.save(user);
+	
+	return flask.redirect(flask.url_for('showMyStuff'))
+	
 
 
 ##############################################################################
@@ -304,25 +424,27 @@ def updateMyProfile():
 		# random num is to prevent caching & displaying the old pic when uploading a new pic w/ same extension
 		userpicFilename = str(user['_id']) + '_' + str(random.random()) + '.' + userpic.filename.rsplit('.', 1)[1]
 		
-		# delete older user pic, if it's around
-		try:
-			os.remove(os.path.join(USERPIC_FOLDER, user['userpic']))
-			# print "baleted"
-		except:
-			print "oh. i guess that file didn't exist after all. oh well."
+		print "got file and named it " + userpicFilename
+		
+		# delete older user pic, if it's around (only if its not the placeholder)
+		if user['userpic'] != 'placeholder.png':
+			try:
+				os.remove(os.path.join(USERPIC_FOLDER, user['userpic']))
+				print "baleted"
+			except:
+				print "oh. i guess that file didn't exist after all. oh well."
 		
 		# save to the right folder on the server
 		userpic.save(os.path.join(USERPIC_FOLDER, userpicFilename))
+		print "saved the file"
 		
 		# update database so we now know there's a picture for this user
-		db.users.update({'_id' : ObjectId(flask.session['userId'])}, {'$set' : { 'userpic' : userpicFilename } })
+		user['userpic'] = userpicFilename
 		
-	# retrieve updated user data
-	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+	db.users.save(user)	
 	
-	
-	flask.flash("Changes saved.")
-	return flask.redirect('/profile/me')
+	flask.flash("Changes to your profile were saved.")
+	return flask.redirect('/home')
 	
 	
 	
@@ -349,21 +471,40 @@ def showMeal(slug):
 ##############################################################################
 # INVITING SOMEONE TO COOK
 
-@app.route('/invite/<meal>')
-def showInviteForm(meal):
+@app.route('/invite')
+def showBlankInviteForm():
 	
-	meal = db.meals.find_one({ 'slug' : meal })
+	meal = flask.request.args.get('meal', 'LemonGarlicKalePasta')
 	
 	if 'userId' not in flask.session:
-		return flask.redirect('/login')
+		return flask.redirect('/login?redirect=invite')
 	else:
-		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
-		return render_template('invite.html', meal=meal )
+		meals = list(db.meals.find())
+		meal = db.meals.find_one({ 'slug' : meal })
+		
+		return render_template('invite.html', meals=meals, meal=meal)
+
+@app.route('/loadMealInformation')
+def loadMealInformation():
+
+	slug = flask.request.args.get('slug', '')
 	
+	meal = db.meals.find_one({'slug' : slug})
+	
+	mealInfo = {
+		'title' : meal['title'],
+		'shortDescription' : meal['shortDescription'],
+		'ingredients' : meal['ingredients'],
+		'slug' : meal['slug']
+	}
+	
+	return json.dumps(mealInfo)
 
 @app.route('/sendInvitation', methods=['POST'])
 def sendInvitation():
 	data = flask.request.form
+	
+	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
 	
 	# look up whether invited friend already exists as a user
 	invitee = db.users.find_one({'email' : data['inviteeEmail']})
@@ -374,7 +515,7 @@ def sendInvitation():
 		inviteeId = str(invitee['_id'])
 	else:
 		inviteeId = data['inviteeEmail']
-	
+
 	# construct new invitation document based on incoming form data and info above
 	newInvitation = {
 		"status" : "new",
@@ -385,15 +526,23 @@ def sendInvitation():
 		"meal" : data['meal'],
 		"readableTime": data['readableTime'],
 		"readableDate": data['readableDate'],
-		"message" : data['message']
+		"message" : data['message'],
+		"tzoffset": 300,
+		"tzname": "EST"
 	}
-	
+	# get timezone info from form and store it in the database
+	tzinfo = data.get('tzinfo', '').split()
+	if len(tzinfo) and tzinfo[0].isdigit():
+		newInvitation['tzoffset'] = int(tzinfo[0])
+		if len(tzinfo) == 2 and len(tzinfo[1]) == 3: # e.g. EST, PDT
+			newInvitation['tzname'] = tzinfo[1]
+
 	# insert into database
 	db.invitations.insert(newInvitation)
 	
 	# add some extra info that's needed by the email template, but which we don't need stored in the database
 	# NOTE: assuming for now there is only one friend! (even though the document has an array for 'friendIds')
-	newInvitation['hostName'] = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})['name']
+	newInvitation['hostName'] = user['name']
 	newInvitation['inviteeName'] = data['inviteeName']
 	newInvitation['inviteeId'] = inviteeId
 	
@@ -401,7 +550,8 @@ def sendInvitation():
 	meal = db.meals.find_one({'slug' : newInvitation['meal']})
 	
 	# compose email to send
-	email = Message("Hotpot Invitation Test", recipients=[data['inviteeEmail']])
+	email = Message(user['name'] + " invites you to cook!", recipients=[data['inviteeEmail']], sender=emailSenderInfo)
+	# TODO: if recipient has an account, translate to their TZ
 	invitationMessage = render_template('email/invitation.html', meal=meal, invitation=newInvitation)
 	email.html = invitationMessage
 	mail.send(email)
@@ -518,7 +668,8 @@ def registerToReply():
 	userId = db.users.insert({
 		'email' : data['email'],
 		'name' : data['name'],
-		'password' : data['password']
+		'password' : data['password'],
+		'userpic' : 'placeholder.png'
 	})
 	
 	# log the user in
@@ -641,7 +792,7 @@ def sendReply():
 	}
 	
 	# compose and send email back to host
-	email = Message("Hotpot RSVP", recipients=[hostEmail])
+	email = Message("Hotpot RSVP", recipients=[hostEmail], sender=emailSenderInfo)
 	replyMessage = render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
 	email.html = replyMessage
 	mail.send(email)
@@ -653,13 +804,47 @@ def sendReply():
 		'userpic' : host['userpic']
 	}
 	
-	# if reply was a yes, also send the invitee a confirmation
+	# if reply was a yes...
 	if replyInfo['mainReply'] == "yes":
-		inviteeEmail = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})['email']
-		
-		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail])
+		# also send the invitee a confirmation
+		invitee = db.users.find_one({'_id' : ObjectId(replyInfo['userId'])})
+		inviteeEmail = invitee['email']
+
+		# calculate the cooking time in the invitee's locale
+		localDt = naiveLocalDatetimeForUser(invitation['datetime'], invitee)
+
+		# make a copy so we can modify it for the invitee
+		confirmationInfo = dict(invitationInfo)
+		confirmationInfo['readableDate'] = localDt.strftime("%A, %B %d, %Y")
+		readableTime = localDt.strftime("%l:%M %p").strip()
+		if invitee.get('tzname'):
+			readableTime += ' ' + invitee['tzname']
+		confirmationInfo['readableTime'] = readableTime
+
+		email = Message("Hotpot RSVP Confirmation", recipients=[inviteeEmail], sender=emailSenderInfo)
 		email.html = render_template('email/RSVPConfirmation.html', reply=replyInfo, host=hostInfo, invitation=invitationInfo, meal=mealInfo)
 		mail.send(email)
+		
+		# check whether this invitation is for something happening on the same day.
+		# if so, send out a "reminder" email for today (b/c the reminder emails contain the link to the room)
+		currentTime = time.time();
+		
+		# TODO: this is a VERY naive implementation whereby we consider something 'same day' if it's less than 12 hrs from now
+		# obviously this wouldn't make sense if we sent the invite at 9pm for 8am the next day...
+		# but since i haven't figured out time zones yet, this will have to do for now.
+		if invitation['datetime'] <= currentTime+43200:
+			print "oh we're cooking on the same day? cool."
+			if 'reminderSent' not in invitation:
+				invitation['reminderSent'] = True
+				db.invitations.save(invitation)
+				
+				print "calling send cooking reminder"
+				
+				# have to set a timer to make a request on a separate thread, or else we get a request timeout
+				def sendCookingReminderAfterWaitingOneSecond():
+					urllib2.urlopen(config.LOCAL_URL + '/sendCookingReminder?invitationId=' + str(invitation['_id']) + '&today=yes').read()
+				timer = threading.Timer(1, sendCookingReminderAfterWaitingOneSecond)
+				timer.start()
 	
 	return render_template('replySent.html', replyMessage=replyMessage, host=hostInfo, invitation=invitation)
 
@@ -675,6 +860,8 @@ def grabMealInfo(slug):
 	}
 	
 	return mealInfo
+
+
 
 def grabUserInfo(inviteeId):
 	
@@ -699,6 +886,8 @@ def grabUserInfo(inviteeId):
 		}
 		
 	return inviteeInfo
+
+
 	
 def grabInvitationInfo(invitation):
 	# start a new blank array to hold invitee details
@@ -724,6 +913,26 @@ def grabInvitationInfo(invitation):
 	
 	return invitation
 
+
+
+def grabAllInvitationsFor(userId):
+	
+	return list(db.invitations.find({'hostId' : userId, 'itsHappening' : True })) + list(db.invitations.find({'inviteeIds' : userId, 'itsHappening' : True }))
+
+
+def filterUpcoming(invitations):
+	
+	# filter out the ones that are in the past
+	futureHotpots = []
+	
+	for invitation in invitations:
+		if invitation['datetime'] >= time.time(): # current time
+			futureHotpots.append(invitation)
+		
+	return futureHotpots
+	
+	
+
 @app.route('/invitations/')
 def showInvitations():
 
@@ -745,7 +954,33 @@ def showInvitations():
 	for invitation in invitationsReceived:
 		grabInvitationInfo(invitation)
 	
-	return render_template('invitations.html', invitationsSent=invitationsSent, invitationsReceived=invitationsReceived)
+	# grab number of future hotpots
+	numberOfUpcoming = len(filterUpcoming(invitationsSent)) + len(filterUpcoming(invitationsReceived))
+	
+	return render_template('invitations.html', invitationsSent=invitationsSent, invitationsReceived=invitationsReceived, numberOfUpcoming=numberOfUpcoming)
+
+
+@app.route('/invitations/upcoming')
+def showUpcoming():
+	
+	if 'userId' not in flask.session:
+		flask.flash('Log in to view upcoming Hotpots.')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/invitations/upcoming'}))
+		
+	# grab both the sent and received invitations that have been accepted
+	invitations = grabAllInvitationsFor(flask.session['userId'])
+	
+	futureHotpots = filterUpcoming(invitations)
+	
+	# grab other info for upcoming Hotpots!
+	for hotpot in futureHotpots:
+		grabInvitationInfo(hotpot)
+	
+	# get number of invitations sent and received
+	numberOfInvitationsSent = len(list(db.invitations.find({'hostId' : flask.session['userId']})))
+	numberOfInvitationsReceived = len(list(db.invitations.find({'inviteeIds' : flask.session['userId']})))
+	
+	return render_template('upcoming.html', hotpots=futureHotpots, numberOfInvitationsSent=numberOfInvitationsSent, numberOfInvitationsReceived=numberOfInvitationsReceived)
 
 
 @app.route('/invitations/<id>')
@@ -782,6 +1017,7 @@ def showInvitation(id):
 		invitationType = "received"
 	
 	return render_template('invitation.html', invitation=invitation, numberOfInvitationsSent=numberOfInvitationsSent, numberOfInvitationsReceived=numberOfInvitationsReceived, invitationType=invitationType)
+	
 
 
 ##############################################################################
@@ -792,115 +1028,98 @@ def checkWhetherItsTimeToSendOutReminderEmails():
 
 	print "checking whether it's time to send out reminder emails"
 
-	# perform the check right away...
-	currentTime = time.time()
-	
-	# find out the currentTime's hour
-	currentHour = datetime.datetime.fromtimestamp(currentTime).hour
-	
-	# if current time matches the designated reminder-sending time...
-	if currentHour == hourToSendReminders:
-		print "yes, it appears to be time"
-		
-		# ... then see which reminders to send out
-		checkWhichCookingsAreComingUp()
-	
+	# loop through all invitations that are happening
+	for invitation in db.invitations.find({'itsHappening' : True}):
+		invitationUpdated = False
+
+		if not invitation.get('hostReminderSent'):
+			if checkReminderSentForUser(invitation, invitation['hostId']):
+				invitation['hostReminderSent'] = True
+				invitationUpdated = True
+
+		for attendee in invitation['replies']:
+			if attendee['mainReply'] == 'yes' and not attendee.get('reminderSent'):
+				if checkReminderSentForUser(invitation, attendee['userId']):
+					attendee['reminderSent'] = True
+					invitationUpdated = True
+
+		if invitationUpdated:
+			db.invitations.save(invitation)
+
 	# repeat
 	timer = threading.Timer(checkForReminderTimeInterval, checkWhetherItsTimeToSendOutReminderEmails)
 	timer.daemon = True
 	timer.start()
 
 
-def checkWhichCookingsAreComingUp():
+def checkReminderSentForUser(invitation, userId):
+	"""Checks whether a user should've been reminder-emailed about an invitation,
+	   and if so, make an HTTP request to send that email. This works for both
+	   hosts and invitees. Returns True if an email was sent.
+	"""
+	userInfo = db.users.find_one({'_id': ObjectId(userId)})
 
-	print "grab all future cookings!"
-	
-	# grab a list of ALL the invitations that were accepted
-	cookings = list(db.invitations.find({'itsHappening' : True}))
-	
-	# for filtering only the invitations that are coming up
-	upcomingCookings = []
-	
-	# get the current time for filtering purposes
-	currentTime = time.time()
-	
-	for cooking in cookings:
-		# if the cooking event is happening "tomorrow"...
-		if currentTime+86400 <= cooking['datetime'] <= currentTime+86400*2:
-			print "here's one happening tomorrow"
-			# add it to the upcoming cookings array!
-			upcomingCookings.append(cooking)
-	
-	# send reminders for all the upcoming cookings
-	for cooking in upcomingCookings:
-		if 'reminderSent' not in cooking:
-			
-			# just in case: set a flag in the DB for reminder sent, so it doesn't get sent multiple times by accident
-			cooking['reminderSent'] = True
-			db.invitations.save(cooking)
-			
-			urllib2.urlopen(LOCAL_URL + '/sendCookingReminder?invitationId=' + str(cooking['_id'])).read()
+	dt = naiveLocalDatetimeForUser(invitation['datetime'], userInfo)
+	hoursBefore = 18 + dt.hour
+	if dt.hour < 4: # count 12am-4am as previous day
+		hoursBefore += 24
+	secondsBefore = (hoursBefore * 60 + dt.minute) * 60
+
+	timeRemaining = invitation['datetime'] - time.time()
+	if timeRemaining < secondsBefore:
+		query = urllib.urlencode({'invitationId': invitation['_id'], 'userId': userId,
+		                          'isToday': ('yes' if timeRemaining < 86000 else 'no')})
+		def sendRequestToSendReminder():
+			urllib2.urlopen(config.LOCAL_URL + '/sendCookingReminder?' + query).read()
+
+		timer = threading.Timer(0.5, sendRequestToSendReminder)
+		timer.start()
+		return True
 
 
 # called by checkForUpcomingCooking() above if the cooking is within the next 48 hours
 @app.route('/sendCookingReminder')
 def sendCookingReminder():
+	print "sending cooking reminder"
 	
-	invitationId = flask.request.args.get('invitationId', '')
-	
-	if invitationId == '':
+	invitationId = flask.request.args.get('invitationId')
+	userId = flask.request.args.get('userId')
+	isToday = flask.request.args.get('isToday', 'no')
+
+	if not invitationId:
 		return "invitation not found"
+	if not userId:
+		return "user not found"
 	
 	invitation = db.invitations.find_one({'_id' : ObjectId(invitationId)})
+	userInfo = db.users.find_one({'_id': ObjectId(userId)})
 	
-	# grab info about attendees
-	attendees = []
-	
-	# first add host info... because a host is an attendee, too!
-	host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
-	hostInfo = {
-		'userpic' : host['userpic'],
-		'name' : host['name'],
-		'email' : host['email']
-	}
-	
-	attendees.append(hostInfo);
-	
-	# grab all the infos of the people who said yes...
-	for reply in invitation['replies']:
-		# print reply['mainReply']
-	
-		if reply['mainReply'] != "yes":
-			continue
-		
-		attendee = db.users.find_one({'_id' : ObjectId(reply['userId'])})
-		attendeeInfo = {
-			'userpic' : attendee['userpic'],
-			'name' : attendee['name'],
-			'email' : attendee['email']
-		}
-		
-		attendees.append(attendeeInfo)
-	
-	invitation['attendees'] = attendees
+	localDt = naiveLocalDatetimeForUser(invitation['datetime'], userInfo)
+	readableDate = localDt.strftime("%A, %B %d, %Y")
+	readableTime = localDt.strftime("%l:%M %p").strip()
+	if userInfo.get('tzname'):
+		readableTime += ' ' + userInfo['tzname']
+
+	invitation['readableDate'] = readableDate
+	invitation['readableTime'] = readableTime
+
+	# grab a list of all attendees
+	attendeeIds = [invitation['hostId']] + [reply['userId'] for reply in invitation['replies']
+	                                                        if reply['mainReply'] == 'yes']
+	attendees = [db.users.find_one({'_id': ObjectId(aId)}) for aId in attendeeIds]
 	
 	# grab recipe ingredients to send along
-	meal = db.meals.find_one({'slug' : invitation['meal']})
-	mealInfo = {
-		'ingredients' : meal['ingredients'],
-		'title' : meal['title']
-	}
+	mealInfo = db.meals.find_one({'slug' : invitation['meal']})
 	
-	# compose and send email for every attendee
-	# we do it one at a time instead of feeding Message() an array because we actually want each email to be slightly different:
-	# it should say 'you' instead of the recipient's name, because being addressed in the third person is weird
-	
-	for attendee in attendees:
-		print 'reminder email sent to ' + attendee['name'] + ' for ' + invitation['readableDate']
+	# compose and send email to the user
+	email = Message("Get Ready to Cook!", recipients=[userInfo['email']], sender=emailSenderInfo)
 		
-		email = Message("Get Ready to Cook!", recipients=[attendee['email']])
-		email.html = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=meal, user=attendee)
-		mail.send(email)
+	message = render_template('email/reminder.html', invitation=invitation, attendees=attendees, meal=mealInfo, recipient=userInfo, isToday=isToday)
+	email.html = message
+		
+	print message
+		
+	mail.send(email)
 	
 	return "reminder email sent!"
 
@@ -908,6 +1127,17 @@ def sendCookingReminder():
 
 ##############################################################################
 # HOTPOT ROOM
+
+
+@app.route('/getready/<id>')
+def showDressingRoom(id):
+	
+	# generate an opentok session and token to send to the user
+	opentok_sdk = OpenTokSDK.OpenTokSDK(config.api_key, config.api_secret)
+	session = opentok_sdk.create_session()
+	token = opentok_sdk.generate_token(session.session_id)
+	
+	return render_template('dressingRoom.html', roomId=id, token=token, sessionId=session.session_id)
 
 # takes a meal dictionary and inserts notes into the appropriate step
 def insertNotesIntoSteps(meal, notes):
@@ -980,11 +1210,24 @@ def showRoom(invitationId):
 		
 		# ...and insert them into the recipe object at the appropriate step, one step at a time
 		meal = insertNotesIntoSteps(meal, notesInThisRoom)
+		if len(meal['title']) > 35:
+			truncatedTitle = meal['title'][0:35]
+			shortTitle = truncatedTitle[0:truncatedTitle.rfind(' ')] + '...'
+			meal['shortTitle'] = shortTitle
+		
+		# truncate the meal name if it's too long
 		
 		# grab all the stamps too
 		stamps = list(db.stamps.find())
 		
-		return render_template('room.html', meal=meal, userId=flask.session['userId'], invitationId=invitationId, stamps=stamps )
+		# grab info of all attendees
+		attendees = []
+		attendees.append(grabUserInfo(roomInfo['hostId']))
+		
+		for inviteeId in roomInfo['inviteeIds']:
+			attendees.append(grabUserInfo(inviteeId))
+		
+		return render_template('room.html', meal=meal, invitationId=invitationId, stamps=stamps, attendees=attendees, socketsPortNumber=config.SOCKETS_PORT_NUMBER)
 
 '''
 def postFoodnote():
@@ -1181,11 +1424,11 @@ def initialize():
 	timer.start()
 
 def sendFirstRequestToStartTheInitializationFunctionYeah():
-	urllib2.urlopen(LOCAL_URL + '/').read()
+	urllib2.urlopen(config.LOCAL_URL + '/').read()
 
 if __name__ == '__main__':
 	
 	timer = threading.Timer(1, sendFirstRequestToStartTheInitializationFunctionYeah)
 	timer.start()
 	
-	app.run(host='0.0.0.0', port=7777, debug=True)
+	app.run(host='0.0.0.0', port=config.PORT_NUMBER, debug=True)
