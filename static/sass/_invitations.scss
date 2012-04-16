@@ -113,7 +113,7 @@
 	}
 }
 
-#inviteForm {
+#inviteForm, #emailContainer {
 	@include box-sizing(border-box);
 	
 	h2 {
@@ -152,6 +152,17 @@
 
 	.formItem {
 		margin-bottom:15px;
+		
+		&.left {
+			float:left;
+			width:50%;
+			@include box-sizing(border-box);
+			padding-right:15px;
+		}
+		
+		&.right {
+			margin-left:50%;
+		}
 	}
 	
 	label {
@@ -198,7 +209,6 @@
 	}
 	
 	#selectMealButton {
-		float:left;
 		margin-right:15px;
 	}
 	
@@ -889,3 +899,104 @@ table.jCalendar {
 #invitationFilters {
 	margin-bottom:30px;
 }
+
+/**********************************************************/
+/* NEW SIMPLE INVITE PAGE */
+
+#otherInviteOptions {
+	@include box-sizing(border-box);
+	float:right;
+	width: 25%;
+	@include lightBrownBg;
+	padding: 30px;
+}
+
+#emailContainer {
+	@include box-sizing(border-box);
+	@include lightBlueBg;
+	width:72%;
+	padding:30px;
+	
+	h2 {
+		
+		@include bigFatLetters;
+		color:$mediumBlue;
+		font-size:18px;
+		margin-bottom:20px;
+	
+		img {
+			vertical-align: middle;
+			margin-right:10px;
+		}
+	}
+	
+	#messageBody {
+		background:#fff;
+		@include border-radius(10px);
+		padding:30px;
+		@include box-shadow(0px 2px 7px rgba($darkBrown, .5));
+	}
+	
+	#messageBodyInputContainer textarea, #recipeInputContainer {
+		border: 3px dashed $lightBrown;
+		padding:20px;
+		@include border-radius(10px);
+		margin-bottom:30px;
+	}
+	
+	#messageBodyInputContainer textarea:focus {
+		outline:none;
+		border:0;
+		border: 3px solid $lightBrown;
+	}
+	
+	#recipeInputContainer {
+		@include clearfix;
+	}
+	
+	#chosenRecipe {
+		display:none;
+		
+		#mealImage {
+			float:left;
+			margin-right:20px;
+		}
+		
+		#mealTitle {
+			margin: 0 0 10px 0;
+		}
+		
+		#mealDescription {
+			margin: 0 0 10px 0;
+			font-size:16px;
+		}
+	}
+	
+	#aboutHotpot {
+		background: rgba($lightBrown, .3);
+		padding:20px;
+		
+		h2 {
+			color: $orange;
+			margin-bottom:5px;
+			
+			img {
+				position: relative;
+				top: -9px;
+				left: 6px;
+			}
+		}
+		
+		p {
+			font-size:16px;
+			padding:0px;
+			margin:0px;
+		}
+	}
+}
+
+
+
+
+
+

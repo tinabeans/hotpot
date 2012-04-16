@@ -158,8 +158,13 @@ $(document).ready(function(){
 				console.log(mealInfo);
 				
 				// insert meal info into the DOM
-				$('#previewMealTitle').html(mealInfo['title']);
-				$('#previewMealDescription').html(mealInfo['shortDescription'] + ' <a href="/meals/' + mealInfo['slug'] + '" style="color:#f07239; text-decoration:none;">More about this meal »</a>');
+				$('#chosenRecipe').show();
+				$('#mealTitle').html(mealInfo['title']);
+				$('#mealImage').html('<img src="/static/images/email/foodpics/' + mealInfo['slug'] + '_small.png" />');
+				$('#mealDescription').html(mealInfo['shortDescription'] + ' <a href="/meals/' + mealInfo['slug'] + '" style="color:#f07239; text-decoration:none;">More Info »</a>');
+				$('#selectMealButton').hide();
+				
+				/* $('#previewMealDescription').html(mealInfo['shortDescription'] + ' <a href="/meals/' + mealInfo['slug'] + '" style="color:#f07239; text-decoration:none;">More about this meal »</a>');
 				$('#previewMealImage').attr('src', '/static/images/email/foodpics/' + mealInfo['slug'] + '.png');
 				
 				$('.previewIngredientItem').remove();
@@ -179,13 +184,21 @@ $(document).ready(function(){
 					
 					var html = '<tr class="previewIngredientItem"><td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListLeft.png)"></td><td height="35" style="font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif; font-weight: 300; color:#4e565c; font-size:16px;' + oddHTML + '">&nbsp; &nbsp;' + mealInfo.ingredients[i].name + '</td><td align="right" style="text-align:right; font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif; font-weight: bold; color:#4e565c; font-size:12px; ' + oddHTML + '">' + amount + '&nbsp; &nbsp;</td><td width="20" style="background:url(http://test.letsgohotpot.com/static/images/email/bg_ShoppingListRight.png)"></td></tr>';
 					
-					$('#previewShoppingListEnd').before(html);		
+					$('#previewShoppingListEnd').before(html);
+						
 				}
-				
+				*/
 				// hide loading indicator
 				$('#loadingImage').hide();
 			}
 		});
+	});
+	
+	$('#removeMealButton').click(function(e){
+		e.preventDefault();
+		$('#mealInput').val('');
+		$('#chosenRecipe').hide();
+		$('#selectMealButton').show();
 	});
 	
 	
