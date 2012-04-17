@@ -476,13 +476,10 @@ def showBlankInviteForm():
 	
 	meal = flask.request.args.get('meal', 'LemonGarlicKalePasta')
 	
-	if 'userId' not in flask.session:
-		return flask.redirect('/login?redirect=invite')
-	else:
-		meals = list(db.meals.find())
-		meal = db.meals.find_one({ 'slug' : meal })
-		
-		return render_template('invite.html', meals=meals, meal=meal)
+	meals = list(db.meals.find())
+	meal = db.meals.find_one({ 'slug' : meal })
+	
+	return render_template('invite.html', meals=meals, meal=meal)
 
 @app.route('/loadMealInformation')
 def loadMealInformation():
@@ -573,7 +570,7 @@ def sendInvitation():
 	if 'yourName' in data:
 		newUserInfo = {
 			'name' : data['yourName'],
-			'email' : data['email']
+			'email' : data['yourEmail']
 		}
 		
 		emailSenderInfo = (data['yourName'], data['yourEmail'])
@@ -602,8 +599,6 @@ def sendInvitation():
 	mail.send(email)
 	
 	return render_template('inviteSimpleSent.html', invitationMessage=invitationMessage, invitation=invitation, newUserInfo=newUserInfo)
-	
-	return "hi"
 
 
 ##############################################################################

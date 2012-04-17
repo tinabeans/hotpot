@@ -351,8 +351,8 @@ table.jCalendar {
 		margin-bottom:5px;
 	}
 	
-	p {
-		margin:10 0 30 0;
+	#pageIntro {
+		margin-bottom:30px;
 	}
 }
 
@@ -903,8 +903,6 @@ table.jCalendar {
 }
 
 #emailContainer {
-	width:60%;
-	
 	h2 {
 		
 		@include bigFatLetters;
@@ -990,10 +988,6 @@ table.jCalendar {
 		}
 	}
 	
-	#twitterInvite {
-		margin-bottom:30px;
-	}
-	
 	.formItemError {
 		position: static;
 		background: none;
@@ -1001,11 +995,60 @@ table.jCalendar {
 		width: auto;
 		padding: 5px 0px 0px 0px;
 	}
+	
+	#selectMealButtonContainer label {
+		margin-bottom:10px;
+	}
+}
+
+
+	
+#twitterInvite {
+	margin:30px 0px;
 }
 
 
 /**********************************************************/
 /* SIMPLE INVITE CONFIRMATION PAGE */
 
+#invitationSent {
 
+	#emailContainer {
+		padding-right:30px;
+		width:65%;
+		float:left;
+		
+		p {
+			margin: 0px 0px 15px 0px;
+			font-size:14px;
+		}
+	}
+	
+	.nextMessage {
+		margin-left:65%;
+		
+		p {
+			font-size:14px;
+		}
+		
+		a {
+			font-size:18px;
+			line-height:30px;
+		}
+	}
+
+	#registrationFormContainer {
+		width:auto;
+		margin:0px;
+		margin-left:65%;
+		
+		h2 {
+			@include bigFatLetters;
+			color:$green;
+			text-align: center;
+			margin-bottom:20px;
+			font-size:18px;
+		}
+	}
+}
 

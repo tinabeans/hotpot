@@ -3,19 +3,25 @@
 {% block title %}Invitation Sent{% endblock %}
 
 {% block customJS %}
+	<script src="static/js/lib/jquery.sha1.js" type="text/javascript"></script>
+	
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
-		$('#loginForm').submit(function(e){
+	
+	
+		$('#registrationForm').submit(function(e){
 			// we're not sending passwords in the clear, yay!
 			// although yang says in a perfect world i would be using https...
 			// hmph.
 			var encryptedPassword = $.sha1($('#passwordField').val());
 			$(this).find('.encryptedPassword').val(encryptedPassword);
-			$(this).find('.tzinfo').val(getTzInfo());
 		});
 	});
+	
 	</script>
+	
+	<script src="static/js/validation.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block bodyId %}invitationSent{% endblock %}
@@ -28,7 +34,10 @@
 
 <p id="pageIntro">Woohoo! Your invitation has been successfully sent to <strong>{{ invitation.inviteeName }}</strong>.</p>
 
-<div id="emailContainer">	
+<div id="emailContainer">
+
+	<p>Here is a copy of the sent message:</p>
+	
 	<div id="messageBody">
 		{{ invitationMessage|safe }}
 	</div><!-- #messageBody -->
@@ -36,12 +45,52 @@
 
 {% if not isLoggedIn %}
 
-	<div id="loginFormContainer">
+	<div class="nextMessage">
+		<p>Join Hotpot now so you can create Cooking Rooms!</p>
+	</div>
+	
+	<div id="registrationFormContainer">
+	
+	<h2>Create an Account</h2>
 
-		{% include "loginForm.html" %}
+		<form id="registrationForm" action="registerAction" method="POST">
+			<div class="formItem">
+				<label>first name:</label>
+				<input type="text" name="name" class="firstname required" placeholder="first name" value="{{ newUserInfo.name }}" />
+				<label>last name:</label>
+				<input type="text" name="lastname" class="lastname" placeholder="last name" />
+			</div>
+		
+			<div class="formItem">
+				<label>email:</label>
+				<input type="text" name="email" class="required emailInput" placeholder="email" value="{{ newUserInfo.email }}" />
+			</div>
+			
+			<div class="formItem">
+				<label>password:</label>
+				<input type="password" class="required passwordField" placeholder="password" />
+			</div>
+			
+			<input type="hidden" name="password" class="encryptedPassword" />
+			<input type="hidden" name="tzinfo" class="tzinfo" />
+			
+			<div class="buttons">
+				<input type="submit" value="Join Hotpot" />
+			</div>
+		</form>
 	
 	</div><!-- #loginFormContainer -->
+{% else %}
 
+	<div class="nextMessage">
+		<p>Where to next?</p>
+		
+		<p>
+			<a href="/create">Create a Cooking Room</a><br />
+			<a href="/meals">Browse Meals</a>
+		</p>
+	</div>
+	
 {% endif %}
 
 {% endblock main %}
