@@ -559,6 +559,53 @@ def sendInvitation():
 	return render_template('inviteSent.html', invitationMessage=invitationMessage, invitation=newInvitation)
 
 
+@app.route('/sendSimpleInvitation', methods=['POST'])
+def sendInvitation():
+	data = flask.request.form
+	
+	print data['message']
+	
+	invitation = {
+		'message' : data['message'],
+		'inviteeName' : data['inviteeName']
+	}
+	
+	if 'yourName' in data:
+		newUserInfo = {
+			'name' : data['yourName'],
+			'email' : data['email']
+		}
+		
+		emailSenderInfo = (data['yourName'], data['yourEmail'])
+	else:
+		newUserInfo = {}
+		user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
+		emailSenderInfo = (user['name'], user['email'])
+		
+	
+	if data['meal'] != '':
+		meal = db.meals.find_one({'slug' : data['meal']})
+		
+		mealInfo = {
+			'title' : meal['title'],
+			'shortDescription' : meal['shortDescription'],
+			'slug' : meal['slug']
+		}
+	else:
+		mealInfo = 'none'
+	
+	# compose email to send
+	email = Message("Let's cook on Hotpot", recipients=[data['inviteeEmail']], sender=emailSenderInfo)
+	# TODO: if recipient has an account, translate to their TZ
+	invitationMessage = render_template('email/invitationSimple.html', meal=mealInfo, invitation=invitation)
+	email.html = invitationMessage
+	mail.send(email)
+	
+	return render_template('inviteSimpleSent.html', invitationMessage=invitationMessage, invitation=invitation, newUserInfo=newUserInfo)
+	
+	return "hi"
+
+
 ##############################################################################
 # REPLYING TO AN INVITATION
 
@@ -792,10 +839,10 @@ def sendReply():
 	}
 	
 	# compose and send email back to host
-	email = Message("Hotpot RSVP", recipients=[hostEmail], sender=emailSenderInfo)
+	# email = Message("Hotpot RSVP", recipients=[hostEmail], sender=emailSenderInfo)
 	replyMessage = render_template('email/replyToHost.html', reply=replyInfo, invitee=inviteeInfo, invitation=invitationInfo, meal=mealInfo)
-	email.html = replyMessage
-	mail.send(email)
+	#email.html = replyMessage
+	#mail.send(email)
 	
 	host = db.users.find_one({'_id' : ObjectId(invitation['hostId'])})
 		

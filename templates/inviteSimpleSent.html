@@ -1,0 +1,47 @@
+{% extends "base/common.html" %}
+
+{% block title %}Invitation Sent{% endblock %}
+
+{% block customJS %}
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$('#loginForm').submit(function(e){
+			// we're not sending passwords in the clear, yay!
+			// although yang says in a perfect world i would be using https...
+			// hmph.
+			var encryptedPassword = $.sha1($('#passwordField').val());
+			$(this).find('.encryptedPassword').val(encryptedPassword);
+			$(this).find('.tzinfo').val(getTzInfo());
+		});
+	});
+	</script>
+{% endblock %}
+
+{% block bodyId %}invitationSent{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+
+<h1 id="pageTitle">Invite a Friend to Cook</h1>
+
+<p id="pageIntro">Woohoo! Your invitation has been successfully sent to <strong>{{ invitation.inviteeName }}</strong>.</p>
+
+<div id="emailContainer">	
+	<div id="messageBody">
+		{{ invitationMessage|safe }}
+	</div><!-- #messageBody -->
+</div>
+
+{% if not isLoggedIn %}
+
+	<div id="loginFormContainer">
+
+		{% include "loginForm.html" %}
+	
+	</div><!-- #loginFormContainer -->
+
+{% endif %}
+
+{% endblock main %}

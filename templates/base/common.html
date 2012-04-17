@@ -4,10 +4,6 @@
 
 <title>HOTPOT {% block title %}{% endblock %}</title>
 
-<!-- Typekit JS -->
-<script type="text/javascript" src="http://use.typekit.com/qje5yme.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
 <!-- jQuery library -->
 <script src="/static/js/lib/jquery-1.7.1.min.js" type="text/javascript"></script>
 
@@ -32,7 +28,8 @@
 	
 		<nav id="mainNav">
 			<a href="/meals"><span class="small">Browse <em>the</em></span> Meals</a>
-			<a href="/people"><span class="small">Meet <em>friendly</em></span> People</a>
+			<a href="/invite"><span class="small">Invite <em>a</em></span> Friend</a>
+			<a href="/faq"><span class="small">Hotpot</span> FAQ</a>
 		</nav><!-- #mainNav -->
 		
 		<div id="serviceNavs">
@@ -43,7 +40,7 @@
 			
 			{% else %}
 				
-				<nav id="primaryUserNav">
+				<!--<nav id="primaryUserNav">
 					{% if alertNumber != 0 %}
 						<a href="/invitations?filter=received" id="invitationsLink">
 							<span class="tooltip">Invitations</span>
@@ -56,7 +53,7 @@
 					{% endif %}
 					
 					<a href="/history" id="historyLink"><span class="tooltip">Cooking History</span></a>
-				</nav><!-- #primaryUserNav -->
+				</nav>--><!-- #primaryUserNav -->
 				
 				<div id="userInfoContainer">
 					<a href="/home">
@@ -75,15 +72,16 @@
 					
 					<nav id="secondaryUserNav">
 						<a href="/home">My Dashboard</a>
+						<a href="/myRooms">My Cooking Rooms</a>
 						<a href="/accountinfo">Account Settings</a>
 						<a href="/logout">Log Out</a>
 					</nav><!-- #secondaryUserNav -->
 				</div><!-- userInfoContainer -->
 				
 				<a href="/invite" id="bigInviteButton">
-					<span class="big">Invite</span>
-					<span class="small"><em>a</em> Friend <em>to</em></span>
-					<span class="big">Cook!</span>
+					<span class="big1">Create</span>
+					<span class="small"><em>a</em> Cooking</span>
+					<span class="big2">Room</span>
 				</a>
 				
 			{% endif %}
@@ -106,7 +104,9 @@
 	<p>Hotpot is created by Tina Ye for her Master's Thesis in Interaction Design at SVA. Read more about the project <a href="http://thesis.tinabeans.com/">here</a>.</p>
 </footer>
 
-
+<!-- Typekit JS -->
+<!--script type="text/javascript" src="http://use.typekit.com/qje5yme.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
 {% block moreCustomJS %}{% endblock %}
 </body>
 </html>

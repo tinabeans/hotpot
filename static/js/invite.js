@@ -92,9 +92,11 @@ $(document).ready(function(){
 	});
 	
 	$('#friendNameInput').bind('notext', function(e){
-		$('#friendName').html(friendNamePlaceholder);
+		$('#friendName').html('friend');
 	});
 	
+	
+	/*
 	$('#messageBodyInput').bind('textchange', function(e){
 		// convert double linebreaks into html paragraph breaks
 		var messageBody = '<p>' + $(this).val().replace('\n\n', '</p><p>') + '</p>';
@@ -107,7 +109,7 @@ $(document).ready(function(){
 	
 	$('#messageBodyInput').bind('notext', function(e){
 		$('#messageBody').html('<p>' + messageBodyPlaceholder + '</p>');
-	});
+	}); */
 	
 	
 	/****************************************************************************************/
@@ -162,7 +164,7 @@ $(document).ready(function(){
 				$('#mealTitle').html(mealInfo['title']);
 				$('#mealImage').html('<img src="/static/images/email/foodpics/' + mealInfo['slug'] + '_small.png" />');
 				$('#mealDescription').html(mealInfo['shortDescription'] + ' <a href="/meals/' + mealInfo['slug'] + '" style="color:#f07239; text-decoration:none;">More Info »</a>');
-				$('#selectMealButton').hide();
+				$('#selectMealButtonContainer').hide();
 				
 				/* $('#previewMealDescription').html(mealInfo['shortDescription'] + ' <a href="/meals/' + mealInfo['slug'] + '" style="color:#f07239; text-decoration:none;">More about this meal »</a>');
 				$('#previewMealImage').attr('src', '/static/images/email/foodpics/' + mealInfo['slug'] + '.png');
@@ -198,7 +200,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		$('#mealInput').val('');
 		$('#chosenRecipe').hide();
-		$('#selectMealButton').show();
+		$('#selectMealButtonContainer').show();
 	});
 	
 	

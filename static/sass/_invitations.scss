@@ -152,17 +152,6 @@
 
 	.formItem {
 		margin-bottom:15px;
-		
-		&.left {
-			float:left;
-			width:50%;
-			@include box-sizing(border-box);
-			padding-right:15px;
-		}
-		
-		&.right {
-			margin-left:50%;
-		}
 	}
 	
 	label {
@@ -349,26 +338,21 @@ table.jCalendar {
 		@include opacity(.5);
 		cursor:default;
 	}
-}
+}	
 
 /**********************************************************/
 /* INVITATION & REPLY SENT PAGE */
 
 #invitationSent, #replySent {
-	#pageTitle {
-		margin-bottom:40px;
-	}
 	
 	.intro {
 		text-align: center;
 		font-size:22px;
 		margin-bottom:5px;
 	}
-
+	
 	p {
-		text-align: center;
-		font-size:16px;
-		color:$textColor;
+		margin:10 0 30 0;
 	}
 }
 
@@ -911,11 +895,15 @@ table.jCalendar {
 	padding: 30px;
 }
 
-#emailContainer {
+#invite #emailContainer {
 	@include box-sizing(border-box);
 	@include lightBlueBg;
 	width:72%;
 	padding:30px;
+}
+
+#emailContainer {
+	width:60%;
 	
 	h2 {
 		
@@ -930,11 +918,18 @@ table.jCalendar {
 		}
 	}
 	
+	h3 {
+		font-weight: bold;
+		color:$darkBlue;
+		margin-top:30px;
+	}
+	
 	#messageBody {
 		background:#fff;
 		@include border-radius(10px);
 		padding:30px;
 		@include box-shadow(0px 2px 7px rgba($darkBrown, .5));
+		margin:10px 0px 30px 0px;
 	}
 	
 	#messageBodyInputContainer textarea, #recipeInputContainer {
@@ -948,6 +943,7 @@ table.jCalendar {
 		outline:none;
 		border:0;
 		border: 3px solid $lightBrown;
+		background: rgba($lightBrown, .2);
 	}
 	
 	#recipeInputContainer {
@@ -993,10 +989,23 @@ table.jCalendar {
 			margin:0px;
 		}
 	}
+	
+	#twitterInvite {
+		margin-bottom:30px;
+	}
+	
+	.formItemError {
+		position: static;
+		background: none;
+		color: red;
+		width: auto;
+		padding: 5px 0px 0px 0px;
+	}
 }
 
 
-
+/**********************************************************/
+/* SIMPLE INVITE CONFIRMATION PAGE */
 
 
 

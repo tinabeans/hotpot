@@ -100,7 +100,7 @@ def start(db):
 	})
 	'''
 	
-	'''
+	
 	meal1 = {
 		"_id": ObjectId('4f3352569685aa28d5000008'),
 		
@@ -627,7 +627,7 @@ def start(db):
 	}
 
 	db.meals.save(meal3)
-	'''
+	
 	
 	meal4 = {
 		"_id" : ObjectId('4f8509bb9685aa744c000000'),

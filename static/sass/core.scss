@@ -442,6 +442,18 @@ p {
 	}
 }
 
+	
+.left {
+	float:left;
+	width:50%;
+	@include box-sizing(border-box);
+	padding-right:31px;
+}
+
+.right {
+	margin-left:50%;
+}
+
 /**********************************************************/
 /* HEADER */
 
@@ -482,17 +494,16 @@ $headerHeight: 96px;
 }
 
 #mainNav {
-	padding: 23px 0px 0px 30px;
+	padding: 28px 0px 0px 30px;
 
 	a {
 		display:inline-block;
 		margin-right:35px;
 		@include bigFatLetters;
-		font-size:27px;
-		letter-spacing:.05em;
+		font-size:23px;
 		@include opacity(.6);
 		color:$darkBrown;
-		line-height:20px;
+		line-height:16px;
 		
 		.small {
 			display:block;
@@ -550,8 +561,13 @@ $headerHeight: 96px;
 	top: 17px;
 	letter-spacing: .05em;
 	
-	.big {
-		font-size:20px;
+	.big1 {
+		font-size:16px;
+		display: block;
+	}
+	
+	.big2 {
+		font-size:23px;
 		display: block;
 	}
 	

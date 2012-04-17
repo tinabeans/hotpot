@@ -30,41 +30,57 @@
 </aside>
 
 <div id="emailContainer">
-	<h2><img src="/static/images/icon_bigEnvelope.png" /> Email a friend</h2>
+	<h2><img src="/static/images/icon_bigEnvelope.png" /> Send an email invitation</h2>
 	
-	<form id="emailInvite">
+	<form id="emailInvite" action="/sendSimpleInvitation" method="POST">
 	
 		{% if not isLoggedIn %}
-			<div class="formItem">
-				<label>Your Name:</label>
+			<div class="left">
+				<div class="formItem">
+					<label>Your Name:</label>
+					<input type="text" name="yourName" id="yourNameInput" class="required" />
+				</div>
+				
+				<div class="formItem">
+					<label>Your Email Address:</label>
+					<input type="text" name="yourEmail" class="required emailInput" />
+				</div>
+			</div>
+			
+			
+			<div class="right">
+				<div class="formItem">
+					<label>Friend's Name:</label>
+					<input type="text" name="inviteeName" id="friendNameInput" class="required" />
+				</div>
+				
+				<div class="formItem">
+					<label>Friend's Email Address:</label>
+					<input type="text" name="inviteeEmail" class="required emailInput" />
+				</div>
+			</div>
+		{% else %}
+			<div class="formItem left">
+				<label>Friend's Name:</label>
 				<input type="text" name="inviteeName" id="friendNameInput" class="required" />
 			</div>
 			
-			<div class="formItem">
-				<label>Your Email Address:</label>
+			<div class="formItem right">
+				<label>Friend's Email Address:</label>
 				<input type="text" name="inviteeEmail" class="required emailInput" />
 			</div>
+			
 		{% endif %}
-	
-		<div class="formItem left">
-			<label>Friend's Name:</label>
-			<input type="text" name="inviteeName" id="friendNameInput" class="required" />
-		</div>
 		
-		<div class="formItem right">
-			<label>Friend's Email Address:</label>
-			<input type="text" name="inviteeEmail" class="required emailInput" />
-		</div>
-		
+		<h3>Message Preview</h3>
 		<div id="messageBody">
 			
-			<label>Personal message:</label>
-			<div id="messageBodyInputContainer">
-				<textarea id="messageBodyInput">Let's cook on Hotpot! Let me know what times and dates work for you, and I can set us up with a Cooking Room. Can't wait!</textarea>
-				<input type="hidden" id="messageBodyInputHTML" name="message">
-			</div>
+			<p style="margin:0px 0px 15px 0px;">Hi <span id="friendName">friend</span>,</p>
 			
-			<label>Suggest a meal to cook (optional):</label>
+			<div id="messageBodyInputContainer">
+				<textarea id="messageBodyInput" name="message">(click to edit) Let's cook on Hotpot! Let me know what times and dates work for you, and I can set us up with a Cooking Room. Can't wait!</textarea>
+				<!-- input type="hidden" id="messageBodyInputHTML" name="message" -->
+			</div>
 			<div id="recipeInputContainer">
 				<div id="chosenRecipe">
 					<div id="mealImage"></div>
@@ -78,7 +94,10 @@
 					<img src="/static/images/loader.gif" />
 				</div>
 				
-				<a href="#" id="selectMealButton" class="button">Select a Meal</a>
+				<div id="selectMealButtonContainer">
+					<label>Suggest a meal to cook (optional):</label>
+					<a href="#" id="selectMealButton" class="button">Select a Meal</a>
+				</div>
 				
 				<input type="hidden" value="" name="meal" id="mealInput" />
 			</div>
@@ -89,6 +108,10 @@
 				<p>Hotpot lets us cook together online in real time. Check out Hotpot at <a href="http://test.letsgohotpot.com">LetsGoHotpot.com</a>, then reply to this email to let me know if you'd like to cook.</p>
 			</div>
 			
+		</div><!-- #messageBody -->
+		
+		<div class="buttons">	
+			<button type="submit" id="sendInvitationButton">Invite Friend</button>
 		</div>
 		
 	</form>

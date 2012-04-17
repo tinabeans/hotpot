@@ -1,3 +1,44 @@
-{{ invitation.message|safe }}
-
-<p>About Hotpot</p>
+<div>
+	<p>Hi {{ invitation.inviteeName }},</p>
+	
+	<p>{{ invitation.message|safe }}</p>
+	
+	{% if meal != 'none' %}
+	
+		<p>I suggest we make:</p>
+		<br />
+		<table>
+			<tr>
+				<td>
+					<img src="{{ BASE_URL }}/static/images/email/foodpics/{{ meal.slug }}_small.png" />
+				</td>
+					
+				<td width="30"></td>
+				<td valign="top" style="vertical-align:top">
+					<p style="color: #1C6770; font-size: 20px;">{{ meal.title }}</p>
+					<p>{{ meal.shortDescription }} <a href="{{ BASE_URL }}/meals/{{ meal.slug }}">More Info »</a></p>
+				</td>
+			</tr>
+			
+		</table>
+	{% endif %}
+	
+	<br /><br />
+	
+	<table style="background:#f8f7f5;">
+		<tr>
+			<td colspan="3" height="20"></td>
+		</tr>
+		<tr>
+			<td width="30"></td>
+			<td>
+				<img src="{{ BASE_URL }}/static/images/email/text_whatIsHotpot.png" alt="text_whatIsHotpot" width="180" height="40" />
+				<p>Hotpot lets us cook together online in real time. Check out Hotpot at <a href="http://test.letsgohotpot.com">LetsGoHotpot.com</a>, then reply to this email to let me know if you'd like to cook.</p>
+			</td>
+			<td width="30"></td>
+		</tr>
+		<tr>
+			<td colspan="3" height="20"></td>
+		</tr>
+	</table>
+</div>
