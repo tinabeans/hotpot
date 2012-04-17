@@ -122,6 +122,17 @@ def start(db):
 		
 		"flavors" : "tart, refreshing, light",
 		
+		"equipment" : [
+				"knife",
+				"cutting board",
+				"large pot",
+				"skillet",
+				"stirring spoon or spatula",
+				"scissors (optional)",
+				"lemon squeezer (optional)",
+				"grater or citrus zester (optional)"
+			],
+		
 		"description":"Kale is a hearty leafy green commonly found at farmer's vegetables in the late fall through early winter. Here, the nutty flavor of saut&eacute;ed kale is paired with a bright splash of lemon&mdash;a fragrant reminder that spring is not too far off!",
 		
 		"summary":"This pasta dish comes together quickly with just a few ingredients. The kale is saut&eacute;ed in garlic, while lemons and more garlic infuse gently into a fragrant olive oil \"sauce.\" Because of it's so easy to prepare, it's great for a low-key and healthy weeknight supper. It's also vegetarian, making it an ideal candidate for Meatless Mondays.",
@@ -272,9 +283,9 @@ def start(db):
 		
 		"title" : "Classic Chinese Steamed Fish",
 		
-		"credit":"Tina's mom",
+		"credit":"Tina's Mom",
 		
-		"creditURL":"#",
+		"creditURL":"",
 		
 		"shortDescription": """A super-easy and healthy traditional standby&mdash;home cooking at its best.""",
 		
@@ -285,6 +296,14 @@ def start(db):
 		"difficulty" : "easy-peasy",
 		
 		"flavors" : "light, savory, fragrant",
+		
+		"equipment" : [
+				"knife",
+				"cutting board",
+				"large skillet or wok with lid",
+				"medium pot or rice cooker",
+				"stirring spoon or spatula"
+			],
 		
 		"description":"""From the contributor: "Whenever I go home to visit my mom, she makes fish (there's an old Chinese believe that fish is good for your brain), so this always reminds me of home. This is so yummy, you won't believe how easy it is. My mom always uses whole fish, but fillets work just as well for those of us less culinarily gifted!"</p><p>Here we've paired it with <strong>steamed white rice</strong> and <strong>stir-fried bok choy</strong> to make a classic Chinese homecooked meal. You'll even learn traditional Chinese cooking techniques too!""",
 		
@@ -466,6 +485,16 @@ def start(db):
 		
 		"flavors" : "rich, savory, sweet",
 		
+		"equipment" : [
+				"knife",
+				"cutting board",
+				"whisk or fork",
+				"large mixing bowl",
+				"oven",
+				"cheese grater (optional)",
+				"tight-lidded jar (optional)"
+			],
+			
 		"description":"""Apple and cheddar: what could be better than this perfect pairing of flavors? How about adding in a dash of rosemary, a swirl of cream, and binding it all together with fresh eggs in a toasty crust? This quiche works for any meal of the day, including a light dinner. Here, we've paired it with a <strong>cranberry spinach salad</strong> in homemade <strong>balsamic vinaigrette</strong>. It reheats wonderfully for lunch the next day... that is, assuming there's any left.""",
 		
 		"ingredients": [
@@ -655,6 +684,17 @@ def start(db):
 		"difficulty" : "easy-peasy",
 		
 		"flavors" : "zesty, Mediterranean, fresh",
+		
+		"equipment" : [
+				"knife",
+				"cutting board",
+				"2-3 small bowls",
+				"large skillet or grill",
+				"medium pot",
+				"mortar and pestle or garlic press (optional)",
+				"lemon squeezer (optional)",
+				"pastry brush (optional)"
+			],
 		
 		"description":"""Zesty homemade vinaigrette, creamy eggplant and bright herbs served over a bed of couscous make for quite a sophisticated dinner or lunch! But it's surprisingly easy and healthy, too. Here's a presentation tip from the original site: "This dish looks especially nice served on a platter, with the feta and herbs scattered over grilled eggplant." Why not? Food that looks better, tastes better!""",
 		

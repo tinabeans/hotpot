@@ -1,6 +1,27 @@
 {% extends "base/common.html" %}
 
 {% block title %}{{ meal.title|safe }}{% endblock %}
+
+{% block customJS %}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#viewRecipeButton').click(function(e){
+			e.preventDefault();
+			$('#overlayContainer').show();
+			
+			$('body').addClass('noscroll');
+		});
+		
+		$('#overlayContainer .closeButton').click(function(e){
+			e.preventDefault();
+			$('#overlayContainer').hide();
+			
+			$('body').removeClass('noscroll');
+		});
+	});
+</script>
+{% endblock %}
+
 {% block bodyId %}meal{% endblock %}
 {% block bodyClass %}secondary{% endblock %}
 
@@ -34,9 +55,21 @@
 		<a href="/invite?meal={{ meal.slug }}" id="inviteButton">
 			<span class="small"><em>Invite a Friend to</em></span> Cook This
 		</a>
+		
+		<div id="socialMediaButtons">
+			<h2>Or share with your social networks:</h2>
+			<div id="twitterInvite">
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://letsgohotpot.com" data-text="Who wants to make {{ meal.title }} with me on Hotpot?">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+		
+			<div id="facebookInvite">
+				<div class="fb-like" data-href="http://letsgohotpot.com" data-send="true" data-layout="button_count" data-width="200" data-show-faces="false"></div>
+			</div>
+		</div>
 	
 		<section id="shoppingList">
-			<h1>Shopping List</h1>	
+			<h1>Ingredients</h1>	
 			<ul>
 			{% for ingredient in meal.ingredients %}
 				<li class="{{ loop.cycle('odd', 'even') }}"><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
@@ -46,26 +79,38 @@
 		
 	</div><!-- #importantStuff -->
 	
-	<section id="cookedBy">
-		<h1>Look Who's Cooking!</h1>
+	<section id="equipment">
+		<h1>Recommended Equipment</h1>
+		
 		<ul>
-			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+		{% for item in meal.equipment %}
+			<li>{{ item }}</li>
+		{% endfor %}
 		</ul>
 	</section>
 	
 </aside><!--#mealSidebar-->
 
+<section id="cookedBy">
+	<h1>Cooked By:</h1>
+	<ul>
+		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+	</ul>
+</section>
+
 <section id="mealDescription">
 	<h1>About the Meal</h1>
 	
 	<p>{{ meal.description|safe }}</p>
+	
+	<a href="" id="viewRecipeButton" class="smallButton">View Recipe Steps</a>
 	
 	<section id="mealCredits">
 		
@@ -86,5 +131,62 @@
 	
 </section>
 
+<div id="overlayContainer">
+	<div id="recipeStepsOverlay">
+		<a class="closeButton"></a>
+	
+		<section id="recipeSteps">
+			<h1>Recipe Steps</h1>
+		
+			{% set stepCounter = 1 %}
+		
+			{% for step in meal.steps %}
+				{% if step.type != "rest" and step.type != "eat" %}
+				
+					<h2>
+						{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
+							{% set stepCounter = stepCounter + 1 %}
+							Step {{ stepCounter }}
+						{% elif step.type == "ingredients" %}
+							Start
+						{% else %}
+							{{ step.type }}
+						{% endif %}
+					</h2>
+					
+					
+					<div class="instructionsContainer">
+						<div class="instructions">
+							
+							{{ step.text|safe }}
+							
+							{% if step.type == "ingredients" %}
+								<ul>
+								{% for ingredient in meal.ingredients %}
+									<li>{{ ingredient.name }} {% if ingredient.amount is defined %}({{ ingredient.amount }}){% endif %}</li>
+								{% endfor %}
+								</ul>
+							{% endif %}
+						</div><!-- #instructions -->
+					</div>
+				
+				{% endif %}
+			{% endfor %}
+		
+		</section><!-- #recipeSteps -->
+	</div><!-- #recipeStepsOverlay -->
+</div><!-- #overlayContainer -->
+
 
 {% endblock main %}
+
+{% block moreCustomJS %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
