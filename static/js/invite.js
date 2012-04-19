@@ -115,7 +115,7 @@ $(document).ready(function(){
 	/****************************************************************************************/
 	// MEAL PICKER
 	
-	$('#selectMealButton').click(function(e){
+	$('#selectMealButton, #changeMealButton').click(function(e){
 		e.preventDefault();
 		$('#overlayContainer').show();
 		
@@ -285,7 +285,7 @@ $(document).ready(function(){
 	/****************************************************************************************/
 	// INVITE FORM SUBMISSION
 	
-	$('#inviteForm').submit(function(e){
+	$('#inviteForm, #createRoomForm').submit(function(e){
 		
 		// need to convert from AM/PM to military-style time
 		var hour = $('#timePickerHour').val();
@@ -308,7 +308,7 @@ $(document).ready(function(){
 		$('#datetimeInput').val(Math.floor(datetime.getTime()/1000)); // divide by 1000 b/c the # is in milliseconds
 		
 		// set other hidden fields
-		$('#messageBodyInputHTML').val($('#messageBody').html().trim());
+		// $('#messageBodyInputHTML').val($('#messageBody').html().trim());
 		$('#readableDate').val($('#selectedDate').text());
 		$('#readableTime').val($('#selectedTime').text());
 		$('#tzinfo').val(getTzInfo(datetime));

@@ -114,6 +114,15 @@ def index():
 	
 
 ##############################################################################
+# FAW PAGE
+
+@app.route('/faq')
+def faq():
+		
+	return render_template('faq.html')
+	
+
+##############################################################################
 # LOGGED IN HOME
 
 @app.route('/home')
@@ -397,6 +406,17 @@ def showMeal(slug):
 
 
 ##############################################################################
+# CREATING A COOKING ROOM
+
+@app.route('/createRoom')
+def showCreateRoomForm():
+	
+	meals = list(db.meals.find())
+
+	return render_template('createRoom.html', meals=meals);
+
+
+##############################################################################
 # INVITING SOMEONE TO COOK
 
 @app.route('/invite')
@@ -409,6 +429,7 @@ def showBlankInviteForm():
 	
 	return render_template('invite.html', meals=meals, meal=meal)
 
+# used by AJAX request when picking a recipe for the invitation
 @app.route('/loadMealInformation')
 def loadMealInformation():
 

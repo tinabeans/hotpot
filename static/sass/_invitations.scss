@@ -86,7 +86,7 @@
 	}
 }
 
-#inviteForm, #emailContainer {
+#inviteForm, #emailContainer, #createRoomForm {
 	@include box-sizing(border-box);
 	
 	h2 {
@@ -94,7 +94,7 @@
 		text-transform: uppercase;
 		color:$darkBlue;
 		font-size:16px;
-		margin-bottom:10px;
+		margin-bottom:15px;
 	}
 	
 	.formItemError {
@@ -180,6 +180,67 @@
 		img {
 			margin-top:10px;
 		}
+	}
+}
+
+#createRoom {
+	
+	#pageIntro {
+		margin-bottom:50px;
+	}
+	
+}
+
+#createRoomForm {
+	width: 700px;
+	margin:0px auto;
+	
+	fieldset {
+		padding:20px;
+		margin-bottom:40px;
+	}
+	
+	#who {
+		background:url(/static/images/personWithSpoon.png) no-repeat left top;
+		padding-left:125px;
+	
+		fieldset {
+			padding-top:15px;
+		}
+	
+		.formItem {
+			margin-bottom:0px;
+		}
+	}
+	
+	#what {
+		background:url(/static/images/meal.png) no-repeat 15px top;
+		padding-left:125px;
+		
+		fieldset {
+			padding-bottom:25px;
+		}
+	}
+	
+	#when {
+		background:url(/static/images/calendar.png) no-repeat 20px top;
+		padding-left:125px;
+	
+		.formItem {
+			margin-bottom:0px;
+		}
+	}
+	
+	p.note {
+		margin: -10px 0px 15px 0px;
+		font-size:14px;
+		color: $mediumBlue;
+		font-style: italic;
+	}
+	
+	#datePicker {
+		float:left;
+		margin:0px 20px 0px 0px;
 	}
 }
 
@@ -921,24 +982,6 @@ table.jCalendar {
 		@include clearfix;
 	}
 	
-	#chosenRecipe {
-		display:none;
-		
-		#mealImage {
-			float:left;
-			margin-right:20px;
-		}
-		
-		#mealTitle {
-			margin: 0 0 10px 0;
-		}
-		
-		#mealDescription {
-			margin: 0 0 10px 0;
-			font-size:16px;
-		}
-	}
-	
 	#aboutHotpot {
 		background: rgba($lightBrown, .3);
 		padding:20px;
@@ -961,20 +1004,40 @@ table.jCalendar {
 		}
 	}
 	
-	.formItemError {
-		position: static;
-		background: none;
-		color: red;
-		width: auto;
-		padding: 5px 0px 0px 0px;
-	}
-	
 	#selectMealButtonContainer label {
 		margin-bottom:10px;
 	}
 }
 
-
+#emailContainer, #createRoomForm {
+	
+	.formItemError {
+		position: static;
+		background: none;
+		color: $orange;
+		width: auto;
+		padding: 5px 0px 0px 0px;
+	}
+	
+	
+	#chosenRecipe {
+		display:none;
+		
+		#mealImage {
+			float:left;
+			margin-right:20px;
+		}
+		
+		#mealTitle {
+			margin: 0 0 10px 0;
+		}
+		
+		#mealDescription {
+			margin: 0 0 10px 0;
+			font-size:16px;
+		}
+	}
+}
 	
 #twitterInvite {
 	margin:30px 0px;

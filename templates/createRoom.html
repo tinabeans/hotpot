@@ -9,114 +9,116 @@
 <script src="/static/js/validation.js" type="text/javascript"></script>
 {% endblock %}
 
-{% block bodyId %}invite{% endblock %}
+{% block bodyId %}createRoom{% endblock %}
 
 {% block main %}
 
 <h1 id="pageTitle">Create a Cooking Room</h1>
 
+<p id="pageIntro">To cook together with a friend on Hotpot, you'll need your own Cooking Room. Fill in the details below to get started!</p>
 
-<div id="inviteFormContainer">
+<div id="createRoomFormContainer">
 
-	<form id="inviteForm" method="POST" action="/sendInvitation">
-
-		<h2>1. Friend Details</h2>
+	<form id="createRoomForm" method="POST" action="/createRoomAction">
 		
-		<fieldset>
-		
-			<div class="formItem">
-				<label>Friend's Name:</label>
-				<input type="text" name="inviteeName" id="friendNameInput" class="required" />
-			</div>
+		<div id="who">
+			<h2>1. Who would you like to cook with?</h2>
 			
-			<div class="formItem">
-				<label>Friend's Email Address:</label>
-				<input type="text" name="inviteeEmail" class="required emailInput" />
-			</div>
+			<p class="note">It could be anybody&mdash;Mom, brother, best friend&mdash;but for now, just one person please.</p>
 			
-			<p class="formNote">Just one friend, please. We're working on cooking with multiple friends soon!</p>
-		</fieldset>
-		
-		<h2>2. Personal Message</h2>
-		
-		<fieldset>
-			<div class="formItem">
-				<label>Get your friend excited to cook!</label>
-				<textarea id="messageBodyInput"></textarea>
-				<input type="hidden" id="messageBodyInputHTML" name="message">
-			</div>
-		</fieldset>
-		
-		<h2>3. What to Cook</h2>
-		
-		<fieldset>
-			<div id="chosenRecipe">
-				<label>Selected meal:</label>
-				<p id="mealTitleDisplay">{{ meal.title|safe }}</p>
+			<fieldset>
+			
+				<div class="formItem left">
+					<label>Friend's Name:</label>
+					<input type="text" name="inviteeName" id="friendNameInput" class="required" />
+				</div>
 				
-				<a href="#" id="selectMealButton" class="button">Select Meal</a>
+				<div class="formItem right">
+					<label>Friend's Email:</label>
+					<input type="text" name="inviteeEmail" class="required emailInput" />
+				</div>
+			</fieldset>
+		</div>
+		
+		<div id="what">
+			<h2>2. What would you like to cook?</h2>
+			
+			<fieldset id="recipeInputContainer">
+				<div id="chosenRecipe">
+					<div id="mealImage"></div>
+					<p id="mealTitle"></p>
+					<p id="mealDescription"></p>
+					<a href="" id="changeMealButton" class="button">Change Meal</a>
+				</div>
 				
 				<div id="loadingImage">
 					Loading meal into invitation <br />
 					<img src="/static/images/loader.gif" />
 				</div>
 				
-				<input type="hidden" value="{{ meal.slug }}" name="meal" id="mealInput" />
-			</div>
-		</fieldset>
+				<div id="selectMealButtonContainer">
+					<a href="#" id="selectMealButton" class="button">Select a Meal</a>
+				</div>
+				
+				<input type="hidden" value="" name="meal" id="mealInput" />
+			</fieldset>
+		</div>
 		
-		<h2>4. Date &amp; Time</h2>
-		
-		<fieldset>
-			<div class="formItem">
-				<label>Select a date:</label>
-				<div id="datePicker"></div>
-				<input type="hidden" id="selectedDateInput" />
-			</div>
+		<div id="when">
+			<h2>3. When would you like to cook?</h2>
+			<p class="note">Hotpot will send out reminders &amp; shopping lists right before you cook.</p>
 			
-			<div class="formItem">
-				<label>Select a time:</label>
-				<select id="timePickerHour">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option selected>7</option>
-					<option>8</option>
-					<option>9</option>
-					<option>10</option>
-					<option>11</option>
-					<option>12</option>
-				</select>
-				:
-				<select id="timePickerMinute">
-					<option>00</option>
-					<option>15</option>
-					<option>30</option>
-					<option>45</option>
-				</select>
-				<select id="timePickerAMPM">
-					<option>AM</option>
-					<option selected>PM</option>
-				</select>
-			</div>
-		</fieldset>
+			<fieldset>
+				<div class="formItem">
+					<div id="datePicker"></div>
+					<input type="hidden" id="selectedDateInput" />
+				</div>
+				
+				<div class="formItem">
+					<label>Select a time:</label>
+					<select id="timePickerHour">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option selected>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+						<option>11</option>
+						<option>12</option>
+					</select>
+					:
+					<select id="timePickerMinute">
+						<option>00</option>
+						<option>15</option>
+						<option>30</option>
+						<option>45</option>
+					</select>
+					<select id="timePickerAMPM">
+						<option>AM</option>
+						<option selected>PM</option>
+					</select>
+				</div>
+			</fieldset>
+			
+			<input type="hidden" id="datetimeInput" name="datetime" value="0" />
+			<input type="hidden" id="readableDate" name="readableDate" />
+			<input type="hidden" id="readableTime" name="readableTime" />
+			<input type="hidden" id="tzinfo" name="tzinfo" />
 		
-		<input type="hidden" id="datetimeInput" name="datetime" value="0" />
-		<input type="hidden" id="readableDate" name="readableDate" />
-		<input type="hidden" id="readableTime" name="readableTime" />
-		<input type="hidden" id="tzinfo" name="tzinfo" />
+		</div>
 		
-		<p>Check the preview on the left and make sure everything looks good! Upon hitting send, we'll email your friend the invitation and he/she will be able to R.S.V.P.</p>
+		<p>All set? Excellent! Once you hit the button below, Hotpot will notify your friend that this Cooking Room has been created. Then all you have to do is meet there, and get cooking!</p>
 		
 		<div id="errorsPresentMessage">
 			<p>Oops, looks like we're missing some crucial information above.</p>
 		</div>
 		
 		<div class="buttons">	
-			<button type="submit" id="sendInvitationButton">Send Invitation</button>
+			<button type="submit" id="sendInvitationButton">Let's Go Cook!</button>
 		</div>
 	</form>
 	

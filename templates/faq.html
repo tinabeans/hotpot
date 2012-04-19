@@ -1,0 +1,96 @@
+{% extends "base/common.html" %}
+
+{% block title %}Create a Cooking Room{% endblock %}
+
+{% block customJS %}
+<script src="/static/js/lib/date.js" type="text/javascript"></script>
+<script src="/static/js/lib/jquery.datePicker.js" type="text/javascript"></script>
+<script src="/static/js/invite.js" type="text/javascript"></script>
+<script src="/static/js/validation.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block bodyId %}createRoom{% endblock %}
+
+{% block main %}
+
+<h1 id="pageTitle">Hotpot FAQ</h1>
+
+<p id="pageIntro">All your burning questions about Hotpot, answered. (But if you don't find the answer you're looking for, <a href="mailto:help@letsgohotpot.com">let me know!</a>)</p>
+
+<nav class="faqNav">
+	<a href="">On Using Hotpot</a>
+	<a href="">On the Project Itself</a>
+</nav>
+
+<ul id="hotpotQuestions">
+
+	<li class="faqItem">
+		<p class="question">What equipment or technology do I need to use Hotpot?</p>
+		<p>I recommend the following:</p>
+		<ul>
+			<li>a computer with a high-speed Internet connection</li>
+			<li>a webcam</li>
+			<li>Adobe Flash Player 11 (for video chatting)</li>
+			<li>the latest version of your favorite browser</li>
+		</ul>
+	</li>
+	
+	<li class="faqItem">
+		<p class="question">I don't have Flash. How do I get it?</p>
+		<p>You can get it <a href="http://get.adobe.com/flashplayer/" target="_blank">on the Adobe website here</a>.</p>
+	</li>
+	
+	<li class="faqItem">
+		<p class="question">Is it okay to use my laptop in the kitchen?</p>
+		<p>Definitely! In fact, many people do these days. It's all about where you put it. Some people like to place it on the counter next to where they work. Others place it on a table behind them. You could even put it on top of your fridge, for a nice birds-eye view of your kitchen!</p>
+		<p>Another thing you could do is protect your laptop with some plastic wrap. Place a sheet over the keyboard and trackpad and tuck it down the sides. That way you can type with your hands all messy, and, as long as you don't have extremely sharp nails, it should last the entire cooking process. If you do this, however, be careful not to wrap the bottom/back of the laptop! This will block the air vents and could cause your laptop to overheat.</p>
+	</li>
+	
+	<li class="faqItem">
+		<p class="question">Does Hotpot work on my iPhone/iPad?</p>
+		<p>No, not yet. iPhones/iPads and regular computers have very different technological requirements for video chat. In order allow as many people as possible to try out the initial prototype, I decided to go the regular computer route. However an iPad version is definitely possible, especially now that OpenTok has released their iOS SDK!</p>
+	</li>
+	
+	<li class="faqItem">
+		<p class="question">Can I cook with more than one person at a time?</p>
+		<p>Not yet. This is because the video quality suffers dramatically once you have more than 2 people in a Cooking Room, so for now, you can only cook with one special person at a time.
+		<p>(The good news is you can&mdash;and definitely should&mdash;cook many many times, as many as you want. So in that sense, the number of people you can cook with is quite infinite!)</p>
+	</li>
+	
+	<li class="faqItem">
+		<p class="question">Er... I'm having a problem/something's not working/my kitchen is on fire!</p>
+		<p>Please let me know what the problem is at <a href="mailto:help@letsgohotpot.com">help@letsgohotpot.com</a>. Include as much gory detail as you can so I'll be able to track down the problem's cause. If it's a technical problem, tell me the type of computer you're on (Windows/Mac), the type of browser you were using, and what exactly you were doing when the issue occurred. I'll get back to you as soon as I can.</p>
+	</li>
+
+</ul><!-- #hotpotQuestions -->
+
+<ul id="projectQuestions">
+	
+	<li class="faqItem">
+		<p class="question">So what exactly <em>is</em> Hotpot?</p>
+		<p>Hotpot is a working prototype/proof of concept created for my MFA Thesis in Interaction Design, in the Spring of 2012. You can read more about the process of making Hotpot on my <a href="http://thesis.tinabeans.com" target="_blank">thesis blog, Thesisbeans</a>.</p>
+	</li>
+	
+	<li class="faqItem">
+		<p class="question">Why "Hotpot"?</p>
+		<p>The word "hotpot" originally refers to the Chinese method of cooking in which many people gather around a table set with raw ingredients and a simmering pot of broth in the center. Everybody cooks and eats together in this fashion, by selecting raw ingredients and cooking them in the central pot. This nicely embodies the concept of an intimate, shared experience around food, so I was inspired to adopt the name for this project.</p>
+	</li>
+	
+	<li class="faqItem">
+		<p class="question">Will you be adding [Feature X]?</p>
+		<p>See the next question.</p>
+	</li>
+	
+	<li class="faqItem">
+		<p class="question">What happens to Hotpot when thesis is over?</p>
+		<p>That's a good question. I'd love to maintain it for anyone to use in the future, at least until the domain name expires. However, whether or not it grows beyond its current form is very much dependent on my future time and resources.</p>
+	</li>
+	
+	<li class="faqItem">
+		<p class="question">Who are you?</p>
+		<p>(That's a good song.) My name is Tina Ye, a graduate student at SVA's MFA in Interaction Design program. You can find out more about me <a href="http://tinabeans.com" target="_blank">here</a>.</p>
+	</li>
+
+</ul><!-- #projectQuestions -->
+
+{% endblock main %}
