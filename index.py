@@ -1199,32 +1199,6 @@ def showRoom(invitationId):
 		
 		return render_template('room.html', meal=meal, invitationId=invitationId, stamps=stamps, attendees=attendees, socketsPortNumber=config.SOCKETS_PORT_NUMBER)
 
-'''
-def postFoodnote():
-	data = flask.request.json
-	
-	# put together the new user note to send to the database!
-	newUserNote = {
-		"user_id": flask.session['userId'],
-		"meal_id": ObjectId(data['meal_id']),
-		"snippet_id": ObjectId(data['snippet_id']),
-		"text": data['text']
-	}
-	
-	# now insert the data, and store the id
-	newUserNoteId = userNotes.insert(newUserNote);
-	
-	# now put together some data to send back to the template...
-	userInfo = db.users.find_one({ '_id' : ObjectId(flask.session['userId']) })
-	
-	# HEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLPPPPPPPPPPPPPPPPPPPPPPP SINGLE QUOTES!!?
-	dataForResponse = {
-		'noteId' : str(newUserNoteId),
-		'username' : str(userInfo['name'])
-	}
-	
-	return str(dataForResponse)
-'''
 
 ##############################################################################
 # SOCKET.IO ENDPOINT for IN-ROOM COMMUNICATIONINGS
