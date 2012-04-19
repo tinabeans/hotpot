@@ -145,7 +145,7 @@ def people():
 
 
 ##############################################################################
-# INVITE CODES (NOT NEEDED)
+# INVITE CODES
 
 
 @app.route('/checkTesterCode', methods=['POST'])
@@ -159,78 +159,6 @@ def checkTesterCode():
 		
 	else:
 		return """wrong code"""
-
-
-'''
-@app.route('/generateCode')
-def showGenerateCodeForm():
-	return flask.render_template('generateCode.html')
-
-@app.route('/newCode', methods=['POST'])
-def generateCode():
-	requestData = flask.request.form
-	
-	# generate a random "code"
-	code = random.randint(100000,999999)
-	
-	while codes.find_one({ 'code' : code }) is not None:
-		code = random.randint(100000,999999)
-	
-	newDocument = {
-		'name' : requestData['name'],
-		'email' : requestData['email'],
-		'code' : code,
-		'redeemed' : False
-	}
-	
-	print newDocument
-	
-	codes.insert(newDocument)
-	
-	return flask.render_template('newCode.html', data = newDocument)
-
-@app.route('/redeemCode')
-def showRedeemCodeForm():
-	return flask.render_template('redeemCode.html')
-	
-@app.route('/checkCode', methods=['POST'])
-def checkCode():
-	code = flask.request.form['code']
-	
-	if code.isdigit():
-		code = int(code)
-		
-		codeDocument = codes.find_one({ 'code' : code })
-		
-		print codeDocument
-		
-		if codeDocument is not None:
-			codes.update(
-				{ 'code' : code },
-				{ '$set' : { 'redeemed' : True }}
-			)
-			
-			return flask.render_template('newAccount.html', data=codeDocument)
-	
-	return 'code not found'
-	
-@app.route('/saveProfile', methods=['POST'])
-def saveProfile():
-	data = flask.request.form
-	
-	# insert/update entries in users db
-	# is there some magical fast way to do this?
-	# users.update({ '
-	
-	# do some fancy ajax?
-	return "okiedoke"
-
-@app.route('/profile', methods=['POST', 'GET'])
-def viewProfile():
-	data = flask.request.form
-			
-	return flask.render_template('profile.html', data=data)
-'''
 
 
 ##############################################################################
