@@ -1,0 +1,155 @@
+{% extends "base/common.html" %}
+
+{% block title %}Create a Cooking Room{% endblock %}
+
+{% block customJS %}
+<script src="/static/js/lib/date.js" type="text/javascript"></script>
+<script src="/static/js/lib/jquery.datePicker.js" type="text/javascript"></script>
+<script src="/static/js/invite.js" type="text/javascript"></script>
+<script src="/static/js/validation.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block bodyId %}invite{% endblock %}
+
+{% block main %}
+
+<h1 id="pageTitle">Create a Cooking Room</h1>
+
+
+<div id="inviteFormContainer">
+
+	<form id="inviteForm" method="POST" action="/sendInvitation">
+
+		<h2>1. Friend Details</h2>
+		
+		<fieldset>
+		
+			<div class="formItem">
+				<label>Friend's Name:</label>
+				<input type="text" name="inviteeName" id="friendNameInput" class="required" />
+			</div>
+			
+			<div class="formItem">
+				<label>Friend's Email Address:</label>
+				<input type="text" name="inviteeEmail" class="required emailInput" />
+			</div>
+			
+			<p class="formNote">Just one friend, please. We're working on cooking with multiple friends soon!</p>
+		</fieldset>
+		
+		<h2>2. Personal Message</h2>
+		
+		<fieldset>
+			<div class="formItem">
+				<label>Get your friend excited to cook!</label>
+				<textarea id="messageBodyInput"></textarea>
+				<input type="hidden" id="messageBodyInputHTML" name="message">
+			</div>
+		</fieldset>
+		
+		<h2>3. What to Cook</h2>
+		
+		<fieldset>
+			<div id="chosenRecipe">
+				<label>Selected meal:</label>
+				<p id="mealTitleDisplay">{{ meal.title|safe }}</p>
+				
+				<a href="#" id="selectMealButton" class="button">Select Meal</a>
+				
+				<div id="loadingImage">
+					Loading meal into invitation <br />
+					<img src="/static/images/loader.gif" />
+				</div>
+				
+				<input type="hidden" value="{{ meal.slug }}" name="meal" id="mealInput" />
+			</div>
+		</fieldset>
+		
+		<h2>4. Date &amp; Time</h2>
+		
+		<fieldset>
+			<div class="formItem">
+				<label>Select a date:</label>
+				<div id="datePicker"></div>
+				<input type="hidden" id="selectedDateInput" />
+			</div>
+			
+			<div class="formItem">
+				<label>Select a time:</label>
+				<select id="timePickerHour">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option selected>7</option>
+					<option>8</option>
+					<option>9</option>
+					<option>10</option>
+					<option>11</option>
+					<option>12</option>
+				</select>
+				:
+				<select id="timePickerMinute">
+					<option>00</option>
+					<option>15</option>
+					<option>30</option>
+					<option>45</option>
+				</select>
+				<select id="timePickerAMPM">
+					<option>AM</option>
+					<option selected>PM</option>
+				</select>
+			</div>
+		</fieldset>
+		
+		<input type="hidden" id="datetimeInput" name="datetime" value="0" />
+		<input type="hidden" id="readableDate" name="readableDate" />
+		<input type="hidden" id="readableTime" name="readableTime" />
+		<input type="hidden" id="tzinfo" name="tzinfo" />
+		
+		<p>Check the preview on the left and make sure everything looks good! Upon hitting send, we'll email your friend the invitation and he/she will be able to R.S.V.P.</p>
+		
+		<div id="errorsPresentMessage">
+			<p>Oops, looks like we're missing some crucial information above.</p>
+		</div>
+		
+		<div class="buttons">	
+			<button type="submit" id="sendInvitationButton">Send Invitation</button>
+		</div>
+	</form>
+	
+</div><!-- #inviteFormContainer -->
+
+<div id="overlayContainer">
+	<div id="recipePickerContainer">
+		<section id="recipePicker">
+			
+			<a href="" class="closeButton">Close</a>
+		
+			<h1>Select a meal to cook with your friend:</h1>
+			
+			<ul>
+				{% for meal in meals %}
+				<li>
+					<div class="mealImage">
+						<img src="/static/images/food/{{ meal.slug }}.jpg">
+					</div>
+					
+					<a href="/meals/{{ meal.slug }}" class="button mealPickerButton" data-id="{{ meal.slug }}" title="{{ meal.title|safe }}" target="_blank">Choose</a>
+					
+					<div class="mealContent">
+						<h2>{{ meal.title|safe }}</h2>
+						<p>{{ meal.shortDescription|safe }} <a href="/meals/{{ meal.slug }}" target="_blank">More info</a></p>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+			
+		</section>
+	</div><!-- #recipePickerContainer -->
+</div><!-- #overlayContainer -->
+
+
+{% endblock main %}
