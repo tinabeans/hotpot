@@ -1,28 +1,37 @@
 {% extends "base/common.html" %}
 
-{% block title %}Create a Cooking Room{% endblock %}
+{% block title %}Hotpot FAQ{% endblock %}
 
 {% block customJS %}
-<script src="/static/js/lib/date.js" type="text/javascript"></script>
-<script src="/static/js/lib/jquery.datePicker.js" type="text/javascript"></script>
-<script src="/static/js/invite.js" type="text/javascript"></script>
-<script src="/static/js/validation.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.tabLink').click(function(e){
+		e.preventDefault();
+		
+		$('.tabContent').hide();
+		$('.tabLink').removeClass('active');
+		
+		$('#' + $(this).attr('data-content')).show();
+		$(this).addClass('active');
+	});
+});
+</script>
 {% endblock %}
 
-{% block bodyId %}createRoom{% endblock %}
+{% block bodyId %}faq{% endblock %}
 
 {% block main %}
 
 <h1 id="pageTitle">Hotpot FAQ</h1>
 
-<p id="pageIntro">All your burning questions about Hotpot, answered. (But if you don't find the answer you're looking for, <a href="mailto:help@letsgohotpot.com">let me know!</a>)</p>
+<p id="pageIntro">All your burning questions about Hotpot, answered! (And if you don't find the answer you're looking for, <a href="mailto:help@letsgohotpot.com">let me know.</a>)</p>
 
-<nav class="faqNav">
-	<a href="">On Using Hotpot</a>
-	<a href="">On the Project Itself</a>
+<nav id="faqNav">
+	<a href="" data-content="hotpotQuestions" class="tabLink active">On Using Hotpot <img src="/static/images/icon_arrowRight_black.png" /></a>
+	<a href="" data-content="projectQuestions" class="tabLink">On the Project Itself <img src="/static/images/icon_arrowRight_black.png" /></a>
 </nav>
 
-<ul id="hotpotQuestions">
+<ul id="hotpotQuestions" class="tabContent">
 
 	<li class="faqItem">
 		<p class="question">What equipment or technology do I need to use Hotpot?</p>
@@ -53,8 +62,7 @@
 	
 	<li class="faqItem">
 		<p class="question">Can I cook with more than one person at a time?</p>
-		<p>Not yet. This is because the video quality suffers dramatically once you have more than 2 people in a Cooking Room, so for now, you can only cook with one special person at a time.
-		<p>(The good news is you can&mdash;and definitely should&mdash;cook many many times, as many as you want. So in that sense, the number of people you can cook with is quite infinite!)</p>
+		<p>Not yet. This is because the video quality suffers dramatically once you have more than 2 people in a Cooking Room, so for now, you can only cook with one special person at a time. (The good news is you can&mdash;and definitely should&mdash;cook many many times, as many as you want. So in that sense, the number of people you can cook with is quite infinite!)</p>
 	</li>
 	
 	<li class="faqItem">
@@ -64,10 +72,10 @@
 
 </ul><!-- #hotpotQuestions -->
 
-<ul id="projectQuestions">
+<ul id="projectQuestions" class="tabContent">
 	
 	<li class="faqItem">
-		<p class="question">So what exactly <em>is</em> Hotpot?</p>
+		<p class="question">What's the nature of this project?</p>
 		<p>Hotpot is a working prototype/proof of concept created for my MFA Thesis in Interaction Design, in the Spring of 2012. You can read more about the process of making Hotpot on my <a href="http://thesis.tinabeans.com" target="_blank">thesis blog, Thesisbeans</a>.</p>
 	</li>
 	

@@ -857,6 +857,72 @@ input[disabled=disabled], button[disabled=disabled] {
 	@include opacity(.5);
 }
 
+/**********************************************************/
+/* FAQ page */
+
+#faq {
+	font-size:16px;
+	
+	.faqItem {
+		margin-bottom:30px;
+	}
+	
+	.question {
+		font-weight: bold;
+		font-size:18px;
+	}
+	
+	#pageIntro {
+		margin-bottom:40px;
+	}
+}
+
+#faqNav {
+	padding: 15px;
+	float:left;
+	width:27%;
+	@include lightBrownBg;
+	@include box-sizing(border-box);
+	
+	a {
+		display: block;
+		padding:5px 10px;
+		margin:10px 0px;
+		
+		img {
+			display:none;
+			margin-left:5px;
+		}
+		
+		&.active {
+			color:$textColor;
+			cursor: default;
+			
+			img {
+				display:inline-block;
+			}
+		}
+	}
+}
+
+#hotpotQuestions, #projectQuestions {
+	margin-left:27%;
+	padding-left:30px;
+	
+	ul {
+		list-style-type:disc;
+		margin-left:40px;
+	}
+	
+	li {
+		margin:10px 0px;
+	}
+}
+
+#projectQuestions {
+	display:none;
+}
+
 
 /**********************************************************/
 /* CSS for different page types */

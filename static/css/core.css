@@ -935,6 +935,78 @@ input[disabled=disabled], button[disabled=disabled] {
 }
 
 /**********************************************************/
+/* FAQ page */
+/* line 863, ../sass/core.scss */
+#faq {
+  font-size: 16px;
+}
+/* line 866, ../sass/core.scss */
+#faq .faqItem {
+  margin-bottom: 30px;
+}
+/* line 870, ../sass/core.scss */
+#faq .question {
+  font-weight: bold;
+  font-size: 18px;
+}
+/* line 875, ../sass/core.scss */
+#faq #pageIntro {
+  margin-bottom: 40px;
+}
+
+/* line 880, ../sass/core.scss */
+#faqNav {
+  padding: 15px;
+  float: left;
+  width: 27%;
+  background: #f8f6f0 url(/static/images/textureSoft.png);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 887, ../sass/core.scss */
+#faqNav a {
+  display: block;
+  padding: 5px 10px;
+  margin: 10px 0px;
+}
+/* line 892, ../sass/core.scss */
+#faqNav a img {
+  display: none;
+  padding-left: 5px;
+}
+/* line 897, ../sass/core.scss */
+#faqNav a.active {
+  color: #4e565c;
+  cursor: default;
+}
+/* line 901, ../sass/core.scss */
+#faqNav a.active img {
+  display: inline-block;
+}
+
+/* line 908, ../sass/core.scss */
+#hotpotQuestions, #projectQuestions {
+  margin-left: 27%;
+  padding-left: 30px;
+}
+/* line 912, ../sass/core.scss */
+#hotpotQuestions ul, #projectQuestions ul {
+  list-style-type: disc;
+  margin-left: 40px;
+}
+/* line 917, ../sass/core.scss */
+#hotpotQuestions li, #projectQuestions li {
+  margin: 10px 0px;
+}
+
+/* line 922, ../sass/core.scss */
+#projectQuestions {
+  display: none;
+}
+
+/**********************************************************/
 /* CSS for different page types */
 /**********************************************************/
 /* INTRO PAGE / COVER */
