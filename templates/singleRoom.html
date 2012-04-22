@@ -1,0 +1,163 @@
+{% extends "base/common.html" %}
+
+{% block title %}My Cooking Rooms{% endblock %}
+
+{% block customJS %}{% endblock %}
+
+{% block bodyId %}roomSingle{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+<h1 id="pageTitle">
+	<a class="returnLink" href="/cookingRooms">&laquo; Return to My Cooking Rooms</a>
+	Cooking Room Details
+</h1>
+
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="message">
+			{{ message }}
+		</div>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+
+
+<aside id="roomMeta">
+
+	<a href="/rooms/{{ invitation._id }}" class="button" id="launchRoomButton">Launch<span class="small">Cooking Room</span></a>
+	
+	<p>
+		<span class="label">Room Creator</span>
+		<span class="userpic"><img src="/static/uploads/userpics/{{ invitation.host.userpic }}" title="{{ invitation.host.name }}" /></span> {{ invitation.host.name }}
+	</p>
+	
+	<div id="roomActions">
+		<!-- <h2>Actions</h2>
+		<a href="" class="smallButton">Email Shopping List</a>
+		{% if invitation.host._id == user._id %}
+			<a href="" class="smallButton">Edit Room</a>
+			<a href="" class="smallButton">Re-Notify Attendees</a>
+		{% endif %} -->
+	</div>
+	
+</aside><!-- #roomMeta -->
+
+<div id="roomInfo">
+		
+	<div class="mealImage">
+		<a href="/meals/{{ invitation.meal.slug }}"><img src="/static/images/food/{{ invitation.meal.slug }}.jpg" /></a>
+	</div>
+	
+	<div class="details">
+		<p><span class="label meal">Selected Meal</span>
+		{{ invitation.meal.title }}
+		<a href="/meals/{{ invitation.meal.slug }}">Meal Info</a></p>
+		
+		<div class="left">
+			<p><span class="label datetime">Cooking Date</span>
+			{{ invitation.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</p>
+		</div>
+		
+		<div class="right">
+			<p><span class="label datetime">Time</span>
+			{{ invitation.datetime|jsDatetimeLocaleFormat("%l:%M %p")|safe }}</p>
+		</div>
+		
+		<div class="with">
+			<p><span class="label">Invited</span>
+			<span class="userpic"><img src="/static/uploads/userpics/{{ invitation.host.userpic }}" title="{{ invitation.host.name }}" /></span>
+			{% for invitee in invitation.inviteesInfo %}
+				<span class="userpic"><img src="/static/uploads/userpics/{{ invitee.userpic }}" title="{{ invitee.name }}" /></span>
+			{% endfor %}</p>
+		</div>
+		
+	</div><!-- .details -->
+</div><!-- #roomInfo -->
+
+
+
+<section id="cookingTimeline">
+
+	<h1>Cooking History</h1>
+	
+	{% if not isPast %}
+	<div class="timelineMessage">
+		<p>After cooking, everyone's notes and stamps will appear here, so you can revisit the good times!</p>
+	</div>
+	
+	{% else %}
+		{% set stepCounter = 1 %}
+		
+		{% for step in meal.steps %}
+			
+			<h2>
+				{% if step.type == "prep" or step.type == "heat" or step.type == "finish" %}
+					{% set stepCounter = stepCounter + 1 %}
+					Step {{ stepCounter }}
+				{% elif step.type == "ingredients" %}
+					Start
+				{% else %}
+					{{ step.type }}
+				{% endif %}
+			</h2>
+			
+			<div class="stepContent">
+				<div class="instructionsContainer">
+					<div class="instructions">
+						
+						{{ step.text|safe }}
+						
+						{% if step.type == "ingredients" %}
+							<ul>
+							{% for ingredient in meal.ingredients %}
+								<li>{{ ingredient.name }} {% if ingredient.amount is defined %}({{ ingredient.amount }}){% endif %}</li>
+							{% endfor %}
+							</ul>
+						{% endif %}
+						
+						{% if step.extra is defined %}
+							<div class="extra">
+								<span class="label">Protip!</span>
+								{{ step.extra|safe }}
+							</div>
+						{% endif %}
+					</div><!-- #instructions -->
+				</div>
+				
+				<div class="notesContainer">
+					{% if step.notes is defined %}
+						{% for note in step.notes %}
+						<div class="cookingNote {{ note.type }}" data-id="{{ note._id }}">
+							
+							<div class="userpic"><img src="/static/uploads/userpics/{{ note.noteAuthor.userpic }}" /></div>
+							
+							{% if note.type == "note" %}
+								<div class="description"><strong>{{ note.noteAuthor.name }}</strong> posted a note at {{ note.timestamp|jsDatetimeLocaleFormat("%l:%M %p")|safe }}</div>
+							
+								<div class="noteContent">
+									<p>{{ note.content }}</p>
+								</div>
+								
+							{% elif note.type == "stamp" %}
+							
+								<div class="description"><strong>{{ note.noteAuthor.name }}</strong> posted a stamp at {{ note.timestamp|jsDatetimeLocaleFormat("%l:%M %p")|safe }}</div>
+							
+								<div class="noteContent">
+									<img src="/static/images/stamps/{{ note.content.stampSlug }}.png" />
+									<p>{{ note.content.stampName }}!</p>
+								</div>
+							{% endif %}
+						</div>
+						{% endfor %}
+					{% endif %}
+				</div><!-- .notesContainer -->
+			</div><!-- .stepContent -->
+			
+		{% endfor %}
+	{% endif %}	
+</section><!-- #cookingTimeline -->
+
+{% endblock main %}

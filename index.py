@@ -446,8 +446,10 @@ def loadMealInformation():
 	
 	return json.dumps(mealInfo)
 
-@app.route('/sendInvitation', methods=['POST'])
+
+@app.route('/createRoomAction', methods=['POST'])
 def sendInvitation():
+	
 	data = flask.request.form
 	
 	user = db.users.find_one({'_id' : ObjectId(flask.session['userId'])})
@@ -464,7 +466,7 @@ def sendInvitation():
 
 	# construct new invitation document based on incoming form data and info above
 	newInvitation = {
-		"status" : "new",
+		"status" : "accepted",
 		"hostId" : flask.session['userId'],
 		"inviteeIds" : [inviteeId], # this is an array!
 		"datetime" : int(data['datetime']),
@@ -472,10 +474,12 @@ def sendInvitation():
 		"meal" : data['meal'],
 		"readableTime": data['readableTime'],
 		"readableDate": data['readableDate'],
-		"message" : data['message'],
+		"message" : "",
 		"tzoffset": 300,
-		"tzname": "EST"
+		"tzname": "EST",
+		"itsHappening" : True
 	}
+	
 	# get timezone info from form and store it in the database
 	tzinfo = data.get('tzinfo', '').split()
 	if len(tzinfo) and tzinfo[0].isdigit():
@@ -484,11 +488,12 @@ def sendInvitation():
 			newInvitation['tzname'] = tzinfo[1]
 
 	# insert into database
-	db.invitations.insert(newInvitation)
+	newInvitationId = db.invitations.insert(newInvitation)
 	
 	# add some extra info that's needed by the email template, but which we don't need stored in the database
 	# NOTE: assuming for now there is only one friend! (even though the document has an array for 'friendIds')
 	newInvitation['hostName'] = user['name']
+	newInvitation['hostEmail'] = user['email']
 	newInvitation['inviteeName'] = data['inviteeName']
 	newInvitation['inviteeId'] = inviteeId
 	
@@ -496,17 +501,19 @@ def sendInvitation():
 	meal = db.meals.find_one({'slug' : newInvitation['meal']})
 	
 	# compose email to send
-	email = Message(user['name'] + " invites you to cook!", recipients=[data['inviteeEmail']], sender=emailSenderInfo)
+	email = Message("Your friend created a Cooking Room for you", recipients=[data['inviteeEmail']], sender=emailSenderInfo)
 	# TODO: if recipient has an account, translate to their TZ
-	invitationMessage = render_template('email/invitation.html', meal=meal, invitation=newInvitation)
+	invitationMessage = render_template('email/cookingRoomCreated.html', meal=meal, invitation=newInvitation)
 	email.html = invitationMessage
 	mail.send(email)
 	
-	return render_template('inviteSent.html', invitationMessage=invitationMessage, invitation=newInvitation)
+	flask.flash('New Cooking Room was successfully created and notifications were sent to invitees. Hooray!')
+	
+	return flask.redirect('/cookingRooms/' + str(newInvitationId))
 
 
 @app.route('/sendSimpleInvitation', methods=['POST'])
-def sendInvitation():
+def sendSimpleInvitation():
 	data = flask.request.form
 	
 	print data['message']
@@ -1320,10 +1327,10 @@ def doStuffWithStuffFromTornado():
 
 
 ##############################################################################
-# COOKING HISTORY
+# COOKING ROOMS (formerly history)
 
-@app.route('/history/')
-def showHistory():
+@app.route('/cookingRooms/')
+def showRooms():
 
 	if 'userId' not in flask.session:
 		flask.flash('Log in to view history.')
@@ -1333,19 +1340,23 @@ def showHistory():
 	allHotpots = list(db.invitations.find({'hostId' : flask.session['userId'], 'itsHappening' : True})) + list(db.invitations.find({'inviteeIds' : flask.session['userId'], 'itsHappening' : True}))
 	
 	pastHotpots = []
+	futureHotpots = []
 	
 	# loop through and find ones which occurred in the past
 	for hotpot in allHotpots:
 		if hotpot['datetime'] < time.time():
 			pastHotpot = grabInvitationInfo(hotpot)
 			pastHotpots.append(pastHotpot)
+		else:
+			futureHotpot = grabInvitationInfo(hotpot)
+			futureHotpots.append(futureHotpot)
 	
 	# just send the ones from the past to the template
-	return render_template('history.html', hotpots=pastHotpots)
+	return render_template('rooms.html', pastHotpots=pastHotpots, futureHotpots=futureHotpots)
 
 
-@app.route('/history/<id>')
-def showSingleHistory(id):
+@app.route('/cookingRooms/<id>')
+def showSingleRoom(id):
 	
 	if 'userId' not in flask.session:
 		flask.flash('Log in to view history.')
@@ -1364,7 +1375,13 @@ def showSingleHistory(id):
 	# stuff notes into the meals dict at the appropriate steps
 	meal = insertNotesIntoSteps(meal, notes)
 	
-	return render_template('historySingle.html', hotpot=hotpot, meal=meal)
+	# find out if this is in the past or future
+	if hotpot['datetime'] < time.time():
+		isPast = True
+	else:
+		isPast = False
+	
+	return render_template('singleRoom.html', invitation=hotpot, meal=meal, isPast=isPast)
 
 
 ##############################################################################

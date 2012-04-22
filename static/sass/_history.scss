@@ -1,15 +1,43 @@
 /**********************************************************/
 /* HISTORY LIST PAGE */
 
-#history {
-	#pageIntro {
-		margin-bottom:40px;
+#rooms {
+	#pageTitle {
+		margin-bottom:20px;
 	}
 }
 
-#historyList {
+#roomFilters {
+	text-align: center;
+	margin-bottom:40px;
+	
+	a {
+		display: inline-block;
+		padding:5px 10px 8px 10px;
+		font-size:16px;
+		@include lightBrownBg;
+		@include border-radius(10px);
+		color:$darkBrown;
+		margin:0px 10px;
+		
+		&:hover {
+			@include lightBrownBgHover;
+		}
+		
+		&.active {
+			background:$orange;
+			color:#fff;
+		}
+	}
+}
 
-	.historyItem {
+#past {
+	display: none;
+}
+
+.roomList {
+
+	li {
 		position: relative;
 		margin-bottom:30px;
 		font-size:16px;
@@ -21,10 +49,21 @@
 		display:block;
 		padding: 20px;
 		color:$textColor;
+		font-weight: 300;
 		
 		&:hover {
 			@include lightBrownBgHover;
 		}
+	}
+	
+	.unconfirmed {
+		background:$orange;
+		color:#fff;
+		font-weight: 700;
+		font-size:12px;
+		display: inline-block;
+		padding:2px 5px;
+		@include border-radius(3px);
 	}
 	
 	.mealImage {
@@ -43,10 +82,11 @@
 		position: absolute;
 		top: 35px;
 		left:35px;
+	}
 	
-		.userpic {
-			@include smallUserpic;
-		}
+	.userpic {
+		@include smallUserpic;
+		vertical-align: middle;
 	}
 	
 	.hotpotInfo {
@@ -62,7 +102,6 @@
 	
 	h2 {
 		font-size:22px;
-		font-weight:700;
 		margin:8px 0px 16px 0px;
 	}
 	
@@ -77,27 +116,36 @@
 	}
 	
 	.summary .label {
-		color:$orange;
+		color:$green;
+	}
+	
+	.summary {
+		position: relative;
+		top:-10px;
 	}
 }
 
 /**********************************************************/
 /* HISTORY SINGLE PAGE */
 
-#historySingle {	
+#historySingle, #roomSingle {
+
+	.message {
+		width:600px;
+		margin-bottom:40px;
+		margin-top:-15px;
+	}	
 
 	#pageTitle {
-	
-		text-transform: none;
-		font-weight: 700;
+		font-size:34px;
 		margin-bottom:40px;
 		
-		.small {
-			@include bigFatLetters;
-			font-size: 20px;
+		.returnLink {
+			display:block;
+			font-size: 16px;
+			margin-bottom:10px;
+			text-transform: none;
 			color:$mediumBlue;
-			margin-bottom:5px;
-			letter-spacing: .05em;
 		}
 	}
 	
@@ -156,139 +204,283 @@
 			margin-bottom:15px;
 		}
 	}
+}
+
+
 	
-	#historySteps {
-		h2 {
-			@include sectionTitle;
-			color:$orange;
-			text-align: center;
-			letter-spacing: .05em;
-			font-size: 18px;
-			margin: 10px 0px 8px 0px;
+#cookingTimeline {
+	h1 {
+		text-align: center;
+		font-size:26px;
+		color:$orange;
+		@include bigFatLetters;
+		margin:50px 0px 20px 0px;
+	}
+	
+	.timelineMessage {
+		text-align: center;
+		font-size:16px;
+		font-style: italic;
+		@include lightOrangeBg;
+		padding:20px;
+		
+		p {
+			margin:0px;
+		}
+	}
+	
+	h2 {
+		@include sectionTitle;
+		color:$orange;
+		text-align: center;
+		letter-spacing: .05em;
+		font-size: 15px;
+		margin: 10px 0px 8px 0px;
+	}
+	
+	.stepContent {
+		background: url(/static/images/timelineStripeOrange.png) center top repeat-y;
+		overflow:visible;
+		
+		&:after {
+			visibility: hidden;
+			display: block;
+			font-size: 0;
+			content: " ";
+			clear: both;
+			height: 0;
 		}
 		
-		.stepContent {
-			background: url(/static/images/timelineStripeOrange.png) center top repeat-y;
-			overflow:visible;
+		.instructionsContainer {
+			background: url(/static/images/stepInstructionsTopOrange.png) right top no-repeat;
+			padding-top: 15px;
+			float:left;
+			width:46%;				
+			position: relative;
+			top: -18px;
+		}
+	
+		.instructions {
+			@include lightOrangeBg;
+			padding: 10px 20px 20px 20px;
+			font-size:16px;
+			margin-right:14px;
 			
-			&:after {
-				visibility: hidden;
-				display: block;
-				font-size: 0;
-				content: " ";
-				clear: both;
-				height: 0;
+			h3 {
+				@include textLabel;
+				color:$orange;
+				margin-bottom: 15px;
 			}
 			
-			.instructionsContainer {
-				background: url(/static/images/stepInstructionsTopOrange.png) right top no-repeat;
-				padding-top: 15px;
-				float:left;
-				width:46%;				
-				position: relative;
-				top: -18px;
-			}
-		
-			.instructions {
-				@include lightOrangeBg;
-				padding: 10px 20px 20px 20px;
-				font-size:16px;
-				margin-right:14px;
+			ul {
+				list-style-type: disc;
+				margin-left:20px;
+				font-size:14px;
 				
-				h3 {
+				li {
+					margin:5px 0px;
+				}
+			}
+			
+			.extra	{
+				font-size:14px;
+				
+				p {
+					margin:0px;
+				}
+				
+				.label {
+					float:left;
 					@include textLabel;
 					color:$orange;
-					margin-bottom: 15px;
-				}
-				
-				ul {
-					list-style-type: disc;
-					margin-left:20px;
-					font-size:14px;
-					
-					li {
-						margin:5px 0px;
-					}
-				}
-				
-				.extra	{
-					font-size:14px;
-					
-					p {
-						margin:0px;
-					}
-					
-					.label {
-						float:left;
-						@include textLabel;
-						color:$orange;
-						margin-top: 4px;
-						margin-right: 8px;
-					}
+					margin-top: 4px;
+					margin-right: 8px;
 				}
 			}
+		}
+		
+		.notesContainer {
+			margin: 0px 0px 0px 50%;
+			padding:20px 0px;
 			
-			.notesContainer {
-				margin: 0px 0px 0px 50%;
-				padding:20px 0px;
-				
-				.userpic {
-					@include smallUserpic;
-					vertical-align: middle;
-				}
+			.userpic {
+				@include smallUserpic;
+				vertical-align: middle;
+			}
+		}
+		
+		.cookingNote {
+			position: relative;
+			left:-20px;
+			margin:0px 0px 20px 0px;
+			
+			.userpic {
+				float:left;
 			}
 			
-			.cookingNote {
-				position: relative;
-				left:-20px;
-				margin:0px 0px 20px 0px;
-				
-				.userpic {
-					float:left;
-				}
-				
-				.description {
+			.description {
+				margin-left:50px;
+				padding:10px 0px 10px 0px;
+				font-size: 14px;
+			}
+			
+			.noteContent {
+				margin-left:50px;
+			}
+			
+			&.note {
+				.notecontent {
+					@include lightBrownBg;
+					font-size:16px;
+					padding:15px;
 					margin-left:50px;
-					padding:10px 0px 10px 0px;
-					font-size: 14px;
+					font-family: "Courier New", monospace;
 				}
-				
+			}
+			
+			&.stamp {
 				.noteContent {
-					margin-left:50px;
-				}
-				
-				&.note {
-					.notecontent {
-						@include lightBrownBg;
-						font-size:16px;
-						padding:15px;
-						margin-left:50px;
-						font-family: "Courier New", monospace;
-					}
-				}
-				
-				&.stamp {
-					.noteContent {
-						position: relative;
-					}
-				
-					img {
-						position: static;
-					}
-					
-					p {
-						background:red;
-						position: absolute;
-						top:16px;
-						left:53px;
-						padding:2px 8px 2px 5px;
-						color:#fff;
-						font-weight: bold;
-						text-transform: uppercase;
-						font-size:13px;
-					}
+					position: relative;
 				}
 			
+				img {
+					position: static;
+				}
+				
+				p {
+					background:red;
+					position: absolute;
+					top:16px;
+					left:53px;
+					padding:2px 8px 2px 5px;
+					color:#fff;
+					font-weight: bold;
+					text-transform: uppercase;
+					font-size:13px;
+				}
+			}
+		
+		}
+	}
+}
+
+#roomSingle {
+
+	#roomMeta {
+		float:right;
+		width:20%;
+		
+		h2 {
+			@include bigFatLetters;
+			color:$mediumBlue;
+			margin:15px 0px 5px 0px;
+			font-size:13px;
+		}
+		
+		.label {
+			display: block;
+			@include bigFatLetters;
+			color:$orange;
+			font-size:13px;
+		}
+		
+		p {
+			font-size:18px;
+		}
+		
+		.userpic {
+			@include smallUserpic;
+			vertical-align: middle;
+		}
+		
+		a {
+			@include box-sizing(border-box);
+			width: 100%;
+			margin:8px 0px;
+			text-align: center;
+		}
+		
+		#launchRoomButton {
+			margin: 0px 0px 30px 0px;
+			font-size:26px;
+			
+			.small {
+				display:block;
+				font-size:18px;
+			}
+		}
+	}
+
+	#roomInfo {
+		margin-right:30px;
+		@include box-sizing(border-box);
+		@include lightBrownBg;
+		padding:30px 30px 15px 30px;
+		position: relative;
+		@include clearfix;
+		margin-bottom:30px;
+		
+		.sendDate {
+			position: absolute;
+			right:8;
+			top:5;
+			font-weight: 600;
+			text-transform: none;
+			font-size:12px;
+		}
+	
+		.mealImage {
+			@include mealImage;
+			float:left;
+			width:230px;
+			height:230px;
+			
+			img {
+				position: relative;
+				left:-18%;
+			}
+		}
+		
+		.userpic {
+			@include largeUserpic;
+			margin-right:10px;
+		}
+		
+		.details {
+			margin-left:270px;
+			font-size:20px;
+			
+			a {
+				font-size:14px;
+				margin-left:5px;
+			}
+			
+			p {
+				margin:0px 0px 15px 0px;
+				font-size:22px;
+				line-height:1.2em;
+			}
+			
+			.left {
+				width:60%;
+				margin-right:30px;
+			}
+			
+			.right {
+				width:40%;
+			}
+			
+			.label {
+				font-weight: 700;
+				color:rgba($darkBrown, .5);
+				font-size:14px;
+				display:block;
+				margin: 0px;
+			}
+			
+			.cookingRoomLink {
+				margin-top: 48px;
+				margin-left: 230px;
 			}
 		}
 	}

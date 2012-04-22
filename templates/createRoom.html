@@ -15,14 +15,14 @@
 
 <h1 id="pageTitle">Create a Cooking Room</h1>
 
-<p id="pageIntro">To cook together with a friend on Hotpot, you'll need your own Cooking Room. Fill in the details below to get started!</p>
+<p id="pageIntro">Once you have a friend to cook with and a date set, just fill in the details below to create a Cooking Room.</p>
 
 <div id="createRoomFormContainer">
 
 	<form id="createRoomForm" method="POST" action="/createRoomAction">
 		
 		<div id="who">
-			<h2>1. Who would you like to cook with?</h2>
+			<h2>1. Who will you be cooking with?</h2>
 			
 			<p class="note">It could be anybody&mdash;Mom, brother, best friend&mdash;but for now, just one person please.</p>
 			
@@ -41,7 +41,7 @@
 		</div>
 		
 		<div id="what">
-			<h2>2. What would you like to cook?</h2>
+			<h2>2. What will you be cooking?</h2>
 			
 			<fieldset id="recipeInputContainer">
 				<div id="chosenRecipe">
@@ -60,12 +60,13 @@
 					<a href="#" id="selectMealButton" class="button">Select a Meal</a>
 				</div>
 				
-				<input type="hidden" value="" name="meal" id="mealInput" />
+				<label class="hiddenFieldLabel">Meal</label>
+				<input type="hidden" value="" name="meal" id="mealInput" class="required" />
 			</fieldset>
 		</div>
 		
 		<div id="when">
-			<h2>3. When would you like to cook?</h2>
+			<h2>3. When will you be cooking?</h2>
 			<p class="note">Hotpot will send out reminders &amp; shopping lists right before you cook.</p>
 			
 			<fieldset>
@@ -104,6 +105,9 @@
 				</div>
 			</fieldset>
 			
+			<div id="selectedDate"></div>
+			<div id="selectedTime"><span id="selectedHour">0</span>:<span id="selectedMinute"></span> <span id="selectedAMPM"></span> <span id="selectedTzname"></span></div>
+			
 			<input type="hidden" id="datetimeInput" name="datetime" value="0" />
 			<input type="hidden" id="readableDate" name="readableDate" />
 			<input type="hidden" id="readableTime" name="readableTime" />
@@ -111,7 +115,7 @@
 		
 		</div>
 		
-		<p>All set? Excellent! Once you hit the button below, Hotpot will notify your friend that this Cooking Room has been created. Then all you have to do is meet there, and get cooking!</p>
+		<p>Once you hit the button below, Hotpot will notify your friend that this Cooking Room has been created. Then all you have to do is meet there, and get cooking!</p>
 		
 		<div id="errorsPresentMessage">
 			<p>Oops, looks like we're missing some crucial information above.</p>

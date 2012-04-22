@@ -181,6 +181,10 @@
 			margin-top:10px;
 		}
 	}
+	
+	#selectedDate, #selectedTime {
+		display:none;
+	}
 }
 
 #createRoom {

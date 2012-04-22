@@ -1,0 +1,97 @@
+{% extends "base/common.html" %}
+
+{% block title %}Cooking History{% endblock %}
+
+{% block customJS %}{% endblock %}
+
+{% block bodyId %}rooms{% endblock %}
+{% block bodyClass %}{% endblock %}
+
+{% block main %}
+
+<h1 id="pageTitle">My Cooking Rooms</h1>
+
+<nav id="roomFilters">
+	<a href="" data-content="upcoming" class="tabLink active">Upcoming</a>
+	<a href="" data-content="past" class="tabLink">Past</a>
+</nav>
+
+<ul class="roomList tabContent" id="upcoming">
+	{% for hotpot in futureHotpots %}
+	<li>
+		<a href="/cookingRooms/{{ hotpot._id }}">
+			<div class="mealImage">
+				<img src="/static/images/food/{{ hotpot.meal.slug }}.jpg" />
+			</div>
+			
+			<div class="userpics">
+				<div class="userpic"><img src="/static/uploads/userpics/{{ hotpot.host.userpic }}" /></div>
+				{% for invitee in hotpot.inviteesInfo %}
+					<div class="userpic"><img src="/static/uploads/userpics/{{ invitee.userpic }}" /></div>
+				{% endfor %}
+			</div>
+		
+			<div class="hotpotInfo">
+				<div class="date">
+					{{ hotpot.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}
+				</div>
+				<h2>{{ hotpot.meal.title }}</h2>
+				
+				<div class="with">
+					<span class="label">Invited</span>
+					{{ hotpot.host.name }}
+					{% for invitee in hotpot.inviteesInfo %}
+						, {{ invitee.name }}
+					{% endfor %}
+				</div>
+				
+				<div class="summary">
+					<span class="label">Created by</span>
+					<span class="userpic"><img src="/static/uploads/userpics/{{ hotpot.host.userpic }}" /></span> {{ hotpot.host.name }}
+				</div>
+			</div><!-- #hotpotInfo -->
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+
+<ul class="roomList tabContent" id="past">
+	{% for hotpot in pastHotpots %}
+		{% if hotpot.replies %}
+		<li>
+			<a href="/cookingRooms/{{ hotpot._id }}">
+				<div class="mealImage">
+					<img src="/static/images/food/{{ hotpot.meal.slug }}.jpg" />
+				</div>
+				
+				<div class="userpics">
+					<div class="userpic"><img src="/static/uploads/userpics/{{ hotpot.host.userpic }}" /></div>
+					{% for invitee in hotpot.inviteesInfo %}
+						<div class="userpic"><img src="/static/uploads/userpics/{{ invitee.userpic }}" /></div>
+					{% endfor %}
+				</div>
+			
+				<div class="hotpotInfo">
+					<div class="date">{{ hotpot.datetime|jsDatetimeLocaleFormat("%A, %B %d, %Y")|safe }}</div>
+					<h2>{{ hotpot.meal.title }}</h2>
+					
+					<div class="with">
+						<span class="label">Invited</span>
+						{{ hotpot.host.name }}
+						{% for invitee in hotpot.inviteesInfo %}
+							, {{ invitee.name }}
+						{% endfor %}
+					</div>
+					
+					<div class="summary">
+						<span class="label">Created by</span>
+						<span class="userpic"><img src="/static/uploads/userpics/{{ hotpot.host.userpic }}" /></span> {{ hotpot.host.name }}
+					</div>
+				</div><!-- #hotpotInfo -->
+			</a>
+		</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+
+{% endblock main %}

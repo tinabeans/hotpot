@@ -857,6 +857,10 @@ input[disabled=disabled], button[disabled=disabled] {
 	@include opacity(.5);
 }
 
+.hiddenFieldLabel {
+	display: none;
+}
+
 /**********************************************************/
 /* FAQ page */
 
