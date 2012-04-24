@@ -1,4 +1,38 @@
 /**********************************************************/
+/* NEW INTRO PAGE / WELCOME */
+
+#welcome {
+	#logo {
+		display:none;
+	}
+	
+	#headerNavsContainer {
+		width:100%;
+		padding-left:0px;
+		left:0;
+	}
+	
+	#headerNavs {
+		padding-left:6%;
+		height:85px;
+		background-position: left bottom;
+	}
+	
+	#mainNav {
+		padding: 23px 0px 0px 0px;
+	}
+	
+	#serviceNavs {
+		#loginLink, #registerLink {
+			margin: 35px 0px 0px 30px;
+		}
+	}
+}
+
+
+
+
+/**********************************************************/
 /* INTRO PAGE / COVER */
 
 body#cover {

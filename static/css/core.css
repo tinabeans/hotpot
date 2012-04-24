@@ -1014,12 +1014,39 @@ input[disabled=disabled], button[disabled=disabled] {
 /**********************************************************/
 /* CSS for different page types */
 /**********************************************************/
+/* NEW INTRO PAGE / WELCOME */
+/* line 5, ../sass/_home.scss */
+#welcome #logo {
+  display: none;
+}
+/* line 9, ../sass/_home.scss */
+#welcome #headerNavsContainer {
+  width: 100%;
+  padding-left: 0px;
+  left: 0;
+}
+/* line 15, ../sass/_home.scss */
+#welcome #headerNavs {
+  padding-left: 6%;
+  height: 85px;
+  background-position: left bottom;
+}
+/* line 21, ../sass/_home.scss */
+#welcome #mainNav {
+  padding: 23px 0px 0px 0px;
+}
+/* line 26, ../sass/_home.scss */
+#welcome #serviceNavs #loginLink, #welcome #serviceNavs #registerLink {
+  margin: 35px 0px 0px 30px;
+}
+
+/**********************************************************/
 /* INTRO PAGE / COVER */
-/* line 4, ../sass/_home.scss */
+/* line 38, ../sass/_home.scss */
 body#cover {
   background: #faf9f8 url(/static/images/introBg.gif) center top no-repeat fixed;
 }
-/* line 7, ../sass/_home.scss */
+/* line 41, ../sass/_home.scss */
 body#cover .message {
   position: fixed;
   width: 40%;
@@ -1041,19 +1068,19 @@ body#cover .message {
   border-top-right-radius: 0px;
 }
 
-/* line 19, ../sass/_home.scss */
+/* line 53, ../sass/_home.scss */
 #coverBg {
   background: url(/static/images/textureSoft.png) fixed;
 }
 
-/* line 23, ../sass/_home.scss */
+/* line 57, ../sass/_home.scss */
 #coverContainer {
   width: 780px;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 29, ../sass/_home.scss */
+/* line 63, ../sass/_home.scss */
 #coverHeader {
   position: fixed;
   margin-left: 450px;
@@ -1061,7 +1088,7 @@ body#cover .message {
   text-align: center;
   width: 330px;
 }
-/* line 36, ../sass/_home.scss */
+/* line 70, ../sass/_home.scss */
 #coverHeader #moreArrow {
   position: absolute;
   text-align: center;
@@ -1069,11 +1096,11 @@ body#cover .message {
   top: 600px;
   font-weight: bold;
 }
-/* line 44, ../sass/_home.scss */
+/* line 78, ../sass/_home.scss */
 #coverHeader h1 img {
   width: 328px;
 }
-/* line 48, ../sass/_home.scss */
+/* line 82, ../sass/_home.scss */
 #coverHeader h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1082,13 +1109,13 @@ body#cover .message {
   margin-top: 12px;
   font-size: 49px;
 }
-/* line 55, ../sass/_home.scss */
+/* line 89, ../sass/_home.scss */
 #coverHeader #coverButtons {
   margin-top: 50px;
   position: relative;
   left: 60px;
 }
-/* line 60, ../sass/_home.scss */
+/* line 94, ../sass/_home.scss */
 #coverHeader #coverButtons a {
   display: block;
   font-family: "proxima-nova", sans-serif;
@@ -1101,7 +1128,7 @@ body#cover .message {
   box-sizing: border-box;
   position: absolute;
 }
-/* line 69, ../sass/_home.scss */
+/* line 103, ../sass/_home.scss */
 #coverHeader #loginLink {
   width: 90px;
   height: 89px;
@@ -1110,7 +1137,7 @@ body#cover .message {
   padding-top: 35px;
   z-index: 1;
 }
-/* line 78, ../sass/_home.scss */
+/* line 112, ../sass/_home.scss */
 #coverHeader #registerLink {
   background: #a5c349 url(/static/images/textureStrong.png);
   width: 140px;
@@ -1126,12 +1153,12 @@ body#cover .message {
   left: 61px;
   top: 16px;
 }
-/* line 88, ../sass/_home.scss */
+/* line 122, ../sass/_home.scss */
 #coverHeader #registerLink .small {
   font-size: 26px;
   line-height: 23px;
 }
-/* line 94, ../sass/_home.scss */
+/* line 128, ../sass/_home.scss */
 #coverHeader #loginFormContainer, #coverHeader #registrationFormContainer {
   display: none;
   background: #f0ece4 url(/static/images/textureSoft.png);
@@ -1146,7 +1173,7 @@ body#cover .message {
   border-radius: 10px;
   padding: 10px 20px 25px 25px;
 }
-/* line 103, ../sass/_home.scss */
+/* line 137, ../sass/_home.scss */
 #coverHeader #loginFormContainer .closeButton, #coverHeader #registrationFormContainer .closeButton {
   display: block;
   width: 29px;
@@ -1172,45 +1199,45 @@ body#cover .message {
 #coverHeader #loginFormContainer .closeButton:hover, #coverHeader #registrationFormContainer .closeButton:hover {
   background-color: #c4bcac;
 }
-/* line 107, ../sass/_home.scss */
+/* line 141, ../sass/_home.scss */
 #coverHeader #loginFormContainer label, #coverHeader #registrationFormContainer label {
   display: none;
 }
-/* line 111, ../sass/_home.scss */
+/* line 145, ../sass/_home.scss */
 #coverHeader #loginFormContainer h2, #coverHeader #registrationFormContainer h2 {
   font-size: 18px;
   color: rgba(115, 108, 91, 0.7);
   margin-bottom: 10px;
 }
-/* line 117, ../sass/_home.scss */
+/* line 151, ../sass/_home.scss */
 #coverHeader #loginFormContainer .formItem, #coverHeader #registrationFormContainer .formItem {
   margin-bottom: 10px;
 }
-/* line 121, ../sass/_home.scss */
+/* line 155, ../sass/_home.scss */
 #coverHeader #loginFormContainer input[type=password], #coverHeader #loginFormContainer input[type=text], #coverHeader #registrationFormContainer input[type=password], #coverHeader #registrationFormContainer input[type=text] {
   padding: 7px;
 }
-/* line 125, ../sass/_home.scss */
+/* line 159, ../sass/_home.scss */
 #coverHeader #loginFormContainer .formItem, #coverHeader #registrationFormContainer .formItem {
   text-align: left;
 }
-/* line 129, ../sass/_home.scss */
+/* line 163, ../sass/_home.scss */
 #coverHeader #loginFormContainer .firstname, #coverHeader #registrationFormContainer .firstname {
   width: 48%;
   float: left;
 }
-/* line 134, ../sass/_home.scss */
+/* line 168, ../sass/_home.scss */
 #coverHeader #loginFormContainer .lastname, #coverHeader #registrationFormContainer .lastname {
   width: 48%;
   margin-left: 52%;
   display: block;
 }
-/* line 140, ../sass/_home.scss */
+/* line 174, ../sass/_home.scss */
 #coverHeader #loginFormContainer .buttons, #coverHeader #registrationFormContainer .buttons {
   margin-top: 20px;
 }
 
-/* line 148, ../sass/_home.scss */
+/* line 182, ../sass/_home.scss */
 #codeForm #codeError {
   margin-top: 20px;
   margin-bottom: 0px;
@@ -1218,15 +1245,15 @@ body#cover .message {
   font-weight: 700;
 }
 
-/* line 157, ../sass/_home.scss */
+/* line 191, ../sass/_home.scss */
 #coverInfo {
   width: 350px;
 }
-/* line 160, ../sass/_home.scss */
+/* line 194, ../sass/_home.scss */
 #coverInfo #coverIllustration {
   margin-bottom: 60px;
 }
-/* line 164, ../sass/_home.scss */
+/* line 198, ../sass/_home.scss */
 #coverInfo h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1235,7 +1262,7 @@ body#cover .message {
   font-size: 28px;
   margin-bottom: 15px;
 }
-/* line 171, ../sass/_home.scss */
+/* line 205, ../sass/_home.scss */
 #coverInfo h3 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1244,52 +1271,52 @@ body#cover .message {
   font-size: 16px;
   margin-bottom: 10px;
 }
-/* line 177, ../sass/_home.scss */
+/* line 211, ../sass/_home.scss */
 #coverInfo h3.first {
   color: #a5c349;
 }
-/* line 181, ../sass/_home.scss */
+/* line 215, ../sass/_home.scss */
 #coverInfo h3.second {
   color: #3797a2;
 }
-/* line 185, ../sass/_home.scss */
+/* line 219, ../sass/_home.scss */
 #coverInfo h3.third {
   color: #ef5922;
 }
-/* line 189, ../sass/_home.scss */
+/* line 223, ../sass/_home.scss */
 #coverInfo h3.fourth {
   color: #a5c349;
 }
-/* line 194, ../sass/_home.scss */
+/* line 228, ../sass/_home.scss */
 #coverInfo .featureImage {
   border: 6px solid rgba(115, 108, 91, 0.15);
   margin-bottom: 20px;
 }
-/* line 199, ../sass/_home.scss */
+/* line 233, ../sass/_home.scss */
 #coverInfo #peopleImage {
   border: 0;
 }
-/* line 203, ../sass/_home.scss */
+/* line 237, ../sass/_home.scss */
 #coverInfo p {
   font-size: 14px;
   margin-bottom: 30px;
 }
-/* line 207, ../sass/_home.scss */
+/* line 241, ../sass/_home.scss */
 #coverInfo p.intro {
   font-size: 18px;
 }
 
 /**********************************************************/
 /* HOME / USER DASHBOARD */
-/* line 217, ../sass/_home.scss */
+/* line 251, ../sass/_home.scss */
 #dashboard {
   font-size: 16px;
 }
-/* line 220, ../sass/_home.scss */
+/* line 254, ../sass/_home.scss */
 #dashboard #pageTitle {
   margin-bottom: 40px;
 }
-/* line 224, ../sass/_home.scss */
+/* line 258, ../sass/_home.scss */
 #dashboard #mainContainer h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1297,62 +1324,62 @@ body#cover .message {
   font-size: 24px;
   margin-bottom: 15px;
 }
-/* line 230, ../sass/_home.scss */
+/* line 264, ../sass/_home.scss */
 #dashboard #upcomingContainer, #dashboard #invitations {
   margin-top: 40px;
 }
-/* line 234, ../sass/_home.scss */
+/* line 268, ../sass/_home.scss */
 #dashboard #upcomingContainer h2 {
   color: #ef5922;
 }
-/* line 238, ../sass/_home.scss */
+/* line 272, ../sass/_home.scss */
 #dashboard #invitations h2 {
   color: #3797a2;
 }
-/* line 242, ../sass/_home.scss */
+/* line 276, ../sass/_home.scss */
 #dashboard .intro {
   font-size: 18px;
 }
 
-/* line 247, ../sass/_home.scss */
+/* line 281, ../sass/_home.scss */
 #welcomeMessageContainer {
   border: 10px solid rgba(115, 108, 91, 0.1);
   margin-bottom: 40px;
 }
-/* line 251, ../sass/_home.scss */
+/* line 285, ../sass/_home.scss */
 #welcomeMessageContainer h2 {
   text-align: center;
   color: #ef5922;
 }
 
-/* line 257, ../sass/_home.scss */
+/* line 291, ../sass/_home.scss */
 #welcomeMessage {
   padding: 30px 30px 10px 25px;
   background: #fff;
 }
-/* line 261, ../sass/_home.scss */
+/* line 295, ../sass/_home.scss */
 #welcomeMessage #signature {
   text-align: left;
 }
 
-/* line 266, ../sass/_home.scss */
+/* line 300, ../sass/_home.scss */
 #dashboardRight {
   width: 290px;
   float: right;
 }
-/* line 270, ../sass/_home.scss */
+/* line 304, ../sass/_home.scss */
 #dashboardRight #inviteButton {
   width: 100%;
   margin: 0px;
   display: inline-block;
   font-size: 32px;
 }
-/* line 277, ../sass/_home.scss */
+/* line 311, ../sass/_home.scss */
 #dashboardRight .buttons {
   margin-bottom: 40px;
 }
 
-/* line 284, ../sass/_home.scss */
+/* line 318, ../sass/_home.scss */
 #upcomingContainer .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -1379,7 +1406,7 @@ body#cover .message {
   font-size: 14px;
   line-height: 21px;
 }
-/* line 293, ../sass/_home.scss */
+/* line 327, ../sass/_home.scss */
 #upcomingContainer .invitation {
   background: #f8f6f0 url(/static/images/textureSoft.png);
   padding: 30px 30px 30px 30px;
@@ -1388,7 +1415,7 @@ body#cover .message {
   *zoom: 1;
   margin-bottom: 30px;
 }
-/* line 300, ../sass/_home.scss */
+/* line 334, ../sass/_home.scss */
 #upcomingContainer .invitation .sendDate {
   position: absolute;
   right: 8;
@@ -1397,7 +1424,7 @@ body#cover .message {
   text-transform: none;
   font-size: 12px;
 }
-/* line 309, ../sass/_home.scss */
+/* line 343, ../sass/_home.scss */
 #upcomingContainer .invitation .mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -1411,19 +1438,19 @@ body#cover .message {
 #upcomingContainer .invitation .mealImage img {
   height: 100%;
 }
-/* line 316, ../sass/_home.scss */
+/* line 350, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo {
   margin-left: 150px;
   font-size: 16px;
 }
-/* line 320, ../sass/_home.scss */
+/* line 354, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo h3 {
   font-weight: 700;
   text-transform: none;
   font-size: 20px;
   font-size: 24px;
 }
-/* line 327, ../sass/_home.scss */
+/* line 361, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .label {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1431,29 +1458,29 @@ body#cover .message {
   font-size: 12px;
   margin-right: 10px;
 }
-/* line 332, ../sass/_home.scss */
+/* line 366, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .label.date {
   color: #ef5922;
 }
-/* line 336, ../sass/_home.scss */
+/* line 370, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .label.time {
   margin-left: 20px;
   color: #a5c349;
 }
-/* line 342, ../sass/_home.scss */
+/* line 376, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 346, ../sass/_home.scss */
+/* line 380, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .with {
   margin: 10px 20px 0px 0px;
   float: left;
 }
-/* line 350, ../sass/_home.scss */
+/* line 384, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .with .label {
   color: #1c6770;
 }
-/* line 358, ../sass/_home.scss */
+/* line 392, ../sass/_home.scss */
 #upcomingContainer .invitation .partnerUserpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -1489,11 +1516,11 @@ body#cover .message {
   border-radius: 100px;
   background: #fff;
 }
-/* line 366, ../sass/_home.scss */
+/* line 400, ../sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 371, ../sass/_home.scss */
+/* line 405, ../sass/_home.scss */
 #upcomingContainer .invitation .cookingRoomLink {
   background: #a5c349;
   -moz-box-sizing: border-box;
@@ -1506,7 +1533,7 @@ body#cover .message {
   box-shadow: 0 4px 0 #78902f;
   margin-left: 10px;
 }
-/* line 377, ../sass/_home.scss */
+/* line 411, ../sass/_home.scss */
 #upcomingContainer .invitation .cookingRoomLink:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -1514,7 +1541,7 @@ body#cover .message {
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
 }
-/* line 382, ../sass/_home.scss */
+/* line 416, ../sass/_home.scss */
 #upcomingContainer .invitation .cookingRoomLink:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -1522,19 +1549,19 @@ body#cover .message {
   box-shadow: 0 2px 0 #78902f;
 }
 
-/* line 391, ../sass/_home.scss */
+/* line 425, ../sass/_home.scss */
 #dashboardLeft {
   margin-right: 290px;
   padding-right: 40px;
 }
 
-/* line 397, ../sass/_home.scss */
+/* line 431, ../sass/_home.scss */
 #newInvitationsAlert {
   font-size: 18px;
   color: #4e565c;
   margin: 0px 0px 15px 0px;
 }
-/* line 402, ../sass/_home.scss */
+/* line 436, ../sass/_home.scss */
 #newInvitationsAlert .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -1562,7 +1589,7 @@ body#cover .message {
   line-height: 21px;
 }
 
-/* line 412, ../sass/_home.scss */
+/* line 446, ../sass/_home.scss */
 #userInfoBox {
   background: rgba(55, 151, 162, 0.1);
   padding: 25px 30px 30px 30px;
@@ -1574,7 +1601,7 @@ body#cover .message {
   position: relative;
   overflow: visible;
 }
-/* line 422, ../sass/_home.scss */
+/* line 456, ../sass/_home.scss */
 #userInfoBox .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -1612,22 +1639,22 @@ body#cover .message {
   border-radius: 100px;
   background: #fff;
 }
-/* line 431, ../sass/_home.scss */
+/* line 465, ../sass/_home.scss */
 #userInfoBox .content {
   margin-left: 45px;
 }
-/* line 435, ../sass/_home.scss */
+/* line 469, ../sass/_home.scss */
 #userInfoBox .location {
   margin-top: 5px;
   font-size: 16px;
   font-style: italic;
 }
-/* line 441, ../sass/_home.scss */
+/* line 475, ../sass/_home.scss */
 #userInfoBox a {
   margin-top: 20px;
 }
 
-/* line 448, ../sass/_home.scss */
+/* line 482, ../sass/_home.scss */
 #dashboard #maincontainer #userInfoBox h2 {
   font-size: 30px;
   text-transform: none;
@@ -1635,23 +1662,23 @@ body#cover .message {
   margin-bottom: 0px;
 }
 
-/* line 459, ../sass/_home.scss */
+/* line 493, ../sass/_home.scss */
 #dashboard #whatsNew h2 {
   font-size: 18px;
   color: #a5c349;
 }
-/* line 464, ../sass/_home.scss */
+/* line 498, ../sass/_home.scss */
 #dashboard #whatsNew p {
   font-size: 14px;
 }
-/* line 468, ../sass/_home.scss */
+/* line 502, ../sass/_home.scss */
 #dashboard #whatsNew #newMeal {
   background: rgba(165, 195, 73, 0.15);
   padding: 20px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 473, ../sass/_home.scss */
+/* line 507, ../sass/_home.scss */
 #dashboard #whatsNew #newMeal .mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -1669,14 +1696,14 @@ body#cover .message {
 #dashboard #whatsNew #newMeal .mealImage img {
   height: 100%;
 }
-/* line 480, ../sass/_home.scss */
+/* line 514, ../sass/_home.scss */
 #dashboard #whatsNew #newMeal .mealImage img {
   width: 100%;
   height: auto;
   position: relative;
   top: -10%;
 }
-/* line 488, ../sass/_home.scss */
+/* line 522, ../sass/_home.scss */
 #dashboard #whatsNew #newMeal h3 {
   font-size: 23px;
   font-weight: 700;
@@ -1686,29 +1713,29 @@ body#cover .message {
 
 /**********************************************************/
 /* OLD HOME */
-/* line 502, ../sass/_home.scss */
+/* line 536, ../sass/_home.scss */
 #home #mainContainer {
   width: 100%;
 }
 
-/* line 507, ../sass/_home.scss */
+/* line 541, ../sass/_home.scss */
 #introBlurb {
   text-align: center;
   font-size: 42px;
   padding-bottom: 10px;
 }
 
-/* line 513, ../sass/_home.scss */
+/* line 547, ../sass/_home.scss */
 #featuredRecipes {
   clear: both;
 }
 
-/* line 517, ../sass/_home.scss */
+/* line 551, ../sass/_home.scss */
 #joinUs {
   text-align: center;
   margin: 30px;
 }
-/* line 521, ../sass/_home.scss */
+/* line 555, ../sass/_home.scss */
 #joinUs a {
   display: inline-block;
   border: 0px;
@@ -1796,22 +1823,22 @@ body#cover .message {
   letter-spacing: 0.05em;
 }
 
-/* line 528, ../sass/_home.scss */
+/* line 562, ../sass/_home.scss */
 #joinUs a:hover {
   background: #777;
 }
 
-/* line 532, ../sass/_home.scss */
+/* line 566, ../sass/_home.scss */
 #featuredMealsContainer {
   background: #ededec;
   margin: 60px 0px;
 }
 
-/* line 537, ../sass/_home.scss */
+/* line 571, ../sass/_home.scss */
 #featuredMeals {
   padding: 30px 0px;
 }
-/* line 540, ../sass/_home.scss */
+/* line 574, ../sass/_home.scss */
 #featuredMeals h1 {
   font-family: "proxima-nova", sans-serif;
   margin-bottom: 30px;
@@ -1820,14 +1847,14 @@ body#cover .message {
   font-size: 18px;
   text-align: center;
 }
-/* line 550, ../sass/_home.scss */
+/* line 584, ../sass/_home.scss */
 #featuredMeals .mealList li {
   position: relative;
   display: inline-block;
   width: 30%;
   margin-right: 4%;
 }
-/* line 556, ../sass/_home.scss */
+/* line 590, ../sass/_home.scss */
 #featuredMeals .mealList li h2 {
   position: absolute;
   top: 28px;
@@ -1837,7 +1864,7 @@ body#cover .message {
   padding: 7px 10px 10px 10px;
   font-size: 20px;
 }
-/* line 566, ../sass/_home.scss */
+/* line 600, ../sass/_home.scss */
 #featuredMeals .mealList li img {
   border: 10px solid #fff;
   width: 100%;
@@ -1846,7 +1873,7 @@ body#cover .message {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 573, ../sass/_home.scss */
+/* line 607, ../sass/_home.scss */
 #featuredMeals .mealList li.last {
   margin-right: 0%;
 }
