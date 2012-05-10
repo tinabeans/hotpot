@@ -6,19 +6,22 @@
 /* COLORS */
 
 $textColor: #4e565c;
-$orange: #ef5922;
+
 $accentColor: #bedf62;
 $subtleColor: #ededec;
 $mediumColor: #d8d7d5;
 $darkColor: #908d86;
 $bgColor: #fff;
 
-$lightBlue: #d1e0dd;
+$orange: #ef5922;
 $green: #a5c349;
-$darkBlue: #1c6770;
+
+$lightBlue: #d1e0dd;
 $mediumBlue: #3797a2;
-$lightBrown: #e9e7e0;
-$reallyLightBrown: #f0ece4;
+$darkBlue: #1c6770;
+
+$lightBrown: #f0ece4;
+$mediumBrown: #6b4d00;
 $darkBrown: #736c5b;
 
 
@@ -77,7 +80,7 @@ $serif: "jubilat", Georgia, serif;
 	font-family: $sans;
 }
 
-#sectionTitle {
+#sectionTitle, #homeIntro h2 {
 	@include bigFatLetters;
 	margin-bottom:15px;
 	text-align: center;
@@ -134,11 +137,11 @@ $serif: "jubilat", Georgia, serif;
 	text-align: center;
 	padding:8px 16px;
 	font-size:16px;
-	@include box-shadow(0 4px 0 darken($green, 15));
+	@include box-shadow(0 5px 0 darken($green, 15));
 	
 	&:hover {
 		background: darken($green, 4);
-		@include box-shadow(0 4px 0 darken($green, 20));
+		@include box-shadow(0 5px 0 darken($green, 20));
 		color:#fff;
 	}
 	
@@ -158,18 +161,18 @@ $serif: "jubilat", Georgia, serif;
 	background: $mediumBlue;
 	font-size:12px;
 	padding:7px 9px 5px 9px;
-	@include box-shadow(0 4px 0 darken($mediumBlue, 15));
+	@include box-shadow(0 5px 0 darken($mediumBlue, 15));
 	
 	&:hover {
 		background: darken($mediumBlue, 4);
-		@include box-shadow(0 4px 0 darken($mediumBlue, 20));
+		@include box-shadow(0 5px 0 darken($mediumBlue, 20));
 		color:#fff;
 	}
 	
 	&:active {
 		@include box-shadow(0 2px 0 darken($mediumBlue, 15));
 		position: relative;
-		top:2px;
+		top:3px;
 	}
 }
 
@@ -189,9 +192,9 @@ $serif: "jubilat", Georgia, serif;
 	}
 	
 	&:active {
-		@include box-shadow(0 4px 0 darken($green, 20));
+		@include box-shadow(0 2px 0 darken($green, 20));
 		position: relative;
-		top:3px;
+		top:5px;
 	}
 	
 	.small {
@@ -240,11 +243,11 @@ $serif: "jubilat", Georgia, serif;
 /* BACKGROUND COLORS */
 
 @mixin lightBrownBg {
-	background: #f8f6f0 url(/static/images/textureSoft.png);
+	background: rgba($mediumBrown, .05);
 }
 
 @mixin lightBrownBgHover {
-	background: darken(#f8f6f0, 2) url(/static/images/textureSoft.png);
+	background: rgba($mediumBrown, .1);
 }
 
 @mixin lightGreenBg {
@@ -266,7 +269,7 @@ $serif: "jubilat", Georgia, serif;
 	@include border-radius(100px);
 	@include box-shadow(0px 3px 5px rgba(0,0,0,.15));
 	border:3px solid #fff;
-	background: $lightBrown;
+	background: #fff;
 	width: 48px;
 	height:48px;
 	
@@ -383,12 +386,26 @@ p {
 
 @mixin outerContainer {
 	width: 88%;
-	margin:0px auto;
+	margin-left:auto;
+	margin-right:auto;
 	position: relative;
 }
 
-#homeIntro, #mainContainer, #featuredMeals, #mainFooter {
+@mixin outerContainerFixed {
+	width: 1160px;
+	margin-left:auto;
+	margin-right:auto;
+	position: relative;
+}
+
+#mainContainer, #featuredMeals, #mainFooter, #homeIntro {
 	@include outerContainer;
+}
+
+@media screen and (min-width: 1318px) {
+	#mainContainer, #featuredMeals, #mainFooter, #homeIntro {
+		@include outerContainerFixed;
+	}
 }
 
 #mainContainer {
@@ -409,7 +426,7 @@ p {
 }
 
 .divider {
-	background: $lightBrown url(/static/images/textureStrong.png);
+	background: rgba($mediumBrown, .1) url(/static/images/textureStrong.png);
 	height:5px;
 	margin: 15px 0px;
 }
@@ -596,14 +613,20 @@ $headerHeight: 96px;
 	position: relative;
 	top: 17px;
 	letter-spacing: .05em;
+	z-index:8999;
+	
+	&:hover {
+		background-image: url(/static/images/green_circle_hover.png);
+	}
 	
 	.big1 {
-		font-size:16px;
+		font-size:18px;
 		display: block;
+		font-weight:800;
 	}
 	
 	.big2 {
-		font-size:23px;
+		font-size:20px;
 		display: block;
 	}
 	
@@ -619,6 +642,10 @@ $headerHeight: 96px;
 		display: block;
 		position: relative;
 		top:1px
+	}
+	
+	.kern {
+		letter-spacing:-0.1em;
 	}
 }
 
@@ -646,7 +673,7 @@ $headerHeight: 96px;
 		position: absolute;
 		right: 92px;
 		top: 8px;
-		z-index: +3;
+		z-index: 9001;
 		
 		img {
 			@include border-radius(80px);
@@ -698,7 +725,7 @@ $headerHeight: 96px;
 	background:$lightBlue;
 	padding:8px 0px;
 	position: relative;
-	z-index: +2;
+	z-index: 9000;
 	
 	a {
 		display:block;

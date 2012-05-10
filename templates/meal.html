@@ -31,19 +31,38 @@
 
 <h1 id="mealTitle">{{ meal.title|safe }}</h1>
 
-<ul id="mealFacts">
-	<li>{{ meal.time }}</li>
-	<li>{{ meal.type }}</li>
-	<li>{{ meal.difficulty }}</li>
-	<li>{{ meal.flavors }}</li>
-	{% if meal.servings %}<li>{{ meal.servings }}</li>{% endif %}
-</ul>
+<div id="mealAddedDate">
+	{{ meal.date }}
+</div>
+
+<div id="dishes">
+	<h2>Dishes:</h2>
+	<ul>
+		{% for dish in meal.dishes %}
+		<li>{{ dish }}</li>
+		{% endfor %}
+	</ul>
+</div>
 
 <div id="mealImageContainer">
 
 	<div id="mealImage">
 		<img src="/static/images/food/{{ meal.slug }}.jpg" />
 	</div><!-- #mealImageContainer -->
+	
+	<section id="cookedBy">
+		<h1>Cooked By:</h1>
+		<ul>
+			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+			<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+		</ul>
+	</section>
 	
 </div><!--#mealImageContainer -->
 
@@ -77,6 +96,10 @@
 			</ul>
 		</section><!--#shoppingList -->
 		
+		
+	
+	<a href="" id="viewRecipeButton" class="smallButton">View Recipe Steps</a>
+		
 	</div><!-- #importantStuff -->
 	
 	<section id="equipment">
@@ -91,31 +114,29 @@
 	
 </aside><!--#mealSidebar-->
 
-<section id="cookedBy">
-	<h1>Cooked By:</h1>
-	<ul>
-		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
-		<li><a href=""><img src="/static/uploads/userpics/placeholder.png" /></a></li>
+<div id="mealContent">
+	
+	<ul id="mealFacts">
+		<li><span class="label">Estimated Time</span> {{ meal.time }}</li>
+		<li><span class="label">Features</span> {{ meal.type }}</li>
+		<li><span class="label">Skill Level</span> {{ meal.difficulty }}</li>
+		<li><span class="label">Flavors</span> {{ meal.flavors }}</li>
+		{% if meal.servings %}<li>{{ meal.servings }}</li>{% endif %}
 	</ul>
-</section>
-
-<section id="mealDescription">
-	<h1>About the Meal</h1>
 	
-	<p>{{ meal.description|safe }}</p>
+	<div id="mealDescription">
+		<p>{{ meal.description|safe }}</p>
+	</div>
 	
-	<a href="" id="viewRecipeButton" class="smallButton">View Recipe Steps</a>
+	<section id="ingredientSpotlight">
+		<h1><span class="kern">Ingredient</span> Spotlight</h1>
+		<div class="ingredientImage"><img src="/static/images/ingredients/kale.jpg" /></div>
+		{{ meal.ingredientSpotlightText|safe }}
+	</section>
 	
 	<section id="mealCredits">
-		
 		<div class="stuff">
-			<img id="submissionUser" src="/static/uploads/userpics/placeholder.png" />
+			<div id="submissionUser"><img src="/static/uploads/userpics/placeholder.png" /></div>
 		
 			<h1>Submitted By:</h1>
 			<p>{% if meal.submittedBy %}{{ meal.submittedBy }}{% else %}Tinabeans{% endif %}<br />
@@ -129,14 +150,14 @@
 		</div>
 	</section><!-- #mealCredits -->
 	
-</section>
+</div>
 
 <div id="overlayContainer">
 	<div id="recipeStepsOverlay">
 		<a class="closeButton"></a>
 	
 		<section id="recipeSteps">
-			<h1>Recipe Steps</h1>
+			<h1>Cooking Steps</h1>
 		
 			{% set stepCounter = 1 %}
 		

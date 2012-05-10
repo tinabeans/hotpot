@@ -2,6 +2,12 @@
 /* NEW INTRO PAGE / WELCOME */
 
 #welcome {
+	overflow-x:hidden;
+	
+	#mainContainer {
+		width:100%;
+	}
+
 	#logo {
 		display:none;
 	}
@@ -10,16 +16,16 @@
 		width:100%;
 		padding-left:0px;
 		left:0;
+		background:url(/static/images/headerBg.png) repeat-x;
 	}
 	
 	#headerNavs {
 		padding-left:6%;
-		height:85px;
-		background-position: left bottom;
+		background:none;
 	}
 	
 	#mainNav {
-		padding: 23px 0px 0px 0px;
+		padding: 28px 0px 0px 0px;
 	}
 	
 	#serviceNavs {
@@ -29,7 +35,201 @@
 	}
 }
 
+#homeIntro {
+	
+	h2 {
+		font-size: 47px;
+		margin: 10px;
+	}
+	
+	p {
+		font-size:20px;
+		width:360px;
+		margin: 25px auto;
+	}
+	
+	.actionButtons {
+		margin-top:30px;
+	}
+	
+	.right {
+		margin-top:-55px;
+		text-align: center;
+		margin-left:45%;
+		position: relative;
+		z-index:+20;
+	}
+	
+	.left {
+		margin-top:40px;
+		width:45%;
+		text-align: center;
+		padding-right:0px;
+	}
+}
 
+#joinHotpotButton {
+	padding: 18px 25px 15px 25px;
+	@include border-radius(20px);
+	font-size: 27px;
+}
+
+#loginButton {
+	padding: 11px 17px 7px 17px;
+	background: $mediumBlue;
+	@include border-radius(13px);
+	font-size: 18px;
+	margin-left: 10px;
+}
+
+#theHotpotManifestoContainer {
+	@include lightBrownBg;
+	margin-top:-30px;
+}
+
+#theHotpotManifesto {
+	@include outerContainer;
+	padding:60px 0px 50px 0px;
+	
+	.left {
+		text-align: center;
+		width:45%;
+		padding-right: 0px;
+	}
+	
+	.right {
+		margin-left:45%;
+		padding:0px 0px 0px 15px;
+	}
+	
+	#hotpotIllustration {
+		margin-top:-60px;
+	}
+	
+	h1 {
+		@include bigFatLetters;
+		color:$orange;
+		font-size:22px;
+		margin-bottom:15px;
+	}
+	
+	p {
+		font-size:17px;
+	}
+}
+
+#featureSlideshow {
+	position: relative;
+	background: rgba($mediumBrown, .08);
+	padding:15px;
+	text-align: center;
+	margin-top:25px;
+	
+	.slideshowNav {
+	
+		.nextButton, .previousButton {
+			position: absolute;
+			top:175px;
+		}
+		
+		.previousButton {
+			left:-24px;
+			
+		}
+		
+		.nextButton {
+			right:-24px;
+		}
+	}
+	
+	img {
+		width:100%;
+	}
+	
+	p {
+		text-align: left;
+		font-size:14px;
+		margin-top:15px;
+		margin-bottom:0px;
+	}
+	
+	li {
+		display:none;
+	}
+	
+	.current {
+		display:block;
+	}
+}
+
+#howToHotpot {
+	@include outerContainer;
+	background: $lightBrown url(/static/images/textureStrong.png);
+	@include border-radius(5px);
+	@include box-shadow(0 1px 2px rgba(0,0,0,.35));
+	padding: 20px;
+	@include box-sizing(border-box);
+	margin-top:50px;
+	
+	.content {
+		background:#fff;
+		@include clearfix;
+	}
+	
+	h1 {
+		@include bigFatLetters;
+		color:#a9a497;
+		text-align: center;
+		margin: 0px;
+		font-size: 20px;
+		width: 190px;
+		background: white;
+		position: absolute;
+		top: 47px;
+		left: 50%;
+		margin-left: -95px;
+	}
+	
+	.divider {
+		height:4px;
+		width:40%;
+		margin:35px auto 25px auto;
+	}
+	
+	li {
+		float:left;
+		width:25%;
+		@include box-sizing(border-box);
+		padding:15px;
+		text-align: center;
+	}
+	
+	.howToImage {
+		height: 86px;
+	}
+	
+	p {
+		font-size:16px;
+	
+		strong {
+			@include bigFatLetters;
+			color: $orange;
+			font-size:18px;
+			display: block;
+			margin-top:15px;
+		}
+	}
+}
+
+@media screen and (min-width: 1318px) {
+	#headerNavs, #theHotpotManifesto, #howToHotpot {
+		@include outerContainerFixed;
+	}
+	
+	#headerNavs {
+		padding-left:0px;
+	}
+}
 
 
 /**********************************************************/

@@ -107,9 +107,6 @@ def naiveLocalDatetimeForUser(tstamp, userInfo):
 
 @app.route('/')
 def index():
-	if 'userId' in flask.session:
-		return flask.redirect(flask.url_for('home'))
-		
 	return render_template('index.html')
 	
 
@@ -1183,7 +1180,13 @@ def insertNotesIntoSteps(meal, notes):
 		
 	return meal
 
+
 @app.route('/rooms/<invitationId>')
+def showGetReadyScreen(invitationId):
+	
+	return flask.redirect('/getready/' + invitationId)
+
+@app.route('/cook/<invitationId>')
 def showRoom(invitationId):
 	# if the user's not logged in, redirect them to the login page
 	if 'userId' not in flask.session:

@@ -7,7 +7,7 @@
 		text-align: center;
 		
 		img {
-			width:230px;
+			width:180px;
 		}
 	}
 	
@@ -16,7 +16,7 @@
 
 #dressingRoomBox {
 	width:800px;
-	@include lightBrownBorder;
+	outline:10px solid rgba($darkBrown,.15);
 	background:#fff;
 	padding:30px;
 	margin:0px auto;
@@ -27,13 +27,7 @@
 		font-size:30px;
 		text-align: center;
 		color:$darkBlue;
-	}
-	
-	p.intro {
-		margin-top:10px;
-		text-align: center;
-		width:80%;
-		margin:10px auto 20px auto;
+		margin-bottom:20px;
 	}
 	
 	#testVideoContainer {
@@ -57,12 +51,15 @@
 	
 	li {
 		list-style-type: disc;
-		font-size:16px;
+		font-size:14px;
+		line-height:1.4em;
 		padding:5px 0px;
 	}
 	
-	.bigButton {
-		margin-top:20px;
+	.buttons {
+		text-align: center;
+		clear:both;
+		padding-top:20px;
 	}
 }
 

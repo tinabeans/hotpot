@@ -25,7 +25,7 @@
 	</a>
 	
 	<div class="mealInfo">
-		<h2><a href="/meals/{{ featured.slug }}">{{ featured.title }} &raquo;</a></h2>
+		<h2><a href="/meals/{{ featured.slug }}">{{ featured.title|safe }} &raquo;</a></h2>
 		<p>{{ featured.shortDescription }}</p>
 		
 		<ul class="mealFacts">

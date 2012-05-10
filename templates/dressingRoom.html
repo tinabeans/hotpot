@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
-<title>HotPot prototype! yeah!!</title>
+<title>HOTPOT - Get Ready to Cook!</title>
 
 <!-- Typekit -->
 <script type="text/javascript" src="http://use.typekit.com/qje5yme.js"></script>
@@ -45,21 +45,23 @@ $(document).ready(function(){
 	<h1><img src="/static/images/HotpotLogo_Alpha.png"></h1>
 	
 	<div id="dressingRoomBox">
-		<h2>Get Ready to Cook!</h2>
-		
-		<p class="intro">Set up your webcam and check your hair below. When all looks good, click “Let’s Go!” to enter the Cooking Room.</p>
+		<h2>Get ready to cook!</h2>
 		
 		<div id="testVideoContainer">
 			<div id="myVideo"></div>
 		</div>
 		
-		<h3>Video not working?</h3>
+		<p class="intro">Set up your webcam and check your hair. When all looks good, click the green button to start cooking.</p>
+		
+		<h3>Video Tips</h3>
 		<ul>
-			<li>Click the settings icon to the left and select your camera.</li>
-			<li>Give Flash permission to access your camera.</li>
-			<li>(Make sure you have Flash 11 installed.)</li>
+			<li>For best video quality, upgrade to Flash 11. Right-click (PC) or control-click (Mac) on the box to the left to find out your version. You can <a href="http://get.adobe.com/flashplayer/" target="_blank">get Flash 11 here.</a></li>
+			<li>If video isn't showing, click the settings icon and select the right camera. You can also adjust the volume.</li>
+			<li>If all else fails, try refreshing the page.</li>
 		</ul>
-		<a href="/rooms/{{ roomId }}" class="bigButton">Let's Go!</a>
+		<div class="buttons">
+			<a href="/cook/{{ roomId }}" class="bigButton">Let's go!</a>
+		</div>
 		
 	</div>
 

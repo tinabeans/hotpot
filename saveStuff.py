@@ -104,15 +104,21 @@ def start(db):
 	meal1 = {
 		"_id": ObjectId('4f3352569685aa28d5000008'),
 		
-		"title":"Lemon Garlic Pasta with Kale",
+		"title":"""&ldquo;Waiting for Spring&rdquo; Supper""",
 		
 		"slug":"LemonGarlicKalePasta",
+		
+		"dishes":[
+			"Lemon Garlic Kale Pasta"
+		],
+		
+		"date": "March 21, 2012",
 		
 		"credit":"The Cilantropist",
 		
 		"creditURL":"http://cilantropist.blogspot.com/2011/01/easy-lemon-garlic-kale-pasta.html",
 		
-		"shortDescription": """A light and lemony pasta dish that's reminiscent of spring, yet inspired by winter's bounty.""",
+		"shortDescription": """A light and lemony one-dish meal that's reminiscent of spring, yet inspired by winter's bounty.""",
 		
 		"time" : "30 min - 1 hr",
 		
@@ -133,9 +139,12 @@ def start(db):
 				"grater or citrus zester (optional)"
 			],
 		
-		"description":"Kale is a hearty leafy green commonly found at farmer's vegetables in the late fall through early winter. Here, the nutty flavor of saut&eacute;ed kale is paired with a bright splash of lemon&mdash;a fragrant reminder that spring is not too far off!",
+		"description":"In this quick one-dish meal, the nutty flavor of saut&eacute;ed kale is paired with a bright splash of lemon&mdash;a fragrant reminder that spring is not too far off. It's also vegetarian, making it an ideal candidate for Meatless Mondays!",
 		
 		"summary":"This pasta dish comes together quickly with just a few ingredients. The kale is saut&eacute;ed in garlic, while lemons and more garlic infuse gently into a fragrant olive oil \"sauce.\" Because of it's so easy to prepare, it's great for a low-key and healthy weeknight supper. It's also vegetarian, making it an ideal candidate for Meatless Mondays.",
+		
+		"ingredientSpotlightText" : """<p>Kale is a hearty leafy vegetable commonly found at farmer's markets in the fall through early winter. It has a delicious nutty taste and works beautifully in everything from soups to saut&eacute;es.</p>
+			<p>Kale is high in fiber and Vitamins A, C and K. It's one of the healthiest vegetables you can get. Studies show that kale will even lower risk for five types of cancers, but we just think it tastes awesome.</p>""",
 		
 		"ingredients":[
 			{

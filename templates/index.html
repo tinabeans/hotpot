@@ -10,22 +10,95 @@
 
 <section id="homeIntro">
 	
-	<hgroup>
-		<h1><img src="/static/images/HotpotLogo_Alpha.png" width="280" /></h1>
-		<h2><span class="color2">L</span>e<span class="color2">t</span>'<span class="color2">s</span> C<span class="color3">o</span><span class="color2">o</span><span class="color3">k</span><span class="color2">!</span></h2>
-	</hgroup>
-	
-	<p>Cook together with anyone, anywhere. Swap stories, share technique, and even eat together—all in real time.</p>
-	
-	<div class="actionButtons">
-		<a id="joinHotpotButton" class="bigButton">Join Hotpot</a>
-		<a id="loginButton" class="smallButton">Log In</a>
+	<div class="left">
+		<hgroup>
+			<h1><img src="/static/images/HotpotLogo_Alpha.png" width="280" /></h1>
+			<h2><span class="color2">L</span>e<span class="color2">t&rsquo;</span><span class="color3">s</span> C<span class="color2">o</span><span class="color3">o</span>k<span class="color2">!</span></h2>
+		</hgroup>
+		
+		<p>Cook together with anyone, anywhere. Swap stories, share technique, and make delicious food&mdash;all in real time.</p>
+		
+		<div class="actionButtons">
+			<a id="joinHotpotButton" href="/register" class="bigButton">Join Hotpot</a>
+			<a id="loginButton" href="/login" class="smallButton">Log In</a>
+		</div>
 	</div>
 	
-	<div id="welcomePhotos">
-		<img src="/static/images/welcomePhoto1.png" />
+	<div id="welcomePhotos" class="right">
+		<img src="/static/images/welcomePhoto2.png" />
 	</div>
 	
+</section>
+
+<div id="theHotpotManifestoContainer">
+	<section id="theHotpotManifesto">
+		<div class="left">
+			<img id="hotpotIllustration" src="/static/images/yaaay.png" width="374" height="642" />
+		</div>
+		
+		<div class="right">
+			<div class="contents">
+			
+				<h1>The Hotpot Manifesto</h1>
+				
+				<p class="intro"><strong>Cooking should be fun</strong>, not a chore. Hotpot helps you connect with friends and loved ones, have a great time, and make something delicious, too!</p>
+				
+				<div id="featureSlideshow">
+					<div class="slideshowNav">
+						<a href="" class="previousButton"><img src="/static/images/slideshowArrowLeft.png"></a>
+						<a href="" class="nextButton"><img src="/static/images/slideshowArrowRight.png"></a>
+					</div>
+					<ul>
+						<li class="current">
+							<img src="/static/images/featureImage1.png" />
+							<p><strong>It's better together.</strong> Hotpot brings your friend into your kitchen via the awesomeness of the Internet. See what step the other is on, co-author cooking notes, and even add stamps to mark notable occurrences.</p>
+						</li>
+						<li>
+							<img src="/static/images/featureImage1.png" />
+							<p>2</p>
+						</li>
+						<li>
+							<img src="/static/images/featureImage1.png" />
+							<p>3</p>
+						</li>
+					</ul>
+				</div><!--#featureSlideshow -->				
+			</div><!-- .contents -->
+		</div>
+	</section>
+</div>
+
+<section id="howToHotpot">
+	<div class="content">
+		<h1>How to Hotpot</h1>
+		<div class="divider"></div>
+		<ol>
+			<li>
+				<div class="howToImage">
+					<img src="/static/images/howToStep1.png" />
+				</div>
+				<p><strong>Invite</strong> a friend to cook with you</p>
+			</li>
+			<li>
+				<div class="howToImage">
+					<img src="/static/images/howToStep2.png" />
+				</div>
+				<p><strong>Decide</strong> when and what to cook together</p>
+			</li>
+			<li>
+				<div class="howToImage">
+					<img src="/static/images/howToStep3.png" />
+				</div>
+				<p><strong>Schedule</strong> a Hotpot for you and your friend</p>
+			</li>
+			<li>
+				<div class="howToImage">
+					<img src="/static/images/howToStep4.png" />
+				</div>
+				<p><strong>Cook</strong> a delicious meal, together!</p>
+			</li>
+		</ol>
+	</div><!-- .content -->
 </section>
 
 {% endblock main %}
