@@ -14,8 +14,9 @@
 			// we're not sending passwords in the clear, yay!
 			// although yang says in a perfect world i would be using https...
 			// hmph.
-			var encryptedPassword = $.sha1($('#passwordField').val());
-			$(this).find('.encryptedPassword').val(encryptedPassword);
+			var $form = $(this);
+			var encryptedPassword = $.sha1($form.find('.passwordField').val());
+			$form.find('.encryptedPassword').val(encryptedPassword);
 		});
 	});
 	
