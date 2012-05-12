@@ -53,11 +53,13 @@
 	}
 	
 	.right {
-		margin-top:-55px;
-		text-align: center;
-		margin-left:45%;
 		position: relative;
+		width: 627px;
+		height: 539px;
 		z-index:+20;
+		margin-top:-55px;
+		margin-left:45%;
+		text-align: center;
 	}
 	
 	.left {
@@ -65,6 +67,14 @@
 		width:45%;
 		text-align: center;
 		padding-right:0px;
+	}
+
+	.welcomePhoto {
+		position: absolute;
+		display: none;
+		&.current {
+			display: block;
+		}
 	}
 }
 

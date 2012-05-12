@@ -4,13 +4,19 @@
 
 {% block customJS %}
 	<script type="text/javascript">
+		function advanceWelcomePhoto() {
+			var $photos = $('.welcomePhoto');
+			var $current = $photos.filter('.current');
+			var index = ($current.index() + 1 + $photos.length) % $photos.length;
+			$current.fadeOut('slow', function() { $(this).removeClass('current'); });
+			$photos.eq(index).addClass('current').hide().fadeIn('slow');
+		}
 		function advanceDemoSlide(inc) {
-			$slideList = $('#featureSlideshow ul');
-			$current = $slideList.find('.current');
-			var numSlides = $slideList.children().length;
-			index = ($current.index() + inc + numSlides) % numSlides;
+			var $slides = $('#featureSlideshow li');
+			var $current = $slides.filter('.current');
+			var index = ($current.index() + inc + $slides.length) % $slides.length;
 			$current.removeClass('current');
-			$slideList.children().eq(index).addClass('current');
+			$slides.eq(index).addClass('current');
 		}
 		$(function() {
 			$('.previousButton').click(function(e) {
@@ -21,6 +27,7 @@
 				e.preventDefault();
 				advanceDemoSlide(1);
 			});
+			setInterval(advanceWelcomePhoto, 4000);
 		});
 	</script>
 {% endblock %}
@@ -46,7 +53,9 @@
 	</div>
 	
 	<div id="welcomePhotos" class="right">
-		<img src="/static/images/welcomePhoto2.png" />
+		<img src="/static/images/welcomePhoto2.png" class="welcomePhoto current" />
+		<img src="/static/images/welcomePhoto2.png" class="welcomePhoto" />
+		<img src="/static/images/welcomePhoto2.png" class="welcomePhoto" />
 	</div>
 	
 </section>
