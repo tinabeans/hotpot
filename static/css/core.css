@@ -1,4 +1,4 @@
-/* line 17, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 114, ../../../../../.gem/ruby/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 114, /var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -1031,55 +1031,55 @@ input[disabled=disabled], button[disabled=disabled] {
 /* CSS for different page types */
 /**********************************************************/
 /* NEW INTRO PAGE / WELCOME */
-/* line 4, ../sass/_home.scss */
+/* line 4, /home/yang/hotpot/static/sass/_home.scss */
 #welcome {
   overflow-x: hidden;
 }
-/* line 7, ../sass/_home.scss */
+/* line 7, /home/yang/hotpot/static/sass/_home.scss */
 #welcome #mainContainer {
   width: 100%;
 }
-/* line 11, ../sass/_home.scss */
+/* line 11, /home/yang/hotpot/static/sass/_home.scss */
 #welcome #logo {
   display: none;
 }
-/* line 15, ../sass/_home.scss */
+/* line 15, /home/yang/hotpot/static/sass/_home.scss */
 #welcome #headerNavsContainer {
   width: 100%;
   padding-left: 0px;
   left: 0;
   background: url(/static/images/headerBg.png) repeat-x;
 }
-/* line 22, ../sass/_home.scss */
+/* line 22, /home/yang/hotpot/static/sass/_home.scss */
 #welcome #headerNavs {
   padding-left: 6%;
   background: none;
 }
-/* line 27, ../sass/_home.scss */
+/* line 27, /home/yang/hotpot/static/sass/_home.scss */
 #welcome #mainNav {
   padding: 28px 0px 0px 0px;
 }
-/* line 32, ../sass/_home.scss */
+/* line 32, /home/yang/hotpot/static/sass/_home.scss */
 #welcome #serviceNavs #loginLink, #welcome #serviceNavs #registerLink {
   margin: 35px 0px 0px 30px;
 }
 
-/* line 40, ../sass/_home.scss */
+/* line 40, /home/yang/hotpot/static/sass/_home.scss */
 #homeIntro h2 {
   font-size: 47px;
   margin: 10px;
 }
-/* line 45, ../sass/_home.scss */
+/* line 45, /home/yang/hotpot/static/sass/_home.scss */
 #homeIntro p {
   font-size: 20px;
   width: 360px;
   margin: 25px auto;
 }
-/* line 51, ../sass/_home.scss */
+/* line 51, /home/yang/hotpot/static/sass/_home.scss */
 #homeIntro .actionButtons {
   margin-top: 30px;
 }
-/* line 55, ../sass/_home.scss */
+/* line 55, /home/yang/hotpot/static/sass/_home.scss */
 #homeIntro .right {
   position: relative;
   width: 627px;
@@ -1089,25 +1089,25 @@ input[disabled=disabled], button[disabled=disabled] {
   margin-left: 45%;
   text-align: center;
 }
-/* line 65, ../sass/_home.scss */
+/* line 65, /home/yang/hotpot/static/sass/_home.scss */
 #homeIntro .left {
   margin-top: 40px;
   width: 45%;
   text-align: center;
   padding-right: 0px;
 }
-/* line 72, ../sass/_home.scss */
+/* line 72, /home/yang/hotpot/static/sass/_home.scss */
 #homeIntro .welcomePhoto {
   position: absolute;
   display: none;
 }
-/* line 75, ../sass/_home.scss */
+/* line 75, /home/yang/hotpot/static/sass/_home.scss */
 #homeIntro .welcomePhoto.current {
   display: block;
 }
 
-/* line 81, ../sass/_home.scss */
-#joinHotpotButton {
+/* line 81, /home/yang/hotpot/static/sass/_home.scss */
+.joinHotpotButton {
   padding: 18px 25px 15px 25px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -1118,7 +1118,7 @@ input[disabled=disabled], button[disabled=disabled] {
   font-size: 27px;
 }
 
-/* line 87, ../sass/_home.scss */
+/* line 87, /home/yang/hotpot/static/sass/_home.scss */
 #loginButton {
   padding: 11px 17px 7px 17px;
   background: #3797a2;
@@ -1132,13 +1132,13 @@ input[disabled=disabled], button[disabled=disabled] {
   margin-left: 10px;
 }
 
-/* line 95, ../sass/_home.scss */
+/* line 95, /home/yang/hotpot/static/sass/_home.scss */
 #theHotpotManifestoContainer {
   background: rgba(107, 77, 0, 0.05);
   margin-top: -30px;
 }
 
-/* line 100, ../sass/_home.scss */
+/* line 100, /home/yang/hotpot/static/sass/_home.scss */
 #theHotpotManifesto {
   width: 88%;
   margin-left: auto;
@@ -1146,22 +1146,22 @@ input[disabled=disabled], button[disabled=disabled] {
   position: relative;
   padding: 60px 0px 50px 0px;
 }
-/* line 104, ../sass/_home.scss */
+/* line 104, /home/yang/hotpot/static/sass/_home.scss */
 #theHotpotManifesto .left {
   text-align: center;
   width: 45%;
   padding-right: 0px;
 }
-/* line 110, ../sass/_home.scss */
+/* line 110, /home/yang/hotpot/static/sass/_home.scss */
 #theHotpotManifesto .right {
   margin-left: 45%;
   padding: 0px 0px 0px 15px;
 }
-/* line 115, ../sass/_home.scss */
+/* line 115, /home/yang/hotpot/static/sass/_home.scss */
 #theHotpotManifesto #hotpotIllustration {
   margin-top: -60px;
 }
-/* line 119, ../sass/_home.scss */
+/* line 119, /home/yang/hotpot/static/sass/_home.scss */
 #theHotpotManifesto h1 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1170,12 +1170,12 @@ input[disabled=disabled], button[disabled=disabled] {
   font-size: 22px;
   margin-bottom: 15px;
 }
-/* line 126, ../sass/_home.scss */
+/* line 126, /home/yang/hotpot/static/sass/_home.scss */
 #theHotpotManifesto p {
   font-size: 17px;
 }
 
-/* line 131, ../sass/_home.scss */
+/* line 131, /home/yang/hotpot/static/sass/_home.scss */
 #featureSlideshow {
   position: relative;
   background: rgba(107, 77, 0, 0.08);
@@ -1183,40 +1183,40 @@ input[disabled=disabled], button[disabled=disabled] {
   text-align: center;
   margin-top: 25px;
 }
-/* line 140, ../sass/_home.scss */
+/* line 140, /home/yang/hotpot/static/sass/_home.scss */
 #featureSlideshow .slideshowNav .nextButton, #featureSlideshow .slideshowNav .previousButton {
   position: absolute;
   top: 175px;
 }
-/* line 145, ../sass/_home.scss */
+/* line 145, /home/yang/hotpot/static/sass/_home.scss */
 #featureSlideshow .slideshowNav .previousButton {
   left: -24px;
 }
-/* line 150, ../sass/_home.scss */
+/* line 150, /home/yang/hotpot/static/sass/_home.scss */
 #featureSlideshow .slideshowNav .nextButton {
   right: -24px;
 }
-/* line 155, ../sass/_home.scss */
+/* line 155, /home/yang/hotpot/static/sass/_home.scss */
 #featureSlideshow img {
   width: 100%;
 }
-/* line 159, ../sass/_home.scss */
+/* line 159, /home/yang/hotpot/static/sass/_home.scss */
 #featureSlideshow p {
   text-align: left;
   font-size: 14px;
   margin-top: 15px;
   margin-bottom: 0px;
 }
-/* line 166, ../sass/_home.scss */
+/* line 166, /home/yang/hotpot/static/sass/_home.scss */
 #featureSlideshow li {
   display: none;
 }
-/* line 170, ../sass/_home.scss */
+/* line 170, /home/yang/hotpot/static/sass/_home.scss */
 #featureSlideshow .current {
   display: block;
 }
 
-/* line 175, ../sass/_home.scss */
+/* line 175, /home/yang/hotpot/static/sass/_home.scss */
 #howToHotpot {
   width: 88%;
   margin-left: auto;
@@ -1240,13 +1240,13 @@ input[disabled=disabled], button[disabled=disabled] {
   box-sizing: border-box;
   margin-top: 50px;
 }
-/* line 184, ../sass/_home.scss */
+/* line 184, /home/yang/hotpot/static/sass/_home.scss */
 #howToHotpot .content {
   background: #fff;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 189, ../sass/_home.scss */
+/* line 189, /home/yang/hotpot/static/sass/_home.scss */
 #howToHotpot h1 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1262,13 +1262,13 @@ input[disabled=disabled], button[disabled=disabled] {
   left: 50%;
   margin-left: -95px;
 }
-/* line 203, ../sass/_home.scss */
+/* line 203, /home/yang/hotpot/static/sass/_home.scss */
 #howToHotpot .divider {
   height: 4px;
   width: 40%;
   margin: 35px auto 25px auto;
 }
-/* line 209, ../sass/_home.scss */
+/* line 209, /home/yang/hotpot/static/sass/_home.scss */
 #howToHotpot li {
   float: left;
   width: 25%;
@@ -1279,15 +1279,15 @@ input[disabled=disabled], button[disabled=disabled] {
   padding: 15px;
   text-align: center;
 }
-/* line 217, ../sass/_home.scss */
+/* line 217, /home/yang/hotpot/static/sass/_home.scss */
 #howToHotpot .howToImage {
   height: 86px;
 }
-/* line 221, ../sass/_home.scss */
+/* line 221, /home/yang/hotpot/static/sass/_home.scss */
 #howToHotpot p {
   font-size: 16px;
 }
-/* line 224, ../sass/_home.scss */
+/* line 224, /home/yang/hotpot/static/sass/_home.scss */
 #howToHotpot p strong {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1299,7 +1299,7 @@ input[disabled=disabled], button[disabled=disabled] {
 }
 
 @media screen and (min-width: 1318px) {
-  /* line 235, ../sass/_home.scss */
+  /* line 235, /home/yang/hotpot/static/sass/_home.scss */
   #headerNavs, #theHotpotManifesto, #howToHotpot {
     width: 1160px;
     margin-left: auto;
@@ -1307,18 +1307,18 @@ input[disabled=disabled], button[disabled=disabled] {
     position: relative;
   }
 
-  /* line 239, ../sass/_home.scss */
+  /* line 239, /home/yang/hotpot/static/sass/_home.scss */
   #headerNavs {
     padding-left: 0px;
   }
 }
 /**********************************************************/
 /* INTRO PAGE / COVER */
-/* line 248, ../sass/_home.scss */
+/* line 248, /home/yang/hotpot/static/sass/_home.scss */
 body#cover {
   background: #faf9f8 url(/static/images/introBg.gif) center top no-repeat fixed;
 }
-/* line 251, ../sass/_home.scss */
+/* line 251, /home/yang/hotpot/static/sass/_home.scss */
 body#cover .message {
   position: fixed;
   width: 40%;
@@ -1340,19 +1340,19 @@ body#cover .message {
   border-top-right-radius: 0px;
 }
 
-/* line 263, ../sass/_home.scss */
+/* line 263, /home/yang/hotpot/static/sass/_home.scss */
 #coverBg {
   background: url(/static/images/textureSoft.png) fixed;
 }
 
-/* line 267, ../sass/_home.scss */
+/* line 267, /home/yang/hotpot/static/sass/_home.scss */
 #coverContainer {
   width: 780px;
   margin: 0px auto;
   position: relative;
 }
 
-/* line 273, ../sass/_home.scss */
+/* line 273, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader {
   position: fixed;
   margin-left: 450px;
@@ -1360,7 +1360,7 @@ body#cover .message {
   text-align: center;
   width: 330px;
 }
-/* line 280, ../sass/_home.scss */
+/* line 280, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #moreArrow {
   position: absolute;
   text-align: center;
@@ -1368,11 +1368,11 @@ body#cover .message {
   top: 600px;
   font-weight: bold;
 }
-/* line 288, ../sass/_home.scss */
+/* line 288, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader h1 img {
   width: 328px;
 }
-/* line 292, ../sass/_home.scss */
+/* line 292, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1381,13 +1381,13 @@ body#cover .message {
   margin-top: 12px;
   font-size: 49px;
 }
-/* line 299, ../sass/_home.scss */
+/* line 299, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #coverButtons {
   margin-top: 50px;
   position: relative;
   left: 60px;
 }
-/* line 304, ../sass/_home.scss */
+/* line 304, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #coverButtons a {
   display: block;
   font-family: "proxima-nova", sans-serif;
@@ -1400,7 +1400,7 @@ body#cover .message {
   box-sizing: border-box;
   position: absolute;
 }
-/* line 313, ../sass/_home.scss */
+/* line 313, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginLink {
   width: 90px;
   height: 89px;
@@ -1409,7 +1409,7 @@ body#cover .message {
   padding-top: 35px;
   z-index: 1;
 }
-/* line 322, ../sass/_home.scss */
+/* line 322, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #registerLink {
   background: #a5c349 url(/static/images/textureStrong.png);
   width: 140px;
@@ -1425,12 +1425,12 @@ body#cover .message {
   left: 61px;
   top: 16px;
 }
-/* line 332, ../sass/_home.scss */
+/* line 332, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #registerLink .small {
   font-size: 26px;
   line-height: 23px;
 }
-/* line 338, ../sass/_home.scss */
+/* line 338, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginFormContainer, #coverHeader #registrationFormContainer {
   display: none;
   background: #f0ece4 url(/static/images/textureSoft.png);
@@ -1445,7 +1445,7 @@ body#cover .message {
   border-radius: 10px;
   padding: 10px 20px 25px 25px;
 }
-/* line 347, ../sass/_home.scss */
+/* line 347, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginFormContainer .closeButton, #coverHeader #registrationFormContainer .closeButton {
   display: block;
   width: 29px;
@@ -1471,45 +1471,45 @@ body#cover .message {
 #coverHeader #loginFormContainer .closeButton:hover, #coverHeader #registrationFormContainer .closeButton:hover {
   background-color: #c4bcac;
 }
-/* line 351, ../sass/_home.scss */
+/* line 351, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginFormContainer label, #coverHeader #registrationFormContainer label {
   display: none;
 }
-/* line 355, ../sass/_home.scss */
+/* line 355, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginFormContainer h2, #coverHeader #registrationFormContainer h2 {
   font-size: 18px;
   color: rgba(115, 108, 91, 0.7);
   margin-bottom: 10px;
 }
-/* line 361, ../sass/_home.scss */
+/* line 361, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginFormContainer .formItem, #coverHeader #registrationFormContainer .formItem {
   margin-bottom: 10px;
 }
-/* line 365, ../sass/_home.scss */
+/* line 365, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginFormContainer input[type=password], #coverHeader #loginFormContainer input[type=text], #coverHeader #registrationFormContainer input[type=password], #coverHeader #registrationFormContainer input[type=text] {
   padding: 7px;
 }
-/* line 369, ../sass/_home.scss */
+/* line 369, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginFormContainer .formItem, #coverHeader #registrationFormContainer .formItem {
   text-align: left;
 }
-/* line 373, ../sass/_home.scss */
+/* line 373, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginFormContainer .firstname, #coverHeader #registrationFormContainer .firstname {
   width: 48%;
   float: left;
 }
-/* line 378, ../sass/_home.scss */
+/* line 378, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginFormContainer .lastname, #coverHeader #registrationFormContainer .lastname {
   width: 48%;
   margin-left: 52%;
   display: block;
 }
-/* line 384, ../sass/_home.scss */
+/* line 384, /home/yang/hotpot/static/sass/_home.scss */
 #coverHeader #loginFormContainer .buttons, #coverHeader #registrationFormContainer .buttons {
   margin-top: 20px;
 }
 
-/* line 392, ../sass/_home.scss */
+/* line 392, /home/yang/hotpot/static/sass/_home.scss */
 #codeForm #codeError {
   margin-top: 20px;
   margin-bottom: 0px;
@@ -1517,15 +1517,15 @@ body#cover .message {
   font-weight: 700;
 }
 
-/* line 401, ../sass/_home.scss */
+/* line 401, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo {
   width: 350px;
 }
-/* line 404, ../sass/_home.scss */
+/* line 404, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo #coverIllustration {
   margin-bottom: 60px;
 }
-/* line 408, ../sass/_home.scss */
+/* line 408, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1534,7 +1534,7 @@ body#cover .message {
   font-size: 28px;
   margin-bottom: 15px;
 }
-/* line 415, ../sass/_home.scss */
+/* line 415, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo h3 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1543,52 +1543,52 @@ body#cover .message {
   font-size: 16px;
   margin-bottom: 10px;
 }
-/* line 421, ../sass/_home.scss */
+/* line 421, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo h3.first {
   color: #a5c349;
 }
-/* line 425, ../sass/_home.scss */
+/* line 425, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo h3.second {
   color: #3797a2;
 }
-/* line 429, ../sass/_home.scss */
+/* line 429, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo h3.third {
   color: #ef5922;
 }
-/* line 433, ../sass/_home.scss */
+/* line 433, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo h3.fourth {
   color: #a5c349;
 }
-/* line 438, ../sass/_home.scss */
+/* line 438, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo .featureImage {
   border: 6px solid rgba(115, 108, 91, 0.15);
   margin-bottom: 20px;
 }
-/* line 443, ../sass/_home.scss */
+/* line 443, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo #peopleImage {
   border: 0;
 }
-/* line 447, ../sass/_home.scss */
+/* line 447, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo p {
   font-size: 14px;
   margin-bottom: 30px;
 }
-/* line 451, ../sass/_home.scss */
+/* line 451, /home/yang/hotpot/static/sass/_home.scss */
 #coverInfo p.intro {
   font-size: 18px;
 }
 
 /**********************************************************/
 /* HOME / USER DASHBOARD */
-/* line 461, ../sass/_home.scss */
+/* line 461, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard {
   font-size: 16px;
 }
-/* line 464, ../sass/_home.scss */
+/* line 464, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #pageTitle {
   margin-bottom: 40px;
 }
-/* line 468, ../sass/_home.scss */
+/* line 468, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #mainContainer h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1596,62 +1596,62 @@ body#cover .message {
   font-size: 24px;
   margin-bottom: 15px;
 }
-/* line 474, ../sass/_home.scss */
+/* line 474, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #upcomingContainer, #dashboard #invitations {
   margin-top: 40px;
 }
-/* line 478, ../sass/_home.scss */
+/* line 478, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #upcomingContainer h2 {
   color: #ef5922;
 }
-/* line 482, ../sass/_home.scss */
+/* line 482, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #invitations h2 {
   color: #3797a2;
 }
-/* line 486, ../sass/_home.scss */
+/* line 486, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard .intro {
   font-size: 18px;
 }
 
-/* line 491, ../sass/_home.scss */
+/* line 491, /home/yang/hotpot/static/sass/_home.scss */
 #welcomeMessageContainer {
   border: 10px solid rgba(115, 108, 91, 0.1);
   margin-bottom: 40px;
 }
-/* line 495, ../sass/_home.scss */
+/* line 495, /home/yang/hotpot/static/sass/_home.scss */
 #welcomeMessageContainer h2 {
   text-align: center;
   color: #ef5922;
 }
 
-/* line 501, ../sass/_home.scss */
+/* line 501, /home/yang/hotpot/static/sass/_home.scss */
 #welcomeMessage {
   padding: 30px 30px 10px 25px;
   background: #fff;
 }
-/* line 505, ../sass/_home.scss */
+/* line 505, /home/yang/hotpot/static/sass/_home.scss */
 #welcomeMessage #signature {
   text-align: left;
 }
 
-/* line 510, ../sass/_home.scss */
+/* line 510, /home/yang/hotpot/static/sass/_home.scss */
 #dashboardRight {
   width: 290px;
   float: right;
 }
-/* line 514, ../sass/_home.scss */
+/* line 514, /home/yang/hotpot/static/sass/_home.scss */
 #dashboardRight #inviteButton {
   width: 100%;
   margin: 0px;
   display: inline-block;
   font-size: 32px;
 }
-/* line 521, ../sass/_home.scss */
+/* line 521, /home/yang/hotpot/static/sass/_home.scss */
 #dashboardRight .buttons {
   margin-bottom: 40px;
 }
 
-/* line 528, ../sass/_home.scss */
+/* line 528, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -1678,7 +1678,7 @@ body#cover .message {
   font-size: 14px;
   line-height: 21px;
 }
-/* line 537, ../sass/_home.scss */
+/* line 537, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation {
   background: rgba(107, 77, 0, 0.05);
   padding: 30px 30px 30px 30px;
@@ -1687,7 +1687,7 @@ body#cover .message {
   *zoom: 1;
   margin-bottom: 30px;
 }
-/* line 544, ../sass/_home.scss */
+/* line 544, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .sendDate {
   position: absolute;
   right: 8;
@@ -1696,7 +1696,7 @@ body#cover .message {
   text-transform: none;
   font-size: 12px;
 }
-/* line 553, ../sass/_home.scss */
+/* line 553, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -1710,19 +1710,19 @@ body#cover .message {
 #upcomingContainer .invitation .mealImage img {
   height: 100%;
 }
-/* line 560, ../sass/_home.scss */
+/* line 560, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo {
   margin-left: 150px;
   font-size: 16px;
 }
-/* line 564, ../sass/_home.scss */
+/* line 564, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo h3 {
   font-weight: 700;
   text-transform: none;
   font-size: 20px;
   font-size: 24px;
 }
-/* line 571, ../sass/_home.scss */
+/* line 571, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .label {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -1730,29 +1730,29 @@ body#cover .message {
   font-size: 12px;
   margin-right: 10px;
 }
-/* line 576, ../sass/_home.scss */
+/* line 576, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .label.date {
   color: #ef5922;
 }
-/* line 580, ../sass/_home.scss */
+/* line 580, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .label.time {
   margin-left: 20px;
   color: #a5c349;
 }
-/* line 586, ../sass/_home.scss */
+/* line 586, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 590, ../sass/_home.scss */
+/* line 590, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .with {
   margin: 10px 20px 0px 0px;
   float: left;
 }
-/* line 594, ../sass/_home.scss */
+/* line 594, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .with .label {
   color: #1c6770;
 }
-/* line 602, ../sass/_home.scss */
+/* line 602, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .partnerUserpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -1788,11 +1788,11 @@ body#cover .message {
   border-radius: 100px;
   background: #fff;
 }
-/* line 610, ../sass/_home.scss */
+/* line 610, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 615, ../sass/_home.scss */
+/* line 615, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .cookingRoomLink {
   background: #a5c349;
   -moz-box-sizing: border-box;
@@ -1805,7 +1805,7 @@ body#cover .message {
   box-shadow: 0 4px 0 #78902f;
   margin-left: 10px;
 }
-/* line 621, ../sass/_home.scss */
+/* line 621, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .cookingRoomLink:hover {
   background: #9cba3d;
   -moz-box-shadow: 0 4px 0 #687d29;
@@ -1813,7 +1813,7 @@ body#cover .message {
   -o-box-shadow: 0 4px 0 #687d29;
   box-shadow: 0 4px 0 #687d29;
 }
-/* line 626, ../sass/_home.scss */
+/* line 626, /home/yang/hotpot/static/sass/_home.scss */
 #upcomingContainer .invitation .cookingRoomLink:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
@@ -1821,19 +1821,19 @@ body#cover .message {
   box-shadow: 0 2px 0 #78902f;
 }
 
-/* line 635, ../sass/_home.scss */
+/* line 635, /home/yang/hotpot/static/sass/_home.scss */
 #dashboardLeft {
   margin-right: 290px;
   padding-right: 40px;
 }
 
-/* line 641, ../sass/_home.scss */
+/* line 641, /home/yang/hotpot/static/sass/_home.scss */
 #newInvitationsAlert {
   font-size: 18px;
   color: #4e565c;
   margin: 0px 0px 15px 0px;
 }
-/* line 646, ../sass/_home.scss */
+/* line 646, /home/yang/hotpot/static/sass/_home.scss */
 #newInvitationsAlert .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -1861,7 +1861,7 @@ body#cover .message {
   line-height: 21px;
 }
 
-/* line 656, ../sass/_home.scss */
+/* line 656, /home/yang/hotpot/static/sass/_home.scss */
 #userInfoBox {
   background: rgba(55, 151, 162, 0.1);
   padding: 25px 30px 30px 30px;
@@ -1873,7 +1873,7 @@ body#cover .message {
   position: relative;
   overflow: visible;
 }
-/* line 666, ../sass/_home.scss */
+/* line 666, /home/yang/hotpot/static/sass/_home.scss */
 #userInfoBox .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -1911,22 +1911,22 @@ body#cover .message {
   border-radius: 100px;
   background: #fff;
 }
-/* line 675, ../sass/_home.scss */
+/* line 675, /home/yang/hotpot/static/sass/_home.scss */
 #userInfoBox .content {
   margin-left: 45px;
 }
-/* line 679, ../sass/_home.scss */
+/* line 679, /home/yang/hotpot/static/sass/_home.scss */
 #userInfoBox .location {
   margin-top: 5px;
   font-size: 16px;
   font-style: italic;
 }
-/* line 685, ../sass/_home.scss */
+/* line 685, /home/yang/hotpot/static/sass/_home.scss */
 #userInfoBox a {
   margin-top: 20px;
 }
 
-/* line 692, ../sass/_home.scss */
+/* line 692, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #maincontainer #userInfoBox h2 {
   font-size: 30px;
   text-transform: none;
@@ -1934,23 +1934,23 @@ body#cover .message {
   margin-bottom: 0px;
 }
 
-/* line 703, ../sass/_home.scss */
+/* line 703, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #whatsNew h2 {
   font-size: 18px;
   color: #a5c349;
 }
-/* line 708, ../sass/_home.scss */
+/* line 708, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #whatsNew p {
   font-size: 14px;
 }
-/* line 712, ../sass/_home.scss */
+/* line 712, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #whatsNew #newMeal {
   background: rgba(165, 195, 73, 0.15);
   padding: 20px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 717, ../sass/_home.scss */
+/* line 717, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #whatsNew #newMeal .mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -1968,14 +1968,14 @@ body#cover .message {
 #dashboard #whatsNew #newMeal .mealImage img {
   height: 100%;
 }
-/* line 724, ../sass/_home.scss */
+/* line 724, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #whatsNew #newMeal .mealImage img {
   width: 100%;
   height: auto;
   position: relative;
   top: -10%;
 }
-/* line 732, ../sass/_home.scss */
+/* line 732, /home/yang/hotpot/static/sass/_home.scss */
 #dashboard #whatsNew #newMeal h3 {
   font-size: 23px;
   font-weight: 700;
@@ -1985,29 +1985,29 @@ body#cover .message {
 
 /**********************************************************/
 /* OLD HOME */
-/* line 746, ../sass/_home.scss */
+/* line 746, /home/yang/hotpot/static/sass/_home.scss */
 #home #mainContainer {
   width: 100%;
 }
 
-/* line 751, ../sass/_home.scss */
+/* line 751, /home/yang/hotpot/static/sass/_home.scss */
 #introBlurb {
   text-align: center;
   font-size: 42px;
   padding-bottom: 10px;
 }
 
-/* line 757, ../sass/_home.scss */
+/* line 757, /home/yang/hotpot/static/sass/_home.scss */
 #featuredRecipes {
   clear: both;
 }
 
-/* line 761, ../sass/_home.scss */
+/* line 761, /home/yang/hotpot/static/sass/_home.scss */
 #joinUs {
   text-align: center;
   margin: 30px;
 }
-/* line 765, ../sass/_home.scss */
+/* line 765, /home/yang/hotpot/static/sass/_home.scss */
 #joinUs a {
   display: inline-block;
   border: 0px;
@@ -2095,22 +2095,22 @@ body#cover .message {
   letter-spacing: 0.05em;
 }
 
-/* line 772, ../sass/_home.scss */
+/* line 772, /home/yang/hotpot/static/sass/_home.scss */
 #joinUs a:hover {
   background: #777;
 }
 
-/* line 776, ../sass/_home.scss */
+/* line 776, /home/yang/hotpot/static/sass/_home.scss */
 #featuredMealsContainer {
   background: #ededec;
   margin: 60px 0px;
 }
 
-/* line 781, ../sass/_home.scss */
+/* line 781, /home/yang/hotpot/static/sass/_home.scss */
 #featuredMeals {
   padding: 30px 0px;
 }
-/* line 784, ../sass/_home.scss */
+/* line 784, /home/yang/hotpot/static/sass/_home.scss */
 #featuredMeals h1 {
   font-family: "proxima-nova", sans-serif;
   margin-bottom: 30px;
@@ -2119,14 +2119,14 @@ body#cover .message {
   font-size: 18px;
   text-align: center;
 }
-/* line 794, ../sass/_home.scss */
+/* line 794, /home/yang/hotpot/static/sass/_home.scss */
 #featuredMeals .mealList li {
   position: relative;
   display: inline-block;
   width: 30%;
   margin-right: 4%;
 }
-/* line 800, ../sass/_home.scss */
+/* line 800, /home/yang/hotpot/static/sass/_home.scss */
 #featuredMeals .mealList li h2 {
   position: absolute;
   top: 28px;
@@ -2136,7 +2136,7 @@ body#cover .message {
   padding: 7px 10px 10px 10px;
   font-size: 20px;
 }
-/* line 810, ../sass/_home.scss */
+/* line 810, /home/yang/hotpot/static/sass/_home.scss */
 #featuredMeals .mealList li img {
   border: 10px solid #fff;
   width: 100%;
@@ -2145,24 +2145,24 @@ body#cover .message {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 817, ../sass/_home.scss */
+/* line 817, /home/yang/hotpot/static/sass/_home.scss */
 #featuredMeals .mealList li.last {
   margin-right: 0%;
 }
 
 /**********************************************************/
 /* DRESSING ROOM */
-/* line 5, ../sass/_room.scss */
+/* line 5, /home/yang/hotpot/static/sass/_room.scss */
 #dressingRoom h1 {
   padding: 40px;
   text-align: center;
 }
-/* line 9, ../sass/_room.scss */
+/* line 9, /home/yang/hotpot/static/sass/_room.scss */
 #dressingRoom h1 img {
   width: 180px;
 }
 
-/* line 17, ../sass/_room.scss */
+/* line 17, /home/yang/hotpot/static/sass/_room.scss */
 #dressingRoomBox {
   width: 800px;
   outline: 10px solid rgba(115, 108, 91, 0.15);
@@ -2172,7 +2172,7 @@ body#cover .message {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 25, ../sass/_room.scss */
+/* line 25, /home/yang/hotpot/static/sass/_room.scss */
 #dressingRoomBox h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -2182,14 +2182,14 @@ body#cover .message {
   color: #1c6770;
   margin-bottom: 20px;
 }
-/* line 33, ../sass/_room.scss */
+/* line 33, /home/yang/hotpot/static/sass/_room.scss */
 #dressingRoomBox #testVideoContainer {
   float: left;
   width: 370px;
   margin-right: 20px;
   height: 240px;
 }
-/* line 40, ../sass/_room.scss */
+/* line 40, /home/yang/hotpot/static/sass/_room.scss */
 #dressingRoomBox h3 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -2198,19 +2198,19 @@ body#cover .message {
   color: #3797a2;
   margin-bottom: 10px;
 }
-/* line 47, ../sass/_room.scss */
+/* line 47, /home/yang/hotpot/static/sass/_room.scss */
 #dressingRoomBox ul {
   margin-left: 400px;
   padding-left: 25px;
 }
-/* line 52, ../sass/_room.scss */
+/* line 52, /home/yang/hotpot/static/sass/_room.scss */
 #dressingRoomBox li {
   list-style-type: disc;
   font-size: 14px;
   line-height: 1.4em;
   padding: 5px 0px;
 }
-/* line 59, ../sass/_room.scss */
+/* line 59, /home/yang/hotpot/static/sass/_room.scss */
 #dressingRoomBox .buttons {
   text-align: center;
   clear: both;
@@ -2219,44 +2219,44 @@ body#cover .message {
 
 /**********************************************************/
 /* COOKING ROOM */
-/* line 70, ../sass/_room.scss */
+/* line 70, /home/yang/hotpot/static/sass/_room.scss */
 #roomBg {
   background: url(/static/images/bg_clouds.png) center top no-repeat;
   padding: 0px 20px;
 }
 
-/* line 75, ../sass/_room.scss */
+/* line 75, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom {
   background: white url(/static/images/textureSoft.png);
 }
-/* line 78, ../sass/_room.scss */
+/* line 78, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #userId {
   display: none;
 }
-/* line 82, ../sass/_room.scss */
+/* line 82, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom header {
   width: 100%;
   height: 65px;
   position: relative;
 }
-/* line 87, ../sass/_room.scss */
+/* line 87, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom header h1 {
   margin: 0px;
   padding-top: 10px;
   text-align: center;
 }
-/* line 92, ../sass/_room.scss */
+/* line 92, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom header h1 img {
   height: 48px;
 }
-/* line 98, ../sass/_room.scss */
+/* line 98, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #serviceNav {
   position: absolute;
   top: 20px;
   right: 0px;
 }
 
-/* line 105, ../sass/_room.scss */
+/* line 105, /home/yang/hotpot/static/sass/_room.scss */
 #cookingArea {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -2274,7 +2274,7 @@ body#cover .message {
 
 /**********************************************************/
 /* COOKING ROOM: RECIPE */
-/* line 119, ../sass/_room.scss */
+/* line 119, /home/yang/hotpot/static/sass/_room.scss */
 #recipeContainer {
   position: relative;
   float: left;
@@ -2288,7 +2288,7 @@ body#cover .message {
   padding-top: 65px;
   padding-bottom: 45px;
 }
-/* line 129, ../sass/_room.scss */
+/* line 129, /home/yang/hotpot/static/sass/_room.scss */
 #recipeContainer #recipeTitle {
   position: absolute;
   left: 0px;
@@ -2313,7 +2313,7 @@ body#cover .message {
   font-size: 19px;
   white-space: nowrap;
 }
-/* line 145, ../sass/_room.scss */
+/* line 145, /home/yang/hotpot/static/sass/_room.scss */
 #recipeContainer #recipeTitle .label {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -2323,27 +2323,27 @@ body#cover .message {
   letter-spacing: .01em;
   margin-bottom: 3px;
 }
-/* line 153, ../sass/_room.scss */
+/* line 153, /home/yang/hotpot/static/sass/_room.scss */
 #recipeContainer #recipeTitle .longTitle {
   display: none;
 }
-/* line 158, ../sass/_room.scss */
+/* line 158, /home/yang/hotpot/static/sass/_room.scss */
 #recipeContainer #recipeTitle:hover .longTitle {
   display: block;
   position: relative;
   z-index: 3;
 }
-/* line 164, ../sass/_room.scss */
+/* line 164, /home/yang/hotpot/static/sass/_room.scss */
 #recipeContainer #recipeTitle:hover .shortTitle {
   display: none;
 }
 
-/* line 171, ../sass/_room.scss */
+/* line 171, /home/yang/hotpot/static/sass/_room.scss */
 #recipe {
   height: 100%;
 }
 
-/* line 175, ../sass/_room.scss */
+/* line 175, /home/yang/hotpot/static/sass/_room.scss */
 #recipeNav {
   float: left;
   width: 50px;
@@ -2356,7 +2356,7 @@ body#cover .message {
   box-sizing: border-box;
   background: #d9d6d1 url(/static/images/textureSoft.png);
 }
-/* line 184, ../sass/_room.scss */
+/* line 184, /home/yang/hotpot/static/sass/_room.scss */
 #recipeNav .userStepIcon {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -2393,15 +2393,15 @@ body#cover .message {
   background: #fff;
 }
 
-/* line 197, ../sass/_room.scss */
+/* line 197, /home/yang/hotpot/static/sass/_room.scss */
 #stepTabs li {
   position: relative;
 }
-/* line 200, ../sass/_room.scss */
+/* line 200, /home/yang/hotpot/static/sass/_room.scss */
 #stepTabs li .userStepIcon {
   display: block;
 }
-/* line 204, ../sass/_room.scss */
+/* line 204, /home/yang/hotpot/static/sass/_room.scss */
 #stepTabs li a {
   display: block;
   border-right: 0px;
@@ -2424,7 +2424,7 @@ body#cover .message {
   color: #736c5b;
 }
 
-/* line 220, ../sass/_room.scss */
+/* line 220, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #steps {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2436,7 +2436,7 @@ body#cover .message {
   background: #fff;
   font-size: 20px;
 }
-/* line 229, ../sass/_room.scss */
+/* line 229, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .step, #cookingRoom #recipeStart {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2445,37 +2445,37 @@ body#cover .message {
   padding: 25px;
   height: 100%;
 }
-/* line 234, ../sass/_room.scss */
+/* line 234, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .step p, #cookingRoom #recipeStart p {
   line-height: 1.3em;
 }
-/* line 239, ../sass/_room.scss */
+/* line 239, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart {
   position: relative;
   overflow: hidden;
 }
-/* line 243, ../sass/_room.scss */
+/* line 243, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart #startButtonContainer {
   margin-top: 27%;
   background: rgba(165, 195, 73, 0.15);
   padding: 25px;
   text-align: center;
 }
-/* line 249, ../sass/_room.scss */
+/* line 249, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart #startButtonContainer p {
   font-size: 17px;
   line-height: 1.3em;
 }
-/* line 255, ../sass/_room.scss */
+/* line 255, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart .instructions {
   position: absolute;
 }
-/* line 258, ../sass/_room.scss */
+/* line 258, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart .instructions p {
   font-size: 14px;
   line-height: 1.25em;
 }
-/* line 263, ../sass/_room.scss */
+/* line 263, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart .instructions h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -2485,48 +2485,48 @@ body#cover .message {
   font-size: 11px;
   margin-bottom: 5px;
 }
-/* line 272, ../sass/_room.scss */
+/* line 272, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart #instructionsCookingTimeline {
   top: 25px;
 }
-/* line 275, ../sass/_room.scss */
+/* line 275, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart #instructionsCookingTimeline img {
   position: absolute;
   top: 47px;
   left: -20px;
 }
-/* line 282, ../sass/_room.scss */
+/* line 282, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart #instructionsKeyboardNav {
   position: relative;
   margin-top: 25px;
 }
-/* line 286, ../sass/_room.scss */
+/* line 286, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart #instructionsKeyboardNav p {
   margin-right: 150px;
 }
-/* line 290, ../sass/_room.scss */
+/* line 290, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart #instructionsKeyboardNav img {
   width: 150px;
   float: right;
 }
-/* line 296, ../sass/_room.scss */
+/* line 296, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart #instructionsCookingNotes {
   bottom: 14px;
   width: 243px;
 }
-/* line 300, ../sass/_room.scss */
+/* line 300, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #recipeStart #instructionsCookingNotes img {
   position: absolute;
   right: 6px;
   top: 28px;
 }
-/* line 308, ../sass/_room.scss */
+/* line 308, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .step {
   display: none;
   overflow-y: auto;
   overflow-x: hidden;
 }
-/* line 313, ../sass/_room.scss */
+/* line 313, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .step h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -2536,28 +2536,28 @@ body#cover .message {
   font-size: 14px;
   margin-bottom: 4px;
 }
-/* line 321, ../sass/_room.scss */
+/* line 321, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .step ul {
   margin-left: 20px;
 }
-/* line 324, ../sass/_room.scss */
+/* line 324, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .step ul li {
   font-size: 18px;
   margin: 10px 0px;
   list-style-type: circle;
 }
-/* line 332, ../sass/_room.scss */
+/* line 332, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .currentStep a {
   background: #fff;
 }
-/* line 336, ../sass/_room.scss */
+/* line 336, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .extra {
   background: rgba(165, 195, 73, 0.15);
   padding: 15px 15px 1px 15px;
   font-size: 14px;
   margin: 20px 0px;
 }
-/* line 342, ../sass/_room.scss */
+/* line 342, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .extra h1 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -2570,7 +2570,7 @@ body#cover .message {
   margin-right: 7px;
   letter-spacing: .1em;
 }
-/* line 355, ../sass/_room.scss */
+/* line 355, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .noteFormInline textarea {
   background: #EBF4F5;
   -moz-border-radius: 5px;
@@ -2582,12 +2582,12 @@ body#cover .message {
   margin-bottom: 10px;
   height: 50px;
 }
-/* line 361, ../sass/_room.scss */
+/* line 361, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .noteFormInline textarea:focus {
   outline: none;
   background: #ddedee;
 }
-/* line 367, ../sass/_room.scss */
+/* line 367, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .noteFormInline input[type=submit] {
   color: #fff;
   display: inline-block;
@@ -2628,11 +2628,11 @@ body#cover .message {
   position: relative;
   top: 3px;
 }
-/* line 373, ../sass/_room.scss */
+/* line 373, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #ingredients {
   margin: 0px;
 }
-/* line 376, ../sass/_room.scss */
+/* line 376, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #ingredients li {
   font-size: 16px;
   height: 33px;
@@ -2646,45 +2646,45 @@ body#cover .message {
   cursor: pointer;
   background: url(/static/images/checkbox.png) 7px 9px no-repeat;
 }
-/* line 386, ../sass/_room.scss */
+/* line 386, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #ingredients li.odd {
   background: #f4f7f6 url(/static/images/checkbox.png) 7px 9px no-repeat;
 }
-/* line 391, ../sass/_room.scss */
+/* line 391, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #ingredients .amount {
   font-size: 12px;
   font-weight: 700;
   margin-left: 5px;
 }
-/* line 397, ../sass/_room.scss */
+/* line 397, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #ingredients .crossedOut {
   background: url(/static/images/checkboxChecked.png) 7px 8px no-repeat;
 }
-/* line 400, ../sass/_room.scss */
+/* line 400, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #ingredients .crossedOut.odd {
   background: #f4f7f6 url(/static/images/checkboxChecked.png) 7px 8px no-repeat;
 }
-/* line 405, ../sass/_room.scss */
+/* line 405, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom #ingredients .closeButton {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-/* line 412, ../sass/_room.scss */
+/* line 412, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .notesContainer {
   margin: 30px 0px;
 }
-/* line 416, ../sass/_room.scss */
+/* line 416, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .cookingNote {
   font-family: "proxima-nova", sans-serif;
   margin: 15px 0px;
   position: relative;
 }
-/* line 421, ../sass/_room.scss */
+/* line 421, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .cookingNote p {
   font-style: normal;
 }
-/* line 425, ../sass/_room.scss */
+/* line 425, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .cookingNote .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -2717,11 +2717,11 @@ body#cover .message {
   border-radius: 100px;
   background: #fff;
 }
-/* line 432, ../sass/_room.scss */
+/* line 432, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .cookingNote .noteContent {
   font-size: 12px;
 }
-/* line 436, ../sass/_room.scss */
+/* line 436, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .cookingNote .timestamp {
   text-align: right;
   font-style: normal;
@@ -2730,7 +2730,7 @@ body#cover .message {
   font-size: 10px;
   text-transform: uppercase;
 }
-/* line 447, ../sass/_room.scss */
+/* line 447, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .cookingNote.note .noteContent {
   margin-left: 25px;
   background: rgba(107, 77, 0, 0.05);
@@ -2742,15 +2742,15 @@ body#cover .message {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 454, ../sass/_room.scss */
+/* line 454, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .cookingNote.note .userpic {
   margin-top: 15px;
 }
-/* line 461, ../sass/_room.scss */
+/* line 461, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .cookingNote.stamp .noteContent {
   height: 40px;
 }
-/* line 464, ../sass/_room.scss */
+/* line 464, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .cookingNote.stamp .noteContent p {
   position: absolute;
   background: #ff0000;
@@ -2763,7 +2763,7 @@ body#cover .message {
   font-weight: bold;
   font-size: 10px;
 }
-/* line 477, ../sass/_room.scss */
+/* line 477, /home/yang/hotpot/static/sass/_room.scss */
 #cookingRoom .cookingNote.stamp .noteContent img {
   width: 40px;
   position: absolute;
@@ -2773,7 +2773,7 @@ body#cover .message {
 
 /**********************************************************/
 /* WIDGETS */
-/* line 489, ../sass/_room.scss */
+/* line 489, /home/yang/hotpot/static/sass/_room.scss */
 .widget {
   display: none;
   -moz-border-radius: 5px;
@@ -2799,20 +2799,20 @@ body#cover .message {
   background: #828a91;
   color: #fff;
 }
-/* line 503, ../sass/_room.scss */
+/* line 503, /home/yang/hotpot/static/sass/_room.scss */
 .widget .closeButton {
   position: absolute;
   top: 5px;
   right: 5px;
 }
 
-/* line 512, ../sass/_room.scss */
+/* line 512, /home/yang/hotpot/static/sass/_room.scss */
 #notepad p {
   line-height: 1.2em;
   font-size: 13px;
   margin-bottom: 4px;
 }
-/* line 518, ../sass/_room.scss */
+/* line 518, /home/yang/hotpot/static/sass/_room.scss */
 #notepad textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2827,13 +2827,13 @@ body#cover .message {
   resize: none;
   font-style: normal;
 }
-/* line 528, ../sass/_room.scss */
+/* line 528, /home/yang/hotpot/static/sass/_room.scss */
 #notepad input[type=submit] {
   width: 100%;
   cursor: pointer;
 }
 
-/* line 534, ../sass/_room.scss */
+/* line 534, /home/yang/hotpot/static/sass/_room.scss */
 #stampPicker ul {
   margin: 10px 0px 0px 0px;
   overflow: hidden;
@@ -2847,43 +2847,43 @@ body#cover .message {
   border-radius: 5px;
 }
 
-/* line 541, ../sass/_room.scss */
+/* line 541, /home/yang/hotpot/static/sass/_room.scss */
 #stampPicker .stamp {
   font-family: "proxima-nova", sans-serif;
   float: left;
 }
-/* line 545, ../sass/_room.scss */
+/* line 545, /home/yang/hotpot/static/sass/_room.scss */
 #stampPicker .stamp .stampButton {
   display: block;
   height: 42px;
   width: 43px;
   padding: 10px;
 }
-/* line 552, ../sass/_room.scss */
+/* line 552, /home/yang/hotpot/static/sass/_room.scss */
 #stampPicker .stamp .stampInfo {
   display: none;
   margin-top: 5px;
   font-size: 13px;
 }
 
-/* line 559, ../sass/_room.scss */
+/* line 559, /home/yang/hotpot/static/sass/_room.scss */
 #stampInfoDisplay, #stampInstructions {
   font-style: normal;
   height: 32px;
 }
-/* line 563, ../sass/_room.scss */
+/* line 563, /home/yang/hotpot/static/sass/_room.scss */
 #stampInfoDisplay p, #stampInstructions p {
   font-size: 13px;
   line-height: 1.3em;
 }
 
-/* line 570, ../sass/_room.scss */
+/* line 570, /home/yang/hotpot/static/sass/_room.scss */
 #stampInfoDisplay h3 {
   font-weight: bold;
   margin-bottom: 4px;
 }
 
-/* line 576, ../sass/_room.scss */
+/* line 576, /home/yang/hotpot/static/sass/_room.scss */
 #widgetNav {
   position: absolute;
   bottom: 0;
@@ -2904,7 +2904,7 @@ body#cover .message {
   border-bottom-left-radius: 10px;
   padding: 7px;
 }
-/* line 588, ../sass/_room.scss */
+/* line 588, /home/yang/hotpot/static/sass/_room.scss */
 #widgetNav a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2924,11 +2924,11 @@ body#cover .message {
   background-position: center center;
   background-repeat: no-repeat;
 }
-/* line 599, ../sass/_room.scss */
+/* line 599, /home/yang/hotpot/static/sass/_room.scss */
 #widgetNav a:hover {
   background-color: rgba(115, 108, 91, 0.2);
 }
-/* line 603, ../sass/_room.scss */
+/* line 603, /home/yang/hotpot/static/sass/_room.scss */
 #widgetNav a.active {
   border-top: 1px solid #fff;
   position: relative;
@@ -2937,18 +2937,18 @@ body#cover .message {
   background-color: #fff;
   background-repeat: no-repeat;
 }
-/* line 613, ../sass/_room.scss */
+/* line 613, /home/yang/hotpot/static/sass/_room.scss */
 #widgetNav #stampPickerButton {
   background-image: url(/static/images/icon_stamp.png);
 }
-/* line 618, ../sass/_room.scss */
+/* line 618, /home/yang/hotpot/static/sass/_room.scss */
 #widgetNav #notepadButton {
   background-image: url(/static/images/icon_note.png);
 }
 
 /**********************************************************/
 /* VIDEOS */
-/* line 626, ../sass/_room.scss */
+/* line 626, /home/yang/hotpot/static/sass/_room.scss */
 #videoContainer {
   margin-left: 360px;
   height: 74%;
@@ -2959,13 +2959,13 @@ body#cover .message {
   position: relative;
   padding: 0px 0px;
 }
-/* line 633, ../sass/_room.scss */
+/* line 633, /home/yang/hotpot/static/sass/_room.scss */
 #videoContainer.fullsize {
   height: 100%;
   padding-bottom: 40px;
 }
 
-/* line 639, ../sass/_room.scss */
+/* line 639, /home/yang/hotpot/static/sass/_room.scss */
 #videos {
   padding: 20px 20px 30px 20px;
   height: 100%;
@@ -2976,7 +2976,7 @@ body#cover .message {
   position: relative;
 }
 
-/* line 646, ../sass/_room.scss */
+/* line 646, /home/yang/hotpot/static/sass/_room.scss */
 #friendVideoPlaceholder {
   background-color: rgba(115, 108, 91, 0.1);
   color: rgba(115, 108, 91, 0.4);
@@ -2986,7 +2986,7 @@ body#cover .message {
   font-weight: 700;
   border: 5px solid rgba(115, 108, 91, 0.1);
 }
-/* line 655, ../sass/_room.scss */
+/* line 655, /home/yang/hotpot/static/sass/_room.scss */
 #friendVideoPlaceholder p {
   position: absolute;
   top: 45%;
@@ -2994,7 +2994,7 @@ body#cover .message {
   text-align: center;
 }
 
-/* line 663, ../sass/_room.scss */
+/* line 663, /home/yang/hotpot/static/sass/_room.scss */
 #myVideoContainer, .friendVideo, #testVideoContainer {
   border: 5px solid #fff;
   -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
@@ -3003,7 +3003,7 @@ body#cover .message {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* line 668, ../sass/_room.scss */
+/* line 668, /home/yang/hotpot/static/sass/_room.scss */
 #myVideoContainer {
   position: absolute;
   bottom: 20px;
@@ -3011,7 +3011,7 @@ body#cover .message {
   z-index: 999;
 }
 
-/* line 675, ../sass/_room.scss */
+/* line 675, /home/yang/hotpot/static/sass/_room.scss */
 .attendeeStatus {
   position: absolute;
   top: 20px;
@@ -3026,12 +3026,12 @@ body#cover .message {
   -khtml-border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-/* line 684, ../sass/_room.scss */
+/* line 684, /home/yang/hotpot/static/sass/_room.scss */
 .attendeeStatus .status {
   margin-left: 5px;
 }
 
-/* line 689, ../sass/_room.scss */
+/* line 689, /home/yang/hotpot/static/sass/_room.scss */
 #myStatus {
   position: absolute;
   right: 0;
@@ -3046,23 +3046,23 @@ body#cover .message {
   -khtml-border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-/* line 698, ../sass/_room.scss */
+/* line 698, /home/yang/hotpot/static/sass/_room.scss */
 #myStatus .status {
   margin-left: 1px;
 }
 
-/* line 703, ../sass/_room.scss */
+/* line 703, /home/yang/hotpot/static/sass/_room.scss */
 .attendeeStatus, #myStatus {
   font-weight: 700;
   z-index: 2;
 }
-/* line 707, ../sass/_room.scss */
+/* line 707, /home/yang/hotpot/static/sass/_room.scss */
 .attendeeStatus .status, #myStatus .status {
   color: #ef5922;
   font-size: 11px;
 }
 
-/* line 713, ../sass/_room.scss */
+/* line 713, /home/yang/hotpot/static/sass/_room.scss */
 .friendVideo {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -3072,7 +3072,7 @@ body#cover .message {
 
 /**********************************************************/
 /* CHAT BOX */
-/* line 721, ../sass/_room.scss */
+/* line 721, /home/yang/hotpot/static/sass/_room.scss */
 #hideChatButton, #showChatButton {
   font-weight: bold;
   background: #3797a2;
@@ -3085,12 +3085,12 @@ body#cover .message {
   font-size: 10px;
   letter-spacing: .05em;
 }
-/* line 731, ../sass/_room.scss */
+/* line 731, /home/yang/hotpot/static/sass/_room.scss */
 #hideChatButton:hover, #showChatButton:hover {
   background: #31858f;
 }
 
-/* line 736, ../sass/_room.scss */
+/* line 736, /home/yang/hotpot/static/sass/_room.scss */
 #hideChatButton {
   position: absolute;
   top: 5px;
@@ -3098,13 +3098,13 @@ body#cover .message {
   z-index: 3;
 }
 
-/* line 743, ../sass/_room.scss */
+/* line 743, /home/yang/hotpot/static/sass/_room.scss */
 #showChatButton {
   position: absolute;
   right: 220px;
 }
 
-/* line 748, ../sass/_room.scss */
+/* line 748, /home/yang/hotpot/static/sass/_room.scss */
 #chatBoxContainer {
   margin-left: 360px;
   margin-right: 200px;
@@ -3117,7 +3117,7 @@ body#cover .message {
   position: relative;
 }
 
-/* line 757, ../sass/_room.scss */
+/* line 757, /home/yang/hotpot/static/sass/_room.scss */
 #chatBox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -3137,7 +3137,7 @@ body#cover .message {
   position: relative;
 }
 
-/* line 768, ../sass/_room.scss */
+/* line 768, /home/yang/hotpot/static/sass/_room.scss */
 #chatMessages {
   height: 100%;
   -moz-box-sizing: border-box;
@@ -3147,16 +3147,16 @@ body#cover .message {
   padding: 5px 15px;
   overflow: auto;
 }
-/* line 774, ../sass/_room.scss */
+/* line 774, /home/yang/hotpot/static/sass/_room.scss */
 #chatMessages .chatMessage {
   margin: 5px 0px;
 }
-/* line 778, ../sass/_room.scss */
+/* line 778, /home/yang/hotpot/static/sass/_room.scss */
 #chatMessages .chatMessageAuthor {
   font-weight: bold;
 }
 
-/* line 783, ../sass/_room.scss */
+/* line 783, /home/yang/hotpot/static/sass/_room.scss */
 #chatInputContainer {
   position: absolute;
   bottom: 0px;
@@ -3169,7 +3169,7 @@ body#cover .message {
   padding: 5px;
   height: 35px;
 }
-/* line 792, ../sass/_room.scss */
+/* line 792, /home/yang/hotpot/static/sass/_room.scss */
 #chatInputContainer input {
   display: block;
   width: 100%;
@@ -3186,7 +3186,7 @@ body#cover .message {
   border-radius: 3px;
   font-size: 13px;
 }
-/* line 804, ../sass/_room.scss */
+/* line 804, /home/yang/hotpot/static/sass/_room.scss */
 #chatInputContainer input:focus {
   outline: none;
   background: #ddedee;
@@ -3194,17 +3194,17 @@ body#cover .message {
 
 /**********************************************************/
 /* MEALS PAGE */
-/* line 6, ../sass/_meals.scss */
+/* line 6, /home/yang/hotpot/static/sass/_meals.scss */
 body#meals #sectionTitle .small {
   display: inline-block;
   width: 85px;
   line-height: 21px;
 }
-/* line 11, ../sass/_meals.scss */
+/* line 11, /home/yang/hotpot/static/sass/_meals.scss */
 body#meals #sectionTitle .small em {
   font-weight: 500;
 }
-/* line 17, ../sass/_meals.scss */
+/* line 17, /home/yang/hotpot/static/sass/_meals.scss */
 body#meals .intro {
   text-align: center;
   font-weight: 300;
@@ -3212,7 +3212,7 @@ body#meals .intro {
   width: 60%;
   margin: 0px auto;
 }
-/* line 25, ../sass/_meals.scss */
+/* line 25, /home/yang/hotpot/static/sass/_meals.scss */
 body#meals .mealImageLink {
   display: block;
   position: relative;
@@ -3221,12 +3221,12 @@ body#meals .mealImageLink {
   left: 0px;
   top: 0px;
 }
-/* line 36, ../sass/_meals.scss */
+/* line 36, /home/yang/hotpot/static/sass/_meals.scss */
 body#meals .mealInfo h2 {
   font-weight: bold;
   font-size: 26px;
 }
-/* line 44, ../sass/_meals.scss */
+/* line 44, /home/yang/hotpot/static/sass/_meals.scss */
 body#meals .cookedBy h3 {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -3235,11 +3235,11 @@ body#meals .cookedBy h3 {
   letter-spacing: 0.05em;
   font-size: 12px;
 }
-/* line 49, ../sass/_meals.scss */
+/* line 49, /home/yang/hotpot/static/sass/_meals.scss */
 body#meals .cookedBy ul {
   margin-top: 5px;
 }
-/* line 53, ../sass/_meals.scss */
+/* line 53, /home/yang/hotpot/static/sass/_meals.scss */
 body#meals .cookedBy li {
   display: inline-block;
   display: inline-block;
@@ -3276,31 +3276,31 @@ body#meals .cookedBy li img {
   border-radius: 100px;
   background: #fff;
 }
-/* line 62, ../sass/_meals.scss */
+/* line 62, /home/yang/hotpot/static/sass/_meals.scss */
 body#meals .cookedBy img {
   text-transform: uppercase;
 }
-/* line 66, ../sass/_meals.scss */
+/* line 66, /home/yang/hotpot/static/sass/_meals.scss */
 body#meals .cookedBy .moreLink {
   display: block;
   padding-top: 5px;
   color: #736c5b;
 }
 
-/* line 75, ../sass/_meals.scss */
+/* line 75, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal.meal:hover,
 #mealsList .meal .mealImageLink:hover {
   border: 10px solid rgba(115, 108, 91, 0.2);
 }
 
-/* line 79, ../sass/_meals.scss */
+/* line 79, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal {
   margin: 30px 0px;
   border: 10px solid rgba(115, 108, 91, 0.1);
   position: relative;
   margin-bottom: 30px;
 }
-/* line 86, ../sass/_meals.scss */
+/* line 86, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal h1 {
   position: absolute;
   left: -15px;
@@ -3316,7 +3316,7 @@ body#meals .cookedBy .moreLink {
   letter-spacing: .05em;
   font-weight: 800;
 }
-/* line 99, ../sass/_meals.scss */
+/* line 99, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal h1 em {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -3327,17 +3327,17 @@ body#meals .cookedBy .moreLink {
   font-weight: 400;
   font-size: 18px;
 }
-/* line 107, ../sass/_meals.scss */
+/* line 107, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .mealImageLink {
   height: 335px;
 }
-/* line 112, ../sass/_meals.scss */
+/* line 112, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .mealImage img {
   position: absolute;
   top: -70%;
   width: 100%;
 }
-/* line 119, ../sass/_meals.scss */
+/* line 119, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .mealInfo {
   background: rgba(28, 103, 112, 0.9);
   position: absolute;
@@ -3349,25 +3349,25 @@ body#meals .cookedBy .moreLink {
   width: 240px;
   color: #fff;
 }
-/* line 131, ../sass/_meals.scss */
+/* line 131, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .mealInfo a {
   color: #fff;
 }
-/* line 135, ../sass/_meals.scss */
+/* line 135, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .mealInfo h2 {
   margin-bottom: 15px;
 }
-/* line 139, ../sass/_meals.scss */
+/* line 139, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .mealInfo p {
   font-size: 15px;
 }
-/* line 143, ../sass/_meals.scss */
+/* line 143, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .mealInfo ul {
   margin-bottom: 15px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 148, ../sass/_meals.scss */
+/* line 148, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .mealInfo li {
   font-weight: 700;
   font-size: 13px;
@@ -3375,7 +3375,7 @@ body#meals .cookedBy .moreLink {
   width: 50%;
   margin: 5px 0px;
 }
-/* line 157, ../sass/_meals.scss */
+/* line 157, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .cookedBy {
   position: absolute;
   width: 38px;
@@ -3384,24 +3384,24 @@ body#meals .cookedBy .moreLink {
   text-align: center;
   color: #fff;
 }
-/* line 165, ../sass/_meals.scss */
+/* line 165, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .cookedBy li {
   margin: 5px 0px;
 }
-/* line 169, ../sass/_meals.scss */
+/* line 169, /home/yang/hotpot/static/sass/_meals.scss */
 #featuredMeal .cookedBy li:hover {
   position: relative;
   left: 3px;
 }
 
-/* line 176, ../sass/_meals.scss */
+/* line 176, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsContainer {
   overflow: hidden;
   *zoom: 1;
   margin-bottom: 40px;
 }
 
-/* line 181, ../sass/_meals.scss */
+/* line 181, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal {
   float: left;
   -moz-box-sizing: border-box;
@@ -3411,7 +3411,7 @@ body#meals .cookedBy .moreLink {
   width: 30%;
   margin-right: 5%;
 }
-/* line 187, ../sass/_meals.scss */
+/* line 187, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal .mealImageLink {
   height: 175px;
   border: 10px solid rgba(115, 108, 91, 0.1);
@@ -3419,7 +3419,7 @@ body#meals .cookedBy .moreLink {
   margin-bottom: 15px;
   display: block;
 }
-/* line 195, ../sass/_meals.scss */
+/* line 195, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal .mealImage {
   border: 3px solid #fff;
   overflow: hidden;
@@ -3429,51 +3429,51 @@ body#meals .cookedBy .moreLink {
   box-sizing: border-box;
   height: 100%;
 }
-/* line 201, ../sass/_meals.scss */
+/* line 201, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal .mealImage img {
   width: 100%;
 }
-/* line 206, ../sass/_meals.scss */
+/* line 206, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal .mealInfo {
   padding: 0px 7px;
 }
-/* line 209, ../sass/_meals.scss */
+/* line 209, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal .mealInfo h2 {
   font-size: 20px;
   margin-bottom: 5px;
 }
-/* line 214, ../sass/_meals.scss */
+/* line 214, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal .mealInfo a {
   color: #1c6770;
   line-height: 26px;
 }
-/* line 220, ../sass/_meals.scss */
+/* line 220, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal .cookedBy {
   padding: 0px 7px;
 }
-/* line 223, ../sass/_meals.scss */
+/* line 223, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal .cookedBy li {
   vertical-align: middle;
   margin: 0px 10px 0px 0px;
 }
-/* line 228, ../sass/_meals.scss */
+/* line 228, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal .cookedBy li:hover {
   position: relative;
   top: -3px;
 }
-/* line 233, ../sass/_meals.scss */
+/* line 233, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal .cookedBy .moreLink {
   text-align: center;
 }
 
-/* line 239, ../sass/_meals.scss */
+/* line 239, /home/yang/hotpot/static/sass/_meals.scss */
 #mealsList .meal.end {
   margin-right: 0;
 }
 
 /**********************************************************/
 /* SINGLE MEAL PAGE */
-/* line 251, ../sass/_meals.scss */
+/* line 251, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #returnLink {
   float: left;
   display: block;
@@ -3500,40 +3500,40 @@ body#meals .cookedBy .moreLink {
   letter-spacing: .05em;
   margin-left: 8px;
 }
-/* line 267, ../sass/_meals.scss */
+/* line 267, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #returnLink img {
   margin-top: 2px;
 }
-/* line 272, ../sass/_meals.scss */
+/* line 272, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #returnLink:hover {
   background: #3797a2 url(/static/images/textureStrong.png);
 }
-/* line 276, ../sass/_meals.scss */
+/* line 276, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #mealImageContainer {
   position: relative;
   border: 10px solid rgba(115, 108, 91, 0.1);
   margin-bottom: 15px;
 }
-/* line 282, ../sass/_meals.scss */
+/* line 282, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #mealImage {
   border: 3px solid #fff;
   height: 300px;
   overflow: hidden;
   position: relative;
 }
-/* line 288, ../sass/_meals.scss */
+/* line 288, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #mealImage img {
   position: absolute;
   top: -70%;
   width: 100%;
 }
 
-/* line 296, ../sass/_meals.scss */
+/* line 296, /home/yang/hotpot/static/sass/_meals.scss */
 #mealContent {
   margin-right: 363px;
   font-size: 16px;
 }
-/* line 300, ../sass/_meals.scss */
+/* line 300, /home/yang/hotpot/static/sass/_meals.scss */
 #mealContent h1 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -3543,7 +3543,7 @@ body#meals .cookedBy .moreLink {
   color: #1c6770;
 }
 
-/* line 307, ../sass/_meals.scss */
+/* line 307, /home/yang/hotpot/static/sass/_meals.scss */
 #mealTitle {
   font-family: "proxima-nova", sans-serif;
   font-size: 35px;
@@ -3553,7 +3553,7 @@ body#meals .cookedBy .moreLink {
   margin-left: 100px;
 }
 
-/* line 312, ../sass/_meals.scss */
+/* line 312, /home/yang/hotpot/static/sass/_meals.scss */
 #mealAddedDate {
   margin-left: 23px;
   font-weight: 700;
@@ -3563,14 +3563,14 @@ body#meals .cookedBy .moreLink {
   line-height: 20px;
 }
 
-/* line 321, ../sass/_meals.scss */
+/* line 321, /home/yang/hotpot/static/sass/_meals.scss */
 #dishes {
   font-size: 18px;
   margin-left: 100px;
   margin-bottom: 30px;
   font-weight: 300;
 }
-/* line 327, ../sass/_meals.scss */
+/* line 327, /home/yang/hotpot/static/sass/_meals.scss */
 #dishes h2 {
   float: left;
   margin-right: 7px;
@@ -3582,19 +3582,19 @@ body#meals .cookedBy .moreLink {
   line-height: 21px;
   letter-spacing: .1em;
 }
-/* line 337, ../sass/_meals.scss */
+/* line 337, /home/yang/hotpot/static/sass/_meals.scss */
 #dishes li {
   display: inline-block;
   margin-right: 20px;
 }
 
-/* line 344, ../sass/_meals.scss */
+/* line 344, /home/yang/hotpot/static/sass/_meals.scss */
 #mealFacts {
   font-size: 14px;
   margin: 30px 0px 15px 0px;
   font-weight: 700;
 }
-/* line 349, ../sass/_meals.scss */
+/* line 349, /home/yang/hotpot/static/sass/_meals.scss */
 #mealFacts li {
   display: inline-block;
   width: 49%;
@@ -3605,7 +3605,7 @@ body#meals .cookedBy .moreLink {
   padding-right: 20px;
   margin-bottom: 15px;
 }
-/* line 357, ../sass/_meals.scss */
+/* line 357, /home/yang/hotpot/static/sass/_meals.scss */
 #mealFacts .label {
   text-transform: uppercase;
   color: #3797a2;
@@ -3614,29 +3614,29 @@ body#meals .cookedBy .moreLink {
   font-weight: 800;
 }
 
-/* line 366, ../sass/_meals.scss */
+/* line 366, /home/yang/hotpot/static/sass/_meals.scss */
 #mealDescription {
   font-size: 20px;
   margin-bottom: 30px;
 }
 
-/* line 374, ../sass/_meals.scss */
+/* line 374, /home/yang/hotpot/static/sass/_meals.scss */
 #ingredientSpotlight h1 {
   color: #a5c349;
   font-size: 16px;
 }
-/* line 377, ../sass/_meals.scss */
+/* line 377, /home/yang/hotpot/static/sass/_meals.scss */
 #ingredientSpotlight h1 .kern {
   letter-spacing: .1em;
 }
-/* line 382, ../sass/_meals.scss */
+/* line 382, /home/yang/hotpot/static/sass/_meals.scss */
 #ingredientSpotlight .ingredientImage {
   float: left;
   width: 200px;
   margin-right: 20px;
   border: 6px solid rgba(115, 108, 91, 0.15);
 }
-/* line 388, ../sass/_meals.scss */
+/* line 388, /home/yang/hotpot/static/sass/_meals.scss */
 #ingredientSpotlight .ingredientImage img {
   width: 100%;
   border: 3px solid #fff;
@@ -3646,7 +3646,7 @@ body#meals .cookedBy .moreLink {
   box-sizing: border-box;
 }
 
-/* line 398, ../sass/_meals.scss */
+/* line 398, /home/yang/hotpot/static/sass/_meals.scss */
 #ingredientSpotlight:after {
   content: ".";
   display: block;
@@ -3655,7 +3655,7 @@ body#meals .cookedBy .moreLink {
   visibility: hidden;
 }
 
-/* line 407, ../sass/_meals.scss */
+/* line 407, /home/yang/hotpot/static/sass/_meals.scss */
 #mealCredits {
   background: rgba(107, 77, 0, 0.05);
   padding: 20px 20px 20px 20px;
@@ -3664,7 +3664,7 @@ body#meals .cookedBy .moreLink {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 414, ../sass/_meals.scss */
+/* line 414, /home/yang/hotpot/static/sass/_meals.scss */
 #mealCredits h1 {
   font-weight: 700;
   text-transform: none;
@@ -3672,11 +3672,11 @@ body#meals .cookedBy .moreLink {
   margin-bottom: 5px;
   color: #4e565c;
 }
-/* line 422, ../sass/_meals.scss */
+/* line 422, /home/yang/hotpot/static/sass/_meals.scss */
 #mealCredits p {
   margin: 0;
 }
-/* line 426, ../sass/_meals.scss */
+/* line 426, /home/yang/hotpot/static/sass/_meals.scss */
 #mealCredits #submissionUser {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -3709,13 +3709,13 @@ body#meals .cookedBy .moreLink {
   border-radius: 100px;
   background: #fff;
 }
-/* line 433, ../sass/_meals.scss */
+/* line 433, /home/yang/hotpot/static/sass/_meals.scss */
 #mealCredits .stuff {
   width: 50%;
   float: left;
 }
 
-/* line 440, ../sass/_meals.scss */
+/* line 440, /home/yang/hotpot/static/sass/_meals.scss */
 #mealSidebar {
   float: right;
   width: 300px;
@@ -3724,7 +3724,7 @@ body#meals .cookedBy .moreLink {
   z-index: 1;
   margin-top: -308px;
 }
-/* line 448, ../sass/_meals.scss */
+/* line 448, /home/yang/hotpot/static/sass/_meals.scss */
 #mealSidebar #importantStuff {
   padding: 10px;
   background: #f0ece4 url(/static/images/textureStrong.png);
@@ -3740,12 +3740,12 @@ body#meals .cookedBy .moreLink {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
-/* line 456, ../sass/_meals.scss */
+/* line 456, /home/yang/hotpot/static/sass/_meals.scss */
 #shoppingList {
   padding: 10px;
   background: white url(/static/images/textureSoft.png);
 }
-/* line 460, ../sass/_meals.scss */
+/* line 460, /home/yang/hotpot/static/sass/_meals.scss */
 #shoppingList h1 {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -3757,25 +3757,25 @@ body#meals .cookedBy .moreLink {
   margin: 15px 0px 20px 0px;
   font-size: 24px;
 }
-/* line 468, ../sass/_meals.scss */
+/* line 468, /home/yang/hotpot/static/sass/_meals.scss */
 #shoppingList li {
   font-size: 16px;
   font-family: "proxima-nova", sans-serif;
   padding: 8px 10px;
 }
-/* line 473, ../sass/_meals.scss */
+/* line 473, /home/yang/hotpot/static/sass/_meals.scss */
 #shoppingList li .amount {
   float: right;
   padding-left: 6px;
   font-weight: bold;
   font-size: .8em;
 }
-/* line 481, ../sass/_meals.scss */
+/* line 481, /home/yang/hotpot/static/sass/_meals.scss */
 #shoppingList li.odd {
   background: #f4f7f6 url(/static/images/textureSoft.png);
 }
 
-/* line 488, ../sass/_meals.scss */
+/* line 488, /home/yang/hotpot/static/sass/_meals.scss */
 #viewRecipeButton {
   margin: 20px;
   width: 240px;
@@ -3783,13 +3783,13 @@ body#meals .cookedBy .moreLink {
   text-align: center;
 }
 
-/* line 495, ../sass/_meals.scss */
+/* line 495, /home/yang/hotpot/static/sass/_meals.scss */
 #cookedBy {
   position: absolute;
   bottom: 5px;
   left: 25px;
 }
-/* line 500, ../sass/_meals.scss */
+/* line 500, /home/yang/hotpot/static/sass/_meals.scss */
 #cookedBy h1 {
   font-family: "jubilat", Georgia, serif;
   font-style: italic;
@@ -3800,11 +3800,11 @@ body#meals .cookedBy .moreLink {
   margin-bottom: 10px;
   color: #fff;
 }
-/* line 507, ../sass/_meals.scss */
+/* line 507, /home/yang/hotpot/static/sass/_meals.scss */
 #cookedBy ul {
   margin-right: -18px;
 }
-/* line 511, ../sass/_meals.scss */
+/* line 511, /home/yang/hotpot/static/sass/_meals.scss */
 #cookedBy li {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -3840,13 +3840,13 @@ body#meals .cookedBy .moreLink {
   border-radius: 100px;
   background: #fff;
 }
-/* line 519, ../sass/_meals.scss */
+/* line 519, /home/yang/hotpot/static/sass/_meals.scss */
 #cookedBy li:hover {
   position: relative;
   top: -3px;
 }
 
-/* line 525, ../sass/_meals.scss */
+/* line 525, /home/yang/hotpot/static/sass/_meals.scss */
 #inviteButton {
   display: inline-block;
   border: 0px;
@@ -3941,7 +3941,7 @@ body#meals .cookedBy .moreLink {
   letter-spacing: 0.05em;
 }
 
-/* line 533, ../sass/_meals.scss */
+/* line 533, /home/yang/hotpot/static/sass/_meals.scss */
 #inviteButton:active {
   -moz-box-shadow: 0 3px 0 #78902f;
   -webkit-box-shadow: 0 3px 0 #78902f;
@@ -3951,34 +3951,34 @@ body#meals .cookedBy .moreLink {
   top: 4px;
 }
 
-/* line 542, ../sass/_meals.scss */
+/* line 542, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #socialMediaButtons {
   margin-top: -15px;
   margin-bottom: 20px;
   padding: 10px 0px;
 }
-/* line 547, ../sass/_meals.scss */
+/* line 547, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #socialMediaButtons h2 {
   text-align: center;
   font-weight: bold;
   font-size: 12px;
   margin-bottom: 10px;
 }
-/* line 554, ../sass/_meals.scss */
+/* line 554, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #socialMediaButtons #twitterInvite {
   padding-left: 14px;
   float: left;
   margin: 0px;
 }
-/* line 560, ../sass/_meals.scss */
+/* line 560, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #socialMediaButtons #facebookInvite {
   margin-left: 124px;
 }
-/* line 565, ../sass/_meals.scss */
+/* line 565, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #equipment {
   margin: 30px 0px;
 }
-/* line 568, ../sass/_meals.scss */
+/* line 568, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #equipment h1 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -3987,18 +3987,18 @@ body#meals .cookedBy .moreLink {
   margin-bottom: 15px;
   color: #ef5922;
 }
-/* line 573, ../sass/_meals.scss */
+/* line 573, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #equipment ul {
   list-style-type: disc;
   margin-left: 20px;
 }
-/* line 577, ../sass/_meals.scss */
+/* line 577, /home/yang/hotpot/static/sass/_meals.scss */
 #meal #equipment ul li {
   color: #4e565c;
   margin: 10px 0px;
 }
 
-/* line 585, ../sass/_meals.scss */
+/* line 585, /home/yang/hotpot/static/sass/_meals.scss */
 #recipeStepsOverlay {
   position: absolute;
   top: 50%;
@@ -4042,7 +4042,7 @@ body#meals .cookedBy .moreLink {
 #recipeStepsOverlay .closeButton:hover {
   background-color: #c4bcac;
 }
-/* line 588, ../sass/_meals.scss */
+/* line 588, /home/yang/hotpot/static/sass/_meals.scss */
 #recipeStepsOverlay #recipeSteps {
   width: 100%;
   height: 100%;
@@ -4053,7 +4053,7 @@ body#meals .cookedBy .moreLink {
   box-sizing: border-box;
   padding: 30px;
 }
-/* line 596, ../sass/_meals.scss */
+/* line 596, /home/yang/hotpot/static/sass/_meals.scss */
 #recipeStepsOverlay #recipeSteps h1 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -4065,7 +4065,7 @@ body#meals .cookedBy .moreLink {
   text-align: center;
   margin-bottom: 30px;
 }
-/* line 604, ../sass/_meals.scss */
+/* line 604, /home/yang/hotpot/static/sass/_meals.scss */
 #recipeStepsOverlay #recipeSteps h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -4078,18 +4078,18 @@ body#meals .cookedBy .moreLink {
   position: relative;
   top: 2px;
 }
-/* line 613, ../sass/_meals.scss */
+/* line 613, /home/yang/hotpot/static/sass/_meals.scss */
 #recipeStepsOverlay #recipeSteps .instructionsContainer {
   margin-left: 100px;
   margin-bottom: 20px;
   font-size: 14px;
 }
-/* line 618, ../sass/_meals.scss */
+/* line 618, /home/yang/hotpot/static/sass/_meals.scss */
 #recipeStepsOverlay #recipeSteps .instructionsContainer ul {
   list-style-type: disc;
   margin-left: 20px;
 }
-/* line 622, ../sass/_meals.scss */
+/* line 622, /home/yang/hotpot/static/sass/_meals.scss */
 #recipeStepsOverlay #recipeSteps .instructionsContainer ul li {
   color: #4e565c;
   margin: 10px 0px;
@@ -4097,12 +4097,12 @@ body#meals .cookedBy .moreLink {
 
 /**********************************************************/
 /* INVITE PAGE */
-/* line 6, ../sass/_invitations.scss */
+/* line 6, /home/yang/hotpot/static/sass/_invitations.scss */
 #invite #pageIntro {
   margin-bottom: 50px;
 }
 
-/* line 14, ../sass/_invitations.scss */
+/* line 14, /home/yang/hotpot/static/sass/_invitations.scss */
 #overlayContainer #recipePickerContainer {
   position: absolute;
   top: 50%;
@@ -4146,7 +4146,7 @@ body#meals .cookedBy .moreLink {
 #overlayContainer #recipePickerContainer .closeButton:hover {
   background-color: #c4bcac;
 }
-/* line 18, ../sass/_invitations.scss */
+/* line 18, /home/yang/hotpot/static/sass/_invitations.scss */
 #overlayContainer #recipePicker {
   width: 100%;
   height: 100%;
@@ -4158,13 +4158,13 @@ body#meals .cookedBy .moreLink {
   overflow-x: hidden;
   padding: 30px;
 }
-/* line 26, ../sass/_invitations.scss */
+/* line 26, /home/yang/hotpot/static/sass/_invitations.scss */
 #overlayContainer #recipePicker h1 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 20px;
 }
-/* line 32, ../sass/_invitations.scss */
+/* line 32, /home/yang/hotpot/static/sass/_invitations.scss */
 #overlayContainer #recipePicker li {
   margin: 30px 0px;
   background: rgba(107, 77, 0, 0.05);
@@ -4172,23 +4172,23 @@ body#meals .cookedBy .moreLink {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 39, ../sass/_invitations.scss */
+/* line 39, /home/yang/hotpot/static/sass/_invitations.scss */
 #overlayContainer #recipePicker .mealContent {
   margin-left: 125px;
   margin-right: 120px;
 }
-/* line 44, ../sass/_invitations.scss */
+/* line 44, /home/yang/hotpot/static/sass/_invitations.scss */
 #overlayContainer #recipePicker h2 {
   font-weight: 700;
   font-size: 20px;
   margin-bottom: 5px;
 }
-/* line 50, ../sass/_invitations.scss */
+/* line 50, /home/yang/hotpot/static/sass/_invitations.scss */
 #overlayContainer #recipePicker p {
   font-size: 14px;
   margin-bottom: 1px;
 }
-/* line 55, ../sass/_invitations.scss */
+/* line 55, /home/yang/hotpot/static/sass/_invitations.scss */
 #overlayContainer #recipePicker .mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -4202,42 +4202,42 @@ body#meals .cookedBy .moreLink {
 #overlayContainer #recipePicker .mealImage img {
   height: 100%;
 }
-/* line 61, ../sass/_invitations.scss */
+/* line 61, /home/yang/hotpot/static/sass/_invitations.scss */
 #overlayContainer #recipePicker .mealImage img {
   height: 100%;
   width: auto;
 }
-/* line 67, ../sass/_invitations.scss */
+/* line 67, /home/yang/hotpot/static/sass/_invitations.scss */
 #overlayContainer #recipePicker .button {
   float: right;
   margin-top: 21px;
 }
 
-/* line 74, ../sass/_invitations.scss */
+/* line 74, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteFormContainer {
   margin-left: 680px;
 }
 
-/* line 78, ../sass/_invitations.scss */
+/* line 78, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationPreviewContainer, #replyContainer {
   float: left;
   width: 620px;
   padding: 20px 15px 10px 15px;
   background: url(/static/images/email/bg.png);
 }
-/* line 84, ../sass/_invitations.scss */
+/* line 84, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationPreviewContainer p, #replyContainer p {
   margin: 15px 0px;
 }
 
-/* line 89, ../sass/_invitations.scss */
+/* line 89, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm, #emailContainer, #createRoomForm {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 92, ../sass/_invitations.scss */
+/* line 92, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm h2, #emailContainer h2, #createRoomForm h2 {
   font-weight: 700;
   text-transform: uppercase;
@@ -4245,15 +4245,15 @@ body#meals .cookedBy .moreLink {
   font-size: 16px;
   margin-bottom: 15px;
 }
-/* line 100, ../sass/_invitations.scss */
+/* line 100, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm .formItemError, #emailContainer .formItemError, #createRoomForm .formItemError {
   top: 20px;
 }
-/* line 104, ../sass/_invitations.scss */
+/* line 104, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm #errorsPresentMessage, #emailContainer #errorsPresentMessage, #createRoomForm #errorsPresentMessage {
   display: none;
 }
-/* line 107, ../sass/_invitations.scss */
+/* line 107, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm #errorsPresentMessage p, #emailContainer #errorsPresentMessage p, #createRoomForm #errorsPresentMessage p {
   width: 250px;
   font-size: 14px;
@@ -4262,27 +4262,27 @@ body#meals .cookedBy .moreLink {
   margin: 15px auto;
   color: #ef5922;
 }
-/* line 117, ../sass/_invitations.scss */
+/* line 117, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm input, #inviteForm textarea, #emailContainer input, #emailContainer textarea, #createRoomForm input, #createRoomForm textarea {
   border: 0px;
 }
-/* line 121, ../sass/_invitations.scss */
+/* line 121, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm p, #emailContainer p, #createRoomForm p {
   font-size: 18px;
   margin: 30px 0px;
 }
-/* line 126, ../sass/_invitations.scss */
+/* line 126, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm .formItem, #emailContainer .formItem, #createRoomForm .formItem {
   margin-bottom: 15px;
 }
-/* line 130, ../sass/_invitations.scss */
+/* line 130, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm label, #emailContainer label, #createRoomForm label {
   font-weight: 700;
   font-size: 13px;
   color: #1c6770;
   margin-bottom: 5px;
 }
-/* line 137, ../sass/_invitations.scss */
+/* line 137, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm fieldset, #emailContainer fieldset, #createRoomForm fieldset {
   background: rgba(55, 151, 162, 0.1);
   padding: 15px;
@@ -4294,29 +4294,29 @@ body#meals .cookedBy .moreLink {
   border-radius: 10px;
   margin: 0px 0px 30px 0px;
 }
-/* line 143, ../sass/_invitations.scss */
+/* line 143, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm fieldset p, #emailContainer fieldset p, #createRoomForm fieldset p {
   margin-top: 0px;
 }
-/* line 147, ../sass/_invitations.scss */
+/* line 147, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm fieldset .formNote, #emailContainer fieldset .formNote, #createRoomForm fieldset .formNote {
   font-size: 13px;
   line-height: 1.4em;
   margin-bottom: 0px;
 }
-/* line 155, ../sass/_invitations.scss */
+/* line 155, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm #chosenRecipe p, #emailContainer #chosenRecipe p, #createRoomForm #chosenRecipe p {
   margin-bottom: 15px;
 }
-/* line 159, ../sass/_invitations.scss */
+/* line 159, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm #chosenRecipe .button, #emailContainer #chosenRecipe .button, #createRoomForm #chosenRecipe .button {
   margin-bottom: 10px;
 }
-/* line 164, ../sass/_invitations.scss */
+/* line 164, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm #recipeTitle, #emailContainer #recipeTitle, #createRoomForm #recipeTitle {
   font-weight: 700;
 }
-/* line 168, ../sass/_invitations.scss */
+/* line 168, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm #sendInvitationButton, #emailContainer #sendInvitationButton, #createRoomForm #sendInvitationButton {
   display: inline-block;
   border: 0px;
@@ -4404,77 +4404,77 @@ body#meals .cookedBy .moreLink {
   font-weight: 400;
   letter-spacing: 0.05em;
 }
-/* line 173, ../sass/_invitations.scss */
+/* line 173, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm #selectMealButton, #emailContainer #selectMealButton, #createRoomForm #selectMealButton {
   margin-right: 15px;
 }
-/* line 177, ../sass/_invitations.scss */
+/* line 177, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm #loadingImage, #emailContainer #loadingImage, #createRoomForm #loadingImage {
   display: none;
 }
-/* line 180, ../sass/_invitations.scss */
+/* line 180, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm #loadingImage img, #emailContainer #loadingImage img, #createRoomForm #loadingImage img {
   margin-top: 10px;
 }
-/* line 185, ../sass/_invitations.scss */
+/* line 185, /home/yang/hotpot/static/sass/_invitations.scss */
 #inviteForm #selectedDate, #inviteForm #selectedTime, #emailContainer #selectedDate, #emailContainer #selectedTime, #createRoomForm #selectedDate, #createRoomForm #selectedTime {
   display: none;
 }
 
-/* line 192, ../sass/_invitations.scss */
+/* line 192, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoom #pageIntro {
   margin-bottom: 50px;
 }
 
-/* line 198, ../sass/_invitations.scss */
+/* line 198, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm {
   width: 700px;
   margin: 0px auto;
 }
-/* line 202, ../sass/_invitations.scss */
+/* line 202, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm fieldset {
   padding: 20px;
   margin-bottom: 40px;
 }
-/* line 207, ../sass/_invitations.scss */
+/* line 207, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm #who {
   background: url(/static/images/personWithSpoon.png) no-repeat left top;
   padding-left: 125px;
 }
-/* line 211, ../sass/_invitations.scss */
+/* line 211, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm #who fieldset {
   padding-top: 15px;
 }
-/* line 215, ../sass/_invitations.scss */
+/* line 215, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm #who .formItem {
   margin-bottom: 0px;
 }
-/* line 220, ../sass/_invitations.scss */
+/* line 220, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm #what {
   background: url(/static/images/meal.png) no-repeat 15px top;
   padding-left: 125px;
 }
-/* line 224, ../sass/_invitations.scss */
+/* line 224, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm #what fieldset {
   padding-bottom: 25px;
 }
-/* line 229, ../sass/_invitations.scss */
+/* line 229, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm #when {
   background: url(/static/images/calendar.png) no-repeat 20px top;
   padding-left: 125px;
 }
-/* line 233, ../sass/_invitations.scss */
+/* line 233, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm #when .formItem {
   margin-bottom: 0px;
 }
-/* line 238, ../sass/_invitations.scss */
+/* line 238, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm p.note {
   margin: -10px 0px 15px 0px;
   font-size: 14px;
   color: #3797a2;
   font-style: italic;
 }
-/* line 245, ../sass/_invitations.scss */
+/* line 245, /home/yang/hotpot/static/sass/_invitations.scss */
 #createRoomForm #datePicker {
   float: left;
   margin: 0px 20px 0px 0px;
@@ -4482,7 +4482,7 @@ body#meals .cookedBy .moreLink {
 
 /**********************************************************/
 /* DATE PICKER PLUGIN */
-/* line 255, ../sass/_invitations.scss */
+/* line 255, /home/yang/hotpot/static/sass/_invitations.scss */
 #datePicker {
   width: 300px;
   margin-top: 10px;
@@ -4490,7 +4490,7 @@ body#meals .cookedBy .moreLink {
   padding: 10px;
   position: relative;
 }
-/* line 262, ../sass/_invitations.scss */
+/* line 262, /home/yang/hotpot/static/sass/_invitations.scss */
 #datePicker h2 {
   text-align: center;
   font-size: 14px;
@@ -4502,24 +4502,24 @@ body#meals .cookedBy .moreLink {
   margin-bottom: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 270, ../sass/_invitations.scss */
+/* line 270, /home/yang/hotpot/static/sass/_invitations.scss */
 #datePicker .dp-nav-prev {
   position: absolute;
   left: 10px;
   top: 10px;
 }
-/* line 276, ../sass/_invitations.scss */
+/* line 276, /home/yang/hotpot/static/sass/_invitations.scss */
 #datePicker .dp-nav-next {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-/* line 282, ../sass/_invitations.scss */
+/* line 282, /home/yang/hotpot/static/sass/_invitations.scss */
 #datePicker .dp-nav-prev .disabled {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 286, ../sass/_invitations.scss */
+/* line 286, /home/yang/hotpot/static/sass/_invitations.scss */
 #datePicker .dp-nav-prev-year, #datePicker .dp-nav-next-year, #datePicker .dp-nav-prev-month, #datePicker .dp-nav-next-month {
   display: inline-block;
   background: #3797a2;
@@ -4533,24 +4533,24 @@ body#meals .cookedBy .moreLink {
   color: #fff;
   font-weight: bold;
 }
-/* line 295, ../sass/_invitations.scss */
+/* line 295, /home/yang/hotpot/static/sass/_invitations.scss */
 #datePicker .dp-nav-prev-year:hover, #datePicker .dp-nav-next-year:hover, #datePicker .dp-nav-prev-month:hover, #datePicker .dp-nav-next-month:hover {
   background: #1c6770;
 }
-/* line 299, ../sass/_invitations.scss */
+/* line 299, /home/yang/hotpot/static/sass/_invitations.scss */
 #datePicker .dp-nav-next-year {
   float: right;
 }
-/* line 303, ../sass/_invitations.scss */
+/* line 303, /home/yang/hotpot/static/sass/_invitations.scss */
 #datePicker .dp-nav-prev-year, #datePicker .dp-nav-prev-month {
   margin-right: 5px;
 }
-/* line 307, ../sass/_invitations.scss */
+/* line 307, /home/yang/hotpot/static/sass/_invitations.scss */
 #datePicker .dp-nav-next-year, #datePicker .dp-nav-next-month {
   margin-left: 5px;
 }
 
-/* line 312, ../sass/_invitations.scss */
+/* line 312, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar {
   width: 300px;
   background: #fff;
@@ -4559,11 +4559,11 @@ table.jCalendar {
   border-spacing: 10px;
   font-family: "proxima-nova", sans-serif;
 }
-/* line 320, ../sass/_invitations.scss */
+/* line 320, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar th {
   padding: 5px 8px;
 }
-/* line 324, ../sass/_invitations.scss */
+/* line 324, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar td {
   color: #4e565c;
   padding: 3px 5px;
@@ -4575,51 +4575,51 @@ table.jCalendar td {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 331, ../sass/_invitations.scss */
+/* line 331, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar td.current-month {
   background: #ededec;
   color: #000;
 }
-/* line 336, ../sass/_invitations.scss */
+/* line 336, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar td.today {
   font-weight: bold;
 }
-/* line 341, ../sass/_invitations.scss */
+/* line 341, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar td.selected,
 table.jCalendar td.selected.dp-hover {
   background: #ef5922;
   color: #fff;
 }
-/* line 346, ../sass/_invitations.scss */
+/* line 346, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar td.dp-hover, table.jCalendar tr.activeWeekHover td {
   background: #ddd;
   color: #000;
   cursor: pointer;
 }
-/* line 352, ../sass/_invitations.scss */
+/* line 352, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar tr.selectedWeek td {
   background: #f66;
   color: #fff;
 }
-/* line 357, ../sass/_invitations.scss */
+/* line 357, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar td.disabled {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   cursor: default;
 }
-/* line 362, ../sass/_invitations.scss */
+/* line 362, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar td.disabled.dp-hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
   background: #ededec;
   color: #000;
 }
-/* line 368, ../sass/_invitations.scss */
+/* line 368, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar td.disabled.other-month.dp-hover {
   background: #ededec;
   color: #4e565c;
 }
-/* line 375, ../sass/_invitations.scss */
+/* line 375, /home/yang/hotpot/static/sass/_invitations.scss */
 table.jCalendar td.unselectable,
 table.jCalendar td.unselectable:hover,
 table.jCalendar td.unselectable.dp-hover {
@@ -4630,24 +4630,24 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* INVITATION & REPLY SENT PAGE */
-/* line 386, ../sass/_invitations.scss */
+/* line 386, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationSent .intro, #replySent .intro {
   text-align: center;
   font-size: 22px;
   margin-bottom: 5px;
 }
-/* line 392, ../sass/_invitations.scss */
+/* line 392, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationSent #pageIntro, #replySent #pageIntro {
   margin-bottom: 30px;
 }
 
-/* line 397, ../sass/_invitations.scss */
+/* line 397, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationSent #invitationPreviewContainer {
   margin: 40px auto;
   float: none;
 }
 
-/* line 402, ../sass/_invitations.scss */
+/* line 402, /home/yang/hotpot/static/sass/_invitations.scss */
 #replySent #replyContainer {
   margin: 40px auto;
   float: none;
@@ -4655,21 +4655,21 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* RSVP PAGE */
-/* line 412, ../sass/_invitations.scss */
+/* line 412, /home/yang/hotpot/static/sass/_invitations.scss */
 #reply #pageTitle {
   margin-bottom: 40px;
 }
-/* line 416, ../sass/_invitations.scss */
+/* line 416, /home/yang/hotpot/static/sass/_invitations.scss */
 #reply .intro {
   text-align: center;
 }
 
-/* line 421, ../sass/_invitations.scss */
+/* line 421, /home/yang/hotpot/static/sass/_invitations.scss */
 #newUserOptions {
   text-align: center;
   margin: 20px;
 }
-/* line 425, ../sass/_invitations.scss */
+/* line 425, /home/yang/hotpot/static/sass/_invitations.scss */
 #newUserOptions a {
   display: inline-block;
   border: 0px;
@@ -4758,7 +4758,7 @@ table.jCalendar td.unselectable.dp-hover {
   letter-spacing: 0.05em;
 }
 
-/* line 432, ../sass/_invitations.scss */
+/* line 432, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyFormContainer .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -4791,14 +4791,14 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 437, ../sass/_invitations.scss */
+/* line 437, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyFormContainer h2 {
   text-align: center;
   font-size: 20px;
   margin: 20px;
 }
 
-/* line 444, ../sass/_invitations.scss */
+/* line 444, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationInfo {
   padding: 30px;
   background: rgba(107, 77, 0, 0.05);
@@ -4806,18 +4806,18 @@ table.jCalendar td.unselectable.dp-hover {
   *zoom: 1;
   margin-bottom: 30px;
 }
-/* line 450, ../sass/_invitations.scss */
+/* line 450, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationInfo h1 {
   font-weight: 700;
   font-size: 28px;
   margin: 10px 0px 10px 0px;
 }
-/* line 456, ../sass/_invitations.scss */
+/* line 456, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationInfo p {
   font-size: 16px;
   margin: 0px 0px 20px 0px;
 }
-/* line 461, ../sass/_invitations.scss */
+/* line 461, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationInfo #recipeImage {
   float: left;
   margin-right: 30px;
@@ -4827,11 +4827,11 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
-/* line 468, ../sass/_invitations.scss */
+/* line 468, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationInfo #details {
   margin-left: 250px;
 }
-/* line 471, ../sass/_invitations.scss */
+/* line 471, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationInfo #details dt {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -4841,59 +4841,59 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 14px;
   margin: 10px 0px 8px 0px;
 }
-/* line 476, ../sass/_invitations.scss */
+/* line 476, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationInfo #details dt.date {
   color: #ef5922;
 }
-/* line 480, ../sass/_invitations.scss */
+/* line 480, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationInfo #details dt.time {
   color: #a5c349;
 }
-/* line 485, ../sass/_invitations.scss */
+/* line 485, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationInfo #details dd {
   font-size: 18px;
   margin-bottom: 15px;
 }
 
-/* line 492, ../sass/_invitations.scss */
+/* line 492, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm {
   width: 700px;
   margin: 3px auto;
   text-align: center;
 }
-/* line 497, ../sass/_invitations.scss */
+/* line 497, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.yes {
   color: #a5c349;
 }
-/* line 500, ../sass/_invitations.scss */
+/* line 500, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.yes #replyMessage {
   background: rgba(165, 195, 73, 0.15);
 }
-/* line 505, ../sass/_invitations.scss */
+/* line 505, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.maybe {
   color: #ef5922;
 }
-/* line 508, ../sass/_invitations.scss */
+/* line 508, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.maybe #replyMessage {
   background: rgba(239, 89, 34, 0.08);
 }
-/* line 512, ../sass/_invitations.scss */
+/* line 512, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.maybe a {
   color: #3797a2;
 }
-/* line 517, ../sass/_invitations.scss */
+/* line 517, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.no {
   color: #3797a2;
 }
-/* line 520, ../sass/_invitations.scss */
+/* line 520, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm #theRestOfTheReplyForm.no #replyMessage {
   background: rgba(55, 151, 162, 0.1);
 }
-/* line 525, ../sass/_invitations.scss */
+/* line 525, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm .checkbox {
   margin: 0px 0px 15px 0px;
 }
-/* line 529, ../sass/_invitations.scss */
+/* line 529, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm .checkboxLabel {
   text-transform: none;
   font-size: 18px;
@@ -4903,36 +4903,36 @@ table.jCalendar td.unselectable.dp-hover {
   font-weight: normal;
   color: #4e565c;
 }
-/* line 539, ../sass/_invitations.scss */
+/* line 539, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm label {
   font-weight: 700;
   display: block;
   margin-bottom: 10px;
   font-size: 14px;
 }
-/* line 546, ../sass/_invitations.scss */
+/* line 546, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm .extraInput {
   margin: 15px 20px;
 }
-/* line 550, ../sass/_invitations.scss */
+/* line 550, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm input[type=text] {
   padding: 5px;
   margin: 0px;
   width: 100%;
   font-size: 14px;
 }
-/* line 557, ../sass/_invitations.scss */
+/* line 557, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm input[type=checkbox] {
   width: auto;
   margin-right: 5px;
 }
-/* line 562, ../sass/_invitations.scss */
+/* line 562, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm textarea {
   width: 100%;
   height: 100px;
   resize: vertical;
 }
-/* line 568, ../sass/_invitations.scss */
+/* line 568, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyForm button {
   display: inline-block;
   border: 0px;
@@ -5020,11 +5020,11 @@ table.jCalendar td.unselectable.dp-hover {
   letter-spacing: 0.05em;
 }
 
-/* line 573, ../sass/_invitations.scss */
+/* line 573, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons {
   text-align: center;
 }
-/* line 575, ../sass/_invitations.scss */
+/* line 575, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons a {
   display: inline-block;
   border: 0px;
@@ -5113,22 +5113,22 @@ table.jCalendar td.unselectable.dp-hover {
   font-weight: 400;
   letter-spacing: 0.05em;
 }
-/* line 581, ../sass/_invitations.scss */
+/* line 581, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerYes {
   background: #a5c349;
 }
-/* line 584, ../sass/_invitations.scss */
+/* line 584, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerYes:hover {
   background: #98b63c;
 }
-/* line 588, ../sass/_invitations.scss */
+/* line 588, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerYes:active {
   -moz-box-shadow: 0 2px 0 #78902f;
   -webkit-box-shadow: 0 2px 0 #78902f;
   -o-box-shadow: 0 2px 0 #78902f;
   box-shadow: 0 2px 0 #78902f;
 }
-/* line 592, ../sass/_invitations.scss */
+/* line 592, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerYes.selected {
   position: relative;
   top: 4px;
@@ -5138,7 +5138,7 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 3px 0 #687d29;
   box-shadow: 0 3px 0 #687d29;
 }
-/* line 600, ../sass/_invitations.scss */
+/* line 600, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerMaybe {
   background: #ef5922;
   -moz-box-shadow: 0 7px 0 #b73b0d;
@@ -5146,18 +5146,18 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #b73b0d;
   box-shadow: 0 7px 0 #b73b0d;
 }
-/* line 604, ../sass/_invitations.scss */
+/* line 604, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerMaybe:hover {
   background: #e74a11;
 }
-/* line 608, ../sass/_invitations.scss */
+/* line 608, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerMaybe:active {
   -moz-box-shadow: 0 2px 0 #b73b0d;
   -webkit-box-shadow: 0 2px 0 #b73b0d;
   -o-box-shadow: 0 2px 0 #b73b0d;
   box-shadow: 0 2px 0 #b73b0d;
 }
-/* line 612, ../sass/_invitations.scss */
+/* line 612, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerMaybe.selected {
   position: relative;
   top: 4px;
@@ -5167,7 +5167,7 @@ table.jCalendar td.unselectable.dp-hover {
   box-shadow: 0 3px 0 #9f330c;
   background: #d94610;
 }
-/* line 620, ../sass/_invitations.scss */
+/* line 620, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerNo {
   background: #3797a2;
   -moz-box-shadow: 0 7px 0 #246269;
@@ -5175,18 +5175,18 @@ table.jCalendar td.unselectable.dp-hover {
   -o-box-shadow: 0 7px 0 #246269;
   box-shadow: 0 7px 0 #246269;
 }
-/* line 624, ../sass/_invitations.scss */
+/* line 624, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerNo:hover {
   background: #31858f;
 }
-/* line 628, ../sass/_invitations.scss */
+/* line 628, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerNo:active {
   -moz-box-shadow: 0 2px 0 #246269;
   -webkit-box-shadow: 0 2px 0 #246269;
   -o-box-shadow: 0 2px 0 #246269;
   box-shadow: 0 2px 0 #246269;
 }
-/* line 632, ../sass/_invitations.scss */
+/* line 632, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyButtons #answerNo.selected {
   position: relative;
   top: 4px;
@@ -5197,12 +5197,12 @@ table.jCalendar td.unselectable.dp-hover {
   background: #2d7b84;
 }
 
-/* line 641, ../sass/_invitations.scss */
+/* line 641, /home/yang/hotpot/static/sass/_invitations.scss */
 #theRestOfTheReplyForm {
   margin-top: 30px;
 }
 
-/* line 645, ../sass/_invitations.scss */
+/* line 645, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyReasons {
   background: rgba(239, 89, 34, 0.08);
   padding: 30px 30px 0px 30px;
@@ -5210,7 +5210,7 @@ table.jCalendar td.unselectable.dp-hover {
   text-align: left;
 }
 
-/* line 652, ../sass/_invitations.scss */
+/* line 652, /home/yang/hotpot/static/sass/_invitations.scss */
 #replyMessage {
   padding: 30px;
   text-align: left;
@@ -5219,21 +5219,21 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* VIEWING INVITATIONS */
-/* line 663, ../sass/_invitations.scss */
+/* line 663, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitations #pageTitle {
   margin-bottom: 40px;
 }
-/* line 667, ../sass/_invitations.scss */
+/* line 667, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitations #pageIntro {
   margin-bottom: 40px;
 }
 
-/* line 672, ../sass/_invitations.scss */
+/* line 672, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationsSidebar {
   float: left;
   width: 170px;
 }
-/* line 677, ../sass/_invitations.scss */
+/* line 677, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationsSidebar nav a {
   display: block;
   margin: 0px 0px 15px 0px;
@@ -5241,15 +5241,15 @@ table.jCalendar td.unselectable.dp-hover {
   color: #4e565c;
   font-size: 16px;
 }
-/* line 684, ../sass/_invitations.scss */
+/* line 684, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationsSidebar nav a:hover {
   color: #ef5922;
 }
-/* line 688, ../sass/_invitations.scss */
+/* line 688, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationsSidebar nav a.selected {
   color: #a5c349;
 }
-/* line 693, ../sass/_invitations.scss */
+/* line 693, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationsSidebar nav .alertText {
   display: inline-block;
   background: #ef5922;
@@ -5278,17 +5278,17 @@ table.jCalendar td.unselectable.dp-hover {
   margin-left: 5px;
 }
 
-/* line 705, ../sass/_invitations.scss */
+/* line 705, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer {
   margin-left: 200px;
 }
-/* line 708, ../sass/_invitations.scss */
+/* line 708, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitationType {
   margin-bottom: 30px;
   font-weight: 700;
   font-size: 14px;
 }
-/* line 714, ../sass/_invitations.scss */
+/* line 714, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .alertNumber {
   display: inline-block;
   background: #ef5922;
@@ -5315,7 +5315,7 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 14px;
   line-height: 21px;
 }
-/* line 723, ../sass/_invitations.scss */
+/* line 723, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation, #invitationContainer #singleInvitation {
   background: rgba(107, 77, 0, 0.05);
   padding: 50px 30px 30px 30px;
@@ -5324,7 +5324,7 @@ table.jCalendar td.unselectable.dp-hover {
   *zoom: 1;
   margin-bottom: 30px;
 }
-/* line 730, ../sass/_invitations.scss */
+/* line 730, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .statusBar, #invitationContainer #singleInvitation .statusBar {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -5341,22 +5341,22 @@ table.jCalendar td.unselectable.dp-hover {
   font-weight: 900;
   color: #736c5b;
 }
-/* line 741, ../sass/_invitations.scss */
+/* line 741, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .statusBar.accepted, #invitationContainer #singleInvitation .statusBar.accepted {
   background: #a5c349 url(/static/images/textureStrong.png);
   color: #fff;
 }
-/* line 746, ../sass/_invitations.scss */
+/* line 746, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .statusBar.declined, #invitationContainer #singleInvitation .statusBar.declined {
   background: rgba(55, 151, 162, 0.15);
   color: #1c6770;
 }
-/* line 751, ../sass/_invitations.scss */
+/* line 751, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .statusBar.changeNeeded, #invitationContainer #singleInvitation .statusBar.changeNeeded {
   background: rgba(239, 89, 34, 0.15);
   color: #ef5922;
 }
-/* line 757, ../sass/_invitations.scss */
+/* line 757, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .sendDate, #invitationContainer #singleInvitation .sendDate {
   position: absolute;
   right: 8;
@@ -5365,7 +5365,7 @@ table.jCalendar td.unselectable.dp-hover {
   text-transform: none;
   font-size: 12px;
 }
-/* line 766, ../sass/_invitations.scss */
+/* line 766, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .mealImage, #invitationContainer #singleInvitation .mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -5379,17 +5379,17 @@ table.jCalendar td.unselectable.dp-hover {
 #invitationContainer .invitation .mealImage img, #invitationContainer #singleInvitation .mealImage img {
   height: 100%;
 }
-/* line 773, ../sass/_invitations.scss */
+/* line 773, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo, #invitationContainer #singleInvitation .invitationInfo {
   margin-left: 150px;
   font-size: 16px;
 }
-/* line 777, ../sass/_invitations.scss */
+/* line 777, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo h2, #invitationContainer #singleInvitation .invitationInfo h2 {
   font-size: 20px;
   font-weight: 700;
 }
-/* line 782, ../sass/_invitations.scss */
+/* line 782, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .label, #invitationContainer #singleInvitation .invitationInfo .label {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -5397,34 +5397,34 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 12px;
   margin-right: 10px;
 }
-/* line 787, ../sass/_invitations.scss */
+/* line 787, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .label.date, #invitationContainer #singleInvitation .invitationInfo .label.date {
   color: #ef5922;
 }
-/* line 791, ../sass/_invitations.scss */
+/* line 791, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .label.time, #invitationContainer #singleInvitation .invitationInfo .label.time {
   margin-left: 20px;
   color: #a5c349;
 }
-/* line 797, ../sass/_invitations.scss */
+/* line 797, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .datetime, #invitationContainer #singleInvitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 801, ../sass/_invitations.scss */
+/* line 801, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .with, #invitationContainer #singleInvitation .invitationInfo .with {
   margin: 10px 20px 0px 0px;
   float: left;
 }
-/* line 805, ../sass/_invitations.scss */
+/* line 805, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .with .label, #invitationContainer #singleInvitation .invitationInfo .with .label {
   color: #1c6770;
 }
-/* line 810, ../sass/_invitations.scss */
+/* line 810, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .cookingRoomLink, #invitationContainer #singleInvitation .invitationInfo .cookingRoomLink {
   margin-top: 48px;
   margin-left: 230px;
 }
-/* line 818, ../sass/_invitations.scss */
+/* line 818, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .partnerUserpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -5460,46 +5460,46 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 826, ../sass/_invitations.scss */
+/* line 826, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer .invitation .invitationInfo .datetime {
   margin: 10px 0px 20px 0px;
 }
-/* line 833, ../sass/_invitations.scss */
+/* line 833, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer #singleInvitation .mealImage {
   width: 230px;
   height: 230px;
 }
-/* line 837, ../sass/_invitations.scss */
+/* line 837, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer #singleInvitation .mealImage img {
   position: relative;
   left: -18%;
 }
-/* line 843, ../sass/_invitations.scss */
+/* line 843, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo {
   margin-left: 270px;
   font-size: 20px;
 }
-/* line 847, ../sass/_invitations.scss */
+/* line 847, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo h2 {
   font-size: 30px;
   margin-bottom: 20px;
 }
-/* line 852, ../sass/_invitations.scss */
+/* line 852, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo .label {
   font-size: 14px;
   display: block;
   margin-bottom: 8px;
 }
-/* line 858, ../sass/_invitations.scss */
+/* line 858, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo .datetime1 {
   float: left;
   margin-right: 30px;
 }
-/* line 863, ../sass/_invitations.scss */
+/* line 863, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer #singleInvitation .invitationInfo .with {
   margin-top: 20px;
 }
-/* line 868, ../sass/_invitations.scss */
+/* line 868, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationContainer #singleInvitation .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -5534,21 +5534,21 @@ table.jCalendar td.unselectable.dp-hover {
   background: #fff;
 }
 
-/* line 876, ../sass/_invitations.scss */
+/* line 876, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationActivity .activityItem {
   min-height: 56px;
   margin: 30px 0px;
 }
-/* line 880, ../sass/_invitations.scss */
+/* line 880, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationActivity .activityItem h3 {
   padding: 15px 0px;
   font-size: 18px;
 }
-/* line 886, ../sass/_invitations.scss */
+/* line 886, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationActivity .activityBody {
   margin-left: 75px;
 }
-/* line 890, ../sass/_invitations.scss */
+/* line 890, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationActivity .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -5579,39 +5579,39 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 895, ../sass/_invitations.scss */
+/* line 895, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationActivity .reply {
   padding: 10px 15px 1px 15px;
   background: rgba(107, 77, 0, 0.05);
   font-size: 18px;
 }
-/* line 900, ../sass/_invitations.scss */
+/* line 900, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationActivity .reply .mainReply {
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 5px;
 }
-/* line 906, ../sass/_invitations.scss */
+/* line 906, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationActivity .reply.yes {
   background: rgba(165, 195, 73, 0.15);
 }
-/* line 910, ../sass/_invitations.scss */
+/* line 910, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationActivity .reply.maybe {
   background: rgba(239, 89, 34, 0.08);
 }
-/* line 914, ../sass/_invitations.scss */
+/* line 914, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationActivity .reply.no {
   background: rgba(55, 151, 162, 0.1);
 }
 
-/* line 921, ../sass/_invitations.scss */
+/* line 921, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationFilters {
   margin-bottom: 30px;
 }
 
 /**********************************************************/
 /* NEW SIMPLE INVITE PAGE */
-/* line 928, ../sass/_invitations.scss */
+/* line 928, /home/yang/hotpot/static/sass/_invitations.scss */
 #otherInviteOptions {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -5623,7 +5623,7 @@ table.jCalendar td.unselectable.dp-hover {
   padding: 30px;
 }
 
-/* line 936, ../sass/_invitations.scss */
+/* line 936, /home/yang/hotpot/static/sass/_invitations.scss */
 #invite #emailContainer {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -5634,7 +5634,7 @@ table.jCalendar td.unselectable.dp-hover {
   padding: 30px;
 }
 
-/* line 944, ../sass/_invitations.scss */
+/* line 944, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -5643,18 +5643,18 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 18px;
   margin-bottom: 20px;
 }
-/* line 951, ../sass/_invitations.scss */
+/* line 951, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer h2 img {
   vertical-align: middle;
   margin-right: 10px;
 }
-/* line 957, ../sass/_invitations.scss */
+/* line 957, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer h3 {
   font-weight: bold;
   color: #1c6770;
   margin-top: 30px;
 }
-/* line 963, ../sass/_invitations.scss */
+/* line 963, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #messageBody {
   background: #fff;
   -moz-border-radius: 10px;
@@ -5670,7 +5670,7 @@ table.jCalendar td.unselectable.dp-hover {
   box-shadow: 0px 2px 7px rgba(115, 108, 91, 0.5);
   margin: 10px 0px 30px 0px;
 }
-/* line 971, ../sass/_invitations.scss */
+/* line 971, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #messageBodyInputContainer textarea, #emailContainer #recipeInputContainer {
   border: 3px dashed #f0ece4;
   padding: 20px;
@@ -5682,46 +5682,46 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 10px;
   margin-bottom: 30px;
 }
-/* line 978, ../sass/_invitations.scss */
+/* line 978, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #messageBodyInputContainer textarea:focus {
   outline: none;
   border: 0;
   border: 3px solid #f0ece4;
   background: rgba(240, 236, 228, 0.2);
 }
-/* line 985, ../sass/_invitations.scss */
+/* line 985, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #recipeInputContainer {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 989, ../sass/_invitations.scss */
+/* line 989, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #aboutHotpot {
   background: rgba(240, 236, 228, 0.3);
   padding: 20px;
 }
-/* line 993, ../sass/_invitations.scss */
+/* line 993, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #aboutHotpot h2 {
   color: #ef5922;
   margin-bottom: 5px;
 }
-/* line 997, ../sass/_invitations.scss */
+/* line 997, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #aboutHotpot h2 img {
   position: relative;
   top: -9px;
   left: 6px;
 }
-/* line 1004, ../sass/_invitations.scss */
+/* line 1004, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #aboutHotpot p {
   font-size: 16px;
   padding: 0px;
   margin: 0px;
 }
-/* line 1011, ../sass/_invitations.scss */
+/* line 1011, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #selectMealButtonContainer label {
   margin-bottom: 10px;
 }
 
-/* line 1018, ../sass/_invitations.scss */
+/* line 1018, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer .formItemError, #createRoomForm .formItemError {
   position: static;
   background: none;
@@ -5729,63 +5729,63 @@ table.jCalendar td.unselectable.dp-hover {
   width: auto;
   padding: 5px 0px 0px 0px;
 }
-/* line 1027, ../sass/_invitations.scss */
+/* line 1027, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #chosenRecipe, #createRoomForm #chosenRecipe {
   display: none;
 }
-/* line 1030, ../sass/_invitations.scss */
+/* line 1030, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #chosenRecipe #mealImage, #createRoomForm #chosenRecipe #mealImage {
   float: left;
   margin-right: 20px;
 }
-/* line 1035, ../sass/_invitations.scss */
+/* line 1035, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #chosenRecipe #mealTitle, #createRoomForm #chosenRecipe #mealTitle {
   margin: 0 0 10px 0;
 }
-/* line 1039, ../sass/_invitations.scss */
+/* line 1039, /home/yang/hotpot/static/sass/_invitations.scss */
 #emailContainer #chosenRecipe #mealDescription, #createRoomForm #chosenRecipe #mealDescription {
   margin: 0 0 10px 0;
   font-size: 16px;
 }
 
-/* line 1046, ../sass/_invitations.scss */
+/* line 1046, /home/yang/hotpot/static/sass/_invitations.scss */
 #twitterInvite {
   margin: 30px 0px;
 }
 
 /**********************************************************/
 /* SIMPLE INVITE CONFIRMATION PAGE */
-/* line 1056, ../sass/_invitations.scss */
+/* line 1056, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationSent #emailContainer {
   padding-right: 30px;
   width: 65%;
   float: left;
 }
-/* line 1061, ../sass/_invitations.scss */
+/* line 1061, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationSent #emailContainer p {
   margin: 0px 0px 15px 0px;
   font-size: 14px;
 }
-/* line 1067, ../sass/_invitations.scss */
+/* line 1067, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationSent .nextMessage {
   margin-left: 65%;
 }
-/* line 1070, ../sass/_invitations.scss */
+/* line 1070, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationSent .nextMessage p {
   font-size: 14px;
 }
-/* line 1074, ../sass/_invitations.scss */
+/* line 1074, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationSent .nextMessage a {
   font-size: 18px;
   line-height: 30px;
 }
-/* line 1080, ../sass/_invitations.scss */
+/* line 1080, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationSent #registrationFormContainer {
   width: auto;
   margin: 0px;
   margin-left: 65%;
 }
-/* line 1085, ../sass/_invitations.scss */
+/* line 1085, /home/yang/hotpot/static/sass/_invitations.scss */
 #invitationSent #registrationFormContainer h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -5798,17 +5798,17 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* HISTORY LIST PAGE */
-/* line 5, ../sass/_history.scss */
+/* line 5, /home/yang/hotpot/static/sass/_history.scss */
 #rooms #pageTitle {
   margin-bottom: 20px;
 }
 
-/* line 10, ../sass/_history.scss */
+/* line 10, /home/yang/hotpot/static/sass/_history.scss */
 #roomFilters {
   text-align: center;
   margin-bottom: 40px;
 }
-/* line 14, ../sass/_history.scss */
+/* line 14, /home/yang/hotpot/static/sass/_history.scss */
 #roomFilters a {
   display: inline-block;
   padding: 5px 10px 8px 10px;
@@ -5823,28 +5823,28 @@ table.jCalendar td.unselectable.dp-hover {
   color: #736c5b;
   margin: 0px 10px;
 }
-/* line 23, ../sass/_history.scss */
+/* line 23, /home/yang/hotpot/static/sass/_history.scss */
 #roomFilters a:hover {
   background: rgba(107, 77, 0, 0.1);
 }
-/* line 27, ../sass/_history.scss */
+/* line 27, /home/yang/hotpot/static/sass/_history.scss */
 #roomFilters a.active {
   background: #ef5922;
   color: #fff;
 }
 
-/* line 34, ../sass/_history.scss */
+/* line 34, /home/yang/hotpot/static/sass/_history.scss */
 #past {
   display: none;
 }
 
-/* line 40, ../sass/_history.scss */
+/* line 40, /home/yang/hotpot/static/sass/_history.scss */
 .roomList li {
   position: relative;
   margin-bottom: 30px;
   font-size: 16px;
 }
-/* line 46, ../sass/_history.scss */
+/* line 46, /home/yang/hotpot/static/sass/_history.scss */
 .roomList a {
   background: rgba(107, 77, 0, 0.05);
   overflow: hidden;
@@ -5854,11 +5854,11 @@ table.jCalendar td.unselectable.dp-hover {
   color: #4e565c;
   font-weight: 300;
 }
-/* line 54, ../sass/_history.scss */
+/* line 54, /home/yang/hotpot/static/sass/_history.scss */
 .roomList a:hover {
   background: rgba(107, 77, 0, 0.1);
 }
-/* line 59, ../sass/_history.scss */
+/* line 59, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .unconfirmed {
   background: #ef5922;
   color: #fff;
@@ -5873,7 +5873,7 @@ table.jCalendar td.unselectable.dp-hover {
   -khtml-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 69, ../sass/_history.scss */
+/* line 69, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .mealImage {
   float: left;
   overflow: hidden;
@@ -5887,18 +5887,18 @@ table.jCalendar td.unselectable.dp-hover {
 .roomList .mealImage img {
   height: 100%;
 }
-/* line 75, ../sass/_history.scss */
+/* line 75, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .mealImage img {
   width: 100%;
   height: auto;
 }
-/* line 81, ../sass/_history.scss */
+/* line 81, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .userpics {
   position: absolute;
   top: 35px;
   left: 35px;
 }
-/* line 87, ../sass/_history.scss */
+/* line 87, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -5931,23 +5931,23 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 92, ../sass/_history.scss */
+/* line 92, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .hotpotInfo {
   margin-left: 210px;
   height: 100px;
   background: url(/static/images/bigArrow.png) right center no-repeat;
 }
-/* line 98, ../sass/_history.scss */
+/* line 98, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .date {
   margin-top: 10px;
   font-size: 18px;
 }
-/* line 103, ../sass/_history.scss */
+/* line 103, /home/yang/hotpot/static/sass/_history.scss */
 .roomList h2 {
   font-size: 22px;
   margin: 8px 0px 16px 0px;
 }
-/* line 108, ../sass/_history.scss */
+/* line 108, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .label {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -5956,16 +5956,16 @@ table.jCalendar td.unselectable.dp-hover {
   color: #3797a2;
   margin-right: 6px;
 }
-/* line 113, ../sass/_history.scss */
+/* line 113, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .with {
   margin-right: 30px;
   float: left;
 }
-/* line 118, ../sass/_history.scss */
+/* line 118, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .summary .label {
   color: #a5c349;
 }
-/* line 122, ../sass/_history.scss */
+/* line 122, /home/yang/hotpot/static/sass/_history.scss */
 .roomList .summary {
   position: relative;
   top: -10px;
@@ -5973,18 +5973,18 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* HISTORY SINGLE PAGE */
-/* line 133, ../sass/_history.scss */
+/* line 133, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle .message, #roomSingle .message {
   width: 600px;
   margin-bottom: 40px;
   margin-top: -15px;
 }
-/* line 139, ../sass/_history.scss */
+/* line 139, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #pageTitle, #roomSingle #pageTitle {
   font-size: 34px;
   margin-bottom: 40px;
 }
-/* line 143, ../sass/_history.scss */
+/* line 143, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #pageTitle .returnLink, #roomSingle #pageTitle .returnLink {
   display: block;
   font-size: 16px;
@@ -5992,7 +5992,7 @@ table.jCalendar td.unselectable.dp-hover {
   text-transform: none;
   color: #3797a2;
 }
-/* line 152, ../sass/_history.scss */
+/* line 152, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #historyIntro, #roomSingle #historyIntro {
   background: rgba(107, 77, 0, 0.05);
   padding: 30px;
@@ -6001,7 +6001,7 @@ table.jCalendar td.unselectable.dp-hover {
   *zoom: 1;
   margin-bottom: 40px;
 }
-/* line 159, ../sass/_history.scss */
+/* line 159, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #historyIntro .userpic, #roomSingle #historyIntro .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -6034,7 +6034,7 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 165, ../sass/_history.scss */
+/* line 165, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #mealImage, #roomSingle #mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -6048,21 +6048,21 @@ table.jCalendar td.unselectable.dp-hover {
 #historySingle #mealImage img, #roomSingle #mealImage img {
   height: 100%;
 }
-/* line 171, ../sass/_history.scss */
+/* line 171, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #mealImage img, #roomSingle #mealImage img {
   width: auto;
   height: 100%;
   position: relative;
   left: -20px;
 }
-/* line 179, ../sass/_history.scss */
+/* line 179, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #userpics, #roomSingle #userpics {
   position: absolute;
   top: 50px;
   left: 50px;
   z-index: 1;
 }
-/* line 185, ../sass/_history.scss */
+/* line 185, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #userpics .userpic, #roomSingle #userpics .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -6095,26 +6095,26 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 190, ../sass/_history.scss */
+/* line 190, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #historyDetails, #roomSingle #historyDetails {
   margin-left: 440px;
   font-size: 16px;
 }
-/* line 194, ../sass/_history.scss */
+/* line 194, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #historyDetails .intro, #roomSingle #historyDetails .intro {
   font-size: 26px;
   margin-bottom: 20px;
 }
-/* line 199, ../sass/_history.scss */
+/* line 199, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #historyDetails .userSynopsis, #roomSingle #historyDetails .userSynopsis {
   margin-bottom: 15px;
 }
-/* line 200, ../sass/_history.scss */
+/* line 200, /home/yang/hotpot/static/sass/_history.scss */
 #historySingle #historyDetails .userSynopsis .userpic, #roomSingle #historyDetails .userSynopsis .userpic {
   margin-right: 10px;
 }
 
-/* line 212, ../sass/_history.scss */
+/* line 212, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline h1 {
   text-align: center;
   font-size: 26px;
@@ -6124,7 +6124,7 @@ table.jCalendar td.unselectable.dp-hover {
   font-weight: 900;
   margin: 50px 0px 20px 0px;
 }
-/* line 220, ../sass/_history.scss */
+/* line 220, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .timelineMessage {
   text-align: center;
   font-size: 16px;
@@ -6132,11 +6132,11 @@ table.jCalendar td.unselectable.dp-hover {
   background: rgba(239, 89, 34, 0.08);
   padding: 20px;
 }
-/* line 227, ../sass/_history.scss */
+/* line 227, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .timelineMessage p {
   margin: 0px;
 }
-/* line 232, ../sass/_history.scss */
+/* line 232, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -6149,12 +6149,12 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 15px;
   margin: 10px 0px 8px 0px;
 }
-/* line 241, ../sass/_history.scss */
+/* line 241, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent {
   background: url(/static/images/timelineStripeOrange.png) center top repeat-y;
   overflow: visible;
 }
-/* line 245, ../sass/_history.scss */
+/* line 245, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent:after {
   visibility: hidden;
   display: block;
@@ -6163,7 +6163,7 @@ table.jCalendar td.unselectable.dp-hover {
   clear: both;
   height: 0;
 }
-/* line 254, ../sass/_history.scss */
+/* line 254, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .instructionsContainer {
   background: url(/static/images/stepInstructionsTopOrange.png) right top no-repeat;
   padding-top: 15px;
@@ -6172,14 +6172,14 @@ table.jCalendar td.unselectable.dp-hover {
   position: relative;
   top: -18px;
 }
-/* line 263, ../sass/_history.scss */
+/* line 263, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .instructions {
   background: rgba(239, 89, 34, 0.08);
   padding: 10px 20px 20px 20px;
   font-size: 16px;
   margin-right: 14px;
 }
-/* line 269, ../sass/_history.scss */
+/* line 269, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .instructions h3 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -6189,25 +6189,25 @@ table.jCalendar td.unselectable.dp-hover {
   color: #ef5922;
   margin-bottom: 15px;
 }
-/* line 275, ../sass/_history.scss */
+/* line 275, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .instructions ul {
   list-style-type: disc;
   margin-left: 20px;
   font-size: 14px;
 }
-/* line 280, ../sass/_history.scss */
+/* line 280, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .instructions ul li {
   margin: 5px 0px;
 }
-/* line 285, ../sass/_history.scss */
+/* line 285, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .instructions .extra {
   font-size: 14px;
 }
-/* line 288, ../sass/_history.scss */
+/* line 288, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .instructions .extra p {
   margin: 0px;
 }
-/* line 292, ../sass/_history.scss */
+/* line 292, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .instructions .extra .label {
   float: left;
   font-family: "proxima-nova", sans-serif;
@@ -6219,12 +6219,12 @@ table.jCalendar td.unselectable.dp-hover {
   margin-top: 4px;
   margin-right: 8px;
 }
-/* line 302, ../sass/_history.scss */
+/* line 302, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .notesContainer {
   margin: 0px 0px 0px 50%;
   padding: 20px 0px;
 }
-/* line 306, ../sass/_history.scss */
+/* line 306, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .notesContainer .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -6257,27 +6257,27 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 312, ../sass/_history.scss */
+/* line 312, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .cookingNote {
   position: relative;
   left: -20px;
   margin: 0px 0px 20px 0px;
 }
-/* line 317, ../sass/_history.scss */
+/* line 317, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .cookingNote .userpic {
   float: left;
 }
-/* line 321, ../sass/_history.scss */
+/* line 321, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .cookingNote .description {
   margin-left: 50px;
   padding: 10px 0px 10px 0px;
   font-size: 14px;
 }
-/* line 327, ../sass/_history.scss */
+/* line 327, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .cookingNote .noteContent {
   margin-left: 50px;
 }
-/* line 332, ../sass/_history.scss */
+/* line 332, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .cookingNote.note .notecontent {
   background: rgba(107, 77, 0, 0.05);
   font-size: 16px;
@@ -6285,15 +6285,15 @@ table.jCalendar td.unselectable.dp-hover {
   margin-left: 50px;
   font-family: "Courier New", monospace;
 }
-/* line 342, ../sass/_history.scss */
+/* line 342, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .cookingNote.stamp .noteContent {
   position: relative;
 }
-/* line 346, ../sass/_history.scss */
+/* line 346, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .cookingNote.stamp img {
   position: static;
 }
-/* line 350, ../sass/_history.scss */
+/* line 350, /home/yang/hotpot/static/sass/_history.scss */
 #cookingTimeline .stepContent .cookingNote.stamp p {
   background: red;
   position: absolute;
@@ -6306,12 +6306,12 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 13px;
 }
 
-/* line 369, ../sass/_history.scss */
+/* line 369, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomMeta {
   float: right;
   width: 20%;
 }
-/* line 373, ../sass/_history.scss */
+/* line 373, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomMeta h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -6320,7 +6320,7 @@ table.jCalendar td.unselectable.dp-hover {
   margin: 15px 0px 5px 0px;
   font-size: 13px;
 }
-/* line 380, ../sass/_history.scss */
+/* line 380, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomMeta .label {
   display: block;
   font-family: "proxima-nova", sans-serif;
@@ -6329,11 +6329,11 @@ table.jCalendar td.unselectable.dp-hover {
   color: #ef5922;
   font-size: 13px;
 }
-/* line 387, ../sass/_history.scss */
+/* line 387, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomMeta p {
   font-size: 18px;
 }
-/* line 391, ../sass/_history.scss */
+/* line 391, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomMeta .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -6366,7 +6366,7 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 396, ../sass/_history.scss */
+/* line 396, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomMeta a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -6376,17 +6376,17 @@ table.jCalendar td.unselectable.dp-hover {
   margin: 8px 0px;
   text-align: center;
 }
-/* line 403, ../sass/_history.scss */
+/* line 403, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomMeta #launchRoomButton {
   margin: 0px 0px 30px 0px;
   font-size: 26px;
 }
-/* line 407, ../sass/_history.scss */
+/* line 407, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomMeta #launchRoomButton .small {
   display: block;
   font-size: 18px;
 }
-/* line 414, ../sass/_history.scss */
+/* line 414, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo {
   margin-right: 30px;
   -moz-box-sizing: border-box;
@@ -6400,7 +6400,7 @@ table.jCalendar td.unselectable.dp-hover {
   *zoom: 1;
   margin-bottom: 30px;
 }
-/* line 423, ../sass/_history.scss */
+/* line 423, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .sendDate {
   position: absolute;
   right: 8;
@@ -6409,7 +6409,7 @@ table.jCalendar td.unselectable.dp-hover {
   text-transform: none;
   font-size: 12px;
 }
-/* line 432, ../sass/_history.scss */
+/* line 432, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .mealImage {
   overflow: hidden;
   border: 5px solid #fff;
@@ -6423,12 +6423,12 @@ table.jCalendar td.unselectable.dp-hover {
 #roomSingle #roomInfo .mealImage img {
   height: 100%;
 }
-/* line 438, ../sass/_history.scss */
+/* line 438, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .mealImage img {
   position: relative;
   left: -18%;
 }
-/* line 444, ../sass/_history.scss */
+/* line 444, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -6462,32 +6462,32 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 449, ../sass/_history.scss */
+/* line 449, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .details {
   margin-left: 270px;
   font-size: 20px;
 }
-/* line 453, ../sass/_history.scss */
+/* line 453, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .details a {
   font-size: 14px;
   margin-left: 5px;
 }
-/* line 458, ../sass/_history.scss */
+/* line 458, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .details p {
   margin: 0px 0px 15px 0px;
   font-size: 22px;
   line-height: 1.2em;
 }
-/* line 464, ../sass/_history.scss */
+/* line 464, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .details .left {
   width: 60%;
   margin-right: 30px;
 }
-/* line 469, ../sass/_history.scss */
+/* line 469, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .details .right {
   width: 40%;
 }
-/* line 473, ../sass/_history.scss */
+/* line 473, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .details .label {
   font-weight: 700;
   color: rgba(115, 108, 91, 0.5);
@@ -6495,7 +6495,7 @@ table.jCalendar td.unselectable.dp-hover {
   display: block;
   margin: 0px;
 }
-/* line 481, ../sass/_history.scss */
+/* line 481, /home/yang/hotpot/static/sass/_history.scss */
 #roomSingle #roomInfo .details .cookingRoomLink {
   margin-top: 48px;
   margin-left: 230px;
@@ -6503,33 +6503,33 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* REGISTRATION & LOGIN PAGE */
-/* line 5, ../sass/_account.scss */
+/* line 5, /home/yang/hotpot/static/sass/_account.scss */
 #login #pageTitle, #register #pageTitle {
   margin-bottom: 40px;
 }
 
-/* line 10, ../sass/_account.scss */
+/* line 10, /home/yang/hotpot/static/sass/_account.scss */
 #registrationFormContainer, #loginFormContainer {
   width: 300px;
   background: rgba(165, 195, 73, 0.15);
   padding: 30px;
   margin: 20px auto;
 }
-/* line 16, ../sass/_account.scss */
+/* line 16, /home/yang/hotpot/static/sass/_account.scss */
 #registrationFormContainer label, #loginFormContainer label {
   display: none;
 }
-/* line 20, ../sass/_account.scss */
+/* line 20, /home/yang/hotpot/static/sass/_account.scss */
 #registrationFormContainer input[type=password], #registrationFormContainer input[type=text], #loginFormContainer input[type=password], #loginFormContainer input[type=text] {
   padding: 7px;
 }
 
-/* line 27, ../sass/_account.scss */
+/* line 27, /home/yang/hotpot/static/sass/_account.scss */
 #registrationForm .firstname, #accountInfoForm .firstname {
   width: 48%;
   float: left;
 }
-/* line 32, ../sass/_account.scss */
+/* line 32, /home/yang/hotpot/static/sass/_account.scss */
 #registrationForm .lastname, #accountInfoForm .lastname {
   width: 48%;
   margin-left: 52%;
@@ -6538,16 +6538,16 @@ table.jCalendar td.unselectable.dp-hover {
 
 /**********************************************************/
 /* EDIT ACCOUNT INFO & EDIT PROFILE PAGE */
-/* line 43, ../sass/_account.scss */
+/* line 43, /home/yang/hotpot/static/sass/_account.scss */
 #profile #pageTitle, #account #pageTitle {
   margin-bottom: 40px;
 }
-/* line 47, ../sass/_account.scss */
+/* line 47, /home/yang/hotpot/static/sass/_account.scss */
 #profile .message, #account .message {
   margin-bottom: 20px;
 }
 
-/* line 52, ../sass/_account.scss */
+/* line 52, /home/yang/hotpot/static/sass/_account.scss */
 #accountInfoFormContainer {
   width: 300px;
   margin: 0px auto;
@@ -6555,16 +6555,16 @@ table.jCalendar td.unselectable.dp-hover {
   padding: 1px 30px 30px 30px;
 }
 
-/* line 60, ../sass/_account.scss */
+/* line 60, /home/yang/hotpot/static/sass/_account.scss */
 #accountInfoForm .buttons {
   text-align: left;
   margin-top: 30px;
 }
-/* line 65, ../sass/_account.scss */
+/* line 65, /home/yang/hotpot/static/sass/_account.scss */
 #accountInfoForm label {
   display: none;
 }
-/* line 69, ../sass/_account.scss */
+/* line 69, /home/yang/hotpot/static/sass/_account.scss */
 #accountInfoForm h2 {
   font-family: "proxima-nova", sans-serif;
   text-transform: uppercase;
@@ -6573,11 +6573,11 @@ table.jCalendar td.unselectable.dp-hover {
   font-size: 16px;
   margin: 35px 0px 20px 0px;
 }
-/* line 76, ../sass/_account.scss */
+/* line 76, /home/yang/hotpot/static/sass/_account.scss */
 #accountInfoForm fieldset {
   margin: 0px 0px 30px 0px;
 }
-/* line 80, ../sass/_account.scss */
+/* line 80, /home/yang/hotpot/static/sass/_account.scss */
 #accountInfoForm input[type=submit] {
   width: 100%;
   -moz-box-sizing: border-box;
@@ -6585,7 +6585,7 @@ table.jCalendar td.unselectable.dp-hover {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 85, ../sass/_account.scss */
+/* line 85, /home/yang/hotpot/static/sass/_account.scss */
 #accountInfoForm .userpic {
   display: inline-block;
   -moz-border-radius: 100px;
@@ -6619,7 +6619,7 @@ table.jCalendar td.unselectable.dp-hover {
   border-radius: 100px;
   background: #fff;
 }
-/* line 90, ../sass/_account.scss */
+/* line 90, /home/yang/hotpot/static/sass/_account.scss */
 #accountInfoForm #userpicUpload {
   margin-left: 100px;
 }
