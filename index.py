@@ -1186,6 +1186,53 @@ def showGetReadyScreen(invitationId):
 	
 	return flask.redirect('/getready/' + invitationId)
 
+@app.route('/demo')
+def showDemoRoom():
+	invitationId = '4fadae439685aa3dde000007'
+	
+	# if the user's not logged in, redirect them to the login page
+	if 'userId' not in flask.session:
+		flask.flash('Log in to start cooking!')
+		return flask.redirect('login?' + urllib.urlencode({'redirectURL' : '/rooms/' + invitationId}))
+	
+	# if logged in, then show the room
+	else:
+		
+		# this is to prevent people from seeing a server error if for some reason the URL is wrong
+		try:
+			roomInfo = db.invitations.find_one({'_id' : ObjectId(invitationId)})
+			assert roomInfo is not None
+		except:
+			return "room not found. oops. quick, go back before you get eaten by a grue!"
+		
+		# grab the meal info (for displaying recipe steps, etc.)
+		meal = db.meals.find_one({'slug' : roomInfo['meal']})
+		
+		# grab all the notes related to this room
+		notesInThisRoom = list(db.notes.find({'invitationId' : invitationId}))
+		
+		# ...and insert them into the recipe object at the appropriate step, one step at a time
+		meal = insertNotesIntoSteps(meal, notesInThisRoom)
+		if len(meal['title']) > 35:
+			truncatedTitle = meal['title'][0:35]
+			shortTitle = truncatedTitle[0:truncatedTitle.rfind(' ')] + '...'
+			meal['shortTitle'] = shortTitle
+		
+		# truncate the meal name if it's too long
+		
+		# grab all the stamps too
+		stamps = list(db.stamps.find())
+		
+		# grab info of all attendees
+		attendees = []
+		attendees.append(grabUserInfo(roomInfo['hostId']))
+		
+		for inviteeId in roomInfo['inviteeIds']:
+			attendees.append(grabUserInfo(inviteeId))
+		
+		return render_template('demo.html', meal=meal, invitationId=invitationId, stamps=stamps, attendees=attendees, socketsPortNumber=config.SOCKETS_PORT_NUMBER)
+		
+		
 @app.route('/cook/<invitationId>')
 def showRoom(invitationId):
 	# if the user's not logged in, redirect them to the login page
