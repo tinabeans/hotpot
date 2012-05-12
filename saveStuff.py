@@ -104,13 +104,29 @@ def start(db):
 	meal1 = {
 		"_id": ObjectId('4f3352569685aa28d5000008'),
 		
-		"title":"""&ldquo;Waiting for Spring&rdquo; Supper""",
+		"title":""""Waiting for Spring" Supper""",
 		
 		"slug":"LemonGarlicKalePasta",
+		
+		"equipment" : [
+			"knife",
+			"cutting board",
+			"large pot",
+			"skillet",
+			"stirring spoon or spatula",
+			"scissors (optional)",
+			"lemon squeezer (optional)",
+			"grater or citrus zester (optional)"
+		],
 		
 		"dishes":[
 			"Lemon Garlic Kale Pasta"
 		],
+		
+		"ingredientPic" : "kale.jpg",
+		
+		"ingredientSpotlightText" : """<p>Kale is a hearty leafy vegetable commonly found at farmer's markets in the fall through early winter. It has a delicious nutty taste and works beautifully in everything from soups to saut&eacute;es.</p>
+			<p>Kale is high in fiber and Vitamins A, C and K. It's one of the healthiest vegetables you can get. Studies show that kale will even lower risk for five types of cancers, but we just think it tastes awesome.</p>""",
 		
 		"date": "March 21, 2012",
 		
@@ -128,23 +144,9 @@ def start(db):
 		
 		"flavors" : "tart, refreshing, light",
 		
-		"equipment" : [
-				"knife",
-				"cutting board",
-				"large pot",
-				"skillet",
-				"stirring spoon or spatula",
-				"scissors (optional)",
-				"lemon squeezer (optional)",
-				"grater or citrus zester (optional)"
-			],
-		
 		"description":"In this quick one-dish meal, the nutty flavor of saut&eacute;ed kale is paired with a bright splash of lemon&mdash;a fragrant reminder that spring is not too far off. It's also vegetarian, making it an ideal candidate for Meatless Mondays!",
 		
 		"summary":"This pasta dish comes together quickly with just a few ingredients. The kale is saut&eacute;ed in garlic, while lemons and more garlic infuse gently into a fragrant olive oil \"sauce.\" Because of it's so easy to prepare, it's great for a low-key and healthy weeknight supper. It's also vegetarian, making it an ideal candidate for Meatless Mondays.",
-		
-		"ingredientSpotlightText" : """<p>Kale is a hearty leafy vegetable commonly found at farmer's markets in the fall through early winter. It has a delicious nutty taste and works beautifully in everything from soups to saut&eacute;es.</p>
-			<p>Kale is high in fiber and Vitamins A, C and K. It's one of the healthiest vegetables you can get. Studies show that kale will even lower risk for five types of cancers, but we just think it tastes awesome.</p>""",
 		
 		"ingredients":[
 			{
@@ -290,7 +292,7 @@ def start(db):
 	
 		"slug" : "ClassicChineseSteamedFish",
 		
-		"title" : "Classic Chinese Steamed Fish",
+		"title" : "Real Chinese Home Cooking",
 		
 		"credit":"Tina's Mom",
 		
@@ -307,12 +309,23 @@ def start(db):
 		"flavors" : "light, savory, fragrant",
 		
 		"equipment" : [
-				"knife",
-				"cutting board",
-				"large skillet or wok with lid",
-				"medium pot or rice cooker",
-				"stirring spoon or spatula"
-			],
+			"knife",
+			"cutting board",
+			"large skillet or wok with lid",
+			"medium pot or rice cooker",
+			"stirring spoon or spatula"
+		],
+			
+		"dishes":[
+			"Classic Chinese Steamed Fish",
+			"Steamed Bok Choy",
+			"White Rice"
+		],
+		
+		"ingredientPic" : "fish.jpg",
+		
+		"ingredientSpotlightText" : """<p>For this recipe, you can use almost any kind of white fish. We like Tilapia because it is easy to cook and widely available. An old Chinese belief is that fish makes you smart. Perhaps there's some truth to that: fish is high in Omega-3 Fatty Acids which our brains love!</p>
+			<p>The <a href="http://www.montereybayaquarium.org/cr/seafoodwatch.aspx" target="_blank">Monterey Bay Aquarium</a> has a great Seafood app and website for determining what kinds of fish are best to purchase. It rates them by sustainability and health factors. Check it out!</p>""",
 		
 		"description":"""From the contributor: "Whenever I go home to visit my mom, she makes fish (there's an old Chinese believe that fish is good for your brain), so this always reminds me of home. This is so yummy, you won't believe how easy it is. My mom always uses whole fish, but fillets work just as well for those of us less culinarily gifted!"</p><p>Here we've paired it with <strong>steamed white rice</strong> and <strong>stir-fried bok choy</strong> to make a classic Chinese homecooked meal. You'll even learn traditional Chinese cooking techniques too!""",
 		
@@ -478,7 +491,7 @@ def start(db):
 	
 		"slug" : "AppleCheddarQuiche",
 		
-		"title" : "Apple Cheddar Quiche",
+		"title" : "Autumn Brunch",
 		
 		"credit":"Closet Cooking",
 		
@@ -503,6 +516,17 @@ def start(db):
 				"cheese grater (optional)",
 				"tight-lidded jar (optional)"
 			],
+			
+		"dishes":[
+			"Apple Cheddar Quiche",
+			"Cranberry Spinach Salad",
+			"Homemade Balsamic Vinaigrette"
+		],
+		
+		"ingredientPic" : "apples.jpg",
+		
+		"ingredientSpotlightText" : """<p>There's nothing like the taste of fresh-picked, local apples to welcome in autumn. Get yourself down to the Farmer's Market for this one... it's worth it! There are 7500 varieties of apples worldwide. Our favorite types for cooking are the MacIntosh, Cortland and Macoun, but do try out some of your favorites.</p>
+		<p>Apples contain phytonutrients that help regulate blood sugar and are a good source of fiber and vitamin C. Plus they, like all fresh fruits and vegetables, are full of antioxidants (it's not just pomegranates!).</p>""",
 			
 		"description":"""Apple and cheddar: what could be better than this perfect pairing of flavors? How about adding in a dash of rosemary, a swirl of cream, and binding it all together with fresh eggs in a toasty crust? This quiche works for any meal of the day, including a light dinner. Here, we've paired it with a <strong>cranberry spinach salad</strong> in homemade <strong>balsamic vinaigrette</strong>. It reheats wonderfully for lunch the next day... that is, assuming there's any left.""",
 		
@@ -672,7 +696,7 @@ def start(db):
 	
 		"slug" : "GarlicCuminVinaigretteEggplant",
 		
-		"title" : "Grilled Eggplant with Garlic-Cumin Vinaigrette",
+		"title" : "A Light Mediterranean Repast",
 		
 		"submittedBy" : "Beatriz",
 		
@@ -704,6 +728,16 @@ def start(db):
 				"lemon squeezer (optional)",
 				"pastry brush (optional)"
 			],
+			
+		"dishes":[
+			"Grilled Eggplant with Garlic-Cumin Vinaigrette",
+			"Cous Cous"
+		],
+		
+		"ingredientPic" : "eggplant.jpg",
+		
+		"ingredientSpotlightText" : """<p>Eggplants! They are actually from the  nightshade family, but lucky for us these delicious and versatile vegetables won't poison us. They come into season in late summer through early fall. If you head down to a good market, you can find eggplants of all shapes, colors and sizes, from tiny white ones to round mottled ones.</p>
+		<p>Eggplants are a good source of the antioxidant nasunin, as well as manganese and fiber. It's also been known to lower cholesterol. Yum!""",
 		
 		"description":"""Zesty homemade vinaigrette, creamy eggplant and bright herbs served over a bed of couscous make for quite a sophisticated dinner or lunch! But it's surprisingly easy and healthy, too. Here's a presentation tip from the original site: "This dish looks especially nice served on a platter, with the feta and herbs scattered over grilled eggplant." Why not? Food that looks better, tastes better!""",
 		

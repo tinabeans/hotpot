@@ -50,12 +50,12 @@
 			</div>
 		</div>
 	</div>
-	
 </div>
 
 
 <div id="dashboardLeft">
 	<div id="userInfoBox">
+		
 		<div class="userpic">
 			<img src="/static/uploads/userpics/{{ user.userpic }}">
 		</div>
@@ -109,7 +109,7 @@
 						{{ hotpot.datetime|jsDatetimeLocaleFormat("%l:%M %p")|safe }}
 					</div>
 					
-					<a href="/invitations/{{ hotpot._id }}" class="smallButton">View Invitation</a>
+					<!--a href="/invitations/{{ hotpot._id }}" class="smallButton">View Invitation</a-->
 					<a href="/rooms/{{ hotpot._id }}" class="smallButton cookingRoomLink">Launch Cooking Room</a>
 				</div>
 				
@@ -119,7 +119,7 @@
 
 	</div><!-- #upcomingContainer-->
 	
-	<div id="invitations">
+	<!-- div id="invitations">
 		<h2>Invitations</h2>
 		
 		{% if alertNumber != 0 %}
@@ -127,7 +127,7 @@
 	{% endif %}
 		
 		<a href="/invitations" class="smallButton">View My Invitations</a>
-	</div>
+	</div -->
 	
 </div>
 

@@ -88,7 +88,7 @@
 		</div>
 	
 		<section id="shoppingList">
-			<h1>Ingredients</h1>	
+			<h1>Ingredients Needed</h1>	
 			<ul>
 			{% for ingredient in meal.ingredients %}
 				<li class="{{ loop.cycle('odd', 'even') }}"><span class="ingredient">{{ ingredient.name }}</span>{% if ingredient.amount is defined %}<span class="amount">{{ ingredient.amount }}</span>{% endif %}</li>
@@ -130,7 +130,7 @@
 	
 	<section id="ingredientSpotlight">
 		<h1><span class="kern">Ingredient</span> Spotlight</h1>
-		<div class="ingredientImage"><img src="/static/images/ingredients/kale.jpg" /></div>
+		<div class="ingredientImage"><img src="/static/images/ingredients/{{ meal.ingredientPic }}" /></div>
 		{{ meal.ingredientSpotlightText|safe }}
 	</section>
 	
