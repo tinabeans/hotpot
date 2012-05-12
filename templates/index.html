@@ -2,7 +2,28 @@
 
 {% block title %} - Let's Cook!{% endblock %}
 
-{% block customJS %}{% endblock %}
+{% block customJS %}
+	<script type="text/javascript">
+		function advanceDemoSlide(inc) {
+			$slideList = $('#featureSlideshow ul');
+			$current = $slideList.find('.current');
+			var numSlides = $slideList.children().length;
+			index = ($current.index() + inc + numSlides) % numSlides;
+			$current.removeClass('current');
+			$slideList.children().eq(index).addClass('current');
+		}
+		$(function() {
+			$('.previousButton').click(function(e) {
+				e.preventDefault();
+				advanceDemoSlide(-1);
+			});
+			$('.nextButton').click(function(e) {
+				e.preventDefault();
+				advanceDemoSlide(1);
+			});
+		});
+	</script>
+{% endblock %}
 
 {% block bodyId %}welcome{% endblock %}
 
